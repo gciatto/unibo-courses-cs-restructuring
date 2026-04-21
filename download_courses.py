@@ -1,6 +1,7 @@
 import pathlib
 import argparse
 import csv
+import logging
 import re
 import sys
 import urllib.error
@@ -39,6 +40,8 @@ EXPECTED_COLUMNS = [
 PATTERN_SKIP_BEFORE = re.compile(r"^#\s+.*")
 PATTERN_SKIP_SINCE = re.compile(r"^###\s+SDGs")
 PATTERN_LANGUAGE_URL = re.compile(r"https?://www\.unibo\.it/.*?/(it|en)\?post_path=/(\d+/\d+)$")
+
+LOGGER = logging.getLogger(__name__)
 
 
 class Teacher(BaseModel):
@@ -118,9 +121,23 @@ def normalize_keywords(keywords: Iterable[str]) -> list[str]:
     return [k.strip().lower() for k in keywords if k and k.strip()]
 
 
-def contains_any(text: str, keywords: list[str]) -> bool:
+def matching_keywords(text: str, keywords: list[str]) -> list[str]:
     lowered = text.lower()
-    return any(keyword in lowered for keyword in keywords)
+    return [keyword for keyword in keywords if keyword in lowered]
+
+
+def contains_any(text: str, keywords: list[str]) -> bool:
+    return bool(matching_keywords(text, keywords))
+
+
+def configure_logging() -> None:
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
+
+
+def format_course_context(row_index: int, row: dict[str, str]) -> str:
+    course_title = (row.get("course_title") or "").strip() or "<missing title>"
+    course_url = (row.get("course_url") or "").strip() or "<missing url>"
+    return f"row={row_index} title={course_title!r} url={course_url}"
 
 
 def split_course_title(raw_title: str) -> CourseTitle:
@@ -459,18 +476,19 @@ def process_row(
     blacklist: list[str],
     timeout: float,
 ) -> tuple[str, str]:
+    course_context = format_course_context(row_index, row)
     course_url = (row.get("course_url") or "").strip()
     if not course_url:
-        return "skipped", f"SKIP row {row_index}: empty course_url"
+        return "skipped", f"empty course_url ({course_context})"
 
     teacher_email = (row.get("contact_email") or "").strip()
     if not teacher_email:
-        return "skipped", f"SKIP row {row_index}: empty contact_email"
+        return "skipped", f"empty contact_email ({course_context})"
 
     try:
         year, course_id = parse_year_and_course_id(course_url)
     except ValueError as error:
-        return "skipped", f"SKIP row {row_index}: {error}"
+        return "skipped", f"{error} ({course_context})"
 
     language_urls = discover_language_urls(course_url, timeout=timeout)
 
@@ -493,11 +511,23 @@ def process_row(
         syllabus[language] = syllabus_page
         searchable_fragments.append(cleaned_markdown)
 
-    if whitelist and not contains_any("\n".join(searchable_fragments), whitelist):
-        return "skipped", f"SKIP row {row_index}: whitelist did not match"
+    searchable_text = "\n".join(searchable_fragments)
+    whitelist_matches = matching_keywords(searchable_text, whitelist)
+    blacklist_matches = matching_keywords(searchable_text, blacklist)
 
-    if blacklist and contains_any("\n".join(searchable_fragments), blacklist):
-        return "skipped", f"SKIP row {row_index}: blacklist matched"
+    if whitelist and not whitelist_matches:
+        missing_terms = ", ".join(whitelist)
+        return (
+            "skipped",
+            f"whitelist did not match; missing keywords: {missing_terms} ({course_context})",
+        )
+
+    if blacklist_matches:
+        present_terms = ", ".join(blacklist_matches)
+        return (
+            "skipped",
+            f"blacklist matched; present keywords: {present_terms} ({course_context})",
+        )
 
     if not syllabus:
         details = "; ".join(page_errors) if page_errors else "no language pages available"
@@ -520,9 +550,9 @@ def process_row(
     if page_errors:
         return (
             "ok",
-            f"OK row {row_index}: wrote {metadata_path} with warnings: {'; '.join(page_errors)}",
+            f"wrote {metadata_path} with warnings: {'; '.join(page_errors)} ({course_context})",
         )
-    return "ok", f"OK row {row_index}: wrote {metadata_path}"
+    return "ok", f"wrote {metadata_path} ({course_context})"
 
 
 def ensure_expected_columns(reader: csv.DictReader) -> None:
@@ -534,16 +564,17 @@ def ensure_expected_columns(reader: csv.DictReader) -> None:
 
 
 def main() -> int:
+    configure_logging()
     args = parse_args()
     whitelist = normalize_keywords(args.whitelist)
     blacklist = normalize_keywords(args.blacklist)
 
     if args.limit is not None and args.limit < 0:
-        print("ERROR: --limit must be >= 0", file=sys.stderr)
+        LOGGER.error("--limit must be >= 0")
         return 2
 
     if not args.input.exists():
-        print(f"ERROR: input file does not exist: {args.input}", file=sys.stderr)
+        LOGGER.error("input file does not exist: %s", args.input)
         return 2
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
@@ -571,31 +602,31 @@ def main() -> int:
                 )
             except (urllib.error.URLError, TimeoutError, ValueError) as error:
                 failed_count += 1
-                course_url = (row.get("course_url") or "").strip()
-                print(f"FAIL row {row_index}: {course_url} ({error})", file=sys.stderr)
+                LOGGER.error("%s (%s)", format_course_context(row_index, row), error)
                 continue
             except Exception as error:
                 failed_count += 1
-                course_url = (row.get("course_url") or "").strip()
-                print(
-                    f"FAIL row {row_index}: unexpected error while processing {course_url} ({error})",
-                    file=sys.stderr,
+                LOGGER.exception(
+                    "unexpected error while processing %s",
+                    format_course_context(row_index, row),
                 )
                 continue
 
             if status == "ok":
                 downloaded_count += 1
-                print(message)
+                LOGGER.info(message)
             elif status == "skipped":
                 skipped_count += 1
-                print(message, file=sys.stderr)
+                LOGGER.warning(message)
             else:
                 failed_count += 1
-                print(message, file=sys.stderr)
+                LOGGER.error(message)
 
-    print(
-        f"Done. downloaded={downloaded_count} skipped={skipped_count} failed={failed_count}",
-        file=sys.stderr,
+    LOGGER.info(
+        "Done. downloaded=%s skipped=%s failed=%s",
+        downloaded_count,
+        skipped_count,
+        failed_count,
     )
     return 0 if failed_count == 0 else 1
 
