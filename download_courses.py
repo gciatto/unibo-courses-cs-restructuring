@@ -37,7 +37,7 @@ PATTERN_SKIP_BEFORE = re.compile(r"^#\s+.*")
 PATTERN_SKIP_SINCE = re.compile(r"^###\s+SDGs")
 PATTERN_LANGUAGE_URL = re.compile(r"https?://www\.unibo\.it/.*?/(it|en)\?post_path=/(\d+/\d+)$")
 
-LOGGER = logging.getLogger(__name__)
+LOGGER = logging.getLogger(pathlib.Path(__file__).stem)
 
 
 class Teacher(BaseModel):
@@ -151,7 +151,7 @@ def contains_any(text: str, keywords: list[str]) -> bool:
 
 
 def configure_logging() -> None:
-    logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s", datefmt=r"%Y-%m-%d %H:%M:%S")
 
 
 def format_course_context(row_index: int, row: dict[str, str]) -> str:
