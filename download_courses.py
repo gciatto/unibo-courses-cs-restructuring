@@ -16,8 +16,9 @@ import yaml
 from pydantic import BaseModel
 from pydantic import Field
 
+from _utils import DATA_DIR
 
-DATA_DIR = pathlib.Path("data")
+
 DEFAULT_INPUT = DATA_DIR / "course_headers.csv"
 DEFAULT_OUTPUT = DATA_DIR / "courses"
 

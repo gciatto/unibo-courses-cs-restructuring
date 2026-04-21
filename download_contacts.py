@@ -12,16 +12,11 @@ import requests
 from bs4 import BeautifulSoup
 from bs4.element import Tag
 
+from _utils import BASE_URL, DATA_DIR, DEFAULT_HEADERS
+
 
 DEFAULT_URL = "https://www.unibo.it/uniboweb/unibosearch/rubrica.aspx"
-BASE_URL = "https://www.unibo.it"
-DEFAULT_HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (X11; Linux x86_64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/124.0.0.0 Safari/537.36"
-    )
-}
+DEFAULT_OUTPUT = DATA_DIR / "contacts.csv"
 
 
 @dataclass(frozen=True)
@@ -182,7 +177,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--output",
-        default="output/contatti.csv",
+        default=str(DEFAULT_OUTPUT),
         help="Percorso del file CSV di output.",
     )
     return parser.parse_args()
