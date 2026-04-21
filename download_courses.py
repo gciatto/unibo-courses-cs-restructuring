@@ -4,8 +4,6 @@ import csv
 import datetime
 import logging
 import re
-import urllib.error
-import urllib.parse
 from typing import Any, Iterable
 
 from html_to_md import convert_html_to_markdown
@@ -37,7 +35,7 @@ EXPECTED_COLUMNS = [
 ]
 
 PATTERN_SKIP_BEFORE = re.compile(r"^#\s+.*")
-PATTERN_SKIP_SINCE = re.compile(r"^###\s+SDGs")
+PATTERN_SKIP_SINCE = re.compile(r"^(Seguici su:|Follow us on:)\s*$", re.IGNORECASE)
 PATTERN_LANGUAGE_URL = re.compile(r"https?://www\.unibo\.it/.*?/(it|en)\?post_path=/(\d+/\d+)$")
 PATTERN_ACADEMIC_YEAR_SECTION = re.compile(r"^(?:Academic Year|Anno Accademico)\s+\d{4}/\d{4}$")
 PATTERN_CREDITS = re.compile(r"(?:^|\n)-\s+(?:Credits|Crediti formativi):\s*(\d+)\b", re.IGNORECASE)
@@ -73,7 +71,7 @@ class CourseMetadata(BaseModel):
     ssd: str = Field(default="")
     language: str = Field(default="")
     teaching_mode: str = Field(default="")
-    schedule: str = Field(default="")
+    schedule: "CourseSchedule | None" = None
     teacher: Teacher
     course_title: CourseTitle
     integrated_course: str = Field(default="")
@@ -88,12 +86,17 @@ class SyllabusPage(BaseModel):
     contents: dict[str, str] = Field(default_factory=dict)
 
 
+class CourseSchedule(BaseModel):
+    schedule_from: datetime.date = Field(serialization_alias="from")
+    schedule_to: datetime.date = Field(serialization_alias="to")
+
+
 class CourseDetails(BaseModel):
     credits: int | None = None
     ssd: str = Field(default="")
     language: str = Field(default="")
     teaching_mode: str = Field(default="")
-    schedule: str = Field(default="")
+    schedule: CourseSchedule | None = None
 
 
 def parse_args() -> argparse.Namespace:
@@ -421,7 +424,7 @@ def parse_date_value(value: str) -> datetime.date:
     raise ValueError(f"Unsupported date format: {value}")
 
 
-def parse_timetile(section_content: str) -> str:
+def parse_timetile(section_content: str) -> CourseSchedule | None:
     ranges: list[tuple[datetime.date, datetime.date]] = []
 
     for match in PATTERN_TIMETABLE.finditer(section_content):
@@ -437,11 +440,11 @@ def parse_timetile(section_content: str) -> str:
         ranges.append((start_date, end_date))
 
     if not ranges:
-        return ""
+        return None
 
     start_date = min(start for start, _ in ranges)
     end_date = max(end for _, end in ranges)
-    return f"{start_date.isoformat()} to {end_date.isoformat()}"
+    return CourseSchedule(schedule_from=start_date, schedule_to=end_date)
 
 
 def extract_unique_values(pattern: re.Pattern[str], text: str) -> list[str]:
@@ -479,7 +482,7 @@ def merge_course_details(*details_list: CourseDetails) -> CourseDetails:
             merged.language = details.language
         if not merged.teaching_mode and details.teaching_mode:
             merged.teaching_mode = details.teaching_mode
-        if not merged.schedule and details.schedule:
+        if merged.schedule is None and details.schedule is not None:
             merged.schedule = details.schedule
     return merged
 
