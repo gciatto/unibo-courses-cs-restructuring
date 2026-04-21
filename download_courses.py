@@ -6,8 +6,11 @@ import sys
 import urllib.error
 import urllib.parse
 import urllib.request
+from typing import Any
 from typing import Iterable
 
+from html_to_md import convert_html_to_markdown
+import marko
 import yaml
 from pydantic import BaseModel
 from pydantic import Field
@@ -33,11 +36,16 @@ EXPECTED_COLUMNS = [
     "virtuale_url",
 ]
 
+PATTERN_SKIP_BEFORE = re.compile(r"^#\s+.*")
+PATTERN_SKIP_SINCE = re.compile(r"^###\s+SDGs")
+PATTERN_LANGUAGE_URL = re.compile(r"https?://www\.unibo\.it/.*?/(it|en)\?post_path=/(\d+/\d+)$")
+
 
 class Teacher(BaseModel):
-    teacher_id: str = Field(default="")
-    teacher_name: str = Field(default="")
-    teacher_email: str = Field(default="")
+    teacher_id: str = Field(default="", serialization_alias="id")
+    teacher_name: str = Field(default="", serialization_alias="name")
+    teacher_email: str = Field(default="", serialization_alias="email")
+    teacher_website: str = Field(default="", serialization_alias="website")
 
 
 class CourseTitle(BaseModel):
@@ -54,6 +62,13 @@ class CourseMetadata(BaseModel):
     integrated_course: str = Field(default="")
     campus: str = Field(default="")
     programme: str = Field(default="")
+    syllabus: dict[str, "SyllabusPage"] = Field(default_factory=dict)
+
+
+class SyllabusPage(BaseModel):
+    url: str = Field(default="")
+    title: str = Field(default="")
+    contents: dict[str, str] = Field(default_factory=dict)
 
 
 def parse_args() -> argparse.Namespace:
@@ -109,7 +124,7 @@ def contains_any(text: str, keywords: list[str]) -> bool:
 
 
 def split_course_title(raw_title: str) -> CourseTitle:
-    parts = [part.strip() for part in raw_title.split("-")]
+    parts = [part.strip() for part in raw_title.split(" - ")]
     parts = [part for part in parts if part]
 
     if not parts:
@@ -143,7 +158,12 @@ def download_html(url: str, timeout: float) -> str:
         return response.read().decode(charset, errors="replace")
 
 
-def build_metadata(row: dict[str, str], year: int, url: str) -> CourseMetadata:
+def build_metadata(
+    row: dict[str, str],
+    year: int,
+    url: str,
+    syllabus: dict[str, SyllabusPage],
+) -> CourseMetadata:
     return CourseMetadata(
         year=year,
         url=url,
@@ -151,12 +171,358 @@ def build_metadata(row: dict[str, str], year: int, url: str) -> CourseMetadata:
             teacher_id=(row.get("contact_uid") or "").strip(),
             teacher_name=(row.get("contact_name") or "").strip(),
             teacher_email=(row.get("contact_email") or "").strip(),
+            teacher_website=(row.get("sito_web") or "").strip(),
         ),
         course_title=split_course_title((row.get("course_title") or "").strip()),
         integrated_course=(row.get("integrated_course") or "").strip(),
         campus=(row.get("campus") or "").strip(),
         programme=(row.get("degree_course") or "").strip(),
+        syllabus=syllabus,
     )
+
+
+def extract_markdown_urls(markdown: str) -> list[str]:
+    return [match.group(0).rstrip(".,)") for match in re.finditer(r"https?://[^\s)>]+", markdown)]
+
+
+def extract_language_urls(markdown: str) -> dict[str, str]:
+    language_urls: dict[str, str] = {}
+
+    for url in extract_markdown_urls(markdown):
+        match = PATTERN_LANGUAGE_URL.fullmatch(url)
+        if match is None:
+            continue
+        language = match.group(1)
+        language_urls.setdefault(language, url)
+
+    if "it" not in language_urls or "en" not in language_urls:
+        raise ValueError(
+            "Could not extract both italian and english language URLs from the page markdown.",
+        )
+
+    return language_urls
+
+
+def split_front_matter(markdown: str) -> tuple[dict[str, str], str]:
+    lines = markdown.splitlines()
+    if not lines or lines[0].strip() != "---":
+        raise ValueError("Markdown front matter not found.")
+
+    closing_index = None
+    for index, line in enumerate(lines[1:], start=1):
+        if line.strip() == "---":
+            closing_index = index
+            break
+
+    if closing_index is None:
+        raise ValueError("Markdown front matter is not terminated.")
+
+    front_matter_raw = "\n".join(lines[1:closing_index])
+    front_matter = yaml.safe_load(front_matter_raw) or {}
+    if not isinstance(front_matter, dict):
+        raise ValueError("Markdown front matter is not a YAML mapping.")
+
+    metadata = {
+        key: str(front_matter.get(key) or "").strip()
+        for key in ("base", "canonical", "title")
+    }
+    body = "\n".join(lines[closing_index + 1 :]).lstrip("\n")
+    return metadata, body
+
+
+def clean_markdown(markdown: str) -> str:
+    lines = markdown.splitlines()
+    start_index = None
+
+    for index, line in enumerate(lines):
+        if PATTERN_SKIP_BEFORE.match(line):
+            start_index = index
+            break
+
+    if start_index is None:
+        raise ValueError("Could not find the first syllabus heading in markdown content.")
+
+    cleaned_lines: list[str] = []
+    empty_line_count = 0
+
+    for line in lines[start_index:]:
+        if PATTERN_SKIP_SINCE.match(line):
+            break
+
+        if line.strip() == "":
+            empty_line_count += 1
+        else:
+            empty_line_count = 0
+
+        if empty_line_count <= 1:
+            cleaned_lines.append(line.rstrip())
+
+    cleaned_markdown = "\n".join(cleaned_lines).strip()
+    if not cleaned_markdown:
+        raise ValueError("Markdown content is empty after cleanup.")
+
+    return cleaned_markdown
+
+
+def stringify_inline(node: Any) -> str:
+    if isinstance(node, str):
+        return node
+
+    children = getattr(node, "children", None)
+    node_type = type(node).__name__
+
+    if node_type == "RawText":
+        if isinstance(children, str):
+            return children
+        if isinstance(children, tuple):
+            return "".join(part if isinstance(part, str) else stringify_inline(part) for part in children)
+        return ""
+
+    if node_type == "LineBreak":
+        return "\n"
+
+    if node_type == "CodeSpan":
+        return stringify_children(children)
+
+    if node_type == "Link":
+        label = stringify_children(children).strip()
+        destination = str(getattr(node, "dest", "") or "").strip()
+        if label and destination:
+            return f"{label} ({destination})"
+        return label or destination
+
+    if node_type == "Image":
+        return stringify_children(children).strip()
+
+    return stringify_children(children)
+
+
+def stringify_children(children: Any) -> str:
+    if children is None:
+        return ""
+    if isinstance(children, str):
+        return children
+    if isinstance(children, tuple):
+        return "".join(part if isinstance(part, str) else stringify_inline(part) for part in children)
+    if isinstance(children, list):
+        return "".join(stringify_inline(child) for child in children)
+    return stringify_inline(children)
+
+
+def normalize_text(text: str) -> str:
+    text = text.replace("\xa0", " ")
+    lines = [re.sub(r"[ \t]+", " ", line).strip() for line in text.splitlines()]
+    compact_lines: list[str] = []
+    previous_empty = False
+
+    for line in lines:
+        if line == "":
+            if previous_empty:
+                continue
+            previous_empty = True
+        else:
+            previous_empty = False
+        compact_lines.append(line)
+
+    return "\n".join(compact_lines).strip()
+
+
+def stringify_block(node: Any) -> str:
+    node_type = type(node).__name__
+
+    if node_type in {"Paragraph", "Heading", "SetextHeading"}:
+        return normalize_text(stringify_children(getattr(node, "children", None)))
+
+    if node_type == "BlankLine":
+        return ""
+
+    if node_type == "List":
+        items: list[str] = []
+        ordered = bool(getattr(node, "ordered", False))
+        for index, item in enumerate(getattr(node, "children", []), start=1):
+            item_text = stringify_block(item)
+            if not item_text:
+                continue
+            prefix = f"{index}. " if ordered else "- "
+            item_lines = item_text.splitlines() or [""]
+            formatted = [prefix + item_lines[0]]
+            formatted.extend(f"  {line}" for line in item_lines[1:])
+            items.append("\n".join(formatted))
+        return "\n".join(items)
+
+    if node_type == "ListItem":
+        parts = [stringify_block(child) for child in getattr(node, "children", [])]
+        return join_text_parts(parts)
+
+    if node_type == "Quote":
+        text = join_text_parts(stringify_block(child) for child in getattr(node, "children", []))
+        if not text:
+            return ""
+        return "\n".join(f"> {line}" if line else ">" for line in text.splitlines())
+
+    if node_type in {"FencedCode", "CodeBlock"}:
+        language = str(getattr(node, "lang", "") or "").strip()
+        code = normalize_text(getattr(node, "children", "") or "")
+        if language:
+            return f"```{language}\n{code}\n```"
+        return f"```\n{code}\n```"
+
+    if node_type == "HTMLBlock":
+        return normalize_text(getattr(node, "body", "") or "")
+
+    if hasattr(node, "children"):
+        return normalize_text(stringify_children(getattr(node, "children", None)))
+
+    return ""
+
+
+def join_text_parts(parts: Iterable[str]) -> str:
+    joined_parts: list[str] = []
+    for part in parts:
+        normalized = part.strip()
+        if not normalized:
+            continue
+        joined_parts.append(normalized)
+    return "\n\n".join(joined_parts)
+
+
+def extract_sections(markdown: str) -> dict[str, str]:
+    document = marko.parse(markdown)
+    sections: dict[str, str] = {}
+    current_title = ""
+    current_blocks: list[Any] = []
+
+    for child in getattr(document, "children", []):
+        node_type = type(child).__name__
+        if node_type in {"Heading", "SetextHeading"}:
+            level = int(getattr(child, "level", 0) or 0)
+            title = normalize_text(stringify_children(getattr(child, "children", None)))
+
+            if level <= 1:
+                continue
+
+            if current_title:
+                rendered = join_text_parts(stringify_block(block) for block in current_blocks)
+                if rendered:
+                    if current_title in sections:
+                        sections[current_title] = f"{sections[current_title]}\n\n{rendered}".strip()
+                    else:
+                        sections[current_title] = rendered
+
+            current_title = title
+            current_blocks = []
+            continue
+
+        if current_title:
+            current_blocks.append(child)
+
+    if current_title:
+        rendered = join_text_parts(stringify_block(block) for block in current_blocks)
+        if rendered:
+            if current_title in sections:
+                sections[current_title] = f"{sections[current_title]}\n\n{rendered}".strip()
+            else:
+                sections[current_title] = rendered
+
+    if not sections:
+        raise ValueError("Could not extract any syllabus sections from markdown.")
+
+    return sections
+
+
+def parse_syllabus_page(url: str, timeout: float) -> tuple[SyllabusPage, str]:
+    html_content = download_html(url, timeout=timeout)
+    markdown = convert_html_to_markdown(html_content)
+    front_matter, markdown_body = split_front_matter(markdown)
+    cleaned_markdown = clean_markdown(markdown_body)
+    sections = extract_sections(cleaned_markdown)
+
+    syllabus_page = SyllabusPage(
+        url=front_matter["canonical"] or front_matter["base"] or url,
+        title=front_matter["title"],
+        contents=sections,
+    )
+    return syllabus_page, cleaned_markdown
+
+
+def discover_language_urls(course_url: str, timeout: float) -> dict[str, str]:
+    html_content = download_html(course_url, timeout=timeout)
+    markdown = convert_html_to_markdown(html_content)
+    return extract_language_urls(markdown)
+
+
+def process_row(
+    row_index: int,
+    row: dict[str, str],
+    output_dir: pathlib.Path,
+    whitelist: list[str],
+    blacklist: list[str],
+    timeout: float,
+) -> tuple[str, str]:
+    course_url = (row.get("course_url") or "").strip()
+    if not course_url:
+        return "skipped", f"SKIP row {row_index}: empty course_url"
+
+    teacher_email = (row.get("contact_email") or "").strip()
+    if not teacher_email:
+        return "skipped", f"SKIP row {row_index}: empty contact_email"
+
+    try:
+        year, course_id = parse_year_and_course_id(course_url)
+    except ValueError as error:
+        return "skipped", f"SKIP row {row_index}: {error}"
+
+    language_urls = discover_language_urls(course_url, timeout=timeout)
+
+    syllabus: dict[str, SyllabusPage] = {}
+    searchable_fragments: list[str] = [(row.get("course_title") or "").strip()]
+    page_errors: list[str] = []
+
+    for language in ("it", "en"):
+        language_url = language_urls.get(language)
+        if not language_url:
+            page_errors.append(f"missing {language} language URL")
+            continue
+
+        try:
+            syllabus_page, cleaned_markdown = parse_syllabus_page(language_url, timeout=timeout)
+        except Exception as error:
+            page_errors.append(f"{language_url} ({error})")
+            continue
+
+        syllabus[language] = syllabus_page
+        searchable_fragments.append(cleaned_markdown)
+
+    if whitelist and not contains_any("\n".join(searchable_fragments), whitelist):
+        return "skipped", f"SKIP row {row_index}: whitelist did not match"
+
+    if blacklist and contains_any("\n".join(searchable_fragments), blacklist):
+        return "skipped", f"SKIP row {row_index}: blacklist matched"
+
+    if not syllabus:
+        details = "; ".join(page_errors) if page_errors else "no language pages available"
+        raise ValueError(f"No syllabus pages were parsed successfully: {details}")
+
+    course_dir = output_dir / teacher_email / str(year)
+    course_dir.mkdir(parents=True, exist_ok=True)
+
+    metadata_path = course_dir / f"course-{course_id}-metadata.yml"
+    metadata = build_metadata(row=row, year=year, url=course_url, syllabus=syllabus)
+    metadata_path.write_text(
+        yaml.safe_dump(
+            metadata.model_dump(by_alias=True, exclude_none=True),
+            sort_keys=False,
+            allow_unicode=True,
+        ),
+        encoding="utf-8",
+    )
+
+    if page_errors:
+        return (
+            "ok",
+            f"OK row {row_index}: wrote {metadata_path} with warnings: {'; '.join(page_errors)}",
+        )
+    return "ok", f"OK row {row_index}: wrote {metadata_path}"
 
 
 def ensure_expected_columns(reader: csv.DictReader) -> None:
@@ -194,65 +560,38 @@ def main() -> int:
             if args.limit is not None and downloaded_count >= args.limit:
                 break
 
-            course_url = (row.get("course_url") or "").strip()
-            if not course_url:
-                skipped_count += 1
-                print(f"SKIP row {row_index}: empty course_url", file=sys.stderr)
-                continue
-
-            teacher_email = (row.get("contact_email") or "").strip()
-            if not teacher_email:
-                skipped_count += 1
-                print(f"SKIP row {row_index}: empty contact_email", file=sys.stderr)
-                continue
-
             try:
-                year, course_id = parse_year_and_course_id(course_url)
-            except ValueError as error:
-                skipped_count += 1
-                print(f"SKIP row {row_index}: {error}", file=sys.stderr)
-                continue
-
-            try:
-                html_content = download_html(course_url, timeout=args.timeout)
+                status, message = process_row(
+                    row_index=row_index,
+                    row=row,
+                    output_dir=args.output_dir,
+                    whitelist=whitelist,
+                    blacklist=blacklist,
+                    timeout=args.timeout,
+                )
             except (urllib.error.URLError, TimeoutError, ValueError) as error:
                 failed_count += 1
+                course_url = (row.get("course_url") or "").strip()
                 print(f"FAIL row {row_index}: {course_url} ({error})", file=sys.stderr)
                 continue
-
-            course_title = (row.get("course_title") or "").strip()
-            searchable_text = f"{course_title}\n{html_content}"
-
-            if whitelist and not contains_any(searchable_text, whitelist):
-                skipped_count += 1
-                print(f"SKIP row {row_index}: whitelist did not match", file=sys.stderr)
+            except Exception as error:
+                failed_count += 1
+                course_url = (row.get("course_url") or "").strip()
+                print(
+                    f"FAIL row {row_index}: unexpected error while processing {course_url} ({error})",
+                    file=sys.stderr,
+                )
                 continue
 
-            if blacklist and contains_any(searchable_text, blacklist):
+            if status == "ok":
+                downloaded_count += 1
+                print(message)
+            elif status == "skipped":
                 skipped_count += 1
-                print(f"SKIP row {row_index}: blacklist matched", file=sys.stderr)
-                continue
-
-            course_dir = args.output_dir / teacher_email / str(year)
-            course_dir.mkdir(parents=True, exist_ok=True)
-
-            html_path = course_dir / f"course-{course_id}-page.html"
-            metadata_path = course_dir / f"course-{course_id}-metadata.yml"
-
-            metadata = build_metadata(row=row, year=year, url=course_url)
-
-            html_path.write_text(html_content, encoding="utf-8")
-            metadata_path.write_text(
-                yaml.safe_dump(
-                    metadata.model_dump(exclude_none=True),
-                    sort_keys=False,
-                    allow_unicode=True,
-                ),
-                encoding="utf-8",
-            )
-
-            downloaded_count += 1
-            print(f"OK row {row_index}: wrote {html_path} and {metadata_path}")
+                print(message, file=sys.stderr)
+            else:
+                failed_count += 1
+                print(message, file=sys.stderr)
 
     print(
         f"Done. downloaded={downloaded_count} skipped={skipped_count} failed={failed_count}",
