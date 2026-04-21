@@ -4,6 +4,8 @@ import csv
 import datetime
 import logging
 import re
+import shlex
+import sys
 from typing import Any, Iterable
 
 from html_to_md import convert_html_to_markdown
@@ -778,6 +780,7 @@ def ensure_expected_columns(reader: csv.DictReader) -> None:
 
 def main() -> int:
     configure_logging()
+    LOGGER.info("Command line: %s", shlex.join(sys.argv))
     args = parse_args()
     whitelist = normalize_keywords(args.whitelist)
     blacklist = normalize_keywords(args.blacklist)
