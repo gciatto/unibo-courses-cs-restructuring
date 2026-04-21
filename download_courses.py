@@ -1,8 +1,11 @@
 import pathlib
 import argparse
 import csv
+import datetime
 import logging
 import re
+import urllib.error
+import urllib.parse
 from typing import Any, Iterable
 
 from html_to_md import convert_html_to_markdown
@@ -36,6 +39,16 @@ EXPECTED_COLUMNS = [
 PATTERN_SKIP_BEFORE = re.compile(r"^#\s+.*")
 PATTERN_SKIP_SINCE = re.compile(r"^###\s+SDGs")
 PATTERN_LANGUAGE_URL = re.compile(r"https?://www\.unibo\.it/.*?/(it|en)\?post_path=/(\d+/\d+)$")
+PATTERN_ACADEMIC_YEAR_SECTION = re.compile(r"^(?:Academic Year|Anno Accademico)\s+\d{4}/\d{4}$")
+PATTERN_CREDITS = re.compile(r"(?:^|\n)-\s+(?:Credits|Crediti formativi):\s*(\d+)\b", re.IGNORECASE)
+PATTERN_SSD = re.compile(r"(?:^|\n)-\s+SSD:\s*([^\n]+)", re.IGNORECASE)
+PATTERN_LANGUAGE = re.compile(r"(?:^|\n)-\s+(?:Language|Lingua di insegnamento):\s*([^\n]+)", re.IGNORECASE)
+PATTERN_TEACHING_MODE = re.compile(r"(?:^|\n)-\s+(?:Teaching Mode|Modalità didattica):\s*([^\n]+)", re.IGNORECASE)
+PATTERN_TIMETABLE = re.compile(
+    r"(?:dal\s+(\d{2}/\d{2}/\d{4})\s+al\s+(\d{2}/\d{2}/\d{4}))|"
+    r"(?:from\s+([A-Za-z]{3,9}\s+\d{1,2},\s+\d{4})\s+to\s+([A-Za-z]{3,9}\s+\d{1,2},\s+\d{4}))",
+    re.IGNORECASE,
+)
 
 LOGGER = logging.getLogger(pathlib.Path(__file__).stem)
 
@@ -56,6 +69,11 @@ class CourseTitle(BaseModel):
 class CourseMetadata(BaseModel):
     year: int
     url: str
+    credits: int | None = None
+    ssd: str = Field(default="")
+    language: str = Field(default="")
+    teaching_mode: str = Field(default="")
+    schedule: str = Field(default="")
     teacher: Teacher
     course_title: CourseTitle
     integrated_course: str = Field(default="")
@@ -70,66 +88,84 @@ class SyllabusPage(BaseModel):
     contents: dict[str, str] = Field(default_factory=dict)
 
 
+class CourseDetails(BaseModel):
+    credits: int | None = None
+    ssd: str = Field(default="")
+    language: str = Field(default="")
+    teaching_mode: str = Field(default="")
+    schedule: str = Field(default="")
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Download course pages and write HTML + YAML metadata files.",
+        description="Crawl course pages into YAML files.",
     )
     parser.add_argument(
         "--input",
+        "-i",
         type=pathlib.Path,
         default=DEFAULT_INPUT,
         help=f"Input CSV file path (default: {DEFAULT_INPUT}).",
     )
     parser.add_argument(
         "--output-dir",
+        "-o",
         type=pathlib.Path,
         default=DEFAULT_OUTPUT,
         help=f"Output directory (default: {DEFAULT_OUTPUT}).",
     )
     parser.add_argument(
         "--limit",
+        "-l",
         type=int,
         default=None,
         help="Maximum number of web pages to download. Default: no limit.",
     )
     parser.add_argument(
         "--whitelist",
+        "-w",
         nargs="*",
         default=[],
         help="Only include courses when any keyword matches title or page content (case-insensitive).",
     )
     parser.add_argument(
         "--blacklist",
+        "-b",
         nargs="*",
         default=[],
         help="Exclude courses when any keyword matches title or page content (case-insensitive).",
     )
     parser.add_argument(
         "--timeout",
+        "-t",
         type=float,
         default=DEFAULT_DOWNLOAD_TIMEOUT,
         help=f"HTTP timeout in seconds (default: {DEFAULT_DOWNLOAD_TIMEOUT}).",
     )
     parser.add_argument(
         "--max-retries",
+        "-r",
         type=int,
         default=DEFAULT_MAX_RETRIES,
         help=f"Maximum number of download retries after the first attempt (default: {DEFAULT_MAX_RETRIES}).",
     )
     parser.add_argument(
         "--initial-backoff",
+        "-ib",
         type=float,
         default=DEFAULT_INITIAL_BACKOFF,
         help=f"Initial exponential backoff delay in seconds (default: {DEFAULT_INITIAL_BACKOFF}).",
     )
     parser.add_argument(
         "--backoff-multiplier",
+        "-bm",
         type=float,
         default=DEFAULT_BACKOFF_MULTIPLIER,
         help=f"Multiplier applied to backoff between retries (default: {DEFAULT_BACKOFF_MULTIPLIER}).",
     )
     parser.add_argument(
         "--max-backoff",
+        "-mb",
         type=float,
         default=DEFAULT_MAX_BACKOFF,
         help=f"Maximum backoff delay in seconds (default: {DEFAULT_MAX_BACKOFF}).",
@@ -189,11 +225,17 @@ def build_metadata(
     row: dict[str, str],
     year: int,
     url: str,
+    details: CourseDetails,
     syllabus: dict[str, SyllabusPage],
 ) -> CourseMetadata:
     return CourseMetadata(
         year=year,
         url=url,
+        credits=details.credits,
+        ssd=details.ssd,
+        language=details.language,
+        teaching_mode=details.teaching_mode,
+        schedule=details.schedule,
         teacher=Teacher(
             teacher_id=(row.get("contact_uid") or "").strip(),
             teacher_name=(row.get("contact_name") or "").strip(),
@@ -354,6 +396,94 @@ def normalize_text(text: str) -> str:
     return "\n".join(compact_lines).strip()
 
 
+def find_academic_year_section(sections: dict[str, str]) -> tuple[str, str] | None:
+    for title, content in sections.items():
+        if PATTERN_ACADEMIC_YEAR_SECTION.fullmatch(title.strip()):
+            return title, content
+    return None
+
+
+def normalize_detail_value(value: str) -> str:
+    value = normalize_text(value)
+    value = re.sub(r"\s*\((?:Modulo|Module)\s+[^)]*\)\s*;?\s*$", "", value, flags=re.IGNORECASE)
+    return value.strip(" ;")
+
+
+def parse_date_value(value: str) -> datetime.date:
+    normalized = normalize_text(value)
+
+    for date_format in ("%d/%m/%Y", "%b %d, %Y", "%B %d, %Y"):
+        try:
+            return datetime.datetime.strptime(normalized, date_format).date()
+        except ValueError:
+            continue
+
+    raise ValueError(f"Unsupported date format: {value}")
+
+
+def parse_timetile(section_content: str) -> str:
+    ranges: list[tuple[datetime.date, datetime.date]] = []
+
+    for match in PATTERN_TIMETABLE.finditer(section_content):
+        if match.group(1) and match.group(2):
+            start_date = parse_date_value(match.group(1))
+            end_date = parse_date_value(match.group(2))
+        elif match.group(3) and match.group(4):
+            start_date = parse_date_value(match.group(3))
+            end_date = parse_date_value(match.group(4))
+        else:
+            continue
+
+        ranges.append((start_date, end_date))
+
+    if not ranges:
+        return ""
+
+    start_date = min(start for start, _ in ranges)
+    end_date = max(end for _, end in ranges)
+    return f"{start_date.isoformat()} to {end_date.isoformat()}"
+
+
+def extract_unique_values(pattern: re.Pattern[str], text: str) -> list[str]:
+    values: list[str] = []
+    for match in pattern.finditer(text):
+        value = normalize_detail_value(match.group(1))
+        if value and value not in values:
+            values.append(value)
+    return values
+
+
+def extract_course_details(section_content: str) -> CourseDetails:
+    credits_match = PATTERN_CREDITS.search(section_content)
+    ssd_values = extract_unique_values(PATTERN_SSD, section_content)
+    language_values = extract_unique_values(PATTERN_LANGUAGE, section_content)
+    teaching_mode_values = extract_unique_values(PATTERN_TEACHING_MODE, section_content)
+
+    return CourseDetails(
+        credits=int(credits_match.group(1)) if credits_match else None,
+        ssd="; ".join(ssd_values),
+        language="; ".join(language_values),
+        teaching_mode="; ".join(teaching_mode_values),
+        schedule=parse_timetile(section_content),
+    )
+
+
+def merge_course_details(*details_list: CourseDetails) -> CourseDetails:
+    merged = CourseDetails()
+    for details in details_list:
+        if merged.credits is None and details.credits is not None:
+            merged.credits = details.credits
+        if not merged.ssd and details.ssd:
+            merged.ssd = details.ssd
+        if not merged.language and details.language:
+            merged.language = details.language
+        if not merged.teaching_mode and details.teaching_mode:
+            merged.teaching_mode = details.teaching_mode
+        if not merged.schedule and details.schedule:
+            merged.schedule = details.schedule
+    return merged
+
+
 def stringify_block(node: Any) -> str:
     node_type = type(node).__name__
 
@@ -457,6 +587,17 @@ def extract_sections(markdown: str) -> dict[str, str]:
     return sections
 
 
+def split_syllabus_sections(sections: dict[str, str]) -> tuple[dict[str, str], CourseDetails]:
+    section_match = find_academic_year_section(sections)
+    if section_match is None:
+        return sections, CourseDetails()
+
+    title, content = section_match
+    filtered_sections = dict(sections)
+    filtered_sections.pop(title, None)
+    return filtered_sections, extract_course_details(content)
+
+
 def parse_syllabus_page(
     url: str,
     timeout: float,
@@ -464,7 +605,7 @@ def parse_syllabus_page(
     initial_backoff: float,
     backoff_multiplier: float,
     max_backoff: float,
-) -> tuple[SyllabusPage, str]:
+) -> tuple[SyllabusPage, str, CourseDetails]:
     html_content = download_html_page(
         url,
         timeout=timeout,
@@ -477,13 +618,14 @@ def parse_syllabus_page(
     front_matter, markdown_body = split_front_matter(markdown)
     cleaned_markdown = clean_markdown(markdown_body)
     sections = extract_sections(cleaned_markdown)
+    filtered_sections, details = split_syllabus_sections(sections)
 
     syllabus_page = SyllabusPage(
         url=front_matter["canonical"] or front_matter["base"] or url,
         title=front_matter["title"],
-        contents=sections,
+        contents=filtered_sections,
     )
-    return syllabus_page, cleaned_markdown
+    return syllabus_page, cleaned_markdown, details
 
 
 def discover_language_urls(
@@ -542,6 +684,7 @@ def process_row(
     )
 
     syllabus: dict[str, SyllabusPage] = {}
+    details_by_language: dict[str, CourseDetails] = {}
     searchable_fragments: list[str] = [(row.get("course_title") or "").strip()]
     page_errors: list[str] = []
 
@@ -552,7 +695,7 @@ def process_row(
             continue
 
         try:
-            syllabus_page, cleaned_markdown = parse_syllabus_page(
+            syllabus_page, cleaned_markdown, page_details = parse_syllabus_page(
                 language_url,
                 timeout=timeout,
                 max_retries=max_retries,
@@ -565,6 +708,7 @@ def process_row(
             continue
 
         syllabus[language] = syllabus_page
+        details_by_language[language] = page_details
         searchable_fragments.append(cleaned_markdown)
 
     searchable_text = "\n".join(searchable_fragments)
@@ -589,11 +733,21 @@ def process_row(
         details = "; ".join(page_errors) if page_errors else "no language pages available"
         raise ValueError(f"No syllabus pages were parsed successfully: {details}")
 
-    course_dir = output_dir / teacher_email / str(year)
+    teacher_id = teacher_email.split("@")[0]
+    course_dir = output_dir / teacher_id / str(year)
     course_dir.mkdir(parents=True, exist_ok=True)
 
-    metadata_path = course_dir / f"course-{course_id}-metadata.yml"
-    metadata = build_metadata(row=row, year=year, url=course_url, syllabus=syllabus)
+    metadata_path = course_dir / f"course-{course_id}.yml"
+    metadata = build_metadata(
+        row=row,
+        year=year,
+        url=course_url,
+        details=merge_course_details(
+            details_by_language.get("en", CourseDetails()),
+            details_by_language.get("it", CourseDetails()),
+        ),
+        syllabus=syllabus,
+    )
     metadata_path.write_text(
         yaml.safe_dump(
             metadata.model_dump(by_alias=True, exclude_none=True),
