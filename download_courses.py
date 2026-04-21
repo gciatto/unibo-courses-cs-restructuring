@@ -3,12 +3,7 @@ import argparse
 import csv
 import logging
 import re
-import sys
-import urllib.error
-import urllib.parse
-import urllib.request
-from typing import Any
-from typing import Iterable
+from typing import Any, Iterable
 
 from html_to_md import convert_html_to_markdown
 import marko
@@ -16,7 +11,7 @@ import yaml
 from pydantic import BaseModel
 from pydantic import Field
 
-from _utils import DATA_DIR
+from _utils import *
 
 
 DEFAULT_INPUT = DATA_DIR / "course_headers.csv"
@@ -112,8 +107,32 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--timeout",
         type=float,
-        default=30.0,
-        help="HTTP timeout in seconds (default: 30).",
+        default=DEFAULT_DOWNLOAD_TIMEOUT,
+        help=f"HTTP timeout in seconds (default: {DEFAULT_DOWNLOAD_TIMEOUT}).",
+    )
+    parser.add_argument(
+        "--max-retries",
+        type=int,
+        default=DEFAULT_MAX_RETRIES,
+        help=f"Maximum number of download retries after the first attempt (default: {DEFAULT_MAX_RETRIES}).",
+    )
+    parser.add_argument(
+        "--initial-backoff",
+        type=float,
+        default=DEFAULT_INITIAL_BACKOFF,
+        help=f"Initial exponential backoff delay in seconds (default: {DEFAULT_INITIAL_BACKOFF}).",
+    )
+    parser.add_argument(
+        "--backoff-multiplier",
+        type=float,
+        default=DEFAULT_BACKOFF_MULTIPLIER,
+        help=f"Multiplier applied to backoff between retries (default: {DEFAULT_BACKOFF_MULTIPLIER}).",
+    )
+    parser.add_argument(
+        "--max-backoff",
+        type=float,
+        default=DEFAULT_MAX_BACKOFF,
+        help=f"Maximum backoff delay in seconds (default: {DEFAULT_MAX_BACKOFF}).",
     )
     return parser.parse_args()
 
@@ -164,16 +183,6 @@ def parse_year_and_course_id(url: str) -> tuple[int, str]:
 
     year_raw, course_id = match.groups()
     return int(year_raw), course_id
-
-
-def download_html(url: str, timeout: float) -> str:
-    request = urllib.request.Request(
-        url,
-        headers={"User-Agent": "Mozilla/5.0 (compatible; unibo-courses-downloader/1.0)"},
-    )
-    with urllib.request.urlopen(request, timeout=timeout) as response:
-        charset = response.headers.get_content_charset() or "utf-8"
-        return response.read().decode(charset, errors="replace")
 
 
 def build_metadata(
@@ -448,8 +457,22 @@ def extract_sections(markdown: str) -> dict[str, str]:
     return sections
 
 
-def parse_syllabus_page(url: str, timeout: float) -> tuple[SyllabusPage, str]:
-    html_content = download_html(url, timeout=timeout)
+def parse_syllabus_page(
+    url: str,
+    timeout: float,
+    max_retries: int,
+    initial_backoff: float,
+    backoff_multiplier: float,
+    max_backoff: float,
+) -> tuple[SyllabusPage, str]:
+    html_content = download_html_page(
+        url,
+        timeout=timeout,
+        max_retries=max_retries,
+        initial_backoff=initial_backoff,
+        backoff_multiplier=backoff_multiplier,
+        max_backoff=max_backoff,
+    )
     markdown = convert_html_to_markdown(html_content)
     front_matter, markdown_body = split_front_matter(markdown)
     cleaned_markdown = clean_markdown(markdown_body)
@@ -463,8 +486,22 @@ def parse_syllabus_page(url: str, timeout: float) -> tuple[SyllabusPage, str]:
     return syllabus_page, cleaned_markdown
 
 
-def discover_language_urls(course_url: str, timeout: float) -> dict[str, str]:
-    html_content = download_html(course_url, timeout=timeout)
+def discover_language_urls(
+    course_url: str,
+    timeout: float,
+    max_retries: int,
+    initial_backoff: float,
+    backoff_multiplier: float,
+    max_backoff: float,
+) -> dict[str, str]:
+    html_content = download_html_page(
+        course_url,
+        timeout=timeout,
+        max_retries=max_retries,
+        initial_backoff=initial_backoff,
+        backoff_multiplier=backoff_multiplier,
+        max_backoff=max_backoff,
+    )
     markdown = convert_html_to_markdown(html_content)
     return extract_language_urls(markdown)
 
@@ -476,6 +513,10 @@ def process_row(
     whitelist: list[str],
     blacklist: list[str],
     timeout: float,
+    max_retries: int,
+    initial_backoff: float,
+    backoff_multiplier: float,
+    max_backoff: float,
 ) -> tuple[str, str]:
     course_context = format_course_context(row_index, row)
     course_url = (row.get("course_url") or "").strip()
@@ -491,7 +532,14 @@ def process_row(
     except ValueError as error:
         return "skipped", f"{error} ({course_context})"
 
-    language_urls = discover_language_urls(course_url, timeout=timeout)
+    language_urls = discover_language_urls(
+        course_url,
+        timeout=timeout,
+        max_retries=max_retries,
+        initial_backoff=initial_backoff,
+        backoff_multiplier=backoff_multiplier,
+        max_backoff=max_backoff,
+    )
 
     syllabus: dict[str, SyllabusPage] = {}
     searchable_fragments: list[str] = [(row.get("course_title") or "").strip()]
@@ -504,7 +552,14 @@ def process_row(
             continue
 
         try:
-            syllabus_page, cleaned_markdown = parse_syllabus_page(language_url, timeout=timeout)
+            syllabus_page, cleaned_markdown = parse_syllabus_page(
+                language_url,
+                timeout=timeout,
+                max_retries=max_retries,
+                initial_backoff=initial_backoff,
+                backoff_multiplier=backoff_multiplier,
+                max_backoff=max_backoff,
+            )
         except Exception as error:
             page_errors.append(f"{language_url} ({error})")
             continue
@@ -574,6 +629,22 @@ def main() -> int:
         LOGGER.error("--limit must be >= 0")
         return 2
 
+    if args.max_retries < 0:
+        LOGGER.error("--max-retries must be >= 0")
+        return 2
+
+    if args.initial_backoff < 0:
+        LOGGER.error("--initial-backoff must be >= 0")
+        return 2
+
+    if args.backoff_multiplier < 1:
+        LOGGER.error("--backoff-multiplier must be >= 1")
+        return 2
+
+    if args.max_backoff < 0:
+        LOGGER.error("--max-backoff must be >= 0")
+        return 2
+
     if not args.input.exists():
         LOGGER.error("input file does not exist: %s", args.input)
         return 2
@@ -600,6 +671,10 @@ def main() -> int:
                     whitelist=whitelist,
                     blacklist=blacklist,
                     timeout=args.timeout,
+                    max_retries=args.max_retries,
+                    initial_backoff=args.initial_backoff,
+                    backoff_multiplier=args.backoff_multiplier,
+                    max_backoff=args.max_backoff,
                 )
             except (urllib.error.URLError, TimeoutError, ValueError) as error:
                 failed_count += 1
