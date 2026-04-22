@@ -322,6 +322,17 @@ def extract_language_urls(markdown: str) -> dict[str, str]:
     return language_urls
 
 
+def parse_front_matter_dumbly(text: str) -> dict[str, str]:
+    result = {}
+    for line in text.splitlines():
+        if ": " not in line:
+            LOGGER.warning("Skipping unrecognized header line: %r", line)
+            continue
+        key, value = line.split(":", 1)
+        result[key.strip()] = value.strip()
+    return result
+
+
 def split_front_matter(markdown: str) -> tuple[dict[str, str], str]:
     lines = markdown.splitlines()
     if not lines or lines[0].strip() != "---":
@@ -337,7 +348,10 @@ def split_front_matter(markdown: str) -> tuple[dict[str, str], str]:
         raise ValueError("Markdown front matter is not terminated.")
 
     front_matter_raw = "\n".join(lines[1:closing_index])
-    front_matter = yaml.safe_load(front_matter_raw) or {}
+    try:
+        front_matter = yaml.safe_load(front_matter_raw) or {}
+    except yaml.YAMLError:
+        front_matter = parse_front_matter_dumbly(front_matter_raw)
     if not isinstance(front_matter, dict):
         raise ValueError("Markdown front matter is not a YAML mapping.")
 
