@@ -1,0 +1,445 @@
+year: 2025
+url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/487361
+credits: 6
+ssd: ING-INF/05
+language: Italian
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2026-02-17
+  to: 2026-06-04
+teacher:
+  id: '33518'
+  name: Prandini, Marco
+  email: marco.prandini@unibo.it
+  website: https://www.unibo.it/sitoweb/marco.prandini
+course_title:
+  id: B0832
+  name: AMMINISTRAZIONE DI SISTEMI T
+  details: 6 cfu
+integrated_course: ''
+campus: Bologna
+programme: Laurea in Ingegneria informatica
+syllabus:
+  it:
+    url: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/487361
+    title: 2025/2026 AMMINISTRAZIONE DI SISTEMI T — Università di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: 'Conoscenza delle caratteristiche dei sistemi
+        di elaborazione richieste per l''implementazione di servizi Internet. Capacità
+        di utilizzare strumenti a riga di comando per la configurazione e il monitoraggio
+        di sistemi server, sia in ambito
+
+        locale che distribuito, e di realizzare programmi che li sfruttino per l''automatizzazione
+        di compiti complessi. Capacità di diagnosticare e risolvere
+
+        anomalie nel funzionamento dei sistemi.'
+      Contenuti: 'NOTA AMMINISTRATIVA IMPORTANTE
+
+
+        I CORSI
+
+
+        - 88324 - AMMINISTRAZIONE DI SISTEMI T (CONTENUTO IN 88326 AMMINISTRAZIONE
+        DI SISTEMI E SICUREZZA INFORMATICA T C.I.)
+
+        - B0832 - AMMINISTRAZIONE DI SISTEMI T
+
+        - 28072 - LABORATORIO DI AMMINISTRAZIONE DI SISTEMI T
+
+
+        SONO LO STESSO CORSO ESPOSTO CON CODICI DIVERSI PER MOTIVI FORMALI, NON POSSONO
+        ESSERE SCELTI INSIEME, NEMMENO SE IL SISTEMA DI COMPILAZIONE DEI PIANI DI
+        STUDIO LO CONSENTE
+
+
+        Il corso si propone di illustrare le principali tematiche dell''amministrazione
+        di sistemi, e di fornire le basi per operare sulla configurazione e sul monitoraggio
+        dei sistemi GNU/Linux.
+
+
+        Propedeuticità: PER TRARRE PROFITTO DAL CORSO È INDISPENSABILE AVER CHIARI
+        I CONCETTI E GLI STRUMENTI FORNITI DAI CORSI DI RETI DI CALCOLATORI E SISTEMI
+        OPERATIVI.
+
+
+        Il programma è articolato in cinque aree:
+
+        - Gestione locale di un sistema: predisposizione hardware, gestione degli
+        account utente e delle autorizzazioni sui filesystem Unix, strumenti a riga
+        di comando per la configurazione ed il monitoraggio dei processi e delle risorse,
+        servizi standard di sistema di ausilio all''automatizzazione dei task sistemistici
+        (es. pianificazione, logging);
+
+        - Gestione della rete: configurazione delle interfacce e dell''instradamento,
+        strumenti di monitoraggio dello stato delle connessioni; - Monitoraggio centralizzato:
+        introduzione alle piattaforme per il monitoraggio di reti di grandi dimensioni
+        e/o formate da sistemi eterogenei, protocollo SNMP;
+
+        - Configurazione centralizzata: cenni pratici sui protocolli per la configurazione
+        dei parametri di rete (RARP, BOOTP, DHCP,DNS), autenticazione centralizzata
+        per mezzo di directory LDAP,
+
+        - Sistemi distribuiti ad alta affidabilità: concetti base di affidabilità
+
+        - Configuration as Code: generazione e configurazione automatizzata di sistemi
+        virtuali per mezzo di strumenti quali, a titolo di esempio, Vagrant, OpenTofu
+        e Ansible
+
+
+        Trasversalmente a queste aree viene richiamata e approfondita la programmazione
+        Bash, come strumento essenziale per condurre le esercitazioni relative ai
+        diversi argomenti.'
+      Testi/Bibliografia: 'Manuali on-line sulle postazioni e sulle VM di laboratorio
+
+
+        Dispense curate dal docente, disponibili su Virtuale (https://virtuale.unibo.it/).
+        Sullo stesso sito sono pubblicate anche le esercitazioni svolte in laboratorio
+        e assegnate per casa, oltre a prove d''esame assegnate in passato, tra cui
+        alcune risolte.
+
+
+        Le guide pubblicate gratuitamente da Truelite: https://labs.truelite.it/projects/truedoc/wiki
+        (da scaricare clonando il git repo come indicato sulla pagina wiki)
+
+
+        Il testo più vicino al contenuto del corso:
+
+
+        "Unix and Linux System Administration Handbook - 5th edition" di Evi Nemeth,
+        Garth Snyder, Trent R. Hein, Ben Whaley, Dan Mackin; ed. Addison Wesley Professional
+        (2017) - ISBN-13: 978-0134277554
+
+
+        Per chi volesse una panoramica su Microsoft Windows:
+
+
+        "Mastering Windows Server 2019 - Second Edition" di Jordan Krause
+
+
+        - Packt Publishing (2019)'
+      Metodi didattici: 'Il corso assegna 6 CFU corrispondenti a 60 ore di lezione
+        complessive, divise tra teoria e laboratorio con una leggera prevalenza di
+        quest''ultimo.
+
+
+        I fondamenti teorici alla base delle tecniche di amministrazione dei sistemi
+        sono esposti durante lezioni frontali tradizionali in aula.
+
+
+        In laboratorio vengono descritti gli strumenti a riga di comando in ambiente
+        GNU/Linux che permettono di affrontare le problematiche trattate a lezione,
+        e proposta un''ampia attività di realizzazione di script, su postazioni individuali,
+        per consentire agli studenti di confrontarsi con gli aspetti operativi dell''attività
+        dell''amministratore di sistemi.
+
+
+        La frequenza, soprattutto alle esercitazioni, è molto importante per poter
+        comprendere in itinere che tipo di approfondimenti siano necessari rispetto
+        alla traccia proposta dalle slide, e che livello di complessità effettivo
+        sia associato alle diverse esercitazioni.
+
+
+        Poiché per definizione ogni CFU rappresenta 25 ore di impegno dello studente,
+        si tenga presente che l''approfondimento dei concetti e delle capacità operative
+        richiederà approssimativamente 90 ore di studio individuale. A questo fine
+        vengono regolarmente proposte tracce di estensione delle esercitazioni svolte
+        in laboratorio. È fondamentale svolgere in itinere le esercitazioni proposte.
+
+
+        Al fine di poter frequentare l’attività formativa in presenza, gli studenti
+        sono tenuti a svolgere in via preventiva e obbligatoria la formazione sul
+        tema della sicurezzain modalità e-learning: Moduli 1 e 2 di formazione sulla
+        sicurezza nei luoghi di studio (https://elearning-sicurezza.unibo.it/)'
+      Modalità di verifica e valutazione dell'apprendimento: 'L''esame verrà svolto
+        IN PRESENZA OBBLIGATORIAMENTE sulla stessa infrastruttura utilizzata per le
+        esercitazioni (LAB3 o altri della Scuola di Ingegneria). È compito degli studenti
+        e studentesse, durante il corso o utilzzando il LAB0 a libero accesso, verificare
+        che il proprio account sia correttamente configurato per utililizzare gli
+        stessi strumenti proposti durante le esercitazioni del corso, che saranno
+        necessari per la prova pratica.
+
+
+        - L''esame è composto di due prove: una prova pratica al calcolatore e un
+        accertamento delle conoscenze teoriche.
+
+        - L''esame sarà superato solo ottenendo un risultato sufficiente in entrambe
+        le prove; il voto finale sarà una combinazione dei risultati ottenuti nelle
+        due prove.
+
+        - Gli studenti che hanno inserito nel piano di studi l''attività come corso
+        a scelta libera (codice 88324, o come parte dell''esame integrato codice 88326)
+        otterranno un voto in trentesimi (più eventuale lode).
+
+        - Gli studenti che hanno inserito nel piano di studi l''attività come alternativa
+        al tirocinio (codice 28072) avranno registrata un''idoneità.
+
+        - L''accertamento delle conoscenze teoriche potrà essere svolto sotto forma
+        di test (con domande a riposta chiusa o aperta) o come prova orale. Indipendentemente
+        dalla forma, durante questa prova non è ammesso l''uso di alcun materiale.
+
+        - Salvo indicazioni esplicitamente diverse, la prova teorica sarà proposta
+        come test con risultato immediatamente noto, e in caso di risultato positivo
+        l''esame proseguirà immediatamente con la prova pratica.
+
+        - La prova pratica è centrata sulle attività svolte in laboratorio. Durante
+        la prova pratica è consentito l''uso di materiale didattico, appunti, e componenti
+        software realizzati in precedenza dal candidato.
+
+        - In coerenza con gli obiettivi formativi, la valutazione terrà conto primariamente
+        della capacità di utilizzare il linguaggio della shell Bash per codificare
+        algoritmi che risolvano semplici problemi di amministrazione usando tutti
+        i tool a riga di comando illustrati nel corso. A patto che questa parte sia
+        svolta in modo sufficiente, la valutazione sarà poi completata con peso simile
+        dalla verifica del corretto utilizzo dei sistemi di configurazone Infrastructure-as-Code.
+
+        - Il voto finale sarà una media pesata: un terzo del risultato della prova
+        teorica e due terzi del risultato della prova pratica.
+
+        - Data ed ora delle prove saranno pubblicate come liste di AlmaEsami.
+
+        - Gli studenti sono pregati di considerare vincolante l''iscrizione ad una
+        lista, evitando di sovraffollare inutilmente gli appelli e cancellandosi prima
+        della chiusura della lista in caso decidano di non presentarsi. Per ovvie
+        ragioni di organizzazione, le liste prevedono un tetto di iscrizioni e comportamenti
+        incivili impediscono di sostenere l''esame a chi è realmente interessato.
+
+        - ESAMI CON ESITO INSUFFICIENTE: Gli studenti che sostengono una prova pratica
+        con esito negativo sono tenuti a concordare un incontro col docente per prendere
+        visione dell''elaborato prima di iscriversi a un appello successivo. La mancata
+        osservanza di questa regola porterà alla cancellazione dalla lista e all''impossibiità
+        di sostenere la prova.'
+      Strumenti a supporto della didattica: 'Le lezioni teoriche si svolgeranno con
+        proiezione di presentazioni in forma elettronica, se necessario corredate
+        con dimostrazioni pratiche riguardanti gli strumenti oggetto della discussione.
+
+
+        Le esercitazioni pratiche in laboratorio, guidate dal docente, sono parte
+        fondamentale del corso, e riguardano pressoché tutti gli argomenti del programma.
+
+
+        Le esercitazioni sono svolte con l''ausilio di un sistema di virtualizzazione
+        che permette di operare con i privilegi di amministratore su molteplici sistemi
+        Linux, per simulare architetture reali formate da client, server ed apparati
+        di instradamento. Le macchine virtuali possono inoltre essere utilizzate sui
+        sistemi personali degli studenti, mettendo a disposizione un ambiente di lavoro
+        identico a quello del laboratorio.
+
+
+        Le esercitazioni saranno svolte sui computer dei laboratori della Scuola di
+        Ingegneria. La configurazione è identica in LAB0, LAB2, LAB3, LAB4, LAB9,
+        a parte l''indirizzo del proxy per navigare (spiegato su Virtuale). Il LAB0
+        è sempre aperto per configurare il proprio account, e trovarlo pronto negii
+        altri laboratori.
+
+
+        È possibile utilizzare il proprio computer per replicare l''ambiente di laboratorio
+        e potersi esercitare a casa. Si richiedono in via precauzionale 30GB di spazio
+        non allocato, per installare Debian GNU/Linux su di una partizione (dual boot),
+        o di spazio libero per installarlo come macchina virtuale usando WSL sulle
+        versioni più recenti di Microsoft Windows. Il supporto per Apple Silicon non
+        è garantito.
+
+
+        Studenti/sse con DSA o disabilità temporanee o permanenti: si raccomanda di
+        contattare per tempo l’ufficio di Ateneo responsabile (https://site.unibo.it/studenti-con-disabilita-e-dsa/it):
+        sarà sua cura proporre agli/lle studenti/sse interessati/e eventuali adattamenti,
+        che dovranno comunque essere sottoposti, con un anticipo di 15 giorni, all’approvazione
+        del/della docente, che ne valuterà l''opportunità anche in relazione agli
+        obiettivi formativi dell''insegnamento.'
+      Orario di ricevimento: Consulta il sito web di Marco Prandini (https://www.unibo.it/sitoweb/marco.prandini)
+      SDGs: 'Imprese innovazione e infrastrutture
+
+
+        L''insegnamento contribuisce al perseguimento degli Obiettivi
+
+        di Sviluppo Sostenibile dell''Agenda 2030 dell''ONU.'
+  en:
+    url: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/487361
+    title: 2025/2026 Administration of Systems T — University of Bologna
+    contents:
+      Course contents: 'IMPORTANT FORMAL NOTE
+
+
+        THE COURSES
+
+
+        - 88324 - System Administration T (PART OF 88326 System Administration and
+        Security T I.C.)
+
+        - B0832 - AMMINISTRAZIONE DI SISTEMI T
+
+        - 28072 - Laboratory of System Administration T
+
+
+        ARE THE SAME COURSE, SHOWN WITH DIFFERENT CODES FOR FORMAL REASONS; THEY CANNOT
+        BE CHOSEN TOGETHER, EVEN IF THE STUDY PLANS COMPILATION SYSTEM ALLOWS IT
+
+
+        The goal of this course is to present the main subjects related to system
+        administration, and to provide some fundamental skills needed to configure
+        and monitor GNU/Linux systems in particular.
+
+
+        Entry requirements: IN ORDER TO EFFECTIVELY FOLLOW THE COURSE, A GOOD GRASP
+        OF COMPUTER NETWORKS AND OPERATING SYSTEMS IS ESSENTIAL.
+
+
+        The program is composed of five main areas:
+
+        - Local administration: hardware set-up, user account management, authorization
+        mechanisms on the Unix filesystem, command line tools to configure processes
+        and to monitor resource usage, standard daemons used for the automation of
+        the administration tasks (e.g. scheduled execution, logging, ...);
+
+        - Network management: interface and routing configuration, connection monitoring
+        tools;
+
+        - Centralized monitoring: a short introduction to the platforms used in large
+        and/or heterogeneous installations, the SNMP protocol;
+
+        - Centralized configuration: overview of practical usage of protocols used
+        for automatic network configuration (RARP, BOOTP, DHCP,DNS), centralized authentication
+        by means of LDAP; - High availability distributed systems: basic concepts
+        about availability
+
+        - Configuration as Code: automated creation and configuration of virtual systems
+        by means of tools such as, for example, OpenTofu, Vagrant, and Ansible
+
+
+        Bash shell programming is introduced and discussed in some depth during the
+        whole course: it is the foundation for practical activities regarding the
+        theoretical subjects.'
+      Readings/Bibliography: 'On-line manuals on the lab workstations and virtual
+        machines.
+
+
+        Handouts by the teacher, available on Virtuale (https://virtuale.unibo.it/).
+        On the same website, all lab activities are documented and homework is assigned;
+        old exams are available; for some, solutions are provided.
+
+
+        [ITALIAN] guidebooks published for free by Truelite: https://labs.truelite.it/projects/truedoc/wiki
+        (cloning the git repo as specified on the wiki page). Countless resources
+        in English, just search the web.
+
+
+        The closest match to the course''s contents:
+
+
+        "Unix and Linux System Administration Handbook - 5th edition" di Evi Nemeth,
+        Garth Snyder, Trent R. Hein, Ben Whaley, Dan Mackin; ed. Addison Wesley Professional
+        (2017) - ISBN-13: 978-0134277554
+
+
+        For anyone wishing to acquire some knowledge about Microsoft Windows:
+
+
+        "Mastering Windows Server 2019 - Second Edition" di Jordan Krause
+
+
+        - Packt Publishing (2019)'
+      Teaching methods: 'The course yields 6 CFU/ECTS corresponding to 60 hours of
+        lectures and guided lab activities, with a prevalence of the latter.
+
+
+        The theoretical bases of the techniques of system administration are presented
+        during traditional lectures.
+
+
+        During lab sessions, the command line tools in the GNU/Linux environment,
+        useful to deal with the subjects treated in the lectures, are introduced.
+        Then, students are guided to design and implement scripts to solve proposed
+        study cases, to improve their problem-solving skills in real-world scenarios.
+
+
+        Attendance is strongly recommended, especially to lab sessions. Slides are
+        a guidance, but lectures explain what to focus the study on. Guided lab activities
+        are the best way to understand the real level of difficulty of different exercises.
+
+
+        Please note that according to the ECTS definition, each credit represents
+        25 hours of student effort: students are expected to contribute 90 hours of
+        individual study and autonomous lab activity to the improvement of their skills.
+        To this end, extensions to the guided lab activities are regularly suggested.
+        It is essential to stay on par with the proposed exercises.
+
+
+        To attend the lectures in person, prior to access the university classrooms
+        and labs, students must attend the mandatory safety training on the E-learning
+        platform (https://elearning-sicurezza.unibo.it/?lang=en)'
+      Assessment methods: "The exam will be carried out EXCLUSIVELY IN PERSON on the\
+        \ same infrastructure used for the exercises (LAB3 or other labs at the School\
+        \ of Engineering). It is a duty of the students, during the course or using\
+        \ the free-access LAB0, to verify that their account is correctly configured\
+        \ to use the same tools proposed during the course exercises, which will be\
+        \ necessary for the practical test.\n\n- The exam is split in two parts: a\
+        \ lab exercise, and a verification of knowledge of theoretical themes.\n-\
+        \ To pass the exam, it is required to get a passing mark in both parts; the\
+        \ final grade will be computed as a combination of the marks achieved in the\
+        \ two parts.\n- For students choosing the course as an elective (code 88324\
+        \ or as part of the integrated activity with code 88326) the result will be\
+        \ expressed on the usual scale (18-30+honors).\n- For students choosing the\
+        \ course as a replacement for internship (code 28072), the result will be\
+        \ recorded as pass/fail.\n- The verification of knowledge of theoretical themes\
+        \ may be offered as a test (with answers in closed or open format) or a discussion.\
+        \ Regardless of the format, no study materials shall be used during this part\
+        \ of the exam.\n- The lab exercise is designed around the subjects proposed\
+        \ during the lab sessions of the course. During the test, candidates are allowed\
+        \ to use teaching materials, notes, and software components prepared by themselves.\n\
+        - In line with the teaching objectives, the assessment will primarily take\
+        \ into account the ability to use the Bash shell language to code algorithms\
+        \ that solve simple administration problems using all the command line tools\
+        \ illustrated in the course. Provided that this part is performed sufficiently,\
+        \ the assessment will then be completed, with similar weight, by verifying\
+        \ the correct use of the Infrastructure-as-Code configuration systems.\n \
+        \ The final grade will be a weighted average: one third of the result of the\
+        \ theoretical test and two thirds of the result of the practical test.\n-\
+        \ The date and time of the tests will be published as AlmaEsami lists.\n-\
+        \ If no specific exception is notified, the theory test will be assigned and\
+        \ automatically evaluated before the practical test, so that if a positive\
+        \ outcome is achieved in the former, the exam will proceed immediately with\
+        \ the latter.\n- Date and time of exams are published on AlmaEsami. Subscription\
+        \ is mandatory.\n- Students are kindly asked to act in a civil manner, avoiding\
+        \ to fill the lists up if they are unlikely to show up, and especially not\
+        \ subscribing to more than one list.\n- FAILED LAB EXAMS: students failing\
+        \ the lab exercise MUST meet with the instructor to discuss their work before\
+        \ being allowed to try again."
+      Teaching tools: 'Lectures: projection of slideshows and practical demonstrations
+        of the tools object of the discussion.
+
+
+        Practical laboratory activity: the teacher will guide the students to learn
+        tools and solve problems regarding almost every subject of the course.
+
+
+        A virtualized environment is available, allowing to simulate realistic architectures
+        made of clients, servers, and routing devices, where students can work with
+        administrative privileges. Students can deploy the same virtual machines on
+        their computers, thus being able to access at home the same work environment
+        they find in the laboratory.
+
+
+        The exercises will be carried out on the computers of the laboratories of
+        the School of Engineering. The configuration is identical in LAB0, LAB2, LAB3,
+        LAB4, LAB9, apart from the proxy address needed to access the Internet (as
+        explained on Virtuale). LAB0 is always open to configure your account, and
+        find it ready in the other laboratories. You can use your own computer to
+        replicate the lab environment, to be able to practice at home. As a precaution,
+        30GB of unallocated space is required to install Debian GNU/Linux on a partition
+        (dual boot), or free space to install it as a virtual machine using WSL on
+        the most recent version of Microsoft Windows. Support for Apple Silicon is
+        not guaranteed.
+
+
+        Students with learning disorders and\or temporary or permanent disabilities:
+        please, contact the office responsible (https://site.unibo.it/studenti-con-disabilita-e-dsa/en/for-students
+        ) as soon as possible so that they can propose acceptable adjustments. The
+        request for adaptation must be submitted in advance (15 days before the exam
+        date) to the lecturer, who will assess the appropriateness of the adjustments,
+        taking into account the teaching objectives.'
+      Office hours: See the website of Marco Prandini (https://www.unibo.it/sitoweb/marco.prandini/en)
+      SDGs: 'Industry, innovation and infrastructure
+
+
+        This teaching activity contributes to the achievement of the Sustainable Development
+        Goals of the UN 2030 Agenda.'

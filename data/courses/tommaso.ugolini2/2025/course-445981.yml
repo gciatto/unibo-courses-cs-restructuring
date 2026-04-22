@@ -1,0 +1,311 @@
+year: 2025
+url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/445981
+credits: 9
+ssd: ING-INF/01
+language: Italian
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2026-02-16
+  to: 2026-06-04
+teacher:
+  id: '121296'
+  name: Ugolini, Tommaso
+  email: tommaso.ugolini2@unibo.it
+  website: https://www.unibo.it/sitoweb/tommaso.ugolini2
+course_title:
+  id: '28722'
+  name: ELETTRONICA T-1
+  details: 9 cfu
+integrated_course: ''
+campus: Bologna
+programme: Laurea in Ingegneria elettronica e telecomunicazioni
+syllabus:
+  it:
+    url: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/445981
+    title: 2025/2026 ELETTRONICA T-1 — Università di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: 'Al termine del corso lo studente possiede
+        le conoscenze di base sull''analisi e sui criteri di progetto dei circuiti
+        elettronici digitali.
+
+        In particolare è in grado di:
+
+
+        - progettare i circuiti elementari che costituiscono la base dei moderni microcircuiti
+        realizzati con tecnologia CMOS;
+
+        - analizzare e confrontare le logiche di tipo CMOS sulla base dei loro parametri
+        caratteristici (prestazioni, consumo, costo,...)
+
+        - simulare semplici circuiti elettronici digitali.'
+      Contenuti: 'Prerequisiti/Propedeuticità consigliate
+
+
+        Prerequisito per la comprensione degli argomenti svolti è l''aver appreso
+        le nozioni principali di teoria dei circuiti elettrici lineari svolti nel
+        corso di Elettrotecnica. In particolare lo studente dovrebbe essere in grado
+        di analizzare il comportamento di un circuito lineare sia in condizioni stazionarie
+        che transitorie. Si consiglia quindi di seguire il corso solo dopo aver superato
+        l''esame di Elettrotecnica.
+
+
+        Programma
+
+
+        - Descrizione del funzionamento del transistore n-MOS. Regioni di funzionamento
+        ed equazioni costitutive. Descrizione del funzionamento del transistore p-MOS.
+        Regioni di funzionamento ed equazioni costitutive. Descrizione del funzionamento
+        dell''invertitore n-MOS con carico resistivo. Caratteristica statica e consumo
+        di potenza. Descrizione del funzionamento dell''invertitore p-MOS con carico
+        resistivo. Caratteristica statica e consumo di potenza.
+
+        - Descrizione del funzionamento dell''invertitore CMOS. Regioni di funzionamento
+        dei transistor, calcolo delle correnti e della caratteristica statica ingresso-uscita.
+        Analisi del consumo di potenza. Analisi del comportamento in transitorio dell''invertitore
+        CMOS. Calcolo della durata del transitorio di salita e di discesa. Componenti
+        parassiti del transistore nMOS e pMOS: calcolo della capacità di ingressi
+        dell''invertitore CMOS.
+
+        - Metodo di progetto di un buffer CMOS al fine minimizzare il ritardo di propagazione.
+
+        - Proprietà dei circuiti digitali: costo, capacità di ingresso, fan-out, ritardo
+        di propagazione, consumo di potenza, prodotto ritardo consumo, margine di
+        immunità ai disturbi.
+
+        - Gate Fully CMOS: caratteristiche generali delle reti di Pull-Up e Pull-Down.
+        Topologia dei gate, analisi e sintesi delle funzioni logiche. Equivalenza
+        dei transistori MOS connessi in serie ed in parallelo. Tempi di commutazione
+        e dimensionamento dei MOSFETs nei gate Fully CMOS.
+
+        - Gate dinamici: logica DOMINO, dual-rail DOMINO e zipper logic. Problemi
+        legati alla ridistribuzione di carica nei nodi interni e a glitch dei segnali
+        d''ingresso.
+
+        - Logiche a pass transistor. Problema della trasmissione delle tensioni alte
+        per pass transistor nMOS e delle tensioni basse per pass transistor pMOS.
+
+        - Circuiti combinatori e circuiti sequenziali. Realizzazione dei Latch di
+        tipo SR, JK e D. Realizzazione del latch D con porte logiche NOR e in retroazione
+        con NOT. Latch D realizzato con circuito bistabile a 2 NOT e pass-transistor.
+
+        - Circuiti a campionamento su un fronte del clock. Realizzazione master-slave
+        del Flip-flop D. Realizzazione statica con circuito bistabile e dinamica a
+        due fasi.
+
+        - Introduzione alle memorie. Classificazione delle memorie: memorie volatili
+        e non volatili. Struttura a matrice con decodificatori di riga e colonna.
+        Descrizione del funzionamento della cella SRAM a 6 transistor. Lettura e scrittura
+        di una cella SRAM. Descrizione del funzionamento del sense amplifier di memorie
+        SRAM. Stuttura della cella DRAM. Lettura e scrittura di una cella DRAM. Il
+        fenomeno della ridistribuzione di carica. Il sense amplifier in meorie DRAM.
+        Differenze tra memorie SRAM e DRAM.
+
+        - Introduzione alle memorie non volatili. ROM, PROM e memorie Flash. Architettura
+        NOR e NAND della matrice. Funzionamento della memoria Flash, inizezione di
+        elettroni nel floating gate. Endurance e Data retention della memoria.
+
+        - Il transistore MOS. Equazioni di continuità. Condizioni di quasi stazionarietà.
+        Equazioni del trasporto di tipo ohmico-diffusivo. Modello matematico dei dispositivi
+        a semiconduttore. Calcolo della corrente di drain. Ipotesi del profilo graduale
+        e conclusione del calcolo delle caratteristiche statiche del transistore MOS.
+        Il modello parabolico-lineare.
+
+        - Tecnologia CMOS. Passi di fabbricazione di un transistore MOS.'
+      Testi/Bibliografia: "Appunti di lezione. Dispense online.\n\nPer consultazione:\n\
+        \n- P. Spirito, Elettronica Digitale, McGraw-Hill, 2006.\n- E. Gnani - ELETTRONICA\
+        \ DIGITALE DI BASE A.A.2013-14 ISBN 9781308077789\n- Digital Integrated Circuits,\
+        \ J. M.Rabaey\n  http://bwrcs.eecs.berkeley.edu/Classes/IcBook/\n  Disponibile\
+        \ anche in italiano: Circuiti integrati digitali. L'ottica del progettista.\
+        \ Jan M. Rabaey, Anantha Chandrakasan, Bora Nikolic"
+      Metodi didattici: Il corso è strutturato in lezioni frontali in aula in cui
+        vengono presentati gli elementi fondamentali dell'Elettronica. In particolare
+        ci si focalizzerà sui circuiti base dell'Elettronica Digitale. Alla presentazione
+        teorica di ogni tema trattato fanno seguito diverse lezioni dedicate alla
+        risoluzione di esercizi e problemi specifici che sottolineano la natura applicata
+        della disciplina e mirano a far acquisire il metodo per l'analisi e la progettazione
+        di semplici circuiti digitali.
+      Modalità di verifica e valutazione dell'apprendimento: 'La verifica dell’apprendimento
+        avviene attraverso un esame finale che accerta l’acquisizione delle conoscenze
+        e delle abilità attese. Lo studente deve superare la prova scritta e può poi
+        decidere se sostenere la prova orale.
+
+
+        La prova scritta consiste in esercizi in cui si verifica la capacità dello
+        studente di analizzare il funzionamento di semplici circuiti digitali.
+
+
+        La prova orale ha l''obiettivo di verificare l''acquisizione delle conoscenze
+        previste secondo quanto dettagliato nel programma del corso. Il superamento
+        dell’esame sarà garantito agli studenti che dimostreranno padronanza e capacità
+        operativa in relazione ai concetti chiave illustrati nell’insegnamento. La
+        durata della prova orale è mediamente di 45 minuti.
+
+
+        Per sostenere la prova d''esame è necessaria l''iscrizione tramite bacheca
+        elettronica, nel rispetto inderogabile delle scadenze previste. Coloro che
+        non riuscissero ad iscriversi entro la data prevista, sono tenuti a comunicare
+        tempestivamente (e comunque prima della chiusura ufficiale delle liste di
+        iscrizione) il problema alla segreteria didattica. Sarà facoltà del docente
+        ammetterli a sostenere la prova.
+
+
+        La verbalizzazione della valutazione conseguita avviene durante uno qualsiasi
+        degli appelli orali fissati dal docente durante l''anno accademico. E'' possibile
+        prendere visione del compito e chiedere chiarimenti in occasione della data
+        di verbalizzazione immediatamente successiva all''appello in cui si è sostenuto
+        l''esame. La possibilità di utilizzare orari alternativi di ricevimento per
+        prendere visione del compito è riservata a casi eccezionali, con una valida
+        motivazione.
+
+
+        Studenti/sse con DSA o disabilità temporanee o permanenti: si raccomanda di
+        contattare per tempo l’ufficio di Ateneo responsabile (https://site.unibo.it/studenti-con-disabilita-e-dsa/it):
+        sarà sua cura proporre agli/lle studenti/sse interessati/e eventuali adattamenti,
+        che dovranno comunque essere sottoposti, con un anticipo di 15 giorni, all’approvazione
+        del/della docente, che ne valuterà l''opportunità anche in relazione agli
+        obiettivi formativi dell''insegnamento.'
+      Strumenti a supporto della didattica: Tutto il materiale del corso si trova
+        sul sito IOL Insegnamento On Line
+      Orario di ricevimento: Consulta il sito web di Elena Gnani (https://www.unibo.it/sitoweb/elena.gnani)
+      SDGs: 'Istruzione di qualità Energia pulita e accessibile Imprese innovazione
+        e infrastrutture
+
+
+        L''insegnamento contribuisce al perseguimento degli Obiettivi
+
+        di Sviluppo Sostenibile dell''Agenda 2030 dell''ONU.'
+  en:
+    url: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/445981
+    title: 2025/2026 Electronics T-1 — University of Bologna
+    contents:
+      Learning outcomes: 'The course aims to provide basic knowledge on the functioning
+        of elementary electronic devices, as well as on the analysis and design of
+        digital circuits.
+
+
+        The student will learn:
+
+
+        - how to design digital circuits using the CMOS technology;
+
+        - analyze and compare different circuit realizations according to the most
+        important performance metrics (power consumption, nois margin, cost, delay...);
+
+        - simulate simple digital circuits'
+      Course contents: 'Requirements/Prior knowledge
+
+
+        Prerequisite for the understanding of the arguments is the knowledge of the
+        key concepts of the theory of linear electrical circuits developed in the
+        Course of Electrotechnics. In particular the student should be able to analyze
+        the behaviour of a linear circuit both in stationary and transient conditions.
+
+
+        Fluent spoken and written Italian is a necessary pre-requisite: all lectures
+        and tutorials, and all study material will be in Italian.
+
+
+        Course Contents
+
+
+        - Basics of microelectronics: description of how the functional behavior of
+        transistors n-and p-MOS. Operating regions and constitutive equations. The
+        n-MOS inverter with resistive load: voltage transfer characteristic, static
+        power consumption. The p-MOS inverter with resistive load: voltage transfer
+        characteristic, static power consumption.
+
+        - The CMOS inverter: operating regions of the transistors and static input-output
+        characteristic. Power consumption. The CMOS inverter in transient conditions.
+        Transistor parasitic capacitances: calculation of the CMOS inverter inputs
+        capacity.
+
+        - Design of a CMOS buffer in order to minimize the propagation delay.
+
+        - Properties of digital circuits: cost, input capacity, fan-out, propagation
+        delay, power consumption, power-delay product, noise margin.
+
+        - Fully-CMOS Gate: pull-up and pull-down networks. Gate topology, analysis
+        and synthesis of logic functions. MOS transistors connected in series and
+        in parallel. Design of a logic function in Fully-CMOS according to the switching
+        time requirements.
+
+        - Dinamic Gates: DOMINO logic, dual-rail DOMINO, and zipper logic. Charge
+        redistribution in internal nodes and skew.
+
+        - Pass-transistor for signal transfer. Non-idealities of the nMOS and pMOS
+        based pass-transistor. Latch-D realized with NOT and pass transistors.
+
+        - Synchronous digital systems: the latch circuit. Latch SR, latch JK and latch
+        D with NAND and NOR logic gates and feedback with NOT.
+
+        - Circuits able to sampled on a clock edge: Flip-flop master-slave. Static
+        and dynamic flip-flops.
+
+        - Introduction to memories. Memory classification: volatile and non-volatile
+        memories. Row and column decoders. Description of the operation of the SRAM
+        cell with 6T. Reading and writing of an SRAM cell. Description of the operation
+        of the sense amplifier of SRAM memories. The DRAM cell. Reading and writing
+        of a DRAM cell. The phenomenon of charge redistribution. The sense amplifier
+        in DRAM memories. Differences between SRAM and DRAM.
+
+        - Introduction to non-volatile memories. ROM, PROM and Flash memories. NOR
+        and NAND architecture of non volatile memories. The flash memory, electron
+        injection in the floating gate. Endurance and data retention of the memory.
+
+        - The MOS transistor. Continuity equation. Quasi-stationary conditions. Drift-diffusion
+        transport model. Gradual channel approximation in the calculation of the drain
+        current. Parabolic-linear model for the MOS transistor.
+
+        - CMOS technology fabrication process steps.'
+      Readings/Bibliography: "Lecture notes.\n\nFor further reading and consultation:\n\
+        \n- P. Spirito, Elettronica Digitale, McGraw-Hill, 2006.\n- E. Gnani - ELETTRONICA\
+        \ DIGITALE DI BASE A.A.2013-14 ISBN 9781308077789\n- Digital Integrated Circuits,\
+        \ J. M.Rabaey\n  http://bwrcs.eecs.berkeley.edu/Classes/IcBook/\n  Disponibile\
+        \ anche in italiano: Circuiti integrati digitali. L'ottica del progettista.\
+        \ Jan M. Rabaey, Anantha Chandrakasan, Bora Nikolic"
+      Teaching methods: The course consists of classroom lectures in which the basic
+        electronic elements are presented. In particular we will focus on the key
+        concepts of Digital Electronics. The theoretical presentation of each topic
+        is followed by several lectures devoted to the solution of exercises and specific
+        problems aiming to acquire the method for analysing and designing simple digital
+        circuits.
+      Assessment methods: 'Learning assessment is done through a final exam that ensures
+        acquisition of knowledge and expected skills. the student must pass the written
+        test, and can then decide whether to take the oral test.
+
+        The written session assesses the student''s ability to realize simple logic
+        functions.
+
+
+        The oral test consists in 3 questions, to verify the ability to analyze circuits
+        realized with MOS transistors. To obtain a passing grade, the student must
+        demonstrate the capacity to manage the key concepts illustrated in the course
+        program. The duration of the oral test is about 45 minutes.
+
+
+        To attend the exam it is required to register via Almaesami. Those who do
+        not succeed to register by the deadline are required to promptly notify the
+        problem at the Secretary''s office.
+
+        The minutes of the evaluation is obtained during any of oral sessions set
+        by the teacher during the academic year. It is possible to view the written
+        test during the verbalization date immediately following the written exam.
+        The possibility of using alternative hours to take vision of the written exam
+        is reserved for exceptional cases.
+
+
+        Students with specific learning disabilities (SLD) or temporary/permanent
+        disabilities are advised to contact the University office in charge in due
+        time (https://site.unibo.it/studenti-con-disabilita-e-dsa/en ). The office
+        will be responsible for proposing any necessary accommodations to the students
+        concerned. Such accommodations must be submitted to the instructor at least
+        15 days in advance for approval, which will be granted based on the relevance
+        and compatibility with the learning objectives of the course.'
+      Teaching tools: Teaching materials are available at IOL website
+      Office hours: See the website of Elena Gnani (https://www.unibo.it/sitoweb/elena.gnani/en)
+      SDGs: 'Quality education Affordable and clean energy Industry, innovation and
+        infrastructure
+
+
+        This teaching activity contributes to the achievement of the Sustainable Development
+        Goals of the UN 2030 Agenda.'

@@ -1,0 +1,419 @@
+year: 2025
+url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/543008
+credits: 12
+ssd: ING-INF/05
+language: Italian
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2025-09-16
+  to: 2025-12-16
+teacher:
+  id: '47850'
+  name: Borghesi, Andrea
+  email: andrea.borghesi3@unibo.it
+  website: https://www.unibo.it/sitoweb/andrea.borghesi3
+course_title:
+  id: '93034'
+  name: FONDAMENTI DI INFORMATICA T (L-Z) (Modulo 2)
+  details: ''
+integrated_course: ''
+campus: Bologna
+programme: Laurea in Ingegneria informatica
+syllabus:
+  it:
+    url: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/543008
+    title: 2025/2026 FONDAMENTI DI INFORMATICA T (L-Z) — Università di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: Al termine del corso lo studente conosce
+        i principi e le metodologie per lo sviluppo di algoritmi e programmi, e ha
+        acquisito la conoscenza di un linguaggio di programmazione di alto livello.
+        È in grado di progettare soluzioni e algoritmi che risolvano problemi di complessità
+        non elevata, nonché di utilizzare gli strumenti per lo sviluppo di programmi,
+        implementando componenti software atti a risolvere tali problemi.
+      Contenuti: 'Prerequisiti: La frequentazione di questo insegnamento non richiede
+        alcun prerequisito. Nell''ambito dell''insegnamento infatti lo studente viene
+        introdotto gradualmente ai principi e ai metodi della programmazione imperativa,
+        strutturata e procedurale in particolare. Le nozioni basilari e fondamentali
+        necessarie alla comprensione della materia sono fornite nell''ambito dell''insegnamento
+        stesso, e non viene fatta alcuna assunzione di conoscenze pregresse. Ovviamente,
+        eventuali nozioni acquisite precedentemente sui linguaggi di programmazione
+        possono comunque risultare di aiuto allo studente.
+
+
+        Contenuti:
+
+
+        - Introduzione ai concetti di base dei sistemi di elaborazione moderni: cenni
+        storici sull''informatica, introduzione alla "Architettura di von Neumann"
+        ed ai dispositivi hardware, rappresentazione dell''informazione, concetti
+        di base dei sistemi operativi moderni.
+
+        - Introduzione al concetto di algoritmo, macchine speciali e universali di
+        Turing, risoluzione di problemi e funzioni computabili e non, concetti di
+        base sui linguaggi macchina e sui linguaggi di programmazione ad alto livello,
+        sintassi dei linguaggi tramite grammatiche EBNF.
+
+        - Introduzione al linguaggio C: valori, tipi, costanti, variabili, operatori
+        ed espressioni, puntatori, vettori e stringhe, strutture.
+
+        - Programmazione strutturata e procedurale in C: istruzioni di controllo,
+        funzioni, procedure.
+
+        - Input e Output in C: primitive di I/O, astrazione basata sul concetto di
+        "stream", accesso ai file.
+
+        - Principi e metodologie fondamentali di progetto e sviluppo di algoritmi:
+        soluzione di problemi su piccola scala, iterazione e ricorsione, progettazione
+        e organizzazione di programmi sorgente su più file/moduli nel linguaggio C.
+
+        - Organizzazione della macchina runtime del C: rappresentazione run-time dei
+        programmi e del record di attivazione delle funzioni
+
+        - Allocazione dinamica della memoria di scalari, strutture e array; gestione
+        della memoria e problemi di "memory leaking" in C.
+
+        - Algoritmi di ordinamento semplici: Naive Sort, Bubble Sort, Insert Sort,
+        Merge Sort, e Quick Sort.
+
+        - Introduzione ai tipi di dato astratto (ADT): definizione del tipo e operazioni
+        (costruttori, selettori, predicati, funzioni e trasformatori). Alcuni esempi
+        di ADT fondamentali: liste, code, pile.'
+      Testi/Bibliografia: 'Testi consigliati da consultare su Programmazione e il
+        linguaggio C:
+
+
+        - H. Deitel, P. Deitel. "Il Linguaggio C - Fondamenti e Tecniche di Programmazione",
+        Pearson 2022 o edizioni precedenti.
+
+        - A. Kelley, I. Pohl. "C: Didattica e Programmazione", Pearson Education,
+        2018, o edizioni precedenti.
+
+        - A. Bellini, A. Guidi. "Linguaggio C: Guida alla Programmazione", Mc Graw-Hill,
+        2021, o edizioni precedenti.'
+      Metodi didattici: 'L''insegnamento partecipa al progetto di sperimentazione
+        didattica dell''Ateneo.
+
+
+        L''insegnamento è organizzato in due moduli, strettamente integrati per argomenti
+        trattati:
+
+
+        - Il Modulo 1 si tiene in aula, ed ha come obiettivo quello di fornire principi,
+        metodi e strumenti caratterizzanti la disciplina. Le lezioni sono erogate
+        mediante proiezione diretta dal computer del docente, in aula, di diapositive
+        (delle quali lo studente può liberamente scaricarne copia dal sito web del
+        corso, prima delle lezioni).
+
+        - Il Modulo 2 si tiene nei laboratori della Scuola, ed ha come scopo quello
+        di permettere agli studenti di "mettere in pratica" quanto presentato nel
+        Modulo 1: ciò avviene tramite esercitazioni, casi di studio e problemi reali
+        posti dal docente. Gli studenti sono spesso invitati a risolvere tramite i
+        computer presenti nei laboratori i problemi posti (esercitazioni), effettuando
+        così una esperienza immediata e diretta di quanto appreso pur restando sotto
+        la supervisione del docente. Anche nel Modulo 2 si fa uso di diapositive proiettate
+        dal computer del docente (disponibili sul sito del corso).
+
+
+        Le lezioni in aula e le esercitazioni in laboratorio sono continuamente intercalate,
+        alternando l''esposizione di un concetto o costrutto linguistico con i relativi
+        esempi, a successive esercitazioni pratiche in cui allo studente viene richiesto
+        di usare le conoscenze apprese per risolvere piccoli problemi di programmazione
+        "in-the-small" nel linguaggio C. Per tale motivo, un argomento presentato
+        nel Modulo 1 viene poi trattato nel Modulo 2 a circa una settimana di distanza,
+        al fine di lasciare il tempo sufficiente allo studente per assimilare le nozioni.
+
+
+        I due moduli sono quindi strettamente correlati, poichè forniscono due "punti
+        di vista" complementari degli stessi argomenti: l''acquisizione da parte dello
+        studente degli argomenti della materia può dirsi completa solo se entrambi
+        gli aspetti sono stati completamente esplorati e oppurtunamente approfonditi.
+
+
+        In considerazione della tipologia di attività e dei metodi didattici adottati,
+        la frequenza di questa attività formativa richiede la preventiva partecipazione
+        di tutti gli studenti ai moduli 1 e 2 di formazione sulla sicurezza nei luoghi
+        di studio, https://elearning-sicurezza.unibo.it , in modalità e-learning.'
+      Modalità di verifica e valutazione dell'apprendimento: 'La verifica dell''apprendimento
+        si svolge sia in forma di autovalutazione dello studente, tramite le esercitazioni
+        sistematicamente proposte in laboratorio durante il corso, sia al termine,
+        sotto forma di prova d''esame.
+
+
+        La prova d''esame riflette la strutturazione del corso in due moduli. Allo
+        studente infatti viene richiesto di sostenere due prove, una scritta ed una
+        in laboratorio:
+
+
+        - La prova scritta (un''ora di durata) si svolge in aula, e riguarda piccoli
+        esercizi e/o domande aperte su tutti gli argomenti trattati nel corso. Il
+        voto di tale prova consiste in un punteggio fino ad un massimo di 12 punti,
+        con una soglia di sufficienza posta al minimo di 7/12 punti; sotto tale soglia
+        la prova è considerata "non superata". Durante tale prova allo studente non
+        è concesso consultare testi, appunti o altra fonte di informazione.
+
+        - La prova in laboratorio (due ore di durata) consiste nella risoluzione di
+        un problema tramite la progettazione e lo sviluppo di un piccolo programma
+        in linguaggio C. La prova si svolge al calcolatore, e la consegna dei file
+        di programma avviene tramite una semplice interfaccia web. Il voto di tale
+        prova consiste in un punteggio fino ad un massimo di 20 punti, con una soglia
+        di sufficienza posta al minimo di 11/20 punti; sotto tale soglia la prova
+        è considerata "non superata". Durante tale prova allo studente è permessa
+        la consultazione di testi, appunti e altro materiale in suo possesso; inoltre,
+        è possibile accedere a tutti i materiali didattici pubblicati nel sito web
+        del corso stesso, incluse le diapositive delle lezioni.
+
+
+        Il voto finale è dato dalla somma dei punteggi ottenuti nelle singole prove,
+        se superate. Il voto ottenuto dalla somma è da considerarsi in /30; qualora
+        lo studente abbia preso un punteggio finale eccedente i 30 punti, il voto
+        finale è 30&Lode/30. Qualora lo ritengano necessario, i docenti si riservano
+        la possibilità di chiamare all’orale gli studenti per confermare il voto della
+        prova.
+
+
+        Lo studente può richiedere di sostenere una prova orale facoltativa, allo
+        scopo di aumentare il voto conseguito (l''aumento possibile è al massimo di
+        due punti). In tale caso l''orale verterà su tutti gli argomenti, teorici
+        e non, che sono stati trattati durante il corso.
+
+
+        Lo studente può sostenere le due prove in qualunque ordine, e in uno o più
+        appelli di esame, indifferentemente. Ad esempio è possibile sostenere una
+        prova in un appello di gennaio, ed un''altra prova in un appello a giugno.
+        Tuttavia, data la stretta correlazione delle prove, si consiglia di sostenere
+        entrambe le prove in date prossime tra loro.
+
+
+        Lo studente può ripetere più volte una prova, qualora non sia riuscito a superarla
+        in precedenza, o qualora non sia soddisfatto del punteggio conseguito. Qualora
+        lo studente ripeta una prova (consegnando l''elaborato al docente), tutti
+        i voti precedenti relativi a quella prova vengono considerati nulli, e verrà
+        presa in considerazione solo la prova più recente.'
+      Strumenti a supporto della didattica: 'Materiale Didattico: tutte le diapositive
+        proiettate e discusse a lezione (sia in aula che in laboratorio) sono pubblicate
+        in formato elettronico e consultabili sulla piattaforma di e-learning:
+
+        [https://virtuale.unibo.it]
+
+        La pubblicazione e l''aggiornamento delle diapositive avviene a cura del docente,
+        che provvede a rendere disponibile il materiale usato in aula in anticipo
+        rispetto allo svolgersi delle lezioni.
+
+        Un elenco esaustivo di testi di riferimento e manuali è consultabile sia sul
+        sito Web, sia sulle diapositive.
+
+        Il sito fornisce inoltre suggerimenti per ulteriori approfondimenti, nonchè
+        un certo numero di esercizi e problemi aggiuntivi utili nella preparazione
+        all''esame.
+
+        Infine, sempre sul sito web del corso sono disponibili un grande numero di
+        testi e soluzioni di prove d''esame degli anni accademici precedenti, utili
+        allo studente per raffinare e autovalutare la propria preparazione.
+
+
+        Altri strumenti: durante le lezioni e le esercitazioni in laboratorio sono
+        disponibili elaboratori con installati ambienti professionali di sviluppo
+        e programmazione per il linguaggio C. Tali strumenti software, indicati sul
+        sito Web del corso, sono a disposizione gratuita degli studenti e possono
+        essere scaricati ed installati su personal computer privati degli studenti.'
+      Link ad altre eventuali informazioni: https://virtuale.unibo.it
+      Orario di ricevimento: 'Consulta il sito web di Federico Chesani (https://www.unibo.it/sitoweb/federico.chesani)
+
+
+        Consulta il sito web di Andrea Borghesi (https://www.unibo.it/sitoweb/andrea.borghesi3)'
+      SDGs: 'Istruzione di qualità Imprese innovazione e infrastrutture
+
+
+        L''insegnamento contribuisce al perseguimento degli Obiettivi
+
+        di Sviluppo Sostenibile dell''Agenda 2030 dell''ONU.'
+  en:
+    url: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/543008
+    title: 2025/2026 Foundations of Computer Science T (L-Z) — University of Bologna
+    contents:
+      Learning outcomes: Acquisition of principles, methodologies and tools for designing
+        algorithms that solve problems of a medium difficulty. Ability to apply such
+        knowledge in the development of algorithms and computer programs, using a
+        high-level programing language.
+      Course contents: 'Prerequisites: no prerequisites are required to attend this
+        course. Indeed, the student is gradually introduced to the principles and
+        methods of imperative programming, and in particular towards structured and
+        procedural programming styles. The basic and fundamental notions required
+        to understand the course contents are provided within the course itself, and
+        no assumption is made about previous knowledge. Previous experience and knowledge
+        about programming languages might be of some help.
+
+
+        Contents:
+
+
+        - Introduction to modern elaboration systems: brief history of informatics,
+        introduction to the von Neumann architecture and to the modern hardware devices,
+        information representation, basic concepts of operating systems.
+
+        - Introduction to the concept of algorithm, Turing''s specific and universal
+        machines, problems solutions and (non) computable functions, high- and low-level
+        programming languages, syntax definition by means of EBNF grammars.
+
+        - Introduction to the C language: values, types, constants, variables, operators
+        and expressions, pointers, arrays and strings, structures.
+
+        - Structural and procedural programming in C: control instructions, functions,
+        procedures.
+
+        - Input and output in C: I/O primitives, I/O based on the stream abstraction,
+        access to files.
+
+        - Principles and basic methodologies for designing and developing algorithms:
+        solving small-scale problems, iteration and recursion, programs structured
+        in many modules in the C language.
+
+        - Runtime structure of C programs: runtime representation of programs, activation
+        records and functions.
+
+        - Dynamic allocation of memory for scalar types, structures and array; memory
+        managing and memory leaking issues in C.
+
+        - Ordering algorithms: Naive Sort, Bubble Sort, Insert Sort, Merge Sort, and
+        Quick Sort.
+
+        - Introduction to Abstract Data Types (ADT): type definition and operations
+        (constructors, selectors, predicates, functions and transformators). Some
+        fundamentals ADT: lists, queues, stacks.'
+      Readings/Bibliography: 'Texts to consult on Programming and the C language:
+        when available, the english versions of these textbooks are recommended
+
+
+        - H. Deitel, P. Deitel. "Il Linguaggio C - Fondamenti e Tecniche di Programmazione",
+        Pearson 2022 o edizioni precedenti.
+
+        - A. Kelley, I. Pohl. "C: Didattica e Programmazione", Pearson Education,
+        2018, o edizioni precedenti.
+
+        - A. Bellini, A. Guidi. "Linguaggio C: Guida alla Programmazione", Mc Graw-Hill,
+        2021, o edizioni precedenti.'
+      Teaching methods: 'The course participates in the University''s teaching experimentation
+        project.
+
+
+        The course is organized in two related modules:
+
+
+        - Module 1, whose lessons are given in classrooms, provides notions on principles,
+        methods and tools in informatics. The lessons are supported by slides projected
+        by the teacher''s laptop, and a copy can be freely downloaded from the course
+        web site before each lesson.
+
+        - Module 2, whose lessons are given in the Engineering School labs, aims to
+        allow the student to "put into practice" the notions acquired in Module 1.
+        To this end, the teacher proposes exercises, case studies and real problems.
+        In turn, the students are encouraged to immediately solve the problems by
+        using the PCs available in the labs, under the supervision of the teacher.
+        The lessons are supported by slides projected by the teacher (slides available
+        on the course web site before each lesson).
+
+
+        Classrooms and labs are interspersed each other, so that the introduction
+        of a concept or an element of the language together with some examples is
+        followed by a lab lesson, where the student is asked to use the acquired knowledge
+        to solve problems using "programming in-the-small" techniques in C. For this
+        reason, a content introduced within the Module 1 is usually tackled one week
+        later within Module 2, so that the student is given enough time to acquire
+        the new notions.
+
+
+        Summing up, the two modules are strictly related each other, since they provide
+        two different viewpoints on the same topics: the acquisition of the course
+        contents is fully achieved only if both the viewpoints and their aspects have
+        been deeply explored by the student.
+
+
+        In consideration of the type of activity requested and teaching methods adopted,
+        the attendance of this activity requires the prior participation of all students
+        in modules 1 and 2 of training on safety in the study places, https://elearning-sicurezza.unibo.it
+        [https://elearning-sicurezza.unibo.it] , in e-learning mode.'
+      Assessment methods: 'The achievement of the learning goals is verified by the
+        student itself, by means of the exercises proposed during the labs, and at
+        the end of the course, by means of a final exam.
+
+
+        The final exam replicates the structuring of the course into two modules.
+        The student is required to pass two different tests, a written one and a programming
+        test:
+
+
+        - The written test (one hour duration) is held in the classroom, and it concerns
+        few small exercises and/or open questions about the course contents. The marks
+        of this test sum up to 12 points, with a minimum threshold of 7/12 points;
+        below the threshold the test is considered as "failed". During the written
+        test it is strictly forbidden to consult textbooks, personal notes or any
+        other external source.
+
+        - The lab test (two hours durations) in the laboratories, and consists in
+        solving a small problem by designing and developing a program in C. The test
+        is done directly at the PC, and at the end the student is required to submit
+        (through a simple web-based system) the source files of the program. The marks
+        sum up to 20 points, with a minimum threshold of 11/20; below this threshold
+        the test is considered as "failed". Dureing the test the student can conuls
+        any textbook, perosnal notes and other personal material; moreover, the student
+        can access all the materials provided in the course web site, including the
+        course slides.
+
+
+        The final mark is given by the sum of the points achieved in the two tests,
+        if successfully passed. The marks obtained by the sum must be considered on
+        a maximum of 30; if the marks should exceed the 30 points, the final mark
+        will be "30 with honor / 30". When deemed necessary, the teachers will ask
+        the student to pass a further oral exam, with the aim of confirming the final
+        mark.
+
+
+        The student can ask for a further oral exam, to increment the marks (max two
+        points). In such case, questions of the (non mandatory) interview will be
+        about all the topics and contents introduced within the course.
+
+
+        The student can take the two tests in any order, and within one or more exam
+        sessions, indifferently. E.g., it is possible to take one test in January,
+        and the other in June. However, given the deep relation between the modules
+        and between the test, the student is strongly suggested to take both the tests
+        within the same session.
+
+
+        The student can take the tests many times, either because previous tests were
+        failed, or because the marks were not satisfactory. When a student submit
+        the test to the teacher, the results obtained in the previous tests are voided,
+        and only the more recent marks (for each test) will be taken into consideration.'
+      Teaching tools: 'Teaching materials: all the slides used during the lessons
+        (in classrooms as well in labs) are available in electronic format and can
+        be accessed/downloaded at the e-learning platform:
+
+        https://virtuale.unibo.it
+
+        The teacher takes care to publish and update the slides, and to make them
+        available few days before each lesson.
+
+        A comprehensive list of text books and manuals is available on the course
+        web site, and is reported on the course slides as well.
+
+        Suggestions for further readings and exercises are made available through
+        the web site. Moreover, the texts of all the final exams of previous years
+        are available, and the students are encouraged to use them to improve their
+        preparation.
+
+
+        Other tools: during the lab lessons PCs with professional developing software
+        environments are installed and available, so that the students can practice
+        the proposed tasks. These professional softwares, listed on the web site,
+        are freely available for the students and can be downloaded and installed
+        on personal PCs.'
+      Links to further information: https://virtuale.unibo.it
+      Office hours: 'See the website of Federico Chesani (https://www.unibo.it/sitoweb/federico.chesani/en)
+
+
+        See the website of Andrea Borghesi (https://www.unibo.it/sitoweb/andrea.borghesi3/en)'
+      SDGs: 'Quality education Industry, innovation and infrastructure
+
+
+        This teaching activity contributes to the achievement of the Sustainable Development
+        Goals of the UN 2030 Agenda.'

@@ -1,0 +1,204 @@
+year: 2025
+url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/492293
+credits: 6
+ssd: ING-INF/01
+language: English
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2025-09-18
+  to: 2025-12-19
+teacher:
+  id: '31791'
+  name: Benini, Luca
+  email: luca.benini@unibo.it
+  website: https://www.unibo.it/sitoweb/luca.benini
+course_title:
+  id: '93398'
+  name: ARCHITECTURES FOR ARTIFICIAL INTELLIGENCE M
+  details: 6 cfu
+integrated_course: ''
+campus: Bologna
+programme: Laurea Magistrale in Ingegneria elettronica
+syllabus:
+  it:
+    url: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/492293
+    title: 2025/2026 ARCHITECTURES FOR ARTIFICIAL INTELLIGENCE M — Università di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: The main goal of the class is to enable
+        students to specify, configure, program and verify complex embedded electronic
+        systems for the Internet of Things and for Artificial Intelligence. The importance
+        of hardware-software interaction will be emphasized, as all practical IoT
+        and AI systems are programmable. The class will provide working knowledge
+        on state-of-the-art hardware platforms used in embedded AI and IoT applications
+        - spanning a wide range of power and cost vs. performance tradeoffs. A detailed
+        coverage will be given of software abstractions and methodologies for developing
+        applications leveraging the capabilities of the above mentioned platforms.
+        Design automation tools and flows will also be covered.
+      Contenuti: 'Module 1:
+
+
+        From ML to DNNs - a computational perspective
+
+
+        1. Introduction to key computational kernels (dot-product, matrix multiply...)
+
+        2. Inference vs training - workload analysis characterizatio
+
+        3. The NN computational zoo: DNNs, CNNs, RNNs, Attention-based Networks, State
+        Based networks
+
+
+        Running ML workloads on programmable processor
+
+
+        1. recap of processor instruction set architecture (ISA) with focus on data
+        processing
+
+        2. improving processor ISAs for ML: RISC-V and ARM use cases
+
+        3. fundamentals of parallel processor architecture and parallelization of
+        ML workloads
+
+
+        Algorithmic optimizations for ML
+
+
+        1. Bottleneck analysis and algorithmic techniques
+
+        2. Model distillation: efficient NN models - depthwise convolutions, inverse
+        bottleneck, optimized attention, introduction to Neural Architectural Search
+
+        3. Quantization and sparsity: scalar, block, vector.'
+      Testi/Bibliografia: 'Selected parts from the following books
+
+
+        1. Dive into Deep Learning (online: d2l.ai)
+
+        2. Efficient Processing of Deep Neural Networks (online: https://link.springer.com/book/10.1007/978-3-031-01766-7
+        )
+
+        3. Machine Learning Systems (online: mlsysbook.ai)'
+      Metodi didattici: 'Traditional lectures for theory.
+
+
+        Both Module 1 and Module 2 include hands-on sessions requiring a student laptop.'
+      Modalità di verifica e valutazione dell'apprendimento: 'Written exam with oral
+        discussion: the written exam is compulsory and
+
+        consists of solving problems and answering questions. The oral exam is
+
+        optional and consists of in-depth questions on topics covered in class.'
+      Strumenti a supporto della didattica: 'Lectures using projector for slides provided
+        by the instructors.
+
+
+        Hands-on sessions.
+
+
+        Online resources (virtuale)'
+      Orario di ricevimento: 'Consulta il sito web di Luca Benini (https://www.unibo.it/sitoweb/luca.benini)
+
+
+        Consulta il sito web di Francesco Conti (https://www.unibo.it/sitoweb/f.conti)'
+  en:
+    url: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/492293
+    title: 2025/2026 Architectures for Artificial Intelligence M — University of Bologna
+    contents:
+      Learning outcomes: The main goal of the class is to enable students to specify,
+        configure, program and verify complex embedded electronic systems for the
+        Internet of Things and for Artificial Intelligence. The importance of hardware-software
+        interaction will be emphasized, as all practical IoT and AI systems are programmable.
+        The class will provide working knowledge on state-of-the-art hardware platforms
+        used in embedded AI and IoT applications - spanning a wide range of power
+        and cost vs. performance tradeoffs. A detailed coverage will be given of software
+        abstractions and methodologies for developing applications leveraging the
+        capabilities of the above mentioned platforms. Design automation tools and
+        flows will also be covered.
+      Course contents: 'Module 1 : (for students of 93398)
+
+
+        From ML to DNNs - a computational perspective
+
+
+        1. Introduction to key computational kernels (dot-product, matrix multiply...)
+
+        2. Inference vs training - workload analysis characterizatio
+
+        3. The NN computational zoo: DNNs, CNNs, RNNs, Attention-based Networks, State
+        Based networks
+
+
+        Running ML workloads on programmable processor
+
+
+        1. recap of processor instruction set architecture (ISA) with focus on data
+        processing
+
+        2. improving processor ISAs for ML: RISC-V and ARM use cases
+
+        3. fundamentals of parallel processor architecture and parallelization of
+        ML workloads
+
+
+        Algorithmic optimizations for ML
+
+
+        1. Bottleneck analysis and algorithmic techniques
+
+        2. Model distillation: efficient NN models - depthwise convolutions, inverse
+        bottleneck, optimized attention, introduction to Neural Architectural Search
+
+        3. Quantization and sparsity: scalar, block, vector.
+
+
+        Module 2 (for students of 93398)
+
+
+        Representing data in Deep Neural Networks
+
+        Recap of canonical DNN loops – a tensor-centric view
+
+        Data quantization in Deep Neural Networks
+
+        Brief notes on data pruning
+
+        From training to software-based deployment
+
+        High-performance embedded systems (NVIDIA Xavier, Huawei Ascend)
+
+        Microcontroller-based systems (STM32)
+
+        From software to hardware acceleration
+
+        Principles of DNN acceleration: spatial and temporal data reuse; dataflow
+        loop nests and taxonomy; data tiling
+
+        The Neural Engine zoo: convolvers, matrix product accelerators, systolic arrays
+        – examples from the state-of-the-art'
+      Readings/Bibliography: 'Selected parts from the following books
+
+
+        1. Dive into Deep Learning (online: d2l.ai)
+
+        2. Efficient Processing of Deep Neural Networks (online: https://link.springer.com/book/10.1007/978-3-031-01766-7
+        )
+
+        3. Machine Learning Systems (online: mlsysbook.ai)'
+      Teaching methods: 'Traditional lectures for theory.
+
+
+        All modules include hands-on sessions requiring a student laptop.'
+      Assessment methods: 'Written exam with oral discussion: the written exam is
+        compulsory and consists of solving problems and answering questions. The oral
+        exam is optional and consists of in-depth questions on topics covered in class.'
+      Teaching tools: 'Lectures using projector for slides provided by the instructors.
+
+
+        Hands-on sessions.
+
+
+        Online resources (virtuale)'
+      Office hours: 'See the website of Luca Benini (https://www.unibo.it/sitoweb/luca.benini/en)
+
+
+        See the website of Francesco Conti (https://www.unibo.it/sitoweb/f.conti/en)'

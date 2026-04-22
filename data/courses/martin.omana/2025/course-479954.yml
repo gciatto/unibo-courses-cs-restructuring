@@ -1,0 +1,430 @@
+year: 2025
+url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/479954
+credits: 6
+ssd: ING-INF/01
+language: Italian
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2025-09-15
+  to: 2025-12-18
+teacher:
+  id: '45034'
+  name: Omana, Martin Eugenio
+  email: martin.omana@unibo.it
+  website: https://www.unibo.it/sitoweb/martin.omana
+course_title:
+  id: '99192'
+  name: SISTEMI ELETTRONICI AD ALTA AFFIDABILITA' E RESILIENZA M (Modulo 2)
+  details: ''
+integrated_course: ''
+campus: Bologna
+programme: Laurea Magistrale in Ingegneria elettronica
+syllabus:
+  it:
+    url: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/479954
+    title: 2025/2026 SISTEMI ELETTRONICI AD ALTA AFFIDABILITA' E RESILIENZA M — Università
+      di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: Studiare le tecniche di collaudo e progettazione
+        orientata al collaudo di circuiti e sistemi integrati, e le strategie di progettazione
+        di circuiti e sistemi integrati ad alta affidabilità e resilienza.
+      Contenuti: 'Introduzione al collaudo di circuiti e sistemi elettronici digitali
+
+
+        - Definizioni e motivazioni
+
+        - Collocazione all''interno del processo di realizzazione di chip VLSI
+
+        - Resa del processo e costo di produzione di un circuito integrato
+
+        - Alcuni tipi di collaudo: Characterization Testing; Manufacturing Testing;
+        Burn-In; Incoming Inspection
+
+
+        Principali meccanismi di guasto
+
+
+        - Elettromigrazione: descrizione fenomeno ed esempi; interconnessioni in rame
+        ed affidabilità delle interconnessioni
+
+        - Degrado ossidi di gate: struttura molecolare, trappole, degrado e breakdown
+
+        - Scaling degli ossidi: scaling e leakage; scaling e mobilità
+
+        - Radiazioni e particelle alpha: descrizione fisica e possibile generazione
+        di guasti
+
+        - Variazioni dei parametri elettrici: parametri transistori; parametri interconnessioni;
+        temperatura
+
+        - Scaling delle interconnessioni e crosstalk
+
+        - Rumore sulle alimentazioni (IR drop noise, delta I noise)
+
+
+        Modelli di guasto
+
+
+        - Guasti di tipo stuck-at: principi di base sul collaudo nei confronti di
+        guasti di tipo stuck-at
+
+        - Equivalenza di guasti e “Fault Collapsing”
+
+        - Teorema del “Checkpoint”
+
+        - Dominanza di guasti e “Fault Collapsing”
+
+        - Guasti di tipo stuck-open: possibile collaudo
+
+        - Guasti di tipo stuck-on: possibile collaudo
+
+        - Guasti di tipo bridging resistivo, delay, crosstalk e transitori: possibile
+        collaudo
+
+
+        Automatic Test Pattern Generation (ATPG)
+
+
+        - Definizione
+
+        - Algebre per ATPG
+
+        - Algoritmi esaustivi
+
+        - Algoritmi random
+
+        - “Path Sensitization”
+
+        - Copertura di guasti ed efficienza del collaudo
+
+
+        Macchine automatiche di collaudo (ATE)
+
+
+        - Esempio di componenti e specifiche
+
+        - Costo del collaudo mediante ATE Diagnosi di guasti
+
+        - Definizione e motivazioni
+
+        - “Fault dictionary”
+
+        - “Diagnostic Tree”
+
+
+        Misure di testabilità
+
+
+        - Motivazioni ed utilizzo
+
+        - Controllabilità ed osservabilità
+
+        - Il “Sandia Controllability and Observability Analysis Program”
+
+
+        IDDQ Testing
+
+
+        - Idea di base
+
+        - Confronto con altre tecniche di collaudo (risultati delle analisi “Sematech”)
+
+        - Guasti rilevati
+
+        - Problema definizione delle soglie dei chip guasti-corretti
+
+        - Built in current sensors (BICS)
+
+        - Limiti IDDQ testing
+
+        - Delta IDDQ Testing
+
+
+        Tecniche di progettazione orientata al collaudo (DFT)
+
+
+        - Introduzione
+
+        - Metodi ad-hoc e metodi strutturali
+
+        - Full-scan
+
+        - Partial scan
+
+        - Boundary scan
+
+        - Built-in-self-test (BIST)
+
+        - Built-in logic block observer (BILBO)
+
+
+        Tecniche di progettazione Fault Tolerant
+
+
+        - Introduzione: applicazioni, motivazioni
+
+        - Ridondanza Modulare: strategie di base; realizzazioni e affidabilità del
+        voter; guasti di modo comune; diagnosi dei moduli guasti
+
+        - On-line testing e recovery: duplicazione e confronto; progettazione self-checking
+
+        - Progettazione self-checking: proprietà circuiti self-checking; ipotesi di
+        guasto; progetto di blocchi funzionali self-checking; progetto di checker;
+        error indicators.
+
+        - Codici a rivelazione d''errore (codici di Berger e relativi checker; codici
+        di parità e relativi checker; codice two-rail e relativi checker; codice m-out-of-m
+        e relativi checker)
+
+        - Recovery: rollback and retry; tecniche riconfigurazione
+
+        - Codici a correzione d''errore: codici lineari di parità (codici di Hamming;
+        codici di Hsiao); circuiti di codifica e decodifica
+
+
+        Il corso comprende esercitazioni di laboratorio su: - simulazione elettrica
+        di guasti di tipo bridging resistivo, crosstalk, e transitorio ed analisi
+        dei loro effetti - progettazione di componenti base di sistemi per applicazioni
+        ad alta affidabilità e loro realizzazione mediante Field Programmable Gate
+        Arrays. Il corso è completato da seminari tenuti da colleghi di altre Università
+        e di ditte operanti nel settore.'
+      Testi/Bibliografia: 'J. Segura C. F. Hawkins, “CMOS Electronics – How It Works,
+        How It Fails” IEEE Press – Wiley, 2004.
+
+
+        M. L. Bushnell, V. D. Agrawal, “Essential of Electronic Testing”, Kluwer Academic
+        Publishers, 2000
+
+
+        M. Abramovici, M. A. Bruer, A. D. Friedman, “Digital Systems Testing and Testable
+        Design”, Computer Science Press, 1990
+
+
+        S. Mourad, Y. Zorian, “Principles of Testing Electronic Systems”, Essential
+        of Electronic Testing”,Wiley, 2000
+
+
+        N. K. Jha, S. Kundu, “Testing and Reliable Design of CMOS Circuits”, Kluwer
+        Academic Publishers, 1990
+
+
+        P. K. Lala, “Self-Checking and Fault Tolerant Digital Design”, Morgan Caufmann
+        Publ, 2001'
+      Metodi didattici: Lezioni frontali in aula e esercitazioni al calcolatore svolte
+        in laboratorio.
+      Modalità di verifica e valutazione dell'apprendimento: Esame orale. Le domande
+        riguarderanno qualsiasi argomento trattato a lezione e in laboratorio. Potranno
+        seguire domande specifiche volte a verificare la comprensione delle problematiche
+        specifiche inerenti agli argomenti trattati nel corso. Il voto finale sarà
+        formulato tenendo conto delle risposte fornite alle domande poste.
+      Strumenti a supporto della didattica: PC, videoproiettore, diapositive Power
+        Point.
+      Orario di ricevimento: 'Consulta il sito web di Cecilia Metra (https://www.unibo.it/sitoweb/cecilia.metra)
+
+
+        Consulta il sito web di Martin Eugenio Omana (https://www.unibo.it/sitoweb/martin.omana)'
+  en:
+    url: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/479954
+    title: 2025/2026 Highly Reliable and Resilient Electronic Systems M — University
+      of Bologna
+    contents:
+      Learning outcomes: To study the techniques for testing and design for testability
+        of integrated circuits and systems, and the design strategies for integrated
+        circuits and systems with high reliability and resiliency.
+      Course contents: 'Introduction to Digital Circuit and Systems'' Testing
+
+
+        - Definitions and motivations
+
+        - Position within the VLSI process
+
+        - Yield and production cost of an IC
+
+        - Some example of testing process: Characterization Testing; Manufacturing
+        Testing; Burn-in; Incoming Inspection
+
+
+        Main Failure Mechanisms
+
+
+        - Electromigration: Physical Description and Examples; Interconnects Reliability;
+        Copper Interconnects; Interconnects Reliability
+
+        - Oxide Wear-out: Oxide Molecular Structure Traps; Wear-out and Breakdown
+
+        - Oxide Scaling: Scaling and leakage; Scaling and mobility
+
+        - Radiation and Alpha Particles: Physical Description and Fault Model
+
+        - Electrical Parameter Variation: Transistor Parameters; Interconnects'' Parameters;
+        Temperature
+
+        - Interconnects Scaling and Crosstalk
+
+        - Power Supply Noise (IR Drop Noise, Delta I Noise)
+
+
+        Fault Models
+
+
+        - Stuck-At Faults (SAs): Basics on Testing for SAs
+
+        - Fault Equivalence and Fault Collapsing
+
+        - Checkpoint Theorem
+
+        - Fault Dominance and Fault Collapsing
+
+        - Stuck-Open Faults: Possible Testing
+
+        - Stuck-On Faults: Possible Testing
+
+        - Bridging Faults, Delay Faulrts, Crosstalk Faults and Transient Faults: Possible
+        Testing
+
+
+        Automatic Test Pattern Generation (ATPG)
+
+
+        - Definition
+
+        - ATPG Algebras
+
+        - Exhaustive Algorithms
+
+        - Random Algorithms
+
+        - Path Sensitization
+
+        - Fault Coverage and Test Efficiency
+
+
+        Automatic Test Equipment (ATE)
+
+
+        - Components and Specification
+
+        - Cost
+
+
+        Fault Diagnosis
+
+
+        - Definitions and Motivations
+
+        - Fault Dictionary
+
+        - Diagnostic Tree
+
+
+        Testability Measures
+
+
+        - Motivations and Use
+
+        - Controllability and Observability
+
+        - Sandia Controllability ed Observability Analysis Program
+
+
+        IDDQ Testing
+
+
+        - Basic Idea
+
+        - Comparison with Other Testing Techniques
+
+        - Detected Faults
+
+        - Current Limit Setting
+
+        - Built-In Current Sensors (BICS)
+
+        - Limitations of IDDQ Testing
+
+        - Delta IDDQ Testing
+
+
+        Design for Testability (DFT) Techniques
+
+
+        - Introduction
+
+        - Ad-Hoc and Structural Methods
+
+        - Full Scan
+
+        - Partial Scan
+
+        - Boundary Scan
+
+        - Built-In-Self Test (BIST)
+
+        - Built-In-Logic-Block-Observer (BILBO)
+
+
+        Fault-Tolerant Techniques
+
+
+        - Introduction: Motivations; Applications
+
+        - Modular Redundancy: Basic Strategy; Voter Design and Reliability; Common
+        Mode Failures; Diagnosis of Faulty Modules
+
+        - On-Line Testing and Recovery: Duplication and Comparison; Self Checking
+        Circuits
+
+        - Self-Checking Circuits: Properties; Fault Hypothesis; Design of Self Checking
+        Functional Blocks; Design of Checkers; Error Indicators
+
+        - Error Detecting Codes: Berger Codes (Theory and Checker Design); Parity
+        Codes (Theory and Checker Design); m-out-of-n Codes (Theory and Checker Design)
+
+        - Recovery Techniques: Roll Back and Retry; Reconfiguration
+
+        - Error Correcting Codes: Introduction to Linear Parity Check Codes; Single
+        Error Correction Hamming Codes; Single Error Correction/Double Error Detection
+        Hsiao Codes; Encoding and Decoding Circuits
+
+
+        The course includes practice sessions in laboratories on:
+
+
+        - Electrical level simulations of resistive bridging faults, crosstalk faults
+        and transient faults, and analysis of their effects in some circuits of interest
+
+        - Design of basic components usually employed in high reliability systems
+        and their prototyping by means of FPGA'
+      Readings/Bibliography: 'J. Segura C. F. Hawkins, “CMOS Electronics – How It
+        Works, How It Fails” IEEE Press – Wiley, 2004.
+
+
+        M. L. Bushnell, V. D. Agrawal, “Essential of Electronic Testing”, Kluwer Academic
+        Publishers, 2000
+
+
+        M. Abramovici, M. A. Bruer, A. D. Friedman, “Digital Systems Testing and Testable
+        Design”, Computer Science Press, 1990
+
+
+        S. Mourad, Y. Zorian, “Principles of Testing Electronic Systems”, Essential
+        of Electronic Testing”,Wiley, 2000
+
+
+        N. K. Jha, S. Kundu, “Testing and Reliable Design of CMOS Circuits”, Kluwer
+        Academic Publishers, 1990
+
+
+        P. K. Lala, “Self-Checking and Fault Tolerant Digital Design”, Morgan Caufmann
+        Publ, 2001'
+      Teaching methods: Lessons in classroom and computer exercises performed in laboratory.
+      Assessment methods: Oral examination. Questions will cover any topic addressed
+        in class and in the laboratory. Specific questions may follow aimed at verifying
+        the understanding of specific issues inherent to the topics covered in the
+        course. The final grade will be formulated based on the answers provided to
+        the asked questions.
+      Teaching tools: PC, projector, Power Point slides.
+      Office hours: 'See the website of Cecilia Metra (https://www.unibo.it/sitoweb/cecilia.metra/en)
+
+
+        See the website of Martin Eugenio Omana (https://www.unibo.it/sitoweb/martin.omana/en)'

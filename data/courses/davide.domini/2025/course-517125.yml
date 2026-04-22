@@ -1,0 +1,763 @@
+year: 2025
+url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/517125
+credits: 6
+ssd: ING-INF/05
+language: English
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2026-03-03
+  to: 2026-06-04
+teacher:
+  id: '121200'
+  name: Domini, Davide
+  email: davide.domini@unibo.it
+  website: https://www.unibo.it/sitoweb/davide.domini
+course_title:
+  id: '95627'
+  name: SOFTWARE ENGINEERING
+  details: 6 cfu
+integrated_course: ''
+campus: Cesena
+programme: Laurea Magistrale in Digital Transformation Management
+syllabus:
+  it:
+    url: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/517125
+    title: 2025/2026 SOFTWARE ENGINEERING — Università di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: "Students will get acquainted with basic\
+        \ aspects of the following topics:\n\n- service-oriented architectures, API,\
+        \ microservices: principles, technologies, enterprise viewpoint\n- cloud computing:\
+        \ principles, technologies, enterprise viewpoint\n- agile development: principles\
+        \ and methodologies, the role of testing, the case of SCRUM\n- devops: DVCS,\
+        \ agile project management tools, continuous development/integration/delivery\n\
+        - intelligent systems: definitions, problems, applications\n- multi-agent\
+        \ systems for the engineering of intelligent systems:\n  models, technologies,\
+        \ methodologies"
+      Contenuti: '1. Introduction to software engineering
+
+
+        - Basic definitions and concepts (computer science, algorithm, software, software
+        engineering, etc.)
+
+        - Role of software (engineering) in digital transformation
+
+        - Software engineering phases
+
+        - Software engineering methodologies (waterfall, agile, etc.)
+
+
+        1. Recap of relevant background notions for software development (examples
+        in Python)
+
+
+        - Command-line interface, shells, terminals, and related aspects
+
+        - Programs, processes, and commands
+
+        - Code and project structure for software projects
+
+        - Runtime, libraries, dependencies, package managers
+
+        - Compiled vs interpreted languages
+
+        - Basic principles: decomposition, modularity, abstraction, separation of
+        concerns
+
+        - Interfaces: graphical user interfaces (GUIs), command-line interfaces (CLIs),
+        application programming interfaces (APIs)
+
+
+        1. Decentralized version control (with Git) and team organization
+
+
+        - (Distributed) Version control systems, history and motivation
+
+        - Git basics: repositories, working trees, commits and commit references,
+        branches, checkouts, merges
+
+        - Git operations with the command line
+
+        - Git configuration, .gitignore, and .gitattributes
+
+        - Criteria and best practices for committing
+
+        - The role of GitHub (and the alike) in distributed version control
+
+        - GitHub notions: forks, pull requests, issues, wikis, organizations
+
+        - Remote operations with git: pushing, pulling, fetching, merging
+
+        - Teamwork with git: handling conflicts and divergent histories, branching
+        strategies, etc.
+
+
+        1. Object-oriented programming (OOP), in Python
+
+
+        - Key differences among programming paradigms
+
+        - Motivations for object-oriented programming
+
+        - Key principles and ingredients of OOP (classes, objects, fields, methods,
+        etc.)
+
+        - Information hiding and encapsulation, APIs, visibility
+
+        - Equality vs identity, hashing, and (im)mutability
+
+        - String representation, formatting, and interpolation
+
+        - Advanced aspects: operator overloading, inheritance, polymorphism, static
+        vs. instance attributes
+
+
+        1. Software Modelling with UML (and PlantUML)
+
+
+        - Modelling in science and engineering
+
+        - Many kinds of models in computer science
+
+        - Modelling software with UML
+
+        - Details about UML diagrams: class, sequence, activity, state, component,
+        deployment, and use-case diagrams
+
+        - PlantUML for generating UML diagrams
+
+
+        1. Quality-assurance (QA), automated testing, test-driven development (TDD)
+
+
+        - Definitions of quality for software projects
+
+        - Types of testing: automated vs. manual, unit vs. integration vs. system
+        testing, acceptance testing
+
+        - Testing frameworks and tools (e.g., pytest, unittest ), and how to automatize
+        test suites in Python
+
+        - Purposes of testing: canaries to avoid regression, verification, specification,
+        etc.
+
+        - The test-driven development (TDD) approach
+
+        - Key notions: technical debt, code coverage, and how to deal with them
+
+        - Static analysis: linters, type checkers, etc.
+
+
+        1. Build automation, packaging, and release (examples with Poetry)
+
+
+        - Build life-cycle and the role of build automation
+
+        - Build tools in the Python ecosystem (pip, venv, Poetry, etc.)
+
+        - Basic concepts of Poetry: metadata and dependencies declaration (pyproject.toml
+        ), etc.
+
+        - Packaging and distributing Python projects with Poetry on PyPI and the alike
+
+
+        1. Versioning, Conventional Commit
+
+
+        - Versioning and most common versioning schemas in the real world
+
+        - Semantic versioning (SemVer) and its relationship with API stability
+
+        - Conventional-commit specification and its role in versioning via DVCS
+
+
+        1. Overview on Distributed Systems Engineering
+
+
+        - Definitions of distributed systems, and their key characteristics
+
+        - Examples of real-world distributed systems
+
+        - Impact of distribution on the software engineering process
+
+        - Distributed infrastructures, infrastructural components, interaction patterns,
+        and protocols
+
+        - Distributed architectures, with a focus on layered and hexagonal ones
+
+        - Basic mechanisms for distributed systems: overview
+
+
+        1. WebServices and RESTful APIs
+
+
+        - Definitions of "web services" and their role modern internet applications
+
+        - RESTful APIs: principles, constraints, and best practices
+
+        - Technological overview: HTML, HTTP, JSON, JavaScript, etc.
+
+        - Designing and documenting RESTful APIs (e.g., OpenAPI/Swagger)
+
+        - Implementing RESTful APIs in Python
+
+
+        1. Domain Driven Design (DDD)
+
+
+        - Main notions: domain, context, model, ubiquitous language, etc.
+
+        - DDD philosophy and how to apply it
+
+        - DDD building blocks: entities, value objects, aggregates, repositories,
+        services, factories, etc.
+
+        - DDD patterns: bounded contexts, anti-corruption layers, domain events, etc.
+
+
+        1. Continuous integration (examples with GitHub Actions, GHA)
+
+
+        - Integration in software engineering: activities involved
+
+        - Integration hell: the risks of manual, late, or infrequent integrations
+
+        - Continuous integration concepts: how to make integration continuous
+
+        - Tools for continuous integration: GHA, and the alike; common concepts different
+        names
+
+        - Abstract CI pipeline design
+
+        - Trivial to complex examples in GHA
+
+        - Matrix build for fine-grained testing in GHA
+
+        - Automating release and versioning with GHA + Conventional-commit
+
+        - The role of secrets in CI/CD pipelines
+
+
+        1. Software Licensing
+
+
+        - What is a (software) licence, and why it is needed
+
+        - Copyright vs. copyleft
+
+        - Ownership vs. licensing
+
+        - Proprietary vs. free software
+
+        - Free as in speech vs. free as in beer
+
+        - Common software licences: MIT, Apache, GPL, etc.
+
+        - Criteria and practices for choosing and applying software licences'
+      Testi/Bibliografia: "1. Introduction to software engineering\n\n- Books:\n \
+        \ \n  - Software Engineering: A Practitioner’s Approach by Roger S. Pressman\n\
+        \  - Software Engineering by Ian Sommerville\n  - The Mythical Man-Month:\
+        \ Essays on Software Engineering by Frederick P. Brooks Jr.\n- Essays/Articles:\n\
+        \  \n  - “No Silver Bullet—Essence and Accident in Software Engineering” [https://www.cs.unc.edu/techreports/86-020.pdf]]\
+        \ by Fred Brooks (seminal paper)\n\n1. Background notions for software development\
+        \ (Python)\n\n- Books:\n  \n  - The Pragmatic Programmer: Your Journey to\
+        \ Mastery by Andrew Hunt & David Thomas (includes software design and development\
+        \ principles)\n  - Clean Code: A Handbook of Agile Software Craftsmanship\
+        \ by Robert C. Martin\n- Articles & Documentation:\n  \n  - “The Twelve-Factor\
+        \ App” [https://12factor.net/] – methodology on best practices for modern\
+        \ software\n  - Python official documentation [https://docs.python.org/3/]\
+        \ (reference sections on environment management, packages, modules, etc.)\n\
+        \n1. Decentralized version control (Git)\n\n- Books:\n  \n  - Pro Git by Scott\
+        \ Chacon & Ben Straub (freely available online here [https://git-scm.com/book/en/v2]\
+        \ )\n  - Version Control with Git by Jon Loeliger\n- Online Resources:\n \
+        \ \n  - GitHub Guides [https://guides.github.com/]\n\n1. Object-oriented programming\
+        \ (Python)\n\n- Books:\n  \n  - Python Object-Oriented Programming by Steven\
+        \ F. Lott & Dusty Phillips\n  - Design Patterns: Elements of Reusable Object-Oriented\
+        \ Software by Erich Gamma et al. (Gang of Four, classic patterns)\n  - Effective\
+        \ Python: 90 Specific Ways to Write Better Python by Brett Slatkin\n  - Clean\
+        \ Architecture: A Craftsman’s Guide to Software Structure and Design by Robert\
+        \ C. Martin\n- Essays:\n  \n  - “SOLID Principles” [http://principles-wiki.net/collections:robert_c._martin_s_principle_collection]\
+        \ by Robert C. Martin (aka Uncle Bob, various summaries available online)\n\
+        \  - “SOLID Principles: Improve Object-Oriented Design in Python” [https://realpython.com/solid-principles-python/]\
+        \ by Leodanis Pozo Ramos\n\n1. Software Modelling with UML\n\n- Books:\n \
+        \ \n  - UML Distilled: A Brief Guide to the Standard Object Modeling Language\
+        \ by Martin Fowler\n  - Applying UML and Patterns by Craig Larman\n- Online\
+        \ Resources:\n  \n  - PlantUML documentation [https://plantuml.com/]\n  -\
+        \ UML Reference [https://www.uml.org/] (OMG standard)\n\n1. Quality-assurance\
+        \ (QA), automated testing, TDD\n\n- Books:\n  \n  - Test-Driven Development:\
+        \ By Example by Kent Beck\n  - The Art of Software Testing by Glenford J.\
+        \ Myers, Corey Sandler, and Tom Badgett\n  - xUnit Test Patterns: Refactoring\
+        \ Test Code by Gerard Meszaros\n- Articles:\n  \n  - “What is Unit Testing?”\
+        \ [https://martinfowler.com/bliki/UnitTest.html] by Martin Fowler\n  - “Continuous\
+        \ Delivery” [https://martinfowler.com/bliki/ContinuousDelivery.html] article\
+        \ by Martin Fowler\n\n1. Build automation, packaging, and release\n\n- Books:\n\
+        \  \n  - Continuous Delivery: Reliable Software Releases through Build, Test,\
+        \ and Deployment Automation by Jez Humble & David Farley\n- Articles/Documentation:\n\
+        \  \n  - Poetry documentation [https://python-poetry.org/docs/]\n\n1. Versioning,\
+        \ Conventional Commit\n\n- Specifications & Articles:\n  \n  - Semantic Versioning\
+        \ [https://semver.org/] (SemVer)\n  - Conventional Commits [https://www.conventionalcommits.org/]\
+        \ Specification\n\n1. Overview on Distributed Systems Engineering\n\n- Books:\n\
+        \  \n  - Designing Data-Intensive Applications by Martin Kleppmann (highly\
+        \ recommended)\n  - Distributed Systems: Principles and Paradigms by Andrew\
+        \ Tanenbaum and Maarten van Steen (freely available online [https://www.distributed-systems.net/]\
+        \ )\n- Essays/Articles:\n  \n  - “Fallacies of Distributed Computing” [https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing]\
+        \ by Peter Deutsch and James Gosling (classic brief essay)\n  - “CAP Theorem”\
+        \ [https://www.infoq.com/articles/cap-twelve-years-later-how-the-rules-have-changed/]\
+        \ by Eric Brewer\n\n1. WebServices and RESTful APIs\n\n- Books:\n  \n  - RESTful\
+        \ Web APIs by Leonard Richardson, Mike Amundsen, and Sam Ruby\n- Articles:\n\
+        \  \n  - “Architectural Styles and the Design of Network-based Software Architectures”\
+        \ [https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm] (REST dissertation)\
+        \ by Roy Fielding (seminal)\n\n1. Domain Driven Design (DDD)\n\n- Books:\n\
+        \  \n  - Domain-Driven Design: Tackling Complexity in the Heart of Software\
+        \ by Eric Evans (the original, foundational text)\n  - Implementing Domain-Driven\
+        \ Design by Vaughn Vernon\n- Essays/Articles:\n  \n  - “Domain Driven Design\
+        \ Reference” [https://martinfowler.com/tags/domain%20driven%20design.html]\
+        \ by Martin Fowler (collection of short articles)\n  - “Ubiquitous Language”\
+        \ [https://martinfowler.com/bliki/UbiquitousLanguage.html] by Martin Fowler\n\
+        \n1. Continuous Integration\n\n- Books:\n  \n  - Continuous Integration: Improving\
+        \ Software Quality and Reducing Risk by Paul M. Duvall, Steve Matyas, Andrew\
+        \ Glover\n  - Continuous Delivery: Reliable Software Releases through Build,\
+        \ Test, and Deployment Automation by Jez Humble & David Farley\n- Online Documentation:\n\
+        \  \n  - GitHub Actions official documentation [https://docs.github.com/en/actions]\n\
+        \n1. Software Licensing\n\n- Books & Essays:\n  \n  - Understanding Open Source\
+        \ and Free Software Licensing by Andrew M. St. Laurent\n  - “The Cathedral\
+        \ and the Bazaar” [http://www.catb.org/esr/writings/cathedral-bazaar/] by\
+        \ Eric S. Raymond (classic essay on OSS culture, partially covers licenses)\n\
+        - Online Resources:\n  \n  - Open Source Initiative: Licenses and Standards\
+        \ [https://opensource.org/licenses]\n  - Choose a License [https://choosealicense.com/]\n\
+        \nAdditional useful general software engineering resources:\n\n- Websites\
+        \ & Blogs:\n  \n  - Martin Fowler’s blog [https://martinfowler.com/] : insights\
+        \ on software design, architecture, and development practices\n  - Joel on\
+        \ Software [https://www.joelonsoftware.com/] : insights on software development\
+        \ and management\n  - ThoughtWorks Technology Radar [https://www.thoughtworks.com/radar]\
+        \ : a report on emerging technologies and practices in software development\n\
+        \  - The Missing Semester of Your CS Education [https://missing.csail.mit.edu/]\
+        \ : MIT notes on practical software engineering skills"
+      Metodi didattici: Lectures and hands-on practical sessions in the lab. Lectures
+        will be face-to-face, yet the whole course will be recorded and access to
+        recording may be granted to students upon request, in case specific needs
+        arise.
+      Modalità di verifica e valutazione dell'apprendimento: 'The exam consists of
+        a mandatory written test and an optional project work, with final grading
+        given by the sum of the two scores capped at 30/30: the written test assesses
+        theoretical knowledge, is mandatory, and contributes up to 27/30, while the
+        optional project work assesses practical skills and contributes up to 6/30.
+
+
+        About the written test
+
+
+        The written test is a closed-book, in-presence exam with open-ended questions
+        concerning the topics of the course, no internet access, a fixed time limit,
+        and strict anti-cheating rules; it is offered six times per academic year,
+        roughly four in the summer session and two in the winter session, with exact
+        dates and locations published on AlmaEsami, where registration is mandatory,
+        non-negotiable, and subject to limited seating. The exam is normally conducted
+        on university computers, with paper as a fallback, in case of technical issues.
+
+
+        Unsuccessful or unsatisfactory attempts can be retried in later calls, and
+        completing an attempt without renouncing overwrites any previous result.
+
+
+        Once a passing grade of at least 18/30 is obtained in the written test, students
+        may either accept and finalize the exam without the project or proceed with
+        the project and postpone finalization.
+
+
+        Remark: the list of potential questions for the written exam is provided as
+        part of the slides of the course.
+
+
+        About the project work
+
+
+        The project work, although optional, is strongly recommended and may be carried
+        out individually or in stable groups of up to three students declared in advance;
+        it involves developing a software artifact, writing an English report covering
+        the full software engineering process taught in the course, and presenting
+        and discussing the work with the teacher in an oral session arranged by appointment,
+        with evaluation based on both process and outcome.
+
+
+        Remark: further rules apply for tracking/negotiating project work activities.
+        Details will be provided in the slides of the course.
+
+
+        Template for project report: https://github.com/unibo-dtm-se/template-project-work
+
+
+        Template for software project: https://github.com/unibo-dtm-se/template-python-project'
+      Strumenti a supporto della didattica: During the term of the lectures, material
+        (both slides and lab exercises) will be available on Virtuale.
+      Link ad altre eventuali informazioni: https://github.com/unibo-dtm-se/
+      Orario di ricevimento: Consulta il sito web di Giovanni Ciatto (https://www.unibo.it/sitoweb/giovanni.ciatto)
+  en:
+    url: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/517125
+    title: 2025/2026 Software Engineering — University of Bologna
+    contents:
+      Learning outcomes: "Students will get acquainted with basic aspects of the following\
+        \ topics:\n\n- service-oriented architectures, API, microservices: principles,\
+        \ technologies, enterprise viewpoint\n- cloud computing: principles, technologies,\
+        \ enterprise viewpoint\n- agile development: principles and methodologies,\
+        \ the role of testing, the case of SCRUM\n- devops: DVCS, agile project management\
+        \ tools, continuous development/integration/delivery\n- intelligent systems:\
+        \ definitions, problems, applications\n- multi-agent systems for the engineering\
+        \ of intelligent systems:\n  models, technologies, methodologies"
+      Course contents: '1. Introduction to software engineering
+
+
+        - Basic definitions and concepts (computer science, algorithm, software, software
+        engineering, etc.)
+
+        - Role of software (engineering) in digital transformation
+
+        - Software engineering phases
+
+        - Software engineering methodologies (waterfall, agile, etc.)
+
+
+        1. Recap of relevant background notions for software development (examples
+        in Python)
+
+
+        - Command-line interface, shells, terminals, and related aspects
+
+        - Programs, processes, and commands
+
+        - Code and project structure for software projects
+
+        - Runtime, libraries, dependencies, package managers
+
+        - Compiled vs interpreted languages
+
+        - Basic principles: decomposition, modularity, abstraction, separation of
+        concerns
+
+        - Interfaces: graphical user interfaces (GUIs), command-line interfaces (CLIs),
+        application programming interfaces (APIs)
+
+
+        1. Decentralized version control (with Git) and team organization
+
+
+        - (Distributed) Version control systems, history and motivation
+
+        - Git basics: repositories, working trees, commits and commit references,
+        branches, checkouts, merges
+
+        - Git operations with the command line
+
+        - Git configuration, .gitignore, and .gitattributes
+
+        - Criteria and best practices for committing
+
+        - The role of GitHub (and the alike) in distributed version control
+
+        - GitHub notions: forks, pull requests, issues, wikis, organizations
+
+        - Remote operations with git: pushing, pulling, fetching, merging
+
+        - Teamwork with git: handling conflicts and divergent histories, branching
+        strategies, etc.
+
+
+        1. Object-oriented programming (OOP), in Python
+
+
+        - Key differences among programming paradigms
+
+        - Motivations for object-oriented programming
+
+        - Key principles and ingredients of OOP (classes, objects, fields, methods,
+        etc.)
+
+        - Information hiding and encapsulation, APIs, visibility
+
+        - Equality vs identity, hashing, and (im)mutability
+
+        - String representation, formatting, and interpolation
+
+        - Advanced aspects: operator overloading, inheritance, polymorphism, static
+        vs. instance attributes
+
+
+        1. Software Modelling with UML (and PlantUML)
+
+
+        - Modelling in science and engineering
+
+        - Many kinds of models in computer science
+
+        - Modelling software with UML
+
+        - Details about UML diagrams: class, sequence, activity, state, component,
+        deployment, and use-case diagrams
+
+        - PlantUML for generating UML diagrams
+
+
+        1. Quality-assurance (QA), automated testing, test-driven development (TDD)
+
+
+        - Definitions of quality for software projects
+
+        - Types of testing: automated vs. manual, unit vs. integration vs. system
+        testing, acceptance testing
+
+        - Testing frameworks and tools (e.g., pytest, unittest ), and how to automatize
+        test suites in Python
+
+        - Purposes of testing: canaries to avoid regression, verification, specification,
+        etc.
+
+        - The test-driven development (TDD) approach
+
+        - Key notions: technical debt, code coverage, and how to deal with them
+
+        - Static analysis: linters, type checkers, etc.
+
+
+        1. Build automation, packaging, and release (examples with Poetry)
+
+
+        - Build life-cycle and the role of build automation
+
+        - Build tools in the Python ecosystem (pip, venv, Poetry, etc.)
+
+        - Basic concepts of Poetry: metadata and dependencies declaration (pyproject.toml
+        ), etc.
+
+        - Packaging and distributing Python projects with Poetry on PyPI and the alike
+
+
+        1. Versioning, Conventional Commit
+
+
+        - Versioning and most common versioning schemas in the real world
+
+        - Semantic versioning (SemVer) and its relationship with API stability
+
+        - Conventional-commit specification and its role in versioning via DVCS
+
+
+        1. Overview on Distributed Systems Engineering
+
+
+        - Definitions of distributed systems, and their key characteristics
+
+        - Examples of real-world distributed systems
+
+        - Impact of distribution on the software engineering process
+
+        - Distributed infrastructures, infrastructural components, interaction patterns,
+        and protocols
+
+        - Distributed architectures, with a focus on layered and hexagonal ones
+
+        - Basic mechanisms for distributed systems: overview
+
+
+        1. WebServices and RESTful APIs
+
+
+        - Definitions of "web services" and their role modern internet applications
+
+        - RESTful APIs: principles, constraints, and best practices
+
+        - Technological overview: HTML, HTTP, JSON, JavaScript, etc.
+
+        - Designing and documenting RESTful APIs (e.g., OpenAPI/Swagger)
+
+        - Implementing RESTful APIs in Python
+
+
+        1. Domain Driven Design (DDD)
+
+
+        - Main notions: domain, context, model, ubiquitous language, etc.
+
+        - DDD philosophy and how to apply it
+
+        - DDD building blocks: entities, value objects, aggregates, repositories,
+        services, factories, etc.
+
+        - DDD patterns: bounded contexts, anti-corruption layers, domain events, etc.
+
+
+        1. Continuous integration (examples with GitHub Actions, GHA)
+
+
+        - Integration in software engineering: activities involved
+
+        - Integration hell: the risks of manual, late, or infrequent integrations
+
+        - Continuous integration concepts: how to make integration continuous
+
+        - Tools for continuous integration: GHA, and the alike; common concepts different
+        names
+
+        - Abstract CI pipeline design
+
+        - Trivial to complex examples in GHA
+
+        - Matrix build for fine-grained testing in GHA
+
+        - Automating release and versioning with GHA + Conventional-commit
+
+        - The role of secrets in CI/CD pipelines
+
+
+        1. Software Licensing
+
+
+        - What is a (software) licence, and why it is needed
+
+        - Copyright vs. copyleft
+
+        - Ownership vs. licensing
+
+        - Proprietary vs. free software
+
+        - Free as in speech vs. free as in beer
+
+        - Common software licences: MIT, Apache, GPL, etc.
+
+        - Criteria and practices for choosing and applying software licences'
+      Readings/Bibliography: "1. Introduction to software engineering\n\n- Books:\n\
+        \  \n  - Software Engineering: A Practitioner’s Approach by Roger S. Pressman\n\
+        \  - Software Engineering by Ian Sommerville\n  - The Mythical Man-Month:\
+        \ Essays on Software Engineering by Frederick P. Brooks Jr.\n- Essays/Articles:\n\
+        \  \n  - “No Silver Bullet—Essence and Accident in Software Engineering” [https://www.cs.unc.edu/techreports/86-020.pdf]]\
+        \ by Fred Brooks (seminal paper)\n\n1. Background notions for software development\
+        \ (Python)\n\n- Books:\n  \n  - The Pragmatic Programmer: Your Journey to\
+        \ Mastery by Andrew Hunt & David Thomas (includes software design and development\
+        \ principles)\n  - Clean Code: A Handbook of Agile Software Craftsmanship\
+        \ by Robert C. Martin\n- Articles & Documentation:\n  \n  - “The Twelve-Factor\
+        \ App” [https://12factor.net/] – methodology on best practices for modern\
+        \ software\n  - Python official documentation [https://docs.python.org/3/]\
+        \ (reference sections on environment management, packages, modules, etc.)\n\
+        \n1. Decentralized version control (Git)\n\n- Books:\n  \n  - Pro Git by Scott\
+        \ Chacon & Ben Straub (freely available online here [https://git-scm.com/book/en/v2]\
+        \ )\n  - Version Control with Git by Jon Loeliger\n- Online Resources:\n \
+        \ \n  - GitHub Guides [https://guides.github.com/]\n\n1. Object-oriented programming\
+        \ (Python)\n\n- Books:\n  \n  - Python Object-Oriented Programming by Steven\
+        \ F. Lott & Dusty Phillips\n  - Design Patterns: Elements of Reusable Object-Oriented\
+        \ Software by Erich Gamma et al. (Gang of Four, classic patterns)\n  - Effective\
+        \ Python: 90 Specific Ways to Write Better Python by Brett Slatkin\n  - Clean\
+        \ Architecture: A Craftsman’s Guide to Software Structure and Design by Robert\
+        \ C. Martin\n- Essays:\n  \n  - “SOLID Principles” [http://principles-wiki.net/collections:robert_c._martin_s_principle_collection]\
+        \ by Robert C. Martin (aka Uncle Bob, various summaries available online)\n\
+        \  - “SOLID Principles: Improve Object-Oriented Design in Python” [https://realpython.com/solid-principles-python/]\
+        \ by Leodanis Pozo Ramos\n\n1. Software Modelling with UML\n\n- Books:\n \
+        \ \n  - UML Distilled: A Brief Guide to the Standard Object Modeling Language\
+        \ by Martin Fowler\n  - Applying UML and Patterns by Craig Larman\n- Online\
+        \ Resources:\n  \n  - PlantUML documentation [https://plantuml.com/]\n  -\
+        \ UML Reference [https://www.uml.org/] (OMG standard)\n\n1. Quality-assurance\
+        \ (QA), automated testing, TDD\n\n- Books:\n  \n  - Test-Driven Development:\
+        \ By Example by Kent Beck\n  - The Art of Software Testing by Glenford J.\
+        \ Myers, Corey Sandler, and Tom Badgett\n  - xUnit Test Patterns: Refactoring\
+        \ Test Code by Gerard Meszaros\n- Articles:\n  \n  - “What is Unit Testing?”\
+        \ [https://martinfowler.com/bliki/UnitTest.html] by Martin Fowler\n  - “Continuous\
+        \ Delivery” [https://martinfowler.com/bliki/ContinuousDelivery.html] article\
+        \ by Martin Fowler\n\n1. Build automation, packaging, and release\n\n- Books:\n\
+        \  \n  - Continuous Delivery: Reliable Software Releases through Build, Test,\
+        \ and Deployment Automation by Jez Humble & David Farley\n- Articles/Documentation:\n\
+        \  \n  - Poetry documentation [https://python-poetry.org/docs/]\n\n1. Versioning,\
+        \ Conventional Commit\n\n- Specifications & Articles:\n  \n  - Semantic Versioning\
+        \ [https://semver.org/] (SemVer)\n  - Conventional Commits [https://www.conventionalcommits.org/]\
+        \ Specification\n\n1. Overview on Distributed Systems Engineering\n\n- Books:\n\
+        \  \n  - Designing Data-Intensive Applications by Martin Kleppmann (highly\
+        \ recommended)\n  - Distributed Systems: Principles and Paradigms by Andrew\
+        \ Tanenbaum and Maarten van Steen (freely available online [https://www.distributed-systems.net/]\
+        \ )\n- Essays/Articles:\n  \n  - “Fallacies of Distributed Computing” [https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing]\
+        \ by Peter Deutsch and James Gosling (classic brief essay)\n  - “CAP Theorem”\
+        \ [https://www.infoq.com/articles/cap-twelve-years-later-how-the-rules-have-changed/]\
+        \ by Eric Brewer\n\n1. WebServices and RESTful APIs\n\n- Books:\n  \n  - RESTful\
+        \ Web APIs by Leonard Richardson, Mike Amundsen, and Sam Ruby\n- Articles:\n\
+        \  \n  - “Architectural Styles and the Design of Network-based Software Architectures”\
+        \ [https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm] (REST dissertation)\
+        \ by Roy Fielding (seminal)\n\n1. Domain Driven Design (DDD)\n\n- Books:\n\
+        \  \n  - Domain-Driven Design: Tackling Complexity in the Heart of Software\
+        \ by Eric Evans (the original, foundational text)\n  - Implementing Domain-Driven\
+        \ Design by Vaughn Vernon\n- Essays/Articles:\n  \n  - “Domain Driven Design\
+        \ Reference” [https://martinfowler.com/tags/domain%20driven%20design.html]\
+        \ by Martin Fowler (collection of short articles)\n  - “Ubiquitous Language”\
+        \ [https://martinfowler.com/bliki/UbiquitousLanguage.html] by Martin Fowler\n\
+        \n1. Continuous Integration\n\n- Books:\n  \n  - Continuous Integration: Improving\
+        \ Software Quality and Reducing Risk by Paul M. Duvall, Steve Matyas, Andrew\
+        \ Glover\n  - Continuous Delivery: Reliable Software Releases through Build,\
+        \ Test, and Deployment Automation by Jez Humble & David Farley\n- Online Documentation:\n\
+        \  \n  - GitHub Actions official documentation [https://docs.github.com/en/actions]\n\
+        \n1. Software Licensing\n\n- Books & Essays:\n  \n  - Understanding Open Source\
+        \ and Free Software Licensing by Andrew M. St. Laurent\n  - “The Cathedral\
+        \ and the Bazaar” [http://www.catb.org/esr/writings/cathedral-bazaar/] by\
+        \ Eric S. Raymond (classic essay on OSS culture, partially covers licenses)\n\
+        - Online Resources:\n  \n  - Open Source Initiative: Licenses and Standards\
+        \ [https://opensource.org/licenses]\n  - Choose a License [https://choosealicense.com/]\n\
+        \nAdditional useful general software engineering resources:\n\n- Websites\
+        \ & Blogs:\n  \n  - Martin Fowler’s blog [https://martinfowler.com/] : insights\
+        \ on software design, architecture, and development practices\n  - Joel on\
+        \ Software [https://www.joelonsoftware.com/] : insights on software development\
+        \ and management\n  - ThoughtWorks Technology Radar [https://www.thoughtworks.com/radar]\
+        \ : a report on emerging technologies and practices in software development\n\
+        \  - The Missing Semester of Your CS Education [https://missing.csail.mit.edu/]\
+        \ : MIT notes on practical software engineering skills"
+      Teaching methods: Lectures and hands-on practical sessions in the lab. Lectures
+        will be face-to-face, yet the whole course will be recorded and access to
+        recording may be granted to students upon request, in case specific needs
+        arise.
+      Assessment methods: 'The exam consists of a mandatory written test and an optional
+        project work, with final grading given by the sum of the two scores capped
+        at 30/30: the written test assesses theoretical knowledge, is mandatory, and
+        contributes up to 27/30, while the optional project work assesses practical
+        skills and contributes up to 6/30.
+
+
+        About the written test
+
+
+        The written test is a closed-book, in-presence exam with open-ended questions
+        concerning the topics of the course, no internet access, a fixed time limit,
+        and strict anti-cheating rules; it is offered six times per academic year,
+        roughly four in the summer session and two in the winter session, with exact
+        dates and locations published on AlmaEsami, where registration is mandatory,
+        non-negotiable, and subject to limited seating. The exam is normally conducted
+        on university computers, with paper as a fallback, in case of technical issues.
+
+
+        Unsuccessful or unsatisfactory attempts can be retried in later calls, and
+        completing an attempt without renouncing overwrites any previous result.
+
+
+        Once a passing grade of at least 18/30 is obtained in the written test, students
+        may either accept and finalize the exam without the project or proceed with
+        the project and postpone finalization.
+
+
+        Remark: the list of potential questions for the written exam is provided as
+        part of the slides of the course.
+
+
+        About the project work
+
+
+        The project work, although optional, is strongly recommended and may be carried
+        out individually or in stable groups of up to three students declared in advance;
+        it involves developing a software artifact, writing an English report covering
+        the full software engineering process taught in the course, and presenting
+        and discussing the work with the teacher in an oral session arranged by appointment,
+        with evaluation based on both process and outcome.
+
+
+        Remark: further rules apply for tracking/negotiating project work activities.
+        Details will be provided in the slides of the course.
+
+
+        Template for project report: https://github.com/unibo-dtm-se/template-project-work
+
+
+        Template for software project: https://github.com/unibo-dtm-se/template-python-project'
+      Teaching tools: During the term of the lectures, material (both slides and lab
+        exercises) will be available on Virtuale.
+      Links to further information: https://github.com/unibo-dtm-se/
+      Office hours: See the website of Giovanni Ciatto (https://www.unibo.it/sitoweb/giovanni.ciatto/en)

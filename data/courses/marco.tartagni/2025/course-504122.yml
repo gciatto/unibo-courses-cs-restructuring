@@ -1,0 +1,535 @@
+year: 2025
+url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/504122
+credits: 6
+ssd: ING-INF/05
+language: English
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2025-09-23
+  to: 2025-12-17
+teacher:
+  id: '30933'
+  name: Tartagni, Marco
+  email: marco.tartagni@unibo.it
+  website: https://www.unibo.it/sitoweb/marco.tartagni
+course_title:
+  id: B5722
+  name: EMBEDDED SENSORS
+  details: 6 cfu
+integrated_course: ''
+campus: Cesena
+programme: Laurea Magistrale in Ingegneria e scienze informatiche Laurea Magistrale
+  in Ingegneria e scienze informatiche
+syllabus:
+  it:
+    url: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/504122
+    title: 2025/2026 EMBEDDED SENSORS — Università di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: Al termine del corso, lo studente matura
+        le conoscenze per la comprensione e l'utilizzo di sensori elettronici. In
+        particolare, lo studente impara a analizzare i principali problemi della sensoristica
+        e ad interpretare i dati provenienti dai sensori per la successiva elaborazione
+        dell'informazione. Mediante esempi di progettazione concreti, gli strumenti
+        sono focalizzati all'esigenza di un continuo sviluppo tecnologico in grado
+        di soddisfare le crescenti esigenze della progettazione nel campo dell'informatica
+        e delle infrastrutture ICT. Successivamente lo studente sara' in grado di
+        apprendere le principali tecniche di implementazione dei sensori coniugando
+        le conoscenze dei sistemi informatici pregresse con alcuni concetti di progettazione
+        elettronica che saranno introdotti nel corso.
+      Contenuti: 'PART I (6 CFU)
+
+
+        Program for:
+
+
+        - SENSORI INTELLIGENTI [Laurea Magistrale in Ingegneria Elettronica e dell''Informazione]
+
+        - SENSORS & NANOTECHNOLOGY [Laurea Magistrale in Biomedical Engineering]
+
+        - EMBEDDED SENSORS [Laurea Magistrale in Ingegneria e Scienze Informatiche]
+
+
+        The goal of Part I is to give students fundamental know-how in sensor system
+        design, approached from the perspective of behavioral building blocks and
+        their technological implementation.
+
+
+        FUNDAMENTALS
+
+
+        · Introduction of the course, example of research.
+
+
+        · Fundamentals on sensors. Signals and information. Sensor as an information
+        classifier. Interface, raw data and signal processing (Machine Learning).
+
+
+        · Basics on measurements. Characterization and operating mode. The concept
+        of distributions and estimation. DC measurements. Digits and full-scale. Random
+        and systematic errors. Introduction to the resolution, precision and accuracy
+        concepts. The role of time and AC measurements. Power spectral distributions.
+
+
+        · Ideal sensor modeling. Interface as a black-box. The quasi-static function
+        and its limits. The concept of sensitivity. Time and space quantization, the
+        A/D converter. Acquisition chains and gain plots. Signal bandwidth.
+
+
+        · Recall of mathematical tools. Random signals, power and correlations. Random
+        and ergodic processes.
+
+
+        · Non-ideal sensor modeling. The resolution/uncertainty duality. The law of
+        propagation of errors.
+
+
+        · Comparing signal with noise. The concept of minimum detectable signal. The
+        signal-to-noise ratio and the dynamic range. Systematic error modeling.
+
+
+        · The quantization process. The concepts of number of resolution levels and
+        effective number of bits. Relationship with Information Theory. Resolution
+        degradation in acquisition chains. Example of designs. The role of bandwidth,
+        oversampling and non-aliasing filters.
+
+
+        · Feedback sensor design with examples.
+
+
+        · Sensor trade-offs and example of design.
+
+
+        ELECTRONIC INTERFACE DESIGN
+
+
+        [This section is OPTIONAL and NOT REQUIRED for EMBEDDED SENSORS students]
+
+
+        · Introduction of noise in circuit design. PSD and noise density. Thermal
+        noise shot noise ad flicker noise. KTC noise. Superimposition of noise powers
+        in uncorrelated signals. Equivalent noise bandwidth. Noise in OPAMPs.
+
+
+        Resistance sensors with examples. Strain-gauges. RTDs e PRTs. Thermistors,
+        NTC e PTC. Magnetic sensors.
+
+
+        · Capacitive sensors. Kelvin guard ring. Charge amplifier. Differential capacitive
+        sensing. Capacitive accelerometers. Noise in charge amplifiers. Correlated
+        double sampling (CDS).
+
+
+        · Lock-in e chopper sensing. Complex impedance measurements by lock-in sensing.
+
+
+        · Introduction to optical sensors. The photodiode. Charge and voltage photodiode
+        readout in storage mode. Passive pixel CMOS sensors (PPS) and active pixel
+        (APS) sensors. APS with correlated doble sampling.
+
+
+        · Sensor networks.
+
+
+        SENSORS ECOSYSTEMS
+
+
+        [This section is OPTIONAL and NOT REQUIRED for SENSORI ELETT. INTELLIGENTI
+        students]
+
+
+        · Brief overview of embedded sensor networks. I2C and SPI.
+
+
+        · Brief overview of wireless sensor communications and networks.
+
+
+        TOWARDS MACHINE LEARNING EMBEDDED SENSORS
+
+
+        · The concept of predictive models. Measured vs. predicted measurements plots.
+
+
+        · Dealing with multiple variables: scatter plots and correlation matrix in
+        multivariate analysis.
+
+
+        · Reduction of variables using decomposition techniques. The PCA.
+
+
+        · Reduction to output values, introduction to the PLS technique
+
+
+        · Example of application: embedded spectral sensors
+
+
+        PART II (NANOTECHNOLOGY SECTION, 3 CFU)
+
+
+        Program for:
+
+
+        - SENSORS & NANOTECHNOLOGY [Laurea Magistrale in Biomedical Engineering]
+
+
+        Part II is offered exclusively to students in Biomedical Engineering and is
+        intended to introduce the physical foundations of biosensor transduction principles
+        at the micro- and nanoscale. These concepts will then be applied in the context
+        of protocols and instruments for biomedical laboratories. This part will also
+        include a hands-on laboratory experience at the end of the course.
+
+
+        · Photons, electrons and energetic interactions with matter. Fluorescence,
+        phosphorescence and Raman scattering. Photon-electron transduction. Black
+        body emission. Quantum efficiency and spectral sensitivity of transduction
+        in semiconductors. Responsivity.
+
+
+        · Basics of geometrical optics. Refraction and diffraction. Optical resolution
+        and its limits. Optical microscope. Basics of electron microscopy. Basics
+        of atomic force microscope (AFM).
+
+
+        · The origin of noise. Brownian noise. Thermal noise and its derivation. Poisson
+        processes. Shot noise and related derivation. The flicker noise and its derivation.
+        Physical origin of flicker noise.
+
+
+        · Introduction of biosensing principles. Ion-electron transduction. Electrical
+        polarization of the matter. Metal-liquid interface and interfacial states.
+        Electrical models of ion/electron interfaces and electro impedance spectroscopy.
+
+
+        · Introduction to nanotechnology. Nanosensors: nanopores, nanotubes, nanowires,
+        graphene, nanodots.
+
+
+        · Lab experience on electro-impedance or Raman spectrometry.'
+      Testi/Bibliografia: 'Main texbook
+
+
+        M. Tartagni, Electronic Sensor Design Principles, Cambridge Press, 2021
+
+
+        Physical principles:
+
+
+        R. Feynman et al., The Feynman Lectures on Physics, Addison Wesley, 1963
+
+
+        Noise in electronics:
+
+
+        P. Gray, R. Meyer, Analysis and Design of Analog Integrated Circuits, Wiley
+        1993
+
+
+        Ion/electron interface, micro- and nano-fabrication:
+
+
+        H. Morgan, N. Green, AC Electrokinetics: colloids and nanoparticles, RSP Press,
+        2001
+
+
+        M. Madou, Fundamentals of Microfabrication, CRC Press, 2002
+
+
+        Electronic interfaces:
+
+
+        D. Johns, K. Martin, Analog Integrated Circuit Design, Wiley, 1997
+
+
+        B. Razavi, Design of Analog CMOS Integrated Circuits, McGraw-Hill, 2000
+
+
+        Machine learning and multivariate analysis:
+
+
+        Kevin Dunn, “Process improvement using data”, [Online]. Available: https://learnche.org/pid/
+
+
+        K. P. Murphy, Probabilistic machine learning: an introduction. Cambridge,
+        Massachusetts: The MIT Press, 2022.'
+      Metodi didattici: Il corso e' basato su lezioni frontali in presenza tenute
+        dal docente e coadiuvate da slide che seguiranno il programma e disponibili
+        su Virtuale (https://virtuale.unibo.it). La parte per Ingegneria Biomedica
+        prevede un'esperienza di laboratorio.
+      Modalità di verifica e valutazione dell'apprendimento: 'L’esame consiste in
+        un colloquio orale di 40-60m su entrambi i moduli didattici. Particolarmente
+        valutate saranno le capacitа critiche dello studente sugli argomenti del programma
+        e nelle sue capacita’ di contestualizzare e argomentare i concetti. L''esame
+        potra’ essere svolto in lingua italiana o inglese. In entrambi i casi saranno
+        valutate l’appropriatezza della terminologia utilizzata dallo studente.
+
+
+        Alle Studentesse e agli Studenti con DSA o disabilità temporanee o permanenti
+        si raccomanda di contattare per tempo l’ufficio di Ateneo responsabile, all''indirizzo
+        https://site.unibo.it/studenti-con-disabilita-e-dsa/it (site.unibo.it/studenti-con-disabilita-e-dsa)).
+        Sarà cura dell''ufficio proporre eventuali adattamenti, che dovranno comunque
+        essere sottoposti, con un anticipo di 15 giorni, all’approvazione del/la docente,
+        che ne valuterà l''opportunità anche in relazione agli obiettivi formativi
+        dell''insegnamento.'
+      Strumenti a supporto della didattica: Slides will be available on Virtuale (https://virtuale.unibo.it).
+      Orario di ricevimento: Consulta il sito web di Marco Tartagni (https://www.unibo.it/sitoweb/marco.tartagni)
+  en:
+    url: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/504122
+    title: 2025/2026 Embedded Sensors — University of Bologna
+    contents:
+      Learning outcomes: At the end of the course, the student acquires the knowledge
+        for understanding and using electronic sensors. In particular, the student
+        learns to analyze the main issues related to sensing and to interpret data
+        from sensors for subsequent data and signal processing. Through concrete design
+        examples, the tools are focused on the need for continuous technological development
+        to meet the growing requirements of design in the fields of computer science
+        and ICT infrastructure. Subsequently, the student will be able to learn the
+        main implementation techniques of sensors by combining previous knowledge
+        of computer systems with some concepts of electronic design that will be introduced
+        in the course.
+      Course contents: 'PART I (6 CFU)
+
+
+        Program for:
+
+
+        - SENSORI INTELLIGENTI [Laurea Magistrale in Ingegneria Elettronica e dell''Informazione]
+
+        - SENSORS & NANOTECHNOLOGY [Laurea Magistrale in Biomedical Engineering]
+
+        - EMBEDDED SENSORS [Laurea Magistrale in Ingegneria e Scienze Informatiche]
+
+
+        The goal of Part I is to give students fundamental know-how in sensor system
+        design, approached from the perspective of behavioral building blocks and
+        their technological implementation.
+
+
+        FUNDAMENTALS
+
+
+        · Introduction of the course, example of research.
+
+
+        · Fundamentals on sensors. Signals and information. Sensor as an information
+        classifier. Interface, raw data and signal processing (Machine Learning).
+
+
+        · Basics on measurements. Characterization and operating mode. The concept
+        of distributions and estimation. DC measurements. Digits and full-scale. Random
+        and systematic errors. Introduction to the resolution, precision and accuracy
+        concepts. The role of time and AC measurements. Power spectral distributions.
+
+
+        · Ideal sensor modeling. Interface as a black-box. The quasi-static function
+        and its limits. The concept of sensitivity. Time and space quantization, the
+        A/D converter. Acquisition chains and gain plots. Signal bandwidth.
+
+
+        · Recall of mathematical tools. Random signals, power and correlations. Random
+        and ergodic processes.
+
+
+        · Non-ideal sensor modeling. The resolution/uncertainty duality. The law of
+        propagation of errors.
+
+
+        · Comparing signal with noise. The concept of minimum detectable signal. The
+        signal-to-noise ratio and the dynamic range. Systematic error modeling.
+
+
+        · The quantization process. The concepts of number of resolution levels and
+        effective number of bits. Relationship with Information Theory. Resolution
+        degradation in acquisition chains. Example of designs. The role of bandwidth,
+        oversampling and non-aliasing filters.
+
+
+        · Feedback sensor design with examples.
+
+
+        · Sensor trade-offs and example of design.
+
+
+        ELECTRONIC INTERFACE DESIGN
+
+
+        [This section is OPTIONAL and NOT REQUIRED for EMBEDDED SENSORS students]
+
+
+        · Introduction of noise in circuit design. PSD and noise density. Thermal
+        noise shot noise ad flicker noise. KTC noise. Superimposition of noise powers
+        in uncorrelated signals. Equivalent noise bandwidth. Noise in OPAMPs.
+
+
+        Resistance sensors with examples. Strain-gauges. RTDs e PRTs. Thermistors,
+        NTC e PTC. Magnetic sensors.
+
+
+        · Capacitive sensors. Kelvin guard ring. Charge amplifier. Differential capacitive
+        sensing. Capacitive accelerometers. Noise in charge amplifiers. Correlated
+        double sampling (CDS).
+
+
+        · Lock-in e chopper sensing. Complex impedance measurements by lock-in sensing.
+
+
+        · Introduction to optical sensors. The photodiode. Charge and voltage photodiode
+        readout in storage mode. Passive pixel CMOS sensors (PPS) and active pixel
+        (APS) sensors. APS with correlated doble sampling.
+
+
+        · Sensor networks.
+
+
+        SENSORS ECOSYSTEMS
+
+
+        [This section is OPTIONAL and NOT REQUIRED for SENSORI ELETT. INTELLIGENTI
+        students]
+
+
+        · Brief overview of embedded sensor networks. I2C and SPI.
+
+
+        · Brief overview of wireless sensor communications and networks.
+
+
+        TOWARDS MACHINE LEARNING EMBEDDED SENSORS
+
+
+        · The concept of predictive models. Measured vs. predicted measurements plots.
+
+
+        · Dealing with multiple variables: scatter plots and correlation matrix in
+        multivariate analysis.
+
+
+        · Reduction of variables using decomposition techniques. The PCA.
+
+
+        · Reduction to output values, introduction to the PLS technique
+
+
+        · Example of application: embedded spectral sensors
+
+
+        PART II (NANOTECHNOLOGY SECTION, 3 CFU)
+
+
+        Program for:
+
+
+        - SENSORS & NANOTECHNOLOGY [Laurea Magistrale in Biomedical Engineering]
+
+
+        Part II is offered exclusively to students in Biomedical Engineering and is
+        intended to introduce the physical foundations of biosensor transduction principles
+        at the micro- and nanoscale. These concepts will then be applied in the context
+        of protocols and instruments for biomedical laboratories. This part will also
+        include a hands-on laboratory experience at the end of the course.
+
+
+        · Photons, electrons and energetic interactions with matter. Fluorescence,
+        phosphorescence and Raman scattering. Photon-electron transduction. Black
+        body emission. Quantum efficiency and spectral sensitivity of transduction
+        in semiconductors. Responsivity.
+
+
+        · Basics of geometrical optics. Refraction and diffraction. Optical resolution
+        and its limits. Optical microscope. Basics of electron microscopy. Basics
+        of atomic force microscope (AFM).
+
+
+        · The origin of noise. Brownian noise. Thermal noise and its derivation. Poisson
+        processes. Shot noise and related derivation. The flicker noise and its derivation.
+        Physical origin of flicker noise.
+
+
+        · Introduction of biosensing principles. Ion-electron transduction. Electrical
+        polarization of the matter. Metal-liquid interface and interfacial states.
+        Electrical models of ion/electron interfaces and electro impedance spectroscopy.
+
+
+        · Introduction to nanotechnology. Nanosensors: nanopores, nanotubes, nanowires,
+        graphene, nanodots.
+
+
+        · Lab experience on electro-impedance or Raman spectrometry.'
+      Readings/Bibliography: 'Main texbook
+
+
+        M. Tartagni, Electronic Sensor Design Principles, Cambridge Press, 2021
+
+
+        Physical principles:
+
+
+        R. Feynman et al., The Feynman Lectures on Physics, Addison Wesley, 1963
+
+
+        Noise in electronics:
+
+
+        P. Gray, R. Meyer, Analysis and Design of Analog Integrated Circuits, Wiley
+        1993
+
+
+        Ion/electron interface, micro- and nano-fabrication:
+
+
+        H. Morgan, N. Green, AC Electrokinetics: colloids and nanoparticles, RSP Press,
+        2001
+
+
+        M. Madou, Fundamentals of Microfabrication, CRC Press, 2002
+
+
+        Electronic interfaces:
+
+
+        D. Johns, K. Martin, Analog Integrated Circuit Design, Wiley, 1997
+
+
+        B. Razavi, Design of Analog CMOS Integrated Circuits, McGraw-Hill, 2000
+
+
+        Machine learning and multivariate analysis:
+
+
+        Kevin Dunn, “Process improvement using data”, [Online]. Available: https://learnche.org/pid/
+        (Main texbook M. Tartagni, Electronic Sensor Design Principles, Cambridge
+        Press, 2021 ------------------------------------------------------------------------------------
+        Physical principles: R. Feynman et al., The Feynman Lectures on Physics, Addison
+        Wesley, 1963 Noise in electronics: P. Gray, R. Meyer, Analysis and Design
+        of Analog Integrated Circuits, Wiley 1993 Ion/electron interface, micro- and
+        nano-fabrication: H. Morgan, N. Green, AC Electrokinetics: colloids and nanoparticles,
+        RSP Press, 2001 M. Madou, Fundamentals of Microfabrication, CRC Press, 2002
+        Electronic interfaces: D. Johns, K. Martin, Analog Integrated Circuit Design,
+        Wiley, 1997 B. Razavi, Design of Analog CMOS Integrated Circuits, McGraw-Hill,
+        2000 Machine learning and multivariate analysis: Kevin Dunn, “Process improvement
+        using data”, [Online]. Available: https://learnche.org/pid/ K. P. Murphy,
+        Probabilistic machine learning: an introduction. Cambridge, Massachusetts:
+        The MIT Press, 2022.)
+
+
+        K. P. Murphy, Probabilistic machine learning: an introduction. Cambridge,
+        Massachusetts: The MIT Press, 2022.'
+      Teaching methods: The course is based on face-to-face lectures given by the
+        instructor, supported by slides that will follow the syllabus and be available
+        on Virtuale (https://virtuale.unibo.it). The Biomedical Engineering part provides
+        a brief laboratory experience.
+      Assessment methods: 'The exam consists of an oral interview lasting 40–60 minutes
+        covering both teaching modules. Particular emphasis will be placed on the
+        student’s critical abilities regarding the topics of the syllabus, as well
+        as on their capacity to contextualize and articulate concepts. The exam may
+        be taken in either Italian or English. In both cases, the appropriateness
+        of the terminology used by the student will be assessed.
+
+
+        Students with Specific Learning Disorders (SLD) or temporary/permanent disabilities
+        are advised to contact the University office in charge in advance, at the
+        address (https://site.unibo.it/studenti-con-disabilita-e-dsa/it ). The office
+        will be responsible for proposing any adaptations, which must in any case
+        be submitted, at least 15 days in advance, for the approval of the instructor,
+        who will assess their suitability in relation to the learning objectives of
+        the course.'
+      Teaching tools: Slides will be available on Virtuale (https://virtuale.unibo.it).
+      Office hours: See the website of Marco Tartagni (https://www.unibo.it/sitoweb/marco.tartagni/en)
