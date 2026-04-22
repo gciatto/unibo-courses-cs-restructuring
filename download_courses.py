@@ -37,7 +37,7 @@ EXPECTED_COLUMNS = [
 
 PATTERN_SKIP_BEFORE = re.compile(r"^#\s+.*")
 PATTERN_SKIP_SINCE = re.compile(r"^(Seguici su:|Follow us on:)\s*$", re.IGNORECASE)
-PATTERN_LANGUAGE_URL = re.compile(r"https?://www\.unibo\.it/.*?/(it|en)\?post_path=/(\d+/\d+)$")
+PATTERN_LANGUAGE_URL = re.compile(r"https?://.*?\.unibo\.it/.*?/(it|en)\?post_path=.*?/(\d+/\d+)$")
 PATTERN_ACADEMIC_YEAR_SECTION = re.compile(r"^(?:Academic Year|Anno Accademico)\s+\d{4}/\d{4}$")
 PATTERN_CREDITS = re.compile(r"(?:^|\n)-\s+(?:Credits|Crediti formativi):\s*(\d+)\b", re.IGNORECASE)
 PATTERN_SSD = re.compile(r"(?:^|\n)-\s+SSD:\s*([^\n]+)", re.IGNORECASE)
