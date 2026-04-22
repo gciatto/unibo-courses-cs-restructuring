@@ -11,8 +11,7 @@ from typing import Any, Iterable
 from html_to_md import convert_html_to_markdown
 import marko
 import yaml
-from pydantic import BaseModel
-from pydantic import Field
+from pydantic import BaseModel, Field
 
 from _utils import *
 
@@ -49,6 +48,8 @@ PATTERN_TIMETABLE = re.compile(
     r"(?:from\s+([A-Za-z]{3,9}\s+\d{1,2},\s+\d{4})\s+to\s+([A-Za-z]{3,9}\s+\d{1,2},\s+\d{4}))",
     re.IGNORECASE,
 )
+PATTERN_DETAIL_AMONG_PARENTHESES = re.compile(r"\(([^)]+)\)")
+PATTERN_DETAIL_CFU = re.compile(r"\s*[-–—]\s*(\s*\d+\s*CFU\s*)\s*", re.IGNORECASE)
 
 LOGGER = logging.getLogger(pathlib.Path(__file__).stem)
 
@@ -63,7 +64,7 @@ class Teacher(BaseModel):
 class CourseTitle(BaseModel):
     id: str = Field(default="")
     name: str = Field(default="")
-    details: str = Field(default="")
+    details: list[str] = Field(default_factory=list)
 
 
 class CourseMetadata(BaseModel):
@@ -201,17 +202,61 @@ def format_course_context(row_index: int, row: dict[str, str]) -> str:
     return f"row={row_index} title={course_title!r} url={course_url}"
 
 
-def split_course_title(raw_title: str) -> CourseTitle:
-    parts = [part.strip() for part in raw_title.split(" - ")]
-    parts = [part for part in parts if part]
+def extract_details_from_parentheses(text: str) -> tuple[str, list[str]]:
+    details: list[str] = []
+    cleaned_chars: list[str] = []
+    current_detail: list[str] = []
+    depth = 0
 
-    if not parts:
-        return CourseTitle()
-    if len(parts) == 1:
-        return CourseTitle(name=parts[0])
-    if len(parts) == 2:
-        return CourseTitle(id=parts[0], name=parts[1])
-    return CourseTitle(id=parts[0], name=parts[1], details=" - ".join(parts[2:]))
+    for char in text:
+        if char == "(":
+            if depth == 0:
+                current_detail = []
+            else:
+                current_detail.append(char)
+            depth += 1
+            continue
+
+        if char == ")":
+            if depth == 0:
+                cleaned_chars.append(char)
+                continue
+
+            depth -= 1
+            if depth == 0:
+                content = "".join(current_detail).strip()
+                if content and not content.startswith("-"):
+                    details.append(content)
+                current_detail = []
+            else:
+                current_detail.append(char)
+            continue
+
+        if depth == 0:
+            cleaned_chars.append(char)
+        else:
+            current_detail.append(char)
+
+    if depth > 0:
+        cleaned_chars.append("(" + "".join(current_detail))
+
+    return "".join(cleaned_chars).strip(), details
+
+
+@auto_logged(LOGGER)
+def split_course_title(raw_title: str) -> CourseTitle:
+    raw_title = raw_title.strip()
+    if "-" not in raw_title:
+        return CourseTitle(name=raw_title)
+    id_part, name_part = [part.strip() for part in raw_title.split("-", 1)]
+    if "-" not in name_part and "(" not in name_part:
+        return CourseTitle(id=id_part, name=name_part)
+    name_part, some_details = extract_details_from_parentheses(name_part)
+    m = PATTERN_DETAIL_CFU.search(name_part)
+    if m:
+        some_details.append(m.group(1))
+        name_part = PATTERN_DETAIL_CFU.sub("", name_part, count=1).strip()
+    return CourseTitle(id=id_part, name=name_part, details=some_details)
 
 
 def parse_year_and_course_id(url: str) -> tuple[int, str]:
@@ -836,11 +881,11 @@ def main() -> int:
                     backoff_multiplier=args.backoff_multiplier,
                     max_backoff=args.max_backoff,
                 )
-            except (urllib.error.URLError, TimeoutError, ValueError) as error:
+            except (urllib.error.URLError, TimeoutError) as error:
                 failed_count += 1
                 LOGGER.error("%s (%s)", format_course_context(row_index, row), error)
                 continue
-            except Exception as error:
+            except Exception:
                 failed_count += 1
                 LOGGER.exception(
                     "unexpected error while processing %s",

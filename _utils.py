@@ -1,7 +1,5 @@
 import hashlib
-import os
 import pathlib
-import tempfile
 import time
 import urllib.request
 from typing import Mapping
@@ -13,7 +11,7 @@ DEFAULT_MAX_RETRIES = 3
 DEFAULT_INITIAL_BACKOFF = 0.5
 DEFAULT_BACKOFF_MULTIPLIER = 2.0
 DEFAULT_MAX_BACKOFF = 30.0
-DEFAULT_CACHE_DIR = pathlib.Path(os.environ.get("TEMP") or tempfile.gettempdir()) / "unibo-courses-cs-restructuring"
+DEFAULT_CACHE_DIR = DATA_DIR / ".cache"
 BASE_URL = "https://www.unibo.it"
 DEFAULT_HEADERS = {
     "User-Agent": (
@@ -49,7 +47,8 @@ def download_html_page(
         raise ValueError("max_backoff must be >= 0 when provided")
 
     resolved_cache_dir = cache_dir or DEFAULT_CACHE_DIR
-    cache_path = resolved_cache_dir / hashlib.sha256(url.encode("utf-8")).hexdigest()
+    digest = hashlib.sha256(url.encode("utf-8")).hexdigest()
+    cache_path = resolved_cache_dir / f"{digest}.html"
 
     if use_cache and not refresh_cache and cache_path.exists():
         return cache_path.read_text(encoding="utf-8")
@@ -85,3 +84,18 @@ def download_html_page(
     if last_error is not None:
         raise last_error
     raise RuntimeError(f"Could not download URL: {url}")
+
+
+def auto_logged(logger):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            logger.debug(f"Entering {func.__name__} with args={args} kwargs={kwargs}")
+            try:
+                result = func(*args, **kwargs)
+                logger.debug(f"Exiting {func.__name__} with result={result}")
+                return result
+            except Exception as e:
+                logger.debug(f"Error in {func.__name__}: {e}")
+                raise
+        return wrapper
+    return decorator
