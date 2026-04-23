@@ -6,6 +6,7 @@ from typing import Mapping
 
 
 DATA_DIR = pathlib.Path("data")
+RESOURCES_DIR = pathlib.Path("resources")
 DEFAULT_DOWNLOAD_TIMEOUT = 30.0
 DEFAULT_MAX_RETRIES = 3
 DEFAULT_INITIAL_BACKOFF = 0.5
