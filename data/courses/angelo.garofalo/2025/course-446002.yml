@@ -2,8 +2,8 @@ year: 2025
 url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/446002
 credits: 6
 ssd: ING-INF/01
-language: Italiano
-teaching_mode: Lezioni in presenza (totalmente o parzialmente)
+language: Italian
+teaching_mode: In-person learning (entirely or partially)
 schedule:
   from: 2026-02-18
   to: 2026-06-05
@@ -14,8 +14,9 @@ teacher:
   website: https://www.unibo.it/sitoweb/angelo.garofalo
 course_title:
   id: '73731'
-  name: ARCHITETTURE E PROGRAMMAZIONE DEI SISTEMI ELETTRONICI T-A (Modulo 2)
-  details: ''
+  name: ARCHITETTURE E PROGRAMMAZIONE DEI SISTEMI ELETTRONICI T-A
+  details:
+  - Modulo 2
 integrated_course: ''
 campus: Bologna
 programme: Laurea in Ingegneria elettronica e telecomunicazioni
@@ -113,3 +114,92 @@ syllabus:
       Strumenti a supporto della didattica: Slides, libri di testo e letture consigliate
         durante le lezioni.
       Orario di ricevimento: Consulta il sito web di Angelo Garofalo (https://www.unibo.it/sitoweb/angelo.garofalo)
+  en:
+    url: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/446002
+    title: '2025/2026 Microcontroller-based systems for Industrial Applicatons: Architecture
+      and Programming — University of Bologna'
+    contents:
+      Learning outcomes: The main goal of the class is to provide working knowledge
+        on the Architecture of micro-controller based systems using ARM cortex M cores
+        and on Firmware programming techniques for industrial applications.
+      Course contents: 'ntroduction to embedded systems
+
+
+        Introduction to microcontrollers
+
+
+        Introduction to the development environment (CubeIDE)
+
+
+        Overview and details of the ARM Cortex M4-CORE architecture and its main elements
+
+
+        - Instruction Set Architecture and Assembly
+
+        - Pipeline
+
+        - Interrupt
+
+        - Programmer''s model
+
+        - Register file
+
+
+        Analysis of the main ARM Core connections with microcontroller peripherals
+
+
+        - AMBA Bus AHB and APB
+
+        - Memories
+
+        - DMA
+
+
+        Detailed analysis of the architecture, configuration, and operation of the
+        peripherals of a STM32 microcontroller, with exercises and demonstrations
+        of advanced debugging techniques
+
+
+        - GPIO
+
+        - SPI,
+
+        - UART,
+
+        - Timers
+
+        - Analog to Digital Converter
+
+
+        DSP feature extensions, CMSIS libraries and code optimization.
+
+
+        - DSP and Floating-Point Unit
+
+        - CMSIS Library
+
+        - Code optimization'
+      Readings/Bibliography: '- The Definitive Guide to ARM Cortex-M3 and Cortex-M4
+        Processors,Joseph You (available online in PDF)-
+
+        - The Designer''s Guide to the Cortex-M Processor Family,Trevor Martin (available
+        online in PDF)'
+      Teaching methods: The course is delivered through class lectures that are carried
+        out with the aid of audiovisual media (Power Point presentations) and practical
+        laboratory exercises, carried out in presence working in small groups. Attendance
+        to face-to-face lessons is not compulsory. The course is given in Italian
+        language.
+      Assessment methods: 'The verification is based on the evaluation of a project
+        assigned during the last exercise and on an oral test, according to the modalities
+        of an interview between the teacher and the student, lasting approximately
+        30 minutes, during which the candidate will be asked three questions, with
+        increasing depth (and difficulty) and on different areas of the program. The
+        project can be handed in only once and remains valid for the whole academic
+        year. Oral exams take place during the educational calendar and for each exam
+        the student who intends to take it must register using the online platform
+
+
+        The grade is expressed in thirtieths,and it is necessary to reach the threshold
+        of 18/30 in order to pass the exam.'
+      Teaching tools: Slides, textbook and suggested readings during the lessons.
+      Office hours: See the website of Angelo Garofalo (https://www.unibo.it/sitoweb/angelo.garofalo/en)
