@@ -2,45 +2,43 @@ from __future__ import annotations
 
 import argparse
 import csv
+import logging
 import time
-from string import ascii_uppercase
 from dataclasses import dataclass
 from pathlib import Path
+from string import ascii_uppercase
 from urllib.parse import parse_qsl, quote_plus, urlencode, urljoin, urlsplit, urlunsplit
 
-import requests
 from bs4 import BeautifulSoup
 from bs4.element import Tag
 
-from _utils import BASE_URL, DIR_DATA, DEFAULT_HEADERS
+from _utils import BASE_URL, DIR_DATA, download_html_page, configure_logging
+from resources import classify_dept, classify_role
+import pathlib
 
 
 DEFAULT_URL = "https://www.unibo.it/uniboweb/unibosearch/rubrica.aspx"
 DEFAULT_OUTPUT = DIR_DATA / "contacts.csv"
+LOGGER = logging.getLogger(pathlib.Path(__file__).stem)
 
 
 @dataclass(frozen=True)
 class Contact:
     uid: str
-    nome: str
-    ruolo: str
-    dipartimento: str
-    indirizzo: str
+    name: str
+    role: str
+    department: str
+    address: str
     email: str
-    sito_web: str
+    website: str
     vcard: str
+    ssd: str
 
 
-def build_session() -> requests.Session:
-    session = requests.Session()
-    session.headers.update(DEFAULT_HEADERS)
-    return session
-
-
-def fetch_html(session: requests.Session, url: str, timeout_seconds: int) -> str:
-    response = session.get(url, timeout=timeout_seconds)
-    response.raise_for_status()
-    return response.text
+SSD_PREFIXES = (
+    "Settore scientifico disciplinare: ",
+    "Academic discipline: ",
+)
 
 
 def clean_text(value: str) -> str:
@@ -64,20 +62,49 @@ def first_link(node: Tag, selector: str) -> str:
     return urljoin(BASE_URL, href)
 
 
+def extract_ssd(node: Tag) -> str:
+    raw_ssd = first_text(node, "p.ssd")
+    if not raw_ssd:
+        return ""
+
+    for prefix in SSD_PREFIXES:
+        if raw_ssd.startswith(prefix):
+            return raw_ssd[len(prefix):].strip()
+
+    return raw_ssd.strip()
+
+
 def parse_contact(table: Tag) -> Contact:
+    uid=first_text(table, "th.uid")
+    name=first_text(table, "td.fn.name")
+    role=first_text(table, "tr.role td")
+    department=first_text(table, "tr.org td")
+    address=first_text(table, "tr.adr td")
     email = first_text(table, "a.email")
-    sito_web = first_link(table, "a.url")
-    vcard = first_link(table, "tr td a[title='scarica la Vcard']")
+    website = first_link(table, "a.url")
+    vcard = first_link(table, "tr td a[title*='Vcard']")
+    ssd = extract_ssd(table)
+
+    if (r := classify_role(role)) is not None:
+        role = r
+    else:
+        LOGGER.warning(f"Unrecognized role '{role}' for contact '{name}' (uid: {uid})")
+
+    if (d := classify_dept(department)) is not None:
+        department = d
+    else:
+        LOGGER.warning(f"Unrecognized department '{department}' for contact '{name}' (uid: {uid})")
 
     return Contact(
-        uid=first_text(table, "th.uid"),
-        nome=first_text(table, "td.fn.name"),
-        ruolo=first_text(table, "tr.role td"),
-        dipartimento=first_text(table, "tr.org td"),
-        indirizzo=first_text(table, "tr.adr td"),
+        uid=uid,
+        name=name,
+        role=role,
+        department=department,
+        address=address,
         email=email,
-        sito_web=sito_web,
+        website=website,
         vcard=vcard,
+        ssd=ssd,
     )
 
 
@@ -120,98 +147,109 @@ def build_letter_url(base_url: str, letter: str) -> str:
 
 def print_contacts(contacts: list[Contact]) -> None:
     for index, contact in enumerate(contacts, start=1):
-        print(f"[{index}] {contact.nome}")
+        print(f"[{index}] {contact.name}")
         print(f"  uid: {contact.uid}")
-        print(f"  ruolo: {contact.ruolo}")
-        print(f"  dipartimento: {contact.dipartimento}")
-        print(f"  indirizzo: {contact.indirizzo}")
+        print(f"  role: {contact.role}")
+        print(f"  department: {contact.department}")
+        print(f"  address: {contact.address}")
         print(f"  email: {contact.email}")
-        print(f"  sito_web: {contact.sito_web}")
+        print(f"  website: {contact.website}")
         print(f"  vcard: {contact.vcard}")
+        print(f"  ssd: {contact.ssd}")
         print()
 
 
 def save_contacts_csv(contacts: list[Contact], destination: Path) -> None:
     destination.parent.mkdir(parents=True, exist_ok=True)
+    LOGGER.info(f"Saving {len(contacts)} contacts to {destination}")
 
     with destination.open("w", newline="", encoding="utf-8") as csv_file:
         writer = csv.writer(csv_file)
         writer.writerow(
-            ["uid", "nome", "ruolo", "dipartimento", "indirizzo", "email", "sito_web", "vcard"]
+            ["uid", "name", "role", "department", "address", "email", "website", "vcard", "ssd"]
         )
         for contact in contacts:
             writer.writerow(
                 [
                     contact.uid,
-                    contact.nome,
-                    contact.ruolo,
-                    contact.dipartimento,
-                    contact.indirizzo,
+                    contact.name,
+                    contact.role,
+                    contact.department,
+                    contact.address,
                     contact.email,
-                    contact.sito_web,
+                    contact.website,
                     contact.vcard,
+                    contact.ssd,
                 ]
             )
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Estrae e stampa i contatti dalla rubrica persone di Unibo."
+        description="Extract and print contacts from the Unibo people directory."
     )
     parser.add_argument(
         "--url",
         default=DEFAULT_URL,
-        help="URL base della rubrica Unibo.",
+        help="Base URL of the Unibo directory.",
     )
     parser.add_argument(
         "--delay",
         type=float,
         default=0.0,
-        help="Pausa opzionale prima della richiesta HTTP.",
+        help="Optional pause before each HTTP request.",
     )
     parser.add_argument(
         "--timeout",
         type=int,
         default=20,
-        help="Timeout della richiesta HTTP in secondi.",
+        help="HTTP request timeout in seconds.",
     )
     parser.add_argument(
         "--output",
         default=str(DEFAULT_OUTPUT),
-        help="Percorso del file CSV di output.",
+        help="Output CSV file path.",
     )
     return parser.parse_args()
 
 
 def scrape_letter(
-    session: requests.Session, base_url: str, letter: str, delay: float, timeout: int
+    base_url: str, letter: str, delay: float, timeout: int
 ) -> tuple[list[Contact], int]:
+    LOGGER.info(f"Scraping contacts for letter '{letter}'")
     letter_url = build_letter_url(base_url, letter)
     first_page_url = build_page_url(letter_url, 1)
 
     time.sleep(max(delay, 0))
-    first_html = fetch_html(session, first_page_url, timeout)
+    first_html = download_html_page(first_page_url, timeout=timeout)
     total_pages = parse_total_pages(first_html)
     contacts = parse_contacts(first_html)
+    LOGGER.debug(f"Letter '{letter}': found {len(contacts)} contacts on page 1 of {total_pages}")
 
     for page_number in range(2, total_pages + 1):
         time.sleep(max(delay, 0))
         page_url = build_page_url(letter_url, page_number)
-        html = fetch_html(session, page_url, timeout)
-        contacts.extend(parse_contacts(html))
+        html = download_html_page(page_url, timeout=timeout)
+        new_contacts = parse_contacts(html)
+        contacts.extend(new_contacts)
+        LOGGER.debug(f"Letter '{letter}': found {len(new_contacts)} contacts on page {page_number} of {total_pages}")
 
+    LOGGER.info(f"Letter '{letter}': scraped {len(contacts)} total contacts across {total_pages} pages")
     return contacts, total_pages
 
 
 def main() -> None:
+    configure_logging()
+    LOGGER.info("Starting contact scraper")
+    
     args = parse_args()
-    session = build_session()
+    LOGGER.debug(f"Arguments: url={args.url}, delay={args.delay}, timeout={args.timeout}, output={args.output}")
+    
     contacts: list[Contact] = []
     total_pages = 0
 
     for letter in ascii_uppercase:
         letter_contacts, letter_pages = scrape_letter(
-            session=session,
             base_url=args.url,
             letter=letter,
             delay=args.delay,
@@ -222,10 +260,9 @@ def main() -> None:
 
     output_path = Path(args.output)
     save_contacts_csv(contacts, output_path)
-
-    print(f"Trovati {len(contacts)} contatti su {total_pages} pagine totali")
-    print(f"CSV salvato in: {output_path}")
-    print()
+    LOGGER.info(f"Success: Found {len(contacts)} contacts across {total_pages} total pages")
+    LOGGER.info(f"CSV saved to: {output_path}")
+    
     print_contacts(contacts)
 
 

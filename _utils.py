@@ -4,6 +4,7 @@ import time
 import urllib.request
 from typing import Mapping
 from data import DIR_DATA
+import logging
 
 
 DEFAULT_DOWNLOAD_TIMEOUT = 30.0
@@ -20,6 +21,10 @@ DEFAULT_HEADERS = {
         "Chrome/124.0.0.0 Safari/537.36"
     )
 }
+
+
+def configure_logging() -> None:
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s", datefmt=r"%Y-%m-%d %H:%M:%S")
 
 
 def download_html_page(

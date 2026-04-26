@@ -192,10 +192,6 @@ def contains_any(text: str, keywords: list[str]) -> bool:
     return bool(matching_keywords(text, keywords))
 
 
-def configure_logging() -> None:
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s", datefmt=r"%Y-%m-%d %H:%M:%S")
-
-
 def format_course_context(row_index: int, row: dict[str, str]) -> str:
     course_title = (row.get("course_title") or "").strip() or "<missing title>"
     course_url = (row.get("course_url") or "").strip() or "<missing url>"
