@@ -3,15 +3,15 @@ import pathlib
 import time
 import urllib.request
 from typing import Mapping
+from data import DIR_DATA
 
 
-DATA_DIR = pathlib.Path("data")
 DEFAULT_DOWNLOAD_TIMEOUT = 30.0
 DEFAULT_MAX_RETRIES = 3
 DEFAULT_INITIAL_BACKOFF = 0.5
 DEFAULT_BACKOFF_MULTIPLIER = 2.0
 DEFAULT_MAX_BACKOFF = 30.0
-DEFAULT_CACHE_DIR = DATA_DIR / ".cache"
+DEFAULT_CACHE_DIR = DIR_DATA / ".cache"
 BASE_URL = "https://www.unibo.it"
 DEFAULT_HEADERS = {
     "User-Agent": (

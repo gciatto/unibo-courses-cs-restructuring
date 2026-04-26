@@ -12,11 +12,11 @@ import requests
 from bs4 import BeautifulSoup
 from bs4.element import Tag
 
-from _utils import DATA_DIR, DEFAULT_HEADERS
+from _utils import DIR_DATA, DEFAULT_HEADERS
 
 
-DEFAULT_INPUT_CSV = DATA_DIR / "contacts.csv"
-DEFAULT_OUTPUT_CSV = DATA_DIR / "course_headers.csv"
+DEFAULT_INPUT_CSV = DIR_DATA / "contacts.csv"
+DEFAULT_OUTPUT_CSV = DIR_DATA / "course_headers.csv"
 
 
 @dataclass(frozen=True)

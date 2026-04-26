@@ -16,8 +16,8 @@ from pydantic import BaseModel, Field
 from _utils import *
 
 
-DEFAULT_INPUT = DATA_DIR / "course_headers.csv"
-DEFAULT_OUTPUT = DATA_DIR / "courses"
+DEFAULT_INPUT = DIR_DATA / "course_headers.csv"
+DEFAULT_OUTPUT = DIR_DATA / "courses"
 
 EXPECTED_COLUMNS = [
     "contact_uid",

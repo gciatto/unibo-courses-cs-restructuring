@@ -12,11 +12,11 @@ import requests
 from bs4 import BeautifulSoup
 from bs4.element import Tag
 
-from _utils import BASE_URL, DATA_DIR, DEFAULT_HEADERS
+from _utils import BASE_URL, DIR_DATA, DEFAULT_HEADERS
 
 
 DEFAULT_URL = "https://www.unibo.it/uniboweb/unibosearch/rubrica.aspx"
-DEFAULT_OUTPUT = DATA_DIR / "contacts.csv"
+DEFAULT_OUTPUT = DIR_DATA / "contacts.csv"
 
 
 @dataclass(frozen=True)
