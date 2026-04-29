@@ -114,9 +114,9 @@ def parse_course_block(block: Tag, contact_row: dict[str, str], didattica_url: s
 
     return TeachingCourse(
         contact_uid=contact_row.get("uid", ""),
-        contact_name=contact_row.get("nome", ""),
+        contact_name=contact_row.get("name", ""),
         contact_email=contact_row.get("email", ""),
-        sito_web=contact_row.get("sito_web", ""),
+        sito_web=contact_row.get("website", ""),
         didattica_url=didattica_url,
         course_title=course_title,
         course_url=course_url,
@@ -228,11 +228,11 @@ def main() -> None:
     initialize_courses_csv(output_path)
 
     for index, contact_row in enumerate(contact_rows, start=1):
-        sito_web = contact_row.get("sito_web", "").strip()
-        contact_name = contact_row.get("nome", "")
+        sito_web = contact_row.get("website", "").strip()
+        contact_name = contact_row.get("name", "")
 
         if not sito_web:
-            print(f"[{index}] {contact_name}: sito_web assente, salto")
+            print(f"[{index}] {contact_name}: website assente, salto")
             continue
 
         didattica_url = build_didattica_url(sito_web)

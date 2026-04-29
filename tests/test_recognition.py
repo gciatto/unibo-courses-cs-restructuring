@@ -3,8 +3,8 @@ from resources import classify_role, roles, departments, classify_dept
 import unittest
 
 
-HEADER_ROLE = "ruolo"
-HEADER_DEPT = "dipartimento"
+HEADER_ROLE = "role"
+HEADER_DEPT = "department"
 LIMIT = 1000
 
 
