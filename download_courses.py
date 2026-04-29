@@ -6,14 +6,17 @@ import logging
 import re
 import shlex
 import sys
+from functools import cache
 from typing import Any, Iterable
 
+from bs4 import BeautifulSoup
 from html_to_md import convert_html_to_markdown
 import marko
 import yaml
 from pydantic import BaseModel, Field
 
 from _utils import *
+from resources import classify_dept, classify_role
 
 
 DEFAULT_INPUT = DIR_DATA / "course_headers.csv"
@@ -59,6 +62,14 @@ class Teacher(BaseModel):
     teacher_name: str = Field(default="", serialization_alias="name")
     teacher_email: str = Field(default="", serialization_alias="email")
     teacher_website: str = Field(default="", serialization_alias="website")
+    teacher_role: str = Field(default="", serialization_alias="role")
+    teacher_affiliation: str = Field(default="", serialization_alias="affiliation")
+    teacher_ssd: "TeacherSsd | None" = Field(default=None, serialization_alias="ssd")
+
+
+class TeacherSsd(BaseModel):
+    name: str = Field(default="")
+    description: str = Field(default="")
 
 
 class CourseTitle(BaseModel):
@@ -100,6 +111,63 @@ class CourseDetails(BaseModel):
     language: str = Field(default="")
     teaching_mode: str = Field(default="")
     schedule: CourseSchedule | None = None
+
+
+def clean_teacher_field(value: str) -> str:
+    return " ".join(value.replace("\xa0", " ").split()).strip()
+
+
+def parse_teacher_ssd(value: str) -> TeacherSsd | None:
+    text = clean_teacher_field(value)
+    if not text:
+        return None
+
+    if ":" in text:
+        _, text = text.split(":", 1)
+        text = text.strip()
+
+    if not text:
+        return None
+
+    parts = text.split(maxsplit=1)
+    if not parts:
+        return None
+
+    return TeacherSsd(
+        name=parts[0].strip(),
+        description=parts[1].strip() if len(parts) > 1 else "",
+    )
+
+
+@cache
+def parse_teacher_page(
+    website: str,
+    timeout: float,
+    max_retries: int,
+    initial_backoff: float,
+    backoff_multiplier: float,
+    max_backoff: float,
+) -> tuple[str, str, TeacherSsd | None]:
+    html_content = download_html_page(
+        website,
+        timeout=timeout,
+        max_retries=max_retries,
+        initial_backoff=initial_backoff,
+        backoff_multiplier=backoff_multiplier,
+        max_backoff=max_backoff,
+    )
+    soup = BeautifulSoup(html_content, "html.parser")
+
+    role_element = soup.select_one("p.qualifica")
+    role_raw = clean_teacher_field(role_element.get_text(" ", strip=True)) if role_element else ""
+
+    affiliation_element = soup.select_one("p.sede")
+    affiliation_raw = clean_teacher_field(affiliation_element.get_text(" ", strip=True)) if affiliation_element else ""
+
+    ssd_element = soup.select_one("p.ssd")
+    ssd = parse_teacher_ssd(ssd_element.get_text(" ", strip=True)) if ssd_element else None
+
+    return role_raw, affiliation_raw, ssd
 
 
 def parse_args() -> argparse.Namespace:
@@ -273,6 +341,9 @@ def build_metadata(
     url: str,
     details: CourseDetails,
     syllabus: dict[str, SyllabusPage],
+    teacher_role: str,
+    teacher_affiliation: str,
+    teacher_ssd: TeacherSsd | None,
 ) -> CourseMetadata:
     return CourseMetadata(
         year=year,
@@ -287,6 +358,9 @@ def build_metadata(
             teacher_name=(row.get("contact_name") or "").strip(),
             teacher_email=(row.get("contact_email") or "").strip(),
             teacher_website=(row.get("sito_web") or "").strip(),
+            teacher_role=teacher_role,
+            teacher_affiliation=teacher_affiliation,
+            teacher_ssd=teacher_ssd,
         ),
         course_title=split_course_title((row.get("course_title") or "").strip()),
         integrated_course=(row.get("integrated_course") or "").strip(),
@@ -729,6 +803,9 @@ def process_row(
     if not teacher_email:
         return "skipped", f"empty contact_email ({course_context})"
 
+    teacher_name = (row.get("contact_name") or "").strip() or "<missing teacher name>"
+    teacher_website = (row.get("sito_web") or "").strip()
+
     try:
         year, course_id = parse_year_and_course_id(course_url)
     except ValueError as error:
@@ -793,6 +870,73 @@ def process_row(
         details = "; ".join(page_errors) if page_errors else "no language pages available"
         raise ValueError(f"No syllabus pages were parsed successfully: {details}")
 
+    teacher_role = ""
+    teacher_affiliation = ""
+    teacher_ssd: TeacherSsd | None = None
+
+    if teacher_website:
+        try:
+            role_raw, affiliation_raw, teacher_ssd = parse_teacher_page(
+                teacher_website,
+                timeout=timeout,
+                max_retries=max_retries,
+                initial_backoff=initial_backoff,
+                backoff_multiplier=backoff_multiplier,
+                max_backoff=max_backoff,
+            )
+        except Exception as error:
+            LOGGER.warning(
+                "Could not parse teacher website %s for %s (%s): %s",
+                teacher_website,
+                teacher_name,
+                course_context,
+                error,
+            )
+        else:
+            if not role_raw:
+                LOGGER.warning(
+                    "Missing teacher role (p.qualifica) on website %s for %s (%s)",
+                    teacher_website,
+                    teacher_name,
+                    course_context,
+                )
+            else:
+                classified_role = classify_role(role_raw)
+                if classified_role is None:
+                    LOGGER.warning(
+                        "Unrecognized teacher role %r on website %s for %s (%s)",
+                        role_raw,
+                        teacher_website,
+                        teacher_name,
+                        course_context,
+                    )
+                    teacher_role = role_raw
+                else:
+                    teacher_role = classified_role
+
+            if not affiliation_raw:
+                LOGGER.warning(
+                    "Missing teacher affiliation (p.sede) on website %s for %s (%s)",
+                    teacher_website,
+                    teacher_name,
+                    course_context,
+                )
+            else:
+                classified_dept = classify_dept(affiliation_raw)
+                if classified_dept is None:
+                    LOGGER.warning(
+                        "Unrecognized teacher affiliation %r on website %s for %s (%s)",
+                        affiliation_raw,
+                        teacher_website,
+                        teacher_name,
+                        course_context,
+                    )
+                    teacher_affiliation = affiliation_raw
+                else:
+                    teacher_affiliation = classified_dept
+    else:
+        LOGGER.warning("empty teacher website for %s (%s)", teacher_name, course_context)
+
     teacher_id = teacher_email.split("@")[0]
     course_dir = output_dir / teacher_id / str(year)
     course_dir.mkdir(parents=True, exist_ok=True)
@@ -807,6 +951,9 @@ def process_row(
             details_by_language.get("it", CourseDetails()),
         ),
         syllabus=syllabus,
+        teacher_role=teacher_role,
+        teacher_affiliation=teacher_affiliation,
+        teacher_ssd=teacher_ssd,
     )
     metadata_path.write_text(
         yaml.safe_dump(
