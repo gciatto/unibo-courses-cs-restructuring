@@ -100,17 +100,34 @@ class TestMergeTeachings(unittest.TestCase):
             )
             self.assertEqual(len(merged_payload["teachers"]), 2)
 
+            # top-level url must not appear in merged file
+            self.assertNotIn("url", merged_payload)
+
+            # syllabus pages must not contain url
+            for page in merged_payload["syllabus"].values():
+                self.assertNotIn("url", page)
+
             modules_by_email = {
                 teacher["email"]: teacher["module"]
                 for teacher in merged_payload["teachers"]
             }
             self.assertEqual(
                 modules_by_email["a.teacher@unibo.it"],
-                {"teaching_id": "111", "details": ["Module A", "6 cfu"]},
+                {
+                    "teaching_id": "111",
+                    "url": "https://example.invalid/course/1",
+                    "syllabus_urls": {"en": "https://example.invalid/en"},
+                    "details": ["Module A", "6 cfu"],
+                },
             )
             self.assertEqual(
                 modules_by_email["b.teacher@unibo.it"],
-                {"teaching_id": "222", "details": ["Module B"]},
+                {
+                    "teaching_id": "222",
+                    "url": "https://example.invalid/course/1",
+                    "syllabus_urls": {"en": "https://example.invalid/en"},
+                    "details": ["Module B"],
+                },
             )
 
             first_link = courses_dir / "a.teacher" / "2025" / "course-91258.yml"

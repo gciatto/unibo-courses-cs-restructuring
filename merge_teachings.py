@@ -32,6 +32,8 @@ LOGGER = logging.getLogger(pathlib.Path(__file__).stem)
 
 class TeachingModule(BaseModel):
     teaching_id: str = Field(default="")
+    url: str = Field(default="")
+    syllabus_urls: dict[str, str] = Field(default_factory=dict)
     details: list[str] = Field(default_factory=list)
 
 
@@ -44,9 +46,13 @@ class MergedCourseTitle(BaseModel):
     name: str = Field(default="")
 
 
+class MergedSyllabusPage(BaseModel):
+    title: str = Field(default="")
+    contents: dict[str, str] = Field(default_factory=dict)
+
+
 class MergedCourseMetadata(BaseModel):
     year: int
-    url: str = Field(default="")
     credits: int | None = None
     ssd: str = Field(default="")
     language: str = Field(default="")
@@ -57,7 +63,7 @@ class MergedCourseMetadata(BaseModel):
     integrated_course: str = Field(default="")
     campus: str = Field(default="")
     programme: str = Field(default="")
-    syllabus: dict[str, SyllabusPage] = Field(default_factory=dict)
+    syllabus: dict[str, MergedSyllabusPage] = Field(default_factory=dict)
 
 
 TeacherWithModule.model_rebuild(_types_namespace={"TeacherSsd": TeacherSsd})
@@ -213,9 +219,26 @@ def build_teacher_entry(record: TeachingRecord) -> TeacherWithModule:
     teaching_id = PATTERN_TEACHING_FILENAME.fullmatch(record.path.name).group("teaching_id")  # type: ignore[union-attr]
     teacher_payload["module"] = {
         "teaching_id": teaching_id,
+        "url": record.metadata.url,
+        "syllabus_urls": {
+            lang: page.url
+            for lang, page in record.metadata.syllabus.items()
+            if page.url
+        },
         "details": list(record.metadata.course_title.details),
     }
     return TeacherWithModule.model_validate(teacher_payload)
+
+
+def to_merged_syllabus(
+    syllabus: dict[str, SyllabusPage] | None,
+) -> dict[str, MergedSyllabusPage]:
+    if not syllabus:
+        return {}
+    return {
+        lang: MergedSyllabusPage(title=page.title, contents=page.contents)
+        for lang, page in syllabus.items()
+    }
 
 
 def merge_records(records: list[TeachingRecord]) -> MergedCourseMetadata:
@@ -226,9 +249,12 @@ def merge_records(records: list[TeachingRecord]) -> MergedCourseMetadata:
     teachers = [build_teacher_entry(record) for record in records]
     teachers.sort(key=lambda teacher: (teacher.teacher_name, teacher.teacher_email, teacher.module.teaching_id))
 
+    raw_syllabus: dict[str, SyllabusPage] | None = merge_value(
+        records, "syllabus", lambda metadata: metadata.syllabus
+    )
+
     return MergedCourseMetadata(
         year=first_metadata.year,
-        url=merge_value(records, "url", lambda metadata: metadata.url) or "",
         credits=merge_value(records, "credits", lambda metadata: metadata.credits),
         ssd=merge_value(records, "ssd", lambda metadata: metadata.ssd) or "",
         language=merge_value(records, "language", lambda metadata: metadata.language) or "",
@@ -243,7 +269,7 @@ def merge_records(records: list[TeachingRecord]) -> MergedCourseMetadata:
         integrated_course=merge_value(records, "integrated_course", lambda metadata: metadata.integrated_course) or "",
         campus=merge_value(records, "campus", lambda metadata: metadata.campus) or "",
         programme=merge_value(records, "programme", lambda metadata: metadata.programme) or "",
-        syllabus=merge_value(records, "syllabus", lambda metadata: metadata.syllabus) or {},
+        syllabus=to_merged_syllabus(raw_syllabus),
     )
 
 
