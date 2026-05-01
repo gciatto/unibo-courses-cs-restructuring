@@ -104,8 +104,14 @@ class TestMergeTeachings(unittest.TestCase):
                 teacher["email"]: teacher["module"]
                 for teacher in merged_payload["teachers"]
             }
-            self.assertEqual(modules_by_email["a.teacher@unibo.it"], ["Module A", "6 cfu"])
-            self.assertEqual(modules_by_email["b.teacher@unibo.it"], ["Module B"])
+            self.assertEqual(
+                modules_by_email["a.teacher@unibo.it"],
+                {"teaching_id": "111", "details": ["Module A", "6 cfu"]},
+            )
+            self.assertEqual(
+                modules_by_email["b.teacher@unibo.it"],
+                {"teaching_id": "222", "details": ["Module B"]},
+            )
 
             first_link = courses_dir / "a.teacher" / "2025" / "course-91258.yml"
             second_link = courses_dir / "b.teacher" / "2025" / "course-91258.yml"

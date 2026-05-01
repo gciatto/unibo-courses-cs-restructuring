@@ -30,8 +30,13 @@ PATTERN_TEACHING_FILENAME = re.compile(r"^teaching-(?P<teaching_id>[^/]+)\.yml$"
 LOGGER = logging.getLogger(pathlib.Path(__file__).stem)
 
 
+class TeachingModule(BaseModel):
+    teaching_id: str = Field(default="")
+    details: list[str] = Field(default_factory=list)
+
+
 class TeacherWithModule(Teacher):
-    module: list[str] = Field(default_factory=list)
+    module: TeachingModule = Field(default_factory=TeachingModule)
 
 
 class MergedCourseTitle(BaseModel):
@@ -205,7 +210,11 @@ def merge_value(
 
 def build_teacher_entry(record: TeachingRecord) -> TeacherWithModule:
     teacher_payload = record.metadata.teacher.model_dump(by_alias=False, exclude_none=True)
-    teacher_payload["module"] = list(record.metadata.course_title.details)
+    teaching_id = PATTERN_TEACHING_FILENAME.fullmatch(record.path.name).group("teaching_id")  # type: ignore[union-attr]
+    teacher_payload["module"] = {
+        "teaching_id": teaching_id,
+        "details": list(record.metadata.course_title.details),
+    }
     return TeacherWithModule.model_validate(teacher_payload)
 
 
@@ -215,7 +224,7 @@ def merge_records(records: list[TeachingRecord]) -> MergedCourseMetadata:
 
     first_metadata = records[0].metadata
     teachers = [build_teacher_entry(record) for record in records]
-    teachers.sort(key=lambda teacher: (teacher.teacher_name, teacher.teacher_email, tuple(teacher.module)))
+    teachers.sort(key=lambda teacher: (teacher.teacher_name, teacher.teacher_email, teacher.module.teaching_id))
 
     return MergedCourseMetadata(
         year=first_metadata.year,
