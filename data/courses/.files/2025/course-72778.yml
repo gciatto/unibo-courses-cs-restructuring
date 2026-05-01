@@ -1,0 +1,238 @@
+year: 2025
+credits: 6
+ssd: INF/01
+language: Italian
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2025-09-17
+  to: 2025-12-04
+teachers:
+- id: '42372'
+  name: Marzolla, Moreno
+  email: moreno.marzolla@unibo.it
+  website: https://www.unibo.it/sitoweb/moreno.marzolla
+  role: associate professor
+  affiliation: disi
+  ssd:
+    name: INFO-01/A
+    description: Informatica
+  module:
+    teaching_id: '385080'
+    url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/385080
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/385080
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/385080
+    details:
+    - 6 cfu
+course_title:
+  id: '72778'
+  name: HIGH-PERFORMANCE COMPUTING
+integrated_course: ''
+campus: Cesena
+programme: Laurea in Ingegneria e scienze informatiche
+syllabus:
+  it:
+    title: 2025/2026 HIGH-PERFORMANCE COMPUTING — Università di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: 'Al termine del corso lo studente: conosce
+        i fondamenti della programmazione parallela, e le principali architetture
+        dei sistemi di calcolo ad alte prestazioni; è in grado di progettare algoritmi
+        paralleli su architetture a memoria condivisa e distribuita; è in grado di
+        implementare algoritmi paralleli utilizzando i linguaggi, gli strumenti e
+        le tecnologie appropriate; è in grado di misurare le prestazioni e l''efficienza
+        di programmi paralleli.'
+      Contenuti: 'Programma
+
+
+        - Algoritmi paralleli e modelli di calcolo
+
+        - Introduzione alle architetture per il calcolo parallelo: tassonomia di Flynn;
+        sistemi a memoria condivisa e distribuita; GPGPU
+
+        - Pattern per la programmazione parallela (embarassingly parallel; stencil;
+        work farm; scan; reduce)
+
+        - Programmazione parallela su architetture a memoria condivisa con OpenMP
+
+        - Programmazione parallela su architetture a memoria distribuita con MPI
+
+        - Programmazione GPGPU
+
+        - Cenni sulla programmazione SIMD usando gli "intrinsic" del compilatore o
+        l''auto-vettorizzazione (compilatore GCC)
+
+        - Valutazione delle prestazioni di programmi paralleli: misurazione e comprensione
+        di speedup ed efficienza.
+
+
+        Prerequisiti
+
+
+        Questo corso richiede una buona conoscenza della programmazione in linguaggio
+        C in ambiente Unix/Linux, e delle architetture dei calcolatori (a livello
+        di quanto presentato nel corso di Architettura dei Calcolatori).'
+      Testi/Bibliografia: "Argomenti selezionati dai seguenti volumi:\n\n- Peter Pacheco\
+        \ and Matthew Malensek, An Introduction to Parallel Programming, Morgan Kauìffman,\
+        \ 2nd edition, 2021, ISBN 9780128046050; va bene anche la prima edizione:\n\
+        \  Peter Pacheco, An Introduction to Parallel Programming, Morgan Kaufmann,\
+        \ 2011, ISBN 978-0123742605\n- Jason Sanders, Edward Kandrot, CUDA by Example:\
+        \ An Introduction to General-Purpose GPU Programming (https://developer.nvidia.com/cuda-example),\
+        \ Addison-Wesley, 2010, ISBN 978-0131387683\n- Georg Hager, Gerhard Wellein,\
+        \ Introduction to High Performance Computing for Scientists and Engineers,\
+        \ CRC Press; 1 edition (July 2, 2010), ISBN 978-1439811924\n  Ulteriore materiale\
+        \ (inclusi i lucidi delle lezioni e il materiale di laboratorio) è reso disponibile\
+        \ sul sito del corso."
+      Metodi didattici: 'Durante le lezioni in aula vengono introdotti i concetti
+        base della programmazione parallela, e vengono via via descritti i costrutti
+        di programmazione parallela che sono poi oggetto di esercitazioni parzialmente
+        guidate in laboratorio con la supervisione del docente. Vengono rese disponibili
+        le soluzioni degli esercizi proposti in laboratorio allo scopo di supportare
+        le attività di studio individuale.
+
+
+        In considerazione della tipologia di attività e dei metodi didattici adottati,
+        la frequenza di questa attività formativa richiede la preventiva partecipazione
+        di tutti gli studenti ai moduli 1 e 2 di formazione sulla sicurezza nei luoghi
+        di studio, https://elearning-sicurezza.unibo.it/ in modalità e-learning'
+      Modalità di verifica e valutazione dell'apprendimento: 'Le conoscenze acquisite
+        durante il corso verranno valutate mediante una prova scritta e un progetto
+        di programmazione. Le due prove sono indipendenti e possono essere sostenute
+        in qualsiasi ordine.
+
+
+        La prova scritta si compone di alcune (in genere, quattro o cinque) domande
+        a quiz e/o a risposta aperta, riguardanti la conoscenza ("sapere") degli aspetti
+        metodologici visti a lezione. La durata della prova scritta è 60 minuti. Durante
+        la prova scritta non è consentito consultare libri, appunti, o altro materiale.
+        La prova scritta viene valutata in trentesimi, mediante la somma dei punteggi
+        assegnati a ciascuna risposta. Il punteggio assegnato ad ogni risposta può
+        variare tra zero e un massimo che verrà indicato a fianco di ciascun quesito
+        e dipende dal grado di difficoltà dello stesso.
+
+
+        Il progetto di programmazione consiste nella realizzazione di una applicazione
+        parallela su specifiche indicate dal docente, usando gli strumenti visti a
+        lezione e in laboratorio. Scopo del progetto è verificare la capacità di "saper
+        fare", ossia di mettere in pratica le metodologie e tecniche di programmazione
+        parallela presentate durante il corso, con particolare riguardo alle attività
+        di laboratorio. Il programma parallelo deve essere accompagnato da una relazione
+        scritta. Il progetto può essere consegnato in qualunque momento nell''anno
+        accademico corrente. Il progetto viene valutato in trentesimi, tenendo conto
+        della correttezza dell''implementazione, della chiarezza ed efficienza del
+        codice, nonché della qualità della relazione.
+
+
+        L''esame si intende superato se si riporta una valutazione maggiore o uguale
+        a 18/30 su ognuna delle due prove. Il voto finale si ottiene come media pesata
+        del voto della prova scritta (peso 4) e del progetto (peso 6). La lode viene
+        assegnata a discrezione del docente per prove d''esame di qualità particolarmente
+        elevata.'
+      Strumenti a supporto della didattica: 'Lezioni: proiezione di diapositive e
+        dimostrazioni pratiche di programmazione parallela al calcolatore, integrate
+        con ulteriori spiegazioni alla lavagna. Il materiale viene reso disponibile
+        prima dell''inizio della lezione stessa.
+
+
+        Attività di laboratorio: le esercitazioni pratiche verranno svolte in ambiente
+        Linux usando gli strumenti di sviluppo disponibili. Agli studenti verrà fornito
+        accesso ad un server, accessibile anche da remoto. Tutti gli strumenti utilizzati
+        sono liberamente disponibili, allo scopo di favorire l''attività di studio
+        individuale su proprie risorse hardware, se disponibili.'
+      Link ad altre eventuali informazioni: https://www.moreno.marzolla.name/teaching/HPC/
+      Orario di ricevimento: Consulta il sito web di Moreno Marzolla (https://www.unibo.it/sitoweb/moreno.marzolla)
+  en:
+    title: 2025/2026 High-Performance Computing — University of Bologna
+    contents:
+      Learning outcomes: At the end of the course, students will be acquainted with
+        the fundamental programming techniques for high performance computer architectures.
+        Students will be able to design, implement and benchmark parallel programs
+        on shared-memory and distributed-memory systems.
+      Course contents: 'Syllabus
+
+
+        - Parallel algorithms and parallel models of computation.
+
+        - Introduction to HPC architectures: Flynn taxonomy, shared memory and distributed
+        memory architectures; GPGPU
+
+        - Parallel programming patterns (embarassingly parallel; stencil; work farm;
+        scan; reduce)
+
+        - Programming shared-memory architectures with C/OpenMP
+
+        - Programming distributed-memory architectures with C/MPI
+
+        - GPGPU programming
+
+        - Brief introduction to SIMD programming using compiler intrinsics or auto-vectorization
+        (GCC compiler)
+
+        - Performance evaluation of parallel programs: measuring and understanding
+        speedup and efficiency
+
+
+        Prerequisites
+
+
+        The course requires good programming skills with the C language in a Unix/Linux
+        environment, and basic knowledge of computer architectures (at the level of
+        what provided by the Computer Architectures course).'
+      Readings/Bibliography: "Selected parts from the following textbooks:\n\n- Peter\
+        \ Pacheco and Matthew Malensek, An Introduction to Parallel Programming, Morgan\
+        \ Kauìffman, 2nd edition, 2021, ISBN 9780128046050; the first edition is fine,\
+        \ too: Peter Pacheco, An Introduction to Parallel Programming, Morgan Kaufmann,\
+        \ 2011, ISBN 978-0123742605\n- Jason Sanders, Edward Kandrot, CUDA by Example:\
+        \ An Introduction to General-Purpose GPU Programming (https://developer.nvidia.com/cuda-example),\
+        \ Addison-Wesley, 2010, ISBN 978-0131387683\n- Georg Hager, Gerhard Wellein,\
+        \ Introduction to High Performance Computing for Scientists and Engineers,\
+        \ CRC Press; 1 edition (July 2, 2010), ISBN 978-1439811924\n  Additional teaching\
+        \ material (including lecture slides and programming exercises) is made available\
+        \ on the course web site."
+      Teaching methods: 'The lectures introduce the foundations of parallel programming
+        and several parallel programming costructs. Then, the same concepts are applied
+        in the lab through a set of small programming assignments under the supervision
+        of the instructor. Solutions are provided after the lab sessions, order to
+        support self-study.
+
+
+        Due to the the type of activity and teaching methods adopted, participation
+        to this course requires that students attend the training modules 1 and 2
+        on safety in the study places, through the e-learning platform https://elearning-sicurezza.unibo.it/.'
+      Assessment methods: 'Written exam and programming project. The two parts are
+        independent and can be given in any order.
+
+
+        The written exam consists of a set of questions (usually, four) on the topics
+        addressed during the lectures. The goal of the written exam is to verify that
+        students have understood the concepts illustrated during the course. The exam
+        is closed-book and consists of open questions and/or multiple-choice quizzes.
+        Each answer is awarded a number of points, from zero to a maximum that will
+        be indicated next to each question in the exam sheet. The written exam is
+        evaluated on a scale from 0 to 30 marks (18 is the passing grade).
+
+
+        The programming project requires the implementation of a parallel program
+        according to the specifications provided by the instructor; the programming
+        project also requires the preparation of a written report. The goal of the
+        project is to verify that students can apply in practice the techniques discussed
+        during the lectures, and in particular the lab sessions. The project evaluation
+        will consider the clarity, correctness and efficiency of the submitted program,
+        and the quality of the accompanying report.The project will be evaluated on
+        a scale from 0 to 30 mark (18 is the passing grade).
+
+
+        The exam is passed with a grade equal to or greater than 18 on both the written
+        and programming assignment. The final grade is computed as the weighted average
+        of the grades of the written part (weight 4) and the programming assignment
+        (weight 6). Honors ("lode") will be awarded by the instructor to exams of
+        outstanding quality.'
+      Teaching tools: 'Lectures: slides and practical programming demos will often
+        be used, integrated with exercises and Q&A sessions at the blackboard.
+
+
+        Lab: all programming activities will use the development tools provided by
+        the Linux environment. Students will be given access to a compute server.
+        All tools are freely available, in order to support self-study activities
+        on own hardware, if available.'
+      Links to further information: https://www.moreno.marzolla.name/teaching/HPC/
+      Office hours: See the website of Moreno Marzolla (https://www.unibo.it/sitoweb/moreno.marzolla/en)

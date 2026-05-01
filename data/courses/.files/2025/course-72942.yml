@@ -1,0 +1,387 @@
+year: 2025
+credits: 8
+ssd: ING-INF/05
+language: Italian
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2026-02-16
+  to: 2026-06-04
+teachers:
+- id: '181772'
+  name: Marchesano, Alessandro
+  email: alessandr.marchesano@unibo.it
+  website: https://www.unibo.it/sitoweb/alessandr.marchesano
+  role: pre-doc research fellow
+  affiliation: disi
+  module:
+    teaching_id: '517546'
+    url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/517546
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/517546
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/517546
+    details:
+    - 8 cfu
+- id: '34156'
+  name: Montanari, Rebecca
+  email: rebecca.montanari@unibo.it
+  website: https://www.unibo.it/sitoweb/rebecca.montanari
+  role: full professor
+  affiliation: disi
+  ssd:
+    name: IINF-05/A
+    description: Sistemi di elaborazione delle informazioni
+  module:
+    teaching_id: '517546'
+    url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/517546
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/517546
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/517546
+    details:
+    - 8 cfu
+course_title:
+  id: '72942'
+  name: SICUREZZA DELL'INFORMAZIONE M
+integrated_course: ''
+campus: Bologna
+programme: Laurea Magistrale in Ingegneria informatica
+syllabus:
+  it:
+    title: 2025/2026 SICUREZZA DELL'INFORMAZIONE M — Università di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: Al termine del corso lo studente possiede
+        conoscenze approfondite relativamente agli algoritmi, ai meccanismi, ai protocolli
+        e alle infrastrutture principali per la difesa della sicurezza dell’informazione
+        e dei sistemi di elaborazione da attacchi intenzionali; apprende inoltre i
+        principali concetti teorici alla base della costruzione dei meccanismi crittografici.
+        In particolare, grazie alle conoscenze acquisite sa applicare e adottare i
+        meccanismi, i protocolli e le infrastrutture più idonee a seconda delle caratteristiche
+        specifiche dei contesti applicativi ed è in grado di progettare meccanismi/servizi
+        di sicurezza secondo principi ingegneristici ben definiti e criteri ragionati
+        capaci di raggiungere il miglior bilanciamento possibile tra necessità di
+        sicurezza e altri requisiti applicativi (usabilità, manutenibilità, scalabilità,
+        etc.).
+      Contenuti: 'L''obiettivo del corso è quello di fornire conoscenze e capacità
+        progettuali sui modelli, sistemi e meccanismi per la protezione dei dati nelle
+        reti di sistemi con un taglio sia teorico sia pratico.
+
+
+        Propedeuticità: per trarre maggior profitto dal corso è importante aver chiari
+        i concetti e gli strumenti forniti dai corsi di reti di calcolatori T, sistemi
+        operativi T e laboratorio di sicurezza informatica T.
+
+
+        I contenuti del corso sono suddivisi in tre macro-aree:
+
+
+        1. Crittografia Moderna applicata
+
+
+        - Proprietà delle Trasformazioni per la sicurezza dell''informazione
+
+        - PRNG, cifrari a flusso e cifrari a blocco, funzioni hash crittograficamente
+        sicure, cifrari asimmetrici
+
+        - Esempi di attacchi basati sull''uso scorretto dei cifrari e modalità corrette
+        di impiego
+
+        - Esempi di applicazioni delle tecniche crittografiche in alcuni scenari (reti
+        wireless, cloud, IoT, ..)
+
+        - Modelli e sistemi di gestione delle chiavi crittografiche simmetriche e
+        asimmetriche (Key distribution center, PKI, PGP)
+
+        - Esempi di servizi sicuri: Time Stamping Service, PGP
+
+
+        1. Modelli e Sistemi di gestione dell''Identificazione e dell'' Autenticazione
+
+
+        - Principi di progettazione di protocolli sicuri di identificazione/autenticazione;
+
+        - Protocolli di identificazione/autenticazione
+
+        - Sistemi di identificazione/autenticazione centralizzati con relativi esempi
+        di protocolli/sistemi (Kerberos, ...)
+
+        - Sistemi di identificazione/autenticazione federata con relativi esempi di
+        protocolli/sistemi (Oauth, OpenID, SAML, ..)
+
+
+        1. Tecnologie di blockchain
+
+
+        - Principi di funzionamento
+
+        - Piattaforme Bitcoin ed Ethereum
+
+
+        Il corso sarà affiancato da un set di esercitazioni pratiche di laboratorio,
+        in cui gli studenti saranno stimolati a compiere attività a svolgimento guidato
+        in forma di lavoro personale e autonomo. Testi e soluzioni delle esercitazioni
+        saranno rese disponibili sul sito Web del corso.'
+      Testi/Bibliografia: '- Dispense del Corso disponibili sul sito del corso. I
+        lucidi costituiscono il riferimento principale per gli argomenti trattati.
+
+        - Bibliografia su Tematiche Generali di Sicurezza:
+
+
+        [1] Bruce Schneier: “Applied Cryptography ” John Wiley 1996
+
+
+        [2] A.J. Menezes, P.C. Van Oorschot, S.A. Vanstone: “Handbook of Applied Cryptography”
+        CRC Press 1997
+
+
+        [3] William Stalling: “Sicurezza delle reti. Applicazioni e standard ” Addison
+        Wesley Longman Italia
+
+
+        [4] William Stallings: "Crittografia e sicurezza delle reti", Mc Graw Hill
+
+
+        [5] G. Karame, E. Androulaki: "Bitcoin and Blockchain Security", Artech House
+        computer security series'
+      Metodi didattici: 'Lezioni frontali con presentazione e discussione dei contenuti
+        previsti nell''ambito del corso.
+
+
+        Il corso sarà affiancato da un set di attività di lavoro di gruppo per la
+        discussione di casi d''uso concreti e da un set di esercitazioni pratiche
+        di laboratorio in cui gli studenti sono stimolati a compiere attività a svolgimento
+        guidato in forma di lavoro personale e autonomo'
+      Modalità di verifica e valutazione dell'apprendimento: 'Il corso prevede una
+        prova finale scritta mirata a valutare il livello di apprendimento raggiunto
+        sia in termini di metodologie di progettazione architetturale e modelli, sia
+        in termini di operatività implementativa in relazione alle principali tecnologie
+        e sistemi descritti e utilizzati nel corso. La prova scritta, della durata
+        di circa 120-150 minuti, prevederà almeno 6 domande, in parte dedicate alla
+        verifica dell''apprendimento teorico e in parte alla risoluzione di esercizi
+        concreti di utilizzo delle tecnologie investigate durante il corso.
+
+
+        E'' prevista anche una prova pratica da svolgere autonomamente che verrà presentata
+        e discussa in presenza.
+
+
+        Il voto finale è dato dal risultato ottenuto nella prova scritta. Il superamento
+        della prova pratica è obbligatorio per la registrazione del voto della prova
+        scritta ma non concorre alla determinazione del voto finale.
+
+
+        Gli studenti potranno anche decidere di associare a questo insegnamento l''attività
+        progettuale di Sicurezza dell''Informazione M da 3 CFU
+
+
+        Indicazioni sull''uso di strumenti di intelligenza artificiale generative
+
+
+        L''uso di strumenti di GenAI è ammesso secondo le indicazioni fornite dalla
+        Policy di Ateneo tranne durante gli esami scritti in laboratorio.
+
+
+        L’uso dell’IA è ammesso per la preparazione della tesi e per la produzione
+        di codice da consegnare in modo dichiarato e limitato come supporto ma non
+        può sostituire
+
+        l’apporto originale dello studente.
+
+        Sono consentite: sintesi, riformulazioni, brainstorming, chiarificazioni linguistiche
+        e suggerimenti
+
+        sintattici. Non è assolutamente ammesso il «copia e incolla»
+
+
+        Non è invece permesso che l’IA produca analisi originali, interpretazioni,
+        o parti estese della prova.
+
+        L’uso corretto e dichiarato dell’IA non costituisce di per sé elemento premiale,
+        ma è valutato in
+
+        relazione alla qualità del contributo personale dello studente.
+
+        Lo studente deve dichiarare se abbia fatto ricorso all’IA per la produzione
+        del proprio elaborato,
+
+        specificando in tal caso quali strumenti abbia utilizzato e per quali attività
+        e indicando
+
+        esplicitamente quali parti del lavoro siano state assistite. Si richiede che
+        lo studente sia sempre pronto ad argomentare gli output prodotti da strumenti
+        di GenAI.
+
+
+        Un modello di dichiarazione standard è fornito alla pagina web relativa alla
+        Policy di Ateneo'
+      Strumenti a supporto della didattica: 'Materiale Didattico: tutte le diapositive
+        proiettate e discusse a lezione sono pubblicate in formato elettronico e consultabili
+        mediante la piattaforma didattica:
+
+
+        virtuale.unibo.it
+
+
+        La pubblicazione e l''aggiornamento delle diapositive avviene a cura del docente,
+        che provvede a rendere disponibile il materiale usato in aula in anticipo
+        rispetto allo svolgersi delle lezioni.
+
+
+        Un elenco esaustivo di testi di riferimento e manuali è consultabile sul sito
+
+
+        Studenti/sse con DSA o disabilità temporanee o permanenti: si raccomanda di
+        contattare per tempo l’ufficio di Ateneo responsabile (https://site.unibo.it/studenti-con-disabilita-e-dsa/it):
+        sarà sua cura proporre agli/lle studenti/sse interessati/e eventuali adattamenti,
+        che dovranno comunque essere sottoposti, con un anticipo di 15 giorni, all’approvazione
+        del/della docente, che ne valuterà l''opportunità anche in relazione agli
+        obiettivi formativi dell''insegnamento.'
+      Orario di ricevimento: Consulta il sito web di Rebecca Montanari (https://www.unibo.it/sitoweb/rebecca.montanari)
+      SDGs: 'Istruzione di qualità Imprese innovazione e infrastrutture
+
+
+        L''insegnamento contribuisce al perseguimento degli Obiettivi
+
+        di Sviluppo Sostenibile dell''Agenda 2030 dell''ONU.'
+  en:
+    title: 2025/2026 Information Security M — University of Bologna
+    contents:
+      Learning outcomes: 'At the end of the course, the student will have in-depth
+        knowledge of the algorithms, mechanisms, protocols, and main management infrastructures
+        for protecting information security and computing systems against intentional
+        attacks. The student will also learn the fundamental theoretical concepts
+        underlying the construction of cryptographic mechanisms.
+
+
+        In particular, thanks to the acquired knowledge, the student will be able
+        to apply and adopt the most suitable mechanisms, protocols, and infrastructures
+        depending on the specific characteristics of the application contexts. Moreover,
+        the student will be capable of designing security mechanisms/services based
+        on well-defined engineering principles and reasoned criteria, aiming to achieve
+        the best possible balance between security needs and other application requirements
+        (usability, maintainability, scalability, etc.).'
+      Course contents: 'The aim of the course is to provide an in-depth study of the
+        models, systems and mechanisms for securing processing systems with both a
+        theoretical and a practical focus.
+
+
+        Suggested background: to gain more from the course it is important to have
+        clear the concepts and tools provided by the computer networks, operating
+        systems and computer security laboratory courses.
+
+
+        The course contents are divided into three macro-areas:
+
+
+        1. Modern cryptography applied
+
+
+        - Insights and pitfalls in using PRNG, stream ciphers and block ciphers, cryptographically
+        secure hash functions, asymmetric ciphers
+
+        - Examples of attacks based on the incorrect use of ciphers and correct methods
+        of use
+
+        - Examples of cryptographic applications in some scenarios (wireless networks,
+        cloud, IoT, ..)
+
+        - Symmetric and asymmetric cryptographic key management models and systems
+        (Key distribution center, PKI, PGP)
+
+
+        1. Authentication Models and Systems
+
+
+        - Recalls on authentication systems and principles of designing secure authentication
+        protocols
+
+        - Single Sign-on authentication models with related examples of protocols
+        / systems (Kerberos, ...)
+
+        - Federated authentication models with relative examples of protocols / systems
+        (Oauth, OpenID, SAML, ..)
+
+
+        1. Blockchain technologies
+
+
+        - Principles of operation
+
+        - Hints of operation of the Bitcoin and Ethereum platforms
+
+
+        The course will be accompanied by a set of practical lab exercises, in which
+        students will be encouraged to carry out guided activities in the form of
+        personal and independent work. The texts and solutions of the exercises will
+        be made available on the course website.'
+      Readings/Bibliography: 'Slides on the course web site
+
+        References:
+
+
+        [1] Bruce Schneier: “Applied Cryptography ” John Wiley 1996
+
+
+        [2] A.J. Menezes, P.C. Van Oorschot, S.A. Vanstone: “Handbook of Applied Cryptography”
+        CRC Press 1997
+
+
+        [3] William Stalling: “Sicurezza delle reti. Applicazioni e standard ” Addison
+        Wesley Longman Italia
+
+
+        [4] William Stallings: "Crittografia e sicurezza delle reti", Mc Graw Hill
+
+
+        [5] G. Karame, E. Androulaki: "Bitcoin and Blockchain Security", Artech House
+        computer security series'
+      Teaching methods: 'Lectures will include the presentation and discussion of
+        the course content.
+
+
+        The course will be complemented by a set of group work activities focused
+        on the discussion of real-world use cases, as well as a set of practical lab
+        exercises in which students will be encouraged to carry out guided activities
+        through personal and independent work.'
+      Assessment methods: 'The course includes a final written exam aimed at assessing
+        the level of learning achieved, both in terms of architectural design methodologies
+        and models, and in terms of implementation skills related to the main technologies
+        and systems described and used during the course.
+
+        The written exam, lasting approximately 120–150 minutes, will consist of at
+        least six questions, partly focused on verifying theoretical knowledge and
+        partly on solving practical exercises involving the technologies explored
+        during the course.
+
+
+        A practical assignment to be completed independently is also required and
+        will be presented and discussed in person.
+
+
+        The final grade is based on the result of the written exam. Passing the practical
+        assignment is mandatory for the written exam grade to be recorded, but it
+        does not contribute to the final grade.
+
+
+        Students may also choose to associate the project activity of Sicurezza dell''Informazione
+        M (3CFU) with this course.'
+      Teaching tools: 'The material presented during lectures (slides, solved exercises,
+        suggested exercises, examples, and project proposals) will be fully made available
+        on the course website on Virtuale @UNIBO (not yet available and to be populated
+        progressively during the course).
+
+
+        This material should be considered the primary study resource for exam preparation;
+        the suggested bibliography is provided as optional support and integration.
+
+
+        Students with learning disorders and\or temporary or permanent disabilities:
+        please, contact the office responsible (https://site.unibo.it/studenti-con-disabilita-e-dsa/en/for-students
+        ) as soon as possible so that they can propose acceptable adjustments. The
+        request for adaptation must be submitted in advance (15 days before the exam
+        date) to the lecturer, who will assess the appropriateness of the adjustments,
+        taking into account the teaching objectives.'
+      Office hours: See the website of Rebecca Montanari (https://www.unibo.it/sitoweb/rebecca.montanari/en)
+      SDGs: 'Quality education Industry, innovation and infrastructure
+
+
+        This teaching activity contributes to the achievement of the Sustainable Development
+        Goals of the UN 2030 Agenda.'

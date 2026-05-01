@@ -1,0 +1,511 @@
+year: 2025
+credits: 12
+ssd: INF/01
+language: Italian
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2026-02-09
+  to: 2026-05-20
+teachers:
+- id: '116978'
+  name: Corazza, Michele
+  email: michele.corazza2@unibo.it
+  website: https://www.unibo.it/sitoweb/michele.corazza2
+  role: rtda
+  affiliation: dsg
+  ssd:
+    name: INFO-01/A
+    description: Informatica
+  module:
+    teaching_id: '520931'
+    url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/520931
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/520931
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/520931
+    details:
+    - LM
+    - Modulo 2
+- id: '46984'
+  name: Peroni, Silvio
+  email: silvio.peroni@unibo.it
+  website: https://www.unibo.it/sitoweb/silvio.peroni
+  role: associate professor
+  affiliation: ficlit
+  ssd:
+    name: INFO-01/A
+    description: Informatica
+  module:
+    teaching_id: '520931'
+    url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/520931
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/520931
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/520931
+    details:
+    - LM
+    - 12 cfu
+course_title:
+  id: B1703
+  name: INTRODUZIONE ALLA PROGRAMMAZIONE
+integrated_course: ''
+campus: Bologna
+programme: Laurea Magistrale in Dati, metodi e modelli per le scienze linguistiche
+syllabus:
+  it:
+    title: 2025/2026 INTRODUZIONE ALLA PROGRAMMAZIONE (LM) — Università di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: Al termine del corso, lo studente possiede
+        il necessario background informatico ed una appropriata conoscenza dei linguaggi
+        di programmazione. Sa utilizzare le conoscenze acquisite per progettare autonomamente
+        algoritmi e strutture dati. Sa lavorare in modo autonomo, ma anche inserirsi
+        in un gruppo di lavoro.
+      Contenuti: 'Il corso è organizzato in due blocchi di lezioni.
+
+
+        Il primo blocco (modulo 1) è organizzato in una serie di lezioni, ognuna delle
+        quali introduce un argomento specifico e include riferimenti a fatti storici
+        e personalità rilevanti (indicate tra parentesi quadrate) per l''argomento
+        trattato. Le lezioni sono complementate da diverse sessioni laboratoriali,
+        da svolgersi con un computer, per imparare i costrutti primari del linguaggio
+        di programmazione che verrà usato per implementare ed eseguire i vari algoritmi
+        proposti.
+
+
+        Il secondo blocco (modulo 2) è organizzato in una serie di sessioni pratiche
+        che verranno svolte mediante l''uso di un computer, e includono attività laboratoriali
+        basate su strumenti esistenti che permettono la sperimentazione degli argomenti
+        introdotti nelle lezioni del primo blocco.
+
+
+        Lista delle lezioni
+
+
+        Primo blocco (modulo 1, Febbraio-Marzo)
+
+
+        - Introduzione al pensiero computazionale [Chomsky]
+
+        - Che cos''è un computer?
+
+        - Linguaggi naturali e linguaggi di programmazione
+
+        - Astrazione: lo strumento principale del pensiero computazionale
+
+        - Algoritmi [Lovelace]
+
+        - Che cos''è un algoritmo?
+
+        - Le prime macchine e i primi programmatori
+
+        - Come sviluppare un algoritmo: i diagrammi di flusso
+
+        - Il nostro primo algoritmo: input, processo, decisioni, output
+
+        - Laboratorio: installazione di Python
+
+        - Linguaggi di programmazione [Hopper]
+
+        - Storia dei linguaggi di programmazione
+
+        - Python
+
+        - Scrivere il nostro primo algoritmo in Python: variabili, assegnamenti, e
+        blocchi condizionali
+
+        - Organizzare l''informazione: strutture ordinate [Knuth]
+
+        - Che cos''è una struttura dati?
+
+        - Liste e varianti
+
+        - Algoritmi di forza bruta [Holberton]
+
+        - Iterazione: costrutti for e while
+
+        - Ricerca lineare
+
+        - Laboratorio: costrutti Python di base
+
+        - Organizzare l''informazione: strutture non ordinate [Borges]
+
+        - Può una struttura dati essere infinita?
+
+        - Insiemi
+
+        - Dizionari
+
+        - Ricorsione [Hofstadter]
+
+        - Un''intuizione: il Piccolo Labirinto Armonico
+
+        - Approcci ricorsivi in linguistica e fisica
+
+        - Algoritmi ricorsivi
+
+        - Laboratorio: utilizzare le liste
+
+        - Algoritmi divide et impera [von Neumann e Fibonacci]
+
+        - Ordinare milioni di libri
+
+        - Sequenza di Fibonacci
+
+        - Laboratorio: utilizzare insiemi e dizionari
+
+        - Organizzare l''informazione: alberi e grafi [Garcia Marquez and Euler]
+
+        - Genealogia e markup di documenti
+
+        - Alberi
+
+        - La città di Königsberg
+
+        - Grafi
+
+        - Laboratorio: leggere e processare file CSV e JSON
+
+
+        Secondo blocco (modulo 2, Aprile-Maggio)
+
+
+        - Stringhe: dai costrutti di base alle funzionalità avanzate
+
+        - Introduzione alle espressioni regolari
+
+        - Array e matrici con numpy
+
+        - Manipolazione dei dati con Pandas
+
+        - Visualizzazione dei dati
+
+
+        Le date e gli orari di tutte le lezioni indicate sopra sono a disposizione
+        nella sezione "Calendario" del repository GitHub del corso (https://github.com/intro-prog/2025-2026/#calendario).
+
+
+        Studenti/sse con DSA o disabilità temporanee o permanenti: si suggerisce di
+        mettersi subito in contatto con l’ufficio di Ateneo responsabile (https://site.unibo.it/studenti-con-disabilita-e-dsa/it)
+        e con il/la docente, per cercare insieme le strategie più efficaci nel seguire
+        le lezioni e/o nel preparare l’esame.'
+      Testi/Bibliografia: 'Dispense verranno messe a disposizione in modo aperto sul
+        repository GitHub del corso (https://github.com/intro-prog/2025-2026) prima
+        dell''inizio dello stesso. Slide e qualunque altro materiale verrà messo a
+        disposizione, nello stesso repository, qualche giorno prima di ogni lezione.
+
+
+        Le letture consigliate di seguito possono essere d''aiuto come materiale di
+        approfondimento, in modo da impratichirsi della terminologia di base del corso:
+
+
+        - Peroni, S. (2020). Computational Thinking and Programming book. https://comp-think.github.io
+
+        - Tagliaferri, L. (2018). How To Code in Python. ISBN: 978-0999773017. Full
+        text available online (https://www.digitalocean.com/community/books/digitalocean-ebook-how-to-code-in-python).
+
+        - Downey, A. B. (2015). Think Python. 2nd edition. O''Reilly. https://greenteapress.com/wp/think-python-2e/
+
+        - Severance, C. R. (2016). Python for Everybody - Exploring Data Using Python
+        3. CreateSpace Independent Publishing Platform. https://www.py4e.com/book'
+      Metodi didattici: Il corso è organizzato in 60 ore di lezioni frontali in presenza.
+      Modalità di verifica e valutazione dell'apprendimento: 'L''esame consiste di:
+
+
+        1. una prova scritta (della durata di un''ora e mezza) che si terrà dopo il
+        primo blocco del corso, in modo da valutare le competenze generali e le abilità
+        analitiche acquisite dagli studenti su tutti gli argomenti del primo blocco
+        - voto massimo: 33 punti; voto minimo per la sufficienza: 18 punti.
+
+        2. l''implementazione di un progetto di gruppo da sottoporre dopo la fine
+        del secondo blocco del corso, dove gli studenti devono necessariamente organizzarsi
+        in gruppi di 3-4 persone; il tema del progetto verrà deciso in accordo con
+        il professore o selezionato da una lista di proposte, e verrà discusso durante
+        un colloquio orale con il professore - voto massimo: 33 punti; voto minimo
+        per la sufficienza: 18 punti.
+
+
+        Se entrambi i voti dei punti (1) e (2) sono sufficienti, il voto finale dello/a
+        studente/ssa è calcolato come la somma dei due voti ottenuti per ognuno dei
+        punti (1) e (2) divisa per 2, e approssimato all''intero superiore più vicino
+        nel caso in cui il risultato della divisione sia decimale. Qualunque punteggio
+        finale maggiore di 30 verrà registrato come 30 cum laude. In particolare:
+
+
+        - valutazione eccellente (voto superiore a 26): raggiungere un''approfondita
+        conoscenza degli argomenti del corso e un coinvolgimento attivo nello svolgimento
+        del progetto seguendo tutti i principi teorici e linee guida pratiche introdotte
+        durante le lezioni e le sessioni laboratoriali;
+
+        - valutazione sufficiente (voto tra 18 e 26): raggiungere una conoscenza parziale
+        degli argomenti del corso e un coinvolgimento parziale nello sviluppo del
+        progetto;
+
+        - valutazione insufficiente (voto minore di 18): non aver raggiunto una conoscenza
+        adeguata degli argomenti del corso, senza aver fornito alcuno contributo per
+        lo sviluppo del progetto.
+
+
+        È fortemente suggerito seguire attivamente il corso in presenza in modo da
+        prendere parte alle discussioni collegiali con i professori e gli altri studenti.
+        Queste discussioni, infatti, sono estremamente importanti per meglio comprendere,
+        e quindi rendere più semplice, lo studio degli argomenti del corso e l''implementazione
+        del progetto. Tuttavia, sebbene scoraggiato, è possibile seguire il corso
+        anche come non frequentante. Il materiale da studiare per la prova scritta
+        è lo stesso sia per i frequentanti sia per i non frequentanti. Invece, per
+        i non frequentanti, il tema del progetto deve essere discusso in anticipo
+        con il professore.
+
+
+        Studenti/sse con DSA o disabilità temporanee o permanenti: si raccomanda di
+        contattare per tempo l’ufficio di Ateneo responsabile (https://site.unibo.it/studenti-con-disabilita-e-dsa/it):
+        sarà sua cura proporre agli/lle studenti/sse interessati/e eventuali adattamenti,
+        che dovranno comunque essere sottoposti, con un anticipo di almeno 15 giorni,
+        all’approvazione del/la docente, che ne valuterà l''opportunità anche in relazione
+        agli obiettivi formativi dell''insegnamento.'
+      Strumenti a supporto della didattica: 'Le lezioni verranno svolte in aule equipaggiate
+        con computer connessi alla Intranet di Ateneo e a Internet.
+
+
+        Le lezioni teoriche verranno sempre accompagnate da parti pratiche, che verranno
+        rinforzate nei momenti laboratoriali. Tutto il materiale del corso - incluse
+        le dispense e le slide - verrà messo a disposizione nel repository GitHub
+        del corso (https://github.com/intro-prog/2025-2026/). Verrà creato un gruppo
+        apposito su una piattaforma per lo scambio di messaggi per favorire l''interazione
+        tra gli/le studenti/esse e i professori.'
+      Link ad altre eventuali informazioni: https://github.com/intro-prog/2025-2026/
+      Orario di ricevimento: 'Consulta il sito web di Silvio Peroni (https://www.unibo.it/sitoweb/silvio.peroni)
+
+
+        Consulta il sito web di Michele Corazza (https://www.unibo.it/sitoweb/michele.corazza2)'
+      SDGs: 'Istruzione di qualità
+
+
+        L''insegnamento contribuisce al perseguimento degli Obiettivi
+
+        di Sviluppo Sostenibile dell''Agenda 2030 dell''ONU.'
+  en:
+    title: 2025/2026 Introduction to Programming (LM) — University of Bologna
+    contents:
+      Learning outcomes: At the end of the course, the student has the necessary IT
+        background and an appropriate knowledge of programming languages. He can use
+        the acquired knowledge to autonomously design algorithms and data structures.
+        He knows how to work independently, but also to be part of a work group.
+      Course contents: 'The course is organised in two blocks.
+
+
+        The first block (module 1) is organised in a series of lectures. Each lecture
+        introduces a specific topic, includes mentions to some related historical
+        facts and to people (indicated between squared brackets) who have provided
+        interesting insights on the subject. The lectures are accompanied by several
+        laboratory sessions, to be held with a computer, for learning the primary
+        constructs of the programming language that will be used for implementing
+        and running the various algorithms proposed.
+
+
+        The second block (module 2) is organised in a series of practical hands-on
+        sessions. In particular, each hands-on session will be held with a computer
+        and includes laboratory activities based on existing tools that enable the
+        experimentation with the topics introduced in the lectures in the first block.
+
+
+        List of lectures
+
+
+        First block (module 1, February-March)
+
+
+        - Introduction to Computational Thinking [Chomsky]
+
+        - What is a computer?
+
+        - Comparing natural languages and programming languages
+
+        - Abstraction: the main tool of Computational Thinking
+
+        - Algorithms [Lovelace]
+
+        - What is an algorithm?
+
+        - First machines and programmers
+
+        - How to develop an algorithm: flowcharts
+
+        - Our first algorithm: input, process, decision, output
+
+        - Laboratory: installing Python
+
+        - Programming Languages [Hopper]
+
+        - History of programming languages
+
+        - Python
+
+        - Writing our first algorithm in Python: variables, assignments, and conditional
+        statements
+
+        - Organising information: ordered structures [Knuth]
+
+        - What is a data structure?
+
+        - List and similar structures
+
+        - Brute-force algorithms [Holberton]
+
+        - Iterations: for and while constructs
+
+        - Linear search
+
+        - Laboratory: Python basic constructs
+
+        - Organising information: unordered structures [Borges]
+
+        - Can data structures be infinite?
+
+        - Set
+
+        - Dictionary
+
+        - Recursion [Hofstadter]
+
+        - An intuition: the Little Harmonic Labyrinth
+
+        - Recursive approaches in Linguistics and Physics
+
+        - Recursive algorithms
+
+        - Laboratory: using lists
+
+        - Divide and conquer algorithms [von Neumann and Fibonacci]
+
+        - Ordering billions of books
+
+        - Fibonacci sequence
+
+        - Laboratory: using sets and dictionaries
+
+        - Organising information: trees and graphs [Garcia Marquez and Euler]
+
+        - Genealogy and document markup
+
+        - Tree
+
+        - The city of Königsberg
+
+        - Graph
+
+        - Laboratory: reading and processing CSV and JSON files
+
+
+        Second block (module 2, April-May)
+
+
+        - Strings: from basic constructs to advanced features
+
+        - Introducing regular expressions
+
+        - Arrays and matrixes with numpy
+
+        - Data manipulation with Pandas
+
+        - Data visualisation
+
+
+        The dates and times of all the lectures above are available in the section
+        "Calendario" of the GitHub repository of the course (https://github.com/intro-prog/2025-2026/#calendario).
+
+
+        Students with specific learning disorders (SLD) or temporary/permanent disabilities
+        should contact the appropriate University office (https://site.unibo.it/studenti-con-disabilita-e-dsa/en)
+        immediately and agree with the teachers the most effective strategies for
+        attending the lectures and preparing for the exam.'
+      Readings/Bibliography: 'Lecture notes will be made freely available to students
+        in the GitHub repository of the course (https://github.com/intro-prog/2025-2026)
+        before the beginning of the course. Slides and any additional material will
+        be made also available a few days before each lecture in the same repository.
+
+
+        The following suggested readings could be helpful to students as background
+        material, in order to practice basic terminologies of the course:
+
+
+        - Peroni, S. (2020). Computational Thinking and Programming book. https://comp-think.github.io
+
+        - Tagliaferri, L. (2018). How To Code in Python. ISBN: 978-0999773017. Full
+        text available online (https://www.digitalocean.com/community/books/digitalocean-ebook-how-to-code-in-python).
+
+        - Downey, A. B. (2015). Think Python. 2nd edition. O''Reilly. https://greenteapress.com/wp/think-python-2e/
+
+        - Severance, C. R. (2016). Python for Everybody - Exploring Data Using Python
+        3. CreateSpace Independent Publishing Platform. https://www.py4e.com/book'
+      Teaching methods: Face-to-face classes for 60 hours.
+      Assessment methods: 'The exam consists of:
+
+
+        1. a written examination (duration: one hour and an half) held after the first
+        block of the course, for assessing the overall competences and analytical
+        skills acquired by the students on all the topics of the first block of the
+        course - maximum score: 33 points; minimum score for being sufficient: 18
+        points.
+
+        2. the implementation of a group project to be submitted after the second
+        block of the course, where students are mandatorily asked to organise themself
+        in groups of 3-4 people; the theme of the project will be decided with the
+        professor or selected by the student from a list of proposals, and it will
+        be discussed during an oral colloquium with the professor - maximum score:
+        33 points**; minimum score for being sufficient: 18 points**.
+
+
+        If both the scores for points (1) and (2) are sufficient, the final score
+        of the student is the sum of the scores gained for each of the aforementioned
+        points divided by 2, approximated to the closest higher integer value in case
+        of a decimal number. Any final score greater than 30 will be registered as
+        30 cum laude. In particular:
+
+
+        - excellent evaluation (final score greater than 26): reaching an in-depth
+        view of all the course topics, and active involvement in the development of
+        the project following all the theoretical principles and practical guidelines
+        provided to the student during the lectures and the hands-on sessions;
+
+        - sufficient evaluation (final score between 18 and 26): reaching a partial
+        view of the course topics, providing a minor contribution to the development
+        of the project;
+
+        - insufficient evaluation (final score lesser than 18): not reaching an inappropriate
+        view of the course topics, and not providing any contribution to the project.
+
+
+        It is strongly suggested to attend the course in person since it would enable
+        collegial discussions with the professors and the other students. Indeed,
+        these discussions are extremely important since they simplify a lot the study
+        of the course topics and the implementation of the project. However, even
+        if discouraged, it is possible to follow the course as non-attender. The material
+        to study for the final written examination is the same for both attenders
+        and non-attenders. Instead, for non attenders, the topic of the project should
+        be discussed with the professors in advance.
+
+
+        Students with specific learning disorders (SLD) or temporary/permanent disabilities
+        should contact the appropriate University office (https://site.unibo.it/studenti-con-disabilita-e-dsa/en)
+        in advance. The office will be responsible for proposing adaptations to interested
+        students. Such adaptations must be submitted to the teachers for approval
+        at least 15 days before the exam session. The teachers will also evaluate
+        the adaptations regarding the training objectives of teaching.'
+      Teaching tools: 'Classes are held in a classroom equipped with personal computers
+        connected to the Intranet and Internet.
+
+
+        Theory lessons will always be accompanied by practical parts, which will be
+        reinforced during several hands-on sessions. All the material of the course
+        - including lecture notes and slides - will be made available in the GitHub
+        repository of the course (https://github.com/intro-prog/2025-2026/). A group
+        in a free messaging application will be set up so as to allow all the students
+        of the course to communicate directly with each other and with the professors.'
+      Links to further information: https://github.com/intro-prog/2025-2026/
+      Office hours: 'See the website of Silvio Peroni (https://www.unibo.it/sitoweb/silvio.peroni/en)
+
+
+        See the website of Michele Corazza (https://www.unibo.it/sitoweb/michele.corazza2/en)'
+      SDGs: 'Quality education
+
+
+        This teaching activity contributes to the achievement of the Sustainable Development
+        Goals of the UN 2030 Agenda.'

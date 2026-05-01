@@ -1,0 +1,436 @@
+year: 2025
+credits: 8
+ssd: ING-INF/05
+language: Italian
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2025-09-24
+  to: 2025-12-19
+teachers:
+- id: '30202'
+  name: Ciampolini, Anna
+  email: anna.ciampolini@unibo.it
+  website: https://www.unibo.it/sitoweb/anna.ciampolini
+  role: full professor
+  affiliation: disi
+  ssd:
+    name: IINF-05/A
+    description: Sistemi di elaborazione delle informazioni
+  module:
+    teaching_id: '543026'
+    url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/543026
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/543026
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/543026
+    details:
+    - 8 cfu
+course_title:
+  id: B8562
+  name: SISTEMI CONCORRENTI E PARALLELI M
+integrated_course: ''
+campus: Bologna
+programme: Laurea Magistrale in Ingegneria informatica
+syllabus:
+  it:
+    title: 2025/2026 SISTEMI CONCORRENTI E PARALLELI M — Università di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: Al termine del corso lo studente possiede
+        conoscenze approfondite a) sull’organizzazione dei sistemi di elaborazione
+        concorrenti e paralleli, in relazione alle caratteristiche dell’hardware utilizzato
+        e con particolare riguardo ad architetture multiprocessore, multicomputer
+        e a sistemi paralleli ad elevate prestazioni (HPC); b) sulle caratteristiche
+        e sulla struttura interna dei sistemi operativi a supporto dell’esecuzione
+        di applicazioni concorrenti e parallele; c) sui modelli e sugli strumenti
+        per la sincronizzazione tra processi nel modello a memoria comune e nel modello
+        a scambio di messaggi; d) sulle metodologie e sui linguaggi per il progetto
+        di applicazioni concorrenti; e) sulle metodologie e sui linguaggi per il progetto
+        di applicazioni parallele in sistemi paralleli ad elevate prestazioni (HPC),
+        con particolare riguardo al modello architetturale MIMD. In particolare, sa
+        risolvere problemi di sincronizzazione tra attività concorrenti/parallele
+        nel modello a memoria comune e in quello a scambio di messaggi, sa sviluppare
+        programmi concorrenti utilizzando linguaggi di alto livello basati sia sulla
+        condivisione di variabili sia sullo scambio di messaggi, sa sviluppare programmi
+        paralleli in sistemi HPC, con particolare riguardo al modello architetturale
+        MIMD, e sa valutarne le prestazioni.
+      Contenuti: '1.Introduzione:
+
+
+        Richiami sui concetti di Concorrenza e Parallelismo
+
+
+        Modelli di interazione tra processi concorrenti/paralleli:
+
+
+        - memoria comune
+
+        - scambio di messaggi
+
+
+        2.Architetture dei Sistemi Concorrenti e Paralleli
+
+
+        - Il modello di Von Neumann caratteristiche e limitazioni
+
+        - Estensioni del modello di Von Neumann: cache, ILP e Hardware Multithreading
+
+        - Architetture parallele: multiprocessori, multicomputer, cluster, sistemi
+        HPC, GPU
+
+        - Classificazione di Flynn.
+
+
+        3. Sviluppo di Software concorrente
+
+
+        - Introduzione e definizioni
+
+        - Algoritmi e Processi non sequenziali.
+
+        - Tipi di interazione
+
+        - linguaggi concorrenti
+
+        - proprietà dei programmi concorrenti
+
+
+        3.1 Modello a memoria comune
+
+
+        Richiami e approfondimenti su threads e sincronizzazione:
+
+
+        - Caratteristiche e implementazione thread
+
+        - Semafori: proprietà, casi di uso, implementazione.
+
+
+        Uso di linguaggi concorrenti nel modello a memoria comune: la libreria c/pthread.
+
+
+        3.2 Modello a scambio di messaggi
+
+
+        - Richiami su canali e primitive
+
+        - Primitive di comunicazione:semantica e implementazione
+
+        - Comandi con guardia
+
+        - Rendez-vous e chiamata di procedura remota
+
+        - Algoritmi per la sincronizzazione in ambiente distribuito
+
+
+        Uso di Linguaggi concorrenti nel modello a scambio di messaggi: google go,
+        ada.
+
+
+        4.Supporto SW alla Concorrenza
+
+
+        Virtualizzazione
+
+
+        - Virtualizzazione dell''hardware: finalità e soluzioni
+
+        - Realizzazione di virtual machine monitor: virtualizzazione e paravirtualizzazione
+
+        - Analisi e sperimentazione di tecnologie: il caso di xen
+
+
+        Kernel di sistemi multithreaded/multitask
+
+
+        - Realizzazione dei meccanismi di gestione dei processi e di interazione (sincronizzazione
+        e comunicazione) all’interno del kernel di un sistema monoprocessore
+
+        - Estensione al caso multiprocessore: Modello SMP, Modello loosely-coupled.
+
+
+        5. Sistemi HPC e Programmazione parallela
+
+
+        Caratteristiche HW/SW dei sistemi HPC:
+
+
+        - Modelli architetturali
+
+        - Esempi di architetture reali
+
+        - Cenni sulle caratteristiche dei sistemi operativi per infrastrutture HPC
+
+        - Strumenti per la gestione del workload in sistemi HPC
+
+
+        Metodologie e metriche per la valutazione delle prestazioni di applicazioni
+        parallele:
+
+
+        - Speedup e efficienza
+
+        - Scalabilità strong e weak
+
+        - Leggi di Amdahl e Gustafson
+
+
+        Sviluppo di applicazioni parallele:
+
+
+        - Scambio di messaggi: la libreria MPI
+
+        - Memoria comune: open MP
+
+        - Programmazione ibrida'
+      Testi/Bibliografia: '- G.R.Andrews: "Foundations of Multithreaded, Parallel
+        and Distributed Programming", Addison-Wesley
+
+        - Peter Pacheco, An Introduction to Parallel Programming, Morgan Kauffmann,
+        2011
+
+        - P.Ancilotti, M.Boari: ''Programmazione concorrente e distribuita'', McGraw-Hill
+
+        - P.Ancilotti, M.Boari A.Ciampolini,G.Lipari: '' Sistemi Operativi'', seconda
+        edizione, McGraw-Hill
+
+        - S. Tanenbaum: ''I Moderni Sistemi Operativi'', Jackson Libri
+
+        - A.Silberschatz, P.Galvin, G.Gagne: ''Applied Operating System Concepts''
+        I edizione, John Wiley & Son, Inc.'
+      Metodi didattici: 'Le lezioni frontali saranno integrate con attività di laboratorio
+        assistite che si svolgeranno presso i laboratori della Scuola di Ingegneria
+        e Architettura.
+
+
+        In considerazione della tipologia di attività e dei metodi didattici adottati,
+        la frequenza di questa attività formativa richiede la preventiva partecipazione
+        di tutti gli studenti ai Moduli 1 e 2 di formazione sulla sicurezza nei luoghi
+        di studio [https://elearning-sicurezza.unibo.it/], in modalità e-learning.'
+      Modalità di verifica e valutazione dell'apprendimento: 'L''esame è articolato
+        in 2 prove obbligatorie:
+
+
+        1. Prova di laboratorio: sviluppo di applicazioni concorrenti/parallele.
+
+        2. Prova orale.
+
+
+        La prova orale può essere sostenuta soltanto dopo il superamento della prova
+        di laboratorio.'
+      Strumenti a supporto della didattica: 'Le lezioni in aula vengono svolte anche
+        con l''ausilio di slides e videoproiettore.
+
+        Le slides presentate a lezione vengono rese disponibili a tutti gli studenti
+        tramite la piattaforma "Virtuale".
+
+        Assegnazione di una macchina virtuale ad ogni studente del corso per esercitarsi
+        in autonomia.'
+      Orario di ricevimento: Consulta il sito web di Anna Ciampolini (https://www.unibo.it/sitoweb/anna.ciampolini)
+      SDGs: 'Istruzione di qualità Parità di genere Imprese innovazione e infrastrutture
+
+
+        L''insegnamento contribuisce al perseguimento degli Obiettivi
+
+        di Sviluppo Sostenibile dell''Agenda 2030 dell''ONU.'
+  en:
+    title: 2025/2026 SISTEMI CONCORRENTI E PARALLELI M — University of Bologna
+    contents:
+      Learning outcomes: 'At the end of the course, the student has an in-depth understanding
+        of:
+
+        a) the organization of concurrent and parallel computing systems, in relation
+        to the characteristics of the hardware used, with particular focus on multiprocessor
+        architectures, multicomputers, and high-performance computing (HPC) systems;
+
+        b) the features and internal structure of operating systems that support the
+        execution of concurrent and parallel applications;
+
+        c) the models and tools for process synchronization in both the shared memory
+        model and the message-passing model;
+
+        d) the methodologies and programming languages for designing concurrent applications;
+
+        e) the methodologies and programming languages for designing parallel applications
+        on high-performance computing (HPC) systems, with particular reference to
+        the MIMD architectural model.
+
+
+        In particular, the student is able to solve synchronization problems among
+        concurrent/parallel activities in both the shared memory and message-passing
+        models, develop concurrent programs using high-level languages based on both
+        shared variables and message passing, develop parallel programs on HPC systems—especially
+        within the MIMD architectural model—and evaluate their performance.'
+      Course contents: '1. Introduction:
+
+
+        Concurrency and Parallelism
+
+
+        Models of interaction between concurrent/parallel processes:
+
+
+        - Shared memory
+
+        - Message passing
+
+
+        2. Architectures of Concurrent and Parallel Systems
+
+
+        - The Von Neumann model: features and limitations
+
+        - Extensions of the Von Neumann model: cache, ILP, and Hardware Multithreading
+
+        - Parallel architectures: multiprocessors, multicomputers, clusters, HPC systems,
+        GPUs
+
+        - Flynn’s taxonomy
+
+
+        3. Concurrent Programming
+
+
+        - Introduction and definitions
+
+        - Algorithms and non-sequential processes
+
+        - Types of interaction
+
+        - Concurrent programming languages
+
+        - Properties of concurrent programs
+
+
+        3.1 Shared Memory Model
+
+
+        Insights on threads and synchronization:
+
+
+        - Thread characteristics and implementation
+
+        - Semaphores: properties, use cases, implementation
+
+
+        Use of concurrent programming languages in the shared memory model: the C/pthread
+        library
+
+
+        3.2 Message Passing Model
+
+
+        - Recap on channels and primitives
+
+        - Communication primitives: semantics and implementation
+
+        - Guarded commands
+
+        - Rendezvous and remote procedure call
+
+        - Algorithms for synchronization in distributed environments
+
+
+        Use of concurrent programming languages in the message passing model: Google
+        Go, Ada
+
+
+        4. Software Support for Concurrency
+
+
+        Virtualization:
+
+
+        - Hardware virtualization: goals and solutions
+
+        - Implementation of virtual machine monitors: virtualization and paravirtualization
+
+        - Analysis and experimentation with technologies: the Xen case
+
+
+        Kernels of multithreaded/multitask systems:
+
+
+        - Implementation of process management and interaction mechanisms within the
+        kernel of a uniprocessor system
+
+        - Extension to the multiprocessor case: SMP model, loosely-coupled model.
+
+
+        5. HPC Systems and Parallel Programming
+
+
+        HW/SW features of HPC systems:
+
+
+        - Architecture models
+
+        - Examples of real architectures
+
+        - Overview of operating system features for HPC infrastructures
+
+        - Tools for workload management in HPC systems
+
+
+        Methodologies and metrics for evaluating the performance of parallel applications:
+
+
+        - Speedup and efficiency
+
+        - Strong and weak scalability
+
+        - Amdahl’s and Gustafson’s laws
+
+
+        Parallel application development:
+
+
+        - Message passing: the MPI library
+
+        - Shared memory: OpenMP
+
+        - Hybrid parallel programming'
+      Readings/Bibliography: '- G.R.Andrews: "Foundations of Multithreaded, Parallel
+        and Distributed Programming", Addison-Wesley
+
+        - Peter Pacheco, An Introduction to Parallel Programming, Morgan Kauffmann,
+        2011
+
+        - P.Ancilotti, M.Boari: ''Programmazione concorrente e distribuita'', McGraw-Hill
+
+        - P.Ancilotti, M.Boari A.Ciampolini,G.Lipari: '' Sistemi Operativi'', seconda
+        edizione, McGraw-Hill
+
+        - S. Tanenbaum: ''I Moderni Sistemi Operativi'', Jackson Libri
+
+        - A.Silberschatz, P.Galvin, G.Gagne: ''Applied Operating System Concepts''
+        I edizione, John Wiley & Son, Inc.'
+      Teaching methods: 'Lectures will be integrated with laboratory activities that
+        will take place in the laboratories of the School of Engineering and Architecture.
+
+
+        In consideration of the teaching methods adopted, the attendance of this course
+        requires the prior participation of all students in the training modules 1
+        and 2 on safety in the study places [https://elearning-sicurezza.unibo.it/],
+        in e-learning mode.'
+      Assessment methods: 'The exam consists of two mandatory parts:
+
+
+        - Laboratory test: development of concurrent/parallel applications.
+
+        - Oral examination.
+
+
+        The oral examination can only be taken after passing the laboratory test.'
+      Teaching tools: 'Classroom lectures are presented with the aid of slides and
+        a video projector.
+
+        The slides presented during lectures are made available to all students through
+        the "Virtuale" platform.
+
+        Each student enrolled in the course is assigned a virtual machine to be used
+        for self training at home.'
+      Office hours: See the website of Anna Ciampolini (https://www.unibo.it/sitoweb/anna.ciampolini/en)
+      SDGs: 'Quality education Gender equality Industry, innovation and infrastructure
+
+
+        This teaching activity contributes to the achievement of the Sustainable Development
+        Goals of the UN 2030 Agenda.'

@@ -1,0 +1,152 @@
+year: 2025
+credits: 6
+ssd: INF/01
+language: Italian
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2026-02-19
+  to: 2026-06-05
+teachers:
+- id: '30946'
+  name: Callegati, Franco
+  email: franco.callegati@unibo.it
+  website: https://www.unibo.it/sitoweb/franco.callegati
+  role: full professor
+  affiliation: disi
+  ssd:
+    name: INFO-01/A
+    description: Informatica
+  module:
+    teaching_id: '412080'
+    url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/412080
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/412080
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/412080
+    details:
+    - 6 cfu
+- id: '118675'
+  name: Piroddi, Andrea
+  email: andrea.piroddi@unibo.it
+  website: https://www.unibo.it/sitoweb/andrea.piroddi
+  role: adjunct professor
+  affiliation: disi
+  module:
+    teaching_id: '412080'
+    url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/412080
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/412080
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/412080
+    details:
+    - Modulo 2
+course_title:
+  id: '70226'
+  name: PROGRAMMAZIONE DI RETI
+integrated_course: ''
+campus: Cesena
+programme: Laurea in Ingegneria biomedica Laurea in Ingegneria e scienze informatiche
+syllabus:
+  it:
+    title: 2025/2026 PROGRAMMAZIONE DI RETI — Università di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: Al termine del corso, lo studente acquisisce
+        le nozioni essenziali sulle architetture di rete e sulle problematiche di
+        progettazione e implementazione di protocolli di comunicazione.
+      Contenuti: 'L''obiettivo dell''insegnamento e'' quello di presentare i problemi
+        riguardanti la progettazione e l''implementazione delle moderne applicazioni
+        di rete. Le varie tematiche vengono presentate in due fasi, la prima dedicata
+        allo studio del problema in termini generali, la seconda orientata a mostrare
+        come tali soluzioni trovino implementazione nelle soluzioni tecnologiche correnti.
+
+
+        Vengono presentati e discussi i seguenti argomenti.
+
+
+        - Internet e reti di calcolatori: Internet, protocolli, programmi client e
+        server, architettura a livello e modelli di servizio.
+
+        - Affidabilità del canale. Rivelazione e correzione di errore. Analisi dei
+        più comuni codici a rivelazione d''erroere. Protocolli ARQ.
+
+        - Analisi di protocollo: Sniffing, acquisizione ed utilizzo di tracce per
+        l''analisi ed il debug. Utilizzo dell''analizzatore Wireshark.
+
+        - Livello di applicazione: protocolli a livello applicazione (Web e HTTP,
+        FTP, SMTP, POP3, IMAP, DNS), utilizzo delle socket (o costrutti affini) in
+        vari linguaggi di programmazione.
+
+        - Livello di trasporto: servizi, multiplexing e demultiplexing, trasporto
+        senza connessione, protocollo UDP, principi del trasferimento dati affidabile,
+        trasporto orientato alla connessione, protocollo TCP, cause e costi della
+        congestione, approcci al controllo di congestione, controllo di congestione
+        TCP.
+
+        - Cenni alla sicurezza delle applicazioni: autenticazione, autorizzazione,
+        certificati digitali.'
+      Testi/Bibliografia: Achille Pattavina, "Internet e reti. Fondamenti." Pearson;
+        3° edizione (9 febbraio 2022), 576 pagine, ISBN 8891930911
+      Metodi didattici: Il primo modulo dell'insegnamento si compone esclusivamente
+        di lezioni frontali (40 ore), le lezioni di laboratorio sono demandate al
+        secondo modulo (16 ore).
+      Modalità di verifica e valutazione dell'apprendimento: Le modalità di svolgimento
+        della prova d'esame sono spiegate nella pagina del corso sulla piattaforma
+        Virtuale.
+      Strumenti a supporto della didattica: Il materiale didattico presentato a lezione
+        viene messo a disposizione degli studenti in formato elettronico sulla piattaforma
+        Virtuale.
+      Orario di ricevimento: 'Consulta il sito web di Franco Callegati (https://www.unibo.it/sitoweb/franco.callegati)
+
+
+        Consulta il sito web di Andrea Piroddi (https://www.unibo.it/sitoweb/andrea.piroddi)'
+      SDGs: 'Imprese innovazione e infrastrutture
+
+
+        L''insegnamento contribuisce al perseguimento degli Obiettivi
+
+        di Sviluppo Sostenibile dell''Agenda 2030 dell''ONU.'
+  en:
+    title: 2025/2026 Network Programming — University of Bologna
+    contents:
+      Learning outcomes: At the end of the course the student should be able to understand
+        the more common technologies used to design network applications and the most
+        common application and transport protocols.
+      Course contents: 'The course will present the basic principles of design and
+        implementation of network applications. The theoretical concepts presented
+        will be applied in laboratory projects aimed at understanding the implementation
+        of network application in today Internet.
+
+
+        - Internet and computer networks: Internet, protocols, client-server architecture,
+        protocol layers and service models.
+
+        - Channel reliability. Error correction versus error detection. The most common
+        error detection codes. ARQ protocols.
+
+        - Protocol analysis: sniffing, collection of traffic traces, analysis and
+        debug, use of the Wireshark protocol analyzer.
+
+        - Application layer: architectures, application level protocols (Web and HTTP,
+        FTP, SMTP, POP3, IMAP, DNS), P2P architectures (BitTorrent), socket programming.
+
+        - Transport layer: services, multiplexing and demultiplexing, connectionless
+        service, UDP protocol, reliable data transfer, connection-oriented communication,
+        TCP protocol, congestion control.
+
+        - Basics of cybersecurity: authentication, authorization, digital signatures
+        and certificates.'
+      Readings/Bibliography: James Kurose, Keith W. Ross. Computer Networking [Global
+        Edition] Pearson; 8th edition (June 10, 2021), ISBN 1292405465.
+      Teaching methods: Lessons for Module 1 (40 hours). Laboratory experiences for
+        Module 2 (16 hours)
+      Assessment methods: Written test, please see on Virtuale for the information
+        about the test.
+      Teaching tools: The slides and additional resources used during the lessons
+        are available on the Virtuale platform.
+      Office hours: 'See the website of Franco Callegati (https://www.unibo.it/sitoweb/franco.callegati/en)
+
+
+        See the website of Andrea Piroddi (https://www.unibo.it/sitoweb/andrea.piroddi/en)'
+      SDGs: 'Industry, innovation and infrastructure
+
+
+        This teaching activity contributes to the achievement of the Sustainable Development
+        Goals of the UN 2030 Agenda.'

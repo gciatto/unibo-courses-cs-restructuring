@@ -1,0 +1,180 @@
+year: 2025
+credits: 6
+ssd: INF/01
+language: Italian
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2026-02-16
+  to: 2026-05-22
+teachers:
+- id: '36731'
+  name: Padovani, Luca
+  email: luca.padovani2@unibo.it
+  website: https://www.unibo.it/sitoweb/luca.padovani2
+  role: full professor
+  affiliation: disi
+  ssd:
+    name: INFO-01/A
+    description: Informatica
+  module:
+    teaching_id: '479059'
+    url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/479059
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/479059
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/479059
+    details:
+    - 6 cfu
+course_title:
+  id: '81672'
+  name: EMERGING PROGRAMMING PARADIGMS
+integrated_course: ''
+campus: Bologna
+programme: Laurea Magistrale in Informatica
+syllabus:
+  it:
+    title: 2025/2026 EMERGING PROGRAMMING PARADIGMS — Università di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: Negli ultimi anni, anche a seguito dell'avvento
+        dei processori multicore e della necessità di trovare linguaggi di programmazione
+        che ne semplifichino lo sfruttamento, si osserva un rinnovato fermento riguardo
+        allo sviluppo di nuovi linguaggi di programmazione. Go, Scala, Erlang, Clojure,
+        Rust sono alcuni esempi di linguaggi che stanno attirando l'interesse della
+        comunità industriale e che attingono sia da nuovi paradigmi di programmazione,
+        sia da paradigmi più tradizionali, ma precedentemente di nicchia, che stanno
+        aumentando la loro visibilità. Al termine del corso lo studente sarà a conoscenza
+        dei principali paradigmi emergenti, sapendone valutare criticamente vantaggi
+        e svantaggi, e avrà acquisito nuove competenze di programmazione.
+      Contenuti: 'L’insegnamento presenta diversi linguaggi di programmazione mettendo
+        in risalto i princìpi, le peculiarità, le caratteristiche che ne costituiscono
+        punti di forza, e gli aspetti implementativi interessanti. Un tema portante
+        e comune a tutti gli argomenti affrontati riguarda il ruolo dei tipi nel concepire
+        e utilizzare costrutti e forme di programmazione che consentano la scrittura
+        di codice robusto, facilmente componibile e con garanzie di correttezza. Gli
+        argomenti affrontati comprendono:
+
+
+        - Programmazione orientata agli oggetti senza classi
+
+        - Limiti del paradigma di programmazione a oggetti
+
+        - Trait in Go e in Rust, classi di tipo in Haskell
+
+        - Caso di studio: testing di codice con QuickCheck
+
+        - Approcci composizionali alla programmazione con effetti collaterali
+
+        - Origine delle monadi e monadi classiche (computazioni parziali, stato, I/O)
+
+        - Trasformazioni di monadi
+
+        - Casi di studio: parsing non deterministico, programmazione concorrente con
+        Software Transactional Memory
+
+        - Programmazione certificata
+
+        - Dai tipi parametrici ai tipi dipendenti
+
+        - Casi di studio: programmazione certificata su numeri, liste, vettori dimensionati'
+      Testi/Bibliografia: Il docente fornirà i lucidi e programmi presentati a lezione
+        nonché puntatori ad articoli, manuali e altro materiale disponibile on-line.
+      Metodi didattici: Lezioni frontali con presentazione di slide e sviluppo interattivo
+        di codice guidato dal docente. Esercizi da risolvere a casa individualmente
+        o in gruppo.
+      Modalità di verifica e valutazione dell'apprendimento: 'L''esame è costituito
+        da una prova scritta che si svolge individualmente su carta o al calcolatore
+        il giorno dell’esame senza l’ausilio di manuali, materiale didattico o appunti
+        personali. La prova comprende domande aperte ed esercizi di programmazione
+        nei linguaggi presentati.
+
+
+        La prova è valutata con un punteggio da 0 a 31 ed è ritenuta sufficiente se
+        il punteggio è almeno 18.
+
+
+        In caso di svolgimento dell’esame in laboratorio, si richiede lo svolgimento
+        in modalità e-learning da parte di tutti gli studenti dei moduli 1 e 2 del
+        corso di sicurezza (https://www.unibo.it/it/servizi-e-opportunita/salute-e-assistenza/salute-e-sicurezza/sicurezza-e-salute-nei-luoghi-di-studio-e-tirocinio).'
+      Strumenti a supporto della didattica: '- Ambienti di programmazione per vari
+        linguaggi
+
+        - Slide
+
+        - Esempi di codice
+
+        - Esercizi di programmazione con soluzioni
+
+
+        Tutto il materiale didattico sarà reso disponibile su Virtuale.'
+      Orario di ricevimento: Consulta il sito web di Luca Padovani (https://www.unibo.it/sitoweb/luca.padovani2)
+  en:
+    title: 2025/2026 Emerging Programming Paradigms — University of Bologna
+    contents:
+      Learning outcomes: In recent years there is a renaissance of the development
+        of programming language, motivated by the introduction of multicore processors
+        and the need of finding simpler way to exploit them. Go, Scala, Erlang, Clojure,
+        Rust are examples of languages that are interesting to the industrial world
+        and that are rooted into both new and old programming paradigms. At the end
+        of the course the student will know the main emerging programming paradigms,
+        how to critically weight their weak and strong characteristics and she will
+        have acquired new programming skills.
+      Course contents: 'This course introduces a number of different programming languages
+        highlighting the underlying principles, the peculiar features, the strengths
+        and the interesting implementation aspects. A recurring and common theme across
+        all the presented arguments concerns the role of types in conceiving and using
+        constructs and programming idioms enabling the development of code that is
+        robust, modularly composable and that provides strong correctness guarantees.
+        The arguments include:
+
+
+        - Classless object-oriented programming
+
+        - Limits of the object-oriented programming paradigm
+
+        - Traits in Go and in Rust, type classes in Haskell
+
+        - Case study: code testing with QuickCheck
+
+        - Compositional approaches to programming with side effects
+
+        - The origin of monads and classical monads (partial computations, state,
+        I/O)
+
+        - Monad transformations
+
+        - Case studies: non-deterministic parsing, concurrent programming with Software
+        Transactional Memory
+
+        - Certified programming
+
+        - From parametric to dependent types
+
+        - Case studies: certified programming on numbers, lists and sized vectors'
+      Readings/Bibliography: The teacher will provide slides and programs presented
+        during the lectures, in addition to pointers to papers, manuals and other
+        online material.
+      Teaching methods: Lectures with presentation of slides and interactive program
+        development guided by the teacher. Exercises to be carried out at home either
+        individually or in a group.
+      Assessment methods: 'The exam is written and to be completed individually on
+        paper or at the computer on the day of the exam without manuals, teaching
+        material or personal notes. It includes open questions and programming exercises
+        in the presented languages.
+
+
+        The exam is marked with a score from 0 to 31 and is considered to be sufficient
+        if scored with at least 18.
+
+
+        Note: in order to access the computer science laboratory it is mandatory for
+        all students to take the online course on security (modules 1 and 2) (https://www.unibo.it/it/servizi-e-opportunita/salute-e-assistenza/salute-e-sicurezza/sicurezza-e-salute-nei-luoghi-di-studio-e-tirocinio).'
+      Teaching tools: '- Programming environments for various languages
+
+        - Slides
+
+        - Code examples
+
+        - Programming exercises with solutions
+
+
+        All the teaching material will be made available on Virtuale.'
+      Office hours: See the website of Luca Padovani (https://www.unibo.it/sitoweb/luca.padovani2/en)

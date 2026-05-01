@@ -1,0 +1,275 @@
+year: 2025
+credits: 6
+ssd: ING-INF/01
+language: Italian
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2025-09-18
+  to: 2025-12-19
+teachers:
+- id: '16828'
+  name: Gnudi, Antonio
+  email: antonio.gnudi@unibo.it
+  website: https://www.unibo.it/sitoweb/antonio.gnudi
+  role: associate professor
+  affiliation: dei
+  ssd:
+    name: IINF-01/A
+    description: Elettronica
+  module:
+    teaching_id: '479946'
+    url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/479946
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/479946
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/479946
+    details:
+    - 6 cfu
+- id: '35637'
+  name: Speciale, Nicolò Attilio
+  email: nicolo.speciale@unibo.it
+  website: https://www.unibo.it/sitoweb/nicolo.speciale
+  role: associate professor
+  affiliation: dei
+  ssd:
+    name: IINF-01/A
+    description: Elettronica
+  module:
+    teaching_id: '479946'
+    url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/479946
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/479946
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/479946
+    details:
+    - Modulo 1
+course_title:
+  id: '99191'
+  name: DISPOSITIVI, CIRCUITI ED ALGORITMI PER IL CALCOLO QUANTISTICO M
+integrated_course: ''
+campus: Bologna
+programme: Laurea Magistrale in Ingegneria elettronica
+syllabus:
+  it:
+    title: 2025/2026 DISPOSITIVI, CIRCUITI ED ALGORITMI PER IL CALCOLO QUANTISTICO
+      M — Università di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: Il corso introduce i concetti fondamentali
+        per comprendere i sistemi hardware e software alla base del calcolo quantistico.
+        Al termine, lo studente padroneggia i principi alla base del calcolo quantistico,
+        la comprensione del modello di circuito quantistico, i principali algoritmi
+        proposti, i concetti fisici alla base dell'implementazione dei sistemi hardware
+        e le principali architetture elettroniche.
+      Contenuti: 'Il corso è diviso in due moduli. Nel primo modulo si introducono
+        il formalismo alla base della descrizione dei sistemi quantistici, i concetti
+        di qubit e di circuito quantistico, insieme alle operazioni che definiscono
+        gli algoritmi a partire dalla composizione dei gate fondamentali. Sono inoltre
+        previste esercitazioni al calcolatore finalizzate alla simulazione di circuiti
+        quantistici in assenza ed in presenza di rumore.
+
+
+        Nel secondo modulo si introducono i principi fisici alla base della realizzazione
+        e del funzionamento dei qubit e si analizza il comportamento fisico dei gate
+        quantistici fondamentali, con particolare riferimento alle soluzioni basate
+        su circuiti a superconduttori e su spin di elettroni/lacune in quantum dot
+        di semiconduttori. Sono previste esercitazioni al calcolatore volte all’illustrazione
+        dei concetti trattati e alla simulazione fisica di alcuni gate quantistici.
+
+
+        Primo modulo
+
+
+        - Il computer come sistema fisico. I limiti dei calcolatori classici.
+
+        - Che cosa è un computer quantistico. Il formalismo di Dirac e la rappresentazione
+        quantistica dell’informazione. Richiami sugli spazi di Hilbert: operatori
+        e loro rappresentazione matriciale. Il concetto di qubit: sovrapposizione
+        di stati, entanglement, interferenza.
+
+        - Reversibilità, trasformazioni unitarie e gate quantistici. Teorema di No-cloning.
+        Gli stati iniziale e finale di un calcolo: preparazione, misura e regole di
+        Born. Riduzione dello stato.
+
+        - Porte logiche fondamentali e circuiti quantistici. Operatori di rotazione.
+        Costruzione di stati a 1 e 2 qubit arbitrari. Stati di Bell. Teletrasporto
+        e codifica superdensa. Universalità. La mappatura dei circuiti per l''esecuzione
+        efficiente su un hardware specifico.
+
+        - La Trasformata di Fourier Quantistica (QFT) e l’algoritmo di stima della
+        fase (QPE). Gli algoritmi di Deutsch-Jozsa, Simon, Shor-Steane e Grover. Algoritmo
+        HHL*.* Realizzazione delle operazioni aritmetiche di base.
+
+        - Alcune tecniche di correzione degli errori: qubit fisici e qubit logici.
+
+        - L’emulazione dei circuiti quantistici: i problemi fondamentali e le soluzioni
+        software e hardware (GPU e FPGA) possibili. (cenni).
+
+
+        Secondo modulo
+
+
+        - Richiami sui postulati della Meccanica Quantistica: quantizzazione, commutatore
+        di operatori coniugati, equazione di Schroedinger, misure di osservabili ed
+        interpretazione probabilistica, principio di indeterminazione di Heisenberg,
+        equazione di Schroedinger tempo-dipendente, operatore di evoluzione. Immagine
+        di Schroedinger, di Heisenberg e di interazione.
+
+        - Sistemi quantistici elementari: particella libera, elettrone in una buca
+        di potenziale rettangolare. Oscillatore armonico. Operatori di creazione e
+        di distruzione e loro proprietà.
+
+        - Breve introduzione fenomenologica alla superconduttività. Cenni alla teoria
+        di Ginzburg Landau. Giunzione Josephson: relazioni fondamentali tra corrente,
+        tensione e fase.
+
+        - Qubit a superconduttori. L’oscillatore LC quantistico. Il qubit di tipo
+        transmon: struttura, Hamiltoniano ed analisi dei livelli energetici. Transmon
+        regolabile tramite flusso magnetico.
+
+        - Rumore e decoerenza nei qubit: modelli (cenni) e tecniche di caratterizzazione,
+        sorgenti comuni di rumore, tecniche per ridurre l’impatto del rumore.
+
+        - Gate a singolo qubit: controllo del qubit e relativa dinamica, frequenza
+        di Rabi. Gate Z virtuale. Tecniche avanzate di controllo del qubit per ridurre
+        gli errori di leakage e di fase (cenni).
+
+        - Sistemi a due qubit/risonatori: analisi dell’Hamiltoniano e relative semplificazioni,
+        regime dispersivo. Accoppiamento tra due transmon.
+
+        - Gate a 2-qubit: gate iSWAP, implementazione efficiente del gate CPHASE sfruttando
+        i livelli energetici più alti, gate cross-resonance, gate parametrici (cenni).
+
+        - Qubit readout: problematiche generali relative alla rilevazione ed amplificazione
+        dei segnali elettromagnetici in regime quantistico, readout di tipo dispersivo
+        del qubit, criteri per aumentare l’accuratezza della misura.
+
+        - Cenni agli spin qubit basati su quantum dot di semiconduttore: principi
+        di funzionamento per la manipolazione e la lettura di qubit singoli e doppi.'
+      Testi/Bibliografia: '1. Daniel D. Stancil, Gregory T. Bird, “Principles of Superconducting
+        Quantum Computers”, Wiley, 2022
+
+        2. Ray LaPierre, “Introduction to Quantum Computing”, Springer Cham, 2021
+
+        3. Michael A. Nielsen, Isaac L. Chuang, "Quantum Computation and Quantum Information",
+        Cambridge University Press, 2010'
+      Metodi didattici: Lezioni frontali integrate da esercitazioni al calcolatore.
+      Modalità di verifica e valutazione dell'apprendimento: L’esame consiste in un
+        colloquio orale sugli argomenti trattati in entrambi i moduli didattici. Saranno
+        valutate non solo la capacità critica dello studente di spaziare all’interno
+        del programma e di giustificare i ragionamenti ma anche l’eventuale presenza
+        di lacune formative o l’utilizzo di un linguaggio inappropriato. Il voto finale
+        esprime la valutazione sulla padronanza dei concetti e la capacità critica
+        mostrate dallo studente.
+      Strumenti a supporto della didattica: Slide, documentazione fornita dai docenti
+        su argomenti specifici, materiale multimediale.
+      Orario di ricevimento: 'Consulta il sito web di Antonio Gnudi (https://www.unibo.it/sitoweb/antonio.gnudi)
+
+
+        Consulta il sito web di Nicolò Attilio Speciale (https://www.unibo.it/sitoweb/nicolo.speciale)'
+  en:
+    title: 2025/2026 Devices, Circuits and Algorithms for Quantum Computing M — University
+      of Bologna
+    contents:
+      Learning outcomes: The course introduces the fundamental concepts for understanding
+        the hardware and software systems underlying quantum computing. Upon completion,
+        the student masters the principles underlying quantum computation, an understanding
+        of the quantum circuit model, the main algorithms, the physical concepts underlying
+        the implementation of hardware systems, and the main electronic architectures.
+      Course contents: 'The course is divided into two modules. The first module introduces
+        the formalism at the basis of the description of quantum systems, the concepts
+        of qubit and quantum circuit, together with the operations that define quantum
+        algorithms starting from the composition of fundamental gates. Computer exercises
+        are also planned to simulate quantum circuits with and without noise.
+
+
+        In the second module, the physical principles underlying the realization and
+        operation of qubits are introduced and the physical behaviour of fundamental
+        quantum gates is analysed, with particular reference to solutions based on
+        superconducting circuits and electron/hole spins in semiconductor quantum
+        dots. The module is complemented with computer exercises aimed at illustrating
+        the main concepts and simulating the behaviour of some quantum gates.
+
+
+        First module
+
+
+        - The computer as a physical system. The limits of classical computers.
+
+        - What is a quantum computer. Dirac formalism and quantum representation of
+        information. Hilbert space: operators and their matrix representation. The
+        concept of qubit: superposition of states, entanglement, interference.
+
+        - Reversibility, unit transformations and quantum gates. No-cloning theorem.
+        Initial and final states of a calculation: preparation, measurement and Born
+        rules. Collapse of the state.
+
+        - Fundamental logic gates and quantum circuits. Rotation operators. Construction
+        of arbitrary 1 and 2 qubit states. Bell states. Teleportation and superdense
+        coding. Universality. Circuit mapping for efficient execution on a specific
+        hardware.
+
+        - Quantum Fourier Transform (QFT) and Quantum Phase Estimation (QPE). Deutsch-Jozsa,
+        Simon, Shor-Steane and Grover algorithms. HHL algorithm. Implementation of
+        basic arithmetic operations.
+
+        - Some error correction techniques: physical and logical qubits.
+
+        - Simulation of quantum circuits: fundamental problems and possible software
+        and hardware solutions (GPUs and FPGAs).
+
+
+        Second module
+
+
+        - The postulates of Quantum Mechanics: quantization, commutator of conjugate
+        operators, Schroedinger equation, measures of observables and probabilistic
+        interpretation, Heisenberg''s uncertainty principle, time-dependent Schroedinger
+        equation, evolution operator. Schroedinger, Heisenberg and interaction pictures.
+
+        - Elementary quantum systems: free particle, electron in a rectangular potential
+        well. Harmonic oscillator. Creation and annihilation operators and their properties.
+
+        - Brief phenomenological introduction to superconductivity. Notes on the Ginzburg-Landau
+        theory. Josephson junction: fundamental relationships between current, voltage
+        and phase.
+
+        - Superconductor qubits. The quantum LC oscillator. The transmon qubit: structure,
+        Hamiltonian and analysis of the energy levels. Flux-tuning transmon.
+
+        - Noise and decoherence in qubits: models (outline) and characterization techniques,
+        common sources of noise, techniques to mitigate their impact.
+
+        - Single qubit gates: qubit control and dynamics, Rabi frequency. Virtual
+        Z-gate. Advanced qubit control techniques to reduce leakage and phase errors
+        (outline).
+
+        - Two qubits/resonators systems: Hamiltonian analysis and related simplifications,
+        dispersive regime. Coupling between two transmons.
+
+        - 2-qubit gates: iSWAP gate, efficient implementation of the CPHASE gate using
+        higher energy levels, cross-resonance gates, parametric gates (outline).
+
+        - Qubit readout: general problems related to detection and amplification of
+        electromagnetic signals in quantum regime, dispersive qubit readout, criteria
+        to increase the measurement fidelity.
+
+        - Notes on spin qubits based on semiconductor quantum dots: operating principles
+        for the manipulation and readout of single and double qubits.'
+      Readings/Bibliography: '1. Daniel D. Stancil, Gregory T. Bird, “Principles of
+        Superconducting Quantum Computers”, Wiley, 2022
+
+        2. Ray LaPierre, “Introduction to Quantum Computing”, Springer Cham, 2021
+
+        3. Michael A. Nielsen, Isaac L. Chuang, "Quantum Computation and Quantum Information",
+        Cambridge University Press, 2010'
+      Teaching methods: Lectures supplemented by computer exercises.
+      Assessment methods: The exam consists of an oral interview on the topics covered
+        in both teaching modules. Not only the student's critical ability in connecting
+        different parts of the program and to justify reasoning will be evaluated,
+        but also the possible presence of training gaps or the use of inappropriate
+        language. The final grade expresses the evaluation of the mastery of the concepts
+        and the critical capacity shown by the student.
+      Teaching tools: Slides, documentation provided by teachers on specific topics,
+        multimedia material.
+      Office hours: 'See the website of Antonio Gnudi (https://www.unibo.it/sitoweb/antonio.gnudi/en)
+
+
+        See the website of Nicolò Attilio Speciale (https://www.unibo.it/sitoweb/nicolo.speciale/en)'

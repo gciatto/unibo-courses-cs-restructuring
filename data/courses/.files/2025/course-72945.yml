@@ -1,0 +1,223 @@
+year: 2025
+credits: 8
+ssd: ING-INF/05
+language: Italian
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2025-09-15
+  to: 2025-12-16
+teachers:
+- id: '14728'
+  name: Faldella, Eugenio
+  email: eugenio.faldella@unibo.it
+  website: https://www.unibo.it/sitoweb/eugenio.faldella
+  role: former professor
+  affiliation: unibo
+  module:
+    teaching_id: '517549'
+    url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/517549
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/517549
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/517549
+    details:
+    - 8 cfu
+course_title:
+  id: '72945'
+  name: SISTEMI IN TEMPO REALE M
+integrated_course: ''
+campus: Bologna
+programme: Laurea Magistrale in Ingegneria informatica
+syllabus:
+  it:
+    title: 2025/2026 SISTEMI IN TEMPO REALE M — Università di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: Al termine dell'insegnamento lo studente
+        conosce le peculiarità, i principi architetturali e le problematiche di progetto
+        dei sistemi di elaborazione in tempo reale. In particolare, a) conosce le
+        differenze fra task “hard real-time”, task “soft real-time” e task senza vincoli
+        temporali; b) conosce i modelli di riferimento dei task periodici, sporadici
+        e aperiodici, nonché le relative strategie di schedulazione; c) comprende
+        e padroneggia le problematiche di condivisione di risorse fra task contraddistinti
+        da vincoli temporali; d) sa applicare metodi per la valutazione delle prestazioni
+        e la verifica a priori della schedulabilità di applicazioni multitasking real-time;
+        e) è in grado di esemplificare gli aspetti di carattere teorico e metodologico
+        con riferimento a pattern tipici del contesto applicativo dell'automazione
+        e del controllo di processi industriali.
+      Contenuti: 'Nozioni introduttive, peculiarità e problematiche inerenti la progettazione
+        dei sistemi di elaborazione in tempo reale. Strutturazione di un''applicazione
+        in termini di processi cooperanti. Tipologie di processi. Processi con o senza
+        vincoli temporali. Processi “hard real-time” e “soft real-time”. Parametri
+        temporali e modelli di riferimento per processi periodici, sporadici e aperiodici.
+
+
+        Strategie per la schedulazione di processi periodici e sporadici. Strategie
+        “off-line”: l''approccio “cyclic executive”. Strategie “on-line” di tipo statico:
+        gli algoritmi “Rate Monotonic Priority Ordering” e “Deadline Monotonic Priority
+        Ordering”. Strategie “on-line” di tipo dinamico: gli algoritmi “Earliest Deadline
+        First” e “Least Slack Time First”. Il problema della verifica a priori della
+        schedulabilità di un''applicazione. Metodi basati sulla costruzione di diagrammi
+        temporali, criteri basati sul fattore di utilizzazione del processore, calcolo
+        del tempo di risposta dei processi, l''approccio “processor-demand”.
+
+
+        Strategie per la schedulazione di processi aperiodici: Servizio in background
+        o tramite server. Server a priorità statica: “Polling Server”, “Deferrable
+        Server”, “Priority Exchange Server”, “Sporadic Server”. Server a priorità
+        dinamica: “Constant Utilization Server”, “Total Bandwidth Server”. Valutazione
+        delle prestazioni.
+
+
+        La condivisione di risorse tra processi: il problema dell''inversione di priorità
+        e del blocco dei processi. I requisiti, dal punto di vista sia funzionale
+        che prestazionale, dei protocolli di accesso a risorse condivise. I protocolli
+        “Nonpreemptive Critical Section”, “Priority Inheritance”, “Ceiling Priority”,
+        “Immediate Ceiling Priority”, “Stack Resource Policy” . Valutazione delle
+        prestazioni.
+
+
+        Esemplificazione degli aspetti di carattere teorico e metodologico con riferimento
+        a pattern tipici del contesto applicativo dell''automazione e del controllo
+        di processi industriali.'
+      Testi/Bibliografia: '1. J. W. S. LIU: ''REAL-TIME SYSTEMS'', PRENTICE HALL,
+        2000.
+
+        2. J. COOLING: ''SOFTWARE ENGINEERING FOR REAL-TIME SYSTEMS'', ADDISON WESLEY,
+        2003.
+
+        3. G. C. BUTTAZZO: ''HARD REAL-TIME COMPUTING SYSTEMS'', Third Edition, SPRINGER,
+        2011.'
+      Metodi didattici: 'Le lezioni in aula vengono svolte con l''ausilio di un proiettore
+        di diapositive (di cui è possibile preventivamente procurarsi una copia cartacea
+        accedendo al sito WEB del corso), in modo da consentire allo Studente di concentrarsi
+        sui contenuti esposti piuttosto che sulla stesura di appunti.
+
+        Lezioni ed esercitazioni sono continuamente intercalate, alternando l''esposizione
+        di concetti con esemplificazioni applicative.
+
+        Per completare la preparazione sono inoltre proposti approfondimenti da sviluppare
+        attraverso esercitazioni guidate o autonome in laboratorio.'
+      Modalità di verifica e valutazione dell'apprendimento: 'La prova d''esame mira
+        a verificare il raggiungimento dei seguenti obiettivi formativi:
+
+
+        • conoscenza approfondita, dal punto di vista sia algoritmico che realizzativo,
+        delle moderne strategie per la schedulazione di processi hard real-time;
+
+
+        • conoscenza approfondita dei protocolli di accesso a risorse condivise in
+        sistemi real-time;
+
+
+        • capacità di impiegare i più efficienti criteri e le più efficaci metodologie
+        al fine di verificare a priori la schedulabilità di applicazioni multi-tasking
+        real-time.
+
+
+        L''esame consiste in una prova scritta della durata di quattro ore, nella
+        quale lo Studente può liberamente consultare il materiale didattico del corso
+        e/o qualunque altro materiale cartaceo che ritenga opportuno utilizzare al
+        fine di identificare una corretta soluzione ai problemi progettuali proposti.
+        Non è viceversa consentito l''uso di tecniche di AI, anche generativa. Qualunque
+        violazione di questa regola causerà l''immediato annullamento dell''esame.
+
+
+        Studenti/sse con DSA o disabilità temporanee o permanenti sono invitati/e
+        a contattare per tempo l’ufficio di Ateneo responsabile (https://site.unibo.it/studenti-con-disabilita-e-dsa/it).
+        Sarà cura del personale di tale ufficio proporre agli/lle Studenti/sse interessati/e
+        eventuali adattamenti, che dovranno comunque essere sottoposti, con un anticipo
+        di 15 giorni, all’approvazione del docente, che ne valuterà l''opportunità
+        anche in relazione agli obiettivi formativi dell''insegnamento.
+
+
+        E'' consentito rifiutare il voto conseguito al più una volta.'
+      Strumenti a supporto della didattica: Nel sito WEB del corso sono disponibili
+        le slide presentate a lezione, la guida alle esercitazioni in laboratorio,
+        i testi e le soluzioni delle prove scritte d'esame.
+      Orario di ricevimento: Consulta il sito web di Eugenio Faldella (https://www.unibo.it/sitoweb/eugenio.faldella)
+      SDGs: 'Istruzione di qualità Imprese innovazione e infrastrutture
+
+
+        L''insegnamento contribuisce al perseguimento degli Obiettivi
+
+        di Sviluppo Sostenibile dell''Agenda 2030 dell''ONU.'
+  en:
+    title: 2025/2026 Real-Time Systems M — University of Bologna
+    contents:
+      Learning outcomes: The course aims to provide a rational view of the main issues
+        involved in the design of real-time systems, emphasizing peculiar principles,
+        implementation strategies, supporting environments and performance evaluation
+        methods.
+      Course contents: 'An introduction to real-time systems: peculiar features and
+        typical application domains. Hard vs. soft real-time tasks. Temporal parameters
+        and reference models for periodic, sporadic and aperiodic tasks. Real-time
+        scheduling approaches: the clock-driven approach and the priority-driven approach.
+        Algorithms for scheduling hard real-time periodic/sporadic tasks: RM, DM,
+        EDF and LSTF. Server-based strategies for optimizing the response time of
+        soft real-time aperiodic tasks: polling server, deferrable server, priority
+        exchange server, sporadic server, constant utilization server, total bandwidth
+        server. Shared resources access protocols: priority inheritance protocol,
+        priority-ceiling protocol, immediate priority-ceiling protocol, stack resource
+        policy. Pre-run-time schedulability analysis of systems that schedule tasks
+        using static or dynamic priorities: processor-utilization analysis, response-time
+        analysis, processor-demand analysis. Exemplification of theoretical and methodological
+        issues with reference to design patterns typical of the industrial automation
+        application domain.'
+      Readings/Bibliography: '1. J. W. S. LIU: ''REAL-TIME SYSTEMS'', PRENTICE HALL,
+        2000.
+
+        2. J. COOLING: ''SOFTWARE ENGINEERING FOR REAL-TIME SYSTEMS'', ADDISON WESLEY,
+        2003.
+
+        3. G. C. BUTTAZZO: ''HARD REAL-TIME COMPUTING SYSTEMS'', Third Edition, SPRINGER,
+        2011.'
+      Teaching methods: 'Powerpoint slides (whose PDF printouts are available from
+        the course''s WEB site before lectures) are projected and discussed during
+        class hours, thus avoiding Students the burden of taking notes all the time,
+        letting them focus on the discussed concepts.
+
+        Exercises are continuously interleaved with theoretical concepts and immediately
+        discussed.
+
+
+        Autonomous laboratory activities are also welcome and promoted by suggesting
+        ideas and possible case studies.'
+      Assessment methods: 'The examination aims to assess the achievement of the following
+        learning objectives:
+
+        • thorough knowledge, from both the algorithmic and implementation viewpoints,
+        of the best-performing scheduling strategies of periodic and sporadic hard
+        real-time tasks;
+
+        • thorough knowledge of protocols for accessing shared resources in real-time
+        systems;
+
+        • in depth ability to exploit the most efficient criteria and the most effective
+        methodologies in order to a priori ascertain the schedulability of multi-tasking
+        real-time applications.
+
+
+        The exam consists of a written test lasting four hours, in which the Student
+        can freely refer to any didactic material deemed appropriate in order to identify
+        a correct solution to the proposed design problems. The use of AI tools and
+        generative AI techniques is not permitted. Any violation of this rule will
+        cause the immediate invalidation of the exam.
+
+
+        Students with learning disorders and\or temporary or permanent disabilities:
+        please, contact the office responsible (https://site.unibo.it/studenti-con-disabilita-e-dsa/en/for-students)
+        as soon as possible, so that they can propose acceptable adjustments. The
+        request for adaptation must be submitted in advance (15 days before the exam
+        date) to the lecturer, who will assess the appropriateness of the adjustments,
+        taking into account the teaching objectives.
+
+
+        The obtained score can be declined at most once.'
+      Teaching tools: A copy of the slides presented and discussed during the lectures,
+        a guide to the laboratory activities, a compendium of exercises and projects
+        proposed in recent written exams, are published on the course's WEB site.
+      Office hours: See the website of Eugenio Faldella (https://www.unibo.it/sitoweb/eugenio.faldella/en)
+      SDGs: 'Quality education Industry, innovation and infrastructure
+
+
+        This teaching activity contributes to the achievement of the Sustainable Development
+        Goals of the UN 2030 Agenda.'

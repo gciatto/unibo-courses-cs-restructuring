@@ -1,0 +1,451 @@
+year: 2025
+credits: 8
+ssd: ING-INF/05
+language: Italian
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2025-09-15
+  to: 2025-12-17
+teachers:
+- id: '38585'
+  name: Foschini, Luca
+  email: luca.foschini@unibo.it
+  website: https://www.unibo.it/sitoweb/luca.foschini
+  role: full professor
+  affiliation: disi
+  ssd:
+    name: IINF-05/A
+    description: Sistemi di elaborazione delle informazioni
+  module:
+    teaching_id: '467983'
+    url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/467983
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/467983
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/467983
+    details:
+    - 8 cfu
+- id: '148068'
+  name: Montebugnoli, Sofia
+  email: sofia.montebugnoli3@unibo.it
+  website: https://www.unibo.it/sitoweb/sofia.montebugnoli3
+  role: phd student
+  affiliation: disi
+  module:
+    teaching_id: '467983'
+    url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/467983
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/467983
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/467983
+    details:
+    - 8 cfu
+course_title:
+  id: '73025'
+  name: SISTEMI DISTRIBUITI M
+integrated_course: ''
+campus: Bologna
+programme: Laurea Magistrale in Ingegneria informatica
+syllabus:
+  it:
+    title: 2025/2026 SISTEMI DISTRIBUITI M — Università di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: 'Approfondimento delle tematiche e delle
+        strategie di
+
+        soluzione riguardanti le infrastrutture di supporto a servizi in sistemi distribuiti.
+        Nuove metodologie per la produzione di servizi e loro integrazione in framework
+        di supporto con qualità di servizio differenziate.'
+      Contenuti: "Il corso cercherà di affrontare in profondità tematiche di:\n\n\
+        - metodologie e modelli architetturali per la\n  progettazione di applicazioni\
+        \ distribuite di livello enterprise\n- evoluzione di modelli a componenti\
+        \ e loro integrazione con\n  architetture distribuite (tipicamente 3-tier\
+        \ e integrate\n  Web)\n- Application Server (ad esempio JBoss) e\n  middleware/framework\
+        \ di supporto runtime ad applicazioni\n  distribuite di livello enterprise\n\
+        - servizi\n  di nomi e loro integrazione, con esemplificazioni da Java\n \
+        \ Naming and Directory Interface (JNDI)\n- dal modello\n  Enterprise Java\
+        \ Beans iniziale (EJB1.0) all'attuale ampio utilizzo\n  di EJB 3.0 (motivazioni\
+        \ e linee evolutive)\n\no Persistenza\n\no Interazione con dati\n\no Componenti\
+        \ orientati alla\nsessione e ai messaggi\n\no Interceptor\n\no Transazioni\n\
+        \no Esempi ed esercizi\nintegrati\n\n- persistenza: evoluzione dei modelli\
+        \ di supporto alla persistenza nello sviluppo di applicazioni enterprise.\
+        \ Gli esempi di JPA e Hibernate\n\no persistenza trasparente\n\no supporto\
+        \ a mapping e query\n\no supporto a metadata\n\no performance\n\n- sistemi\n\
+        \  di messaging, ad es. Java Messaging System (JMS)\n- verso DevOps e modelli\
+        \ di containerizzazione moderni: Docker\n\no Docker\n\no orchestrazione Container\n\
+        \no metodologie DevOps per applicazioni enterprise\n\n- verso modelli enterprise\
+        \ leggeri con lightweight container: l'esempio di Spring\n\no Spring e inversion\
+        \ of control\n\no Spring e aspect-oriented programming\n\no gestione delle\
+        \ transazioni\n\n- monitoraggio, controllo e gestione runtime di\n  application\
+        \ server e di framework di supporto a clustering in\n  generale: l'esempio\
+        \ di JMX e WildFly Application Server\n\no valutazione\ndell'efficienza e\
+        \ delle prestazioni\n\no scalabilità, fault-tolerance e affidabilità\n\no\
+        \ clustering e meccanismi proprietarie in WildFly\n\n- nuove metodologie di\
+        \ progettazione e microservice pattern\n\no architetture a microservizi\n\n\
+        o pattern e best practices\n\n- direzioni di evoluzione verso modelli asincroni\
+        \ per alta scalabilità di server enterprise\n\no Framework node.js e gestione\
+        \ eventi asincroni\n\no Function as a Service (FaaS) e relativi supporti\n\
+        \n- cenni\n  introduttivi su online stream\n  processing ad alte prestazioni\
+        \ su architetture clustered per il\n  processamento di big data\n- Numerosi\n\
+        \  casi di studio (anche tramite alcuni seminari\n  aziendali in aggiunta\
+        \ all'orario di lezione)\n\nIl corso sarà affiancato da un set di esercitazioni\
+        \ pratiche di\nlaboratorio, in cui gli studenti saranno stimolati a compiere\n\
+        attività a svolgimento guidato in forma di lavoro personale e\nautonomo. Tali\
+        \ attività saranno necessarie per il completamento\ndella preparazione e il\
+        \ raggiungimento delle abilità desiderate;\ntesti e soluzioni delle esercitazioni\
+        \ saranno rese disponibili sul\nsito Web del corso.\n\nIl set di esercitazioni\
+        \ proposto includerà:\n\n- 1 esercitazione su EJB (Jakarta EE 8) in WildFly-\
+        \ Implementazione EJB in ambiente WildFly\n- 1 esercitazione su Spring basics\
+        \ - Fondamenti del framework Spring\n- 1 esercitazione su Spring Data REST\
+        \ - Sviluppo di API REST con Spring Data\n- 1 esercitazione su Spring Data\
+        \ REST su Kubernetes - Deploy e orchestrazione\n- 1 esercitazione su FaaS:\
+        \ Lambda e Knative - Implementazione di funzioni serverless"
+      Testi/Bibliografia: "Il materiale mostrato a lezione (slide, esercizi risolti,\n\
+        esercizi suggeriti, esempi e proposte di progetto)\nsarà interamente messo\
+        \ a disposizione su Virtuale:\n\nhttps://virtuale.unibo.it/\n\nCome utile\
+        \ riferimento a materiale già disponibile, si veda anche la pagina di Virtuale\
+        \ relativa all'aa precedente:\n\nhttps://virtuale.unibo.it/course/view.php?id=60681\n\
+        \nTesti suggeriti:\n\n- A.L. Rubinger, B. Burke, Enterprise JavaBeans\n  3.1,\
+        \ 1st ed., O'Reilly, 2010\n- D. Ayers et al., Professional Java Server Programming:\n\
+        \  with Servlets, JavaServer Pages (JSP), XML, Enterprise JavaBeans\n  (EJB),\
+        \ JNDI, CORBA, Jini and Javaspaces, 1st edition,\n  Wrox, 1999\n- C. Walls,\
+        \ Spring in Action, 3rd ed.,\n  Manning, 2011\n- C. Bauer, G. King, Java Persistence\
+        \ with\n  Hibernate, Manning, 2006\n- J.S. Perry, Java Management\n  Extensions,\
+        \ 1° ed., O'Reilly, 2002\n\nAltre utili sorgenti on-line di informazioni:\n\
+        \n- SUN tutorial, http://java.sun.com/j2ee/overview.html\n- http://lia.deis.unibo.it/Courses/sd1213-info/lucidi/JavaEETutorial.pdfEJB\
+        \ tutorial by IBM (http://www.ibm.com/developerworks/java/tutorials/j-gsejb/)\n\
+        - Uso di Eclipse IDE e JBoss (http://en.wikibooks.org/wiki/J2EE_Programming/IDE/Eclipse)"
+      Metodi didattici: 'Durante le lezioni in aula verranno discusse le problematiche
+
+        generali connesse alla modellazione, progettazione, implementazione
+
+        e supporto runtime di applicazioni distribuite su larga scala
+
+        basate su componenti. Le principali tecnologie utilizzate saranno
+
+        basate sul linguaggio Java e l''ambiente Java Enterprise Edition
+
+        (J2EE): Enterprise Java Beans, Spring, Java Naming and Directory
+
+        Interface, Java Annotations, Java Messaging Service, Java
+
+        Persistence Architecture, Hibernate, Java Management Extensions,
+
+        JBoss Clustering. Il focus su queste tecnologie di ampio interesse
+
+        industriale e generalmente open-source permetterà la
+
+        sperimentazione sul campo dei modelli e delle architetture di
+
+        soluzione mostrati a lezione.
+
+
+        Il corso sarà affiancato da un set di esercitazioni
+
+        pratiche di laboratorio , in cui gli studenti
+
+        saranno stimolati a compiere attività a svolgimento guidato in forma di lavoro
+
+        personale e autonomo. Tali attività saranno necessarie per
+
+        il completamento della preparazione e il raggiungimento delle
+
+        abilità desiderate; testi e soluzioni delle esercitazioni saranno
+
+        rese disponibili sul sito Web del corso.
+
+
+        Le attività di laboratorio includeranno:
+
+
+        - 1 esercitazione su EJB in WildFly
+
+        - 1 esercitazione su EJB e JPA
+
+        - 1 esercitazione su Spring
+
+        - 1 esercitazione su FaaS'
+      Modalità di verifica e valutazione dell'apprendimento: 'Il corso prevede una
+        prova finale orale mirata a valutare
+
+        il livello di apprendimento raggiunto sia in termini di metodologie
+
+        di progettazione architetturale e modelli, sia in termini di
+
+        operatività implementativa in relazione alle principali tecnologie
+
+        descritte e utilizzate nel corso. La prova orale, della durata di
+
+        circa 60-75 minuti, prevederà almeno quattro domande, in parte
+
+        dedicate alla risoluzione di esercizi concreti di utilizzo delle
+
+        tecnologie enterprise investigate durante il corso.
+
+
+        Gli studenti potranno anche decidere di associare a questo
+
+        insegnamento una attività progettuale (4 cfu a partire dall''aa
+
+        2013/2014) - per maggiore dettagli, vedere
+
+        la voce della guida che descrive tale attività formativa.'
+      Strumenti a supporto della didattica: 'Materiale Didattico
+
+
+        Diapositive proiettate a lezione (sia in aula che in
+
+        laboratorio) consultabili sulle pagine di Virtuale del corso.
+
+
+        Come utile riferimento a materiale già disponibile, si veda anchela pagina
+        di Virtuale relativa all''aa precedente con testi e soluzioni di esercizi
+        proposti in laboratorio e di
+
+        frequenti domande d''esame:
+
+
+        https://virtuale.unibo.it/course/view.php?id=60681
+
+
+        Altri strumenti:
+
+
+        Ambienti di sviluppo integrato per J2EE (principalmente Eclipse
+
+        IDE; seconda opzione NetBeans IDE), JBoss Application Server ed
+
+        altre implementazioni di tecnologie mostrate a lezione, disponibili
+
+        in laboratorio (Lab2 principalmente, ma anche Lab4) e indicati
+
+        sul sito Web del corso.
+
+
+        Le slide utilizzate durante le lezioni devono essere considerate il principale
+        materiale di studio per la preparazione dell''esame; la bibliografia suggerita
+        è indicata come supporto e integrazione opzionale.
+
+
+        http://lia.disi.unibo.it/Courses/sd1819-info/
+
+
+        Come utile riferimento a materiale già disponibile, si veda anche il sito
+        Web relativo all''aa precedente:
+
+
+        http://lia.disi.unibo.it/Courses/sd1718-info/'
+      Link ad altre eventuali informazioni: https://virtuale.unibo.it
+      Orario di ricevimento: Consulta il sito web di Luca Foschini (https://www.unibo.it/sitoweb/luca.foschini)
+      SDGs: 'Istruzione di qualità Imprese innovazione e infrastrutture
+
+
+        L''insegnamento contribuisce al perseguimento degli Obiettivi
+
+        di Sviluppo Sostenibile dell''Agenda 2030 dell''ONU.'
+  en:
+    title: 2025/2026 Distributed Systems M — University of Bologna
+    contents:
+      Learning outcomes: "This graduate course aims at providing students with deep\n\
+        advanced know-how about the methodologies, models, tools, and\nmechanisms\
+        \ for the design, implementation, and runtime\nevaluation/validation of enterprise\
+        \ applications deployed over\nwide-scale distributed systems.\n\nPrevious\
+        \ course requirements: no one (but some contents from the\nBSc courses of\
+        \ Computer Networks T and Web Technologies T will be\nuseful in some classes)\n\
+        \nThe learning outcomes of the course will include:\n\n- architecture modeling\
+        \ principles for distributed enterprise applications:\n  requirements and\
+        \ design principles\n- Design, development, and implementation of distributed\n\
+        \  applications based on Application Servers (e.g., JBoss) and components\
+        \ (e.g.,\n  Enterprise Java Beans)\n- management of complex and articulated\
+        \ container-based distributed systems, also\n  via lightweight models and\n\
+        \  technologies (e.g., via Spring) and via\n  advanced persistency solutions\
+        \ (e.g., via the JPA and Hibernate\n  technologies)\n- design, development,\
+        \ and implementation\n  of distributed support systems for runtime monitoring\n\
+        \  and control (properties such as scalability,\n  fault-tolerance, reliability,\
+        \ ...; e.g., via the JMX\n  technology)\n- design, development, and implementation\
+        \ of highly scalable\n  distributed applications for high-end clusters, by\
+        \ specifically\n  considering the clustering support available in JBoss (full\
+        \ configuration); some introductory notions of online\n  stream processing\
+        \ over big data"
+      Course contents: "The course will aim at deeply and thoroughly facing the\n\
+        following topics:\n\n- methodologies and architectural models for the\n  design,\
+        \ implementation, and deployment of enterprise-level\n  distributed applications\n\
+        - component-based model evolution and component\n  integration into distributed\
+        \ architectures (typically 3-tier and\n  Web-integrated)\n- Application Servers\
+        \ (e.g., JBoss) and\n  middleware/frameworks for the runtime support of enterprise-level\n\
+        \  distributed applications\n- differentiated naming services and their integration,\n\
+        \  especially in enterprise-level deployment environments; examples\n  related\
+        \ to Java Naming and Directory Interface\n  (JNDI)\n- from the\n  starting\
+        \ Enterprise Java Beans model (EJB1.0) to the current\n  widespread adoption\
+        \ of EJB 3.0 (motivations and evolution\n  guidelines)\n\no Persistency\n\n\
+        o Interactions with data\n\no Session-oriented and\nmessage-oriented components\n\
+        \no Interceptors\n\no Transactions\n\no Examples and exercises\n(integrated\
+        \ with the JBoss application server)\n\n- messaging systems, e.g., Java Messaging\
+        \ System (JMS)\n  and rapid overview of Enterprise Service Bus and Java Business\n\
+        \  Integration\n- towards\n  effective and efficient enterprise models with\
+        \ lightweight\n  containers: the Spring example\n\no Spring and inversion\
+        \ of\ncontrol\n\no Spring and aspect-oriented\nprogramming\n\no transaction\
+        \ management\n\n- persistency: evolution of persistency support models\n \
+        \ in the development of enterprise applications. The examples of JPA and Hibernate.\n\
+        \no transparent\npersistency\n\no mapping and query\nsupport\n\no metadata\
+        \ support\n\no performance\n\n- monitoring, control, and runtime management\
+        \ of\n  application servers and of distributed support frameworks in\n  general:\
+        \ the JMX example\n\no efficiency/effectiveness\nand performance evaluation\n\
+        \no scalability\n\no fault-tolerance\n\no reliability\n\n- clustering and\
+        \ proprietary mechanisms/solutions for\n  clustering in JBoss\n- directions\
+        \ of evolution towards asynchronous models and technologies for high scalability\
+        \ of enterprise servers\n\no Framework node.js and asynch event management\n\
+        \no Function as a Service (FaaS) and supporting frameworks\n\n- introductory\
+        \ notions about\n  high-performance online stream processing of big data\n\
+        \  over clustered distributed systems\n- several case\n  studies (also provided\
+        \ via seminars via external companies,\n  added to the regular classes schedule)\n\
+        \nThe course will be associated with a set of practical lab\nexercises, in\
+        \ which the students will be solicited to perform\nguided exercise activities\
+        \ but in an autonomous way and in their\nfree time. These activities will\
+        \ be necessary to complete the study\nof the course and to reach the desired\
+        \ skills; texts and solutions\nof these ees will be made available at the\
+        \ official course Web\nsite.\n\nThe set of proposed lab exercises will include:\n\
+        \n- 1 exercise about EJB in the WildFly application\n  server\n- 1 exercise\
+        \ about messaging and Java Business Integration (JBI)\n- 1 exercise about\
+        \ Spring\n- 1 exercise about JMX\n- 1 exercise about clustering in WildFly"
+      Readings/Bibliography: "All the teachning material (presentation slides, discussed\n\
+        exercises with solutions, exercise proposals, project examples and\nproposals)\
+        \ used during the classes will be available for download\nat Virtuale course\
+        \ pages.\n\nAs a possible useful reference to the material used in the previous\
+        \ academic year, please refer also to the already available URL:\n\nhttps://virtuale.unibo.it/course/view.php?id=60681\n\
+        \nIn addition, there are suggested books useful for deepening\nseveral of\
+        \ the topics addressed by the course:\n\n- A.L. Rubinger, B. Burke, Enterprise\
+        \ JavaBeans\n  3.1, 1st ed., O'Reilly, 2010\n- D. Ayers et al., Professional\
+        \ Java Server Programming:\n  with Servlets, JavaServer Pages (JSP), XML,\
+        \ Enterprise JavaBeans\n  (EJB), JNDI, CORBA, Jini and Javaspaces, 1st edition,\n\
+        \  Wrox, 1999\n- C. Walls, Spring in Action, 3rd ed.,\n  Manning, 2011\n-\
+        \ C. Bauer, G. King, Java Persistence with\n  Hibernate, Manning, 2006\n-\
+        \ J.S. Perry, Java Management\n  Extensions, 1° ed., O'Reilly, 2002\n\nAdditional\
+        \ useful online sources of information and of\nteaching material:\n\n- SUN\
+        \ tutorial, http://java.sun.com/j2ee/overview.html\n- http://lia.deis.unibo.it/Courses/sd1213-info/lucidi/JavaEETutorial.pdf\
+        \ (http://lia.deis.unibo.it/Courses/sd1213-info/lucidi/JavaEETutorial.pdf)EJB\
+        \ tutorial by IBM (http://www.ibm.com/developerworks/java/tutorials/j-gsejb/)\n\
+        - Uso di Eclipse IDE e JBoss (http://en.wikibooks.org/wiki/J2EE_Programming/IDE/Eclipse)"
+      Teaching methods: 'The classes will discuss the general issues related to the
+
+        modeling, design, implementation, and runtime support of wide-scale
+
+        distributed applications based on components, containers, and
+
+        Application Servers. The main technologies exploited during the
+
+        course will be based on the Java language and on the Java
+
+        Enterprise Edition (J2EE): Enterprise Java Beans, Spring, Java
+
+        Naming and Directory Interface, Java Annotations, Java Messaging
+
+        Service, Java Persistence Architecture, Hibernate, Java Management
+
+        Extensions, JBoss Clustering. The focus on these technologies, of
+
+        high industrial relevance and most of them available for free as
+
+        open-source, will enable the experimental testing and validation of
+
+        the models and solution architectures discussed during the
+
+        lectures.
+
+
+        The course will be associated with a set of practical
+
+        lab exercises, in which the students will be solicited to
+
+        perform guided exercise activities but in an autonomous way and in
+
+        their free time. These activities will be necessary to complete the
+
+        study of the course and to reach the desired skills; texts and
+
+        solutions of these ees will be made available at the official
+
+        course Web site.
+
+
+        Lab exercises will include:
+
+
+        - 1 esercitazione su EJB in WildFly
+
+        - 1 esercitazione su EJB e JPA
+
+        - 1 esercitazione su Spring
+
+        - 1 esercitazione su FaaS'
+      Assessment methods: 'The course is assessed via a final oral examination. The
+        exam
+
+        will try to evaluate the deep understanding of both the
+
+        methodologies/models of architecture design and the ability to
+
+        implement parts of wide-scale enterprise distributed applications
+
+        by using the mechanisms and technologies examined during the
+
+        course. The oral exam, with average duration of around 60-75
+
+        minutes, will include at least four questions, some of them
+
+        targeting the solution of practical exercises that will use the
+
+        enterprise technologies studied and discussed during the
+
+        course.
+
+
+        Students may also decide to associate this course with 1
+
+        attività progettuale (project activity, 4 ECTS since the 2013/2014
+
+        academic year) - for further details, please see
+
+        the related description "Attività Progettuale di Sistemi
+
+        Distribuiti M" on the guide.'
+      Teaching tools: 'Teaching material
+
+
+        The slides used during the classes (both in classroom and in
+
+        labs) are freely available at the Virutale Couse pages.
+
+
+        As a possible useful reference to the material used in the previous academic
+        year, please refer also to the URL below where you can find texts and solutions
+        of lab exercises and of frequent questions
+
+        for oral exams:
+
+
+        https://virtuale.unibo.it/course/view.php?id=60681
+
+
+        Other tools:
+
+
+        Some Integrated Development Environments for J2EE (mainly the
+
+        Eclipse IDEs; second option the NetBeans IDE), the JBoss
+
+        Application Server and additional reference implementations of the
+
+        technologies described in the lectures are available in the
+
+        labs (mainly Lab2, but also Lab4) and on the course Web site.
+
+
+        The slides used during the lectures and made available on the course Web site
+        are the primary material for the preparation of the exam; the suggested bibliography
+        (books, papers, Web sites, ...) is intended as an optional support and integration.'
+      Links to further information: https://virtuale.unibo.it
+      Office hours: See the website of Luca Foschini (https://www.unibo.it/sitoweb/luca.foschini/en)
+      SDGs: 'Quality education Industry, innovation and infrastructure
+
+
+        This teaching activity contributes to the achievement of the Sustainable Development
+        Goals of the UN 2030 Agenda.'

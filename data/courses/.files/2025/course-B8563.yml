@@ -1,0 +1,254 @@
+year: 2025
+credits: 8
+ssd: ING-INF/05
+language: Italian
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2025-09-17
+  to: 2025-12-19
+teachers:
+- id: '34908'
+  name: Mattoccia, Stefano
+  email: stefano.mattoccia@unibo.it
+  website: https://www.unibo.it/sitoweb/stefano.mattoccia
+  role: full professor
+  affiliation: disi
+  ssd:
+    name: IINF-05/A
+    description: Sistemi di elaborazione delle informazioni
+  module:
+    teaching_id: '543027'
+    url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/543027
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/543027
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/543027
+    details:
+    - 8 cfu
+- id: '93475'
+  name: Tosi, Fabio
+  email: fabio.tosi5@unibo.it
+  website: https://www.unibo.it/sitoweb/fabio.tosi5
+  role: rtda
+  affiliation: disi
+  ssd:
+    name: IINF-05/A
+    description: Sistemi di elaborazione delle informazioni
+  module:
+    teaching_id: '543027'
+    url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/543027
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/543027
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/543027
+    details:
+    - Modulo 2
+course_title:
+  id: B8563
+  name: SISTEMI DI ELABORAZIONE ACCELERATA M
+integrated_course: ''
+campus: Bologna
+programme: Laurea Magistrale in Ingegneria informatica
+syllabus:
+  it:
+    title: 2025/2026 SISTEMI DI ELABORAZIONE ACCELERATA M — Università di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: Al termine del corso lo studente acquisisce
+        competenze avanzate nell'ambito del calcolo accelerato e dei moderni sistemi
+        per l'elaborazione ad alte prestazioni (HPC). In particolare, sviluppa una
+        conoscenza approfondita delle tecnologie di accelerazione disponibili, dalle
+        estensioni SIMD fino alle moderne architetture GPU e framework emergenti per
+        il calcolo eterogeneo, maturando la capacità di ottimizzare problemi computazionali
+        attraverso la scelta appropriata di pattern algoritmici, formati numerici
+        e strategie di decomposizione del calcolo. Lo studente padroneggia gli strumenti
+        di programmazione per l'accelerazione su CPU e attraverso CUDA per GPU, acquisendo
+        una comprensione avanzata dei modelli di esecuzione e delle tecniche di ottimizzazione
+        specifiche per ogni piattaforma. Queste capacità permettono di sviluppare
+        soluzioni computazionalmente efficienti in ambiti all'avanguardia quali intelligenza
+        artificiale, elaborazione di big data e calcolo scientifico ad alte prestazioni.
+      Contenuti: 'Architetture e modelli di programmazione per calcolo a elevate prestazioni.
+        Nel corso si farà paricolare riferimento a tematiche inerenti computer vision
+        e intelligenza artificiale.
+
+
+        1: Introduzione al calcolo a elevate prestazioni
+
+
+        - Concetti fondamentali del calcolo parallelo
+
+        - Architetture per calcolo a elevate prestazioni: CPU multi-core, GPU, sistemi
+        embedded
+
+
+        2: SIMD and Multi-threading (Modulo 1)
+
+
+        - Introduzione al SIMD
+
+        - Principi di multi-threading
+
+        - SIMD e Multi-threading
+
+
+        3: GPU e Programmazione CUDA C (Modulo 2)
+
+
+        - Modello di Programmazione CUDA
+
+        - Architetture GPU e Modello di Esecuzione CUDA
+
+        - Gerarchia e Organizzazione della Memoria GPU
+
+        - Ecosistema CUDA: Librerie e Applicazioni
+
+
+        4: Rappresentazione ed elaborazioni con numeri reali (Modulo 1)
+
+
+        - Floating point
+
+        - Fixed point
+
+
+        5: Tecnologie Emergenti (Modulo 1)
+
+
+        - FPGA (Field Programmable Gate Array)'
+      Testi/Bibliografia: 'Lucidi e codice disponibili in Virtuale.
+
+
+        Per approfondimenti:
+
+
+        Cheng, J., Grossman, M., McKercher, T. (2014). Professional CUDA C Programming.
+        Wrox Pr Inc. (1^ edizione)
+
+
+        Kirk, D. B., Hwu, W. W. (2013). Programming Massively Parallel Processors.
+        Morgan Kaufmann (3^ edizione)
+
+
+        Timothy G. Mattson, Yun (Helen) He, Alice E. Koniges, The OpenMP Common Core:
+        Making OpenMP Simple Again, MIT Press, 2019
+
+
+        Jean-Michel Muller , Nicolas Brunie , Florent de Dinechin , Claude-Pierre
+        Jeannerod , Mioara Joldes , Vincent Lefèvre , Guillaume Melquiond , Nathalie
+        Revol , Serge Torre, Handbook of Floating-Point Arithmetic, Springer Birkhäuser
+        2018
+
+
+        Jean-Michel Muller, Elementary Functions: Algorithms and Implementation, Springer
+        Birkhäuser 2016'
+      Metodi didattici: Verifica delle nozioni presentate durante le lezioni mediante
+        esercitazioni con strumenti di sviluppo software.
+      Modalità di verifica e valutazione dell'apprendimento: 'La verifica consiste
+        nello sviluppo automomo di un progetto (gruppi di non più di due studenti)
+        e in domande sui temi del corso.
+
+
+        Studenti/sse con DSA o disabilità temporanee o permanenti: si raccomanda di
+        contattare per tempo l’ufficio di Ateneo responsabile (https://site.unibo.it/studenti-con-disabilita-e-dsa/it):
+        sarà sua cura proporre agli/lle studenti/sse interessati/e eventuali adattamenti,
+        che dovranno comunque essere sottoposti, con un anticipo di 15 giorni, all’approvazione
+        del/della docente, che ne valuterà l''opportunità anche in relazione agli
+        obiettivi formativi dell''insegnament'
+      Strumenti a supporto della didattica: Piattaforme di svilippo software.
+      Orario di ricevimento: 'Consulta il sito web di Stefano Mattoccia (https://www.unibo.it/sitoweb/stefano.mattoccia)
+
+
+        Consulta il sito web di Fabio Tosi (https://www.unibo.it/sitoweb/fabio.tosi5)'
+  en:
+    title: 2025/2026 SISTEMI DI ELABORAZIONE ACCELERATA M — University of Bologna
+    contents:
+      Learning outcomes: At the end of the course, the student acquires advanced skills
+        in the field of accelerated computing and modern systems for high-performance
+        computing (HPC). In particular, he/she develops an in-depth knowledge of the
+        available acceleration technologies, from SIMD extensions to modern GPU architectures
+        and emerging frameworks for heterogeneous computing, developing the ability
+        to optimize computational problems through the appropriate choice of algorithmic
+        patterns, numerical formats and computation decomposition strategies. The
+        student masters the programming tools for acceleration on CPUs and through
+        CUDA for GPUs, acquiring an advanced understanding of execution models and
+        optimization techniques specific to each platform. These skills allow to develop
+        computationally efficient solutions in cutting-edge fields such as artificial
+        intelligence, big data processing and high-performance scientific computing.
+      Course contents: 'Architectures and programming models for high-performance
+        computing with a focus on computer vision and artifical intelligence.
+
+
+        1: Introduction to high-performance computing
+
+
+        - Parallel computing principles
+
+        - Architectures for high-performance computing: CPU multi-core, GPU, sistemi
+        embedded
+
+
+        2: SIMD and Multi-threading (Module 1)
+
+
+        - Introduction to SIMD
+
+        - Multi-threading principles
+
+
+        3: GPU and CUDA C Programming (Module 2)
+
+
+        - CUDA Programming Model
+
+        - GPU Architectures and CUDA Execution Model
+
+        - GPU Memory Hierarchy and Organization
+
+        - CUDA Ecosystem: Libraries and Applications
+
+
+        4: Dealing with real numbers: encoding and computations (Module 1)
+
+
+        - Floating point
+
+        - Fixed point
+
+
+        5: Emerging technologies (Module 1)
+
+
+        - FPGA (Field Programmable Gate Array)'
+      Readings/Bibliography: 'Slides and source code availablein Virtuale.
+
+
+        For further details:
+
+
+        Cheng, J., Grossman, M., McKercher, T. (2014). Professional CUDA C Programming.
+        Wrox Pr Inc. (1st edition)
+
+
+        Kirk, D. B., Hwu, W. W. (2013). Programming Massively Parallel Processors.
+        Morgan Kaufmann (3rd edition)
+
+
+        Timothy G. Mattson, Yun (Helen) He, Alice E. Koniges, The OpenMP Common Core:
+        Making OpenMP Simple Again, MIT Press, 2019
+
+
+        Jean-Michel Muller , Nicolas Brunie , Florent de Dinechin , Claude-Pierre
+        Jeannerod , Mioara Joldes , Vincent Lefèvre , Guillaume Melquiond , Nathalie
+        Revol , Serge Torre, Handbook of Floating-Point Arithmetic, Springer Birkhäuser
+        2018
+
+
+        Jean-Michel Muller, Elementary Functions: Algorithms and Implementation, Springer
+        Birkhäuser 2016'
+      Teaching methods: Each ntroduced topic will be followed by hand-on senssions
+        with software frameworks.
+      Assessment methods: The assessment method consists in questions concerning topics
+        presented in the course and in the evaluation of a project developed by studends
+        (max 2 for each team).
+      Teaching tools: Software development frameworks.
+      Office hours: 'See the website of Stefano Mattoccia (https://www.unibo.it/sitoweb/stefano.mattoccia/en)
+
+
+        See the website of Fabio Tosi (https://www.unibo.it/sitoweb/fabio.tosi5/en)'
