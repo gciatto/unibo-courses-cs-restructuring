@@ -1,0 +1,467 @@
+year: 2025
+url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/448425
+credits: 6
+ssd: INF/01
+language: English
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2026-02-17
+  to: 2026-06-03
+teacher:
+  id: '128709'
+  name: Girau, Roberto
+  email: roberto.girau@unibo.it
+  website: https://www.unibo.it/sitoweb/roberto.girau
+  role: associate professor
+  affiliation: disi
+  ssd:
+    name: INFO-01/A
+    description: Informatica
+course_title:
+  id: '90074'
+  name: SMART VEHICULAR SYSTEMS
+  details:
+  - 6 cfu
+integrated_course: ''
+campus: Cesena
+programme: Laurea Magistrale in Ingegneria e scienze informatiche
+syllabus:
+  it:
+    url: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/448425
+    title: 2025/2026 SMART VEHICULAR SYSTEMS — Università di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: 'Students taking this class: - Will An extended
+        knowledge of challenges and opportunites in the area of vehicular communications
+        including V2V and V2I. The class material will include real world examples
+        and deployments. - Will understand impact of mobility and propagation on Vehicular
+        Systems performances - Will learn vehicular application scenarios and their
+        evolution - Will learn how design and model for connected/autonomous vehicular
+        systems.'
+      Contenuti: 'Autonomia, mobilità e intelligenza artificiale sono tra le innovazioni
+        tecnologiche destinate a trasformare più profondamente la società negli anni
+        a venire.
+
+        Il corso offre una panoramica completa dei sistemi veicolari connessi, mobili
+        e autonomi, con l’obiettivo di comprendere i loro componenti fondamentali
+        e i principi di funzionamento.
+
+
+        Saranno analizzati scenari che vanno dagli ADAS fino alla guida autonoma completa,
+        evidenziando come le tecnologie attuali siano ancora in fase evolutiva e non
+        esista una soluzione unica e definitiva. Verranno trattati temi quali sensing,
+        percezione, decision-making, networking, system design e l’uso dei Digital
+        Twin per la modellazione e la simulazione.
+
+
+        Prerequisiti
+
+
+        Si richiede agli studenti:
+
+
+        - Una buona conoscenza di algoritmi e concetti introduttivi di AI.
+
+        - Buone capacità di programmazione e familiarità con ambienti Linux e sistemi
+        real-time o embedded.
+
+        - Preferibilmente, conoscenza di modelli e framework AI (es. YOLO, TensorRT).
+
+        - Conoscenze di ROS, programmazione CUDA/Jetson e nozioni di base di controllo
+        sono un plus, ma non obbligatorie.
+
+
+        Obiettivi del corso
+
+
+        Il corso mira a fornire agli studenti una comprensione approfondita dei principi
+        con cui vengono progettati, implementati e validati i moderni sistemi veicolari
+        autonomi e connessi, e di come essi si evolveranno nel prossimo futuro. Le
+        attività di laboratorio, basate sul simulatore CARLA, offriranno esperienza
+        pratica su percezione, pianificazione, controllo e approcci Digital Twin.
+
+
+        Uno studente che completa con successo il corso sarà in grado di:
+
+
+        - Comprendere sfide e opportunità legate ai veicoli autonomi, alla mobilità
+        intelligente e alla robotica mobile.
+
+        - Acquisire conoscenze avanzate di networking e sistemi distribuiti applicati
+        ai veicoli connessi, incluse architetture innovative oltre il modello classico
+        di Internet.
+
+        - Analizzare i requisiti di un sistema autonomo e selezionare l’architettura
+        e le tecnologie più adeguate per sensing, percezione, comunicazione e computazione.
+
+        - Acquisire familiarità pratica con ambienti di simulazione (es. CARLA) e
+        piattaforme sperimentali per sistemi autonomi e connessi.'
+      Testi/Bibliografia: "Il materiale principale del corso sarà fornito direttamente\
+        \ dal docente e consisterà in articoli scientifici recenti, rapporti tecnici\
+        \ e materiale selezionato da testi classici e moderni relativi a guida autonoma,\
+        \ sistemi mobili, networking veicolare e AI per la mobilità.\n\nAgli studenti\
+        \ sarà inoltre richiesto di seguire tutorial online e documentazione tecnica\
+        \ relativi ai tool utilizzati nel laboratorio (ad es. CARLA, ROS2, toolkit\
+        \ di AI, librerie per la percezione sensoriale).\n\nTesti consigliati\n\n\
+        Sebbene non obbligatori, i seguenti libri forniscono un utile background teorico\
+        \ e pratico:\n\n- Joseph O’Rourke, Computational Geometry, Cambridge University\
+        \ Press.\n  Testo classico per la comprensione degli algoritmi geometrici\
+        \ utilizzati in navigazione, mapping e ragionamento spaziale.\n- Kevin M.\
+        \ Lynch & Frank C. Park, Modern Robotics: Mechanics, Planning, and Control,\
+        \ Cambridge University Press.\n  Riferimento fondamentale per cinematica,\
+        \ motion planning e controllo nei sistemi autonomi.\n- Andreas Lindholm, Niklas\
+        \ Wahlström, Fredrik Lindsten,\n  Machine Learning: A First Course for Engineers\
+        \ and Scientists, Cambridge University Press.\n  Introduzione pratica al machine\
+        \ learning con applicazioni alla percezione, predizione e decision-making.\n\
+        - Sean Meyn, Control Systems and Reinforcement Learning, Cambridge University\
+        \ Press.\n  Testo che collega in modo moderno la teoria del controllo con\
+        \ l'apprendimento per rinforzo, rilevante per il comportamento autonomo."
+      Metodi didattici: 'Il corso è articolato in due componenti didattiche complementari:
+
+
+        1. Lezioni Frontali Tradizionali (Parte Teorica)
+
+
+        La parte teorica del corso verrà svolta tramite lezioni frontali classiche,
+        dedicate ai fondamenti dei sistemi veicolari intelligenti, della guida autonoma,
+        delle comunicazioni veicolari, della percezione e delle metodologie Digital
+        Twin. Le lezioni forniranno le basi concettuali necessarie per comprendere
+        architetture, algoritmi e compromessi progettuali.
+
+
+        2. Laboratori Pratici con il Simulatore CARLA (Parte Applicativa)
+
+
+        La componente pratica prevede sessioni di laboratorio basate sull’uso del
+        simulatore di guida autonoma CARLA. Gli studenti lavoreranno individualmente
+        o in piccoli gruppi per implementare, testare e analizzare funzioni veicolari
+        come percezione, sensor fusion, pianificazione, controllo e modellazione tramite
+        Digital Twin.'
+      Modalità di verifica e valutazione dell'apprendimento: 'La valutazione si basa
+        su un progetto di gruppo (massimo 3 studenti), che comprende un report scritto,
+        il codice sorgente, una presentazione finale e una demo eseguita nel simulatore
+        CARLA.
+
+
+        Consegna del Progetto
+
+
+        - Ogni gruppo riceverà un progetto assegnato durante il corso.
+
+        - Gli studenti devono consegnare report e codice sorgente almeno una settimana
+        prima della presentazione.
+
+        - Il progetto deve essere già integrato con il controller del simulatore utilizzato
+        in laboratorio.
+
+
+        Ripartizione del Voto
+
+
+        Il voto finale (massimo 32 punti) è suddiviso come segue:
+
+
+        1. Report + Codice Sorgente — 24 punti
+
+
+        Valutati in base a:
+
+
+        - Correttezza e completezza dell’implementazione
+
+        - Qualità dell’architettura e delle scelte progettuali
+
+        - Chiarezza e approfondimento del report tecnico
+
+        - Funzionalità e robustezza del sistema
+
+        - Corretta integrazione con il simulatore CARLA
+
+
+        2. Presentazione + Demo — 8 punti
+
+
+        - Completezza della presentazione: 3 punti
+
+        - Padronanza e chiarezza espositiva: 3 punti
+
+        - Rispetto dei tempi assegnati: 2 punti
+
+
+        Durata della Presentazione
+
+
+        - Gruppo da 3 studenti: 30 minuti (più domande)
+
+        - Gruppo da 2 studenti: 20 minuti (più domande)
+
+        - Studente singolo: 10 minuti (più domande)
+
+
+        Le slide sono obbligatorie a supporto della presentazione.
+
+        La demo deve essere eseguita in CARLA, mostrando l’effettiva integrazione
+        del sistema sviluppato.'
+      Strumenti a supporto della didattica: 'Il corso fa uso di diversi strumenti
+        software, ambienti di simulazione e framework di sviluppo che supportano sia
+        le lezioni teoriche sia le attività di laboratorio. I principali strumenti
+        didattici includono:
+
+
+        Piattaforme di Sviluppo e Simulazione
+
+
+        - Simulatore CARLA per guida autonoma, modellazione sensori e test di scenario
+
+        - Python per scripting, analisi dati e prototipazione
+
+        - Ambiente Linux (Ubuntu consigliato) per lo sviluppo e l’integrazione
+
+        - Visual Studio Code o IDE equivalenti per programmazione e debugging
+
+        - Git/GitHub per versionamento del codice e lavoro collaborativo
+
+
+        Strumenti per AI, Percezione e Robotica
+
+
+        - PyTorch / TensorFlow per machine learning e deep learning
+
+        - OpenCV per computer vision
+
+        - ROS2 (opzionale) per lo sviluppo modulare di sistemi robotici
+
+        - Supporto NVIDIA CUDA / Jetson (opzionale) per accelerazione hardware
+
+
+        Strumenti per Veicoli e Networking
+
+
+        - Wireshark, tcpdump e altri tool di rete per analizzare comunicazioni veicolari
+
+        - Client MQTT per architetture orientate ai messaggi (solo se necessari al
+        progetto)'
+      Orario di ricevimento: Consulta il sito web di Roberto Girau (https://www.unibo.it/sitoweb/roberto.girau)
+      SDGs: 'Città e comunità sostenibili
+
+
+        L''insegnamento contribuisce al perseguimento degli Obiettivi
+
+        di Sviluppo Sostenibile dell''Agenda 2030 dell''ONU.'
+  en:
+    url: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/448425
+    title: 2025/2026 Smart Vehicular Systems — University of Bologna
+    contents:
+      Learning outcomes: 'Students taking this class: - Will An extended knowledge
+        of challenges and opportunites in the area of vehicular communications including
+        V2V and V2I. The class material will include real world examples and deployments.
+        - Will understand impact of mobility and propagation on Vehicular Systems
+        performances - Will learn vehicular application scenarios and their evolution
+        - Will learn how design and model for connected/autonomous vehicular systems.'
+      Course contents: 'Autonomy, mobility, and artificial intelligence are among
+        the technological innovations that will most deeply shape society in the coming
+        years.
+
+        This course provides a comprehensive survey of connected, mobile, and autonomous
+        vehicular systems, with the goal of understanding their fundamental building
+        blocks and principles of operation.
+
+
+        Students will explore a wide range of scenarios—from Advanced Driver Assistance
+        Systems (ADAS) to fully autonomous driving—showing how current technology
+        is still in an early stage and how no universal solution exists. Topics will
+        cover sensing, perception, decision-making, networking, system design, and
+        Digital Twin–based approaches for modeling and simulation.
+
+
+        Pre-requisites
+
+
+        Students are expected to have:
+
+
+        - A solid understanding of algorithms and basic AI concepts.
+
+        - Good programming skills and familiarity with Linux environments and real-time
+        or embedded systems.
+
+        - Preferably, experience with AI frameworks and models (e.g., YOLO, TensorRT).
+
+        - Knowledge of ROS, CUDA/Jetson programming, and introductory control theory
+        is a plus, though not mandatory.
+
+
+        Course Objectives
+
+
+        The course aims to provide students with a deep foundation for understanding
+        how autonomous and connected vehicular systems are designed, deployed, and
+        validated today—and how they are likely to evolve in the near future. Laboratory
+        sessions based on the CARLA simulator will allow hands-on experience with
+        perception, planning, control, and Digital Twin methodologies.
+
+
+        A successful student will be able to:
+
+
+        - Understand the challenges and opportunities arising from autonomous vehicles,
+        intelligent mobility, and mobile robotics.
+
+        - Gain in-depth knowledge of advanced networking and distributed systems concepts
+        applied to connected vehicles, including architectures beyond traditional
+        Internet models.
+
+        - Analyze the requirements of an autonomous system and select appropriate
+        sensing, perception, communication, and computation architectures.
+
+        - Acquire hands-on familiarity with simulation tools (e.g., CARLA) and experimental
+        platforms for autonomous and connected systems.'
+      Readings/Bibliography: "The primary material for this course will be provided\
+        \ directly by the instructor and will consist of research papers, technical\
+        \ reports, and selected excerpts from classic and modern references in autonomous\
+        \ driving, mobile systems, vehicular networking, and AI for mobility.\n\n\
+        Students will also be required to complete online tutorials and technical\
+        \ documentation for specific tools and frameworks used in the laboratory activities\
+        \ (e.g., CARLA, ROS2, AI toolkits, sensor processing libraries).\n\nRecommended\
+        \ Reading List\n\nAlthough not mandatory, the following books provide useful\
+        \ background and complementary perspectives:\n\n- Joseph O’Rourke, Computational\
+        \ Geometry, Cambridge University Press.\n  A classic text for understanding\
+        \ geometric algorithms involved in navigation, mapping, and spatial reasoning.\n\
+        - Kevin M. Lynch & Frank C. Park, Modern Robotics: Mechanics, Planning, and\
+        \ Control, Cambridge University Press.\n  A foundational reference for kinematics,\
+        \ motion planning, and control in autonomous systems.\n- Andreas Lindholm,\
+        \ Niklas Wahlström, Fredrik Lindsten,\n  Machine Learning: A First Course\
+        \ for Engineers and Scientists, Cambridge University Press.\n  A practical\
+        \ introduction to machine learning methods relevant to perception, prediction,\
+        \ and decision-making.\n- Sean Meyn, Control Systems and Reinforcement Learning,\
+        \ Cambridge University Press.\n  A modern and rigorous bridge between classical\
+        \ control theory and reinforcement learning for autonomous behavior."
+      Teaching methods: 'The course is structured around two complementary teaching
+        components:
+
+
+        1. Traditional Lectures (Theory)
+
+
+        The theoretical part of the course will be delivered through classic in-person
+        lectures, introducing fundamental concepts in smart vehicular systems, autonomous
+        driving, vehicular communications, perception, and Digital Twin methodologies.
+        Lectures will provide the background needed to understand system architectures,
+        algorithms, and design trade-offs.
+
+
+        2. Laboratory Sessions with the CARLA Simulator (Practice)
+
+
+        The practical component consists of hands-on laboratory sessions based on
+        the CARLA autonomous driving simulator. Students will work individually or
+        in small groups to implement, test, and analyze vehicular functions such as
+        perception, sensor fusion, planning, control, and Digital Twin–based modeling.'
+      Assessment methods: 'The assessment is based on a team project (up to 3 students
+        per group), which includes a written report, source code, a final presentation,
+        and a live demo on the CARLA simulator.
+
+
+        Project Submission
+
+
+        - Each group will receive a project assignment during the course.
+
+        - Students must submit the project report and the complete source code at
+        least one week before the presentation date.
+
+        - The project must already be integrated with the simulator controller used
+        in the laboratory.
+
+
+        Grading Breakdown
+
+
+        The final grade (maximum 32 points) is composed as follows:
+
+
+        1. Project Report + Source Code — 24 points
+
+
+        Evaluation criteria include:
+
+
+        - Correctness and completeness of the implementation
+
+        - Quality of the architecture and design choices
+
+        - Originality and clarity of the technical report
+
+        - Functionality and robustness of the system
+
+        - Proper integration with the CARLA simulator
+
+
+        2. Presentation + Live Demo — 8 points
+
+
+        - Completeness of the presentation: 3 points
+
+        - Mastery and clarity of exposition: 3 points
+
+        - Compliance with time limits: 2 points
+
+
+        Presentation Time
+
+
+        - 3-student team: 30 minutes (plus Q&A)
+
+        - 2-student team: 20 minutes (plus Q&A)
+
+        - Individual project: 10 minutes (plus Q&A)
+
+
+        Slides are required to accompany the presentation.
+
+        The live demo must be executed inside CARLA, demonstrating the functional
+        integration of the developed system.'
+      Teaching tools: 'The course makes use of a set of software tools, simulation
+        environments, and development frameworks that support both the theoretical
+        lectures and the laboratory activities. The main teaching tools include:
+
+
+        Simulation and Development Platforms
+
+
+        - CARLA Simulator for autonomous driving, sensor modeling, and scenario testing
+
+        - Python for scripting, data analysis, and prototyping
+
+        - Linux environment (Ubuntu recommended) for development and integration
+
+        - Visual Studio Code or similar IDEs for coding and debugging
+
+        - Git/GitHub for version control and project collaboration
+
+
+        AI, Perception and Robotics Tooling
+
+
+        - PyTorch / TensorFlow for machine learning and deep learning
+
+        - OpenCV for computer vision tasks
+
+        - ROS2 (optional) for modular robotic system development
+
+        - NVIDIA CUDA / Jetson support (optional) for hardware acceleration
+
+
+        Vehicle and Networking Tools
+
+
+        - Wireshark, tcpdump, and networking utilities for understanding vehicular
+        communications
+
+        - MQTT clients for interfacing with message-oriented architectures (only if
+        needed by project)'
+      Office hours: See the website of Roberto Girau (https://www.unibo.it/sitoweb/roberto.girau/en)
+      SDGs: 'Sustainable cities
+
+
+        This teaching activity contributes to the achievement of the Sustainable Development
+        Goals of the UN 2030 Agenda.'

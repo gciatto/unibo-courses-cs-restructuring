@@ -1,0 +1,298 @@
+year: 2025
+url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/446607
+credits: 6
+ssd: INF/01
+language: English
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2025-09-15
+  to: 2025-11-24
+teacher:
+  id: '42372'
+  name: Marzolla, Moreno
+  email: moreno.marzolla@unibo.it
+  website: https://www.unibo.it/sitoweb/moreno.marzolla
+  role: associate professor
+  affiliation: disi
+  ssd:
+    name: INFO-01/A
+    description: Informatica
+course_title:
+  id: '91259'
+  name: ARCHITECTURES AND PLATFORMS FOR ARTIFICIAL INTELLIGENCE
+  details:
+  - 6 cfu
+integrated_course: ''
+campus: Bologna
+programme: Laurea Magistrale in Artificial Intelligence
+syllabus:
+  it:
+    url: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/446607
+    title: 2025/2026 ARCHITECTURES AND PLATFORMS FOR ARTIFICIAL INTELLIGENCE — Università
+      di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: Al termine dell'attività formativa, lo studente
+        ha una comprensione approfondita dei requisiti computazionali di workload
+        dei metodi di machine learning. Lo studente conosce le principali architetture
+        per accelerare tali workload, le principali architetture eterogenee per embedded
+        machine learning, e le principali piattaforme in ambiente cloud per fornire
+        supporto specifico ad applicazioni di machine/deep learning.
+      Contenuti: 'Modulo 1:
+
+
+        1. Introduzione alla programmazione parallela.
+
+        2. Pattern per la programmazione parallela: embarassingly parallel, decomposition,
+        master/worker, scan, reduce, ...
+
+        3. Programmazione di architetture a memoria condivisa con OpenMP.: il modello
+        di programmazione OpenMP: il costrutto “omp parallel”, i costrutti di scoping,
+        altri costrutti per la suddivisione del lavoro.
+
+        4. Programmazione di GPU con CUDA. Architettura CUDA, gerarchia di memoria,
+        modello di programmazione: thread, groups, grid. Primitive di sincronizzazione,
+        memoria condivisa.
+
+
+        Prerequisiti per il modulo 1: buona conoscenza del linguaggio C, uso dell''ambiente
+        Unix/Linux, conoscenze di base delle architetture dei calcolatori e della
+        teoria della concorrenza.
+
+
+        Modulo 2:
+
+
+        From ML to DNNs - a computational perspective
+
+
+        - Introduction to key computational kernels (dot-product, matrix multiply...).
+
+        - Inference vs training - workload analysis characterization.
+
+        - The NN computational zoo: DNNs, CNNs, RNNs, Attention-based Networks, State
+        Based networks.
+
+
+        Running ML workloads on programmable processors
+
+
+        - recap of processor instruction set architecture (ISA) with focus on data
+        processing.
+
+        - improving processor ISAs for ML: RISC-V and ARM use cases.
+
+        - fundamentals of parallel processor architecture and parallelization of ML
+        workloads.
+
+
+        Algorithmic optimizations for ML
+
+
+        - Key bottlenecks taxonomy of optimization techniques.
+
+        - Algorithmic techniques (e.g. Strassen, Winograd, FFT).
+
+        - Model distillation: efficient NN models - depthwise convolutions, inverse
+        bottleneck, optimized attention, introduction to Neural Architectural Search.
+
+        - Quantization and sparsity: scalar, block, vector.
+
+
+        Prerequisiti per il modulo 2: Programmazione in linguggio C, concetti di base
+        di architettura dei calcolatori, conoscenze di base di algebra lineare e calcolo
+        vettoriale.'
+      Testi/Bibliografia: 'Letture consigliate per il modulo 1: parti selezionate
+        dei testi seguenti:
+
+
+        - Peter Pacheco, Matthew Malensek, An Introduction to Parallel Programming
+        [https://shop.elsevier.com/books/an-introduction-to-parallel-programming/pacheco/978-0-12-804605-0],
+        2nd ed., Morgan Kaufmann, 2021, ISBN 9780128046050.
+
+        - CUDA C programming guide, NVidia Corporation, freely available at http://docs.nvidia.com/cuda/cuda-c-programming-guide/
+
+
+        Letture consigliate per il modulo 2: parti selezionate dei testi seguenti:
+
+
+        - Dive into Deep Learning (online: d2l.ai).
+
+        - Efficient Processing of Deep Neural Networks (online: https://link.springer.com/book/10.1007/978-3-031-01766-7
+        ).
+
+        - Machine Learning Systems (online: mlsysbook.ai).'
+      Metodi didattici: 'Lezioni convenzionali per la parte di teoria.
+
+
+        I moduli prevedono attività pratiche da svolgere usando il proprio laptop.'
+      Modalità di verifica e valutazione dell'apprendimento: 'L''esame consiste di
+        due parti indipendenti che possono essere sostenute in qualunque ordine:
+
+
+        Module 1: Progetto di programmazione, che consiste nella progettazione e realizzazione
+        di un programma parallelo accompagnato da una relazione scritta. Il progetto
+        e la relazione devono essere realizzati individualmente da ciascuno studente/studentessa;
+        non è ammessa alcuna forma di collaborazione. Il programma deve essere realizzato
+        su specifiche fornite dal docente, usando C/OpenMP e/o CUDA/C. Non è ammesso
+        l''uso di altri linguaggi di programmazione. La relazione deve avere una lunghezza
+        massima di 6 pagine, e deve descrivere e motivare le strategie di parallelizzazione
+        adottate e analizzare le prestazioni del programma. Il docente si riserva
+        la facoltà di richiedere chiarimenti sotto forma di un breve colloquio orale.
+
+
+        Module 2: Esame scritto e discussione orale: l''esame scritto è obbligatorio
+        e consiste nella risoluzione di problemi e/o nella risposta ad alcuni quiesiti.
+        La prova orale è facoltativa e consiste in una discussione approfondita di
+        argomenti trattati durante le lezioni.
+
+
+        Voto finale: Per ottenere un voto è necessario ottenere una valutazione almeno
+        sufficiente (18 su 30) in entrambi i moduli; il voto finale è la media aritmetica
+        delle valutazioni riportate nei singoli moduli, arrotondata all''intero più
+        vicino. La lode può venire assegnata a giudizio dei docenti per esami di qualità
+        estremamente elevata. Gli esami dei due moduli devono essere sostenuti nello
+        stesso anno accademico (al termine dell''anno accademico si perdono eventuali
+        voti di un singolo modulo). Nota importante: per registrare il voto finale
+        è obbligatorio superare l''esame di entrambi i moduli; in altre parole, non
+        possono venire registrate valutazioni parziali.'
+      Strumenti a supporto della didattica: 'Proiettore per la parte di teoria.
+
+
+        Esercitazioni pratiche al pc.'
+      Orario di ricevimento: 'Consulta il sito web di Moreno Marzolla (https://www.unibo.it/sitoweb/moreno.marzolla)
+
+
+        Consulta il sito web di Luca Benini (https://www.unibo.it/sitoweb/luca.benini)'
+  en:
+    url: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/446607
+    title: 2025/2026 Architecture and Platforms for Artificial Intelligence — University
+      of Bologna
+    contents:
+      Learning outcomes: At the end of the course, the student has a deep understanding
+        of the requirements of machine-learning workloads for computing systems, has
+        an understanding of the main architectures for accelerating machine learning
+        workloads and heterogeneous architectures for embedded machine learning, and
+        of the most popular platforms made available by cloud providers to specifically
+        support machine/deep learning applications.
+      Course contents: 'Module 1:
+
+
+        1. Introduction to parallel programming.
+
+        2. Parallel programming patterns: embarrassingly parallel, decomposition,
+        master/worker, scan, reduce.
+
+        3. Shared-Memory programming with OpenMP. OpenMP programming model: the “omp
+        parallel” construct, scoping constructs and other work-sharing constructs.
+
+        4. GPU programming with CUDA. CUDA architecture and memory hierarchy. The
+        CUDA programming model: threads, groups, grid. Synchronization primitives
+        and shared memory.
+
+
+        Prerequisites for module 1: good knowledge of C programming in the Unix/Linux
+        environment, and basic understanding of computer architectures and concurrency
+        theory.
+
+
+        Module 2:
+
+
+        From ML to DNNs - a computational perspective
+
+
+        - Introduction to key computational kernels (dot-product, matrix multiply...).
+
+        - Inference vs training - workload analysis characterization.
+
+        - The NN computational zoo: DNNs, CNNs, RNNs, Attention-based Networks, State
+        Based networks.
+
+
+        Running ML workloads on programmable processors
+
+
+        - recap of processor instruction set architecture (ISA) with focus on data
+        processing.
+
+        - improving processor ISAs for ML: RISC-V and ARM use cases.
+
+        - fundamentals of parallel processor architecture and parallelization of ML
+        workloads.
+
+
+        Algorithmic optimizations for ML
+
+
+        - Key bottlenecks taxonomy of optimization techniques.
+
+        - Algorithmic techniques (e.g. Strassen, Winograd, FFT).
+
+        - Model distillation: efficient NN models - depthwise convolutions, inverse
+        bottleneck, optimized attention, introduction to Neural Architectural Search.
+
+        - Quantization and sparsity: scalar, block, vector.
+
+
+        Prerequisites for module 2: Programming in C, basic computer architecture
+        concepts, basics linear algebra and vector calculu.'
+      Readings/Bibliography: 'Suggested readings for Module 1: selected parts from
+        the following books:
+
+
+        - Peter Pacheco, Matthew Malensek, An Introduction to Parallel Programming
+        [https://shop.elsevier.com/books/an-introduction-to-parallel-programming/pacheco/978-0-12-804605-0],
+        2nd ed., Morgan Kaufmann, 2021, ISBN 9780128046050.
+
+        - CUDA C programming guide, NVidia Corporation, freely available at http://docs.nvidia.com/cuda/cuda-c-programming-guide/
+
+
+        Suggested readings for Module 2: selected parts from the following books:
+
+
+        - Dive into Deep Learning (online: d2l.ai).
+
+        - Efficient Processing of Deep Neural Networks (online: https://link.springer.com/book/10.1007/978-3-031-01766-7
+        ).
+
+        - Machine Learning Systems (online: mlsysbook.ai).'
+      Teaching methods: 'Traditional lectures for theory.
+
+
+        Both Module 1 and Module 2 include hands-on sessions requiring a student laptop.'
+      Assessment methods: 'The exam consists of two parts which are independent and
+        can be done in any order:
+
+
+        Module 1: Project work, which consists of the design and implementation of
+        a parallel program and a written report. The project work must be done individually
+        by each student; collaboration is not allowed. The program must implement
+        a parallel algorithm according to specifications provided by the instructor,
+        using C/OpenMP and/or CUDA/C. No other programming languages are allowed.
+        The report has a maximum length of 6 pages, and must describe and motivate
+        the parallelization strategies adopted, and analyze the performance of the
+        parallel program. The instructor may require a brief oral discussion of the
+        project.
+
+
+        Module 2: Written exam with oral discussion: the written exam is compulsory
+        and consists of solving problems and answering questions. The oral exam is
+        optional and consists of in-depth questions on topics covered in class.
+
+
+        Final grade: To get a final grade it is necessary to pass the exams for both
+        modules with a passing mark, i.e., at least 18 out of 30; the final grade
+        is computed as the average of the grades of the two modules, rounded to the
+        nearest integer. Honors (“lode”) will be awarded for results of very high
+        quality at the discretion of the instructors. Partial grades are lost at the
+        end of the academic year. Important note: to get the final grade you need
+        to pass the exams for both modules 1 and 2, i.e., it is not possible to register
+        partial grades.'
+      Teaching tools: 'Lectures using projector for slides provided by the instructors.
+
+
+        Hands-on sessions.'
+      Office hours: 'See the website of Moreno Marzolla (https://www.unibo.it/sitoweb/moreno.marzolla/en)
+
+
+        See the website of Luca Benini (https://www.unibo.it/sitoweb/luca.benini/en)'

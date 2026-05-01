@@ -1,0 +1,515 @@
+year: 2025
+url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/545733
+credits: 9
+ssd: ING-INF/05
+language: Italian
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2025-09-15
+  to: 2025-12-19
+teacher:
+  id: '148068'
+  name: Montebugnoli, Sofia
+  email: sofia.montebugnoli3@unibo.it
+  website: https://www.unibo.it/sitoweb/sofia.montebugnoli3
+  role: phd student
+  affiliation: disi
+course_title:
+  id: '28024'
+  name: RETI DI CALCOLATORI T
+  details:
+  - A-K
+integrated_course: ''
+campus: Bologna
+programme: Laurea in Ingegneria informatica
+syllabus:
+  it:
+    url: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/545733
+    title: 2025/2026 RETI DI CALCOLATORI T (A-K) — Università di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: Conoscenza dei modelli, dei protocolli e
+        degli strumenti per lo sviluppo di applicazioni di rete e sistemi distribuiti.
+        Capacità di progetto e realizzazione di applicazioni in reti di calcolatori.
+      Contenuti: 'Il tema fondamentale del corso è il progetto di soluzioni Cliente
+        Servitore in accordo alle metodologie di sviluppo di applicazioni di sistemi
+        distrtibuiti industriali. I linguaggi C e Java sono gli strumenti scelti per
+        vedere le risorse e i modi di gestirle con consapevolezza.
+
+
+        Tutto il corso affronta argomenti per avere una visione completa dei diversi
+        aspetti.
+
+
+        1. Generalità e Concetti di Base Generalità dei sistemi distribuiti
+
+
+        - inquadramento generale e definizioni di base
+
+        - sistemi distribuiti decentralizzati ed eterogenei
+
+        - necessità di standard per le soluzioni (ISO/OSI ed Internet)
+
+
+        Si presentano alcuni modelli fondamentali, come
+
+
+        - modello di interazione cliente/servitore
+
+        - modelli a memoria condivisa ed a scambio di messaggi
+
+        - modelli di connessione, di replicazione, ecc.
+
+
+        2.Programmazione di sistema
+
+
+        Il corso richiede un cambimento di mentalità per passare dalla programmazione
+        applicativa alla programmazione di sistema, tenendo conto dell''uso delle
+        risorse ad ogni livello con qualunque linguaggio di programmazione.
+
+
+        - Obiettivo è arrivare a produrre codice ordinat****o, leggibile e corretto,
+        derivato direttamente dalle specifiche, con una buona interazione con l''utente.
+
+        - Gli studenti sono incoraggiati a seguire il laboratorio per verificare o
+        migliorare le proprie capacità progettuali richieste dal progetto finale nell''area
+        di piccoli progetti C/S nella prgrammazione di sistema.
+
+
+        3. Ambienti Standard
+
+
+        Standardizzazione e organizzazione a livelli ISO OSI
+
+
+        - livello di trasporto e di rete
+
+        - livelli applicativi: sessione, presentazione, e applicazione
+
+
+        Alcune applicazioni standard distribuite
+
+
+        4. Protocolli TCP/IP
+
+
+        I protocolli della suite TCP/IP sono dati per scontati e vengono visti attraverso
+        gli strumenti del corso, ossia le socket. Necessaria la conoscenza dei livelli
+        di rete e di trasporto
+
+        Applicazioni Internet comuni per:
+
+
+        - servizi sincroni: terminale remoto virtuale, trasferimento di file,
+
+        - servizi asincroni: mail, news, e altri
+
+
+        5. Gli strumenti di riferimento
+
+
+        Lo strumento principale per realizzare progetti Cliente /Servitore sono le
+        socket di comunicazione e le proposte di realizzazione a livello applicativo
+        di ambienti Cliente /Servitore.
+
+
+        Le Socket sono presentate con le relative primitive API in C (per UNIX) e
+        in Java. Gli esempi di interazione sono in sistemi UNIX e curando collegamenti
+        con TCP/IP.
+
+
+        Le applicazioni cliente/servitore sono:
+
+
+        - Chiamate di Procedura Remota o RPCdi SUN.
+
+        - RMI, operazioni remote in Java
+
+
+        5. Sistemi Operativi Distribuiti e servizi
+
+
+        Sistemi operativi distribuiti
+
+        Naming delle risorse
+
+        Granularità dei processi e loro interazione
+
+        Gestione delle risorse
+
+        File system
+
+
+        Si trattano alcuni problemi e possibili soluzioni, attraverso Sistemi di nomi
+        e in particolare, DNS e Directory X.500.'
+      Testi/Bibliografia: 'G. Coulouris, J. Dollimore, T. Kindberg: ''Distributed
+        Systems: concepts and Design'', quinta edizione, Addison-Wesley, 2012.
+
+
+        M.L. Liu: ''Distributed Computing'', Addison-Wesley, 2003.
+
+
+        J.F. Kurose, K.W. Ross: ''Internet e Reti'', McGraw-Hill, 2001 (tradotto nel
+        2001 da ''Computer Networking: a Top-Down Approach Featuring the Internet'',
+        2001).
+
+
+        A.S. Tanenbaum, M. V.Steen: "Distributed Systems: Principles and Paradigms",
+        Prentice-Hall, seconda edizione 2007, e prima 2002.
+
+
+        B. Forouzan, F. Mosharraf: “Computer Networks, a top down approach”, McGraw-Hill,
+        2012.
+
+
+        D. Reilly, M. Reilly: "Java Network Programming and Distributed Computing",
+        Addison-Wesley, 2002.
+
+
+        A.S. Tanenbaum: ''Computer Networks'', Prentice-Hall, 1988 (tradotto in ''Reti
+        di Calcolatori'', Jackson).'
+      Metodi didattici: 'Questo corso ha l''obiettivo primario di sviluppare la capacità
+        di progettare piccole applicazioni distribuite Cliente Servitore, per progetti
+        in-the-small (di piccola dimensione), adottando uno stile di soluzione non
+        applicativo, ma di progetto di sistema. Con questo si intende sviluppare una
+        programmazione consapevole dei livelli diversi di supporto e dell''uso delle
+        risorse impiegate, in ambienti diversi basati su sia Java sia C.
+
+
+        Il corso si articola in lezioni frontali e laboratorio in modo integrato .
+        Obiettivo è accrescere le capacità di soluzione di un progetto Cliente Servitore
+        di piccole dimensioni con tempo limitato, usando i due linguaggi di programmazione
+        di interesse, Java e C. Le esercitazioni propongono progetti sugli strumenti
+        visti a lezione da svolgere in gruppo per favorire le capacità di cooperazione,
+        secondo uno scheduling molto integrato con le lezioni. Le esercitazioni servono
+        a irrobustire la capacità individuale di svolgere un piccolo progetto nei
+        tempi limitati del laboratorio e della prova finale di progetto.
+
+        Le esercitazioni durante il corso sono svolte con la stessa modalità del progetto
+        finale (parte in ambiente C e in Java) e la frequenza consente di migliorare
+        e effinare le propri capacità.
+
+
+        La frequenza è particolarmente importante per la verifica delle proprie conoscenze
+        e del proprio stato di avanzamento.
+
+
+        Gli esami sono svolti in modo singolo dagli studenti, sia per il progetto
+        sia per la prova orale finale.
+
+        In particolare si richiedono competenze per il progetto di piccoli casi cliente/servitore,
+        in diversi ambiti e con diversi strumenti:
+
+
+        - socket da usare in C e Java, per diversi protocolli e diversi casi di uso;
+
+        - RPC, per progetto di clienti e servitori ad alto livello, con tecnologie
+        SUN;
+
+        - RMI, per progetto in Java di clienti servitori.
+
+
+        La modalità del corso è in presenza, sia per lezioni sia per esercitazioni,
+        ed esami. Le tecnologie di supporto in laboratorio saranno definite durante
+        il corso.
+
+
+        Lo studente è responsabile delle proprie risorse di calcolo e del materiale
+        che ha a disposizione per lo svolgimento delle prove:
+
+        in particolare si richiede una autonomia di soluzione e capacità di svolgere
+        semplici progetti in tempi limitati, usando le risorse messe a disposizione
+        in laboratorio.
+
+        Le prove finali eseguite in laboratorio sono personali e senza comunicazione
+        tra studenti: qualunque tentativo di frode o copiare verrà perseguito e punito.
+
+
+        URL: lia.disi.unibo.it/Courses/RetiT'
+      Modalità di verifica e valutazione dell'apprendimento: 'Obiettivo è verificare
+        le capacità operative dello studente nella progettazione di piccole applicazioni
+        multiprocesso Cliente /Servitore e la autonomia nell''arrivare ad una soluzione
+        in tempi limitati.
+
+
+        Le verifica consiste di
+
+
+        - una prova scritta svolta come un progetto in laboratorio con tempo limitato
+        e qualunque materiale di supporto: la prova consiste di due parti, che fanno
+        riferimenti ai due ambienti di lavoro che vengono presentati nel corso e che
+        intende provare la capacità di completare un progetto di C/S nei due ambienti.
+
+        - una prova orale successiva che mira a verificare la competenza su tutti
+        i temi del corso.
+
+
+        La prova di progetto (in laboratorio) prevede l''assegnamento di un voto in
+        30esimi che dipende dal corretto svolgimento delle due parti dello stesso.
+
+        La prova orale si sostiene solo con esito positivo della prima prova e si
+        svolge su tutti gli argomenti del corso, con l''obiettivo di verificare una
+        corretta capacità di orientamento nei settori del corso.
+
+
+        Il giudizio finale in trentesimi, dopo la prova di progetto si basa sulla
+        valutazione della prova orale.'
+      Strumenti a supporto della didattica: 'In aula si usano lucidi e discussioni
+        di piccoli progetti.
+
+        Sito web del corso ad URL: lia.disi.unibo.it/Courses/RetiT
+
+
+        In laboratorio sono presenti strumenti di sviluppo e di supporto alla esecuzione
+        dei progetti.
+
+
+        Gli studenti sono invitati a familiarizzare con questi o altri strumenti di
+        uso personale.
+
+        Si suggeriscono strumenti in ambiente UNIX (Linux). La operatività e le capacità
+        di realizzare piccoli progetti sono particolarmente importanti.'
+      Link ad altre eventuali informazioni: http://www.lia.disi.unibo.it/Courses/RetiT/
+      Orario di ricevimento: 'Consulta il sito web di Antonio Corradi (https://www.unibo.it/sitoweb/antonio.corradi)
+
+
+        Consulta il sito web di Armir Bujari (https://www.unibo.it/sitoweb/armir.bujari)'
+      SDGs: 'Istruzione di qualità Parità di genere Imprese innovazione e infrastrutture
+        Città e comunità sostenibili
+
+
+        L''insegnamento contribuisce al perseguimento degli Obiettivi
+
+        di Sviluppo Sostenibile dell''Agenda 2030 dell''ONU.'
+  en:
+    url: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/545733
+    title: 2025/2026 Computer Networks T (A-K) — University of Bologna
+    contents:
+      Learning outcomes: 'This course faces most issues related with network and distributed
+        systems, by examining most common solution methods in a typical industrial
+        setting: the goal is to acquire a knowledge of the solution policies of typical
+        problems, and good exposure to tools and widespread strategies.
+
+        The knowledge objective is to understand which are the typical programming
+        environments on which to develop some basic solutions with a system programming
+        mindset that keep into account the implicit usage of system resources.
+
+
+        The main ability is to keep into account the usage of resources and that awareness
+        in all systems layers so to propose solutions to small distributed problems
+        that are acceptable, readable, with a good user interface, and correct.
+
+        Students must be capable of defining a complete working solution with some
+        time limitation with the most common tools.
+
+
+        Students must have a good starting knowledge of the basics of operating systems
+        and related tools, both for Windows and UNIX technologies*.* **UNIX is the
+        chosen environment.**In other words, we assume that students have a good knowledge
+        derived from a first course on Operating Systems, apart from design and programming
+        capacities in C and Java.'
+      Course contents: 'The course is organized around the Client /Server model and
+        how to design small applications.
+
+
+        1. Generalities and Basics Understanding
+
+
+        - Some basic perspectives and general definitions
+
+        - Decentralized and heterogeneous distributed systems
+
+        - Assessment of standards and their meaning
+
+
+        Some basic models are presented:
+
+
+        - client/server interaction
+
+        - shared memory and message exchange
+
+        - connection models, interaction models, etc.
+
+
+        2. System programming
+
+
+        - The design mindset keeps into account resorce usage at any system level
+        so to produce in a very ordered way readable, with a good user interface,
+        correct code and protocols that answer specified requirements.
+
+        - Students have to follow labs to improve their knowledge habits and complete
+        their knowledge in system programming.
+
+
+        3. Standard environments
+
+
+        ISO OSI layered organization
+
+
+        - network and transport layer
+
+        - application layers: session, presentation, & application
+
+
+        Presentation of some standard applications.
+
+
+        4. TCP/IP protocols
+
+
+        Suite TCP/IP protocols are assumed as known: only some connections with the
+        main socket tools.
+
+        Common applications:
+
+
+        - synchronous services: remote virtual terminal, file transfer,
+
+        - asynchronous services: mail, news, etc.
+
+
+        Some widely spread tools for Unix.
+
+
+        5. Some reference tools
+
+
+        At the communication level, we work on sockets as a standard tool, independent
+        from the programming environment; at the application level, we present and
+        work on application Client/server tools.
+
+
+        Socket and related API for C (UNIX) and Java
+
+        Case studies for interactions client/server in Unix systems with TCP/IP protocols.
+
+
+        The client/server application tools are:
+
+
+        - Remote Procedure Call RPC of SUN
+
+        - RMI, remote operations in Java
+
+
+        6. Distributed Operating Systems and tools
+
+
+        Distributed Operating Systems
+
+        Resource naming
+
+        Process granularity and their interaction
+
+        Resource management
+
+        File system
+
+        DNS and advanced name systems'
+      Readings/Bibliography: 'G. Coulouris, J. Dollimore, T. Kindberg: ''Distributed
+        Systems: concepts and Design'', quinta edizione, Addison-Wesley, 2012.
+
+
+        M.L. Liu: ''Distributed Computing'', Addison-Wesley, 2003.
+
+
+        J.F. Kurose, K.W. Ross: ''Internet e Reti'', McGraw-Hill, 2001 (translated
+        in 2001 from ''Computer Networking: a Top-Down Approach Featuring the Internet'',
+        2001).
+
+
+        A.S. Tanenbaum, M. V.Steen: "Distributed Systems: Principles and Paradigms",
+        Prentice-Hall, second edition 2007, and first 2002.
+
+
+        B. Forouzan, F. Mosharraf: “Computer Networks, a top down approach”, McGraw-Hill,
+        2012.
+
+
+        A.S. Tanenbaum: ''Computer Networks'', Prentice-Hall, 1988 (translated in
+        ''Reti di Calcolatori'', Jackson).
+
+
+        D. Reilly, M. Reilly: ''Java Network Programming and Distributed Computing'',
+        Addison-Wesley, 2002.'
+      Teaching methods: "This class has a specific objective of making students develop\
+        \ a new mindset in project design in the direction of system programming (and\
+        \ not application programming).\nThe style of programming in-the-small for\
+        \ integrating distributed applications, mainly Client/Server, must be more\
+        \ aware of the resource usage and of all involved levels present at the execution.\n\
+        The projects will use both Java and C.\n\nThe course is organized on class\
+        \ lectures and on laboratory sessions. These two activities are strictly intertwined\
+        \ so that the lab hours are devoted to the explained topics presented in class\
+        \ at the same time.\nLab proposals are presented in class and students are\
+        \ requested to solve them in groups so to practice their capacities in coordination\
+        \ and work teams, as a way of verifying design skills and enhancing their\
+        \ capacities, in the direction of the final test.\nThe lab sessions, highly\
+        \ recommended, tend to put together exactly the same environments of the final\
+        \ test (part in C and part in Java ).\n\nAll exams will be given on an individual\
+        \ base, both for the project and the oral final part.\nSpecifically we ascertain\
+        \ skills suitable for small and medium size project, typically Client/Server\
+        \ and with different goals and objectives:\n\n- sockets both in C and Java,\
+        \ with different communication protocols and usage involvement;\n- RPC, for\
+        \ client/server high level projects, with SUN solutions;\n- RMI, for Java\
+        \ design of client/server interactions.\n  Attending both class and labs is\
+        \ particularly important toward the final results.\n\nHave in mind that the\
+        \ teaching context will be only in presence, both for classes, labs and exams.\
+        \ All the details of the deployments in labs and tools will be given during\
+        \ the class.\n\nAny student is responsible of her/his environment and of its\
+        \ correctness and usability during lab and exam tests.\nWe require any student\
+        \ to be capable of autonomously design and implement a small project for a\
+        \ typical distributed solution case with the above tools.\n\nPlease, be advised\
+        \ that any cheating and any fraud attempt is going to be prosecuted severely.\n\
+        \nURL: lia.disi.unibo.it/Courses/RetiT"
+      Assessment methods: 'The objective of the assessment is to verify the whole
+        capacities of orientating themselves of the student in solving small projects
+        in autonomy.
+
+
+        The final evaluation depends on two main parts:
+
+
+        - A project to be developed and deployed in the laboratory in a time-constrained
+        session and without limit to the material students can personally access to.
+        The project is given in the lab and by using both the two main environments
+        of the class tools (both C-Based and Java-based).
+
+        - a final oral examination as a significant colloquium.
+
+
+        The project part gives a vote over 30, that stems from the correct solutions
+        in both environments.
+
+        The oral part is taken only after a success in the first part and is used
+        to verify the knowledge and the orientation capacity of the student over the
+        whole class material. It completes the final voten around the project result.'
+      Teaching tools: 'In the classroom we tend to use slides and stimulate discussion
+        by using small example case studies.
+
+        See the web side of the course at the URL: lia.disi.unibo.it/Courses/RetiT
+
+
+        The lab provides some usual and recommended tools and environments for the
+        development and deployment of distributed projects.
+
+
+        Students are advised to become familiar with most of them, and even with other
+        chosen ones, that are going to be used in the final tests.
+
+        Also students are advised to go and become expert in the tools of the UNIX
+        (Linux) environment: those abilities are very important toward the success
+        of the evaluation.'
+      Links to further information: http://www.lia.disi.unibo.it/Courses/RetiT/
+      Office hours: 'See the website of Antonio Corradi (https://www.unibo.it/sitoweb/antonio.corradi/en)
+
+
+        See the website of Armir Bujari (https://www.unibo.it/sitoweb/armir.bujari/en)'
+      SDGs: 'Quality education Gender equality Industry, innovation and infrastructure
+        Sustainable cities
+
+
+        This teaching activity contributes to the achievement of the Sustainable Development
+        Goals of the UN 2030 Agenda.'

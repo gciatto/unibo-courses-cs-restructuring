@@ -1,0 +1,529 @@
+year: 2025
+url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/517618
+credits: 8
+ssd: ING-INF/05
+language: English
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2026-02-19
+  to: 2026-06-05
+teacher:
+  id: '15896'
+  name: Corradi, Antonio
+  email: antonio.corradi@unibo.it
+  website: https://www.unibo.it/sitoweb/antonio.corradi
+  role: former professor
+  affiliation: unibo
+course_title:
+  id: '84531'
+  name: INFRASTRUCTURES FOR CLOUD COMPUTING AND BIG DATA M
+  details:
+  - 8 cfu
+integrated_course: ''
+campus: Bologna
+programme: Laurea Magistrale in Ingegneria informatica
+syllabus:
+  it:
+    url: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/517618
+    title: 2025/2026 INFRASTRUCTURES FOR CLOUD COMPUTING AND BIG DATA M — Università
+      di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: 'The class tends to enhance the capacity
+        of orientating in the process of defining the strategies for a distributed
+        system and applying them in different related applications.
+
+        The students face the principles and the main problems of distributed large
+        systems and are exposed to some standard and widely solutions, by following
+        the class and via individual work. At the end, students are expected to be
+        able to know the properties of most diffused middleware and the evolutions
+        one can expect from that technology, by mastering the properties for designing
+        a real application: most well spread strategies are presented and discussed.'
+      Contenuti: 'The course covers several topics central in modern global data and
+        processing infrastructures, such as Data Centers, MultiCloud Systems, Federation
+        of resources, etc. typically supporting Industry 5.0 and Smart city applications,
+        via the following basic concepts:
+
+
+        - Advanced models for large distributed & cloud systems, from C/S to message
+        exchange. Particular importance is given to the distinction and the implications
+        of the two models and their goals
+
+        - Replication, group and many-to-many communication, and systems for QoS
+
+        - Middleware for development and management of large distributed & cloud systems
+
+        - Infrastructures for global data storage and processing
+
+        - Specific modern systems for big data processing and scalable global supports
+
+
+        All above issues are basic topics on which students must be aware of and very
+        competent of, obtained by deep reflections and personal considerations.
+
+
+        The class explores the following topics:
+
+
+        Advanced models for large distributed & cloud systems
+
+
+        - Class Starting: general information and presentation of the Class (use cases)
+
+        - Goals, Basics, and Models: classifications, C/S vs. Message exchange, service
+        and cloud models, parallelization models
+
+        - Middleware & Cloud Models: definitions, categories, basic organization,
+        and patterns for large distributed and cloud systems, Cloud internals design.
+
+
+        Replication, group and many-to-many communication, and systems for QoS
+
+
+        - Different consistency degrees and impact on service properties (BASE and
+        CAP)
+
+        - Replication: models, strategies and protocols
+
+        - Communication and groups: models, protocols and algorithms
+
+        - Systems and protocols for QoS
+
+        - Multicast and MOM middleware
+
+
+        Middleware for large distributed & cloud systems
+
+
+        - CORBA: middleware and operating environment
+
+        - MOM: examples of very thin environments
+
+        - OpenStack: an example of a widely-diffused cloud IaaS
+
+
+        Novel infrastructures for global data storage and processing
+
+
+        - Global data storage: solutions for non-traditional NoSQL data memorization
+        (Cassandra and MongoDB)
+
+        - Global data processing: batching and streaming based big data processing
+        (Map-Reduce, Spark, and Storm and S4)
+
+        - Main properties for effective design projects'
+      Testi/Bibliografia: 'G. Coulouris, J. Dollimore, T. Kindberg: "Distributed Systems:
+        concepts and Design", Addison-Wesley, (fifth edition) 2012.
+
+
+        M. Kleppmann:, "Designing Data-Intensive Applications“, O’Reilly, 2017
+
+
+        A.S. Tanenbaum, M. v. Steen "Distributed Systems: Principles and Paradigms",
+        Prentice-Hall, (second edition) 2006 / 2013.
+
+
+        B. Forouzan, F. Mosharraf: “Computer Networks, a top down approach”, McGraw-Hill,
+        2011.
+
+
+        M.L. Liu, "Distributed Computing", Addison-Wesley, 2003.
+
+
+        D.L. Galli: "Distributed Operating Systems: Concepts and Practice", Prentice-Hall,
+        2000.
+
+
+        L. Peterson, B. Davie, "Computer Networks, A Systems Approach", (fifth edition)
+        Morgan Kaufmann Series in Networking, 2011,
+
+
+        V.K. Garg, “Elements of Distributed Computing”, Wiley, 2002.
+
+
+        L. Carlson, “Programming for PaaS, A Practical Guide to Coding for Platform-as-a-Service”,
+        O Reilly, 2013.
+
+
+        J. Siegel, “Pure CORBA: a code-intensive reference”, (second edition), SAMS
+        Publishing, 2002.
+
+
+        F. Halsall, “Multimedia Communications”, Addison-Wesley, 2001.
+
+
+        D.A. Chappel, T. Jewell, “Java Web Services”, O''Reilly, 2002.
+
+
+        E. Newcomer, “Understanding Web Services”, Addison-Wesley, 2002.
+
+
+        T. Erl et al., “Cloud computing : concepts, technology, & architecture”, Prentice
+        Hall, 2013.
+
+
+        B. Wilder, “Cloud architecture patterns”, Beijing, 2013.
+
+
+        A. T. Velte et al., “Cloud computing: a practical approach”, McGraw-Hill,
+        2010.
+
+
+        J. Rhoton, “Cloud computing explained”, Recursive Press, 2009.
+
+
+        T. Fifield et al., “Openstack operations guide: set up and manage your OpenStack
+        cloud”, O''Reilly, 2014.
+
+
+        S. Holla, “Orchestrating Docker”, Packt Publishing, 2015.
+
+
+        O. Hane, “Build your own PaaS with Docker”, Packt Publishing, 2015.
+
+
+        T.D. Nadeau and K. Gray, “SDN: software defined networks”, O''Reilly, 2013.
+
+
+        L. Carlson, “Programming for Paas”, O''Reilly, 2013.
+
+
+        T. White, “Hadoop: the definitive guide”, O''Reilly, 2012.
+
+
+        E. Sammer, “Hadoop operations”, O''Reilly, 2012.
+
+
+        K. Rankin, “DevOps troubleshooting”, Addison-Wesley, 2013.
+
+
+        D. Sui et al., “Crowdsourcing geographic knowledge”, Springer, 2013.
+
+
+        Z. Yan et al., “Semantics in mobile sensing”, Morgan & Claypool, 2014.
+
+
+        R. Copeland, “MongoDB applied design patterns”, O''Reilly, 2013.
+
+
+        J. Carpenter, “Cassandra: The Definitive Guide”, 3rd Edition, O''Reilly, 2020.
+
+
+        Silvano Gai, “Building a Future-Proof Cloud Infrastructure: A Unified Architecture
+        for Network, Security, and Storage Services, Addison-Wesley, 2020.
+
+
+        Brendan Gregg, “Systems Performance”, 2nd Edition, Pearson, 2020.'
+      Metodi didattici: 'This course tends to give importance to the orientation capacities
+        in the large area of the class interesting topics by leaving room for and
+        by stimulating discussion to develop critical attitude on technical issues:
+        students are encouraged to face topics, by encouraging classroom interaction
+        and perspective exchange, with the goal of enhancing reasoning capacities.
+
+        The main important objective is to build and accumulate a critical understanding
+        of the properties of middleware design and to acquire a wider capacity in
+        analyzing systems and in defining properties and trends of global systems.
+
+
+        Within the course, also additional space is provided for seminars and experience
+        reporting about issues relevant to the course topics, usually given by people
+        outside the academic environment coming from industrial stakeholders, so to
+        expose students to a ‘work'' mindset.
+
+        Those seminar contents are important in adding to the professional background
+        of the computer engineering students, by offering reflections and insights
+        toward the professional growth.'
+      Modalità di verifica e valutazione dell'apprendimento: 'The final exam consists
+        of a wide colloquium about all the most important and basic issues in the
+        distributed systems area taken into consideration in the class: the evaluation
+        depends on the understanding of the issues and capacity of orientating more
+        than on the memory effort.
+
+        Again, the objective of all the lines is to develop a capacity of orienteering
+        and of identifying critical problems and issues toward solutions, being that
+        skill much more important than memorizing specific paths and answers.
+
+
+        It is possible to define an assignment of a project about some of the issues
+        dealt in the class, choice recommended to the students in the path of Distributed
+        Systems.'
+      Strumenti a supporto della didattica: 'All the contents are presented in class
+        and via compulsory discussions.
+
+        Students are encouraged to discuss on topics and to develop ideas and opinions
+        on the main current areas of debate.
+
+
+        The slides on the Web site of the class are the main starting points for going
+        into the topics. Students can go deep on selected areas they intend to focus
+        on.
+
+
+        Students are referred to papers and articles to choose from and go deep individually
+        into chosen topics.
+
+
+        Some classes are hands-on over specific topics in the lab to go into the practical
+        knowledge you need in some areas: the hands-on are given also by industrial
+        parties.'
+      Orario di ricevimento: 'Consulta il sito web di Antonio Corradi (https://www.unibo.it/sitoweb/antonio.corradi)
+
+
+        Consulta il sito web di Andrea Sabbioni (https://www.unibo.it/sitoweb/andrea.sabbioni5)'
+      SDGs: 'Istruzione di qualità Parità di genere Imprese innovazione e infrastrutture
+        Città e comunità sostenibili
+
+
+        L''insegnamento contribuisce al perseguimento degli Obiettivi
+
+        di Sviluppo Sostenibile dell''Agenda 2030 dell''ONU.'
+  en:
+    url: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/517618
+    title: 2025/2026 Infrastructures For Cloud Computing and Big Data M — University
+      of Bologna
+    contents:
+      Learning outcomes: 'The class tends to enhance the capacity of orientating in
+        the process of defining the strategies for a distributed system and applying
+        them in different related applications.
+
+        The students face the principles and the main problems of distributed large
+        systems and are exposed to some standard and widely solutions, by following
+        the class and via individual work. At the end, students are expected to be
+        able to know the properties of most diffused middleware and the evolutions
+        one can expect from that technology, by mastering the properties for designing
+        a real application: most well spread strategies are presented and discussed.'
+      Course contents: 'The course covers several topics central in modern global
+        data and processing infrastructures, such as Data Centers, MultiCloud Systems,
+        Federation of resources, etc. typically supporting Industry 5.0 and Smart
+        city applications, via the following basic concepts:
+
+
+        - Advanced models for large distributed & cloud systems, from C/S to message
+        exchange. Particular importance is given to the distinction and the implications
+        of the two models and their goals
+
+        - Replication, group and many-to-many communication, and systems for QoS
+
+        - Middleware for development and management of large distributed & cloud systems
+
+        - Infrastructures for global data storage and processing
+
+        - Specific modern systems for big data processing and scalable global supports
+
+
+        All above issues are basic topics on which students must be aware of and very
+        competent of, obtained by deep reflections and personal considerations.
+
+
+        The class explores the following topics:
+
+
+        Advanced models for large distributed & cloud systems
+
+
+        - Class Starting: general information and presentation of the Class (use cases)
+
+        - Goals, Basics, and Models: classifications, C/S vs. Message exchange, service
+        and cloud models, parallelization models
+
+        - Middleware & Cloud Models: definitions, categories, basic organization,
+        and patterns for large distributed and cloud systems, Cloud internals design.
+
+
+        Replication, group and many-to-many communication, and systems for QoS
+
+
+        - Different consistency degrees and impact on service properties (BASE and
+        CAP)
+
+        - Replication: models, strategies and protocols
+
+        - Communication and groups: models, protocols and algorithms
+
+        - Systems and protocols for QoS
+
+        - Multicast and MOM middleware
+
+
+        Middleware for large distributed & cloud systems
+
+
+        - CORBA: middleware and operating environment
+
+        - MOM: examples of very thin environments
+
+        - OpenStack: an example of a widely-diffused cloud IaaS
+
+
+        Novel infrastructures for global data storage and processing
+
+
+        - Global data storage: solutions for non-traditional NoSQL data memorization
+        (Cassandra and MongoDB)
+
+        - Global data processing: batching and streaming based big data processing
+        (Map-Reduce, Spark, and Storm and S4)
+
+        - Main properties for effective design projects'
+      Readings/Bibliography: 'G. Coulouris, J. Dollimore, T. Kindberg: "Distributed
+        Systems: concepts and Design", Addison-Wesley, (fifth edition) 2012.
+
+
+        M. Kleppmann:, "Designing Data-Intensive Applications“, O’Reilly, 2017
+
+
+        A.S. Tanenbaum, M. v. Steen "Distributed Systems: Principles and Paradigms",
+        Prentice-Hall, (second edition) 2006 / 2013.
+
+
+        B. Forouzan, F. Mosharraf: “Computer Networks, a top down approach”, McGraw-Hill,
+        2011.
+
+
+        M.L. Liu, "Distributed Computing", Addison-Wesley, 2003.
+
+
+        D.L. Galli: "Distributed Operating Systems: Concepts and Practice", Prentice-Hall,
+        2000.
+
+
+        L. Peterson, B. Davie, "Computer Networks, A Systems Approach", (fifth edition)
+        Morgan Kaufmann Series in Networking, 2011,
+
+
+        V.K. Garg, “Elements of Distributed Computing”, Wiley, 2002.
+
+
+        L. Carlson, “Programming for PaaS, A Practical Guide to Coding for Platform-as-a-Service”,
+        O Reilly, 2013.
+
+
+        J. Siegel, “Pure CORBA: a code-intensive reference”, (second edition), SAMS
+        Publishing, 2002.
+
+
+        F. Halsall, “Multimedia Communications”, Addison-Wesley, 2001.
+
+
+        D.A. Chappel, T. Jewell, “Java Web Services”, O''Reilly, 2002.
+
+
+        E. Newcomer, “Understanding Web Services”, Addison-Wesley, 2002.
+
+
+        T. Erl et al., “Cloud computing : concepts, technology, & architecture”, Prentice
+        Hall, 2013.
+
+
+        B. Wilder, “Cloud architecture patterns”, Beijing, 2013.
+
+
+        A. T. Velte et al., “Cloud computing: a practical approach”, McGraw-Hill,
+        2010.
+
+
+        J. Rhoton, “Cloud computing explained”, Recursive Press, 2009.
+
+
+        T. Fifield et al., “Openstack operations guide: set up and manage your OpenStack
+        cloud”, O''Reilly, 2014.
+
+
+        S. Holla, “Orchestrating Docker”, Packt Publishing, 2015.
+
+
+        O. Hane, “Build your own PaaS with Docker”, Packt Publishing, 2015.
+
+
+        T.D. Nadeau and K. Gray, “SDN: software defined networks”, O''Reilly, 2013.
+
+
+        L. Carlson, “Programming for Paas”, O''Reilly, 2013.
+
+
+        T. White, “Hadoop: the definitive guide”, O''Reilly, 2012.
+
+
+        E. Sammer, “Hadoop operations”, O''Reilly, 2012.
+
+
+        K. Rankin, “DevOps troubleshooting”, Addison-Wesley, 2013.
+
+
+        D. Sui et al., “Crowdsourcing geographic knowledge”, Springer, 2013.
+
+
+        Z. Yan et al., “Semantics in mobile sensing”, Morgan & Claypool, 2014.
+
+
+        R. Copeland, “MongoDB applied design patterns”, O''Reilly, 2013.
+
+
+        J. Carpenter, “Cassandra: The Definitive Guide”, 3rd Edition, O''Reilly, 2020.
+
+
+        Silvano Gai, “Building a Future-Proof Cloud Infrastructure: A Unified Architecture
+        for Network, Security, and Storage Services, Addison-Wesley, 2020.
+
+
+        Brendan Gregg, “Systems Performance”, 2nd Edition, Pearson, 2020.'
+      Teaching methods: 'This course tends to give importance to the orientation capacities
+        in the large area of the class interesting topics by leaving room for and
+        by stimulating discussion to develop critical attitude on technical issues:
+        students are encouraged to face topics, by encouraging classroom interaction
+        and perspective exchange, with the goal of enhancing reasoning capacities.
+
+        The main important objective is to build and accumulate a critical understanding
+        of the properties of middleware design and to acquire a wider capacity in
+        analyzing systems and in defining properties and trends of global systems.
+
+
+        Within the course, also additional space is provided for seminars and experience
+        reporting about issues relevant to the course topics, usually given by people
+        outside the academic environment coming from industrial stakeholders, so to
+        expose students to a ‘work'' mindset.
+
+        Those seminar contents are important in adding to the professional background
+        of the computer engineering students, by offering reflections and insights
+        toward the professional growth.'
+      Assessment methods: 'The final exam consists of a wide colloquium about all
+        the most important and basic issues in the distributed systems area taken
+        into consideration in the class: the evaluation depends on the understanding
+        of the issues and capacity of orientating more than on the memory effort.
+
+        Again, the objective of all the lines is to develop a capacity of orienteering
+        and of identifying critical problems and issues toward solutions, being that
+        skill much more important than memorizing specific paths and answers.
+
+
+        It is possible to define an assignment of a project about some of the issues
+        dealt in the class, choice recommended to the students in the path of Distributed
+        Systems.'
+      Teaching tools: 'All the contents are presented in class and via compulsory
+        discussions.
+
+        Students are encouraged to discuss on topics and to develop ideas and opinions
+        on the main current areas of debate.
+
+
+        The slides on the Web site of the class are the main starting points for going
+        into the topics. Students can go deep on selected areas they intend to focus
+        on.
+
+
+        Students are referred to papers and articles to choose from and go deep individually
+        into chosen topics.
+
+
+        Some classes are hands-on over specific topics in the lab to go into the practical
+        knowledge you need in some areas: the hands-on are given also by industrial
+        parties.'
+      Office hours: 'See the website of Antonio Corradi (https://www.unibo.it/sitoweb/antonio.corradi/en)
+
+
+        See the website of Andrea Sabbioni (https://www.unibo.it/sitoweb/andrea.sabbioni5/en)'
+      SDGs: 'Quality education Gender equality Industry, innovation and infrastructure
+        Sustainable cities
+
+
+        This teaching activity contributes to the achievement of the Sustainable Development
+        Goals of the UN 2030 Agenda.'

@@ -1,0 +1,602 @@
+year: 2025
+url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/468026
+credits: 8
+ssd: ING-INF/05
+language: English
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2026-02-18
+  to: 2026-06-04
+teacher:
+  id: '34533'
+  name: Bellavista, Paolo
+  email: paolo.bellavista@unibo.it
+  website: https://www.unibo.it/sitoweb/paolo.bellavista
+  role: full professor
+  affiliation: disi
+  ssd:
+    name: IINF-05/A
+    description: Sistemi di elaborazione delle informazioni
+course_title:
+  id: '78779'
+  name: MOBILE SYSTEMS M
+  details:
+  - 8 cfu
+integrated_course: ''
+campus: Bologna
+programme: Laurea Magistrale in Ingegneria informatica
+syllabus:
+  it:
+    url: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/468026
+    title: 2025/2026 MOBILE SYSTEMS M — Università di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: At the end of the course the students are
+        able to effectively develop and dynamically manage the runtime provisioning
+        of mobile services. This requires acquiring expertise and theoretical skills,
+        as well as design/implementation abilities, related to models and solutions
+        for mobile systems, for mobile services provided on top of them, and for support
+        systems (middleware) needed for their effective runtime execution.
+      Contenuti: 'Il corso intende fornire conoscenze metodologiche, modellistiche
+        e implementative avanzate per la progettazione, la realizzazione e la valutazione
+        runtime di sistemi mobili, di servizi mobili, e di supporti middleware per
+        la gestione efficiente di tali servizi mobili.
+
+
+        Propedeuticità: nessuna (ma i contenuti dei “vecchi” corsi di reti di calcolatori
+        - Reti di Calcolatori T e anche, molto parz, Infrastructures for Cloud Computing
+        and Big Data M - e Tecnologie Web T possono essere sicuramente utili)
+
+
+        Programma del corso:
+
+
+        - Introduzione ai sistemi di comunicazione wireless: modelli di propagazione;
+        modelli di fading; panoramica sulle diverse famiglie di comunicazione wireless
+
+
+        o IEEE 802.11: caratteristiche generali; da CSMA/CD su Ethernet a CSMA/CA;
+        problemi di hidden ed exposed terminal; MACA; configurazione con infrastruttura
+        e ad hoc;
+
+
+        o IEEE 802.16;
+
+
+        o IEEE 802.20;
+
+
+        o IEEE 802.11 per municipal mesh;
+
+
+        o Wi-Fi Direct.
+
+
+        o Reti cellulari e handoff: architettura GSM; handoff con MSC comune; handoff
+        con MSC differenti; classificazione handoff
+
+
+        o Bluetooth: stack protocollare; possibili topologie; servizio di discovery;
+        scatternet e comunicazioni multi-hop; stack software per programmazione Java
+        Bluetooth
+
+
+        o Cenni di ZigBee: caratteristiche, architettura, possibili topologie.
+
+
+        - Mobile Ad Hoc Network (MANET): definizione e campi applicativi; routing
+        in MANET, protocolli reattivi/proattivi/geografici/ibridi; Dynamic Source
+        Routing (DSR); Ad-hoc On Demand Distance Vector (AODV); Greedy Perimeter Stateless
+        Routing (GPSR); parentesi su clustering; LEACH, HEED, REDMAN
+
+        - Mobilità e gestione handoff: introduzione e definizioni
+
+        - Location update e location search. Soluzione Mobile IP: caratteristiche,
+        architettura, protocollo, problemi. Hierarchical Mobile IPv6 (HMIPv6). Split
+        connection e I-TCP.
+
+        - Sistemi di posizionamento: motivazioni; classificazione (fisico/simbolico,
+        centralizzato/distribuito, assoluto/relativo, accuratezza, precisione, costo
+        e limiti). Tecniche di base: lateration, time difference of arrival, angolazione,
+        scene analysis, prossimità.
+
+
+        o Sistemi di posizionamento per ad-hoc network
+
+
+        o Sistemi di posizionamento con hardware addizionale. GPS: caratteristiche,
+        limiti, GPS differenziale. Active Badge, AHLoS
+
+
+        o Sistemi di posizionamento senza hardware addizionale: basati su Bluetooth,
+        PlaceLab, RADAR, Ekahau, Sensor Fusion, Universal Location Framework, JSR-179
+
+
+        - Piattaforme di sviluppo per sistemi mobili smart phone: panoramica, concetti
+        generali, definizioni; veloce confronto fra J2ME, .NET CF, FlashLite, Android
+
+        - Android: introduzione; architettura; SO kernel layer; power management e
+        wakelock; librerie native; Dalvik VM; application framework; core application;
+        modello applicazioni; ciclo di vita di activity; intent e intent filter; modello
+        di threading; esempi ed esercizi. Esercitazione proposta su Android.
+
+        - Panoramica su iOS: architettura; modello di multi-tasking; piccoli esempi
+        di programmazione; applicazioni native/Web su iOS (cenni di HTML5); unlocking
+        e jailbreaking
+
+        - Mobile middleware: definizione, motivazioni, vantaggi. Rilevanza di identificazione
+        di principi e pattern. Principi Internet: principio end-to-end e principio
+        di robustezza. Principi Web. Principi SOA. Principi per mobile. Principio
+        di cross-layering. Pattern architetturali, generali e specifici per mobile
+        computing.
+
+        - Piattaforme per Internet of Things (IoT): definizione e architetture di
+        riferimento, principali piattaforme allo stato dell''arte, mobile e industrial
+        IoT, direzioni di ricerca under investigation, esempi di applicazioni industriali
+
+        - Servizi di discovery: definizione e categorizzazione, auto-configurazione,
+        scoperta, accesso a risorse/servizi
+
+
+        o Esempio di Jini, con esercitazione proposta
+
+
+        o Service location Protocol (SLP).
+
+
+        o UPnP: architettura, file di descrizione, possibilità di bridging, esempi
+        ed esercizi Esercitazione proposta su UPnP
+
+
+        - Gestione sessione in reti convergenti 4G: Session Initiation Protocol (SIP),
+        caratteristiche principali, limiti di scalabilità. Gestione sessione in infrastruttura
+        IP Multimedia Sub-system (IMS): architettura, descrizione entità funzionali,
+        esempi di protocolli, limiti per monitoraggio, bilanciamento di carico e scalabilità
+
+        - Supporto a messaging in sistemi mobili: motivazioni; principi e architettura;
+        protocollo di scambio di messaggi; locator
+
+
+        o JMS: caratteristiche, architettura, modelli di messaging, affidabilità e
+        qualità, esempi.
+
+
+        o CORBA Messaging (AMI e TII)
+
+
+        o Cenni su XMPP, Web Services e REST
+
+
+        - Gestione eventi e modello pub/sub: topologie possibili per event router.
+        Propagazione di interessi e sottoscrizioni. Decisioni di routing
+
+
+        o Esempi di sistemi per eventi distribuiti: OMG DDS (partizioni e livelli
+        di qualità); modello Java per eventi distribuiti; General Event Notification
+        Architecture (GENA); RSS/Atom; SIP Event Framework; Web Services Eventing
+        & Notification
+
+
+        - Sincronizzazione dati nel mobile: approccio pessimistico/ottimistico; versioning;
+        detection; reconciliation
+
+
+        o SyncML: protocollo di rappresentazione; protocollo di sincronizzazione;
+        esempi
+
+
+        - Edge/Fog Computing: integrazione efficiente sensori-edge-cloud; controllo
+        e intelligenza distribuiti; offloading; approcci proattivi e predizioni di
+        mobilità
+
+
+        o ETSI Mobile Edge Computing: specifiche standard emergenti; approcci di deployment
+        in 5G; orchestrazione e ETSI MANO; nuove piattaforme sw per Open Radio Access
+        Networking in 5G
+
+
+        - Domini applicativi di interesse (4 esempi, da vehicular ad hoc applications
+        a federated social spontaneous networks), anche per possibili attività progettuali
+
+        - Numerosi casi di studio (anche tramite seminari aziendali in aggiunta all''orario
+        di lezione)
+
+
+        Il corso sarà affiancato da un set di esercitazioni pratiche di laboratorio,
+        in cui gli studenti saranno stimolati a compiere attività a svolgimento guidato
+        in forma di lavoro personale e autonomo. Tali attività saranno necessarie
+        per il completamento della preparazione e il raggiungimento delle abilità
+        desiderate; testi e soluzioni delle esercitazioni saranno rese disponibili
+        sul sito Web del corso. Il set di esercitazioni proposto è descritto nella
+        sezione di "Metodi Didattici".'
+      Testi/Bibliografia: 'Testi suggeriti (di utile consultazione, non adottati):
+
+
+        - S. Tarkoma, Mobile Middleware, Wiley, 2009
+
+        - Ke-Lin Du, M.N.S. Swamy, Wireless Communication Systems, Cambridge University
+        Press, 2010
+
+        - Z. Mednieks, L. Dornin, G.B. Meike, M. Nakamura, Programming Android, O''Reilly,
+        2nd edition, 2012
+
+        - D. Sillars, High-Performance Android Apps, O''Reilly, 2014
+
+
+        Altre utili sorgenti on-line di informazioni (per una lista esaustiva sui
+        vari argomenti, vedere slide del corso):
+
+
+        - Corso di Mobile & Pervasive Computing, Univ. Carnegie-Mellon, 2010
+
+        - Corso di Mobile Computing, Univ. Ohio
+
+        - Corso di Pervasive Computing, MIT
+
+        - Corso di Mobile Computing, Virginia Tech
+
+        - Corso di Mobile Computing and Sensor Networks, NJIT'
+      Metodi didattici: 'Durante le lezioni in aula verranno discusse le problematiche
+        generali connesse alla modellazione, progettazione, implementazione e supporto
+        runtime di sistemi e servizi mobili, con particolare attenzione per le caratteristiche
+        dei loro supporti a tempo di sviluppo ma soprattutto a tempo di esecuzione.
+        Le principali tecnologie utilizzate saranno basate sul linguaggio Java e sulla
+        piattaforma Android.
+
+
+        Il corso sarà affiancato da un set di esercitazioni pratiche di laboratorio,
+        in cui gli studenti saranno stimolati a compiere attività a svolgimento guidato
+        in forma di lavoro personale e autonomo. Tali attività saranno necessarie
+        per il completamento della preparazione e il raggiungimento delle abilità
+        desiderate; testi e soluzioni delle esercitazioni saranno rese disponibili
+        sul sito Web del corso.
+
+
+        Le attività di laboratorio includeranno:
+
+
+        - 1 esercitazione su piattaforma Android
+
+        - 1 esercitazione su soluzione di discovery UPnP (o in alternativa Jini)
+
+        - 1 esercitazione su piattaforma IoT o edge computing
+
+
+        Note aggiuntive:
+
+
+        Studenti/sse con DSA o disabilità temporanee o permanenti: si raccomanda di
+        contattare per tempo l’ufficio di Ateneo responsabile (https://site.unibo.it/studenti-con-disabilita-e-dsa/it):
+        sarà sua cura proporre agli/lle studenti/sse interessati/e eventuali adattamenti,
+        che dovranno comunque essere sottoposti, con un anticipo di 15 giorni, all’approvazione
+        del/della docente, che ne valuterà l''opportunità anche in relazione agli
+        obiettivi formativi dell''insegnamento.
+
+
+        In considerazione della tipologia di attività e dei metodi didattici adottati,
+        la frequenza di questa attività formativa richiede la preventiva partecipazione
+        di tutti gli studenti ai moduli 1 e 2 di formazione sulla sicurezza nei luoghi
+        di studio, [https://elearning-sicurezza.unibo.it/] in modalità e-learning.'
+      Modalità di verifica e valutazione dell'apprendimento: 'Il corso prevede una
+        prova finale orale che cercherà di valutare il livello di apprendimento raggiunto
+        sia in termini di metodologie di progettazione architetturale e modelli, sia
+        in termini di operatività implementativa in relazione alle principali tecnologie
+        descritte e utilizzate nel corso. La prova orale, della durata di circa 60-75
+        minuti, prevederà almeno quattro ampie domande, in parte dedicate alla risoluzione
+        di esercizi concreti di utilizzo dei meccanismi, protocolli e tecnologie per
+        sistemi mobili investigate durante il corso.
+
+
+        Opzionalmente, gli studenti potranno svolgere un''attività progettuale (dall''impegno
+        commisurato alla quantificazione in 3 cfu) tramite approfondimento e lavoro
+        autonomo, su tematiche indicate dal docente durante il corso. In tal caso,
+        gli studenti dovranno presentare una relazione scritta (con eventuale codice
+        sviluppato) e, nel caso usuale in cui l''attività progettuale sia presentata
+        contestualmente allo svolgimento dell''esame, la prova orale partirà dalla
+        discussione dell''attività progettuale svolta.'
+      Strumenti a supporto della didattica: 'Il materiale mostrato a lezione (slide,
+        esercizi risolti, esercizi suggeriti, esempi e proposte di progetto) sarà
+        interamente messo a disposizione sul sito Web del corso su Virtuale @UNIBO
+        (non ancora disponibile e che sarà popolato man mano durante l''esecuzione
+        del corso stesso).
+
+
+        Tale materiale deve essere considerato il principale materiale di studio per
+        la preparazione dell''esame; la bibliografia suggerita è indicata come supporto
+        e integrazione opzionale.
+
+
+        Vedi anche il programma del corso di Mobile Systems M sul sito Web di Virtuale
+        @UNIBO, che sarà popolato man mano durante lo svolgimento del corso.'
+      Orario di ricevimento: Consulta il sito web di Paolo Bellavista (https://www.unibo.it/sitoweb/paolo.bellavista)
+      SDGs: 'Imprese innovazione e infrastrutture Città e comunità sostenibili
+
+
+        L''insegnamento contribuisce al perseguimento degli Obiettivi
+
+        di Sviluppo Sostenibile dell''Agenda 2030 dell''ONU.'
+  en:
+    url: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/468026
+    title: 2025/2026 Mobile Systems M — University of Bologna
+    contents:
+      Learning outcomes: At the end of the course the students are able to effectively
+        develop and dynamically manage the runtime provisioning of mobile services.
+        This requires acquiring expertise and theoretical skills, as well as design/implementation
+        abilities, related to models and solutions for mobile systems, for mobile
+        services provided on top of them, and for support systems (middleware) needed
+        for their effective runtime execution.
+      Course contents: 'The course intends to provide students with methodology, modeling,
+        design, and implementation skills/expertise related to the development, deployment,
+        and runtime evaluation of mobile systems, of mobile services, and of middleware
+        supports for the effective management of those services at provisioning time.
+
+
+        Constraints on previous knowledge: nothing (but the contents of the courses
+        "Computer Networks T", "Web Technologies T" and, only very partially, "Infrastructures
+        for Cloud Computing and Big Data M" could be useful and valuable in a few
+        parts of the course)
+
+
+        Course contents
+
+
+        - Introduction to wireless communication systems: propagation models; fading
+        models; rapid introductory overview of main types of wireless communication
+        technologies
+
+
+        o IEEE 802.11: general features; from CSMA/CD over Ethernet to CSMA/CA; hidden
+        and exposed terminal issues; MACA; configurations for infrastructured and
+        ad-hoc modes;
+
+
+        o IEEE 802.16;
+
+
+        o IEEE 802.20;
+
+
+        o IEEE 802.11 for municipal meshes;
+
+
+        o Wi-Fi Direct.
+
+
+        o Cellular networks and handoff: GSM architecture; handoff with common MSC;
+        handoff with differentiated MSCs; handoff classification
+
+
+        o Bluetooth: protocol stack; different possible topologies; discovery service;
+        scatternet and multi-hop communications; software stack for Bluetooth Java
+        programming
+
+
+        o Rapid overview of ZigBee: features, architecture, possible topologies
+
+
+        - Mobile Ad Hoc Network (MANET): definition and application domains; routing
+        in MANET, reactive/proactive/geographic/hybrid routing; Dynamic Source Routing
+        (DSR); Ad-hoc On Demand Distance Vector (AODV); Greedy Perimeter Stateless
+        Routing (GPSR); rapid overview on clustering solutions; LEACH, HEED, REDMAN
+
+        - Mobility and handoff management: introduction and definitions
+
+        - Location update and location search. Mobile IP: features, architecture,
+        protocol, issues. Hierarchical Mobile IPv6 (HMIPv6). Split connection and
+        I-TCP
+
+        - Positioning systems: motivations; taxonomy (physical/symbolic, centralized/distributed,
+        absolute/relative, accuracy, precision, cost, and limitations). Base techniques:
+        lateration, time difference of arrival, angulation, scene analysis, proximity
+
+
+        o Positioning systems for ad-hoc networks
+
+
+        o Positioning systems with additional hardware. GPS: features, limitations,
+        differential GPS. Active Badge, AHLoS
+
+
+        o Positioning systems with no additional hardware: based on Bluetooth, PlaceLab,
+        RADAR, Ekahau, Sensor Fusion, Universal Location Framework, JSR-179
+
+
+        - Development platforms for mobile systems (smart phone): overview, general
+        concepts, definitions; concise comparison of J2ME, .NET CF, FlashLite, Android.
+
+        - Android: introduction; architecture; OS kernel layer; power management and
+        wakelock; native libraries; Dalvik VM; application framework; core applications;
+        application model; activity lifecycle; intents and intent filters; threading
+        model; examples and exercises. Description of the proposed exercise on Android
+
+        - Rapid overview on iOS: architecture; multi-tasking model; simple programming
+        examples; native/Web applications for iOS (introductory overview of HTML5);
+        unlocking and jailbreaking
+
+        - Mobile middleware: definitions, motivations, advantages. Relevance of determining
+        principles and patterns. Internet principles: end-to-end and robustness principles.
+        Web principles. SOA principles. Mobile computing principles. Cross-layering
+        principle. Architectural patterns, general and specific for mobile computing.
+
+        - Internet of Things (IoT) platforms: definitions and reference architectues,
+        primary state-of-the-art platforms in the market, mobile and industrial IoT,
+        research directions under current investigation, use cases of industrial applications
+
+        - Discovery services: definition, taxonomy, auto-configuration, discovery,
+        access to resources/services
+
+
+        o Jini, with description of proposed exercise
+
+
+        o Service location Protocol (SLP)
+
+
+        o UPnP: architecture, description files, bridging possibilities, examples
+        and exercises. Description of proposed exercise on UPnP
+
+
+        - Session management in converged 4G networks: Session Initiation Protocol
+        (SIP), main features, scalability limitations. Session management in IP Multimedia
+        Sub-system (IMS): architecture, functional entities, protocol examples, limitations
+        in terms of monitoring, load-balancing, and scalability
+
+        - Messaging support in mobile systems: motivations; principles and architecture;
+        protocols for message exchange; locator
+
+
+        o JMS: features, architecture, messaging models, reliability and quality,
+        examples
+
+
+        o CORBA Messaging (AMI and TII)
+
+
+        o Rapid overview on XMPP, Web Services, and RESTful Web Services
+
+
+        - Event management and pub/sub model: possible topologies for event routers.
+        Propagation of interests and subscriptions. Routing decisions
+
+
+        o Examples of distributed event systems: OMG DDS (partitions and quality levels);
+        Java model for distributed events; General Event Notification Architecture
+        (GENA); RSS/Atom; SIP Event Framework; Web Services Eventing & Notification
+
+
+        - Data synchronization in mobile systems: pessimistic/optimistic approaches;
+        versioning; detection; reconciliation
+
+
+        o SyncML: representation protocol; synchronization protocol; examples
+
+
+        - Edge/Fog Computing: efficient integration of sensor-edge-cloud; distributed
+        control and intelligence; offloading; proactive approaches and mobility prediction
+
+
+        o ETSI Mobile Edge Computing and O-RAN: emerging standard specifications;
+        deployment approaches in 5G; orchestration and ETSI MANO; new platforms for
+        Open Radio Access Networking in 5G
+
+
+        - Selection of primary application domains (4 examples, from vehicular ad
+        hoc applications to federated social spontaneous networks),also to suggest/solicit
+        some possible project activities to associate with the course
+
+        - Several case studies (also presented within company seminars, in addition
+        to the regular lectures hours)
+
+
+        The course will be associated with a set of practical lab exercises, where
+        the students will have the opportunity of completing their preparation through
+        guided and simplified projects, to be solved autonomously. These lab activities
+        will be necessary for the full achievement of the desired abilities and course
+        objectives; texts and solutions of proposed exercises will be available at
+        the Course Web site. The proposed set of exercises is described in the Teaching
+        Methods section.'
+      Readings/Bibliography: 'Suggested texts/manuals (useful sometimes as references,
+        not adopted as textbooks):
+
+
+        - S. Tarkoma, Mobile Middleware, Wiley, 2009
+
+        - Ke-Lin Du, M.N.S. Swamy, Wireless Communication Systems, Cambridge University
+        Press, 2010
+
+        - Z. Mednieks, L. Dornin, G.B. Meike, M. Nakamura, Programming Android, O''Reilly,
+        2nd edition, 2012
+
+        - D. Sillars, High-Performance Android Apps, O''Reilly, 2014
+
+
+        Other valuable on-line sources of information (for a complete list on the
+        different topics covered by the course, please see the lectures slides):
+
+
+        - Lectures of the Mobile & Pervasive Computing course, Univ. Carnegie-Mellon
+
+        - Lectures of the Mobile Computing course, Univ. Ohio
+
+        - Lectures of the Pervasive Computing course, MIT
+
+        - Lectures of the Mobile Computing course, Virginia Tech
+
+        - Lectures of the Mobile Computing and Sensor Networks course, NJIT'
+      Teaching methods: 'During the lectures, we will discuss thoroughly the general
+        issues related to the modeling, design, implementation, and runtime support
+        of mobile systems and services, with specific attention to the characteristics
+        needed for their development-/run-time supports. The primary technologies
+        taken into consideration will be based on the Java language, on the Android
+        platform, and on the Java Mobile Edition (JME).
+
+
+        The course will be accompanied by a set of practical lab exercises, where
+        students will be solicited to complete guided project activities, including
+        a significant amount of autonomous personal work. These activities will be
+        needed to complete the exam preparation and to achieve the desired abilities/skills;
+        text and solutions of lab exercises will be available at the course Web site.
+
+
+        Lab activities will include (list to be completed and finalized):
+
+
+        - 1 exercise about Android
+
+        - 1 exercise about UPnP discovery (or Jini, if preferred)
+
+        - 1 exercise about either an IoT or an edge computing platform
+
+
+        Additional notes:
+
+
+        Students with learning disorders and\or temporary or permanent disabilities:
+        please, contact the office responsible (https://site.unibo.it/studenti-con-disabilita-e-dsa/en/for-students
+        ) as soon as possible so that they can propose acceptable adjustments. The
+        request for adaptation must be submitted in advance (15 days before the exam
+        date) to the lecturer, who will assess the appropriateness of the adjustments,
+        taking into account the teaching objectives.
+
+
+        By considering the type of programming activities and the adopted methodologies
+        within this course, the participation and attendance of this course suggest
+        that all students preliminarily attend the modules 1 and 2 of the e-learning
+        course about security in study environments [https://elearning-sicurezza.unibo.it/].'
+      Assessment methods: 'The course includes a final oral examination, which will
+        evaluate the level of expertise achieved both in terms of awareness of design
+        methodologies, architectures, and models, and in terms of implementation abilities
+        regarding all the primary technologies discussed during the lectures. The
+        oral exam, with average duration of around 60-75 minutes, will include at
+        least four questions, some of them targeting the solution of practical exercises
+        that will use the mechanisms, protocols, and technologies for mobile systems,
+        studied and discussed during the course.
+
+
+        Optionally, students will have the opportunity to choose to associate the
+        exam with a project activity (engagement measured as a 3 ECTS effort), including
+        autonomous personal work, on specific topics negotiated with the teacher during
+        the course. In the case, students will have to deliver code and documentation
+        describing the project activity completed; in the usual case where the project
+        activity is presented when doing the final oral examination, that exam will
+        start by discussing the developed project.'
+      Teaching tools: 'All the lectures material and files (slides, exercises and
+        solutions, suggested additional exercises, examples, project proposals, ...)
+        will be available at the course Web site on Virtuale UNIBO (not yet available;
+        it will be populated during the lecturing period).
+
+
+        The above material is the primary source of contents for the preparation of
+        the course examination; the suggested bibliography (books, papers, Web sites,
+        ...) is intended as an optional support and integration.
+
+
+        Please see also the full description of the course contents on the related
+        Website on Virtuale @UNIBO, which will be populated and enriched progressively
+        during the lecturing period. To have a preliminary idea of the contents, please
+        refer to the contents of the previous academic year.'
+      Office hours: See the website of Paolo Bellavista (https://www.unibo.it/sitoweb/paolo.bellavista/en)
+      SDGs: 'Industry, innovation and infrastructure Sustainable cities
+
+
+        This teaching activity contributes to the achievement of the Sustainable Development
+        Goals of the UN 2030 Agenda.'

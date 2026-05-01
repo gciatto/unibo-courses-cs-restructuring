@@ -1,0 +1,199 @@
+year: 2025
+url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/517617
+credits: 8
+ssd: ING-INF/05
+language: Italian
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2026-02-18
+  to: 2026-06-03
+teacher:
+  id: '16884'
+  name: Ciaccia, Paolo
+  email: paolo.ciaccia@unibo.it
+  website: https://www.unibo.it/sitoweb/paolo.ciaccia
+  role: full professor
+  affiliation: disi
+  ssd:
+    name: IINF-05/A
+    description: Sistemi di elaborazione delle informazioni
+course_title:
+  id: '84530'
+  name: TECNOLOGIE E SISTEMI PER LA GESTIONE DI BASI DI DATI E BIG DATA M
+  details:
+  - Modulo 2
+integrated_course: ''
+campus: Bologna
+programme: Laurea Magistrale in Ingegneria informatica
+syllabus:
+  it:
+    url: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/517617
+    title: 2025/2026 TECNOLOGIE E SISTEMI PER LA GESTIONE DI BASI DI DATI E BIG DATA
+      M — Università di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: 'Al termine del corso lo studente ha una
+        conoscenza approfondita dei principi realizzativi dei sistemi di gestione
+        di basi di dati, sia dal punto di vista concettuale che dal punto di vista
+        tecnologico. In
+
+        particolare: conosce l''architettura di un DBMS; possiede un''avanzata abilità
+        nella progettazione fisica di un DB relazionale, conoscendo a fondo le differenti
+        tecnologie utilizzate nella risoluzione delle interrogazioni; è in grado di
+        applicare paradigmi alternativi di interrogazione dei dati; conosce i diversi
+        modelli di dati utilizzati nei sistemi Big Data (NoSQL).'
+      Contenuti: "L'allievo che accede a questo insegnamento conosce i modelli e degli\
+        \ strumenti per l'organizzazione e la gestione e il progetto di basi di dati\
+        \ relazionali. Tali conoscenze sono acquisite, di norma, superando l'esame\
+        \ di \"Sistemi Informativi T\" della laurea in Ingegneria Informatica.\n\n\
+        1. Architettura di un DBMS\n  Principali moduli e loro ruolo.\n2. Il Data\
+        \ Base fisico Gestione della memoria: dispositivi, pagine e file. Rappresentazione\
+        \ di attributi e tuple. Lettura e scrittura di pagine: il buffer manager.\
+        \ Tipi di file. Valutazione dei costi di alcune operazioni di base sui file.\n\
+        3. Indici mono-dimensionali\n  Tipi di indici. Indici ad albero: Il B-tree\
+        \ e il B+-tree. Indici hash: hash statico, hash dinamico.\n4. Dati e indici\
+        \ multi-dimensionali (spaziali)\n  Interrogazioni spaziali. Indici per punti\
+        \ (k-D e k-D-B-tree), indici per oggetti estesi (R-tree), GiST.\n5. Implementazione\
+        \ degli operatori relazionali\n  Operatori logici e operatori fisici: sort\
+        \ (sort-merge esterno a Z vie), selezione (sequenziale, con indice, con più\
+        \ indici), proiezione (sort-based, hash-based, con indice), join (nested loops,\
+        \ block nested loops, merge scan, hash join), operatori insiemistici (unione\
+        \ e differenza), operatori di aggregazione.\n6. Elaborazione di interrogazioni\n\
+        \  Passi del processo di elaborazione. Check semantici e uso dei cataloghi.\
+        \ Riscrittura di interrogazioni SQL. Profili statistici: valori medi e istogrammi.\
+        \ Stima dei costi e della dimensione dei risultati. Piani di accesso: valutazione\
+        \ per materializzazione e in pipeline. Il processo di ottimizzazione: enumerazione\
+        \ dei piani di accesso e regole di dominazione. Determinazione del piano ottimale\
+        \ mediante programmazione dinamica.\n7. Gestione delle transazioni\n  Controllo\
+        \ della concorrenza: tipi di problemi, lock e protocollo Strict 2PL. Protezione\
+        \ dai guasti: log file, protocollo WAL, gestione del buffer e del commit,\
+        \ checkpoint e DB dump.\n8. Progettazione fisica di Basi di Dati\n  Carico\
+        \ di lavoro, selezione degli indici. Tuning delle prestazioni (indici, schema\
+        \ e interrogazioni).\n9. Ranking dei risultati\n  Motivazioni e limiti delle\
+        \ soluzioni sinora viste per interrogazioni Top-k. Estensione di SQL per il\
+        \ ranking dei risultati.\n  Interrogazioni Top-k mono- e multi-dimensionali:\
+        \ spazio degli attributi, pesatura degli attributi, funzioni distanza, valutazione\
+        \ mediante B+-tree e suoi limiti.\n  Algoritmi basati su R-tree: k nearest\
+        \ neighbor e distance browsing. Interrogazioni Top-k di join: modalità di\
+        \ accesso sorted e random, funzioni di scoring, relazioni con le funzioni\
+        \ distanza. Algoritmi B0, FA, TA, CA e NRA.\n10. Interrogazioni Skyline\n\
+        \  Concetto di dominazione, relazione con le funzioni di scoring, algoritmi\
+        \ senza indice (NL, BNL, SFS, SaLSa) e con indice (BBS).\n11. Big Data & NoSQL\
+        \ DBMS\n  Hadoop e il paradigma MapReduce. Modelli di dati alternativi al\
+        \ relazionale. Il teorema CAP."
+      Testi/Bibliografia: "I seguenti testi sono consigliati per approfondimenti sui\
+        \ contenuti del corso:\n\n- P. Ciaccia, D. Maio: Lezioni di Basi di Dati,\
+        \ Esculapio\n- A. Albano: Costruire Sistemi per Basi di Dati, Addison-Wesley\n\
+        - R. Ramakrishnan, J. Gehrke: Database Management Systems,\n  McGraw-Hill\n\
+        - P. Lewis, A. Bernstein, M. Kifer: Databases and Transaction\n  Processing,\
+        \ Addison-Wesley\n- D.E. Shasha, P. Bonnet: Database Tuning, Morgan Kaufmann"
+      Metodi didattici: 'Il corso viene erogato mediante proiezione di slide dal computer
+        del docente, in aula.
+
+
+        Tutte le lezioni sono tenute in italiano. È quindi necessaria la comprensione
+        della lingua italiana per seguire con profitto il corso. Il materiale didattico
+        è comunque fornito in lingua inglese.'
+      Modalità di verifica e valutazione dell'apprendimento: 'La verifica dell''apprendimento
+        avviene attraverso un esame finale, che accerta l''acquisizione delle conoscenze
+        e delle abilità attese tramite lo svolgimento di una prova orale con entrambi
+        i docenti, da svolgersi in un''unica seduta. Il voto finale tiene conto della
+        valutazione di entrambi i docenti. La data di svolgimento di tale prova va
+        concordata con entrambi i docenti. In caso di appelli numerosi, è possibile
+        venga richiesto lo svolgimento di una prova scritta con domande a risposta
+        aperta.
+
+
+        Il superamento dell''esame sarà garantito agli studenti che dimostreranno
+        padronanza e capacità operativa in relazione ai concetti chiave illustrati
+        nell''insegnamento. Un punteggio più elevato sarà attribuito agli studenti
+        che dimostreranno di aver compreso ed essere capaci di utilizzare tutti i
+        contenuti dell''insegnamento, illustrandoli con capacità di linguaggio, e
+        risolvendo problemi anche complessi non necessariamente incontrati a lezione.
+        Il mancato superamento dell''esame potrà essere dovuto all''insufficiente
+        conoscenza dei concetti chiave, alla mancata padronanza del linguaggio tecnico,
+        alla mancata o insufficiente capacità di astrazione dei concetti.'
+      Strumenti a supporto della didattica: Le lezioni in aula verranno svolte utilizzando
+        lucidi, con il supporto della lavagna per lo svolgimento di esercizi.
+      Link ad altre eventuali informazioni: http://www-db.disi.unibo.it/courses/TBD/
+      Orario di ricevimento: 'Consulta il sito web di Marco Patella (https://www.unibo.it/sitoweb/marco.patella)
+
+
+        Consulta il sito web di Paolo Ciaccia (https://www.unibo.it/sitoweb/paolo.ciaccia)'
+  en:
+    url: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/517617
+    title: 2025/2026 Database and Big Data Technologies M — University of Bologna
+    contents:
+      Learning outcomes: Knowledge of building principles of DataBase Management Systems.
+        Ability to design physical databases. Technologies for the management of big
+        data.
+      Course contents: "A prior knowledge and understanding of models and tools for\
+        \ organizing, managing and designing relational databases is required to attend\
+        \ with profit this course. This is usually obtainable by passing the exam\
+        \ of \"Information Systems T\" of the Computer Engineering bachelor degree.\n\
+        \n1. Architecture of a DBMS\n  Main modules and their roles.\n2. The physical\
+        \ Data BaseMemory management: devices, pages and files. Representing attributes\
+        \ and tuples. Reading and writing disk pages: the buffer manager. File types.\
+        \ Cost evaluation of some basic file operations.\n3. Mono-dimensional indices\n\
+        \  Index types. Tree indices: B-tree and B+-tree. Hash indices: static hash,\
+        \ dynamic hash (linear hashing, extendible hashing).\n4. Multidimensional\
+        \ (spatial) data and indices\n  Spatial queries. Point indices (k-D and k-D-B-tree),\
+        \ indices for spatial objects (R-tree), GiST.\n5. Implementing relational\
+        \ operations\n  Logical and physical operators: sort (external Z-way sort-merge),\
+        \ selection (sequential scann, single index, multiple indices), projection\
+        \ (sort-based, hash-based, index-based), join (nested loops, block nested\
+        \ loops, merge scan, hash join), set operators (union and difference), aggregation\
+        \ operators.\n6. Query processing\n  Steps of the evaluation process. Semantic\
+        \ checks and catalogs. Rewriting SQL queries. Statistical profiles: average\
+        \ values and histograms. Estimating costs and result size. Access plans: evaluation\
+        \ using materialization and pipeline. The optimization process: enumerating\
+        \ access plans and domination rules. Determining the optimal access plan using\
+        \ dynamic programming.\n7. Transaction management\n  Concurrency control:\
+        \ problems, lock and Strict 2PL protocol. Fault tolerance: log file, WAL protocol,\
+        \ buffer and commit management, checkpoint and DB dump.\n8. Physical design\
+        \ of DataBases\n  Query workload, index selection. Performance tuning (indices,\
+        \ schema and queries).\n9. Ranking of results\n  Motivations and limits of\
+        \ existing solutions for Top-k queries. SQL extensions for ranking results.\n\
+        \  Mono- e multi-dimensional Top-k queries: attributes space, attributes weighing,\
+        \ distance functions, limits of B+-tree query processing.\n  R-tree-based\
+        \ algorithms: k nearest neighbor and distance browsing. Top-k join queries:\
+        \ sorted and random access, scoring functions, relationships with distance\
+        \ functions. B0, FA, TA, CA, and NRA algorithms.\n10. Skyline queries\n  Concept\
+        \ of domination, relationship with scoring functions, index-based algorithms\
+        \ (BBS) and non-index algorithms (NL, BNL, SFS, SaLSa).\n11. Big Data & NoSQL\
+        \ DBMS\n  Hadoop and MapReduce. Non-relational data models. The CAP theorem."
+      Readings/Bibliography: "The following texts are recommended for further information\
+        \ on the course contents:\n\n- P. Ciaccia, D. Maio: Lezioni di Basi di Dati,\
+        \ Esculapio\n- A. Albano: Costruire Sistemi per Basi di Dati, Addison-Wesley\n\
+        - R. Ramakrishnan, J. Gehrke: Database Management Systems,\n  McGraw-Hill\n\
+        - P. Lewis, A. Bernstein, M. Kifer: Databases and Transaction\n  Processing,\
+        \ Addison-Wesley\n- D.E. Shasha, P. Bonnet: Database Tuning, Morgan Kaufmann"
+      Teaching methods: 'The course is provided by means of slides displayed during
+        lecture hours.
+
+
+        Fluent spoken and written italian is a necessary pre-requisite: all lectures
+        and tutorials will be in italian. However the provided slides are in english.'
+      Assessment methods: 'Achievements will be assessed by the means of a final exam.
+        This is based on an analytical assessment of the "expected learning outcomes"
+        described above. In order to properly assess such achievement the examination
+        is composed of an oral exam with both teachers. The final score takes into
+        account the marks obtained in both oral exams. The date of the oral exam should
+        be fixed with both teachers. For exams with several students, it could be
+        the case that a written exam (with open-ended questions) is required.
+
+
+        Higher grades will be awarded to students who demonstrate an organic understanding
+        of the subject, a high ability for critical application, and a clear and concise
+        presentation of the contents. To obtain a passing grade, students are required
+        to at least demonstrate a knowledge of the key concepts of the subject, some
+        ability for critical application, and a comprehensible use of technical language.
+        A failing grade will be awarded if the student shows knowledge gaps in key-concepts
+        of the subject, inappropriate use of language, and/or logic failures in the
+        analysis of the subject.'
+      Teaching tools: Classroom lessons will be held using slides, which will be integrated
+        with the use of the blackboard for the development of exercises.
+      Links to further information: http://www-db.disi.unibo.it/courses/TBD/
+      Office hours: 'See the website of Marco Patella (https://www.unibo.it/sitoweb/marco.patella/en)
+
+
+        See the website of Paolo Ciaccia (https://www.unibo.it/sitoweb/paolo.ciaccia/en)'

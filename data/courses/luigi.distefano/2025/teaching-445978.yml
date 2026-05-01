@@ -1,0 +1,158 @@
+year: 2025
+url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/445978
+credits: 6
+ssd: ING-INF/05
+language: Italian
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2026-02-17
+  to: 2026-06-03
+teacher:
+  id: '30722'
+  name: Di Stefano, Luigi
+  email: luigi.distefano@unibo.it
+  website: https://www.unibo.it/sitoweb/luigi.distefano
+  role: full professor
+  affiliation: disi
+  ssd:
+    name: IINF-05/A
+    description: Sistemi di elaborazione delle informazioni
+course_title:
+  id: '28012'
+  name: CALCOLATORI ELETTRONICI T
+  details:
+  - 6 cfu
+integrated_course: ''
+campus: Bologna
+programme: Laurea in Ingegneria dell'automazione Laurea in Ingegneria elettronica
+  e telecomunicazioni
+syllabus:
+  it:
+    url: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/445978
+    title: 2025/2026 CALCOLATORI ELETTRONICI T — Università di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: Al termine del corso lo studente conosce
+        le principali architetture per elaboratori elettronici. Conosce le unità centrale
+        di elaborazione, unità di memoria, unità di I/O e dei coprocessori e controllori
+        periferici. Possiede la capacità di analisi e sintesi di semplici sistemi
+        a microprocessore.
+      Contenuti: 'Contenuti
+
+
+        1. Introduzione - Modello di Von Neumann. PC e Cicli di Bus. Architettura
+        dell''Hardware. Prestazioni. Cenni di Storia dei Calcolatori.
+
+        2. Architettura del Set di Istruzioni - Caratteristiche generali di una ISA:
+        codifica delle istruzioni, modalità di indirizzamento, classi di istruzioni,
+        gestione delle procedure. Classificazione delle Architetture. Architetture
+        Register-Register (RISC) e Memory–Register (CISC).
+
+        3. Complementi di Reti Logiche - ALU. Driver 3-state e multiplexer distribuito.
+        Register File. Driver, Tranceiver, Latch, Registri Edge Triggered.
+
+        4. ISA DLX – Ambiente di esecuzione. Set di Istruzioni. Realizzazione di uno
+        stack per la gestione delle procedure. Esempi di codice. Formato delle istruzioni.
+
+        5. Struttura Interna di una CPU ad esecuzione sequenziale - Controllo e Datapath.
+        Datapath del DLX. Diagramma degli stati dell''unità di controllo del DLX.
+        Gestione degli interrupt. Calcolo del numero di clock per l''esecuzione di
+        un''istruzione.
+
+        6. Struttura Interna di una CPU in Pipeline: Principi generali ed indicatori
+        di performance inerenti il pipelining. Datapath in pipeline del DLX, Dipendenze
+        e Alee, Stalli e Unità di Forwarding. Alee di controllo. Predizione dei branch.
+
+        7. IA (Intel Architecture) - Ambiente di esecuzione. Segmentazione: indirizzi
+        logici e fisici. Set di Istruzioni. Esempi di codice e confronto con il codice
+        DLX.
+
+        8. Interfacciamento di memorie al bus di sistema – Memorie ROM e RAM. Mapping
+        dei chip di memoria e decodifica degli indirizzi nel caso di bus dati ad 8
+        bit. Estensione al caso di bus dati multi-byte (16 bit,32 bit,....). Tempi
+        di accesso delle memorie e calcolo del numero di stati di wait. Circuito del
+        READY.
+
+        9. Gestione delle porte di I/O – I/O base. Modello di una porta di I/O. Accesso
+        ai registri interni della porta in caso di bus-dati ad 8 bit. Interfacciamento
+        di una porta di I/O in caso di bus dati multi-byte. Gestione dll''I/O a polling
+        ed esempi di codice assembler. Gestione dell''I/O ad interrupt ed esempi di
+        codice assembler.
+
+        10. Il sistema delle interruzioni - Classi di interruzioni (interrupt HW,
+        interrupt SW ed eccezioni). Gestione degli interrupt hardware mediante un
+        PIC (Programmable Interrupt Controller). Trasferimento del controllo vettorizzato.'
+      Testi/Bibliografia: "Testi consigliati per approfondimenti:\n\n1. Hennessy,\
+        \ Patterson: \"Computer architecture: a quantitative approach\" - Morgan Kaufmann\
+        \ pub. Inc., second edition (esiste anche la versione in\n  italiano edita\
+        \ da Zanichelli)\n2. Giacomo Bucci: “Architetture dei calcolatori elettronici”\
+        \ McGraw-Hill"
+      Metodi didattici: Lezioni ed esercitazioni in aula.
+      Modalità di verifica e valutazione dell'apprendimento: Esame scritto costituito
+        da esercizi di progetto inerenti sia la struttura interna di una CPU sia l'interfacciamento
+        di memorie e porte di I/O al bus di sistema di una CPU.
+      Strumenti a supporto della didattica: PC e Videoproiettore.
+      Orario di ricevimento: Consulta il sito web di Luigi Di Stefano (https://www.unibo.it/sitoweb/luigi.distefano)
+  en:
+    url: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/445978
+    title: 2025/2026 Electronic Calculators T — University of Bologna
+    contents:
+      Learning outcomes: Knowledge of the basic elements of computer architectures.
+        These include the CPU as well as the memory and I/O subsystems. The student
+        will acquire the ability to analyse and design very simple microprocessor-based
+        sytems.
+      Course contents: 'Course contents
+
+
+        1. Introduction - Von Neumann''s model. PC and Bus Cycles. Hardware Architecture.
+        Performance. History of Computers.
+
+        2. Instruction Set Architecture - General features concerning ISAs: instruction
+        encoding, addressing modes, instruction classes, procedure calls. Taxonomy
+        of ISAs. codifica delle istruzioni, modalità di indirizzamento, classi di
+        istruzioni, gestione delle procedure. Register-Register (RISC) e Memory–Register
+        (CISC) architectures. .
+
+        3. Complements of Logic Design - ALU. 3-state drivers and distributed multiplexing.
+        Register File. Driver, Tranceiver, Latch, Edge Triggered Register.
+
+        4. ISA DLX – Execution environment. Instruction Set. Stack implementation
+        to handle calls. Code examples. Instruction formats.
+
+        5. Internal structure of a sequential CPU - Datapath and Controller. DLX Datapath.
+        State machine of a DLX controller. Handling interrupts. Number of clocks to
+        execute instructions.
+
+        6. Internal structure of a pipelined CPU – General pipeline principles and
+        performance metrics. A DLX pipelined Datapath. Dependencies and Hazards. Stalls
+        and Forwarding. Control Hazards. Brach Prediction.
+
+        7. IA (Intel Architecture) - Execution environment. Segmentation: logical
+        vs. physical addresses. Instruction Set. Code examples and comparison to DLX
+        code.
+
+        8. Interfacing memory parts to the system bus – ROM and RAM chips. Mapping
+        memory chips into the address space and address decoding in case of a 8-bit
+        data bus. Extension to a multi-byte data bus (16 bit,32 bit,....). Memory
+        access time and number of required wait state. Design of READY circuitry.
+
+        9. Handling I/O ports – Basic I/O. General model for an I/O port. Accessing
+        internal registers within I/O ports. Interfacing I/O ports to the system bus
+        in case of both 8-bit and multi-byte data buses. Handling I/O by polling and
+        by interrupt. Code examples.
+
+        10. The interrupt system - Interrupt classes (HW interrupts, SW interrupts
+        and exceptions). Handling HW interrupts by a PIC (Programmable Interrupt Controller).
+        Vectored Interrupts.'
+      Readings/Bibliography: 'Suggested Readings:
+
+
+        1. Hennessy, Patterson: "Computer architecture: a quantitative approach" -
+        Morgan Kaufmann pub. Inc., second edition
+
+        2. Giacomo Bucci: “Architetture dei calcolatori elettronici” McGraw-Hill.'
+      Teaching methods: Theory and Exercises during Class Hours.
+      Assessment methods: Written examination consisting in design exercices dealing
+        with the internal structure of a CPU as well as with interfacing memory parts
+        and I/O ports to the system bus.
+      Teaching tools: PC and Projector.
+      Office hours: See the website of Luigi Di Stefano (https://www.unibo.it/sitoweb/luigi.distefano/en)

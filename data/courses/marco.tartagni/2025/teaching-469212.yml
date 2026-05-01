@@ -1,0 +1,277 @@
+year: 2025
+url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/469212
+credits: 6
+ssd: ING-INF/01
+language: Italian
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2026-02-19
+  to: 2026-06-05
+teacher:
+  id: '30933'
+  name: Tartagni, Marco
+  email: marco.tartagni@unibo.it
+  website: https://www.unibo.it/sitoweb/marco.tartagni
+  role: full professor
+  affiliation: dei
+  ssd:
+    name: IINF-01/A
+    description: Elettronica
+course_title:
+  id: '69773'
+  name: PROGETTO DI CIRCUITI ELETTRONICI
+  details:
+  - 6 cfu
+integrated_course: ''
+campus: Cesena
+programme: Laurea in Ingegneria biomedica Laurea in Ingegneria elettronica
+syllabus:
+  it:
+    url: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/469212
+    title: 2025/2026 PROGETTO DI CIRCUITI ELETTRONICI — Università di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: 'Al termine del corso, lo studente è in
+        grado di analizzare i limiti imposti dalla realizzazione tecnologica, a componenti
+        discreti o integrati, sulle funzionalità del sistema. In particolare, lo studente
+        è in grado:
+
+        1 - di analizzare circuiti elettronici operanti in regime di retroazione e
+        progettare oscillatori elettronici
+
+        2 - di valutare i limiti critici fondamentali della comunicazione dei segnali
+        nei sistemi elettronici implementati su scheda o su circuito integrato;
+
+        3 - di progettare i circuiti elettronici sapendo individuare le scelte architetturali
+        sulla base della implementazione tecnologica.'
+      Contenuti: '- Introduzione al corso. Ripasso dei sistemi lineari, linearita''
+        tempo invarianza.
+
+        - Ripasso del concetto di equazione caratteristica, autovalori e autovettori
+        di un sistema lineare. Esempi.
+
+        - La caratteristica quasi statica e i suoi limiti. Ripasso di sistemi non
+        lineari e distorsione armonica. I circuiti RC e CR visti dal punto di vista
+        fisico energetico e con l''equazione caratteristica.
+
+        - Ancora sulle non-linearita'' e guadagni delle armoniche.
+
+        - Richiami di sistemi retroazionati. La retroazione nei circuiti elettronici.
+        Esempi con l''amplificatore non-invertente. Introduzione a LTSpice.
+
+        - Esempi con l''amplificatore invertente.
+
+        - Concetto di stabilita'' dei sistemi elettronici retroazionati.
+
+        - Margine di fase e margine di ampiezza. Commenti su esempi pratici di datasheet.
+
+        - Slew rate.
+
+        - Ancora esempi progettazione su datasheet. Teoria di base degli oscillatori
+        quasi sinusoidali. Modello e criterio di Barkhausen.
+
+        - Metodo della funzione descrittiva. Esempio di analisi di un oscillatore
+        quasi sinusoidale. Esempio di calcolo della funzione descrittiva
+
+        - Ancora sulla differenza tra equazione carateristica e condizione di Barkhausen.
+        Discussione sulla "condizionedi innesco".
+
+        - Oscillatoreponte di Wien. Oscillatori a sfasamento. Oscilatori a bipoli
+        anomali.
+
+        - Oscillatori a bipoli a resistenza negativa. Esempio dell''oscillatore a
+        coppia differenziale incrociata.
+
+        - Oscillatori al quarzo (XCO).
+
+        - Bistabile ad operazionale. Il latch come bistabile. Astabile ad operazionale.
+        Monostabile con 2 NOR. Astabile con 2 inverter in cascata.
+
+        - Resistenze di linee di trasmissione. Capacita'' di linee. Effetto del fringing
+        field. Equazioni caratteristiche. Effetti di scaling della tecnologia.
+
+        - Tempi di ritardo di linee di trasmissione. Linea RC distribuita. Costanti
+        di tempo caratteristiche. Linea distribuita con effetti RLCG.
+
+        - Equazioni dei telegrafisti. Impedenza caratteristica della linea. Linea
+        LC distribuita.
+
+        - Coefficiente di riflessione. Diagrammi reticolo.
+
+        - Tempi di ritardo di linee costituite da capacita'' e resistenze distribuite.
+        Concetti di approssimazione di reti a costanti concentrate e distribuite.
+
+        - Effetti delle induttanze ai pin. Condensatori di disaccoppiamento. Progettazione
+        termica dei circuiti elettronici.
+
+        - Il processo di fabbricazione dei circuiti stampati (PCB). PCB avanzati e
+        multilayer. Packaging elettronico.
+
+        - La conversione Sigma-Delta
+
+        - Esempi di retroazione in elettronica: LDO e superbuffer.
+
+        - Concetto di Phase Locked Loop (PLL)'
+      Testi/Bibliografia: 'H.B. BAKOGLU CIRCUITS INTERCONNECTIONS AND PACKAGING FOR
+        VLSI ADDISON-WESLEY 1990 S. HALL G. HALL J. MCCALL HIGH-SPEED DIGITAL SYSTEM
+        DESIGN WILEY 2000
+
+
+        Digital Integrated Circuits, by Jan M. Rabaey, Anantha Chandrakasan, and Borivoje
+        Nikolic, Prentice Hall
+
+
+        D. Johns, K. Martin, Analog Integrated Circuit Design, Wiley, 1997
+
+
+        A. SEDRA, K. SMITH, "Microelectronic Circuits" 4-th edition , Oxford Press,
+        1998'
+      Metodi didattici: Lezioni frontali
+      Modalità di verifica e valutazione dell'apprendimento: 'L’esame di fine corso
+        mira a valutare il raggiungimento dell''obiettivo didattico:
+
+
+        - Saper progettare circuiti elettronici in regime di retoazione e linee di
+        trasmissione adeguate al regime dei segnali
+
+
+        L''esame consiste in due valutazioni che avvengono durante un colloquio orale
+        individuale, dalla durata di 45-60m. La prima valutazione avviene sul programma
+        mediante due o tre domande specifiche sugli argomenti. La seconda valutazione
+        avviene sul progetto vero e proprio che potra'' essere esposto direttamente
+        su un computer portatile oppure mediante stampa di una relazione. Il progetto
+        consiste nel verificare mediante il simulatore SPICE alcune relazioni teoriche
+        spiegate a lezione, a scelta dello studente.'
+      Strumenti a supporto della didattica: Alcune collezioni di slides
+      Orario di ricevimento: Consulta il sito web di Marco Tartagni (https://www.unibo.it/sitoweb/marco.tartagni)
+  en:
+    url: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/469212
+    title: 2025/2026 Electronic Circuits Design — University of Bologna
+    contents:
+      Learning outcomes: 'The course is intended to introduce to first level students
+        more sophisticated issues in electronic design. The students will be able
+        to: 1) analyse and design feedback systems in electronics such as oscillators;
+        2) understand signal integrity issues in PCB and IC design; 3) understand
+        the relationship between packaging and electronic design;'
+      Course contents: '⁃ Introduction to the course. Review of linear systems, linearity
+        time invariance.
+
+
+        ⁃ Review of the concept of characteristic equation, eigenvalues and eigenvectors
+        of a linear system. Examples.
+
+
+        ⁃ The quasi-static characteristic and its limits. Review of non-linear systems
+        and harmonic distortion. RC and CR circuits seen from the physical-energetic
+        point of view and with the characteristic equation.
+
+
+        ⁃ More on non-linearities and gains of harmonics.
+
+
+        ⁃ Recalls of feedback systems. The feedback in electronic circuits. Examples
+        with the non-inverting amplifier. Introduction to LTSpice.
+
+
+        ⁃ Examples with the inverting amplifier.
+
+
+        ⁃ Concept of stability of feedback electronic systems.
+
+
+        ⁃ Phase margin and amplitude margin. Comments on practical examples of datasheets.
+
+
+        ⁃ Slew rate.
+
+
+        ⁃ More design examples on datasheet. Basic theory of quasi-sinusoidal oscillators.
+        Barkhausen model and criterion.
+
+
+        ⁃ Method of the descriptive function. Example of analysis of a quasi-sinusoidal
+        oscillator. Calculation example of the descriptive function
+
+
+        ⁃ More on the difference between the characteristic equation and the Barkhausen
+        condition. Discussion on the "trigger condition".
+
+
+        ⁃ Wien bridge oscillator. Phase shift oscillators. Abnormal bipole oscillators.
+
+
+        ⁃ Negative resistance bipole oscillators. Example of a cross differential
+        pair oscillator.
+
+
+        ⁃ Quartz oscillators (XCO).
+
+
+        ⁃ Bistable to operational. The latch as a bistable. Astable to operational.
+        Monostable with 2 NOR. Stable with 2 inverters in cascade.
+
+
+        ⁃ Resistances of transmission lines. Line capacity. Effect of the fringing
+        field. Characteristic equations. Scaling effects of technology.
+
+
+        ⁃ Delay times of transmission lines. Distributed RC line. Characteristic time
+        constants. Distributed line with RLCG effects.
+
+
+        ⁃ Equations of telegraph operators. Characteristic impedance of the line.
+        Distributed LC line.
+
+
+        ⁃ Reflection coefficient. Lattice diagrams.
+
+
+        ⁃ Delay times of lines consisting of distributed capacitances and resistances.
+        Concepts of approximation of networks with lumped and distributed constants.
+
+
+        ⁃ Effects of pin inductances. Decoupling capacitors. Thermal design of electronic
+        circuits.
+
+
+        ⁃ The manufacturing process of printed circuit boards (PCB). Advanced and
+        multilayer PCBs. Electronic packaging.
+
+
+        ⁃ The Sigma-Delta conversion
+
+
+        ⁃ Examples of feedback in electronics: LDO and superbuffer.
+
+
+        ⁃ Phase Locked Loop (PLL) concept'
+      Readings/Bibliography: 'H.B. BAKOGLU CIRCUITS INTERCONNECTIONS AND PACKAGING
+        FOR VLSI ADDISON-WESLEY 1990 S. HALL G. HALL J. MCCALL HIGH-SPEED DIGITAL
+        SYSTEM DESIGN WILEY 2000
+
+
+        Digital Integrated Circuits, by Jan M. Rabaey, Anantha Chandrakasan, and Borivoje
+        Nikolic, Prentice Hall
+
+
+        D. Johns, K. Martin, Analog Integrated Circuit Design, Wiley, 1997
+
+
+        A. SEDRA, K. SMITH, "Microelectronic Circuits" 4-th edition , Oxford Press,
+        1998'
+      Teaching methods: Frontal lessons
+      Assessment methods: 'The final exam aims to assess the achievement of the teaching
+        objective:
+
+
+        - Knowing how to design electronic circuits in feedback regime and transmission
+        lines adequate to the signal regime
+
+
+        The exam consists of two assessments that take place during an oral interview,
+        lasting 45-60m. The first evaluation takes place on the program by two or
+        three specific questions on several topics. The second evaluation takes place
+        on a project that can be exposed directly on a laptop computer or by printing
+        a report. The project consists in verifying through the SPICE simulator some
+        theoretical framework explained in lessons, at the student''s choice.'
+      Teaching tools: Some collections of slides will be available online
+      Office hours: See the website of Marco Tartagni (https://www.unibo.it/sitoweb/marco.tartagni/en)

@@ -1,0 +1,461 @@
+year: 2025
+url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/487362
+credits: 6
+ssd: ING-INF/05
+language: Italian
+teaching_mode: In-person learning (entirely or partially)
+schedule:
+  from: 2026-02-18
+  to: 2026-06-05
+teacher:
+  id: '181793'
+  name: Barone, Leonardo
+  email: leonardo.barone4@unibo.it
+  website: https://www.unibo.it/sitoweb/leonardo.barone4
+  role: teaching tutor
+  affiliation: disi
+course_title:
+  id: B0833
+  name: LABORATORIO DI SICUREZZA INFORMATICA T
+  details:
+  - 6 cfu
+integrated_course: ''
+campus: Bologna
+programme: Laurea in Ingegneria informatica
+syllabus:
+  it:
+    url: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/487362
+    title: 2025/2026 LABORATORIO DI SICUREZZA INFORMATICA T — Università di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: Conoscenza delle problematiche di sicurezza
+        delle informazioni, dei sistemi per la loro elaborazione, e delle reti che
+        li interconnettono. Conoscenza delle minacce alla sicurezza e delle contromisure
+        per prevenirle, rilevarne la manifestazione e contenerne gli effetti. Capacità
+        di utilizzare strumenti di "penetration testing" per validare la sicurezza
+        di un sistema attraverso la ricerca delle sue vulnerabilità e la misura degli
+        effetti del loro sfruttamento.
+      Contenuti: 'NOTA AMMINISTRATIVA IMPORTANTE
+
+
+        I CORSI
+
+
+        - 88325 - LABORATORIO DI SICUREZZA INFORMATICA T (CONTENUTO IN 88326 AMMINISTRAZIONE
+        DI SISTEMI E SICUREZZA INFORMATICA T C.I.)
+
+        - B0833 - LABORATORIO DI SICUREZZA INFORMATICA T
+
+
+        SONO LO STESSO CORSO ESPOSTO CON CODICI DIVERSI PER MOTIVI FORMALI, NON POSSONO
+        ESSERE SCELTI INSIEME, NEMMENO SE IL SISTEMA DI COMPILAZIONE DEI PIANI DI
+        STUDIO LO CONSENTE
+
+
+        L''obiettivo del corso è quello di fornire una panoramica delle tematiche
+        rilevanti per la messa in sicurezza dei sistemi di elaborazione, con un taglio
+        fortemente pratico.
+
+
+        Propedeuticità: PER TRARRE PROFITTO DAL CORSO È INDISPENSABILE AVER CHIARI
+        I CONCETTI E GLI STRUMENTI FORNITI DAI CORSI DI RETI DI CALCOLATORI E SISTEMI
+        OPERATIVI, IN PARTICOLARE AVER ACQUISITO UNA DISCRETA MANUALITÀ IN AMBIENTE
+        LINUX A RIGA DI COMANDO
+
+
+        Introduzione alla sicurezza
+
+
+        - Proprietà di sicurezza delle informazioni e dei sistemi
+
+        - Definizioni di minaccia, vulnerabilità, exploit e rischio
+
+        - Le tipologie di attacco e le loro conseguenze
+
+        - Cenni ai processi formali di sviluppo sicuro, ai framework per la messa
+        in sicurezza, e alle certificazioni
+
+
+        Red Teaming: capire come vengono attaccati i sistemi
+
+
+        - Origine e identificazione delle vulnerabilità
+
+        - La cybersecurity kill chain
+
+        - Tecniche di enumerazione, scansione, brute forcing di credenziali
+
+        - Sfruttamento degli errori di configurazione per acquisire privilegi elevati
+        sui sistemi
+
+        - Sfruttamento delle vulnerabilità dei sistemi web-based (cross-site scripting,
+        path traversal, code injection, ecc.)
+
+        - Sfruttamento delle vulnerabilità dei software compilati (buffer overflow,
+        shellcoding, return to libc, ecc.)
+
+
+        Difesa delle informazioni
+
+
+        - Fondamenti di crittografia
+
+        - Dati a riposo: anonimizzazione e crifratura
+
+        - Dati in transito: protocolli sicuri e VPN
+
+
+        Blue teaming: difendere i sistemi
+
+
+        - Messa in sicurezza fisica
+
+        - Hardening di base del sistema operativo
+
+        - Sistemi di autenticazione
+
+        - Modelli di controllo dell''accesso e loro implementazione
+
+        - Prevenzione degli attacchi via rete: firewall
+
+        - Rilevazione degli attacchi: IDS, IPS, SIEM
+
+        - Risposta agli attacchi e ripristino'
+      Testi/Bibliografia: 'Le slide pubblicate su Virtuale (https://virtuale.unibo.it/)
+        costituiscono la traccia per lo studio (non sono da considerare materiale
+        didattico interamente sufficiente alla preparazione dell''esame). Sulla stessa
+        piattaforma sono disponibili le tracce e le soluzioni di tutte le esercitazioni
+        svolte in laboratorio e proposte per casa.
+
+
+        Libri di testo consigliati:
+
+
+        - "Sicurezza dei computer e delle reti" di William Stallings, a cura di Alessandra
+        de Paola e Giuseppe Lo Re - Pearson (2022)
+
+
+        o anche:
+
+
+        - "Security in Computing" di Shari Lawrence Pfleeger, Charles P. Pfleeger,
+        Jonathan Margulies - Pearson (2015)
+
+        - "Cybersecurity – Attack and Defense Strategies - Second Edition" di Yuri
+        Diogenes, Erdal Ozkaya - Packt Publishing (2019)
+
+
+        Più datato ma efficace sulla parte Red Team:
+
+
+        - "Hacking Exposed 7" di Stuart McClure, Joel Scambray, George Kurtz - McGraw-Hill
+        (2012)
+
+
+        Per chi necessita di un''introduzione o comunque di un supporto all''uso di
+        Linux come piattaforma per le operazioni di sicurezza:
+
+
+        - "Linux Essentials for Cybersecurity", di Denise Kinsey, William Rothwell
+        - Pearson IT Certification (2018)
+
+        - "Cybersecurity Ops with bash", di Paul Troncone, Carl Albing - O''Reilly
+        Media (2019)'
+      Metodi didattici: 'Il corso assegna 6 CFU corrispondenti a 60 ore di lezione
+        complessive, divise tra teoria e laboratorio.
+
+
+        I fondamenti teorici saranno esposti durante lezioni tradizionali in aula.
+
+
+        Le esercitazioni saranno svolte sia sotto forma di illustrazione guidata dell''uso
+        degli strumenti, sia sotto forma di "sfide" che gli studenti affronteranno
+        per risolvere problemi proposti, lavorando tipicamente in gruppo.
+
+
+        Per questo motivo la frequenza è di fondamentale importanza.'
+      Modalità di verifica e valutazione dell'apprendimento: '- L''esame è composto
+        di due prove: un accertamento delle conoscenze teoriche e una prova pratica
+        al calcolatore.
+
+        - Il voto finale, attribuito in trentesimi, sarà una combinazione dei risultati
+        ottenuti nelle due prove.
+
+        - L''accertamento delle conoscenze teoriche sarà un breve quiz da svolgere
+        subito prima dell''inizio della prova al calcolatore, senza l''ausilio di
+        alcun materiale. Il risultato sarà disponibile immediatamente, e un voto sufficiente
+        è richiesto per procedere alla parte pratica dell''esame.
+
+        - La prova pratica sarà centrata sulle attività svolte in laboratorio e potrà
+        richiedere sia lo svolgimento di esercizi da completare autonomamente, sia
+        sfide collettive di attacco e difesa.
+
+        - Durante la prova pratica è consentito l''uso di materiale didattico, appunti,
+        e componenti software realizzati in precedenza dal candidato.
+
+        - Di solito, agli studenti verrà data la possibilità di scegliere 3 esercizi
+        tra 4 o 5 possibili argomenti (ad esempio, analisi del traffico e rilevamento
+        delle intrusioni di rete, exploit binario, sicurezza web, configurazione del
+        firewall, accesso locale ed escalation dei privilegi). Ciascuno dei tre esercizi
+        scelti sarà valutato in base alla correttezza della soluzione e alla precisione
+        della descrizione del processo logico seguito e delle tecniche impiegate.
+
+        - Data ed ora delle prove saranno pubblicate come liste di AlmaEsami.
+
+        - Gli studenti sono pregati di considerare vincolante l''iscrizione ad una
+        lista, evitando di sovraffollare inutilmente gli appelli e cancellandosi prima
+        della chiusura della lista in caso decidano di non presentarsi. Per ovvie
+        ragioni di organizzazione, le liste prevedono un tetto di iscrizioni e comportamenti
+        incivili impediscono di sostenere l''esame a chi è realmente interessato.
+
+
+        Gli esami si svolgeranno esclusivamente in presenza utilizzando i computer
+        dei laboratodi della Scuola di Ingegneria. È compito degli studenti e studentesse,
+        durante il corso o utilzzando il LAB0 a libero accesso, verificare che il
+        proprio account sia correttamente configurato per utililizzare gli stessi
+        strumenti proposti durante le esercitazioni del corso, che saranno necessari
+        per la prova pratica.
+
+
+        ESAMI CON ESITO INSUFFICIENTE: Gli studenti che sostengono una prova pratica
+        con esito negativo sono tenuti a concordare un incontro col docente per prendere
+        visione dell''elaborato prima di iscriversi a un appello successivo. La mancata
+        osservanza di questa regola porterà
+
+        alla cancellazione dalla lista e all''impossibiità di sostenere la prova.'
+      Strumenti a supporto della didattica: 'Le lezioni teoriche si svolgeranno con
+        proiezione di presentazioni in forma elettronica.
+
+
+        Le esercitazioni pratiche in laboratorio, guidate dal docente, sono parte
+        fondamentale del corso, e riguardano pressoché tutti gli argomenti del programma.
+
+
+        Le esercitazioni sono svolte con l''ausilio di un sistema di virtualizzazione
+        che permette di operare con i privilegi di amministratore su sistemi Linux.
+        Le macchine virtuali possono inoltre essere utilizzate sui sistemi personali
+        degli studenti, mettendo a disposizione un ambiente di lavoro identico a quello
+        del laboratorio.
+
+
+        Non tutti gli esercizi sono facilmente realizzabili su sistemi Apple Silicon.
+
+
+        Studenti/sse con DSA o disabilità temporanee o permanenti: si raccomanda di
+        contattare per tempo l’ufficio di Ateneo responsabile (https://site.unibo.it/studenti-con-disabilita-e-dsa/it):
+        sarà sua cura proporre agli/lle studenti/sse interessati/e eventuali adattamenti,
+        che dovranno comunque essere sottoposti, con un anticipo di 15 giorni, all’approvazione
+        del/della docente, che ne valuterà l''opportunità anche in relazione agli
+        obiettivi formativi dell''insegnamento.'
+      Orario di ricevimento: Consulta il sito web di Marco Prandini (https://www.unibo.it/sitoweb/marco.prandini)
+      SDGs: 'Imprese innovazione e infrastrutture
+
+
+        L''insegnamento contribuisce al perseguimento degli Obiettivi
+
+        di Sviluppo Sostenibile dell''Agenda 2030 dell''ONU.'
+  en:
+    url: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/487362
+    title: 2025/2026 Computer Security Laboratory T — University of Bologna
+    contents:
+      Course contents: 'IMPORTANT FORMAL NOTE
+
+
+        THE COURSES
+
+
+        - 88325 - Computer and Network Security Lab T (PART OF 88326 System Administration
+        and Security T I.C.)
+
+        - B0833 - LABORATORIO DI SICUREZZA INFORMATICA T
+
+
+        ARE THE SAME COURSE, SHOWN WITH DIFFERENT CODES FOR FORMAL REASONS; THEY CANNOT
+        BE CHOSEN TOGETHER, EVEN IF THE STUDY PLANS COMPILATION SYSTEM ALLOWS IT
+
+
+        The course''s goal is to provide an overview of the topics which are relevant
+        to secure computing systems, with a practical approach.
+
+
+        Entry requirements: IN ORDER TO EFFECTIVELY FOLLOW THE COURSE, A GOOD GRASP
+        OF COMPUTER NETWORKS AND OPERATING SYSTEMS IS ESSENTIAL. BASIC PROFICIENCY
+        WITH LINUX COMMAND LINE IS NEEDED.
+
+
+        Foundations
+
+
+        - Security properties of information and systems
+
+        - Definitions: threat, vulnerability, exploit, risk
+
+        - Attack methods and impact
+
+        - Hints: formal models for development, security frameworks, certifications
+
+
+        Red Teaming
+
+
+        - Vulnerability origins and identification
+
+        - The cybersecurity kil chain
+
+        - Enumeration, scanning and brute forcing of credentials
+
+        - Configuration mistakes exploitation for privilege escalation
+
+        - Vulnerability exploitation on web-based applications (cross-site scripting,
+        path traversal, code injection, etc.)
+
+        - Vulnerability exploitation on binary code (buffer overflow, shellcoding,
+        return to libc, etc.)
+
+
+        Information security
+
+
+        - Cryptography essentials
+
+        - Data at rest: anonymization and encryption
+
+        - Data in transit: secure communication protocols and VPNs
+
+
+        Blue teaming
+
+
+        - Physical security
+
+        - Basic operating system hardening
+
+        - Authentication systems
+
+        - Access control models and their implementation
+
+        - Network-based attack prevention: firewalls
+
+        - Attack detection: IDS, IPS, SIEM
+
+        - Incident response and recovery'
+      Readings/Bibliography: 'Slides published on Virtuale (https://virtuale.unibo.it/)
+        are a guide for the lectures, not a comprehensive study material. On the same
+        platform, all lab exercises and their solutions are available, including suggested
+        exercises to do at home.
+
+
+        Textbook in Italian
+
+
+        - "Sicurezza dei computer e delle reti" di William Stallings, a cura di Alessandra
+        de Paola e Giuseppe Lo Re - Pearson (2022)
+
+
+        or in English:
+
+
+        - "Security in Computing" by Shari Lawrence Pfleeger, Charles P. Pfleeger,
+        Jonathan Margulies - Pearson (2015)
+
+        - "Cybersecurity – Attack and Defense Strategies - Second Edition" by Yuri
+        Diogenes, Erdal Ozkaya - Packt Publishing (2019)
+
+
+        Older but quite effective to tackle Red Teaming:
+
+
+        - "Hacking Exposed 7" by Stuart McClure, Joel Scambray, George Kurtz - McGraw-Hill
+        (2012)
+
+
+        For students in need of an introduction (or simply wishing to have a reference
+        handy) about Linux as a security operations platform:
+
+
+        - "Linux Essentials for Cybersecurity", by Denise Kinsey, William Rothwell
+        - Pearson IT Certification (2018)
+
+        - "Cybersecurity Ops with bash", by Paul Troncone, Carl Albing - O''Reilly
+        Media (2019)'
+      Teaching methods: 'The course is worth 6 CFU/ECTS corresponding to 60 hours
+        of classroom or lab activity.
+
+
+        Theoretical subjects will be treated during lectures.
+
+
+        Lab activities will encompass both guided exercises to get acquainted with
+        the tools, and challenges that students will be asked to solve, typically
+        working in groups.
+
+
+        For this reason, regular attendance is of utmost importance.'
+      Assessment methods: '- The exam is composed of two parts: a verification of
+        knowledge of theoretical themes, and a practical test.
+
+        - The final grade will be computed as a combination of the marks achieved
+        in the two parts, expressed on the usual scale (18-30+honors).
+
+        - Knowledge of theoretical themes will be ascertained through a short test
+        just before the practical section of the exam. No study materials shall be
+        used during this part of the exam. The result will be immediately available,
+        and a passing grade is required to proceed to the practical part of the exam.
+
+        - The practical test is designed around the subjects proposed during the lab
+        sessions of the course. It could require candidates to complete assignments
+        on their own, as well as to engage in a challenge involving other candidates.
+
+        - Most commonly, the students will be given the choice of three exercises
+        among 4 or 5 possible topics (e.g. traffic analysis and network intrusion
+        detection, binary exploitation, web security, firewall configuration, local
+        access and privilege escalation). Each of the three chosen exercises will
+        be graded according to the correctness of the solution and of the precision
+        of the description of the thought process and employed techniques.
+
+        - During the test, candidates are allowed to use teaching materials, notes,
+        and software components prepared by themselves.
+
+        - Date and time of exams are published on AlmaEsami. Subscription is mandatory.
+
+        - Students are kindly asked to act in a civil manner, avoiding to fill the
+        lists up if they are unlikely to show up, and especially not subscribing to
+        more than one list.
+
+
+        The exams will take place exclusively in person using the School of Engineering
+        labs'' computers. It is the responsibility of the students, during the course
+        or using the free-access LAB0, to verify that their account is correctly configured
+        to use the same tools proposed during the course exercises, which will be
+        necessary for the practical test.
+
+
+        FAILED LAB EXAMS: students failing the lab exercise MUST meet with the instructor
+        to discuss their work before being allowed to try again.'
+      Teaching tools: 'Classroom lectures will be presented with the aid of slideshows
+        in electronic format.
+
+
+        Lab activities, always under the assistance of the instructors, are a key
+        component of the course, and cover almost all subjects of the syllabus.
+
+
+        A virtualized architecture will enable students to work on the proposed exercises
+        as machine administrators on Linux systems. Students will be able to replicate
+        the same architecture used in the lab, to work at home in an identical setting.
+
+
+        Some exercises are not guaranteed to be portable on Apple Silicon systems.
+
+
+        Students with learning disorders and\or temporary or permanent disabilities:
+        please, contact the office responsible (https://site.unibo.it/studenti-con-disabilita-e-dsa/en/for-students
+        ) as soon as possible so that they can propose acceptable adjustments. The
+        request for adaptation must be submitted in advance (15 days before the exam
+        date) to the lecturer, who will assess the appropriateness of the adjustments,
+        taking into account the teaching objectives.'
+      Office hours: See the website of Marco Prandini (https://www.unibo.it/sitoweb/marco.prandini/en)
+      SDGs: 'Industry, innovation and infrastructure
+
+
+        This teaching activity contributes to the achievement of the Sustainable Development
+        Goals of the UN 2030 Agenda.'
