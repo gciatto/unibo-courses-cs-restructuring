@@ -1,11 +1,16 @@
 year: 2025
-credits: 6
-ssd: ING-INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-26
-  to: 2026-06-05
+credits:
+- 6
+ssds:
+- ING-INF/01
+languages:
+- Italian
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-26
+  to: &id002 2026-06-05
 teachers:
 - id: '31791'
   name: Benini, Luca
@@ -24,6 +29,16 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/455119
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2026-02-26
+      to: 2026-06-05
+    campus: Bologna
+    programme: Laurea Magistrale in Automation Engineering Laurea Magistrale in Electric
+      Vehicle Engineering Laurea Magistrale in Ingegneria elettronica
+    ssd: ING-INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '31791'
   name: Benini, Luca
   email: luca.benini@unibo.it
@@ -41,14 +56,26 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/455265
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Ingegneria elettronica
+    ssd: ING-INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '93322'
   name: HARDWARE-SOFTWARE DESIGN OF IOT SYSTEMS M
 integrated_course: Componente del corso integrato HARDWARE SOFTWARE DESIGN OF AI AND
   IOT SYSTEMS M I.C
-campus: Bologna
-programme: Laurea Magistrale in Automation Engineering Laurea Magistrale in Electric
-  Vehicle Engineering Laurea Magistrale in Ingegneria elettronica
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Automation Engineering Laurea Magistrale in Electric Vehicle
+  Engineering Laurea Magistrale in Ingegneria elettronica
+- Laurea Magistrale in Ingegneria elettronica
 syllabus:
   it:
     title: 2025/2026 HARDWARE-SOFTWARE DESIGN OF IOT SYSTEMS M — Università di Bologna

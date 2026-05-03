@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/05
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-18
-  to: 2026-06-05
+credits:
+- 6
+ssds:
+- ING-INF/05
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-18
+  to: &id002 2026-06-05
 teachers:
 - id: '39913'
   name: Roli, Andrea
@@ -24,13 +28,25 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/447106
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Cesena
+    programme: Laurea Magistrale in Ingegneria e scienze informatiche Laurea Magistrale
+      in Ingegneria e scienze informatiche
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '91411'
   name: INTELLIGENT ROBOTIC SYSTEMS
 integrated_course: ''
-campus: Cesena
-programme: Laurea Magistrale in Ingegneria e scienze informatiche Laurea Magistrale
-  in Ingegneria e scienze informatiche
+campi:
+- Cesena
+programmes:
+- Laurea Magistrale in Ingegneria e scienze informatiche Laurea Magistrale in Ingegneria
+  e scienze informatiche
 syllabus:
   it:
     title: 2025/2026 INTELLIGENT ROBOTIC SYSTEMS — Università di Bologna

@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-18
-  to: 2025-12-18
+credits:
+- 6
+ssds:
+- INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-18
+  to: &id002 2025-12-18
 teachers:
 - id: '108414'
   name: Ceccarini, Chiara
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/498809
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Cesena
+    programme: Laurea in Tecnologie dei sistemi informatici
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '154903'
   name: Testa, Alex
   email: alex.testa2@unibo.it
@@ -38,12 +51,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/498809
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2025-09-18
+      to: 2025-12-18
+    campus: Cesena
+    programme: Laurea in Tecnologie dei sistemi informatici
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '47240'
   name: INGEGNERIA DEI SISTEMI WEB
 integrated_course: ''
-campus: Cesena
-programme: Laurea in Tecnologie dei sistemi informatici
+campi:
+- Cesena
+programmes:
+- Laurea in Tecnologie dei sistemi informatici
 syllabus:
   it:
     title: 2025/2026 INGEGNERIA DEI SISTEMI WEB — Università di Bologna

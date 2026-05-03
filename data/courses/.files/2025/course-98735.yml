@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: INF/01
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-16
-  to: 2026-05-05
+credits:
+- 6
+ssds:
+- INF/01
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-16
+  to: &id002 2026-05-05
 teachers:
 - id: '133101'
   name: Bartolini, Nicola
@@ -21,6 +25,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/518146
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Greening Energy Market and Finance
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '166955'
   name: Cordioli, Alberto
   email: alberto.cordioli@unibo.it
@@ -35,12 +48,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/518146
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2026-02-16
+      to: 2026-05-05
+    campus: Bologna
+    programme: Laurea Magistrale in Greening Energy Market and Finance
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '98735'
   name: PYTHON CODING AND DATA SCIENCE
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Greening Energy Market and Finance
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Greening Energy Market and Finance
 syllabus:
   it:
     title: 2025/2026 PYTHON CODING AND DATA SCIENCE — Università di Bologna

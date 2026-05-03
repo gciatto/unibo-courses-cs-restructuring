@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/05
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-16
-  to: 2026-04-22
+credits:
+- 6
+ssds:
+- ING-INF/05
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-16
+  to: &id002 2026-04-22
 teachers:
 - id: '61169'
   name: Casadei, Roberto
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/518106
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2026-02-16
+      to: 2026-04-22
+    campus: Cesena
+    programme: Laurea in Ingegneria elettronica
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '121200'
   name: Domini, Davide
   email: davide.domini@unibo.it
@@ -40,6 +53,15 @@ teachers:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/518106
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/518106
     details: []
+    credits: 6
+    schedule:
+      from: 2026-02-16
+      to: 2026-04-22
+    campus: Cesena
+    programme: Laurea in Ingegneria elettronica
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '131388'
   name: Micelli, Leonardo
   email: leonardo.micelli2@unibo.it
@@ -53,6 +75,15 @@ teachers:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/518106
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/518106
     details: []
+    credits: 6
+    schedule:
+      from: 2026-02-16
+      to: 2026-04-22
+    campus: Cesena
+    programme: Laurea in Ingegneria elettronica
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '42142'
   name: Montagna, Sara
   email: sara.montagna@unibo.it
@@ -67,12 +98,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/518106
     details:
     - Modulo 2
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Cesena
+    programme: Laurea in Ingegneria elettronica
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '15305'
   name: FONDAMENTI DI INFORMATICA A
 integrated_course: ''
-campus: Cesena
-programme: Laurea in Ingegneria elettronica
+campi:
+- Cesena
+programmes:
+- Laurea in Ingegneria elettronica
 syllabus:
   it:
     title: 2025/2026 FONDAMENTI DI INFORMATICA A — Università di Bologna

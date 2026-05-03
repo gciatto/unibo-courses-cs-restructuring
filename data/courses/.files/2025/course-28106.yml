@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-24
-  to: 2026-05-05
+credits:
+- 6
+ssds:
+- INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-24
+  to: &id002 2026-05-05
 teachers:
 - id: '107594'
   name: Russo, Stefano
@@ -21,12 +25,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/524407
     details:
     - Modulo 2
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Ravenna
+    programme: Laurea in Scienze ambientali
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '28106'
   name: INFORMATICA PER LE SCIENZE AMBIENTALI
 integrated_course: ''
-campus: Ravenna
-programme: Laurea in Scienze ambientali
+campi:
+- Ravenna
+programmes:
+- Laurea in Scienze ambientali
 syllabus:
   it:
     title: 2025/2026 INFORMATICA PER LE SCIENZE AMBIENTALI — Università di Bologna

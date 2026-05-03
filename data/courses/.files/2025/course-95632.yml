@@ -1,11 +1,15 @@
 year: 2025
-credits: 3
-ssd: ING-INF/05
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-23
-  to: 2026-04-15
+credits:
+- 3
+ssds:
+- ING-INF/05
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-23
+  to: &id002 2026-04-15
 teachers:
 - id: '33159'
   name: Golfarelli, Matteo
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/466770
     details:
     - 3 cfu
+    credits: 3
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Cesena
+    programme: Laurea Magistrale in Digital Transformation Management
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '142483'
   name: Pia, Andrea
   email: andrea.pia@unibo.it
@@ -38,12 +51,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/466770
     details:
     - Modulo 2
+    credits: 3
+    schedule:
+      from: 2026-02-23
+      to: 2026-04-15
+    campus: Cesena
+    programme: Laurea Magistrale in Digital Transformation Management
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '95632'
   name: LABORATORY ON DIGITAL TRANSFORMATION TECHNOLOGIES
 integrated_course: ''
-campus: Cesena
-programme: Laurea Magistrale in Digital Transformation Management
+campi:
+- Cesena
+programmes:
+- Laurea Magistrale in Digital Transformation Management
 syllabus:
   it:
     title: 2025/2026 LABORATORY ON DIGITAL TRANSFORMATION TECHNOLOGIES — Università

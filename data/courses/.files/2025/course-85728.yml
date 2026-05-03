@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/05
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-17
-  to: 2026-06-03
+credits:
+- 6
+ssds:
+- ING-INF/05
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-17
+  to: &id002 2026-06-03
 teachers:
 - id: '118631'
   name: Barchi, Francesco
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/484399
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2025-09-17
+      to: 2026-06-03
+    campus: Bologna
+    programme: Laurea Magistrale in Electronic Engineering for Intelligent Vehicles
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '178035'
   name: Guarino, Idio
   email: idio.guarino@unibo.it
@@ -41,13 +54,24 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/484399
     details:
     - Modulo 2
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Electronic Engineering for Intelligent Vehicles
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '85728'
   name: REAL TIME OS M
 integrated_course: Componente del corso integrato HARDWARE-SOFTWARE DESIGN OF EMBEDDED
   SYSTEMS M I.C.
-campus: Bologna
-programme: Laurea Magistrale in Electronic Engineering for Intelligent Vehicles
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Electronic Engineering for Intelligent Vehicles
 syllabus:
   it:
     title: 2025/2026 REAL TIME OS M — Università di Bologna

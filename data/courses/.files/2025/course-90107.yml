@@ -1,11 +1,15 @@
 year: 2025
-credits: 9
-ssd: INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-24
-  to: 2025-12-19
+credits:
+- 9
+ssds:
+- INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-24
+  to: &id002 2025-12-19
 teachers:
 - id: '156769'
   name: Branchetti, Simone
@@ -25,6 +29,15 @@ teachers:
     details:
     - 9 CFU
     - 9 cfu
+    credits: 9
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Informatica
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '33449'
   name: Montesi, Danilo
   email: danilo.montesi@unibo.it
@@ -43,6 +56,15 @@ teachers:
     details:
     - 9 CFU
     - 9 cfu
+    credits: 9
+    schedule:
+      from: 2025-09-24
+      to: 2025-12-19
+    campus: Bologna
+    programme: Laurea in Informatica
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '158435'
   name: Pistore, Laura
   email: laura.pistore@unibo.it
@@ -58,12 +80,23 @@ teachers:
     details:
     - 9 CFU
     - 9 cfu
+    credits: 9
+    schedule:
+      from: 2025-09-24
+      to: 2025-12-19
+    campus: Bologna
+    programme: Laurea in Informatica
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '90107'
   name: BASI DI DATI
 integrated_course: ''
-campus: Bologna
-programme: Laurea in Informatica
+campi:
+- Bologna
+programmes:
+- Laurea in Informatica
 syllabus:
   it:
     title: 2025/2026 BASI DI DATI (9 CFU) — Università di Bologna

@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: INF/01
-language: Italiano
-teaching_mode: Lezioni in presenza (totalmente o parzialmente)
-schedule:
-  from: 2025-09-15
-  to: 2025-12-03
+credits:
+- 6
+ssds:
+- INF/01
+languages:
+- Italiano
+teaching_modes:
+- Lezioni in presenza (totalmente o parzialmente)
+schedules:
+- from: &id001 2025-09-15
+  to: &id002 2025-12-03
 teachers:
 - id: '41449'
   name: Di Iorio, Angelo
@@ -24,6 +28,15 @@ teachers:
     details:
     - '1'
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2025-09-15
+      to: 2025-12-03
+    campus: Bologna
+    programme: Laurea in Filosofia Laurea in Lettere Laurea in Scienze della comunicazione
+    ssd: INF/01
+    language: Italiano
+    teaching_mode: Lezioni in presenza (totalmente o parzialmente)
 - id: '150019'
   name: Paolini, Lorenzo
   email: lorenzo.paolini11@unibo.it
@@ -41,6 +54,15 @@ teachers:
     details:
     - '1'
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Filosofia Laurea in Lettere Laurea in Scienze della comunicazione
+    ssd: INF/01
+    language: Italiano
+    teaching_mode: Lezioni in presenza (totalmente o parzialmente)
 - id: '120976'
   name: Pedretti, Carlo Teo
   email: carloteo.pedretti2@unibo.it
@@ -58,12 +80,23 @@ teachers:
     details:
     - '1'
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2025-09-15
+      to: 2025-12-03
+    campus: Bologna
+    programme: Laurea in Filosofia Laurea in Lettere Laurea in Scienze della comunicazione
+    ssd: INF/01
+    language: Italiano
+    teaching_mode: Lezioni in presenza (totalmente o parzialmente)
 course_title:
   id: '75835'
   name: TECNOLOGIE WEB
 integrated_course: ''
-campus: Bologna
-programme: Laurea in Filosofia Laurea in Lettere Laurea in Scienze della comunicazione
+campi:
+- Bologna
+programmes:
+- Laurea in Filosofia Laurea in Lettere Laurea in Scienze della comunicazione
 syllabus:
   it:
     title: 2025/2026 TECNOLOGIE WEB (1) — Università di Bologna

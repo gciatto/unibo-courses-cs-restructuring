@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/05
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-20
-  to: 2026-06-05
+credits:
+- 6
+ssds:
+- ING-INF/05
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-20
+  to: &id002 2026-06-05
 teachers:
 - id: '30946'
   name: Callegati, Franco
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/526560
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Cesena
+    programme: Laurea Magistrale in Ingegneria e scienze informatiche
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '51394'
   name: Melis, Andrea
   email: a.melis@unibo.it
@@ -41,12 +54,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/526560
     details:
     - Modulo 2
+    credits: 6
+    schedule:
+      from: 2026-02-20
+      to: 2026-06-05
+    campus: Cesena
+    programme: Laurea Magistrale in Ingegneria e scienze informatiche
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '96995'
   name: PROGRAMMABLE NETWORKING
 integrated_course: ''
-campus: Cesena
-programme: Laurea Magistrale in Ingegneria e scienze informatiche
+campi:
+- Cesena
+programmes:
+- Laurea Magistrale in Ingegneria e scienze informatiche
 syllabus:
   it:
     title: 2025/2026 PROGRAMMABLE NETWORKING — Università di Bologna

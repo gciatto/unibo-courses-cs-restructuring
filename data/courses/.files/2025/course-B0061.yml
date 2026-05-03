@@ -1,11 +1,15 @@
 year: 2025
-credits: 8
-ssd: INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-17
-  to: 2026-05-15
+credits:
+- 8
+ssds:
+- INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-17
+  to: &id002 2026-05-15
 teachers:
 - id: '41449'
   name: Di Iorio, Angelo
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/518190
     details:
     - 8 cfu
+    credits: 8
+    schedule:
+      from: 2026-02-17
+      to: 2026-05-15
+    campus: Bologna
+    programme: Laurea Magistrale in Governance e politiche dell'innovazione digitale
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '36736'
   name: Lodi, Giorgia
   email: giorgia.lodi4@unibo.it
@@ -38,12 +51,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/518190
     details:
     - Modulo 2
+    credits: 8
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Governance e politiche dell'innovazione digitale
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: B0061
   name: METODI INFORMATICI PER LA TRASFORMAZIONE DIGITALE
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Governance e politiche dell'innovazione digitale
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Governance e politiche dell'innovazione digitale
 syllabus:
   it:
     title: 2025/2026 METODI INFORMATICI PER LA TRASFORMAZIONE DIGITALE — Università

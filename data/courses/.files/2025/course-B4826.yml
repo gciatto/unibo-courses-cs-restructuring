@@ -1,11 +1,15 @@
 year: 2025
-credits: 3
-ssd: INF/01
-language: Italian
-teaching_mode: E-learning
-schedule:
-  from: 2025-09-30
-  to: 2025-12-11
+credits:
+- 3
+ssds:
+- INF/01
+languages:
+- Italian
+teaching_modes:
+- E-learning
+schedules:
+- from: &id001 2025-09-30
+  to: &id002 2025-12-11
 teachers:
 - id: '55638'
   name: Asprino, Luigi
@@ -21,13 +25,25 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/502318
     details:
     - 3 cfu
+    credits: 3
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Lingue e letterature straniere Laurea in Lingue, mercati
+      e culture dell'Asia e dell'Africa mediterranea
+    ssd: INF/01
+    language: Italian
+    teaching_mode: E-learning
 course_title:
   id: B4826
   name: INFORMATICA PER STUDI UMANISTICI
 integrated_course: ''
-campus: Bologna
-programme: Laurea in Lingue e letterature straniere Laurea in Lingue, mercati e culture
-  dell'Asia e dell'Africa mediterranea
+campi:
+- Bologna
+programmes:
+- Laurea in Lingue e letterature straniere Laurea in Lingue, mercati e culture dell'Asia
+  e dell'Africa mediterranea
 syllabus:
   it:
     title: 2025/2026 INFORMATICA PER STUDI UMANISTICI — Università di Bologna

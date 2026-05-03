@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: INF/01
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-03-03
-  to: 2026-05-19
+credits:
+- 6
+ssds:
+- INF/01
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-03-03
+  to: &id002 2026-05-19
 teachers:
 - id: '169199'
   name: Cormio, Anna
@@ -21,6 +25,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/424201
     details:
     - Modulo 2
+    credits: 6
+    schedule:
+      from: 2026-03-03
+      to: 2026-05-19
+    campus: Bologna
+    programme: Laurea in Genomics
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '127088'
   name: Malizia, Enrico
   email: enrico.malizia@unibo.it
@@ -38,12 +51,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/424201
     details:
     - Modulo 2
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Genomics
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '85301'
   name: ALGORITHMS AND DATA STRUCTURES IN BIOLOGY
 integrated_course: ''
-campus: Bologna
-programme: Laurea in Genomics
+campi:
+- Bologna
+programmes:
+- Laurea in Genomics
 syllabus:
   it:
     title: 2025/2026 ALGORITHMS AND DATA STRUCTURES IN BIOLOGY — Università di Bologna

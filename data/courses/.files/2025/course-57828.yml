@@ -1,11 +1,15 @@
 year: 2025
-credits: 3
-ssd: INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-03-04
-  to: 2026-05-06
+credits:
+- 3
+ssds:
+- INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-03-04
+  to: &id002 2026-05-06
 teachers:
 - id: '107594'
   name: Russo, Stefano
@@ -21,14 +25,27 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/361001
     details:
     - 3 cfu
+    credits: 3
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Tecniche della prevenzione nell'ambiente e nei luoghi di
+      lavoro (abilitante alla professione sanitaria di tecnico della prevenzione nell'ambiente
+      e nei luoghi di lavoro)
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '57828'
   name: INFORMATICA
 integrated_course: Componente del corso integrato SCIENZE INGEGNERISTICHE - C.I.
-campus: Bologna
-programme: Laurea in Tecniche della prevenzione nell'ambiente e nei luoghi di lavoro
-  (abilitante alla professione sanitaria di tecnico della prevenzione nell'ambiente
-  e nei luoghi di lavoro)
+campi:
+- Bologna
+programmes:
+- Laurea in Tecniche della prevenzione nell'ambiente e nei luoghi di lavoro (abilitante
+  alla professione sanitaria di tecnico della prevenzione nell'ambiente e nei luoghi
+  di lavoro)
 syllabus:
   it:
     title: 2025/2026 INFORMATICA — Università di Bologna

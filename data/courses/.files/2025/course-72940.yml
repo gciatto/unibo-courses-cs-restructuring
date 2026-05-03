@@ -1,11 +1,15 @@
 year: 2025
-credits: 8
-ssd: ING-INF/05
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-16
-  to: 2025-12-16
+credits:
+- 8
+ssds:
+- ING-INF/05
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-16
+  to: &id002 2025-12-16
 teachers:
 - id: '31888'
   name: Denti, Enrico
@@ -24,12 +28,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/517544
     details:
     - 8 cfu
+    credits: 8
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Ingegneria informatica
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '72940'
   name: LINGUAGGI E MODELLI COMPUTAZIONALI M
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Ingegneria informatica
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Ingegneria informatica
 syllabus:
   it:
     title: 2025/2026 LINGUAGGI E MODELLI COMPUTAZIONALI M — Università di Bologna

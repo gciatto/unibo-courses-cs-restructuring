@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/05
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-17
-  to: 2026-06-04
+credits:
+- 6
+ssds:
+- ING-INF/05
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-17
+  to: &id002 2026-06-04
 teachers:
 - id: '49670'
   name: Amadini, Roberto
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/530690
     details:
     - Modulo 2
+    credits: 6
+    schedule:
+      from: 2026-02-17
+      to: 2026-06-04
+    campus: Bologna
+    programme: Laurea Magistrale in Artificial Intelligence
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '38590'
   name: Kiziltan, Zeynep
   email: zeynep.kiziltan@unibo.it
@@ -41,6 +54,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/530690
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Artificial Intelligence
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '150603'
   name: Quarta, Angelo
   email: angelo.quarta2@unibo.it
@@ -55,12 +77,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/530690
     details:
     - Modulo 2
+    credits: 6
+    schedule:
+      from: 2026-02-17
+      to: 2026-06-04
+    campus: Bologna
+    programme: Laurea Magistrale in Artificial Intelligence
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '91762'
   name: COMBINATORIAL DECISION MAKING AND OPTIMIZATION
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Artificial Intelligence
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Artificial Intelligence
 syllabus:
   it:
     title: 2025/2026 COMBINATORIAL DECISION MAKING AND OPTIMIZATION — Università di

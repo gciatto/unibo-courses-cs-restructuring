@@ -107,6 +107,15 @@ class TestMergeTeachings(unittest.TestCase):
             for page in merged_payload["syllabus"].values():
                 self.assertNotIn("url", page)
 
+            # Check new list fields
+            self.assertEqual(merged_payload["credits"], [6])
+            self.assertEqual(merged_payload["ssds"], ["INF/01"])
+            self.assertEqual(merged_payload["languages"], ["English"])
+            self.assertEqual(merged_payload["teaching_modes"], ["In-person"])
+            self.assertEqual(merged_payload["campi"], ["Bologna"])
+            self.assertEqual(merged_payload["programmes"], ["LM Example"])
+            self.assertEqual(merged_payload["schedules"], [])
+
             modules_by_email = {
                 teacher["email"]: teacher["module"]
                 for teacher in merged_payload["teachers"]
@@ -118,6 +127,12 @@ class TestMergeTeachings(unittest.TestCase):
                     "url": "https://example.invalid/course/1",
                     "syllabus_urls": {"en": "https://example.invalid/en"},
                     "details": ["Module A", "6 cfu"],
+                    "credits": 6,
+                    "campus": "Bologna",
+                    "programme": "LM Example",
+                    "ssd": "INF/01",
+                    "language": "English",
+                    "teaching_mode": "In-person",
                 },
             )
             self.assertEqual(
@@ -127,6 +142,12 @@ class TestMergeTeachings(unittest.TestCase):
                     "url": "https://example.invalid/course/1",
                     "syllabus_urls": {"en": "https://example.invalid/en"},
                     "details": ["Module B"],
+                    "credits": 6,
+                    "campus": "Bologna",
+                    "programme": "LM Example",
+                    "ssd": "INF/01",
+                    "language": "English",
+                    "teaching_mode": "In-person",
                 },
             )
 

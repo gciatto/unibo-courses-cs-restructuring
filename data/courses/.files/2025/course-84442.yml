@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/01
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-15
-  to: 2025-12-16
+credits:
+- 6
+ssds:
+- ING-INF/01
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-15
+  to: &id002 2025-12-16
 teachers:
 - id: '96420'
   name: Angelotti, Alberto Maria
@@ -24,6 +28,16 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/421799
     details:
     - Modulo 2
+    credits: 6
+    schedule:
+      from: 2025-09-15
+      to: 2025-12-16
+    campus: Bologna
+    programme: Laurea Magistrale in Ingegneria elettronica Laurea Magistrale in Ingegneria
+      elettronica Laurea Magistrale in Telecommunications Engineering
+    ssd: ING-INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '32331'
   name: Santarelli, Alberto
   email: alberto.santarelli@unibo.it
@@ -41,13 +55,25 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/514342
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Ingegneria elettronica Laurea Magistrale in Ingegneria
+      elettronica Laurea Magistrale in Telecommunications Engineering
+    ssd: ING-INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '84442'
   name: HIGH FREQUENCY ELECTRONIC CIRCUITS M
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Ingegneria elettronica Laurea Magistrale in Ingegneria
-  elettronica Laurea Magistrale in Telecommunications Engineering
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Ingegneria elettronica Laurea Magistrale in Ingegneria elettronica
+  Laurea Magistrale in Telecommunications Engineering
 syllabus:
   it:
     title: 2025/2026 HIGH FREQUENCY ELECTRONIC CIRCUITS M — Università di Bologna

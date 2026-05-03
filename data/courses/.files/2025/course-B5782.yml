@@ -1,11 +1,15 @@
 year: 2025
-credits: 10
-ssd: INF/01
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-03-02
-  to: 2026-06-03
+credits:
+- 10
+ssds:
+- INF/01
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-03-02
+  to: &id002 2026-06-03
 teachers:
 - id: '40940'
   name: Di Lena, Pietro
@@ -24,12 +28,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/524683
     details:
     - 10 cfu
+    credits: 10
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Bioinformatics
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: B5782
   name: ALGORITHMS AND DATA STRUCTURES FOR COMPUTATIONAL BIOLOGY
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Bioinformatics
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Bioinformatics
 syllabus:
   it:
     title: 2025/2026 ALGORITHMS AND DATA STRUCTURES FOR COMPUTATIONAL BIOLOGY — Università

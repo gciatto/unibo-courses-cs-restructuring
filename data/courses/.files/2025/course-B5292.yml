@@ -1,11 +1,15 @@
 year: 2025
-credits: 3
-ssd: INF/01
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-04-09
-  to: 2026-05-15
+credits:
+- 3
+ssds:
+- INF/01
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-04-09
+  to: &id002 2026-05-15
 teachers:
 - id: '36732'
   name: Presutti, Valentina
@@ -25,13 +29,24 @@ teachers:
     details:
     - LM
     - 3 cfu
+    credits: 3
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Language, Society and Communication
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: B5292
   name: KNOWLEDGE ENGINEERING FOR THE HUMANITIES
 integrated_course: Componente del corso integrato KNOWLEDGE ENGINEERING AND COMPUTATION
   FOR THE HUMANITIES (LM) I.C.
-campus: Bologna
-programme: Laurea Magistrale in Language, Society and Communication
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Language, Society and Communication
 syllabus:
   it:
     title: 2025/2026 KNOWLEDGE ENGINEERING FOR THE HUMANITIES (LM) — Università di

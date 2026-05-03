@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-24
-  to: 2026-05-14
+credits:
+- 6
+ssds:
+- INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-24
+  to: &id002 2026-05-14
 teachers:
 - id: '40030'
   name: Barbaresi, Alberto
@@ -24,12 +28,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/517925
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Scienze e tecnologie per il verde e il paesaggio
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '97466'
   name: RAPPRESENTAZIONE DIGITALE DEL PROGETTO DI PAESAGGIO
 integrated_course: ''
-campus: Bologna
-programme: Laurea in Scienze e tecnologie per il verde e il paesaggio
+campi:
+- Bologna
+programmes:
+- Laurea in Scienze e tecnologie per il verde e il paesaggio
 syllabus:
   it:
     title: 2025/2026 RAPPRESENTAZIONE DIGITALE DEL PROGETTO DI PAESAGGIO — Università

@@ -1,11 +1,15 @@
 year: 2025
-credits: 12
-ssd: ING-INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-22
-  to: 2026-06-04
+credits:
+- 12
+ssds:
+- ING-INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-22
+  to: &id002 2026-06-04
 teachers:
 - id: '38093'
   name: Fiegna, Claudio
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/469208
     details:
     - 12 cfu
+    credits: 12
+    schedule:
+      from: 2025-09-22
+      to: 2026-06-04
+    campus: Cesena
+    programme: Laurea in Ingegneria biomedica Laurea in Ingegneria elettronica
+    ssd: ING-INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '47556'
   name: Pizzotti, Matteo
   email: matteo.pizzotti@unibo.it
@@ -38,6 +51,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/447695
     details:
     - Modulo 2
+    credits: 12
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Cesena
+    programme: Laurea in Ingegneria biomedica Laurea in Ingegneria elettronica
+    ssd: ING-INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '15999'
   name: Sangiorgi, Enrico
   email: enrico.sangiorgi@unibo.it
@@ -52,6 +74,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/447695
     details:
     - Modulo 2
+    credits: 12
+    schedule:
+      from: 2025-09-22
+      to: 2026-06-04
+    campus: Cesena
+    programme: Laurea in Ingegneria biomedica Laurea in Ingegneria elettronica
+    ssd: ING-INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '73914'
   name: Tamburini, Cinzia
   email: cinzia.tamburini3@unibo.it
@@ -65,12 +96,23 @@ teachers:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/447695
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/447695
     details: []
+    credits: 12
+    schedule:
+      from: 2025-09-22
+      to: 2026-06-04
+    campus: Cesena
+    programme: Laurea in Ingegneria biomedica Laurea in Ingegneria elettronica
+    ssd: ING-INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: 00269
   name: ELETTRONICA
 integrated_course: ''
-campus: Cesena
-programme: Laurea in Ingegneria biomedica Laurea in Ingegneria elettronica
+campi:
+- Cesena
+programmes:
+- Laurea in Ingegneria biomedica Laurea in Ingegneria elettronica
 syllabus:
   it:
     title: 2025/2026 ELETTRONICA — Università di Bologna

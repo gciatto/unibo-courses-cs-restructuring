@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-17
-  to: 2026-06-04
+credits:
+- 6
+ssds:
+- ING-INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-17
+  to: &id002 2026-06-04
 teachers:
 - id: '49926'
   name: Tallarico, Andrea Natale
@@ -24,12 +28,24 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/546078
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Cesena
+    programme: Laurea Magistrale in Ingegneria elettronica e telecomunicazioni per
+      l'energia
+    ssd: ING-INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: B8390
   name: DISPOSITIVI E CIRCUITI INTEGRATI DI POTENZA LM
 integrated_course: ''
-campus: Cesena
-programme: Laurea Magistrale in Ingegneria elettronica e telecomunicazioni per l'energia
+campi:
+- Cesena
+programmes:
+- Laurea Magistrale in Ingegneria elettronica e telecomunicazioni per l'energia
 syllabus:
   it:
     title: 2025/2026 DISPOSITIVI E CIRCUITI INTEGRATI DI POTENZA LM — Università di

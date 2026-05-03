@@ -1,11 +1,15 @@
 year: 2025
-credits: 9
-ssd: ING-INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-18
-  to: 2025-12-19
+credits:
+- 9
+ssds:
+- ING-INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-18
+  to: &id002 2025-12-19
 teachers:
 - id: '42144'
   name: Paolini, Enrico
@@ -24,6 +28,16 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/384679
     details:
     - 9 cfu
+    credits: 9
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Cesena
+    programme: Laurea Magistrale in Ingegneria elettronica e telecomunicazioni per
+      l'energia
+    ssd: ING-INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '38448'
   name: Romani, Aldo
   email: aldo.romani@unibo.it
@@ -41,12 +55,24 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/384679
     details:
     - Modulo 2
+    credits: 9
+    schedule:
+      from: 2025-09-18
+      to: 2025-12-19
+    campus: Cesena
+    programme: Laurea Magistrale in Ingegneria elettronica e telecomunicazioni per
+      l'energia
+    ssd: ING-INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '34991'
   name: PROGETTO DI ELETTRONICA E TELECOMUNICAZIONI LM
 integrated_course: ''
-campus: Cesena
-programme: Laurea Magistrale in Ingegneria elettronica e telecomunicazioni per l'energia
+campi:
+- Cesena
+programmes:
+- Laurea Magistrale in Ingegneria elettronica e telecomunicazioni per l'energia
 syllabus:
   it:
     title: 2025/2026 PROGETTO DI ELETTRONICA E TELECOMUNICAZIONI LM — Università di

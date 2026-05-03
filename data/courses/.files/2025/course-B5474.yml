@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-23
-  to: 2025-12-10
+credits:
+- 6
+ssds:
+- INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-23
+  to: &id002 2025-12-10
 teachers:
 - id: '43238'
   name: Lanese, Ivan
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/518556
     details:
     - Modulo 2
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Informatica
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '35634'
   name: Rossi, Davide
   email: daviderossi@unibo.it
@@ -41,12 +54,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/518556
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2025-09-23
+      to: 2025-12-10
+    campus: Bologna
+    programme: Laurea Magistrale in Informatica
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: B5474
   name: ARCHITETTURE SOFTWARE A MICROSERVIZI
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Informatica
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Informatica
 syllabus:
   it:
     title: 2025/2026 ARCHITETTURE SOFTWARE A MICROSERVIZI — Università di Bologna

@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/05
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-17
-  to: 2025-12-09
+credits:
+- 6
+ssds:
+- ING-INF/05
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-17
+  to: &id002 2025-12-09
 teachers:
 - id: '176530'
   name: Notaro, Fabio
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/498814
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2025-09-17
+      to: 2025-12-09
+    campus: Cesena
+    programme: Laurea in Tecnologie dei sistemi informatici
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '107699'
   name: Pellegrini, Lorenzo
   email: l.pellegrini@unibo.it
@@ -41,12 +54,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/498814
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Cesena
+    programme: Laurea in Tecnologie dei sistemi informatici
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '96007'
   name: ELEMENTI DI ARCHITETTURE DEGLI ELABORATORI E SISTEMI OPERATIVI
 integrated_course: ''
-campus: Cesena
-programme: Laurea in Tecnologie dei sistemi informatici
+campi:
+- Cesena
+programmes:
+- Laurea in Tecnologie dei sistemi informatici
 syllabus:
   it:
     title: 2025/2026 ELEMENTI DI ARCHITETTURE DEGLI ELABORATORI E SISTEMI OPERATIVI

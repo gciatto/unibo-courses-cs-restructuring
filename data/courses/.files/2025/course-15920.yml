@@ -1,11 +1,15 @@
 year: 2025
-credits: 1
-ssd: INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-10-21
-  to: 2025-11-04
+credits:
+- 1
+ssds:
+- INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-10-21
+  to: &id002 2025-11-04
 teachers:
 - id: '50376'
   name: Gesuato, Alessandro
@@ -21,14 +25,25 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/359935
     details:
     - 1 cfu
+    credits: 1
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Igiene dentale (abilitante alla professione sanitaria di
+      igienista dentale)
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '15920'
   name: LABORATORIO INFORMATICO
 integrated_course: Componente del corso integrato FISICA, STATISTICA E INFORMATICA
   (C.I.)
-campus: Bologna
-programme: Laurea in Igiene dentale (abilitante alla professione sanitaria di igienista
-  dentale)
+campi:
+- Bologna
+programmes:
+- Laurea in Igiene dentale (abilitante alla professione sanitaria di igienista dentale)
 syllabus:
   it:
     title: 2025/2026 LABORATORIO INFORMATICO — Università di Bologna

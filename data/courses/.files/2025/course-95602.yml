@@ -1,11 +1,15 @@
 year: 2025
-credits: 12
-ssd: INF/01
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-19
-  to: 2025-12-15
+credits:
+- 12
+ssds:
+- INF/01
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-19
+  to: &id002 2025-12-15
 teachers:
 - id: '35252'
   name: Bevilacqua, Alessandro
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/517113
     details:
     - Modulo 3
+    credits: 12
+    schedule:
+      from: 2025-09-19
+      to: 2025-12-15
+    campus: Cesena
+    programme: Laurea Magistrale in Digital Transformation Management
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '35611'
   name: Bravetti, Mario
   email: mario.bravetti@unibo.it
@@ -41,6 +54,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/517113
     details:
     - 12 cfu
+    credits: 12
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Cesena
+    programme: Laurea Magistrale in Digital Transformation Management
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '47836'
   name: Gallinucci, Enrico
   email: enrico.gallinucci@unibo.it
@@ -58,12 +80,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/517113
     details:
     - Modulo 2
+    credits: 12
+    schedule:
+      from: 2025-09-19
+      to: 2025-12-15
+    campus: Cesena
+    programme: Laurea Magistrale in Digital Transformation Management
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '95602'
   name: PROGRAMMING AND COMPUTER ARCHITECTURES
 integrated_course: ''
-campus: Cesena
-programme: Laurea Magistrale in Digital Transformation Management
+campi:
+- Cesena
+programmes:
+- Laurea Magistrale in Digital Transformation Management
 syllabus:
   it:
     title: 2025/2026 PROGRAMMING AND COMPUTER ARCHITECTURES — Università di Bologna

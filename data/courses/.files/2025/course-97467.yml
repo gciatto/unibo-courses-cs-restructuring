@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/01
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-16
-  to: 2025-12-19
+credits:
+- 6
+ssds:
+- ING-INF/01
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-16
+  to: &id002 2025-12-19
 teachers:
 - id: '163863'
   name: De Souza Rosa, Leandro
@@ -24,6 +28,16 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/472948
     details:
     - Modulo 2
+    credits: 6
+    schedule:
+      from: 2025-09-16
+      to: 2025-12-19
+    campus: Bologna
+    programme: Laurea Magistrale in Advanced Automotive Engineering Laurea Magistrale
+      in Automation Engineering
+    ssd: ING-INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '42553'
   name: Mangia, Mauro
   email: mauro.mangia@unibo.it
@@ -41,13 +55,25 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/472948
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Advanced Automotive Engineering Laurea Magistrale
+      in Automation Engineering
+    ssd: ING-INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '97467'
   name: BIG DATA ANALYTICS FOR AUTOMOTIVE MANUFACTURING APPLICATIONS
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Advanced Automotive Engineering Laurea Magistrale
-  in Automation Engineering
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Advanced Automotive Engineering Laurea Magistrale in Automation
+  Engineering
 syllabus:
   it:
     title: 2025/2026 BIG DATA ANALYTICS FOR AUTOMOTIVE MANUFACTURING APPLICATIONS

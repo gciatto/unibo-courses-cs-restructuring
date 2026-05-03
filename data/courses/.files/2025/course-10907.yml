@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-16
-  to: 2026-05-26
+credits:
+- 6
+ssds:
+- ING-INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-16
+  to: &id002 2026-05-26
 teachers:
 - id: '149544'
   name: Marasca, Gabriele
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/469210
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Cesena
+    programme: Laurea in Ingegneria elettronica
+    ssd: ING-INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '38448'
   name: Romani, Aldo
   email: aldo.romani@unibo.it
@@ -41,12 +54,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/469210
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2026-02-16
+      to: 2026-05-26
+    campus: Cesena
+    programme: Laurea in Ingegneria elettronica
+    ssd: ING-INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '10907'
   name: ELETTRONICA DEI SISTEMI DIGITALI
 integrated_course: ''
-campus: Cesena
-programme: Laurea in Ingegneria elettronica
+campi:
+- Cesena
+programmes:
+- Laurea in Ingegneria elettronica
 syllabus:
   it:
     title: 2025/2026 ELETTRONICA DEI SISTEMI DIGITALI — Università di Bologna

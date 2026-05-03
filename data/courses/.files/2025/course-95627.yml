@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/05
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-03-03
-  to: 2026-06-04
+credits:
+- 6
+ssds:
+- ING-INF/05
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-03-03
+  to: &id002 2026-06-04
 teachers:
 - id: '76853'
   name: Ciatto, Giovanni
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/517125
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Cesena
+    programme: Laurea Magistrale in Digital Transformation Management
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '121200'
   name: Domini, Davide
   email: davide.domini@unibo.it
@@ -41,12 +54,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/517125
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2026-03-03
+      to: 2026-06-04
+    campus: Cesena
+    programme: Laurea Magistrale in Digital Transformation Management
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '95627'
   name: SOFTWARE ENGINEERING
 integrated_course: ''
-campus: Cesena
-programme: Laurea Magistrale in Digital Transformation Management
+campi:
+- Cesena
+programmes:
+- Laurea Magistrale in Digital Transformation Management
 syllabus:
   it:
     title: 2025/2026 SOFTWARE ENGINEERING — Università di Bologna

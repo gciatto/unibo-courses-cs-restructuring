@@ -1,11 +1,15 @@
 year: 2025
-credits: 8
-ssd: ING-INF/05
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-18
-  to: 2026-06-04
+credits:
+- 8
+ssds:
+- ING-INF/05
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-18
+  to: &id002 2026-06-04
 teachers:
 - id: '34533'
   name: Bellavista, Paolo
@@ -24,12 +28,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/468026
     details:
     - 8 cfu
+    credits: 8
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Ingegneria informatica
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '78779'
   name: MOBILE SYSTEMS M
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Ingegneria informatica
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Ingegneria informatica
 syllabus:
   it:
     title: 2025/2026 MOBILE SYSTEMS M — Università di Bologna

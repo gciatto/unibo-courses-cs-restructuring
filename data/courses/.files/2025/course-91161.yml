@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: INF/01
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-03-05
-  to: 2026-05-28
+credits:
+- 6
+ssds:
+- INF/01
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-03-05
+  to: &id002 2026-05-28
 teachers:
 - id: '145082'
   name: Felli, Paolo
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/445693
     details:
     - Modulo 1
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Genomics
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '50151'
   name: Sirbu, Alina
   email: alina.sirbu@unibo.it
@@ -41,12 +54,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/445693
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2026-03-05
+      to: 2026-05-28
+    campus: Bologna
+    programme: Laurea in Genomics
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '91161'
   name: NETWORKS, SECURITY AND DATA BASES
 integrated_course: ''
-campus: Bologna
-programme: Laurea in Genomics
+campi:
+- Bologna
+programmes:
+- Laurea in Genomics
 syllabus:
   it:
     title: 2025/2026 NETWORKS, SECURITY AND DATA BASES — Università di Bologna

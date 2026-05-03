@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: INF/01
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-15
-  to: 2025-11-24
+credits:
+- 6
+ssds:
+- INF/01
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-15
+  to: &id002 2025-11-24
 teachers:
 - id: '31791'
   name: Benini, Luca
@@ -25,6 +29,15 @@ teachers:
     details:
     - Modulo 2
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2025-09-15
+      to: 2025-11-24
+    campus: Bologna
+    programme: Laurea Magistrale in Artificial Intelligence
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '42372'
   name: Marzolla, Moreno
   email: moreno.marzolla@unibo.it
@@ -42,6 +55,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/446607
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Artificial Intelligence
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '130252'
   name: Nadalini, Davide
   email: d.nadalini@unibo.it
@@ -56,12 +78,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/446607
     details:
     - Modulo 2
+    credits: 6
+    schedule:
+      from: 2025-09-15
+      to: 2025-11-24
+    campus: Bologna
+    programme: Laurea Magistrale in Artificial Intelligence
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '91259'
   name: ARCHITECTURES AND PLATFORMS FOR ARTIFICIAL INTELLIGENCE
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Artificial Intelligence
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Artificial Intelligence
 syllabus:
   it:
     title: 2025/2026 ARCHITECTURES AND PLATFORMS FOR ARTIFICIAL INTELLIGENCE — Università

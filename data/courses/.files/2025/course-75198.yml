@@ -1,11 +1,15 @@
 year: 2025
-credits: 1
-ssd: ING-INF/05
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-10-31
-  to: 2025-11-28
+credits:
+- 1
+ssds:
+- ING-INF/05
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-10-31
+  to: &id002 2025-11-28
 teachers:
 - id: '48256'
   name: Favero, Luca
@@ -21,13 +25,24 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/459706
     details:
     - 1 cfu
+    credits: 1
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Scienze infermieristiche e ostetriche
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '75198'
   name: SISTEMI DI ELABORAZIONE DELLE INFORMAZIONI SANITARIE -
 integrated_course: Componente del corso integrato METODOLOGIE DI ANALISI DEI PROCESSI
   ORGANIZZATIVI - C.I.
-campus: Bologna
-programme: Laurea Magistrale in Scienze infermieristiche e ostetriche
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Scienze infermieristiche e ostetriche
 syllabus:
   it:
     title: 2025/2026 SISTEMI DI ELABORAZIONE DELLE INFORMAZIONI SANITARIE - — Università

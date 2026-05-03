@@ -1,11 +1,15 @@
 year: 2025
-credits: 5
-ssd: INF/01
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-15
-  to: 2025-10-20
+credits:
+- 5
+ssds:
+- INF/01
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-15
+  to: &id002 2025-10-20
 teachers:
 - id: '41421'
   name: Bersaglia, Luca
@@ -21,13 +25,25 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/503988
     details:
     - 5 cfu
+    credits: 5
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Innovation and Organization of Culture and the
+      Arts
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: B5674
   name: MANAGEMENT OF DIGITAL MEDIA
 integrated_course: Componente del corso integrato BUSINESS ADMINISTRATION AND LEGAL
   FRAME IN DIGITAL INDUSTRIES (I.C.)
-campus: Bologna
-programme: Laurea Magistrale in Innovation and Organization of Culture and the Arts
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Innovation and Organization of Culture and the Arts
 syllabus:
   it:
     title: 2025/2026 MANAGEMENT OF DIGITAL MEDIA — Università di Bologna

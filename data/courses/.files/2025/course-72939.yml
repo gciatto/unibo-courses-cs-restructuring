@@ -1,11 +1,15 @@
 year: 2025
-credits: 8
-ssd: ING-INF/05
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-17
-  to: 2026-06-03
+credits:
+- 8
+ssds:
+- ING-INF/05
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-17
+  to: &id002 2026-06-03
 teachers:
 - id: '15250'
   name: Natali, Antonio
@@ -21,12 +25,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/517543
     details:
     - 8 cfu
+    credits: 8
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Ingegneria informatica
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '72939'
   name: INGEGNERIA DEI SISTEMI SOFTWARE M
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Ingegneria informatica
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Ingegneria informatica
 syllabus:
   it:
     title: 2025/2026 INGEGNERIA DEI SISTEMI SOFTWARE M — Università di Bologna

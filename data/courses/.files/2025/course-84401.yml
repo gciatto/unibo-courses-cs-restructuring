@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-17
-  to: 2026-05-20
+credits:
+- 6
+ssds:
+- INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-17
+  to: &id002 2026-05-20
 teachers:
 - id: '153810'
   name: Ciabattini, Leonardo
@@ -23,6 +27,15 @@ teachers:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/518530
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/518530
     details: []
+    credits: 6
+    schedule:
+      from: 2026-02-17
+      to: 2026-05-20
+    campus: Bologna
+    programme: Laurea Magistrale in Informatica
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '41697'
   name: Di Felice, Marco
   email: marco.difelice3@unibo.it
@@ -40,6 +53,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/518530
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Informatica
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '47258'
   name: Trotta, Angelo
   email: a.trotta@unibo.it
@@ -57,12 +79,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/518530
     details:
     - Modulo 2
+    credits: 6
+    schedule:
+      from: 2026-02-17
+      to: 2026-05-20
+    campus: Bologna
+    programme: Laurea Magistrale in Informatica
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '84401'
   name: SISTEMI CONTEXT-AWARE
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Informatica
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Informatica
 syllabus:
   it:
     title: 2025/2026 SISTEMI CONTEXT-AWARE — Università di Bologna

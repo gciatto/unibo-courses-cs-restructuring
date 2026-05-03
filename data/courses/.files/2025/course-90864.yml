@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-11-05
-  to: 2025-12-12
+credits:
+- 6
+ssds:
+- INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-11-05
+  to: &id002 2025-12-12
 teachers:
 - id: '46524'
   name: Marfia, Gustavo
@@ -24,12 +28,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/445171
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Rimini
+    programme: Laurea in Culture e pratiche della moda
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '90864'
   name: ELEMENTI INFORMATICI DI E-COMMERCE PER LA MODA
 integrated_course: ''
-campus: Rimini
-programme: Laurea in Culture e pratiche della moda
+campi:
+- Rimini
+programmes:
+- Laurea in Culture e pratiche della moda
 syllabus:
   it:
     title: 2025/2026 ELEMENTI INFORMATICI DI E-COMMERCE PER LA MODA — Università di

@@ -1,11 +1,15 @@
 year: 2025
-credits: 9
-ssd: ING-INF/05
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-16
-  to: 2026-06-05
+credits:
+- 9
+ssds:
+- ING-INF/05
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-16
+  to: &id002 2026-06-05
 teachers:
 - id: '32360'
   name: Patella, Marco
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/434708
     details:
     - 9 cfu
+    credits: 9
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Ingegneria informatica
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '150603'
   name: Quarta, Angelo
   email: angelo.quarta2@unibo.it
@@ -38,12 +51,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/434708
     details:
     - 9 cfu
+    credits: 9
+    schedule:
+      from: 2026-02-16
+      to: 2026-06-05
+    campus: Bologna
+    programme: Laurea in Ingegneria informatica
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '28021'
   name: INGEGNERIA DEL SOFTWARE T
 integrated_course: ''
-campus: Bologna
-programme: Laurea in Ingegneria informatica
+campi:
+- Bologna
+programmes:
+- Laurea in Ingegneria informatica
 syllabus:
   it:
     title: 2025/2026 INGEGNERIA DEL SOFTWARE T — Università di Bologna

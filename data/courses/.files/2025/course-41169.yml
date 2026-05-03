@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-16
-  to: 2026-05-22
+credits:
+- 6
+ssds:
+- INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-16
+  to: &id002 2026-05-22
 teachers:
 - id: '127088'
   name: Malizia, Enrico
@@ -25,12 +29,23 @@ teachers:
     details:
     - 6 CFU
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Informatica
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '41169'
   name: INFORMATICA TEORICA
 integrated_course: ''
-campus: Bologna
-programme: Laurea in Informatica
+campi:
+- Bologna
+programmes:
+- Laurea in Informatica
 syllabus:
   it:
     title: 2025/2026 INFORMATICA TEORICA (6 CFU) — Università di Bologna

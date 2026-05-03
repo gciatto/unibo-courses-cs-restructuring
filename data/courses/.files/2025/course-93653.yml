@@ -1,11 +1,15 @@
 year: 2025
-credits: 5
-ssd: ING-INF/05
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-18
-  to: 2026-05-20
+credits:
+- 5
+ssds:
+- ING-INF/05
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-18
+  to: &id002 2026-05-20
 teachers:
 - id: '120273'
   name: Di Modica, Giuseppe
@@ -24,13 +28,24 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/516294
     details:
     - Modulo 2
+    credits: 5
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Precise and Sustainable Agriculture
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '93653'
   name: IOT AND BIG DATA FOR SMART AGRICULTURAL SYSTEMS
 integrated_course: Componente del corso integrato TECHNOLOGY INNOVATION FOR SMART
   AGRICULTURAL SYSTEMS (I.C.)
-campus: Bologna
-programme: Laurea Magistrale in Precise and Sustainable Agriculture
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Precise and Sustainable Agriculture
 syllabus:
   it:
     title: 2025/2026 IOT AND BIG DATA FOR SMART AGRICULTURAL SYSTEMS — Università

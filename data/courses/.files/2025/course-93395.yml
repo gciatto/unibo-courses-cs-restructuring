@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/01
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-20
-  to: 2026-06-05
+credits:
+- 6
+ssds:
+- ING-INF/01
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-20
+  to: &id002 2026-06-05
 teachers:
 - id: '38587'
   name: Grossi, Marco
@@ -20,6 +24,15 @@ teachers:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/514410
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/514410
     details: []
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Ingegneria elettronica
+    ssd: ING-INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '32103'
   name: Metra, Cecilia
   email: cecilia.metra@unibo.it
@@ -37,12 +50,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/514410
     details:
     - Modulo 2
+    credits: 6
+    schedule:
+      from: 2026-02-20
+      to: 2026-06-05
+    campus: Bologna
+    programme: Laurea Magistrale in Ingegneria elettronica
+    ssd: ING-INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '93395'
   name: RELIABLE DATA PROCESSING AND STORAGE FOR INTELLIGENT SYSTEMS M
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Ingegneria elettronica
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Ingegneria elettronica
 syllabus:
   it:
     title: 2025/2026 RELIABLE DATA PROCESSING AND STORAGE FOR INTELLIGENT SYSTEMS

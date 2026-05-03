@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/05
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-18
-  to: 2025-12-18
+credits:
+- 6
+ssds:
+- ING-INF/05
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-18
+  to: &id002 2025-12-18
 teachers:
 - id: '33159'
   name: Golfarelli, Matteo
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/412644
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Cesena
+    programme: Laurea Magistrale in Ingegneria e scienze informatiche
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '34425'
   name: Moro, Gianluca
   email: gianluca.moro@unibo.it
@@ -41,6 +54,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/412644
     details:
     - Modulo 2
+    credits: 6
+    schedule:
+      from: 2025-09-18
+      to: 2025-12-18
+    campus: Cesena
+    programme: Laurea Magistrale in Ingegneria e scienze informatiche
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '152163'
   name: Pasini, Manuele
   email: manuele.pasini@unibo.it
@@ -57,12 +79,23 @@ teachers:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/412644
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/412644
     details: []
+    credits: 6
+    schedule:
+      from: 2025-09-18
+      to: 2025-12-18
+    campus: Cesena
+    programme: Laurea Magistrale in Ingegneria e scienze informatiche
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '40720'
   name: DATA MINING
 integrated_course: ''
-campus: Cesena
-programme: Laurea Magistrale in Ingegneria e scienze informatiche
+campi:
+- Cesena
+programmes:
+- Laurea Magistrale in Ingegneria e scienze informatiche
 syllabus:
   it:
     title: 2025/2026 DATA MINING — Università di Bologna

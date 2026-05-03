@@ -1,8 +1,13 @@
 year: 2025
-credits: 6
-ssd: INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
+credits:
+- 6
+ssds:
+- INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules: []
 teachers:
 - id: '169338'
   name: Persiani, Michele
@@ -18,6 +23,12 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/501528
     details:
     - 6 cfu
+    credits: 6
+    campus: Bologna
+    programme: Laurea in Informatica per il management
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '35688'
   name: Sangiorgi, Davide
   email: davide.sangiorgi@unibo.it
@@ -35,13 +46,21 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/501528
     details:
     - 6 cfu
+    credits: 6
+    campus: Bologna
+    programme: Laurea in Informatica per il management
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '58348'
   name: LABORATORIO DI SISTEMI OPERATIVI
 integrated_course: Componente del corso integrato SISTEMI OPERATIVI - LABORATORIO
   DI SISTEMI OPERATIVI (C.I.)
-campus: Bologna
-programme: Laurea in Informatica per il management
+campi:
+- Bologna
+programmes:
+- Laurea in Informatica per il management
 syllabus:
   it:
     title: 2025/2026 LABORATORIO DI SISTEMI OPERATIVI — Università di Bologna

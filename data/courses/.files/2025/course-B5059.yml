@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: INF/01
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-04-09
-  to: 2026-05-21
+credits:
+- 6
+ssds:
+- INF/01
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-04-09
+  to: &id002 2026-05-21
 teachers:
 - id: '112282'
   name: Pescarin, Sofia
@@ -23,13 +27,24 @@ teachers:
     - '1'
     - LM
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Digital Humanities and Digital Knowledge
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: B5059
   name: Interaction Media Design
 integrated_course: Componente del corso integrato Digital Heritage and Multimedia
   (I.C.) (LM)
-campus: Bologna
-programme: Laurea Magistrale in Digital Humanities and Digital Knowledge
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Digital Humanities and Digital Knowledge
 syllabus:
   it:
     title: 2025/2026 Interaction Media Design (1) (LM) — Università di Bologna

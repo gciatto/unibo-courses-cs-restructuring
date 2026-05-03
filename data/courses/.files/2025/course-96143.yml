@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/05
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-15
-  to: 2025-12-16
+credits:
+- 6
+ssds:
+- ING-INF/05
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-15
+  to: &id002 2025-12-16
 teachers:
 - id: '47850'
   name: Borghesi, Andrea
@@ -24,6 +28,16 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/467879
     details:
     - Modulo 2
+    credits: 6
+    schedule:
+      from: 2025-09-15
+      to: 2025-12-16
+    campus: Bologna
+    programme: Laurea Magistrale in Ingegneria gestionale Laurea Magistrale in Ingegneria
+      gestionale
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '30723'
   name: Grandi, Fabio
   email: fabio.grandi@unibo.it
@@ -41,13 +55,24 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/514487
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Ingegneria gestionale Laurea Magistrale in Ingegneria
+      gestionale
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '96143'
   name: METODI E MODELLI DI DATA ANALYTICS M
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Ingegneria gestionale Laurea Magistrale in Ingegneria
-  gestionale
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Ingegneria gestionale Laurea Magistrale in Ingegneria gestionale
 syllabus:
   it:
     title: 2025/2026 METODI E MODELLI DI DATA ANALYTICS M — Università di Bologna

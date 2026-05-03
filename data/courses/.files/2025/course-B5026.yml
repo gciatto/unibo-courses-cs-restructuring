@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/05
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-16
-  to: 2026-06-04
+credits:
+- 6
+ssds:
+- ING-INF/05
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-16
+  to: &id002 2026-06-04
 teachers:
 - id: '175763'
   name: Cerda, Remy Liam
@@ -21,6 +25,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/530708
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2026-02-16
+      to: 2026-06-04
+    campus: Bologna
+    programme: Laurea Magistrale in Artificial Intelligence
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '39882'
   name: Dal Lago, Ugo
   email: ugo.dallago@unibo.it
@@ -38,13 +51,24 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/530708
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Artificial Intelligence
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: B5026
   name: INTRODUCTION TO COMPUTABILITY AND COMPLEXITY
 integrated_course: Componente del corso integrato LANGUAGES AND ALGORITHMS FOR ARTIFICIAL
   INTELLIGENCE I.C.
-campus: Bologna
-programme: Laurea Magistrale in Artificial Intelligence
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Artificial Intelligence
 syllabus:
   it:
     title: 2025/2026 INTRODUCTION TO COMPUTABILITY AND COMPLEXITY — Università di

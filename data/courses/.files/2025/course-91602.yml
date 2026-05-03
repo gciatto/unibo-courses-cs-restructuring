@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/05
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-16
-  to: 2026-06-04
+credits:
+- 6
+ssds:
+- ING-INF/05
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-16
+  to: &id002 2026-06-04
 teachers:
 - id: '50846'
   name: Poggi, Matteo
@@ -24,12 +28,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/447504
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Ingegneria dell'automazione
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '91602'
   name: COMPUTER ARCHITECTURES
 integrated_course: ''
-campus: Bologna
-programme: Laurea in Ingegneria dell'automazione
+campi:
+- Bologna
+programmes:
+- Laurea in Ingegneria dell'automazione
 syllabus:
   it:
     title: 2025/2026 COMPUTER ARCHITECTURES — Università di Bologna

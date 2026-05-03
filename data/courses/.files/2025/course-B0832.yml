@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/05
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-17
-  to: 2026-06-04
+credits:
+- 6
+ssds:
+- ING-INF/05
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-17
+  to: &id002 2026-06-04
 teachers:
 - id: '174498'
   name: Chirichella, Davide
@@ -21,6 +25,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/487361
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2026-02-17
+      to: 2026-06-04
+    campus: Bologna
+    programme: Laurea in Ingegneria informatica
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '154840'
   name: Iacobelli, Antonio
   email: antonio.iacobelli@unibo.it
@@ -38,6 +51,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/487361
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2026-02-17
+      to: 2026-06-04
+    campus: Bologna
+    programme: Laurea in Ingegneria informatica
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '33518'
   name: Prandini, Marco
   email: marco.prandini@unibo.it
@@ -55,12 +77,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/487361
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Ingegneria informatica
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: B0832
   name: AMMINISTRAZIONE DI SISTEMI T
 integrated_course: ''
-campus: Bologna
-programme: Laurea in Ingegneria informatica
+campi:
+- Bologna
+programmes:
+- Laurea in Ingegneria informatica
 syllabus:
   it:
     title: 2025/2026 AMMINISTRAZIONE DI SISTEMI T — Università di Bologna

@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: INF/01
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-16
-  to: 2026-05-13
+credits:
+- 6
+ssds:
+- INF/01
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-16
+  to: &id002 2026-05-13
 teachers:
 - id: '106204'
   name: Barron Cedeno, Luis Alberto
@@ -24,12 +28,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/521960
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Forli
+    programme: Laurea in Lingue e tecnologie per la comunicazione interculturale
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: B2696
   name: 'LANGUAGE, TECHNOLOGY, RESEARCH I: COMPUTATIONAL THINKING'
 integrated_course: ''
-campus: Forli
-programme: Laurea in Lingue e tecnologie per la comunicazione interculturale
+campi:
+- Forli
+programmes:
+- Laurea in Lingue e tecnologie per la comunicazione interculturale
 syllabus:
   it:
     title: '2025/2026 LANGUAGE, TECHNOLOGY, RESEARCH I: COMPUTATIONAL THINKING — Università

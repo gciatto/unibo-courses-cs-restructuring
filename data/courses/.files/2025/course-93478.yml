@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: INF/01
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-16
-  to: 2026-05-21
+credits:
+- 6
+ssds:
+- INF/01
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-16
+  to: &id002 2026-05-21
 teachers:
 - id: '153815'
   name: Bartolucci, Filippo
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/518552
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2026-02-16
+      to: 2026-05-21
+    campus: Bologna
+    programme: Laurea Magistrale in Informatica
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '111221'
   name: Lisanti, Giuseppe
   email: giuseppe.lisanti@unibo.it
@@ -41,12 +54,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/518552
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Informatica
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '93478'
   name: COMPUTER VISION
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Informatica
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Informatica
 syllabus:
   it:
     title: 2025/2026 COMPUTER VISION — Università di Bologna

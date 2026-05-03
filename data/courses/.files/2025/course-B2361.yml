@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/01
-language: Italiano
-teaching_mode: Lezioni in presenza (totalmente o parzialmente)
-schedule:
-  from: 2026-02-17
-  to: 2026-06-05
+credits:
+- 6
+ssds:
+- ING-INF/01
+languages:
+- Italiano
+teaching_modes:
+- Lezioni in presenza (totalmente o parzialmente)
+schedules:
+- from: &id001 2026-02-17
+  to: &id002 2026-06-05
 teachers:
 - id: '163863'
   name: De Souza Rosa, Leandro
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/493014
     details:
     - Modulo 2
+    credits: 6
+    schedule:
+      from: 2026-02-17
+      to: 2026-06-05
+    campus: Bologna
+    programme: Laurea in Ingegneria elettronica e telecomunicazioni
+    ssd: ING-INF/01
+    language: Italiano
+    teaching_mode: Lezioni in presenza (totalmente o parzialmente)
 - id: '42553'
   name: Mangia, Mauro
   email: mauro.mangia@unibo.it
@@ -41,12 +54,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/493014
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Ingegneria elettronica e telecomunicazioni
+    ssd: ING-INF/01
+    language: Italiano
+    teaching_mode: Lezioni in presenza (totalmente o parzialmente)
 course_title:
   id: B2361
   name: ELEMENTI DI MACHINE LEARNING E QUANTUM COMPUTING T
 integrated_course: ''
-campus: Bologna
-programme: Laurea in Ingegneria elettronica e telecomunicazioni
+campi:
+- Bologna
+programmes:
+- Laurea in Ingegneria elettronica e telecomunicazioni
 syllabus:
   it:
     title: 2025/2026 ELEMENTI DI MACHINE LEARNING E QUANTUM COMPUTING T — Università

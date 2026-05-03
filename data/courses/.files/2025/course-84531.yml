@@ -1,11 +1,15 @@
 year: 2025
-credits: 8
-ssd: ING-INF/05
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-19
-  to: 2026-06-05
+credits:
+- 8
+ssds:
+- ING-INF/05
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-19
+  to: &id002 2026-06-05
 teachers:
 - id: '15896'
   name: Corradi, Antonio
@@ -21,6 +25,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/517618
     details:
     - 8 cfu
+    credits: 8
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Ingegneria informatica
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '102111'
   name: Sabbioni, Andrea
   email: andrea.sabbioni5@unibo.it
@@ -38,12 +51,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/517618
     details:
     - Modulo 2
+    credits: 8
+    schedule:
+      from: 2026-02-19
+      to: 2026-06-05
+    campus: Bologna
+    programme: Laurea Magistrale in Ingegneria informatica
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '84531'
   name: INFRASTRUCTURES FOR CLOUD COMPUTING AND BIG DATA M
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Ingegneria informatica
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Ingegneria informatica
 syllabus:
   it:
     title: 2025/2026 INFRASTRUCTURES FOR CLOUD COMPUTING AND BIG DATA M — Università

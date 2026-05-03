@@ -1,0 +1,344 @@
+year: 2025
+credits:
+- 6
+ssds:
+- ING-INF/05
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-16
+  to: &id002 2026-06-04
+teachers:
+- id: '153302'
+  name: Melacini, Giacomo
+  email: giacomo.melacini2@unibo.it
+  website: https://www.unibo.it/sitoweb/giacomo.melacini2
+  role: phd student
+  affiliation: disi
+  ssd:
+    name: ING-INF/05
+    description: SISTEMI DI ELABORAZIONE DELLE INFORMAZIONI
+  module:
+    teaching_id: '535286'
+    url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/535286
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/535286
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/535286
+    details:
+    - 6 cfu
+    credits: 6
+    schedule:
+      from: 2026-02-16
+      to: 2026-06-04
+    campus: Bologna
+    programme: Laurea in Ingegneria informatica
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
+- id: '43286'
+  name: Salti, Samuele
+  email: samuele.salti@unibo.it
+  website: https://www.unibo.it/sitoweb/samuele.salti
+  role: associate professor
+  affiliation: disi
+  ssd:
+    name: IINF-05/A
+    description: Sistemi di elaborazione delle informazioni
+  module:
+    teaching_id: '535286'
+    url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/535286
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/535286
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/535286
+    details:
+    - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Ingegneria informatica
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
+course_title:
+  id: '28011'
+  name: RETI LOGICHE T
+integrated_course: ''
+campi:
+- Bologna
+programmes:
+- Laurea in Ingegneria informatica
+syllabus:
+  it:
+    title: 2025/2026 RETI LOGICHE T — Università di Bologna
+    contents:
+      Conoscenze e abilità da conseguire: 'Al termine del corso lo studente ha una
+        conoscenza approfondita dei modelli di riferimento e delle metodologie di
+        analisi e progetto di semplici macchine digitali. In particolare: conosce
+        la rappresentazione digitale dell''informazione; conosce le metodologie di
+        progetto di reti logiche combinatorie; sa usare i metodi grafici per l''analisi
+        e la sintesi di semplici reti logiche combinatorie; conosce e sa usare le
+        principali reti combinatorie notevoli (decoder, encoder, multiplexer, ROM);
+        conosce e sa usare le metodologie di progetto formali per l''analisi e la
+        sintesi di reti sequenziali asincrone; conosce le principali memorie binarie
+        (latch SR, latch CD, flip-flop D); conosce le reti sequenziali sincrone notevoli
+        (registro, shift register, sincronizzatore, contatore); sa combinare memorie
+        e reti notevoli, sia sequenziali sia combinatorie, per la sintesi diretta
+        di reti sequenziali sincrone di media complessità.'
+      Contenuti: 'Il corso si tiene nel secondo semestre, da Febbraio a Giugno.
+
+
+        1. Livelli di progettazione di una macchina digitale: struttura e comportamento.
+        Classificazione dei segnali. Reti di interruttori. Gate elementari.
+
+        2. Rappresentazione binaria dell''informazione. Proprietà dei codici. Codifica
+        dei testi e dei numeri. Classificazione delle macchine digitali in combinatorie
+        e sequenziali.
+
+        3. La rete logica combinatoria. Funzioni, tabelle della verità e schemi logici.
+        Algebra di commutazione: operazioni, espressioni e teoremi di equivalenza.
+        Sintesi ed analisi con espressioni canoniche e con espressioni generali. Reti
+        combinatorie reali: comportamento in transitorio ed a regime.
+
+        4. Mappe di Karnaugh. Sintesi con espressioni minime.
+
+        5. Reti combinatorie notevoli: decoder e multiplexer. Sintesi tramite decoder
+        e OR. Teorema di espansione di Shannon e sintesi tramite multiplexer. Reti
+        programmabili. ROM come reti programmabili per la sintesi combinatoria. Amplificatore
+        a tre stati.
+
+        6. Aritmetica binaria tra numeri senza segno e con segno. Rappresentazione
+        in complemento a 2. Half adder, full adder, e adder a n bit. Unità logico-aritmetica
+        (ALU).
+
+        7. La rete logica sequenziale asincrona come rete combinatoria con retroazioni
+        dirette. Comportamenti ottenibili, vincoli di corretto impiego e tecniche
+        per l''eliminazione a priori dei malfunzionamenti. Il modello della macchina
+        a stati finiti: la descrizione del comportamento tramite grafo degli stati
+        e tramite tabella di flusso. Metodi di sintesi e analisi di reti asincrone.
+
+        8. Reti sequenziali asincrone notevoli per realizzare memorie binarie: latch
+        e flip-flop.
+
+        9. La rete logica sequenziale sincrona come rete combinatoria con retroazioni
+        a flip-flop. Progetto del periodo del segnale di clock. Metodo di sintesi
+        formale per reti con flip-flop di tipo D.
+
+        10. Reti sincrone notevoli: registri, registri a scorrimento, contatori. Esempi
+        di sintesi di reti sequenziali sincrone contenenti registri, contatori e registri
+        a scorrimento senza l''ausili di diagrammi degli stati.'
+      Testi/Bibliografia: 'Il materiale di riferimento sono i lucidi resi disponibili
+        sul sito del corso.
+
+
+        Per eventuali approfondimenti, lo studente può consultare:
+
+
+        - R. Laschi, M. Prandini: “Reti Logiche”, Esculapio, 2007
+
+        - M. Morris Mano, Charles R. Kime, «Reti Logiche», Prentice Hall, 2008
+
+        - S.L. Harris, D.M. Harris, “Sistemi digitali e architettura dei calcolatori”,
+        Zanichelli, 2017'
+      Metodi didattici: 'Lezioni frontali.
+
+
+        Progettazione di reti notevoli in piccoli gruppi durante le lezioni.
+
+
+        Tre sessioni di esercitazioni sui tre macro argomenti del corso (reti combinatorie,
+        reti sequenziali asincrone, reti sequenziali sincrone), svolte a casa e corrette
+        in aula.'
+      Modalità di verifica e valutazione dell'apprendimento: 'Per sostenere la prova
+        d''esame è necessaria l''iscrizione tramite AlmaEsami, nel rispetto inderogabile
+        delle scadenze previste.
+
+
+        La prova d''esame mira a verificare il raggiungimento dei seguenti obiettivi
+        formativi:
+
+
+        • conoscenza dei principi su cui si basa la progettazione logica delle macchine
+        digitali;
+
+
+        • padronanza e capacità di applicazione delle metodologie di progetto orientate
+        all''analisi e alla sintesi di reti combinatorie e di reti sequenziali.
+
+
+        Gli studenti verranno valutati in base allo svolgimento di una prova scritta
+        della durata di tre ore che mira a valutarne sia conoscenze sia abilità. La
+        prova include:
+
+
+        - alcune domande a risposta aperta per verificare l''apprendimento delle conoscenze
+        presentate nel corso, che complessivamente assegnano 5 punti;
+
+        - un''esercizio di analisi o sintesi di reti sequenziali asincrone, che assegna
+        fino a 10 punti, suddivisi in una serie di passaggi delineati nel testo d''esame,
+        ognuno con un punteggio chiaramente indicato;
+
+        - un esercizio di progettazione di una rete sequenziale sincrona, che assegna
+        fino a 15 punti. Il punteggio è assegnato sulla base della quantità di progetto
+        effettivamente svolto, sulla base della selezione dei componenti individuati
+        per realizzare la soluzione e sulla base della progettazione dei segnali che
+        combinatori che li controllano.
+
+
+        Durante lo svolgimento della prova scritta non è possibile consultare materiale
+        didattico in nessuna forma. La prova si intende superata con un punteggio
+        minimo di 18/30. La lode è assegnata con una valutazione olistica della prova
+        da parte della commissione.
+
+
+        Si terranno appelli nei mesi di giugno, luglio, settembre, gennaio e febbraio.
+
+
+        Studenti/sse con DSA o disabilità temporanee o permanenti: si raccomanda di
+        contattare per tempo l’ufficio di Ateneo responsabile (https://site.unibo.it/studenti-con-disabilita-e-dsa/it):
+        sarà sua cura proporre agli/lle studenti/sse interessati/e eventuali adattamenti,
+        che dovranno comunque essere sottoposti, con un anticipo di 15 giorni, all’approvazione
+        del docente, che ne valuterà l''opportunità anche in relazione agli obiettivi
+        formativi dell''insegnamento.'
+      Strumenti a supporto della didattica: Le lezioni in aula vengono svolte con
+        l'ausilio di un proiettore di diapositive (di cui è possibile preventivamente
+        procurarsi copia accedendo al sito del corso su Virtuale), in modo da consentire
+        allo Studente di concentrarsi sui contenuti esposti piuttosto che sulla stesura
+        di appunti.
+      Orario di ricevimento: Consulta il sito web di Samuele Salti (https://www.unibo.it/sitoweb/samuele.salti)
+  en:
+    title: 2025/2026 Logic Design T — University of Bologna
+    contents:
+      Learning outcomes: 'At the end of the course, students will have acquired an
+        in-depth knowledge of models and methodologies for the analysis and design
+        of simple digital machines. Specifically, they will: understand digital representation
+        of information; be familiar with design methodologies for combinational logic
+        circuits; be able to apply graphical methods for the analysis and synthesis
+        of simple combinational logic circuits;
+
+        know and be able to use the main combinational circuits(decoders, encoders,
+        multiplexers, ROMs); know and be able to apply formal design methodologies
+        for the analysis and synthesis of asynchronous sequential circuits; be familiar
+        with the main binary memory elements (SR latch, D latch, D flip-flop); know
+        notable synchronous sequential circuits (registers, shift registers, synchronizers,
+        counters); be able to combine memory elements and notable circuits, both sequential
+        and combinational, for the direct synthesis of medium-complexity synchronous
+        sequential networks.'
+      Course contents: 'The course is held in the second semester, from February to
+        June.
+
+
+        1. Design layers of a digital machine: block description of a machine and
+        verbal description of its behavior. Signal classification. Logic circuits
+        as networks of switches. Logic gates.
+
+        2. Binary representation of information. Properties of codes. Codes to represents
+        texts and numbers.Classification of digital systems: combinational, asynchronous
+        and synchronous circuits.
+
+        3. Combinational logic circuits. Functions, truth tables, and logic diagram
+        views. Commutation Algebra: operations, expressions, and equivalence theorems.
+        Design and analysis through canonical forms and standard forms. Real combinatorial
+        networks: transient and steady-state behavior.
+
+        4. Gate-level minimization with Karnaugh maps.
+
+        5. Standard combinational logic circuits: decoder and multiplexer. Design
+        by means of decoders and OR gates. Shannon''s expansion theorem and design
+        by means of multiplexers. Programmable circuits. ROM as programmable combinational
+        circuits. Three-state buffer.
+
+        6. Binary arithmetic with unsigned and signed numbers. 2-complements representation
+        for signed numbers. Half adder, full adder, and n-bit adder. Arithmetic-Logic
+        Unit (ALU).
+
+        7. The asynchronous sequential logic circuit as a combinational circuit with
+        direct feedback. Behaviors, constraints for correct use and techniques aimed
+        at a priori removal of undesired behaviors. Finite state machine (FSM); description
+        of the behavior by means of state diagram and state table. Design and analysis
+        of asynchronous sequential logic circuits.
+
+        8. Asynchronous sequential logic circuits for binary memories: latches and
+        flip-flops.
+
+        9. The synchronous sequential logic circuit as a combinational circuit with
+        feedback loops based on flip-flops. Timing constraints to choose the clock
+        period. Formal design method for circuits with D flip-flops.
+
+        10. Standard synchronous circuits: registers, shift registers, and counters.
+        Examples of design of synchronous logic circuits containing registers, counters,
+        and shift registers and not based on the conventional graph-based method.'
+      Readings/Bibliography: 'Slides available at the course website are the reference
+        material.
+
+
+        Other books, for further readings:
+
+
+        - R. Laschi, M. Prandini: “Reti Logiche”, Esculapio, 2007
+
+        - M. Morris Mano, Charles R. Kime, «Reti Logiche», Prentice Hall, 2008
+
+        - S.L. Harris, D.M. Harris, “Sistemi digitali e architettura dei calcolatori”,
+        Zanichelli, 2017'
+      Teaching methods: 'Lectures.
+
+
+        Autonomous design of synchronous sequential circuits in small groups during
+        lectures, and discussion of the correct solutions.
+
+
+        Three practice sessions covering the three main topics of the course (combinational
+        circuits, asynchronous sequential circuits, synchronous sequential circuits),
+        to be completed at home and reviewed in class.'
+      Assessment methods: 'Registration to the exam on the AlmaEsami webapp is mandatory.
+
+
+        The exam aims at assessing the achievement of the following learning objectives:
+
+        • knowledge of the principles behind logic design of digital machines;
+
+
+        • ability to use the appropriate design tools and techniques for the analysis
+        and synthesis of combinational and sequential machines.
+
+
+        Students will be assessed through a written exam lasting three hours, designed
+        to evaluate both their knowledge and skills. The exam includes:
+
+        • several open-ended questions to verify acquisition of the course content,
+        awarding a total of 5 points;
+
+        • One exercise on the analysis or synthesis of asynchronous sequential circuits,
+        worth up to 10 points, broken down into a series of steps outlined in the
+        exam instructions, each with clearly specified marks;
+
+        • one exercise focused on the design of a synchronous sequential circuit,
+        worth up to 15 points. Marks will be awarded based on the amount of design
+        work completed, the selection of components used in the proposed solution,
+        and the design of the combinational control signals.
+
+
+        No reference materials of any kind may be consulted during the exam. The exam
+        is considered passed with a minimum score of 18/30. Honors may be awarded
+        at the committee’s discretion based on a holistic evaluation of the student’s
+        performance.
+
+
+        The exam sessions will be held in June, July, September, January and February.
+
+
+        Students with learning disorders and\or temporary or permanent disabilities:
+        please, contact the office responsible (https://site.unibo.it/studenti-con-disabilita-e-dsa/en/for-students
+        ) as soon as possible so that they can propose acceptable adjustments. The
+        request for adaptation must be submitted in advance (15 days before the exam
+        date) to the lecturer, who will assess the appropriateness of the adjustments,
+        taking into account the teaching objectives'
+      Teaching tools: Powerpoint slides (whose PDF printouts are available from the
+        course's web site before lectures) are projected and discussed during class
+        hours, allowing students to focus on the discussed concepts instead of on
+        taking notes.
+      Office hours: See the website of Samuele Salti (https://www.unibo.it/sitoweb/samuele.salti/en)

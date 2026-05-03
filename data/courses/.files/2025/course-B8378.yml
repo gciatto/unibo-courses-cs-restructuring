@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/01
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-23
-  to: 2025-12-17
+credits:
+- 6
+ssds:
+- ING-INF/01
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-23
+  to: &id002 2025-12-17
 teachers:
 - id: '30933'
   name: Tartagni, Marco
@@ -24,13 +28,24 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/526930
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Cesena
+    programme: Laurea Magistrale in Ingegneria elettronica e dell'informazione
+    ssd: ING-INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: B8378
   name: SENSORI ELETTRONICI INTELLIGENTI LM
 integrated_course: Componente del corso integrato SENSORI E ELETTRONICA ANALOGICA
   LM (C.I.)
-campus: Cesena
-programme: Laurea Magistrale in Ingegneria elettronica e dell'informazione
+campi:
+- Cesena
+programmes:
+- Laurea Magistrale in Ingegneria elettronica e dell'informazione
 syllabus:
   it:
     title: 2025/2026 SENSORI ELETTRONICI INTELLIGENTI LM — Università di Bologna

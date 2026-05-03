@@ -1,11 +1,15 @@
 year: 2025
-credits: 2
-ssd: INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-03-27
-  to: 2026-05-08
+credits:
+- 2
+ssds:
+- INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-03-27
+  to: &id002 2026-05-08
 teachers:
 - id: '30055'
   name: Gorrieri, Roberto
@@ -24,12 +28,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/401461
     details:
     - 2 cfu
+    credits: 2
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Podologia (abilitante alla professione sanitaria di podologo)
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '78510'
   name: INFORMATICA --
 integrated_course: Componente del corso integrato MANAGEMENT SANITARIO C.I. --
-campus: Bologna
-programme: Laurea in Podologia (abilitante alla professione sanitaria di podologo)
+campi:
+- Bologna
+programmes:
+- Laurea in Podologia (abilitante alla professione sanitaria di podologo)
 syllabus:
   it:
     title: 2025/2026 INFORMATICA -- — Università di Bologna

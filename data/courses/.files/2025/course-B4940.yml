@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: INF/01
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-06
-  to: 2026-03-19
+credits:
+- 6
+ssds:
+- INF/01
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-06
+  to: &id002 2026-03-19
 teachers:
 - id: '46524'
   name: Marfia, Gustavo
@@ -24,12 +28,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/501679
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Rimini
+    programme: Laurea Magistrale in Fashion Studies
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: B4940
   name: DATA SCIENCE FOR FASHION SYSTEM
 integrated_course: ''
-campus: Rimini
-programme: Laurea Magistrale in Fashion Studies
+campi:
+- Rimini
+programmes:
+- Laurea Magistrale in Fashion Studies
 syllabus:
   it:
     title: 2025/2026 DATA SCIENCE FOR FASHION SYSTEM — Università di Bologna

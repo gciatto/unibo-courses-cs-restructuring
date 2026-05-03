@@ -1,11 +1,15 @@
 year: 2025
-credits: 9
-ssd: INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-15
-  to: 2025-11-28
+credits:
+- 9
+ssds:
+- INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-15
+  to: &id002 2025-11-28
 teachers:
 - id: '128557'
   name: Dinelli, Michele
@@ -21,6 +25,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/501520
     details:
     - 9 CFU
+    credits: 9
+    schedule:
+      from: 2025-09-15
+      to: 2025-11-28
+    campus: Bologna
+    programme: Laurea in Informatica per il management
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '118578'
   name: Elias, Jocelyne
   email: jocelyne.elias@unibo.it
@@ -39,6 +52,15 @@ teachers:
     details:
     - 9 CFU
     - 9 cfu
+    credits: 9
+    schedule:
+      from: 2025-09-15
+      to: 2025-11-28
+    campus: Bologna
+    programme: Laurea in Informatica per il management
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '134786'
   name: Grotto, Giovanni
   email: giovanni.grotto3@unibo.it
@@ -53,6 +75,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/501520
     details:
     - 9 CFU
+    credits: 9
+    schedule:
+      from: 2025-09-15
+      to: 2025-11-28
+    campus: Bologna
+    programme: Laurea in Informatica per il management
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '156496'
   name: Ianaro, Martina
   email: martina.ianaro3@unibo.it
@@ -71,6 +102,15 @@ teachers:
     details:
     - 9 CFU
     - Modulo 1
+    credits: 9
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Informatica per il management
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '35634'
   name: Rossi, Davide
   email: daviderossi@unibo.it
@@ -89,12 +129,23 @@ teachers:
     details:
     - 9 CFU
     - Modulo 1
+    credits: 9
+    schedule:
+      from: 2025-09-15
+      to: 2025-11-28
+    campus: Bologna
+    programme: Laurea in Informatica per il management
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: B4913
   name: ALGORITMI E STRUTTURE DATI
 integrated_course: ''
-campus: Bologna
-programme: Laurea in Informatica per il management
+campi:
+- Bologna
+programmes:
+- Laurea in Informatica per il management
 syllabus:
   it:
     title: 2025/2026 ALGORITMI E STRUTTURE DATI (9 CFU) — Università di Bologna

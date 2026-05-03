@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/05
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-17
-  to: 2025-12-19
+credits:
+- 6
+ssds:
+- ING-INF/05
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-17
+  to: &id002 2025-12-19
 teachers:
 - id: '114772'
   name: Acquaviva, Andrea
@@ -24,6 +28,16 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/514421
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2025-09-17
+      to: 2025-12-19
+    campus: Bologna
+    programme: Laurea Magistrale in Automation Engineering Laurea Magistrale in Ingegneria
+      elettronica
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '118631'
   name: Barchi, Francesco
   email: francesco.barchi@unibo.it
@@ -41,13 +55,24 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/481265
     details:
     - Modulo 2
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Automation Engineering Laurea Magistrale in Ingegneria
+      elettronica
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '99195'
   name: CYBER-PHYSICAL SYSTEMS PROGRAMMING M
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Automation Engineering Laurea Magistrale in Ingegneria
-  elettronica
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Automation Engineering Laurea Magistrale in Ingegneria elettronica
 syllabus:
   it:
     title: 2025/2026 CYBER-PHYSICAL SYSTEMS PROGRAMMING M — Università di Bologna

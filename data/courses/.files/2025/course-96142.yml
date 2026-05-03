@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/05
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-18
-  to: 2026-05-20
+credits:
+- 6
+ssds:
+- ING-INF/05
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-18
+  to: &id002 2026-05-20
 teachers:
 - id: '82279'
   name: Ravaldi, Federico
@@ -21,6 +25,16 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/467876
     details:
     - Modulo 2
+    credits: 6
+    schedule:
+      from: 2026-02-18
+      to: 2026-05-20
+    campus: Bologna
+    programme: Laurea Magistrale in Ingegneria gestionale Laurea Magistrale in Ingegneria
+      gestionale
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '30935'
   name: Rizzi, Stefano
   email: stefano.rizzi@unibo.it
@@ -38,13 +52,24 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/514486
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Ingegneria gestionale Laurea Magistrale in Ingegneria
+      gestionale
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '96142'
   name: BUSINESS INTELLIGENCE E BIG DATA M
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Ingegneria gestionale Laurea Magistrale in Ingegneria
-  gestionale
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Ingegneria gestionale Laurea Magistrale in Ingegneria gestionale
 syllabus:
   it:
     title: 2025/2026 BUSINESS INTELLIGENCE E BIG DATA M — Università di Bologna

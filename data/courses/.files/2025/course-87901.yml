@@ -1,11 +1,15 @@
 year: 2025
-credits: 5
-ssd: INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-29
-  to: 2025-12-04
+credits:
+- 5
+ssds:
+- INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-29
+  to: &id002 2025-12-04
 teachers:
 - id: '42597'
   name: Lecci, Claudia
@@ -21,12 +25,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/504526
     details:
     - 5 cfu
+    credits: 5
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Forli
+    programme: Laurea Magistrale in Interpretazione
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '87901'
   name: METODI E TECNOLOGIE AVANZATE PER L'INTERPRETAZIONE
 integrated_course: ''
-campus: Forli
-programme: Laurea Magistrale in Interpretazione
+campi:
+- Forli
+programmes:
+- Laurea Magistrale in Interpretazione
 syllabus:
   it:
     title: 2025/2026 METODI E TECNOLOGIE AVANZATE PER L'INTERPRETAZIONE — Università

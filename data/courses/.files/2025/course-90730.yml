@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: INF/01
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-17
-  to: 2025-10-23
+credits:
+- 6
+ssds:
+- INF/01
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-17
+  to: &id002 2025-10-23
 teachers:
 - id: '48366'
   name: Giallorenzo, Saverio
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/477342
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Artificial Intelligence Laurea Magistrale in Informatica
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '142209'
   name: Sampò, Giorgia
   email: giorgia.sampo2@unibo.it
@@ -38,12 +51,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/477342
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2025-09-17
+      to: 2025-10-23
+    campus: Bologna
+    programme: Laurea Magistrale in Artificial Intelligence Laurea Magistrale in Informatica
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '90730'
   name: SOCIAL NETWORK ANALYSIS
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Artificial Intelligence Laurea Magistrale in Informatica
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Artificial Intelligence Laurea Magistrale in Informatica
 syllabus:
   it:
     title: 2025/2026 SOCIAL NETWORK ANALYSIS — Università di Bologna

@@ -1,11 +1,15 @@
 year: 2025
-credits: 12
-ssd: ING-INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-17
-  to: 2026-06-05
+credits:
+- 12
+ssds:
+- ING-INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-17
+  to: &id002 2026-06-05
 teachers:
 - id: '96420'
   name: Angelotti, Alberto Maria
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/423128
     details:
     - Modulo 3
+    credits: 12
+    schedule:
+      from: 2026-02-17
+      to: 2026-06-05
+    campus: Bologna
+    programme: Laurea in Ingegneria dell'automazione
+    ssd: ING-INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '91592'
   name: Cangini, Simone
   email: s.cangini@unibo.it
@@ -37,6 +50,15 @@ teachers:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/423128
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/423128
     details: []
+    credits: 12
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Ingegneria dell'automazione
+    ssd: ING-INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '32331'
   name: Santarelli, Alberto
   email: alberto.santarelli@unibo.it
@@ -54,12 +76,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/423128
     details:
     - Modulo 2
+    credits: 12
+    schedule:
+      from: 2026-02-17
+      to: 2026-06-05
+    campus: Bologna
+    programme: Laurea in Ingegneria dell'automazione
+    ssd: ING-INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '37063'
   name: FONDAMENTI DI ELETTRONICA PER L'AUTOMAZIONE T
 integrated_course: ''
-campus: Bologna
-programme: Laurea in Ingegneria dell'automazione
+campi:
+- Bologna
+programmes:
+- Laurea in Ingegneria dell'automazione
 syllabus:
   it:
     title: 2025/2026 FONDAMENTI DI ELETTRONICA PER L'AUTOMAZIONE T — Università di

@@ -1,11 +1,15 @@
 year: 2025
-credits: 12
-ssd: INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-09
-  to: 2026-05-20
+credits:
+- 12
+ssds:
+- INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-09
+  to: &id002 2026-05-20
 teachers:
 - id: '116978'
   name: Corazza, Michele
@@ -25,6 +29,15 @@ teachers:
     details:
     - LM
     - Modulo 2
+    credits: 12
+    schedule:
+      from: 2026-02-09
+      to: 2026-05-20
+    campus: Bologna
+    programme: Laurea Magistrale in Dati, metodi e modelli per le scienze linguistiche
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '46984'
   name: Peroni, Silvio
   email: silvio.peroni@unibo.it
@@ -43,12 +56,23 @@ teachers:
     details:
     - LM
     - 12 cfu
+    credits: 12
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Dati, metodi e modelli per le scienze linguistiche
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: B1703
   name: INTRODUZIONE ALLA PROGRAMMAZIONE
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Dati, metodi e modelli per le scienze linguistiche
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Dati, metodi e modelli per le scienze linguistiche
 syllabus:
   it:
     title: 2025/2026 INTRODUZIONE ALLA PROGRAMMAZIONE (LM) — Università di Bologna

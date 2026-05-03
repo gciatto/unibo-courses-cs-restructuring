@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/05
-language: Italiano
-teaching_mode: Lezioni in presenza (totalmente o parzialmente)
-schedule:
-  from: 2025-09-16
-  to: 2025-12-17
+credits:
+- 6
+ssds:
+- ING-INF/05
+languages:
+- Italiano
+teaching_modes:
+- Lezioni in presenza (totalmente o parzialmente)
+schedules:
+- from: &id001 2025-09-16
+  to: &id002 2025-12-17
 teachers:
 - id: '152517'
   name: Pioggia, Roberto
@@ -21,12 +25,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/499013
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Meccatronica
+    ssd: ING-INF/05
+    language: Italiano
+    teaching_mode: Lezioni in presenza (totalmente o parzialmente)
 course_title:
   id: '88230'
   name: TECNOLOGIE INDUSTRIALI ABILITANTI PER IL WEB E HMI P
 integrated_course: ''
-campus: Bologna
-programme: Laurea in Meccatronica
+campi:
+- Bologna
+programmes:
+- Laurea in Meccatronica
 syllabus:
   it:
     title: 2025/2026 TECNOLOGIE INDUSTRIALI ABILITANTI PER IL WEB E HMI P — Università

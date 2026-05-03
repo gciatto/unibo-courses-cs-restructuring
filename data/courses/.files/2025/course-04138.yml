@@ -1,11 +1,15 @@
 year: 2025
-credits: 12
-ssd: INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-23
-  to: 2026-05-21
+credits:
+- 12
+ssds:
+- INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-23
+  to: &id002 2026-05-21
 teachers:
 - id: '34486'
   name: Gabbrielli, Maurizio
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/320579
     details:
     - Modulo 2
+    credits: 12
+    schedule:
+      from: 2025-09-23
+      to: 2026-05-21
+    campus: Bologna
+    programme: Laurea in Informatica
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '48366'
   name: Giallorenzo, Saverio
   email: saverio.giallorenzo@unibo.it
@@ -41,6 +54,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/320579
     details:
     - Modulo 3
+    credits: 12
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Informatica
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '30055'
   name: Gorrieri, Roberto
   email: roberto.gorrieri@unibo.it
@@ -58,6 +80,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/320579
     details:
     - 12 cfu
+    credits: 12
+    schedule:
+      from: 2025-09-23
+      to: 2026-05-21
+    campus: Bologna
+    programme: Laurea in Informatica
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '139687'
   name: Pennino, Federico
   email: federico.pennino2@unibo.it
@@ -75,12 +106,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/320579
     details:
     - Modulo 2
+    credits: 12
+    schedule:
+      from: 2025-09-23
+      to: 2026-05-21
+    campus: Bologna
+    programme: Laurea in Informatica
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: 04138
   name: LINGUAGGI DI PROGRAMMAZIONE
 integrated_course: ''
-campus: Bologna
-programme: Laurea in Informatica
+campi:
+- Bologna
+programmes:
+- Laurea in Informatica
 syllabus:
   it:
     title: 2025/2026 LINGUAGGI DI PROGRAMMAZIONE — Università di Bologna

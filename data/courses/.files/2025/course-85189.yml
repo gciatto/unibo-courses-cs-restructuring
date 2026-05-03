@@ -1,11 +1,15 @@
 year: 2025
-credits: 10
-ssd: ING-INF/05
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-15
-  to: 2025-12-17
+credits:
+- 10
+ssds:
+- ING-INF/05
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-15
+  to: &id002 2025-12-17
 teachers:
 - id: '30938'
   name: Lodi, Stefano
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/423571
     details:
     - 10 cfu
+    credits: 10
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Statistical Sciences
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '124216'
   name: Ronchieri, Elisabetta
   email: elisabetta.ronchieri@unibo.it
@@ -38,12 +51,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/423571
     details:
     - Modulo 2
+    credits: 10
+    schedule:
+      from: 2025-09-15
+      to: 2025-12-17
+    campus: Bologna
+    programme: Laurea Magistrale in Statistical Sciences
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '85189'
   name: SYSTEMS AND ALGORITHMS FOR DATA SCIENCE
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Statistical Sciences
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Statistical Sciences
 syllabus:
   it:
     title: 2025/2026 SYSTEMS AND ALGORITHMS FOR DATA SCIENCE — Università di Bologna

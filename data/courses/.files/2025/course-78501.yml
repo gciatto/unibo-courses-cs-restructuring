@@ -1,11 +1,15 @@
 year: 2025
-credits: 2
-ssd: ING-INF/05
-language: Italiano
-teaching_mode: Lezioni in presenza (totalmente o parzialmente)
-schedule:
-  from: 2026-03-05
-  to: 2026-04-24
+credits:
+- 2
+ssds:
+- ING-INF/05
+languages:
+- Italiano
+teaching_modes:
+- Lezioni in presenza (totalmente o parzialmente)
+schedules:
+- from: &id001 2026-03-05
+  to: &id002 2026-04-24
 teachers:
 - id: '35578'
   name: Avnet, Sofia
@@ -24,12 +28,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/401452
     details:
     - 2 cfu
+    credits: 2
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Podologia (abilitante alla professione sanitaria di podologo)
+    ssd: ING-INF/05
+    language: Italiano
+    teaching_mode: Lezioni in presenza (totalmente o parzialmente)
 course_title:
   id: '78501'
   name: SISTEMA DI ELABORAZIONE DELLE INFORMAZIONI --
 integrated_course: Componente del corso integrato MANAGEMENT SANITARIO C.I. --
-campus: Bologna
-programme: Laurea in Podologia (abilitante alla professione sanitaria di podologo)
+campi:
+- Bologna
+programmes:
+- Laurea in Podologia (abilitante alla professione sanitaria di podologo)
 syllabus:
   it:
     title: 2025/2026 SISTEMA DI ELABORAZIONE DELLE INFORMAZIONI -- — Università di

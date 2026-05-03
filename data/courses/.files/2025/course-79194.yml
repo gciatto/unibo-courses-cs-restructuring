@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/05
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-15
-  to: 2025-10-23
+credits:
+- 6
+ssds:
+- ING-INF/05
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-15
+  to: &id002 2025-10-23
 teachers:
 - id: '50421'
   name: Somenzi, Damiano Marino
@@ -21,6 +25,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/454733
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2025-09-15
+      to: 2025-10-23
+    campus: Bologna
+    programme: Laurea in Scienze statistiche
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '50421'
   name: Somenzi, Damiano Marino
   email: damiano.somenzi@unibo.it
@@ -35,13 +48,25 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/466967
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Statistical Sciences
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '79194'
   name: DATABASES
 integrated_course: Componente del corso integrato STATISTICAL METHODS FOR DATABASE
   INTEGRATION (I.C.)
-campus: Bologna
-programme: Laurea in Scienze statistiche
+campi:
+- Bologna
+programmes:
+- Laurea in Scienze statistiche
+- Laurea Magistrale in Statistical Sciences
 syllabus:
   it:
     title: 2025/2026 DATABASES — Università di Bologna

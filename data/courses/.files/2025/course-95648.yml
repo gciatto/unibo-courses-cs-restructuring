@@ -1,11 +1,15 @@
 year: 2025
-credits: 9
-ssd: ING-INF/05
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-18
-  to: 2025-12-12
+credits:
+- 9
+ssds:
+- ING-INF/05
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-18
+  to: &id002 2025-12-12
 teachers:
 - id: '92500'
   name: Aguzzi, Gianluca
@@ -21,6 +25,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/498808
     details:
     - Modulo 2
+    credits: 9
+    schedule:
+      from: 2025-09-18
+      to: 2025-12-12
+    campus: Cesena
+    programme: Laurea in Tecnologie dei sistemi informatici
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '107170'
   name: Deluigi, Luca
   email: luca.deluigi5@unibo.it
@@ -34,6 +47,15 @@ teachers:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/498808
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/498808
     details: []
+    credits: 9
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Cesena
+    programme: Laurea in Tecnologie dei sistemi informatici
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '152439'
   name: Filaseta, Angelo
   email: angelo.filaseta@unibo.it
@@ -48,6 +70,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/498808
     details:
     - Modulo 3
+    credits: 9
+    schedule:
+      from: 2025-09-18
+      to: 2025-12-12
+    campus: Cesena
+    programme: Laurea in Tecnologie dei sistemi informatici
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '43415'
   name: Pianini, Danilo
   email: danilo.pianini@unibo.it
@@ -65,12 +96,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/498808
     details:
     - 9 cfu
+    credits: 9
+    schedule:
+      from: 2025-09-18
+      to: 2025-12-12
+    campus: Cesena
+    programme: Laurea in Tecnologie dei sistemi informatici
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '95648'
   name: PROGETTAZIONE E SVILUPPO DEL SOFTWARE
 integrated_course: ''
-campus: Cesena
-programme: Laurea in Tecnologie dei sistemi informatici
+campi:
+- Cesena
+programmes:
+- Laurea in Tecnologie dei sistemi informatici
 syllabus:
   it:
     title: 2025/2026 PROGETTAZIONE E SVILUPPO DEL SOFTWARE — Università di Bologna

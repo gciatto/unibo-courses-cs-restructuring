@@ -1,11 +1,15 @@
 year: 2025
-credits: 12
-ssd: ING-INF/05
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-18
-  to: 2025-12-16
+credits:
+- 12
+ssds:
+- ING-INF/05
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-18
+  to: &id002 2025-12-16
 teachers:
 - id: '134225'
   name: Baiardi, Martina
@@ -23,6 +27,15 @@ teachers:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/378219
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/378219
     details: []
+    credits: 12
+    schedule:
+      from: 2025-09-18
+      to: 2025-12-16
+    campus: Cesena
+    programme: Laurea in Ingegneria e scienze informatiche
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '131117'
   name: Cortecchia, Angela
   email: angela.cortecchia@unibo.it
@@ -39,6 +52,15 @@ teachers:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/378219
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/378219
     details: []
+    credits: 12
+    schedule:
+      from: 2025-09-18
+      to: 2025-12-16
+    campus: Cesena
+    programme: Laurea in Ingegneria e scienze informatiche
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '43415'
   name: Pianini, Danilo
   email: danilo.pianini@unibo.it
@@ -56,6 +78,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/378219
     details:
     - Modulo 3
+    credits: 12
+    schedule:
+      from: 2025-09-18
+      to: 2025-12-16
+    campus: Cesena
+    programme: Laurea in Ingegneria e scienze informatiche
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '35642'
   name: Viroli, Mirko
   email: mirko.viroli@unibo.it
@@ -73,12 +104,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/378219
     details:
     - 12 cfu
+    credits: 12
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Cesena
+    programme: Laurea in Ingegneria e scienze informatiche
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '70219'
   name: PROGRAMMAZIONE AD OGGETTI
 integrated_course: ''
-campus: Cesena
-programme: Laurea in Ingegneria e scienze informatiche
+campi:
+- Cesena
+programmes:
+- Laurea in Ingegneria e scienze informatiche
 syllabus:
   it:
     title: 2025/2026 PROGRAMMAZIONE AD OGGETTI — Università di Bologna

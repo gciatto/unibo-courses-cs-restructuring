@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/05
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-09
-  to: 2026-03-16
+credits:
+- 6
+ssds:
+- ING-INF/05
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-09
+  to: &id002 2026-03-16
 teachers:
 - id: '50421'
   name: Somenzi, Damiano Marino
@@ -21,12 +25,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/529396
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Statistica, economia e impresa
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '96793'
   name: INFORMATION SYSTEMS AND DATABASE MANAGEMENT
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Statistica, economia e impresa
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Statistica, economia e impresa
 syllabus:
   it:
     title: 2025/2026 INFORMATION SYSTEMS AND DATABASE MANAGEMENT — Università di Bologna

@@ -1,11 +1,15 @@
 year: 2025
-credits: 3
-ssd: ING-INF/05
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-17
-  to: 2026-05-26
+credits:
+- 3
+ssds:
+- ING-INF/05
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-17
+  to: &id002 2026-05-26
 teachers:
 - id: '113292'
   name: Bartolomei, Luca
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/498976
     details:
     - 3 cfu
+    credits: 3
+    schedule:
+      from: 2026-02-17
+      to: 2026-05-26
+    campus: Bologna
+    programme: Laurea in Meccatronica
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '34908'
   name: Mattoccia, Stefano
   email: stefano.mattoccia@unibo.it
@@ -41,12 +54,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/498976
     details:
     - 3 cfu
+    credits: 3
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Meccatronica
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '88146'
   name: FONDAMENTI DI INFORMATICA P-2
 integrated_course: ''
-campus: Bologna
-programme: Laurea in Meccatronica
+campi:
+- Bologna
+programmes:
+- Laurea in Meccatronica
 syllabus:
   it:
     title: 2025/2026 FONDAMENTI DI INFORMATICA P-2 — Università di Bologna

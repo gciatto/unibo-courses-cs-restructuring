@@ -1,11 +1,15 @@
 year: 2025
-credits: 3
-ssd: INF/01
-language: Italiano
-teaching_mode: Lezioni in presenza (totalmente o parzialmente)
-schedule:
-  from: 2026-04-23
-  to: 2026-06-04
+credits:
+- 3
+ssds:
+- INF/01
+languages:
+- Italiano
+teaching_modes:
+- Lezioni in presenza (totalmente o parzialmente)
+schedules:
+- from: &id001 2026-04-23
+  to: &id002 2026-06-04
 teachers:
 - id: '36482'
   name: Amato, Gabriele
@@ -21,12 +25,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/550132
     details:
     - 3 cfu
+    credits: 3
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale a Ciclo Unico in Odontoiatria e protesi dentaria
+    ssd: INF/01
+    language: Italiano
+    teaching_mode: Lezioni in presenza (totalmente o parzialmente)
 course_title:
   id: '11340'
   name: INFORMATICA APPLICATA
 integrated_course: Componente del corso integrato PSICOLOGIA E METODOLOGIA SCIENTIFICA
-campus: Bologna
-programme: Laurea Magistrale a Ciclo Unico in Odontoiatria e protesi dentaria
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale a Ciclo Unico in Odontoiatria e protesi dentaria
 syllabus:
   it:
     title: 2025/2026 INFORMATICA APPLICATA — Università di Bologna

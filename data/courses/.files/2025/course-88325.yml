@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/05
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-18
-  to: 2026-06-05
+credits:
+- 6
+ssds:
+- ING-INF/05
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-18
+  to: &id002 2026-06-05
 teachers:
 - id: '181793'
   name: Barone, Leonardo
@@ -21,6 +25,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/434900
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2026-02-18
+      to: 2026-06-05
+    campus: Bologna
+    programme: Laurea in Ingegneria informatica
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '181792'
   name: Pevere, Pierluca
   email: pierluca.pevere2@unibo.it
@@ -35,6 +48,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/434900
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Ingegneria informatica
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '33518'
   name: Prandini, Marco
   email: marco.prandini@unibo.it
@@ -52,13 +74,24 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/434900
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2026-02-18
+      to: 2026-06-05
+    campus: Bologna
+    programme: Laurea in Ingegneria informatica
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '88325'
   name: LABORATORIO DI SICUREZZA INFORMATICA T
 integrated_course: Componente del corso integrato AMMINISTRAZIONE DI SISTEMI E SICUREZZA
   INFORMATICA T C.I.
-campus: Bologna
-programme: Laurea in Ingegneria informatica
+campi:
+- Bologna
+programmes:
+- Laurea in Ingegneria informatica
 syllabus:
   it:
     title: 2025/2026 LABORATORIO DI SICUREZZA INFORMATICA T — Università di Bologna

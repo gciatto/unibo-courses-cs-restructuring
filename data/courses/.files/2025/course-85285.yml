@@ -1,11 +1,15 @@
 year: 2025
-credits: 12
-ssd: INF/01
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-03-02
-  to: 2026-06-04
+credits:
+- 12
+ssds:
+- INF/01
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-03-02
+  to: &id002 2026-06-04
 teachers:
 - id: '30905'
   name: Amoroso, Alessandro
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/533250
     details:
     - 12 cfu
+    credits: 12
+    schedule:
+      from: 2026-03-02
+      to: 2026-06-04
+    campus: Bologna
+    programme: Laurea in Genomics
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '156770'
   name: Donati, Nicolò
   email: n.donati@unibo.it
@@ -41,6 +54,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/533250
     details:
     - Modulo 2
+    credits: 12
+    schedule:
+      from: 2026-03-02
+      to: 2026-06-04
+    campus: Bologna
+    programme: Laurea in Genomics
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '38590'
   name: Kiziltan, Zeynep
   email: zeynep.kiziltan@unibo.it
@@ -58,12 +80,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/533250
     details:
     - Modulo 2
+    credits: 12
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Genomics
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '85285'
   name: PROGRAMMING
 integrated_course: ''
-campus: Bologna
-programme: Laurea in Genomics
+campi:
+- Bologna
+programmes:
+- Laurea in Genomics
 syllabus:
   it:
     title: 2025/2026 PROGRAMMING — Università di Bologna

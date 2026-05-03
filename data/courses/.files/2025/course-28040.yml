@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-24
-  to: 2026-05-28
+credits:
+- 6
+ssds:
+- INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-24
+  to: &id002 2026-05-28
 teachers:
 - id: '170301'
   name: Corona, Gaia
@@ -26,6 +30,15 @@ teachers:
     - '1'
     - LM
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2026-02-24
+      to: 2026-05-28
+    campus: Bologna
+    programme: Laurea Magistrale in Scienze filosofiche
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '172409'
   name: Del Duchetto, Federica
   email: federica.delduchett2@unibo.it
@@ -42,6 +55,15 @@ teachers:
     - '1'
     - LM
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2026-02-24
+      to: 2026-05-28
+    campus: Bologna
+    programme: Laurea Magistrale in Scienze filosofiche
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '35695'
   name: Martini, Simone
   email: simone.martini@unibo.it
@@ -61,6 +83,15 @@ teachers:
     - '1'
     - LM
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Scienze filosofiche
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '43417'
   name: Sbaraglia, Marco
   email: marco.sbaraglia@unibo.it
@@ -77,12 +108,23 @@ teachers:
     - '1'
     - LM
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2026-02-24
+      to: 2026-05-28
+    campus: Bologna
+    programme: Laurea Magistrale in Scienze filosofiche
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '28040'
   name: INFORMATICA
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Scienze filosofiche
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Scienze filosofiche
 syllabus:
   it:
     title: 2025/2026 INFORMATICA (1) (LM) — Università di Bologna

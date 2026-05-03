@@ -1,11 +1,15 @@
 year: 2025
-credits: 8
-ssd: ING-INF/05
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-17
-  to: 2025-12-19
+credits:
+- 8
+ssds:
+- ING-INF/05
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-17
+  to: &id002 2025-12-19
 teachers:
 - id: '34908'
   name: Mattoccia, Stefano
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/543027
     details:
     - 8 cfu
+    credits: 8
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Ingegneria informatica
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '93475'
   name: Tosi, Fabio
   email: fabio.tosi5@unibo.it
@@ -41,12 +54,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/543027
     details:
     - Modulo 2
+    credits: 8
+    schedule:
+      from: 2025-09-17
+      to: 2025-12-19
+    campus: Bologna
+    programme: Laurea Magistrale in Ingegneria informatica
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: B8563
   name: SISTEMI DI ELABORAZIONE ACCELERATA M
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Ingegneria informatica
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Ingegneria informatica
 syllabus:
   it:
     title: 2025/2026 SISTEMI DI ELABORAZIONE ACCELERATA M — Università di Bologna

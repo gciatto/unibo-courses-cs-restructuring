@@ -1,11 +1,15 @@
 year: 2025
-credits: 3
-ssd: INF/01
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-18
-  to: 2025-12-01
+credits:
+- 3
+ssds:
+- INF/01
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-18
+  to: &id002 2025-12-01
 teachers:
 - id: '53327'
   name: Bergamaschi, Francesco
@@ -21,12 +25,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/478372
     details:
     - 3 cfu
+    credits: 3
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Forli
+    programme: Laurea in Management and Economics
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '98671'
   name: BUSINESS ANALYTICS
 integrated_course: Componente del corso integrato ANALYTICS FOR MANAGEMENT (I.C.)
-campus: Forli
-programme: Laurea in Management and Economics
+campi:
+- Forli
+programmes:
+- Laurea in Management and Economics
 syllabus:
   it:
     title: 2025/2026 BUSINESS ANALYTICS — Università di Bologna

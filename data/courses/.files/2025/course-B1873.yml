@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: INF/01
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-15
-  to: 2025-10-21
+credits:
+- 6
+ssds:
+- INF/01
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-15
+  to: &id002 2025-10-21
 teachers:
 - id: '131426'
   name: Colavizza, Giovanni
@@ -26,12 +30,23 @@ teachers:
     - '1'
     - LM
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Digital Humanities and Digital Knowledge
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: B1873
   name: Machine Learning for Humanities
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Digital Humanities and Digital Knowledge
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Digital Humanities and Digital Knowledge
 syllabus:
   it:
     title: 2025/2026 Machine Learning for Humanities (1) (LM) — Università di Bologna

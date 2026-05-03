@@ -1,11 +1,15 @@
 year: 2025
-credits: 3
-ssd: ING-INF/05
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-04-27
-  to: 2026-06-03
+credits:
+- 3
+ssds:
+- ING-INF/05
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-04-27
+  to: &id002 2026-06-03
 teachers:
 - id: '35252'
   name: Bevilacqua, Alessandro
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/518110
     details:
     - 3 cfu
+    credits: 3
+    schedule:
+      from: 2026-04-27
+      to: 2026-06-03
+    campus: Cesena
+    programme: Laurea in Ingegneria elettronica
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '149544'
   name: Marasca, Gabriele
   email: gabriele.marasca2@unibo.it
@@ -41,12 +54,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/518110
     details:
     - 3 cfu
+    credits: 3
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Cesena
+    programme: Laurea in Ingegneria elettronica
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '16692'
   name: LABORATORIO DI INFORMATICA
 integrated_course: ''
-campus: Cesena
-programme: Laurea in Ingegneria elettronica
+campi:
+- Cesena
+programmes:
+- Laurea in Ingegneria elettronica
 syllabus:
   it:
     title: 2025/2026 LABORATORIO DI INFORMATICA — Università di Bologna

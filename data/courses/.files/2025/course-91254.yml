@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/05
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-16
-  to: 2026-06-04
+credits:
+- 6
+ssds:
+- ING-INF/05
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-16
+  to: &id002 2026-06-04
 teachers:
 - id: '150126'
   name: Ballerini, Francesco
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/530660
     details:
     - Modulo 2
+    credits: 6
+    schedule:
+      from: 2026-02-16
+      to: 2026-06-04
+    campus: Bologna
+    programme: Laurea Magistrale in Artificial Intelligence
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '124120'
   name: Costanzino, Alex
   email: alex.costanzino@unibo.it
@@ -40,6 +53,15 @@ teachers:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/530660
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/530660
     details: []
+    credits: 6
+    schedule:
+      from: 2026-02-16
+      to: 2026-06-04
+    campus: Bologna
+    programme: Laurea Magistrale in Artificial Intelligence
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '111221'
   name: Lisanti, Giuseppe
   email: giuseppe.lisanti@unibo.it
@@ -57,6 +79,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/530660
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2026-02-16
+      to: 2026-06-04
+    campus: Bologna
+    programme: Laurea Magistrale in Artificial Intelligence
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '43286'
   name: Salti, Samuele
   email: samuele.salti@unibo.it
@@ -74,12 +105,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/530660
     details:
     - Modulo 2
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Artificial Intelligence
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '91254'
   name: IMAGE PROCESSING AND COMPUTER VISION
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Artificial Intelligence
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Artificial Intelligence
 syllabus:
   it:
     title: 2025/2026 IMAGE PROCESSING AND COMPUTER VISION — Università di Bologna

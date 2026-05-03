@@ -1,11 +1,15 @@
 year: 2025
-credits: 8
-ssd: ING-INF/05
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-24
-  to: 2025-12-17
+credits:
+- 8
+ssds:
+- ING-INF/05
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-24
+  to: &id002 2025-12-17
 teachers:
 - id: '165430'
   name: Genovese, Alberto
@@ -21,6 +25,16 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/493396
     details:
     - 8 cfu
+    credits: 8
+    schedule:
+      from: 2025-09-24
+      to: 2025-12-17
+    campus: Bologna
+    programme: Laurea Magistrale in Automation Engineering Laurea Magistrale in Ingegneria
+      informatica
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '142565'
   name: Gurioli, Andrea
   email: andrea.gurioli5@unibo.it
@@ -38,6 +52,16 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/493396
     details:
     - 8 cfu
+    credits: 8
+    schedule:
+      from: 2025-09-24
+      to: 2025-12-17
+    campus: Bologna
+    programme: Laurea Magistrale in Automation Engineering Laurea Magistrale in Ingegneria
+      informatica
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '30315'
   name: Sartori, Claudio
   email: claudio.sartori@unibo.it
@@ -55,13 +79,24 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/493396
     details:
     - 8 cfu
+    credits: 8
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Automation Engineering Laurea Magistrale in Ingegneria
+      informatica
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: B2125
   name: MACHINE LEARNING AND DATA MINING M
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Automation Engineering Laurea Magistrale in Ingegneria
-  informatica
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Automation Engineering Laurea Magistrale in Ingegneria informatica
 syllabus:
   it:
     title: 2025/2026 MACHINE LEARNING AND DATA MINING M — Università di Bologna

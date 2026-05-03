@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: INF/01
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-24
-  to: 2026-06-04
+credits:
+- 6
+ssds:
+- INF/01
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-24
+  to: &id002 2026-06-04
 teachers:
 - id: '48389'
   name: Nuzzolese, Andrea Giovanni
@@ -21,6 +25,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/446613
     details:
     - Modulo 2
+    credits: 6
+    schedule:
+      from: 2026-02-24
+      to: 2026-06-04
+    campus: Bologna
+    programme: Laurea Magistrale in Artificial Intelligence
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '36732'
   name: Presutti, Valentina
   email: valentina.presutti@unibo.it
@@ -38,12 +51,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/446613
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Artificial Intelligence
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '91265'
   name: KNOWLEDGE ENGINEERING
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Artificial Intelligence
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Artificial Intelligence
 syllabus:
   it:
     title: 2025/2026 KNOWLEDGE ENGINEERING — Università di Bologna

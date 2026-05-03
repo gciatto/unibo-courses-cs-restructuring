@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: ING-INF/05
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-15
-  to: 2025-12-18
+credits:
+- 6
+ssds:
+- ING-INF/05
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-15
+  to: &id002 2025-12-18
 teachers:
 - id: '34486'
   name: Gabbrielli, Maurizio
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/530707
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: 2025-09-15
+      to: 2025-12-18
+    campus: Bologna
+    programme: Laurea Magistrale in Artificial Intelligence
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '51341'
   name: Lodi, Michael
   email: michael.lodi@unibo.it
@@ -38,6 +51,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/530707
     details:
     - Modulo 1
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Artificial Intelligence
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '154932'
   name: Pappacoda, Gianmarco
   email: gianmarco.pappacoda@unibo.it
@@ -54,6 +76,15 @@ teachers:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/530707
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/530707
     details: []
+    credits: 6
+    schedule:
+      from: 2025-09-15
+      to: 2025-12-18
+    campus: Bologna
+    programme: Laurea Magistrale in Artificial Intelligence
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '139687'
   name: Pennino, Federico
   email: federico.pennino2@unibo.it
@@ -70,6 +101,15 @@ teachers:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/530707
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/530707
     details: []
+    credits: 6
+    schedule:
+      from: 2025-09-15
+      to: 2025-12-18
+    campus: Bologna
+    programme: Laurea Magistrale in Artificial Intelligence
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 - id: '105956'
   name: Ruggeri, Federico
   email: federico.ruggeri6@unibo.it
@@ -84,13 +124,24 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/530707
     details:
     - Modulo 1
+    credits: 6
+    schedule:
+      from: 2025-09-15
+      to: 2025-12-18
+    campus: Bologna
+    programme: Laurea Magistrale in Artificial Intelligence
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: B5727
   name: INTRODUCTION TO LANGUAGES FOR ARTIFICIAL INTELLIGENCE
 integrated_course: Componente del corso integrato LANGUAGES AND ALGORITHMS FOR ARTIFICIAL
   INTELLIGENCE I.C.
-campus: Bologna
-programme: Laurea Magistrale in Artificial Intelligence
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Artificial Intelligence
 syllabus:
   it:
     title: 2025/2026 INTRODUCTION TO LANGUAGES FOR ARTIFICIAL INTELLIGENCE — Università

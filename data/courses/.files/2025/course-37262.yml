@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: INF/01
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-11-10
-  to: 2025-12-16
+credits:
+- 6
+ssds:
+- INF/01
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-11-10
+  to: &id002 2025-12-16
 teachers:
 - id: '30458'
   name: Gaspari, Mauro
@@ -24,12 +28,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/392829
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Quantitative Finance
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '37262'
   name: COMPUTER PROGRAMMING
 integrated_course: Componente del corso integrato NUMERICAL ANALYSIS (I.C.)
-campus: Bologna
-programme: Laurea Magistrale in Quantitative Finance
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Quantitative Finance
 syllabus:
   it:
     title: 2025/2026 COMPUTER PROGRAMMING — Università di Bologna

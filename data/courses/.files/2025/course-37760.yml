@@ -1,11 +1,15 @@
 year: 2025
-credits: 6
-ssd: INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-30
-  to: 2025-12-11
+credits:
+- 6
+ssds:
+- INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-30
+  to: &id002 2025-12-11
 teachers:
 - id: '16885'
   name: Donatiello, Lorenzo
@@ -21,6 +25,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/518514
     details:
     - 6 cfu
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Informatica
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '30063'
   name: Loli Piccolomini, Elena
   email: elena.loli@unibo.it
@@ -38,12 +51,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/518514
     details:
     - Modulo 2
+    credits: 6
+    schedule:
+      from: 2025-09-30
+      to: 2025-12-11
+    campus: Bologna
+    programme: Laurea Magistrale in Informatica
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '37760'
   name: SIMULAZIONE DI SISTEMI
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Informatica
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Informatica
 syllabus:
   it:
     title: 2025/2026 SIMULAZIONE DI SISTEMI — Università di Bologna

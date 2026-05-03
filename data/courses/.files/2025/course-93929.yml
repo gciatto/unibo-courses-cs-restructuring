@@ -1,11 +1,15 @@
 year: 2025
-credits: 9
-ssd: ING-INF/01
-language: English
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-18
-  to: 2025-12-18
+credits:
+- 9
+ssds:
+- ING-INF/01
+languages:
+- English
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-18
+  to: &id002 2025-12-18
 teachers:
 - id: '30933'
   name: Tartagni, Marco
@@ -24,12 +28,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/458757
     details:
     - Modulo 2
+    credits: 9
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Cesena
+    programme: Laurea Magistrale in Biomedical Engineering
+    ssd: ING-INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '93929'
   name: SENSORS AND NANOTECHNOLOGY
 integrated_course: ''
-campus: Cesena
-programme: Laurea Magistrale in Biomedical Engineering
+campi:
+- Cesena
+programmes:
+- Laurea Magistrale in Biomedical Engineering
 syllabus:
   it:
     title: 2025/2026 SENSORS AND NANOTECHNOLOGY — Università di Bologna

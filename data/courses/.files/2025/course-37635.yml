@@ -1,11 +1,15 @@
 year: 2025
-credits: 12
-ssd: INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-17
-  to: 2026-05-22
+credits:
+- 12
+ssds:
+- INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-17
+  to: &id002 2026-05-22
 teachers:
 - id: '146356'
   name: Bonini, Roberto
@@ -23,6 +27,15 @@ teachers:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/524324
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/524324
     details: []
+    credits: 12
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Informatica
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '126636'
   name: De Palma, Giuseppe
   email: giuseppe.depalma2@unibo.it
@@ -37,6 +50,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/524324
     details:
     - Modulo 2
+    credits: 12
+    schedule:
+      from: 2026-02-17
+      to: 2026-05-22
+    campus: Bologna
+    programme: Laurea in Informatica
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '40940'
   name: Di Lena, Pietro
   email: pietro.dilena@unibo.it
@@ -54,6 +76,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/524324
     details:
     - Modulo 2
+    credits: 12
+    schedule:
+      from: 2026-02-17
+      to: 2026-05-22
+    campus: Bologna
+    programme: Laurea in Informatica
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '33342'
   name: Zavattaro, Gianluigi
   email: gianluigi.zavattaro@unibo.it
@@ -71,12 +102,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/524324
     details:
     - 12 cfu
+    credits: 12
+    schedule:
+      from: 2026-02-17
+      to: 2026-05-22
+    campus: Bologna
+    programme: Laurea in Informatica
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '37635'
   name: ALGORITMI E STRUTTURE DI DATI
 integrated_course: ''
-campus: Bologna
-programme: Laurea in Informatica
+campi:
+- Bologna
+programmes:
+- Laurea in Informatica
 syllabus:
   it:
     title: 2025/2026 ALGORITMI E STRUTTURE DI DATI — Università di Bologna

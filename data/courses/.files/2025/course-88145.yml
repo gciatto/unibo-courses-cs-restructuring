@@ -1,11 +1,15 @@
 year: 2025
-credits: 3
-ssd: ING-INF/05
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2025-09-19
-  to: 2025-12-19
+credits:
+- 3
+ssds:
+- ING-INF/05
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2025-09-19
+  to: &id002 2025-12-19
 teachers:
 - id: '46417'
   name: Bartolini, Andrea
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/498979
     details:
     - 3 cfu
+    credits: 3
+    schedule:
+      from: 2025-09-19
+      to: 2025-12-19
+    campus: Bologna
+    programme: Laurea in Meccatronica
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '157052'
   name: Venieri, Emanuele
   email: emanuele.venieri2@unibo.it
@@ -41,12 +54,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/498979
     details:
     - 3 cfu
+    credits: 3
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Meccatronica
+    ssd: ING-INF/05
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '88145'
   name: FONDAMENTI DI INFORMATICA P-1
 integrated_course: ''
-campus: Bologna
-programme: Laurea in Meccatronica
+campi:
+- Bologna
+programmes:
+- Laurea in Meccatronica
 syllabus:
   it:
     title: 2025/2026 FONDAMENTI DI INFORMATICA P-1 — Università di Bologna

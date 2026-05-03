@@ -1,11 +1,15 @@
 year: 2025
-credits: 9
-ssd: INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-16
-  to: 2026-05-20
+credits:
+- 9
+ssds:
+- INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-16
+  to: &id002 2026-05-20
 teachers:
 - id: '139913'
   name: Armandi, Vincenzo
@@ -24,6 +28,15 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/523718
     details:
     - 9 cfu
+    credits: 9
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Informatica per il management
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '24210'
   name: Roccetti, Marco
   email: marco.roccetti@unibo.it
@@ -41,12 +54,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/523718
     details:
     - 9 cfu
+    credits: 9
+    schedule:
+      from: 2026-02-16
+      to: 2026-05-20
+    campus: Bologna
+    programme: Laurea in Informatica per il management
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '58423'
   name: ARCHITETTURA DI INTERNET
 integrated_course: ''
-campus: Bologna
-programme: Laurea in Informatica per il management
+campi:
+- Bologna
+programmes:
+- Laurea in Informatica per il management
 syllabus:
   it:
     title: 2025/2026 ARCHITETTURA DI INTERNET — Università di Bologna

@@ -1,11 +1,15 @@
 year: 2025
-credits: 9
-ssd: ING-INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-16
-  to: 2026-06-05
+credits:
+- 9
+ssds:
+- ING-INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-16
+  to: &id002 2026-06-05
 teachers:
 - id: '33773'
   name: Reggiani, Susanna
@@ -24,12 +28,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/514424
     details:
     - Modulo 2
+    credits: 9
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea Magistrale in Ingegneria elettronica
+    ssd: ING-INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: B2250
   name: MICROELETTRONICA M
 integrated_course: ''
-campus: Bologna
-programme: Laurea Magistrale in Ingegneria elettronica
+campi:
+- Bologna
+programmes:
+- Laurea Magistrale in Ingegneria elettronica
 syllabus:
   it:
     title: 2025/2026 MICROELETTRONICA M — Università di Bologna

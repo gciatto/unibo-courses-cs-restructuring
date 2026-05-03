@@ -1,11 +1,15 @@
 year: 2025
-credits: 3
-ssd: INF/01
-language: Italian
-teaching_mode: In-person learning (entirely or partially)
-schedule:
-  from: 2026-02-09
-  to: 2026-03-11
+credits:
+- 3
+ssds:
+- INF/01
+languages:
+- Italian
+teaching_modes:
+- In-person learning (entirely or partially)
+schedules:
+- from: &id001 2026-02-09
+  to: &id002 2026-03-11
 teachers:
 - id: '47472'
   name: Zuppiroli, Sara
@@ -21,12 +25,23 @@ teachers:
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/455038
     details:
     - 3 cfu
+    credits: 3
+    schedule:
+      from: *id001
+      to: *id002
+    campus: Bologna
+    programme: Laurea in Economia, mercati e istituzioni
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '93333'
   name: LABORATORIO DI LOGICA DI PROGRAMMAZIONE
 integrated_course: ''
-campus: Bologna
-programme: Laurea in Economia, mercati e istituzioni
+campi:
+- Bologna
+programmes:
+- Laurea in Economia, mercati e istituzioni
 syllabus:
   it:
     title: 2025/2026 LABORATORIO DI LOGICA DI PROGRAMMAZIONE — Università di Bologna
