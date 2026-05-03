@@ -230,15 +230,35 @@ def build_teacher_entry(record: TeachingRecord) -> TeacherWithModule:
     return TeacherWithModule.model_validate(teacher_payload)
 
 
-def to_merged_syllabus(
-    syllabus: dict[str, SyllabusPage] | None,
-) -> dict[str, MergedSyllabusPage]:
-    if not syllabus:
-        return {}
-    return {
-        lang: MergedSyllabusPage(title=page.title, contents=page.contents)
-        for lang, page in syllabus.items()
-    }
+def merge_syllabus(records: list[TeachingRecord]) -> dict[str, MergedSyllabusPage]:
+    merged: dict[str, MergedSyllabusPage] = {}
+    selected_paths: dict[str, pathlib.Path] = {}
+
+    for record in records:
+        syllabus = record.metadata.syllabus
+        if not has_value(syllabus):
+            continue
+        for lang, page in syllabus.items():
+            candidate = MergedSyllabusPage(title=page.title, contents=page.contents)
+            if lang not in merged:
+                merged[lang] = candidate
+                selected_paths[lang] = record.path
+            else:
+                existing_norm = normalize_for_comparison(merged[lang])
+                candidate_norm = normalize_for_comparison(candidate)
+                if existing_norm != candidate_norm:
+                    course_id = record.metadata.course_title.id
+                    year = record.metadata.year
+                    LOGGER.warning(
+                        "Conflicting syllabus[%s] for course %s in year %s; keeping value from %s and ignoring %s",
+                        lang,
+                        course_id,
+                        year,
+                        selected_paths[lang],
+                        record.path,
+                    )
+
+    return merged
 
 
 def merge_records(records: list[TeachingRecord]) -> MergedCourseMetadata:
@@ -248,10 +268,6 @@ def merge_records(records: list[TeachingRecord]) -> MergedCourseMetadata:
     first_metadata = records[0].metadata
     teachers = [build_teacher_entry(record) for record in records]
     teachers.sort(key=lambda teacher: (teacher.teacher_name, teacher.teacher_email, teacher.module.teaching_id))
-
-    raw_syllabus: dict[str, SyllabusPage] | None = merge_value(
-        records, "syllabus", lambda metadata: metadata.syllabus
-    )
 
     return MergedCourseMetadata(
         year=first_metadata.year,
@@ -269,7 +285,7 @@ def merge_records(records: list[TeachingRecord]) -> MergedCourseMetadata:
         integrated_course=merge_value(records, "integrated_course", lambda metadata: metadata.integrated_course) or "",
         campus=merge_value(records, "campus", lambda metadata: metadata.campus) or "",
         programme=merge_value(records, "programme", lambda metadata: metadata.programme) or "",
-        syllabus=to_merged_syllabus(raw_syllabus),
+        syllabus=merge_syllabus(records),
     )
 
 
