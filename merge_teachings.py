@@ -35,6 +35,13 @@ class TeachingModule(BaseModel):
     url: str = Field(default="")
     syllabus_urls: dict[str, str] = Field(default_factory=dict)
     details: list[str] = Field(default_factory=list)
+    credits: int | None = None
+    schedule: CourseSchedule | None = None
+    campus: str = Field(default="")
+    programme: str = Field(default="")
+    ssd: str = Field(default="")
+    language: str = Field(default="")
+    teaching_mode: str = Field(default="")
 
 
 class TeacherWithModule(Teacher):
@@ -53,16 +60,16 @@ class MergedSyllabusPage(BaseModel):
 
 class MergedCourseMetadata(BaseModel):
     year: int
-    credits: int | None = None
-    ssd: str = Field(default="")
-    language: str = Field(default="")
-    teaching_mode: str = Field(default="")
-    schedule: CourseSchedule | None = None
+    credits: list[int | None] = Field(default_factory=list)
+    ssds: list[str] = Field(default_factory=list)
+    languages: list[str] = Field(default_factory=list)
+    teaching_modes: list[str] = Field(default_factory=list)
+    schedules: list[CourseSchedule | None] = Field(default_factory=list)
     teachers: list[TeacherWithModule] = Field(default_factory=list)
     course_title: MergedCourseTitle
     integrated_course: str = Field(default="")
-    campus: str = Field(default="")
-    programme: str = Field(default="")
+    campi: list[str] = Field(default_factory=list)
+    programmes: list[str] = Field(default_factory=list)
     syllabus: dict[str, MergedSyllabusPage] = Field(default_factory=dict)
 
 
@@ -226,6 +233,13 @@ def build_teacher_entry(record: TeachingRecord) -> TeacherWithModule:
             if page.url
         },
         "details": list(record.metadata.course_title.details),
+        "credits": record.metadata.credits,
+        "schedule": record.metadata.schedule,
+        "campus": record.metadata.campus,
+        "programme": record.metadata.programme,
+        "ssd": record.metadata.ssd,
+        "language": record.metadata.language,
+        "teaching_mode": record.metadata.teaching_mode,
     }
     return TeacherWithModule.model_validate(teacher_payload)
 
@@ -261,6 +275,49 @@ def merge_syllabus(records: list[TeachingRecord]) -> dict[str, MergedSyllabusPag
     return merged
 
 
+def get_syllabus_signature(record: TeachingRecord) -> str:
+    """Get a normalized signature of syllabi to group records with identical syllabi."""
+    syllabus_dict = {}
+    for lang, page in record.metadata.syllabus.items():
+        syllabus_dict[lang] = {
+            "title": page.title,
+            "contents": page.contents,
+        }
+    return normalize_for_comparison(syllabus_dict)
+
+
+def generate_course_suffixes(
+    course_groups: dict[tuple[int, str, str], list[TeachingRecord]],
+) -> dict[tuple[int, str, str], str]:
+    """Generate suffixes for course files with multiple syllabi using deterministic letter assignment."""
+    suffixes: dict[tuple[int, str, str], str] = {}
+
+    # Group by (year, course_id) to find conflicts
+    by_course_id: dict[tuple[int, str], list[tuple[int, str, str]]] = defaultdict(list)
+    for key in course_groups.keys():
+        year, course_id, syllabus_sig = key
+        by_course_id[(year, course_id)].append(key)
+
+    for (year, course_id), keys in by_course_id.items():
+        if len(keys) == 1:
+            # No conflict, no suffix needed
+            suffixes[keys[0]] = ""
+        else:
+            # Multiple syllabi: assign letters A, B, C, etc. sorted deterministically by syllabus signature
+            LOGGER.warning(
+                "Course %s in year %s has %d different syllabi; using letter suffixes",
+                course_id,
+                year,
+                len(keys),
+            )
+            # Sort by syllabus signature to ensure deterministic assignment
+            sorted_keys = sorted(keys, key=lambda k: k[2])  # Sort by syllabus_sig (index 2)
+            for i, key in enumerate(sorted_keys):
+                suffixes[key] = f"-{chr(ord('A') + i)}"
+
+    return suffixes
+
+
 def merge_records(records: list[TeachingRecord]) -> MergedCourseMetadata:
     if not records:
         raise ValueError("Cannot merge an empty set of teaching records.")
@@ -269,13 +326,40 @@ def merge_records(records: list[TeachingRecord]) -> MergedCourseMetadata:
     teachers = [build_teacher_entry(record) for record in records]
     teachers.sort(key=lambda teacher: (teacher.teacher_name, teacher.teacher_email, teacher.module.teaching_id))
 
+    # Collect all unique values for list fields
+    credits_set: dict[int | None, bool] = {}
+    ssds_set: dict[str, bool] = {}
+    languages_set: dict[str, bool] = {}
+    teaching_modes_set: dict[str, bool] = {}
+    schedules_set: dict[str, CourseSchedule | None] = {}
+    campi_set: dict[str, bool] = {}
+    programmes_set: dict[str, bool] = {}
+
+    for record in records:
+        if record.metadata.credits is not None:
+            credits_set[record.metadata.credits] = True
+        if record.metadata.ssd:
+            ssds_set[record.metadata.ssd] = True
+        if record.metadata.language:
+            languages_set[record.metadata.language] = True
+        if record.metadata.teaching_mode:
+            teaching_modes_set[record.metadata.teaching_mode] = True
+        if record.metadata.schedule is not None:
+            # Use normalized representation as key to deduplicate
+            sched_key = normalize_for_comparison(record.metadata.schedule)
+            schedules_set[sched_key] = record.metadata.schedule
+        if record.metadata.campus:
+            campi_set[record.metadata.campus] = True
+        if record.metadata.programme:
+            programmes_set[record.metadata.programme] = True
+
     return MergedCourseMetadata(
         year=first_metadata.year,
-        credits=merge_value(records, "credits", lambda metadata: metadata.credits),
-        ssd=merge_value(records, "ssd", lambda metadata: metadata.ssd) or "",
-        language=merge_value(records, "language", lambda metadata: metadata.language) or "",
-        teaching_mode=merge_value(records, "teaching_mode", lambda metadata: metadata.teaching_mode) or "",
-        schedule=merge_value(records, "schedule", lambda metadata: metadata.schedule),
+        credits=[c for c in credits_set.keys()],
+        ssds=[s for s in ssds_set.keys()],
+        languages=[l for l in languages_set.keys()],
+        teaching_modes=[tm for tm in teaching_modes_set.keys()],
+        schedules=[s for s in schedules_set.values()],
         teachers=teachers,
         course_title=MergedCourseTitle(
             id=first_metadata.course_title.id,
@@ -283,8 +367,8 @@ def merge_records(records: list[TeachingRecord]) -> MergedCourseMetadata:
             or first_metadata.course_title.name,
         ),
         integrated_course=merge_value(records, "integrated_course", lambda metadata: metadata.integrated_course) or "",
-        campus=merge_value(records, "campus", lambda metadata: metadata.campus) or "",
-        programme=merge_value(records, "programme", lambda metadata: metadata.programme) or "",
+        campi=[c for c in campi_set.keys()],
+        programmes=[p for p in programmes_set.keys()],
         syllabus=merge_syllabus(records),
     )
 
@@ -306,19 +390,25 @@ def ensure_symlink(link_path: pathlib.Path, target_path: pathlib.Path) -> None:
 
 def merge_courses_tree(courses_dir: pathlib.Path) -> tuple[int, int]:
     records = iter_teaching_records(courses_dir)
-    grouped_records: dict[tuple[int, str], list[TeachingRecord]] = defaultdict(list)
+    grouped_records: dict[tuple[int, str, str], list[TeachingRecord]] = defaultdict(list)
 
+    # Group by (year, course_id, syllabus_signature)
     for record in records:
-        grouped_records[(record.metadata.year, record.metadata.course_title.id)].append(record)
+        syllabus_sig = get_syllabus_signature(record)
+        grouped_records[(record.metadata.year, record.metadata.course_title.id, syllabus_sig)].append(record)
+
+    # Generate suffixes for courses with conflicting syllabi
+    suffixes = generate_course_suffixes(grouped_records)
 
     merged_count = 0
     symlink_count = 0
 
-    for (year, course_id), course_records in sorted(grouped_records.items()):
+    for (year, course_id, syllabus_sig), course_records in sorted(grouped_records.items()):
         merged_dir = courses_dir / DEFAULT_MERGED_DIRNAME / str(year)
         merged_dir.mkdir(parents=True, exist_ok=True)
 
-        merged_path = merged_dir / f"course-{course_id}.yml"
+        suffix = suffixes.get((year, course_id, syllabus_sig), "")
+        merged_path = merged_dir / f"course-{course_id}{suffix}.yml"
         merged_metadata = merge_records(course_records)
         merged_path.write_text(
             yaml.safe_dump(
@@ -331,7 +421,7 @@ def merge_courses_tree(courses_dir: pathlib.Path) -> tuple[int, int]:
         merged_count += 1
 
         for record in course_records:
-            symlink_path = record.year_dir / f"course-{course_id}.yml"
+            symlink_path = record.year_dir / f"course-{course_id}{suffix}.yml"
             ensure_symlink(symlink_path, merged_path)
             symlink_count += 1
 
