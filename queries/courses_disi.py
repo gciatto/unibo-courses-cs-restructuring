@@ -27,9 +27,11 @@ def parse_course_yaml(path: str) -> dict:
     with open(path, encoding="utf-8") as fh:
         data = yaml.safe_load(fh)
     course_title = data.get("course_title", {}) or {}
+    course_credits = data.get("credits", {}) or [0]
     return {
         "id":   str(course_title.get("id", "")).strip(),
         "name": str(course_title.get("name", "Unknown")).strip(),
+        "credits": course_credits[0] if isinstance(course_credits, (list, tuple)) else course_credits
     }
 
 
@@ -40,15 +42,15 @@ def main():
     with open(CONTACTS_CSV, encoding="utf-8", newline="") as fh:
         contacts = list(csv.DictReader(fh))
 
-    non_disi = [
+    disi = [
         c for c in contacts
-        if c.get("dipartimento", "").strip() != TARGET_DEPT
+        if c.get("department", "").strip() == TARGET_DEPT
     ]
 
     if not os.path.isdir(COURSES_DIR):
         sys.exit(f"ERROR: courses directory not found: {COURSES_DIR}")
 
-    for contact in non_disi:
+    for contact in disi:
         email = contact.get("email", "").strip()
         if not email:
             continue
@@ -68,7 +70,7 @@ def main():
         if not yaml_files:
             continue
 
-        courses = []
+        courses = set()
         for ypath in yaml_files:
             fname = os.path.basename(ypath)
             file_id = re.sub(r"[^\d]", "", fname)  # digits from filename as fallback
@@ -76,21 +78,21 @@ def main():
             try:
                 info = parse_course_yaml(ypath)
                 course_id   = info["id"]
-                course_name = info["name"]
+                course_name = info["name"].strip().replace("\"","'")
+                course_credits = info["credits"]
             except Exception as exc:
                 course_id   = file_id
                 course_name = f"Unknown (parse error: {exc})"
+                course_credits = f"Unknown (parse error: {exc})"
 
-            courses.append((course_id, course_name))
+            try:
+                courses.add((course_id, course_name, course_credits))
+            except Exception as exc:
+                print( exc )
+                print( (course_id, course_name, course_credits) )
 
-        name = contact.get("nome", "Unknown").strip()
-        dept = contact.get("dipartimento", "Unknown").strip()
-        print(f"\nName: {name}")
-        print(f"Department: {dept}")
-        print("Courses:")
-        for cid, cname in courses:
-            print(f"  - {cid}, {cname}")
-
+        for cid, cname, ccredits in courses:
+            print(f"- id: {cid}\n  name: \"{cname}\"\n  credits: {ccredits}")
 
 if __name__ == "__main__":
     main()
