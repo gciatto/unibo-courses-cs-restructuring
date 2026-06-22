@@ -53,6 +53,17 @@ PATTERN_TIMETABLE = re.compile(
 )
 PATTERN_DETAIL_AMONG_PARENTHESES = re.compile(r"\(([^)]+)\)")
 PATTERN_DETAIL_CFU = re.compile(r"\s*[-–—]\s*(\s*\d+\s*CFU\s*)\s*", re.IGNORECASE)
+PATTERN_MARKDOWN_LINK = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
+PATTERN_PROGRAMME_MENTION_EN = re.compile(
+    r"(?:Also\s+valid\s+for\s+)?(?:first|second)\s+cycle\s+degree\s+programme\s*(?:\((?:L|LT|LM)\))?\s+in\s+(?P<title>.+?)(?=\s*Also\s+valid\s+for\s+(?:first|second)\s+cycle\s+degree\s+programme\s*(?:\((?:L|LT|LM)\))?\s+in|$)",
+    re.IGNORECASE,
+)
+PATTERN_PROGRAMME_MENTION_IT = re.compile(
+    r"(?:Valido\s+anche\s+per\s+)?(?:corso\s*:\s*)?(?:corso\s+di\s+laurea(?:\s+magistrale)?|laurea(?:\s+magistrale)?)\s*(?:\((?:L|LM)\))?\s+in\s+(?P<title>.+?)(?=\s*Valido\s+anche\s+per\s+(?:corso\s*:\s*)?(?:corso\s+di\s+laurea(?:\s+magistrale)?|laurea(?:\s+magistrale)?)\s*(?:\((?:L|LM)\))?\s+in|$)",
+    re.IGNORECASE,
+)
+PATTERN_PROGRAMME_CODE = re.compile(r"\(\s*cod\.\s*(\d+)\s*\)", re.IGNORECASE)
+PATTERN_TRAILING_URL_PAREN = re.compile(r"\(https?://[^)]*\)")
 
 LOGGER = logging.getLogger(pathlib.Path(__file__).stem)
 
@@ -91,7 +102,14 @@ class CourseMetadata(BaseModel):
     integrated_course: str = Field(default="")
     campus: str = Field(default="")
     programme: str = Field(default="")
+    programmes: list["CourseProgramme"] = Field(default_factory=list)
     syllabus: dict[str, "SyllabusPage"] = Field(default_factory=dict)
+
+
+class CourseProgramme(BaseModel):
+    title: str = Field(default="")
+    code: str = Field(default="")
+    details: dict[str, Any] = Field(default_factory=dict)
 
 
 class SyllabusPage(BaseModel):
@@ -111,6 +129,11 @@ class CourseDetails(BaseModel):
     language: str = Field(default="")
     teaching_mode: str = Field(default="")
     schedule: CourseSchedule | None = None
+
+
+class ProgrammeMention(BaseModel):
+    title: str = Field(default="")
+    code: str = Field(default="")
 
 
 def clean_teacher_field(value: str) -> str:
@@ -344,6 +367,7 @@ def build_metadata(
     teacher_role: list[str],
     teacher_affiliation: str,
     teacher_ssd: TeacherSsd | None,
+    programmes: list[CourseProgramme],
 ) -> CourseMetadata:
     return CourseMetadata(
         year=year,
@@ -366,8 +390,137 @@ def build_metadata(
         integrated_course=(row.get("integrated_course") or "").strip(),
         campus=(row.get("campus") or "").strip(),
         programme=(row.get("degree_course") or "").strip(),
+        programmes=programmes,
         syllabus=syllabus,
     )
+
+
+def normalize_programme_title_fragment(value: str) -> str:
+    value = PATTERN_TRAILING_URL_PAREN.sub("", value)
+    value = PATTERN_PROGRAMME_CODE.sub("", value)
+    value = value.strip(" .;,:-")
+    value = normalize_text(value)
+    return value
+
+
+def deduplicate_programme_mentions(mentions: Iterable[ProgrammeMention]) -> list[ProgrammeMention]:
+    deduplicated: list[ProgrammeMention] = []
+    seen: set[tuple[str, str]] = set()
+
+    for mention in mentions:
+        title_key = normalize_programme_title(mention.title)
+        key = (title_key, mention.code.strip())
+        if not title_key or key in seen:
+            continue
+        seen.add(key)
+        deduplicated.append(mention)
+
+    return deduplicated
+
+
+def extract_programme_mentions(markdown: str) -> list[ProgrammeMention]:
+    plain_text = PATTERN_MARKDOWN_LINK.sub(r"\1", markdown)
+    lines = [normalize_text(line) for line in plain_text.splitlines() if normalize_text(line)]
+
+    mentions: list[ProgrammeMention] = []
+    for line in lines:
+        for pattern in (PATTERN_PROGRAMME_MENTION_EN, PATTERN_PROGRAMME_MENTION_IT):
+            for match in pattern.finditer(line):
+                title_raw = normalize_programme_title_fragment(match.group("title"))
+                if not title_raw:
+                    continue
+                code_match = PATTERN_PROGRAMME_CODE.search(match.group("title"))
+                mentions.append(
+                    ProgrammeMention(
+                        title=title_raw,
+                        code=(code_match.group(1) if code_match else ""),
+                    ),
+                )
+
+    return deduplicate_programme_mentions(mentions)
+
+
+def resolve_programme_path(
+    mention: ProgrammeMention,
+    year: int,
+    programme_lookup: ProgrammeLookup,
+) -> pathlib.Path | None:
+    code_provided = bool(mention.code)
+
+    if mention.code:
+        code_matches = programme_lookup.by_year_and_code.get(year, {}).get(mention.code, [])
+        if len(code_matches) == 1:
+            return code_matches[0]
+        if len(code_matches) > 1:
+            LOGGER.warning("Multiple programme files found for year=%s code=%s", year, mention.code)
+            return code_matches[0]
+
+    normalized_title = normalize_programme_title(mention.title)
+    if not normalized_title:
+        return None
+
+    matches = programme_lookup.by_year_and_name.get(year, {}).get(normalized_title, [])
+    if code_provided and not matches:
+        return None
+    if len(matches) == 1:
+        if code_provided:
+            payload = yaml.safe_load(matches[0].read_text(encoding="utf-8")) or {}
+            payload_code = str(payload.get("code") or "").strip() if isinstance(payload, dict) else ""
+            if payload_code and payload_code != mention.code:
+                LOGGER.warning(
+                    "Ignoring title-based programme fallback for year=%s title=%r code=%s because matched file has code=%s",
+                    year,
+                    mention.title,
+                    mention.code,
+                    payload_code,
+                )
+                return None
+        return matches[0]
+    if len(matches) > 1:
+        if code_provided:
+            return None
+        LOGGER.warning(
+            "Multiple programme files found for year=%s title=%r; using first match %s",
+            year,
+            mention.title,
+            matches[0],
+        )
+        return matches[0]
+    return None
+
+
+def resolve_programmes(
+    mentions: list[ProgrammeMention],
+    year: int,
+    programme_lookup: ProgrammeLookup,
+) -> list[CourseProgramme]:
+    programmes: list[CourseProgramme] = []
+
+    for mention in deduplicate_programme_mentions(mentions):
+        path = resolve_programme_path(mention, year, programme_lookup)
+        if path is None:
+            LOGGER.warning(
+                "Could not resolve programme for year=%s title=%r code=%r",
+                year,
+                mention.title,
+                mention.code,
+            )
+            continue
+
+        payload = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+        if not isinstance(payload, dict):
+            LOGGER.warning("Skipping invalid programme YAML at %s", path)
+            continue
+
+        programmes.append(
+            CourseProgramme(
+                title=mention.title,
+                code=mention.code or str(payload.get("code") or "").strip(),
+                details=payload,
+            ),
+        )
+
+    return programmes
 
 
 def extract_markdown_urls(markdown: str) -> list[str]:
@@ -793,6 +946,7 @@ def process_row(
     initial_backoff: float,
     backoff_multiplier: float,
     max_backoff: float,
+    programme_lookup: ProgrammeLookup,
 ) -> tuple[str, str]:
     course_context = format_course_context(row_index, row)
     course_url = (row.get("course_url") or "").strip()
@@ -822,6 +976,7 @@ def process_row(
 
     syllabus: dict[str, SyllabusPage] = {}
     details_by_language: dict[str, CourseDetails] = {}
+    mentioned_programmes: list[ProgrammeMention] = []
     searchable_fragments: list[str] = [(row.get("course_title") or "").strip()]
     page_errors: list[str] = []
 
@@ -846,6 +1001,7 @@ def process_row(
 
         syllabus[language] = syllabus_page
         details_by_language[language] = page_details
+        mentioned_programmes.extend(extract_programme_mentions(cleaned_markdown))
         searchable_fragments.append(cleaned_markdown)
 
     searchable_text = "\n".join(searchable_fragments)
@@ -942,6 +1098,7 @@ def process_row(
     course_dir.mkdir(parents=True, exist_ok=True)
 
     metadata_path = course_dir / f"teaching-{course_id}.yml"
+    resolved_programmes = resolve_programmes(mentioned_programmes, year, programme_lookup)
     metadata = build_metadata(
         row=row,
         year=year,
@@ -954,6 +1111,7 @@ def process_row(
         teacher_role=teacher_role,
         teacher_affiliation=teacher_affiliation,
         teacher_ssd=teacher_ssd,
+        programmes=resolved_programmes,
     )
     metadata_path.write_text(
         yaml.safe_dump(
@@ -1011,6 +1169,8 @@ def main() -> int:
         LOGGER.error("input file does not exist: %s", args.input)
         return 2
 
+    programme_lookup = build_programme_lookup()
+
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
     downloaded_count = 0
@@ -1037,6 +1197,7 @@ def main() -> int:
                     initial_backoff=args.initial_backoff,
                     backoff_multiplier=args.backoff_multiplier,
                     max_backoff=args.max_backoff,
+                    programme_lookup=programme_lookup,
                 )
             except (urllib.error.URLError, TimeoutError) as error:
                 failed_count += 1
