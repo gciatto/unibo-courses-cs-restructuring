@@ -17,7 +17,8 @@ class TestRolesRecognition(unittest.TestCase):
                 result = classify_role(role)
                 print(f"Line {line_num}: {role!r} -> {result!r}")
                 self.assertIsNotNone(result, f"Failed to classify role: {role!r}")
-                self.assertIn(result, self.all_roles, f"Unexpected role classification: {result!r}")
+                for r in result:
+                    self.assertIn(r, self.all_roles, f"Unexpected role classification: {r!r}")
 
 
 class TestDepartmentsRecognition(unittest.TestCase):

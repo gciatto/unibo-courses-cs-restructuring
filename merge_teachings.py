@@ -101,12 +101,20 @@ def normalize_teaching_payload(raw_data: dict[str, Any]) -> dict[str, Any]:
 
     teacher_data = normalized.get("teacher")
     if isinstance(teacher_data, dict):
+        raw_role = teacher_data.get("role", [])
+        if isinstance(raw_role, str):
+            normalized_role = [raw_role] if raw_role else []
+        elif isinstance(raw_role, (list, tuple, set)):
+            normalized_role = [str(item) for item in raw_role if str(item)]
+        else:
+            normalized_role = []
+
         normalized["teacher"] = {
             "teacher_id": teacher_data.get("id", ""),
             "teacher_name": teacher_data.get("name", ""),
             "teacher_email": teacher_data.get("email", ""),
             "teacher_website": teacher_data.get("website", ""),
-            "teacher_role": teacher_data.get("role", ""),
+            "teacher_role": normalized_role,
             "teacher_affiliation": teacher_data.get("affiliation", ""),
             "teacher_ssd": teacher_data.get("ssd"),
         }

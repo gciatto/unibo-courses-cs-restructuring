@@ -28,7 +28,7 @@ LOGGER = logging.getLogger(pathlib.Path(__file__).stem)
 class Contact:
     uid: str
     name: str
-    role: str
+    role: list[str]
     department: str
     address: str
     email: str
@@ -60,17 +60,19 @@ def first_link(node: Tag, selector: str) -> str:
 def parse_contact(table: Tag) -> Contact:
     uid=first_text(table, "th.uid")
     name=first_text(table, "td.fn.name")
-    role=first_text(table, "tr.role td")
+    role_raw=first_text(table, "tr.role td")
     department=first_text(table, "tr.org td")
     address=first_text(table, "tr.adr td").replace("[ Vai alla mappa ]", "").strip()
     email = first_text(table, "a.email")
     website = first_link(table, "a.url")
     vcard = first_link(table, "tr td a[title*='Vcard']")
 
-    if (r := classify_role(role)) is not None:
-        role = r
+    classified_roles = classify_role(role_raw)
+    if classified_roles:
+        role = sorted(classified_roles)
     else:
-        LOGGER.warning(f"Unrecognized role '{role}' for contact '{name}' (uid: {uid})")
+        role = [role_raw] if role_raw else []
+        LOGGER.warning(f"Unrecognized role '{role_raw}' for contact '{name}' (uid: {uid})")
 
     if (d := classify_dept(department)) is not None:
         department = d
@@ -129,7 +131,7 @@ def build_letter_url(base_url: str, letter: str) -> str:
 def print_contacts(index: int, contact: Contact) -> None:
     message = f"Extract contact #{index}: {contact.name}"
     message += f"\n  uid: {contact.uid}"
-    message += f"\n  role: {contact.role}"
+    message += f"\n  role: {';'.join(contact.role)}"
     message += f"\n  department: {contact.department}"
     message += f"\n  address: {contact.address}"
     message += f"\n  email: {contact.email}"
@@ -141,7 +143,7 @@ def contact_row(contact: Contact) -> list[str]:
     return [
         contact.uid,
         contact.name,
-        contact.role,
+        ";".join(contact.role),
         contact.department,
         contact.address,
         contact.email,

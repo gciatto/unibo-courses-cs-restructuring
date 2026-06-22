@@ -62,7 +62,7 @@ class Teacher(BaseModel):
     teacher_name: str = Field(default="", serialization_alias="name")
     teacher_email: str = Field(default="", serialization_alias="email")
     teacher_website: str = Field(default="", serialization_alias="website")
-    teacher_role: str = Field(default="", serialization_alias="role")
+    teacher_role: list[str] = Field(default_factory=list, serialization_alias="role")
     teacher_affiliation: str = Field(default="", serialization_alias="affiliation")
     teacher_ssd: "TeacherSsd | None" = Field(default=None, serialization_alias="ssd")
 
@@ -341,7 +341,7 @@ def build_metadata(
     url: str,
     details: CourseDetails,
     syllabus: dict[str, SyllabusPage],
-    teacher_role: str,
+    teacher_role: list[str],
     teacher_affiliation: str,
     teacher_ssd: TeacherSsd | None,
 ) -> CourseMetadata:
@@ -870,7 +870,7 @@ def process_row(
         details = "; ".join(page_errors) if page_errors else "no language pages available"
         raise ValueError(f"No syllabus pages were parsed successfully: {details}")
 
-    teacher_role = ""
+    teacher_role: list[str] = []
     teacher_affiliation = ""
     teacher_ssd: TeacherSsd | None = None
 
@@ -902,7 +902,7 @@ def process_row(
                 )
             else:
                 classified_role = classify_role(role_raw)
-                if classified_role is None:
+                if not classified_role:
                     LOGGER.warning(
                         "Unrecognized teacher role %r on website %s for %s (%s)",
                         role_raw,
@@ -910,9 +910,9 @@ def process_row(
                         teacher_name,
                         course_context,
                     )
-                    teacher_role = role_raw
+                    teacher_role = [role_raw]
                 else:
-                    teacher_role = classified_role
+                    teacher_role = sorted(classified_role)
 
             if not affiliation_raw:
                 LOGGER.warning(

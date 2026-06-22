@@ -25,30 +25,30 @@ class FrozenDict(Mapping):
 
     def __len__(self):
         return len(self.__data)
-    
+
     def items(self):
         return self.__data.items()
-    
+
     def keys(self):
         return self.__data.keys()
-    
+
     def values(self):
         return self.__data.values()
-    
+
     def __repr__(self):
         items = ", ".join(f"{k}={v!r}" for k, v in self.__data.items())
         return f"FrozenDict({items})"
-    
+
     def __str__(self):
         items = ", ".join(f"{k}={v}" for k, v in self.__data.items())
         return f"FrozenDict({items})"
-    
+
     def __hash__(self):
         items = self.__data.items()
         sorted_items = sorted(items, key=lambda x: x[0])
         tuple_items = tuple(sorted_items)
         return hash(tuple_items)
-    
+
     def __eq__(self, other):
         if not isinstance(other, FrozenDict):
             return NotImplemented
@@ -59,13 +59,13 @@ class FrozenDict(Mapping):
 def departments():
     with open(FILE_DEPTS) as f:
         return FrozenDict(**yaml.safe_load(f))
-    
+
 
 @cache
 def roles():
     with open(FILE_ROLES) as f:
         return FrozenDict(**yaml.safe_load(f))
-    
+
 
 @cache
 def checklist_for(map: FrozenDict) -> list[tuple[str, str]]:
@@ -83,10 +83,11 @@ def checklist_for(map: FrozenDict) -> list[tuple[str, str]]:
 
 def classify_role(role: str) -> str | None:
     role = role.lower().strip()
+    results = set()
     for value, key in checklist_for(roles()):
         if value in role:
-            return key
-    return None
+            results.add(key)
+    return results
 
 
 def classify_dept(dept: str) -> str | None:
