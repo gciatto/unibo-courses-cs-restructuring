@@ -101,14 +101,12 @@ class CourseMetadata(BaseModel):
     course_title: CourseTitle
     integrated_course: str = Field(default="")
     campus: str = Field(default="")
-    programme: str = Field(default="")
     programmes: list["CourseProgramme"] = Field(default_factory=list)
     syllabus: dict[str, "SyllabusPage"] = Field(default_factory=dict)
 
 
 class CourseProgramme(BaseModel):
     title: str = Field(default="")
-    code: str = Field(default="")
     details: dict[str, Any] = Field(default_factory=dict)
 
 
@@ -389,7 +387,6 @@ def build_metadata(
         course_title=split_course_title((row.get("course_title") or "").strip()),
         integrated_course=(row.get("integrated_course") or "").strip(),
         campus=(row.get("campus") or "").strip(),
-        programme=(row.get("degree_course") or "").strip(),
         programmes=programmes,
         syllabus=syllabus,
     )
@@ -440,28 +437,28 @@ def extract_programme_mentions(markdown: str) -> list[ProgrammeMention]:
     return deduplicate_programme_mentions(mentions)
 
 
-def resolve_programme_path(
+def resolve_programme_paths(
     mention: ProgrammeMention,
     year: int,
     programme_lookup: ProgrammeLookup,
-) -> pathlib.Path | None:
+) -> list[pathlib.Path]:
     code_provided = bool(mention.code)
 
     if mention.code:
         code_matches = programme_lookup.by_year_and_code.get(year, {}).get(mention.code, [])
         if len(code_matches) == 1:
-            return code_matches[0]
+            return code_matches
         if len(code_matches) > 1:
             LOGGER.warning("Multiple programme files found for year=%s code=%s", year, mention.code)
-            return code_matches[0]
+            return code_matches
 
     normalized_title = normalize_programme_title(mention.title)
     if not normalized_title:
-        return None
+        return []
 
     matches = programme_lookup.by_year_and_name.get(year, {}).get(normalized_title, [])
     if code_provided and not matches:
-        return None
+        return []
     if len(matches) == 1:
         if code_provided:
             payload = yaml.safe_load(matches[0].read_text(encoding="utf-8")) or {}
@@ -474,19 +471,16 @@ def resolve_programme_path(
                     mention.code,
                     payload_code,
                 )
-                return None
-        return matches[0]
+                return []
+        return matches
     if len(matches) > 1:
-        if code_provided:
-            return None
         LOGGER.warning(
-            "Multiple programme files found for year=%s title=%r; using first match %s",
+            "Multiple programme files found for year=%s title=%r; including all matches",
             year,
             mention.title,
-            matches[0],
         )
-        return matches[0]
-    return None
+        return matches
+    return []
 
 
 def resolve_programmes(
@@ -495,10 +489,11 @@ def resolve_programmes(
     programme_lookup: ProgrammeLookup,
 ) -> list[CourseProgramme]:
     programmes: list[CourseProgramme] = []
+    selected_paths: set[pathlib.Path] = set()
 
     for mention in deduplicate_programme_mentions(mentions):
-        path = resolve_programme_path(mention, year, programme_lookup)
-        if path is None:
+        paths = resolve_programme_paths(mention, year, programme_lookup)
+        if not paths:
             LOGGER.warning(
                 "Could not resolve programme for year=%s title=%r code=%r",
                 year,
@@ -507,18 +502,23 @@ def resolve_programmes(
             )
             continue
 
-        payload = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
-        if not isinstance(payload, dict):
-            LOGGER.warning("Skipping invalid programme YAML at %s", path)
-            continue
+        for path in paths:
+            if path in selected_paths:
+                continue
 
-        programmes.append(
-            CourseProgramme(
-                title=mention.title,
-                code=mention.code or str(payload.get("code") or "").strip(),
-                details=payload,
-            ),
-        )
+            payload = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+            if not isinstance(payload, dict):
+                LOGGER.warning("Skipping invalid programme YAML at %s", path)
+                continue
+
+            selected_paths.add(path)
+
+            programmes.append(
+                CourseProgramme(
+                    title=mention.title,
+                    details=payload,
+                ),
+            )
 
     return programmes
 

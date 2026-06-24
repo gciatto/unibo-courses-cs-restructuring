@@ -103,10 +103,8 @@ class TestProgrammeResolution(unittest.TestCase):
 
             self.assertEqual(len(programmes), 2)
             self.assertEqual(programmes[0].title, "Digital Transformation Management")
-            self.assertEqual(programmes[0].code, "5815")
             self.assertEqual(programmes[0].details.get("code"), "5815")
             self.assertEqual(programmes[1].title, "Computer Science and Engineering")
-            self.assertEqual(programmes[1].code, "6699")
             self.assertEqual(programmes[1].details.get("code"), "6699")
 
     def test_does_not_fallback_to_title_with_mismatched_code(self):
@@ -139,6 +137,53 @@ class TestProgrammeResolution(unittest.TestCase):
             )
 
             self.assertEqual(programmes, [])
+
+    def test_multiple_matches_by_title_are_all_included(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = pathlib.Path(tmp_dir)
+            programmes_dir = root / "programmes" / "2025" / "dei"
+            programmes_dir.mkdir(parents=True, exist_ok=True)
+
+            first_path = programmes_dir / "programme-6671.yml"
+            first_path.write_text(
+                yaml.safe_dump(
+                    {
+                        "code": "6671",
+                        "year": 2025,
+                        "name": {
+                            "it": "Ingegneria dell'automazione",
+                            "en": "Automation Engineering",
+                        },
+                    },
+                    sort_keys=False,
+                ),
+                encoding="utf-8",
+            )
+            second_path = programmes_dir / "programme-9217.yml"
+            second_path.write_text(
+                yaml.safe_dump(
+                    {
+                        "code": "9217",
+                        "year": 2025,
+                        "name": {
+                            "it": "Ingegneria dell'automazione",
+                            "en": "Automation Engineering",
+                        },
+                    },
+                    sort_keys=False,
+                ),
+                encoding="utf-8",
+            )
+
+            lookup = build_programme_lookup(root / "programmes")
+            programmes = resolve_programmes(
+                [ProgrammeMention(title="Automation Engineering", code="")],
+                year=2025,
+                programme_lookup=lookup,
+            )
+
+            self.assertEqual(len(programmes), 2)
+            self.assertEqual({item.details.get("code") for item in programmes}, {"6671", "9217"})
 
 
 if __name__ == "__main__":

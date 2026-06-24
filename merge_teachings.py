@@ -38,7 +38,7 @@ class TeachingModule(BaseModel):
     credits: int | None = None
     schedule: CourseSchedule | None = None
     campus: str = Field(default="")
-    programme: str = Field(default="")
+    programmes: list[str] = Field(default_factory=list)
     ssd: str = Field(default="")
     language: str = Field(default="")
     teaching_mode: str = Field(default="")
@@ -244,7 +244,7 @@ def build_teacher_entry(record: TeachingRecord) -> TeacherWithModule:
         "credits": record.metadata.credits,
         "schedule": record.metadata.schedule,
         "campus": record.metadata.campus,
-        "programme": record.metadata.programme,
+        "programmes": [programme.title for programme in record.metadata.programmes if programme.title],
         "ssd": record.metadata.ssd,
         "language": record.metadata.language,
         "teaching_mode": record.metadata.teaching_mode,
@@ -358,8 +358,9 @@ def merge_records(records: list[TeachingRecord]) -> MergedCourseMetadata:
             schedules_set[sched_key] = record.metadata.schedule
         if record.metadata.campus:
             campi_set[record.metadata.campus] = True
-        if record.metadata.programme:
-            programmes_set[record.metadata.programme] = True
+        for programme in record.metadata.programmes:
+            if programme.title:
+                programmes_set[programme.title] = True
 
     return MergedCourseMetadata(
         year=first_metadata.year,
