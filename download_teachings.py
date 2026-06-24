@@ -54,12 +54,20 @@ PATTERN_TIMETABLE = re.compile(
 PATTERN_DETAIL_AMONG_PARENTHESES = re.compile(r"\(([^)]+)\)")
 PATTERN_DETAIL_CFU = re.compile(r"\s*[-–—]\s*(\s*\d+\s*CFU\s*)\s*", re.IGNORECASE)
 PATTERN_MARKDOWN_LINK = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
+PATTERN_PROGRAMME_MENTION_EN_START = (
+    r"(?:first|second|single)\s+cycle\s+degree\s+programme(?:s)?\s*"
+    r"(?:\((?:L|LT|LM|LMCU)\))?\s+in"
+)
+PATTERN_PROGRAMME_MENTION_IT_START = (
+    r"(?:corso\s*:\s*)?(?:corso\s+di\s+)?laurea(?:\s+magistrale)?(?:\s+a\s+ciclo\s+unico)?\s*"
+    r"(?:\((?:L|LM|LMCU)\))?\s+in"
+)
 PATTERN_PROGRAMME_MENTION_EN = re.compile(
-    r"(?:Also\s+valid\s+for\s+)?(?:first|second)\s+cycle\s+degree\s+programme(?:s)?\s*(?:\((?:L|LT|LM)\))?\s+in\s+(?P<title>.+?)(?=\s*(?:Also\s+valid\s+for\s+(?:first|second)\s+cycle\s+degree\s+programme(?:s)?\s*(?:\((?:L|LT|LM)\))?\s+in|[;,]|$))",
+    rf"(?:Also\s+valid\s+for\s+)?{PATTERN_PROGRAMME_MENTION_EN_START}\s+(?P<title>.+?)(?=\s*(?:Also\s+valid\s+for|Valido\s+anche\s+per|Campus\s+di|{PATTERN_PROGRAMME_MENTION_EN_START}|{PATTERN_PROGRAMME_MENTION_IT_START}|[;,]|$))",
     re.IGNORECASE,
 )
 PATTERN_PROGRAMME_MENTION_IT = re.compile(
-    r"(?:Valido\s+anche\s+per\s+)?(?:corso\s*:\s*)?(?:corso\s+di\s+laurea(?:\s+magistrale)?|laurea(?:\s+magistrale)?)\s*(?:\((?:L|LM)\))?\s+in\s+(?P<title>.+?)(?=\s*(?:Valido\s+anche\s+per\s+(?:corso\s*:\s*)?(?:corso\s+di\s+laurea(?:\s+magistrale)?|laurea(?:\s+magistrale)?)\s*(?:\((?:L|LM)\))?\s+in|[;,]|$))",
+    rf"(?:Valido\s+anche\s+per\s+)?{PATTERN_PROGRAMME_MENTION_IT_START}\s+(?P<title>.+?)(?=\s*(?:Valido\s+anche\s+per|Also\s+valid\s+for|Campus\s+di|{PATTERN_PROGRAMME_MENTION_IT_START}|{PATTERN_PROGRAMME_MENTION_EN_START}|[;,]|$))",
     re.IGNORECASE,
 )
 PATTERN_PROGRAMME_CODE = re.compile(r"\(\s*cod\.\s*(\d+)\s*\)", re.IGNORECASE)
@@ -101,13 +109,8 @@ class CourseMetadata(BaseModel):
     course_title: CourseTitle
     integrated_course: str = Field(default="")
     campus: str = Field(default="")
-    programmes: list["CourseProgramme"] = Field(default_factory=list)
+    programmes: list[dict[str, Any]] = Field(default_factory=list)
     syllabus: dict[str, "SyllabusPage"] = Field(default_factory=dict)
-
-
-class CourseProgramme(BaseModel):
-    title: str = Field(default="")
-    details: dict[str, Any] = Field(default_factory=dict)
 
 
 class SyllabusPage(BaseModel):
@@ -365,7 +368,7 @@ def build_metadata(
     teacher_role: list[str],
     teacher_affiliation: str,
     teacher_ssd: TeacherSsd | None,
-    programmes: list[CourseProgramme],
+    programmes: list[dict[str, Any]],
 ) -> CourseMetadata:
     return CourseMetadata(
         year=year,
@@ -486,8 +489,8 @@ def resolve_programmes(
     mentions: list[ProgrammeMention],
     year: int,
     programme_lookup: ProgrammeLookup,
-) -> list[CourseProgramme]:
-    programmes: list[CourseProgramme] = []
+) -> list[dict[str, Any]]:
+    programmes: list[dict[str, Any]] = []
     selected_paths: set[pathlib.Path] = set()
 
     for mention in deduplicate_programme_mentions(mentions):
@@ -511,13 +514,7 @@ def resolve_programmes(
                 continue
 
             selected_paths.add(path)
-
-            programmes.append(
-                CourseProgramme(
-                    title=mention.title,
-                    details=payload,
-                ),
-            )
+            programmes.append(payload)
 
     return programmes
 
@@ -950,11 +947,11 @@ def process_row(
     course_context = format_course_context(row_index, row)
     course_url = (row.get("course_url") or "").strip()
     if not course_url:
-        return "skipped", f"empty course_url ({course_context})"
+        return "problem", f"empty course_url ({course_context})"
 
     teacher_email = (row.get("contact_email") or "").strip()
     if not teacher_email:
-        return "skipped", f"empty contact_email ({course_context})"
+        return "problem", f"empty contact_email ({course_context})"
 
     teacher_name = (row.get("contact_name") or "").strip() or "<missing teacher name>"
     teacher_website = (row.get("sito_web") or "").strip()
@@ -962,7 +959,7 @@ def process_row(
     try:
         year, course_id = parse_year_and_course_id(course_url)
     except ValueError as error:
-        return "skipped", f"{error} ({course_context})"
+        return "problem", f"{error} ({course_context})"
 
     language_urls = discover_language_urls(
         course_url,
@@ -978,6 +975,15 @@ def process_row(
     mentioned_programmes: list[ProgrammeMention] = []
     searchable_fragments: list[str] = [(row.get("course_title") or "").strip()]
     page_errors: list[str] = []
+
+    # Decide skip as early as possible using title-only context first.
+    title_blacklist_matches = matching_keywords(searchable_fragments[0], blacklist)
+    if title_blacklist_matches:
+        present_terms = ", ".join(title_blacklist_matches)
+        return (
+            "skipped",
+            f"blacklist matched in title; present keywords: {present_terms} ({course_context})",
+        )
 
     for language in ("it", "en"):
         language_url = language_urls.get(language)
@@ -1002,6 +1008,15 @@ def process_row(
         details_by_language[language] = page_details
         mentioned_programmes.extend(extract_programme_mentions(cleaned_markdown))
         searchable_fragments.append(cleaned_markdown)
+
+        # Short-circuit as soon as we can decide to skip.
+        current_blacklist_matches = matching_keywords("\n".join(searchable_fragments), blacklist)
+        if current_blacklist_matches:
+            present_terms = ", ".join(current_blacklist_matches)
+            return (
+                "skipped",
+                f"blacklist matched; present keywords: {present_terms} ({course_context})",
+            )
 
     searchable_text = "\n".join(searchable_fragments)
     whitelist_matches = matching_keywords(searchable_text, whitelist)
@@ -1098,6 +1113,12 @@ def process_row(
 
     metadata_path = course_dir / f"teaching-{course_id}.yml"
     resolved_programmes = resolve_programmes(mentioned_programmes, year, programme_lookup)
+    if not resolved_programmes:
+        LOGGER.warning(
+            "No programmes could be resolved for %s (%s)",
+            course_context,
+            "; ".join(f"{m.title} ({m.code})" for m in mentioned_programmes),
+        )
     metadata = build_metadata(
         row=row,
         year=year,
@@ -1213,9 +1234,12 @@ def main() -> int:
             if status == "ok":
                 downloaded_count += 1
                 LOGGER.info(message)
+            elif status == "problem":
+                failed_count += 1
+                LOGGER.warning(message)
             elif status == "skipped":
                 skipped_count += 1
-                LOGGER.warning(message)
+                LOGGER.info(message)
             else:
                 failed_count += 1
                 LOGGER.error(message)

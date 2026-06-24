@@ -77,6 +77,38 @@ class TestProgrammeMentions(unittest.TestCase):
             mentions,
         )
 
+    def test_extract_programme_mentions_single_cycle_and_multiple_also_valid(self):
+        markdown = (
+            "- **Corso:** Laurea Magistrale a Ciclo Unico in Pharmacy (cod. 5987)\n"
+            "- **Corso:** Single cycle degree programme (LMCU) in Pharmacy (cod. 5987)\n"
+            "- **Corso:** Laurea Magistrale a Ciclo Unico in Medicina veterinaria (cod. 6735)\n"
+            "Valido anche per Laurea Magistrale a Ciclo Unico in [Pharmacy (cod. 5987)](https://example.invalid/it-5987)\n"
+            "Laurea Magistrale a Ciclo Unico in [Pharmacy (cod. 9078)](https://example.invalid/it-9078)\n"
+            "Also valid for Single cycle degree programme (LMCU) in [Pharmacy (cod. 5987)](https://example.invalid/en-5987)\n"
+            "Single cycle degree programme (LMCU) in [Pharmacy (cod. 9078)](https://example.invalid/en-9078)\n"
+            "Valido anche per Campus di Ravenna\n"
+            "Laurea Magistrale a Ciclo Unico in [Medicina e chirurgia (cod. 6731)](https://example.invalid/it-6731)\n"
+            "Campus di Forli\n"
+            "Laurea Magistrale a Ciclo Unico in [Medicina e chirurgia (cod. 6732)](https://example.invalid/it-6732)\n"
+            "Laurea Magistrale a Ciclo Unico in [Medicina e chirurgia (cod. 6733)](https://example.invalid/it-6733)\n"
+            "Laurea Magistrale a Ciclo Unico in [Odontoiatria e protesi dentaria (cod. 6738)](https://example.invalid/it-6738)"
+        )
+
+        mentions = extract_programme_mentions(markdown)
+        mention_payloads = {(item.title, item.code) for item in mentions}
+
+        expected = {
+            ("Pharmacy", "5987"),
+            ("Pharmacy", "9078"),
+            ("Medicina veterinaria", "6735"),
+            ("Medicina e chirurgia", "6731"),
+            ("Medicina e chirurgia", "6732"),
+            ("Medicina e chirurgia", "6733"),
+            ("Odontoiatria e protesi dentaria", "6738"),
+        }
+        for entry in expected:
+            self.assertIn(entry, mention_payloads)
+
 
 class TestProgrammeResolution(unittest.TestCase):
     def test_resolve_programmes_from_lookup(self):
@@ -128,10 +160,8 @@ class TestProgrammeResolution(unittest.TestCase):
             )
 
             self.assertEqual(len(programmes), 2)
-            self.assertEqual(programmes[0].title, "Digital Transformation Management")
-            self.assertEqual(programmes[0].details.get("code"), "5815")
-            self.assertEqual(programmes[1].title, "Computer Science and Engineering")
-            self.assertEqual(programmes[1].details.get("code"), "6699")
+            self.assertEqual(programmes[0].get("code"), "5815")
+            self.assertEqual(programmes[1].get("code"), "6699")
 
     def test_does_not_fallback_to_title_with_mismatched_code(self):
         with tempfile.TemporaryDirectory() as tmp_dir:
@@ -209,7 +239,7 @@ class TestProgrammeResolution(unittest.TestCase):
             )
 
             self.assertEqual(len(programmes), 2)
-            self.assertEqual({item.details.get("code") for item in programmes}, {"6671", "9217"})
+            self.assertEqual({item.get("code") for item in programmes}, {"6671", "9217"})
 
     def test_lookup_indexes_non_string_code_values(self):
         with tempfile.TemporaryDirectory() as tmp_dir:
@@ -235,7 +265,7 @@ class TestProgrammeResolution(unittest.TestCase):
             )
 
             self.assertEqual(len(programmes), 1)
-            self.assertEqual(programmes[0].details.get("code"), "0979")
+            self.assertEqual(programmes[0].get("code"), "0979")
 
 
 if __name__ == "__main__":
