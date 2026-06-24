@@ -55,11 +55,11 @@ PATTERN_DETAIL_AMONG_PARENTHESES = re.compile(r"\(([^)]+)\)")
 PATTERN_DETAIL_CFU = re.compile(r"\s*[-–—]\s*(\s*\d+\s*CFU\s*)\s*", re.IGNORECASE)
 PATTERN_MARKDOWN_LINK = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
 PATTERN_PROGRAMME_MENTION_EN = re.compile(
-    r"(?:Also\s+valid\s+for\s+)?(?:first|second)\s+cycle\s+degree\s+programme\s*(?:\((?:L|LT|LM)\))?\s+in\s+(?P<title>.+?)(?=\s*Also\s+valid\s+for\s+(?:first|second)\s+cycle\s+degree\s+programme\s*(?:\((?:L|LT|LM)\))?\s+in|$)",
+    r"(?:Also\s+valid\s+for\s+)?(?:first|second)\s+cycle\s+degree\s+programme(?:s)?\s*(?:\((?:L|LT|LM)\))?\s+in\s+(?P<title>.+?)(?=\s*(?:Also\s+valid\s+for\s+(?:first|second)\s+cycle\s+degree\s+programme(?:s)?\s*(?:\((?:L|LT|LM)\))?\s+in|[;,]|$))",
     re.IGNORECASE,
 )
 PATTERN_PROGRAMME_MENTION_IT = re.compile(
-    r"(?:Valido\s+anche\s+per\s+)?(?:corso\s*:\s*)?(?:corso\s+di\s+laurea(?:\s+magistrale)?|laurea(?:\s+magistrale)?)\s*(?:\((?:L|LM)\))?\s+in\s+(?P<title>.+?)(?=\s*Valido\s+anche\s+per\s+(?:corso\s*:\s*)?(?:corso\s+di\s+laurea(?:\s+magistrale)?|laurea(?:\s+magistrale)?)\s*(?:\((?:L|LM)\))?\s+in|$)",
+    r"(?:Valido\s+anche\s+per\s+)?(?:corso\s*:\s*)?(?:corso\s+di\s+laurea(?:\s+magistrale)?|laurea(?:\s+magistrale)?)\s*(?:\((?:L|LM)\))?\s+in\s+(?P<title>.+?)(?=\s*(?:Valido\s+anche\s+per\s+(?:corso\s*:\s*)?(?:corso\s+di\s+laurea(?:\s+magistrale)?|laurea(?:\s+magistrale)?)\s*(?:\((?:L|LM)\))?\s+in|[;,]|$))",
     re.IGNORECASE,
 )
 PATTERN_PROGRAMME_CODE = re.compile(r"\(\s*cod\.\s*(\d+)\s*\)", re.IGNORECASE)
@@ -395,7 +395,7 @@ def build_metadata(
 def normalize_programme_title_fragment(value: str) -> str:
     value = PATTERN_TRAILING_URL_PAREN.sub("", value)
     value = PATTERN_PROGRAMME_CODE.sub("", value)
-    value = value.strip(" .;,:-")
+    value = value.strip(" .;,:-()[]{}\"'")
     value = normalize_text(value)
     return value
 
@@ -417,22 +417,21 @@ def deduplicate_programme_mentions(mentions: Iterable[ProgrammeMention]) -> list
 
 def extract_programme_mentions(markdown: str) -> list[ProgrammeMention]:
     plain_text = PATTERN_MARKDOWN_LINK.sub(r"\1", markdown)
-    lines = [normalize_text(line) for line in plain_text.splitlines() if normalize_text(line)]
+    normalized_text = normalize_text(plain_text).replace("\n", " ")
 
     mentions: list[ProgrammeMention] = []
-    for line in lines:
-        for pattern in (PATTERN_PROGRAMME_MENTION_EN, PATTERN_PROGRAMME_MENTION_IT):
-            for match in pattern.finditer(line):
-                title_raw = normalize_programme_title_fragment(match.group("title"))
-                if not title_raw:
-                    continue
-                code_match = PATTERN_PROGRAMME_CODE.search(match.group("title"))
-                mentions.append(
-                    ProgrammeMention(
-                        title=title_raw,
-                        code=(code_match.group(1) if code_match else ""),
-                    ),
-                )
+    for pattern in (PATTERN_PROGRAMME_MENTION_EN, PATTERN_PROGRAMME_MENTION_IT):
+        for match in pattern.finditer(normalized_text):
+            title_raw = normalize_programme_title_fragment(match.group("title"))
+            if not title_raw:
+                continue
+            code_match = PATTERN_PROGRAMME_CODE.search(match.group("title"))
+            mentions.append(
+                ProgrammeMention(
+                    title=title_raw,
+                    code=(code_match.group(1) if code_match else ""),
+                ),
+            )
 
     return deduplicate_programme_mentions(mentions)
 

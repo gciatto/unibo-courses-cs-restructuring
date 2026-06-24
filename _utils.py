@@ -71,8 +71,8 @@ def build_programme_lookup(programmes_dir: pathlib.Path | None = None) -> Progra
                 year_lookup = lookup.by_year_and_name.setdefault(year, {})
                 year_lookup.setdefault(normalized_name, []).append(path)
 
-        if isinstance(code_raw, str) and code_raw.strip():
-            code = code_raw.strip()
+        code = str(code_raw).strip() if code_raw is not None else ""
+        if code:
             year_lookup = lookup.by_year_and_code.setdefault(year, {})
             year_lookup.setdefault(code, []).append(path)
 

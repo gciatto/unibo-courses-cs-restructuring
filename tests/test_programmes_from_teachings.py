@@ -51,6 +51,32 @@ class TestProgrammeMentions(unittest.TestCase):
             mention_payloads,
         )
 
+    def test_extract_programme_mentions_across_line_breaks(self):
+        markdown = (
+            "Solo per studentesse e studenti dei curricula InTeCo e InConf (corso di laurea\n"
+            "in Interpretazione), per i quali il corso e' opzionale."
+        )
+
+        mentions = extract_programme_mentions(markdown)
+
+        self.assertIn(
+            ProgrammeMention(title="Interpretazione", code=""),
+            mentions,
+        )
+
+    def test_extract_programme_mentions_en_plural_degree_programmes(self):
+        markdown = (
+            "N.B. For students of the second cycle degree programmes (LM) in "
+            "Artificial intelligence and Computer Science, this part is not required."
+        )
+
+        mentions = extract_programme_mentions(markdown)
+
+        self.assertIn(
+            ProgrammeMention(title="Artificial intelligence and Computer Science", code=""),
+            mentions,
+        )
+
 
 class TestProgrammeResolution(unittest.TestCase):
     def test_resolve_programmes_from_lookup(self):
@@ -184,6 +210,32 @@ class TestProgrammeResolution(unittest.TestCase):
 
             self.assertEqual(len(programmes), 2)
             self.assertEqual({item.details.get("code") for item in programmes}, {"6671", "9217"})
+
+    def test_lookup_indexes_non_string_code_values(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = pathlib.Path(tmp_dir)
+            programmes_dir = root / "programmes" / "2025" / "lilec"
+            programmes_dir.mkdir(parents=True, exist_ok=True)
+
+            programme_path = programmes_dir / "programme-0979.yml"
+            programme_path.write_text(
+                "code: 0979\n"
+                "year: 2025\n"
+                "name:\n"
+                "  it: Lingue e letterature straniere\n"
+                "  en: Foreign Languages and Literature\n",
+                encoding="utf-8",
+            )
+
+            lookup = build_programme_lookup(root / "programmes")
+            programmes = resolve_programmes(
+                [ProgrammeMention(title="Foreign Languages and Literature", code="0979")],
+                year=2025,
+                programme_lookup=lookup,
+            )
+
+            self.assertEqual(len(programmes), 1)
+            self.assertEqual(programmes[0].details.get("code"), "0979")
 
 
 if __name__ == "__main__":
