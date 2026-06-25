@@ -54,6 +54,7 @@ PATTERN_TIMETABLE = re.compile(
 PATTERN_DETAIL_AMONG_PARENTHESES = re.compile(r"\(([^)]+)\)")
 PATTERN_DETAIL_CFU = re.compile(r"\s*[-–—]\s*(\s*\d+\s*CFU\s*)\s*", re.IGNORECASE)
 PATTERN_MARKDOWN_LINK = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
+PATTERN_PROGRAMME_CODE_RAW = r"\(\s*cod\.\s*(\d+)\s*\)"
 PATTERN_PROGRAMME_MENTION_EN_START = (
     r"(?:first|second|single)\s+cycle\s+degree\s+programme(?:s)?\s*"
     r"(?:\((?:L|LT|LM|LMCU)\))?\s+in"
@@ -62,15 +63,28 @@ PATTERN_PROGRAMME_MENTION_IT_START = (
     r"(?:corso\s*:\s*)?(?:corso\s+di\s+)?laurea(?:\s+magistrale)?(?:\s+a\s+ciclo\s+unico)?\s*"
     r"(?:\((?:L|LM|LMCU)\))?\s+in"
 )
+PATTERN_PROGRAMME_MENTION_END = (
+    r"(?:Also\s+valid\s+for|Valido\s+anche\s+per|Campus\s+di|"
+    r"Risorse\s+didattiche\s+su\s+Virtuale|Teaching\s+resources\s+on\s+Virtuale|"
+    r"Orario\s+delle\s+lezioni|Course\s+Timetable|"
+    r"Conoscenze\s+e\s+abilit[aà]\s+da\s+conseguire|Learning\s+outcomes|"
+    r"##|[;,]|$)"
+)
 PATTERN_PROGRAMME_MENTION_EN = re.compile(
-    rf"(?:Also\s+valid\s+for\s+)?{PATTERN_PROGRAMME_MENTION_EN_START}\s+(?P<title>.+?)(?=\s*(?:Also\s+valid\s+for|Valido\s+anche\s+per|Campus\s+di|{PATTERN_PROGRAMME_MENTION_EN_START}|{PATTERN_PROGRAMME_MENTION_IT_START}|[;,]|$))",
+    rf"(?:Also\s+valid\s+for\s+)?{PATTERN_PROGRAMME_MENTION_EN_START}"
+    rf"\s+(?P<title>.+?)"
+    rf"(?:\s*(?P<code>{PATTERN_PROGRAMME_CODE_RAW}))?"
+    rf"(?=\s*(?:{PATTERN_PROGRAMME_MENTION_END}|{PATTERN_PROGRAMME_MENTION_EN_START}|{PATTERN_PROGRAMME_MENTION_IT_START}))",
     re.IGNORECASE,
 )
 PATTERN_PROGRAMME_MENTION_IT = re.compile(
-    rf"(?:Valido\s+anche\s+per\s+)?{PATTERN_PROGRAMME_MENTION_IT_START}\s+(?P<title>.+?)(?=\s*(?:Valido\s+anche\s+per|Also\s+valid\s+for|Campus\s+di|{PATTERN_PROGRAMME_MENTION_IT_START}|{PATTERN_PROGRAMME_MENTION_EN_START}|[;,]|$))",
+    rf"(?:Valido\s+anche\s+per\s+)?{PATTERN_PROGRAMME_MENTION_IT_START}"
+    rf"\s+(?P<title>.+?)"
+    rf"(?:\s*(?P<code>{PATTERN_PROGRAMME_CODE_RAW}))?"
+    rf"(?=\s*(?:{PATTERN_PROGRAMME_MENTION_END}|{PATTERN_PROGRAMME_MENTION_IT_START}|{PATTERN_PROGRAMME_MENTION_EN_START}))",
     re.IGNORECASE,
 )
-PATTERN_PROGRAMME_CODE = re.compile(r"\(\s*cod\.\s*(\d+)\s*\)", re.IGNORECASE)
+PATTERN_PROGRAMME_CODE = re.compile(PATTERN_PROGRAMME_CODE_RAW, re.IGNORECASE)
 PATTERN_TRAILING_URL_PAREN = re.compile(r"\(https?://[^)]*\)")
 
 LOGGER = logging.getLogger(pathlib.Path(__file__).stem)
@@ -428,7 +442,7 @@ def extract_programme_mentions(markdown: str) -> list[ProgrammeMention]:
             title_raw = normalize_programme_title_fragment(match.group("title"))
             if not title_raw:
                 continue
-            code_match = PATTERN_PROGRAMME_CODE.search(match.group("title"))
+            code_match = PATTERN_PROGRAMME_CODE.search(match.group(0))
             mentions.append(
                 ProgrammeMention(
                     title=title_raw,

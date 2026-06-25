@@ -109,6 +109,31 @@ class TestProgrammeMentions(unittest.TestCase):
         for entry in expected:
             self.assertIn(entry, mention_payloads)
 
+    def test_extract_programme_mentions_stops_before_virtuale_and_timetable_text(self):
+        markdown = (
+            "Valido anche per Laurea Magistrale in Ingegneria e scienze informatiche (cod. 6699)"
+            " - Risorse didattiche su Virtuale - Orario delle lezioni dal 17/09/2025 al 12/12/2025"
+            " ## Conoscenze e abilità da conseguire ...\n"
+            "Also valid for First cycle degree programme (L) in Computer Science and Engineering (cod. 6699)"
+            " - Teaching resources on Virtuale - Course Timetable from Feb 17"
+        )
+
+        mentions = extract_programme_mentions(markdown)
+
+        self.assertIn(
+            ProgrammeMention(title="Ingegneria e scienze informatiche", code="6699"),
+            mentions,
+        )
+        self.assertIn(
+            ProgrammeMention(title="Computer Science and Engineering", code="6699"),
+            mentions,
+        )
+
+        for mention in mentions:
+            self.assertNotIn("Risorse didattiche", mention.title)
+            self.assertNotIn("Teaching resources", mention.title)
+            self.assertNotIn("Course Timetable", mention.title)
+
 
 class TestProgrammeResolution(unittest.TestCase):
     def test_resolve_programmes_from_lookup(self):
