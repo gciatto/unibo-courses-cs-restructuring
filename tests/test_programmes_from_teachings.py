@@ -5,10 +5,40 @@ import unittest
 import yaml
 
 from _utils import build_programme_lookup
-from download_teachings import ProgrammeMention, extract_programme_mentions, resolve_programmes
+from download_teachings import (
+    DEFAULT_OUTPUT,
+    ProgrammeMention,
+    extract_degree_course_mentions,
+    extract_programme_mentions,
+    resolve_programmes,
+)
+
+
+ROOT_DIR = pathlib.Path(__file__).resolve().parents[1]
+IGNORED_PROGRAMME_URL_PARTS = ("/collegio-superiore/",)
+
+
+def iter_downloaded_teaching_files() -> list[pathlib.Path]:
+    return sorted(DEFAULT_OUTPUT.glob("*/*/teaching-*.yml"))
 
 
 class TestProgrammeMentions(unittest.TestCase):
+    def test_extract_degree_course_mentions_preserves_commas(self):
+        degree_course = (
+            "Laurea Magistrale in Dati, metodi e modelli per le scienze linguistiche "
+            "Laurea Magistrale in Language, Society and Communication"
+        )
+
+        mentions = extract_degree_course_mentions(degree_course)
+
+        self.assertEqual(
+            mentions,
+            [
+                ProgrammeMention(title="Dati, metodi e modelli per le scienze linguistiche"),
+                ProgrammeMention(title="Language, Society and Communication"),
+            ],
+        )
+
     def test_extract_programme_mentions_from_same_line(self):
         markdown = (
             "- Corso: Second cycle degree programme (LM) in Digital Transformation Management (cod. 5815)"
@@ -291,6 +321,23 @@ class TestProgrammeResolution(unittest.TestCase):
 
             self.assertEqual(len(programmes), 1)
             self.assertEqual(programmes[0].get("code"), "0979")
+
+
+class TestDownloadedTeachings(unittest.TestCase):
+    def test_downloaded_teachings_have_non_empty_programmes(self):
+        teaching_paths = iter_downloaded_teaching_files()
+        self.assertTrue(teaching_paths, "No downloaded teaching-*.yml files found")
+
+        for path in teaching_paths:
+            with self.subTest(path=str(path.relative_to(ROOT_DIR))):
+                payload = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+                self.assertIsInstance(payload, dict)
+                url = str(payload.get("url") or "")
+                if any(part in url for part in IGNORED_PROGRAMME_URL_PARTS):
+                    continue
+                programmes = payload.get("programmes")
+                self.assertIsInstance(programmes, list)
+                self.assertTrue(programmes, "programmes must be non-empty")
 
 
 if __name__ == "__main__":
