@@ -11,6 +11,19 @@ LIMIT = 1000
 class TestRolesRecognition(unittest.TestCase):
     all_roles = set(roles().keys())
 
+    def test_classify_pd25_roles(self):
+        cases = {
+            "I Fascia": {"full professor"},
+            "II Fascia": {"associate professor"},
+            "RTD - A": {"rtda"},
+            "RTD - B": {"rtdb"},
+            "RTT": {"tenure-track researcher"},
+            "Ricercatori": {"researcher"},
+        }
+        for role, expected in cases.items():
+            with self.subTest(role=role):
+                self.assertEqual(classify_role(role), expected)
+
     def test_classify_role(self):
         for line_num, role in read_column(FILE_CONTACTS, HEADER_ROLE, limit=LIMIT):
             with self.subTest(line=line_num, role=role):

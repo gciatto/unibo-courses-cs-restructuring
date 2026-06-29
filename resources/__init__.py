@@ -1,4 +1,5 @@
 import pathlib
+import re
 import yaml
 from functools import cache
 from collections.abc import Mapping
@@ -83,11 +84,18 @@ def checklist_for(map: FrozenDict) -> list[tuple[str, str]]:
 
 
 def classify_role(role: str) -> str | None:
-    role = role.lower().strip()
+    role = " ".join(role.lower().split())
     results = set()
+    matched_spans: list[tuple[int, int]] = []
     for value, key in checklist_for(roles()):
-        if value in role:
+        value = " ".join(value.lower().split())
+        pattern = re.compile(rf"(?<!\w){re.escape(value)}(?!\w)")
+        for match in pattern.finditer(role):
+            span = match.span()
+            if any(span[0] < other[1] and other[0] < span[1] for other in matched_spans):
+                continue
             results.add(key)
+            matched_spans.append(span)
     return results
 
 
