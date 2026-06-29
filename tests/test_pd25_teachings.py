@@ -2,9 +2,10 @@ import csv
 import pathlib
 import re
 import unittest
+import unicodedata
 import warnings
 from collections import defaultdict
-from collections.abc import Callable
+from collections.abc import Callable, Iterable
 from typing import Any
 
 import yaml
@@ -24,6 +25,15 @@ FAILURE_REPORT_COLUMNS = [
     "__failure_kind",
     "__failure_details",
 ]
+ROLE_PROGRESSION_RANK = {
+    "adjunct professor": 0,
+    "rtda": 1,
+    "rtdb": 2,
+    "tenure-track researcher": 2,
+    "associate professor": 3,
+    "full professor": 4,
+    "other": 5,
+}
 
 PLACEHOLDER_VALUES = {
     "",
@@ -63,6 +73,13 @@ def clean(value: Any) -> str:
 
 def normalize_text(value: Any) -> str:
     return " ".join(clean(value).split()).casefold()
+
+
+def normalize_city(value: Any) -> str:
+    text = normalize_text(value).replace("'", "")
+    text = unicodedata.normalize("NFKD", text)
+    text = "".join(char for char in text if not unicodedata.combining(char))
+    return text
 
 
 def is_placeholder(value: Any) -> bool:
@@ -144,6 +161,24 @@ def warn_unsupported_tipo(row_number: int, row: dict[str, str]) -> None:
             RuntimeWarning,
             stacklevel=2,
         )
+
+
+def role_matches(expected_roles: Iterable[str], actual_roles: Iterable[Any]) -> bool:
+    expected_normalized = {normalize_text(role) for role in expected_roles}
+    actual_normalized = {normalize_text(role) for role in actual_roles}
+
+    if expected_normalized & actual_normalized:
+        return True
+
+    for expected_role in expected_normalized:
+        expected_rank = ROLE_PROGRESSION_RANK.get(expected_role)
+        if expected_rank is None:
+            continue
+        for actual_role in actual_normalized:
+            actual_rank = ROLE_PROGRESSION_RANK.get(actual_role)
+            if actual_rank is not None and actual_rank >= expected_rank:
+                return True
+    return False
 
 
 def academic_year_start(value: Any) -> str:
@@ -228,7 +263,7 @@ def candidate_failures(
     if expected_programme and not any(expected_programme in programme_names(programme) for programme in programmes):
         failures.append(f"no programme named {row.get('Corso di Studio')!r}")
 
-    if not is_placeholder(row.get("sede didattica")) and normalize_text(row.get("sede didattica")) != normalize_text(payload.get("campus")):
+    if not is_placeholder(row.get("sede didattica")) and normalize_city(row.get("sede didattica")) != normalize_city(payload.get("campus")):
         failures.append(f"campus {payload.get('campus')!r} != sede didattica {row.get('sede didattica')!r}")
 
     if normalize_id(row.get("cod Materia")) != normalize_id(course_title.get("id")):
@@ -256,10 +291,8 @@ def candidate_failures(
         expected_roles = classify_role(clean(row.get("Ruolo docente")))
         if not expected_roles:
             failures.append(f"unrecognized Ruolo docente={row.get('Ruolo docente')!r}")
-        else:
-            actual_roles = {normalize_text(role) for role in teacher.get("role") or []}
-            if not {normalize_text(role) for role in expected_roles} & actual_roles:
-                failures.append(f"teacher.role {teacher.get('role')!r} does not match Ruolo docente={row.get('Ruolo docente')!r}")
+        elif not role_matches(expected_roles, teacher.get("role") or []):
+            failures.append(f"teacher.role {teacher.get('role')!r} does not match Ruolo docente={row.get('Ruolo docente')!r}")
 
     expected_affiliation = normalized_teacher_affiliation(row)
     if expected_affiliation is None and not is_placeholder(row.get("acronimo DIP")):
