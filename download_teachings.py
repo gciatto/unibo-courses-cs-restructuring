@@ -100,6 +100,10 @@ PATTERN_PROGRAMME_MENTION_IT = re.compile(
     rf"(?=\s*(?:{PATTERN_PROGRAMME_MENTION_END}|{PATTERN_PROGRAMME_MENTION_IT_START}|{PATTERN_PROGRAMME_MENTION_EN_START}))",
     re.IGNORECASE,
 )
+PATTERN_DEGREE_COURSE_MENTION_START = re.compile(
+    rf"{PATTERN_PROGRAMME_MENTION_EN_START}|{PATTERN_PROGRAMME_MENTION_IT_START}",
+    re.IGNORECASE,
+)
 PATTERN_PROGRAMME_CODE = re.compile(PATTERN_PROGRAMME_CODE_RAW, re.IGNORECASE)
 PATTERN_TRAILING_URL_PAREN = re.compile(r"\(https?://[^)]*\)")
 
@@ -477,6 +481,21 @@ def extract_programme_mentions(markdown: str) -> list[ProgrammeMention]:
     return deduplicate_programme_mentions(mentions)
 
 
+def extract_degree_course_mentions(degree_course: str) -> list[ProgrammeMention]:
+    normalized_text = normalize_text(degree_course).replace("\n", " ")
+    matches = list(PATTERN_DEGREE_COURSE_MENTION_START.finditer(normalized_text))
+
+    mentions: list[ProgrammeMention] = []
+    for index, match in enumerate(matches):
+        title_start = match.end()
+        title_end = matches[index + 1].start() if index + 1 < len(matches) else len(normalized_text)
+        title = normalize_programme_title_fragment(normalized_text[title_start:title_end])
+        if title:
+            mentions.append(ProgrammeMention(title=title))
+
+    return deduplicate_programme_mentions(mentions)
+
+
 def resolve_programme_paths(
     mention: ProgrammeMention,
     year: int,
@@ -527,6 +546,7 @@ def resolve_programmes(
     mentions: list[ProgrammeMention],
     year: int,
     programme_lookup: ProgrammeLookup,
+    warn: bool = True,
 ) -> list[dict[str, Any]]:
     programmes: list[dict[str, Any]] = []
     selected_paths: set[pathlib.Path] = set()
@@ -534,12 +554,13 @@ def resolve_programmes(
     for mention in deduplicate_programme_mentions(mentions):
         paths = resolve_programme_paths(mention, year, programme_lookup)
         if not paths:
-            LOGGER.warning(
-                "Could not resolve programme for year=%s title=%r code=%r",
-                year,
-                mention.title,
-                mention.code,
-            )
+            if warn:
+                LOGGER.warning(
+                    "Could not resolve programme for year=%s title=%r code=%r",
+                    year,
+                    mention.title,
+                    mention.code,
+                )
             continue
 
         for path in paths:
@@ -1012,8 +1033,8 @@ def process_row(
 
     syllabus: dict[str, SyllabusPage] = {}
     details_by_language: dict[str, CourseDetails] = {}
-    mentioned_programmes: list[ProgrammeMention] = []
-    searchable_fragments: list[str] = [row_value(row, "course_title")]
+    mentioned_programmes = extract_degree_course_mentions((row.get("degree_course") or "").strip())
+    searchable_fragments: list[str] = [(row.get("course_title") or "").strip()]
     page_errors: list[str] = []
 
     # Decide skip as early as possible using title-only context first.
@@ -1152,7 +1173,7 @@ def process_row(
     course_dir.mkdir(parents=True, exist_ok=True)
 
     metadata_path = course_dir / f"teaching-{course_id}.yml"
-    resolved_programmes = resolve_programmes(mentioned_programmes, year, programme_lookup)
+    resolved_programmes = resolve_programmes(mentioned_programmes, year, programme_lookup, warn=False)
     if not resolved_programmes:
         LOGGER.warning(
             "No programmes could be resolved for %s (%s)",
