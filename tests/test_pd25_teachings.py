@@ -15,7 +15,15 @@ from resources import classify_dept, classify_role
 
 ROOT_DIR = pathlib.Path(__file__).resolve().parents[1]
 CSV_PATH = ROOT_DIR / "tests" / "pd25.csv"
+FAILURES_CSV_PATH = ROOT_DIR / "tests" / "pd25_failures.csv"
 COURSES_DIR = ROOT_DIR / "data" / "courses"
+FAILURE_REPORT_COLUMNS = [
+    "__row_number",
+    "__match_key",
+    "__candidate_count",
+    "__failure_kind",
+    "__failure_details",
+]
 
 PLACEHOLDER_VALUES = {
     "",
@@ -262,11 +270,47 @@ def format_row_context(row_number: int, row: dict[str, str]) -> str:
     )
 
 
+def failure_report_fieldnames(rows: list[tuple[int, dict[str, str]]]) -> list[str]:
+    if not rows:
+        return FAILURE_REPORT_COLUMNS
+    return FAILURE_REPORT_COLUMNS + list(rows[0][1].keys())
+
+
 class TestPd25Teachings(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.rows = read_pd25_rows()
         cls.teachings_by_key = load_teachings_by_key()
+        cls.failure_rows: list[dict[str, str]] = []
+
+    @classmethod
+    def tearDownClass(cls) -> None:
+        with FAILURES_CSV_PATH.open("w", encoding="utf-8", newline="") as file:
+            writer = csv.DictWriter(file, fieldnames=failure_report_fieldnames(cls.rows))
+            writer.writeheader()
+            writer.writerows(cls.failure_rows)
+
+    @classmethod
+    def record_failure(
+        cls,
+        *,
+        row_number: int,
+        row: dict[str, str],
+        key: tuple[str, str, str],
+        candidate_count: int,
+        failure_kind: str,
+        failure_details: str,
+    ) -> None:
+        cls.failure_rows.append(
+            {
+                "__row_number": str(row_number),
+                "__match_key": repr(key),
+                "__candidate_count": str(candidate_count),
+                "__failure_kind": failure_kind,
+                "__failure_details": failure_details,
+                **row,
+            },
+        )
 
     def test_rows_are_represented_by_yaml_teachings(self):
         for row_number, row in self.rows:
@@ -280,7 +324,17 @@ class TestPd25Teachings(unittest.TestCase):
                 key = row_key(row)
                 candidates = self.teachings_by_key.get(key, [])
                 context = format_row_context(row_number, row)
-                self.assertTrue(candidates, f"No YAML teaching found for {context} using key={key!r}")
+                if not candidates:
+                    failure_details = f"No YAML teaching found for {context} using key={key!r}"
+                    self.record_failure(
+                        row_number=row_number,
+                        row=row,
+                        key=key,
+                        candidate_count=0,
+                        failure_kind="no_yaml_candidate",
+                        failure_details=failure_details,
+                    )
+                    self.fail(failure_details)
 
                 failures_by_candidate = [
                     candidate_failures(row=row, row_number=row_number, path=path, payload=payload)
@@ -290,6 +344,14 @@ class TestPd25Teachings(unittest.TestCase):
                     continue
 
                 details = "\n".join(failure for failures in failures_by_candidate for failure in failures)
+                self.record_failure(
+                    row_number=row_number,
+                    row=row,
+                    key=key,
+                    candidate_count=len(candidates),
+                    failure_kind="candidate_mismatch",
+                    failure_details=details,
+                )
                 self.fail(f"No YAML teaching candidate satisfies {context}.\n{details}")
 
 
