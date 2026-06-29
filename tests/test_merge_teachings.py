@@ -166,6 +166,10 @@ class TestMergeTeachings(unittest.TestCase):
                 email: {module["teaching_id"]: module for module in teacher["modules"]}
                 for email, teacher in teacher_entries.items()
             }
+            for teacher in teacher_entries.values():
+                for module in teacher["modules"]:
+                    self.assertNotIn("programmes", module)
+
             self.assertEqual(
                 modules_by_email["a.teacher@unibo.it"]["111"],
                 {
@@ -175,10 +179,6 @@ class TestMergeTeachings(unittest.TestCase):
                     "details": ["Module A", "6 cfu"],
                     "credits": 6,
                     "campus": "Bologna",
-                    "programmes": [
-                        {"title": "Second programme", "code": "8888"},
-                        {"title": "LM Example", "code": "9999"},
-                    ],
                     "ssd": "INF/01",
                     "language": "English",
                     "teaching_mode": "In-person",
@@ -193,7 +193,6 @@ class TestMergeTeachings(unittest.TestCase):
                     "details": ["Module C"],
                     "credits": 6,
                     "campus": "Bologna",
-                    "programmes": [{"title": "LM Example", "code": "9999"}],
                     "ssd": "INF/01",
                     "language": "English",
                     "teaching_mode": "In-person",
@@ -208,7 +207,6 @@ class TestMergeTeachings(unittest.TestCase):
                     "details": ["Module B"],
                     "credits": 6,
                     "campus": "Bologna",
-                    "programmes": [{"title": "LM Example (duplicate)", "code": "9999"}],
                     "ssd": "INF/01",
                     "language": "English",
                     "teaching_mode": "In-person",

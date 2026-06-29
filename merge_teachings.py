@@ -17,7 +17,6 @@ from download_teachings import (
     CourseMetadata,
     CourseSchedule,
     DEFAULT_OUTPUT,
-    SyllabusPage,
     Teacher,
     TeacherSsd,
 )
@@ -38,7 +37,6 @@ class TeachingModule(BaseModel):
     credits: int | None = None
     schedule: CourseSchedule | None = None
     campus: str = Field(default="")
-    programmes: list[dict[str, Any]] = Field(default_factory=list)
     ssd: str = Field(default="")
     language: str = Field(default="")
     teaching_mode: str = Field(default="")
@@ -244,7 +242,6 @@ def build_teacher_entry(record: TeachingRecord) -> tuple[str, dict[str, Any], Te
         "credits": record.metadata.credits,
         "schedule": record.metadata.schedule,
         "campus": record.metadata.campus,
-        "programmes": list(record.metadata.programmes),
         "ssd": record.metadata.ssd,
         "language": record.metadata.language,
         "teaching_mode": record.metadata.teaching_mode,
