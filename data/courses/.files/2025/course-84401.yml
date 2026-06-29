@@ -15,13 +15,14 @@ teachers:
   name: Ciabattini, Leonardo
   email: leonardo.ciabattini@unibo.it
   website: https://www.unibo.it/sitoweb/leonardo.ciabattini
-  role: phd student
+  role:
+  - phd student
   affiliation: disi
   ssd:
     name: INF/01
     description: INFORMATICA
-  module:
-    teaching_id: '518530'
+  modules:
+  - teaching_id: '518530'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/518530
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/518530
@@ -32,7 +33,6 @@ teachers:
       from: 2026-02-17
       to: 2026-05-20
     campus: Bologna
-    programme: Laurea Magistrale in Informatica
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -40,13 +40,14 @@ teachers:
   name: Di Felice, Marco
   email: marco.difelice3@unibo.it
   website: https://www.unibo.it/sitoweb/marco.difelice3
-  role: full professor
+  role:
+  - full professor
   affiliation: disi
   ssd:
     name: INFO-01/A
     description: Informatica
-  module:
-    teaching_id: '518530'
+  modules:
+  - teaching_id: '518530'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/518530
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/518530
@@ -58,7 +59,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea Magistrale in Informatica
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -66,13 +66,14 @@ teachers:
   name: Trotta, Angelo
   email: a.trotta@unibo.it
   website: https://www.unibo.it/sitoweb/a.trotta
-  role: tenure-track researcher
+  role:
+  - tenure-track researcher
   affiliation: disi
   ssd:
     name: INFO-01/A
     description: Informatica
-  module:
-    teaching_id: '518530'
+  modules:
+  - teaching_id: '518530'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/518530
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/518530
@@ -84,7 +85,6 @@ teachers:
       from: 2026-02-17
       to: 2026-05-20
     campus: Bologna
-    programme: Laurea Magistrale in Informatica
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -95,7 +95,20 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea Magistrale in Informatica
+- code: '6698'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 2
+  access: Open access
+  name:
+    it: Informatica
+    en: Computer Science
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6698
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6698
 syllabus:
   it:
     title: 2025/2026 SISTEMI CONTEXT-AWARE — Università di Bologna

@@ -15,10 +15,11 @@ teachers:
   name: Carnevali, Massimo
   email: massimo.carnevali2@unibo.it
   website: https://www.unibo.it/sitoweb/massimo.carnevali2
-  role: adjunct professor
+  role:
+  - adjunct professor
   affiliation: da
-  module:
-    teaching_id: '535349'
+  modules:
+  - teaching_id: '535349'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/535349
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/535349
@@ -30,7 +31,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea Magistrale in Advanced Design
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -38,10 +38,11 @@ teachers:
   name: Protti, Federica
   email: federica.protti5@unibo.it
   website: https://www.unibo.it/sitoweb/federica.protti5
-  role: adjunct professor
+  role:
+  - adjunct professor
   affiliation: da
-  module:
-    teaching_id: '535349'
+  modules:
+  - teaching_id: '535349'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/535349
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/535349
@@ -53,7 +54,6 @@ teachers:
       from: 2026-02-18
       to: 2026-06-03
     campus: Bologna
-    programme: Laurea Magistrale in Advanced Design
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -65,7 +65,20 @@ integrated_course: Componente del corso integrato LABORATORIO DI DESIGN DEI PROC
 campi:
 - Bologna
 programmes:
-- Laurea Magistrale in Advanced Design
+- code: '6685'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 2
+  access: Restricted access (82 places available)
+  name:
+    it: Advanced Design
+    en: Advanced Design
+  year: 2025
+  department: da
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6685
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6685
 syllabus:
   it:
     title: 2025/2026 SERVIZI MULTIMEDIALI PER L'INTERAZIONE — Università di Bologna

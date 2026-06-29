@@ -15,10 +15,11 @@ teachers:
   name: Millesimo, Maurizio
   email: maurizio.millesimo2@unibo.it
   website: https://www.unibo.it/sitoweb/maurizio.millesimo2
-  role: research fellow
+  role:
+  - research fellow
   affiliation: arces
-  module:
-    teaching_id: '469217'
+  modules:
+  - teaching_id: '469217'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/469217
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/469217
@@ -30,7 +31,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Cesena
-    programme: Laurea in Ingegneria elettronica
     ssd: ING-INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -38,13 +38,14 @@ teachers:
   name: Tallarico, Andrea Natale
   email: a.tallarico@unibo.it
   website: https://www.unibo.it/sitoweb/a.tallarico
-  role: associate professor
+  role:
+  - associate professor
   affiliation: dei
   ssd:
     name: IINF-01/A
     description: Elettronica
-  module:
-    teaching_id: '469217'
+  modules:
+  - teaching_id: '469217'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/469217
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/469217
@@ -56,7 +57,6 @@ teachers:
       from: 2025-09-22
       to: 2025-12-10
     campus: Cesena
-    programme: Laurea in Ingegneria elettronica
     ssd: ING-INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -67,7 +67,20 @@ integrated_course: ''
 campi:
 - Cesena
 programmes:
-- Laurea in Ingegneria elettronica
+- code: '5834'
+  campus: Cesena
+  languages:
+  - italian
+  duration: 3
+  access: Open access - TOLC-I
+  name:
+    it: Ingegneria elettronica
+    en: Electronics Engineering
+  year: 2025
+  department: dei
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/5834
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/5834
 syllabus:
   it:
     title: 2025/2026 LABORATORIO DI ELETTRONICA DI POTENZA — Università di Bologna

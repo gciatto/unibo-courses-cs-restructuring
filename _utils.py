@@ -2,9 +2,12 @@ import hashlib
 import pathlib
 import time
 import urllib.request
+import unicodedata
+from dataclasses import dataclass, field
 from typing import Mapping
 from data import DIR_DATA
 import logging
+import yaml
 
 
 DEFAULT_DOWNLOAD_TIMEOUT = 30.0
@@ -21,6 +24,59 @@ DEFAULT_HEADERS = {
         "Chrome/124.0.0.0 Safari/537.36"
     )
 }
+
+
+@dataclass
+class ProgrammeLookup:
+    by_year_and_name: dict[int, dict[str, list[pathlib.Path]]] = field(default_factory=dict)
+    by_year_and_code: dict[int, dict[str, list[pathlib.Path]]] = field(default_factory=dict)
+
+
+def normalize_programme_title(title: str) -> str:
+    lowered = " ".join(title.replace("\xa0", " ").split()).strip().lower()
+    lowered = unicodedata.normalize("NFKD", lowered)
+    lowered = "".join(char for char in lowered if not unicodedata.combining(char))
+    lowered = "".join(char for char in lowered if char.isalnum() or char.isspace())
+    return " ".join(lowered.split())
+
+
+def build_programme_lookup(programmes_dir: pathlib.Path | None = None) -> ProgrammeLookup:
+    resolved_programmes_dir = programmes_dir or (DIR_DATA / "programmes")
+    lookup = ProgrammeLookup()
+
+    if not resolved_programmes_dir.exists():
+        return lookup
+
+    for path in sorted(resolved_programmes_dir.rglob("programme-*.yml")):
+        payload = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+        if not isinstance(payload, dict):
+            continue
+
+        year_raw = payload.get("year")
+        code_raw = payload.get("code")
+        names_raw = payload.get("name")
+
+        try:
+            year = int(year_raw)
+        except (TypeError, ValueError):
+            continue
+
+        if isinstance(names_raw, dict):
+            for name in names_raw.values():
+                if not isinstance(name, str):
+                    continue
+                normalized_name = normalize_programme_title(name)
+                if not normalized_name:
+                    continue
+                year_lookup = lookup.by_year_and_name.setdefault(year, {})
+                year_lookup.setdefault(normalized_name, []).append(path)
+
+        code = str(code_raw).strip() if code_raw is not None else ""
+        if code:
+            year_lookup = lookup.by_year_and_code.setdefault(year, {})
+            year_lookup.setdefault(code, []).append(path)
+
+    return lookup
 
 
 def configure_logging() -> None:

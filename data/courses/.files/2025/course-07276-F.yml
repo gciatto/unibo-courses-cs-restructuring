@@ -15,10 +15,11 @@ teachers:
   name: Pirini, Tommaso
   email: tommaso.pirini@unibo.it
   website: https://www.unibo.it/sitoweb/tommaso.pirini
-  role: teaching tutor
+  role:
+  - teaching tutor
   affiliation: stat
-  module:
-    teaching_id: '529078'
+  modules:
+  - teaching_id: '529078'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/529078
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/529078
@@ -29,7 +30,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea in Scienze statistiche
     ssd: ING-INF/05
     language: Italiano
     teaching_mode: Lezioni in presenza (totalmente o parzialmente)
@@ -37,13 +37,14 @@ teachers:
   name: Romandini, Nicolò
   email: nicolo.romandini@unibo.it
   website: https://www.unibo.it/sitoweb/nicolo.romandini
-  role: rtda
+  role:
+  - rtda
   affiliation: disi
   ssd:
     name: IINF-05/A
     description: Sistemi di elaborazione delle informazioni
-  module:
-    teaching_id: '529078'
+  modules:
+  - teaching_id: '529078'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/529078
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/529078
@@ -55,7 +56,6 @@ teachers:
       from: 2026-02-09
       to: 2026-05-14
     campus: Bologna
-    programme: Laurea in Scienze statistiche
     ssd: ING-INF/05
     language: Italiano
     teaching_mode: Lezioni in presenza (totalmente o parzialmente)
@@ -63,10 +63,11 @@ teachers:
   name: Sali, Raffaele
   email: raffaele.sali2@unibo.it
   website: https://www.unibo.it/sitoweb/raffaele.sali2
-  role: teaching tutor
+  role:
+  - teaching tutor
   affiliation: stat
-  module:
-    teaching_id: '529078'
+  modules:
+  - teaching_id: '529078'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/529078
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/529078
@@ -78,7 +79,6 @@ teachers:
       from: 2026-02-09
       to: 2026-05-14
     campus: Bologna
-    programme: Laurea in Scienze statistiche
     ssd: ING-INF/05
     language: Italiano
     teaching_mode: Lezioni in presenza (totalmente o parzialmente)
@@ -89,7 +89,21 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea in Scienze statistiche
+- code: '6661'
+  campus: Bologna
+  languages:
+  - english
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-E (160 places available)
+  name:
+    it: Scienze statistiche
+    en: Statistical Sciences
+  year: 2025
+  department: stat
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6661
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6661
 syllabus:
   it:
     title: 2025/2026 INFORMATICA — Università di Bologna

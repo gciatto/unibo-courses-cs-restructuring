@@ -15,13 +15,14 @@ teachers:
   name: Asperti, Andrea
   email: asperti@cs.unibo.it
   website: https://www.unibo.it/sitoweb/andrea.asperti
-  role: full professor
+  role:
+  - full professor
   affiliation: disi
   ssd:
     name: INFO-01/A
     description: Informatica
-  module:
-    teaching_id: '455112'
+  modules:
+  - teaching_id: '455112'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/455112
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/455112
@@ -33,7 +34,6 @@ teachers:
       from: 2025-09-25
       to: 2025-12-19
     campus: Bologna
-    programme: Laurea in Informatica
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -41,13 +41,14 @@ teachers:
   name: Zandoli, Silvia
   email: silvia.zandoli3@unibo.it
   website: https://www.unibo.it/sitoweb/silvia.zandoli3
-  role: phd student
+  role:
+  - phd student
   affiliation: disi
   ssd:
     name: ING-INF/05
     description: SISTEMI DI ELABORAZIONE DELLE INFORMAZIONI
-  module:
-    teaching_id: '455112'
+  modules:
+  - teaching_id: '455112'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/455112
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/455112
@@ -59,7 +60,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea in Informatica
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -70,7 +70,20 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea in Informatica
+- code: '8009'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-I
+  name:
+    it: Informatica
+    en: Computer Science
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/8009
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/8009
 syllabus:
   it:
     title: 2025/2026 INTRODUZIONE ALL'APPRENDIMENTO AUTOMATICO — Università di Bologna

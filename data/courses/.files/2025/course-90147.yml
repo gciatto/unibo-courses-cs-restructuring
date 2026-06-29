@@ -15,13 +15,14 @@ teachers:
   name: Bianchini, Francesco
   email: francesco.bianchini@unibo.it
   website: https://www.unibo.it/sitoweb/francesco.bianchini
-  role: associate professor
+  role:
+  - associate professor
   affiliation: filo
   ssd:
     name: PHIL-02/A
     description: Logica e filosofia della scienza
-  module:
-    teaching_id: '443742'
+  modules:
+  - teaching_id: '443742'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/443742
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/443742
@@ -34,7 +35,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea in Lettere
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -45,7 +45,34 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea in Lettere
+- code: '8850'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 3
+  access: Open access
+  name:
+    it: Lettere
+    en: Humanities
+  year: 2025
+  department: ficlit
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/8850
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/8850
+- code: '9216'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 3
+  access: Open access - TOLC-SU
+  name:
+    it: Filosofia
+    en: Philosophy
+  year: 2025
+  department: filo
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/9216
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/9216
 syllabus:
   it:
     title: 2025/2026 INTELLIGENZA ARTIFICIALE (1) — Università di Bologna

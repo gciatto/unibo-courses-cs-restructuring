@@ -15,13 +15,14 @@ teachers:
   name: Merli, Edoardo
   email: edoardo.merli2@unibo.it
   website: https://www.unibo.it/sitoweb/edoardo.merli2
-  role: phd student
+  role:
+  - phd student
   affiliation: disi
   ssd:
     name: ING-INF/05
     description: SISTEMI DI ELABORAZIONE DELLE INFORMAZIONI
-  module:
-    teaching_id: '446614'
+  modules:
+  - teaching_id: '446614'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/446614
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/446614
@@ -33,7 +34,6 @@ teachers:
       from: 2025-09-15
       to: 2025-12-18
     campus: Bologna
-    programme: Laurea Magistrale in Artificial Intelligence
     ssd: ING-INF/05
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -41,13 +41,14 @@ teachers:
   name: Salti, Samuele
   email: samuele.salti@unibo.it
   website: https://www.unibo.it/sitoweb/samuele.salti
-  role: associate professor
+  role:
+  - associate professor
   affiliation: disi
   ssd:
     name: IINF-05/A
     description: Sistemi di elaborazione delle informazioni
-  module:
-    teaching_id: '446614'
+  modules:
+  - teaching_id: '446614'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/446614
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/446614
@@ -59,7 +60,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea Magistrale in Artificial Intelligence
     ssd: ING-INF/05
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -70,7 +70,20 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea Magistrale in Artificial Intelligence
+- code: '9063'
+  campus: Bologna
+  languages:
+  - english
+  duration: 2
+  access: Open access
+  name:
+    it: Artificial Intelligence
+    en: Artificial Intelligence
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/9063
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/9063
 syllabus:
   it:
     title: 2025/2026 MACHINE LEARNING FOR COMPUTER VISION — Università di Bologna

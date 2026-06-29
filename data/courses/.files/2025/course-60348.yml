@@ -15,13 +15,14 @@ teachers:
   name: Remoli, Gloria
   email: gloria.remoli@unibo.it
   website: https://www.unibo.it/sitoweb/gloria.remoli
-  role: phd student
+  role:
+  - phd student
   affiliation: stat
   ssd:
     name: SECS-S/01
     description: STATISTICA
-  module:
-    teaching_id: '529124'
+  modules:
+  - teaching_id: '529124'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/529124
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/529124
@@ -33,7 +34,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea in Scienze statistiche
     ssd: ING-INF/05
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -41,13 +41,14 @@ teachers:
   name: Sartori, Claudio
   email: claudio.sartori@unibo.it
   website: https://www.unibo.it/sitoweb/claudio.sartori
-  role: full professor
+  role:
+  - full professor
   affiliation: disi
   ssd:
     name: IINF-05/A
     description: Sistemi di elaborazione delle informazioni
-  module:
-    teaching_id: '529124'
+  modules:
+  - teaching_id: '529124'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/529124
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/529124
@@ -59,7 +60,6 @@ teachers:
       from: 2026-02-09
       to: 2026-05-14
     campus: Bologna
-    programme: Laurea in Scienze statistiche
     ssd: ING-INF/05
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -70,7 +70,21 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea in Scienze statistiche
+- code: '6661'
+  campus: Bologna
+  languages:
+  - english
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-E (160 places available)
+  name:
+    it: Scienze statistiche
+    en: Statistical Sciences
+  year: 2025
+  department: stat
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6661
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6661
 syllabus:
   it:
     title: 2025/2026 INFORMATICS — Università di Bologna

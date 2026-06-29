@@ -15,10 +15,11 @@ teachers:
   name: Cantelli, Martina
   email: martina.cantelli6@unibo.it
   website: https://www.unibo.it/sitoweb/martina.cantelli6
-  role: teaching tutor
+  role:
+  - teaching tutor
   affiliation: din
-  module:
-    teaching_id: '514508'
+  modules:
+  - teaching_id: '514508'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/514508
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/514508
@@ -30,7 +31,6 @@ teachers:
       from: 2026-02-25
       to: 2026-06-04
     campus: Forli
-    programme: Laurea in Ingegneria aerospaziale Laurea in Ingegneria meccanica
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -38,10 +38,11 @@ teachers:
   name: Ravaioli, Mirko
   email: mirko.ravaioli@unibo.it
   website: https://www.unibo.it/sitoweb/mirko.ravaioli
-  role: adjunct professor
+  role:
+  - adjunct professor
   affiliation: din
-  module:
-    teaching_id: '534687'
+  modules:
+  - teaching_id: '534687'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/534687
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/534687
@@ -53,7 +54,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Forli
-    programme: Laurea in Ingegneria aerospaziale Laurea in Ingegneria meccanica
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -64,7 +64,34 @@ integrated_course: ''
 campi:
 - Forli
 programmes:
-- Laurea in Ingegneria aerospaziale Laurea in Ingegneria meccanica
+- code: '6676'
+  campus: Forlì
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-I (130 places available)
+  name:
+    it: Ingegneria aerospaziale
+    en: Aerospace Engineering
+  year: 2025
+  department: din
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6676
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6676
+- code: '6677'
+  campus: Forlì
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-I (130 places available)
+  name:
+    it: Ingegneria meccanica
+    en: Mechanical Engineering
+  year: 2025
+  department: din
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6677
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6677
 syllabus:
   it:
     title: 2025/2026 FONDAMENTI DI INFORMATICA — Università di Bologna

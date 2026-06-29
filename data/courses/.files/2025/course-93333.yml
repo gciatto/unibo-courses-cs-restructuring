@@ -15,10 +15,11 @@ teachers:
   name: Zuppiroli, Sara
   email: sara.zuppiroli@unibo.it
   website: https://www.unibo.it/sitoweb/sara.zuppiroli
-  role: adjunct professor
+  role:
+  - adjunct professor
   affiliation: dse
-  module:
-    teaching_id: '455038'
+  modules:
+  - teaching_id: '455038'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/455038
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/455038
@@ -30,7 +31,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea in Economia, mercati e istituzioni
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -40,8 +40,7 @@ course_title:
 integrated_course: ''
 campi:
 - Bologna
-programmes:
-- Laurea in Economia, mercati e istituzioni
+programmes: []
 syllabus:
   it:
     title: 2025/2026 LABORATORIO DI LOGICA DI PROGRAMMAZIONE — Università di Bologna

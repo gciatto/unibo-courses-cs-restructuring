@@ -15,13 +15,14 @@ teachers:
   name: Costanzino, Alex
   email: alex.costanzino@unibo.it
   website: https://www.unibo.it/sitoweb/alex.costanzino
-  role: research scholarship holder
+  role:
+  - research scholarship holder
   affiliation: disi
   ssd:
     name: ING-INF/05
     description: SISTEMI DI ELABORAZIONE DELLE INFORMAZIONI
-  module:
-    teaching_id: '467993'
+  modules:
+  - teaching_id: '467993'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/467993
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/467993
@@ -33,7 +34,6 @@ teachers:
       from: 2025-09-18
       to: 2025-12-19
     campus: Bologna
-    programme: Laurea Magistrale in Ingegneria informatica
     ssd: ING-INF/05
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -41,13 +41,14 @@ teachers:
   name: Curti, Iacopo
   email: iacopo.curti2@unibo.it
   website: https://www.unibo.it/sitoweb/iacopo.curti2
-  role: phd student
+  role:
+  - phd student
   affiliation: disi
   ssd:
     name: ING-INF/05
     description: SISTEMI DI ELABORAZIONE DELLE INFORMAZIONI
-  module:
-    teaching_id: '467993'
+  modules:
+  - teaching_id: '467993'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/467993
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/467993
@@ -59,7 +60,6 @@ teachers:
       from: 2025-09-18
       to: 2025-12-19
     campus: Bologna
-    programme: Laurea Magistrale in Ingegneria informatica
     ssd: ING-INF/05
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -67,13 +67,14 @@ teachers:
   name: Di Stefano, Luigi
   email: luigi.distefano@unibo.it
   website: https://www.unibo.it/sitoweb/luigi.distefano
-  role: full professor
+  role:
+  - full professor
   affiliation: disi
   ssd:
     name: IINF-05/A
     description: Sistemi di elaborazione delle informazioni
-  module:
-    teaching_id: '467993'
+  modules:
+  - teaching_id: '467993'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/467993
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/467993
@@ -85,7 +86,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea Magistrale in Ingegneria informatica
     ssd: ING-INF/05
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -96,7 +96,77 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea Magistrale in Ingegneria informatica
+- code: '5724'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 2
+  access: Open access
+  name:
+    it: Ingegneria meccanica
+    en: Mechanical Engineering
+  year: 2025
+  department: din
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/5724
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/5724
+- code: '5826'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 2
+  access: Open access
+  name:
+    it: Ingegneria informatica
+    en: Computer Engineering
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/5826
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/5826
+- code: '5917'
+  campus: Parma, Bologna, Modena
+  languages:
+  - english
+  duration: 2
+  access: Restricted access
+  name:
+    it: Electronic Engineering for Intelligent Vehicles
+    en: Electronic Engineering for Intelligent Vehicles
+  year: 2025
+  department: dei
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/5917
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/5917
+- code: '6711'
+  campus: Bologna
+  languages:
+  - english
+  duration: 2
+  access: Open access
+  name:
+    it: Automation Engineering
+    en: Automation Engineering
+  year: 2025
+  department: dei
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6711
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6711
+- code: '6716'
+  campus: Bologna
+  languages:
+  - english
+  - italian
+  duration: 2
+  access: Open access
+  name:
+    it: Ingegneria elettronica
+    en: Electronic Engineering
+  year: 2025
+  department: dei
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6716
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6716
 syllabus:
   it:
     title: 2025/2026 COMPUTER VISION AND IMAGE PROCESSING M — Università di Bologna

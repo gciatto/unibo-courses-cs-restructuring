@@ -15,10 +15,11 @@ teachers:
   name: Corradi, Antonio
   email: antonio.corradi@unibo.it
   website: https://www.unibo.it/sitoweb/antonio.corradi
-  role: former professor
+  role:
+  - former professor
   affiliation: unibo
-  module:
-    teaching_id: '545734'
+  modules:
+  - teaching_id: '545734'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/545734
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/545734
@@ -31,7 +32,6 @@ teachers:
       from: 2025-09-15
       to: 2025-12-19
     campus: Bologna
-    programme: Laurea in Ingegneria informatica
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -39,10 +39,11 @@ teachers:
   name: Montebugnoli, Sofia
   email: sofia.montebugnoli3@unibo.it
   website: https://www.unibo.it/sitoweb/sofia.montebugnoli3
-  role: phd student
+  role:
+  - phd student
   affiliation: disi
-  module:
-    teaching_id: '545734'
+  modules:
+  - teaching_id: '545734'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/545734
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/545734
@@ -54,7 +55,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea in Ingegneria informatica
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -62,13 +62,14 @@ teachers:
   name: Sabbioni, Andrea
   email: andrea.sabbioni5@unibo.it
   website: https://www.unibo.it/sitoweb/andrea.sabbioni5
-  role: rtda
+  role:
+  - rtda
   affiliation: disi
   ssd:
     name: IINF-05/A
     description: Sistemi di elaborazione delle informazioni
-  module:
-    teaching_id: '545734'
+  modules:
+  - teaching_id: '545734'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/545734
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/545734
@@ -81,7 +82,6 @@ teachers:
       from: 2025-09-15
       to: 2025-12-19
     campus: Bologna
-    programme: Laurea in Ingegneria informatica
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -89,13 +89,14 @@ teachers:
   name: Tazzioli, Davide
   email: davide.tazzioli@unibo.it
   website: https://www.unibo.it/sitoweb/davide.tazzioli
-  role: phd student
+  role:
+  - phd student
   affiliation: disi
   ssd:
     name: ING-INF/05
     description: SISTEMI DI ELABORAZIONE DELLE INFORMAZIONI
-  module:
-    teaching_id: '545734'
+  modules:
+  - teaching_id: '545734'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/545734
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/545734
@@ -108,7 +109,6 @@ teachers:
       from: 2025-09-15
       to: 2025-12-19
     campus: Bologna
-    programme: Laurea in Ingegneria informatica
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -119,7 +119,20 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea in Ingegneria informatica
+- code: '9254'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-I
+  name:
+    it: Ingegneria informatica
+    en: Computer Engineering
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/9254
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/9254
 syllabus:
   it:
     title: 2025/2026 RETI DI CALCOLATORI T (L-Z) — Università di Bologna

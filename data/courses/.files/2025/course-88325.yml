@@ -15,10 +15,11 @@ teachers:
   name: Barone, Leonardo
   email: leonardo.barone4@unibo.it
   website: https://www.unibo.it/sitoweb/leonardo.barone4
-  role: teaching tutor
+  role:
+  - teaching tutor
   affiliation: disi
-  module:
-    teaching_id: '434900'
+  modules:
+  - teaching_id: '434900'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/434900
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/434900
@@ -30,7 +31,6 @@ teachers:
       from: 2026-02-18
       to: 2026-06-05
     campus: Bologna
-    programme: Laurea in Ingegneria informatica
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -38,10 +38,11 @@ teachers:
   name: Pevere, Pierluca
   email: pierluca.pevere2@unibo.it
   website: https://www.unibo.it/sitoweb/pierluca.pevere2
-  role: teaching tutor
+  role:
+  - teaching tutor
   affiliation: disi
-  module:
-    teaching_id: '434900'
+  modules:
+  - teaching_id: '434900'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/434900
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/434900
@@ -53,7 +54,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea in Ingegneria informatica
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -61,13 +61,14 @@ teachers:
   name: Prandini, Marco
   email: marco.prandini@unibo.it
   website: https://www.unibo.it/sitoweb/marco.prandini
-  role: associate professor
+  role:
+  - associate professor
   affiliation: disi
   ssd:
     name: IINF-05/A
     description: Sistemi di elaborazione delle informazioni
-  module:
-    teaching_id: '434900'
+  modules:
+  - teaching_id: '434900'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/434900
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/434900
@@ -79,7 +80,6 @@ teachers:
       from: 2026-02-18
       to: 2026-06-05
     campus: Bologna
-    programme: Laurea in Ingegneria informatica
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -91,7 +91,20 @@ integrated_course: Componente del corso integrato AMMINISTRAZIONE DI SISTEMI E S
 campi:
 - Bologna
 programmes:
-- Laurea in Ingegneria informatica
+- code: '9254'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-I
+  name:
+    it: Ingegneria informatica
+    en: Computer Engineering
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/9254
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/9254
 syllabus:
   it:
     title: 2025/2026 LABORATORIO DI SICUREZZA INFORMATICA T — Università di Bologna

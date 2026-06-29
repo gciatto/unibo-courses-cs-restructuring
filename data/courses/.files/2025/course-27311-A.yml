@@ -15,13 +15,14 @@ teachers:
   name: Garagnani, Massimiliano
   email: massimiliano.garagnani@unibo.it
   website: https://www.unibo.it/sitoweb/massimiliano.garagnani
-  role: associate professor
+  role:
+  - associate professor
   affiliation: filo
   ssd:
     name: INFO-01/A
     description: Informatica
-  module:
-    teaching_id: '423208'
+  modules:
+  - teaching_id: '423208'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/423208
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/423208
@@ -34,7 +35,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea in Filosofia Laurea in Scienze della comunicazione
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -45,7 +45,34 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea in Filosofia Laurea in Scienze della comunicazione
+- code: '5975'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-SU
+  name:
+    it: Scienze della comunicazione
+    en: Communication Sciences
+  year: 2025
+  department: dar
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/5975
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/5975
+- code: '9216'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 3
+  access: Open access - TOLC-SU
+  name:
+    it: Filosofia
+    en: Philosophy
+  year: 2025
+  department: filo
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/9216
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/9216
 syllabus:
   it:
     title: 2025/2026 INFORMATICA UMANISTICA (1) — Università di Bologna

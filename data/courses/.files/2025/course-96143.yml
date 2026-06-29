@@ -15,13 +15,14 @@ teachers:
   name: Borghesi, Andrea
   email: andrea.borghesi3@unibo.it
   website: https://www.unibo.it/sitoweb/andrea.borghesi3
-  role: associate professor
+  role:
+  - associate professor
   affiliation: disi
   ssd:
     name: IINF-05/A
     description: Sistemi di elaborazione delle informazioni
-  module:
-    teaching_id: '467879'
+  modules:
+  - teaching_id: '467879'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/467879
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/467879
@@ -33,8 +34,6 @@ teachers:
       from: 2025-09-15
       to: 2025-12-16
     campus: Bologna
-    programme: Laurea Magistrale in Ingegneria gestionale Laurea Magistrale in Ingegneria
-      gestionale
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -42,13 +41,14 @@ teachers:
   name: Grandi, Fabio
   email: fabio.grandi@unibo.it
   website: https://www.unibo.it/sitoweb/fabio.grandi
-  role: associate professor
+  role:
+  - associate professor
   affiliation: disi
   ssd:
     name: IINF-05/A
     description: Sistemi di elaborazione delle informazioni
-  module:
-    teaching_id: '514487'
+  modules:
+  - teaching_id: '514487'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/514487
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/514487
@@ -60,8 +60,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea Magistrale in Ingegneria gestionale Laurea Magistrale in Ingegneria
-      gestionale
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -72,7 +70,34 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea Magistrale in Ingegneria gestionale Laurea Magistrale in Ingegneria gestionale
+- code: 0936
+  campus: Bologna
+  languages:
+  - italian
+  duration: 2
+  access: Open access
+  name:
+    it: Ingegneria gestionale
+    en: Engineering Management
+  year: 2025
+  department: din
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/0936
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/0936
+- code: '6718'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 2
+  access: Open access
+  name:
+    it: Ingegneria gestionale
+    en: Engineering Management
+  year: 2025
+  department: din
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6718
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6718
 syllabus:
   it:
     title: 2025/2026 METODI E MODELLI DI DATA ANALYTICS M — Università di Bologna

@@ -15,13 +15,14 @@ teachers:
   name: Marfia, Gustavo
   email: gustavo.marfia@unibo.it
   website: https://www.unibo.it/sitoweb/gustavo.marfia
-  role: full professor
+  role:
+  - full professor
   affiliation: dar
   ssd:
     name: INFO-01/A
     description: Informatica
-  module:
-    teaching_id: '445171'
+  modules:
+  - teaching_id: '445171'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/445171
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/445171
@@ -33,7 +34,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Rimini
-    programme: Laurea in Culture e pratiche della moda
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -44,7 +44,20 @@ integrated_course: ''
 campi:
 - Rimini
 programmes:
-- Laurea in Culture e pratiche della moda
+- code: '9064'
+  campus: Rimini
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-SU
+  name:
+    it: Culture e pratiche della moda
+    en: Fashion Cultures and Practices
+  year: 2025
+  department: dar
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/9064
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/9064
 syllabus:
   it:
     title: 2025/2026 ELEMENTI INFORMATICI DI E-COMMERCE PER LA MODA — Università di

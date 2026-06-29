@@ -15,13 +15,14 @@ teachers:
   name: Armandi, Vincenzo
   email: vincenzo.armandi2@unibo.it
   website: https://www.unibo.it/sitoweb/vincenzo.armandi2
-  role: phd student
+  role:
+  - phd student
   affiliation: dar
   ssd:
     name: INF/01
     description: INFORMATICA
-  module:
-    teaching_id: '523718'
+  modules:
+  - teaching_id: '523718'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/523718
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/523718
@@ -33,7 +34,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea in Informatica per il management
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -41,13 +41,14 @@ teachers:
   name: Roccetti, Marco
   email: marco.roccetti@unibo.it
   website: https://www.unibo.it/sitoweb/marco.roccetti
-  role: full professor
+  role:
+  - full professor
   affiliation: disi
   ssd:
     name: INFO-01/A
     description: Informatica
-  module:
-    teaching_id: '523718'
+  modules:
+  - teaching_id: '523718'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/523718
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/523718
@@ -59,7 +60,6 @@ teachers:
       from: 2026-02-16
       to: 2026-05-20
     campus: Bologna
-    programme: Laurea in Informatica per il management
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -70,7 +70,20 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea in Informatica per il management
+- code: '6641'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-I (180 places available)
+  name:
+    it: Informatica per il management
+    en: Information Science for Management
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6641
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6641
 syllabus:
   it:
     title: 2025/2026 ARCHITETTURA DI INTERNET — Università di Bologna

@@ -15,13 +15,14 @@ teachers:
   name: Lodi, Stefano
   email: stefano.lodi@unibo.it
   website: https://www.unibo.it/sitoweb/stefano.lodi
-  role: associate professor
+  role:
+  - associate professor
   affiliation: disi
   ssd:
     name: IINF-05/A
     description: Sistemi di elaborazione delle informazioni
-  module:
-    teaching_id: '542201'
+  modules:
+  - teaching_id: '542201'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/542201
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/542201
@@ -33,7 +34,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Rimini
-    programme: Laurea in Statistica, finanza e assicurazioni
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -43,8 +43,7 @@ course_title:
 integrated_course: ''
 campi:
 - Rimini
-programmes:
-- Laurea in Statistica, finanza e assicurazioni
+programmes: []
 syllabus:
   it:
     title: 2025/2026 INFORMATICA — Università di Bologna

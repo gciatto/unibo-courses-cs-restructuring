@@ -15,10 +15,11 @@ teachers:
   name: Bonora, Paolo
   email: paolo.bonora@unibo.it
   website: https://www.unibo.it/sitoweb/paolo.bonora
-  role: adjunct professor
+  role:
+  - adjunct professor
   affiliation: ficlit
-  module:
-    teaching_id: '490904'
+  modules:
+  - teaching_id: '490904'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/490904
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/490904
@@ -32,7 +33,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea Magistrale in Digital Humanities and Digital Knowledge
     ssd: INF/01
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -43,7 +43,20 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea Magistrale in Digital Humanities and Digital Knowledge
+- code: '9224'
+  campus: Bologna
+  languages:
+  - english
+  duration: 2
+  access: Open access
+  name:
+    it: Digital Humanities and Digital Knowledge
+    en: Digital Humanities and Digital Knowledge
+  year: 2025
+  department: ficlit
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/9224
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/9224
 syllabus:
   it:
     title: 2025/2026 Project Management and Software Engineering for Cultural Heritage

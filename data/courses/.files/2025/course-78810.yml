@@ -15,13 +15,14 @@ teachers:
   name: Galassi, Andrea
   email: a.galassi@unibo.it
   website: https://www.unibo.it/sitoweb/a.galassi
-  role: rtda
+  role:
+  - rtda
   affiliation: disi
   ssd:
     name: IINF-05/A
     description: Sistemi di elaborazione delle informazioni
-  module:
-    teaching_id: '455152'
+  modules:
+  - teaching_id: '455152'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/455152
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/455152
@@ -33,7 +34,6 @@ teachers:
       from: 2025-09-15
       to: 2026-06-04
     campus: Bologna
-    programme: Laurea Magistrale in Ingegneria dell'energia elettrica
     ssd: ING-INF/05
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -41,10 +41,11 @@ teachers:
   name: Grundler, Giulia
   email: giulia.grundler2@unibo.it
   website: https://www.unibo.it/sitoweb/giulia.grundler2
-  role: research scholarship holder
+  role:
+  - research scholarship holder
   affiliation: disi
-  module:
-    teaching_id: '455152'
+  modules:
+  - teaching_id: '455152'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/455152
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/455152
@@ -56,7 +57,6 @@ teachers:
       from: 2025-09-15
       to: 2026-06-04
     campus: Bologna
-    programme: Laurea Magistrale in Ingegneria dell'energia elettrica
     ssd: ING-INF/05
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -64,13 +64,14 @@ teachers:
   name: Torroni, Paolo
   email: p.torroni@unibo.it
   website: https://www.unibo.it/sitoweb/p.torroni
-  role: associate professor
+  role:
+  - associate professor
   affiliation: disi
   ssd:
     name: IINF-05/A
     description: Sistemi di elaborazione delle informazioni
-  module:
-    teaching_id: '455152'
+  modules:
+  - teaching_id: '455152'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/455152
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/455152
@@ -82,7 +83,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea Magistrale in Ingegneria dell'energia elettrica
     ssd: ING-INF/05
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -93,7 +93,35 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea Magistrale in Ingegneria dell'energia elettrica
+- code: '6711'
+  campus: Bologna
+  languages:
+  - english
+  duration: 2
+  access: Open access
+  name:
+    it: Automation Engineering
+    en: Automation Engineering
+  year: 2025
+  department: dei
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6711
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6711
+- code: '9066'
+  campus: Bologna
+  languages:
+  - english
+  - italian
+  duration: 2
+  access: Open access
+  name:
+    it: Ingegneria dell'energia elettrica
+    en: Electrical Energy Engineering
+  year: 2025
+  department: dei
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/9066
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/9066
 syllabus:
   it:
     title: 2025/2026 REAL TIME SYSTEMS FOR AUTOMATION M — Università di Bologna

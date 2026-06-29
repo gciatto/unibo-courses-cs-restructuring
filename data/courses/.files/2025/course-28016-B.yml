@@ -15,13 +15,14 @@ teachers:
   name: Balestra, Luigi
   email: luigi.balestra5@unibo.it
   website: https://www.unibo.it/sitoweb/luigi.balestra5
-  role: rtda
+  role:
+  - rtda
   affiliation: dei
   ssd:
     name: IINF-01/A
     description: Elettronica
-  module:
-    teaching_id: '329581'
+  modules:
+  - teaching_id: '329581'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/329581
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/329581
@@ -33,7 +34,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea in Ingegneria energetica
     ssd: ING-INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -44,7 +44,34 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea in Ingegneria energetica
+- code: 0924
+  campus: Bologna
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-I
+  name:
+    it: Ingegneria energetica
+    en: Energy Engineering
+  year: 2025
+  department: din
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/0924
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/0924
+- code: '5822'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 3
+  access: Open access - TOLC-I
+  name:
+    it: Ingegneria dell'energia elettrica
+    en: Electrical Energy Engineering
+  year: 2025
+  department: dei
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/5822
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/5822
 syllabus:
   it:
     title: 2025/2026 ELETTRONICA T — Università di Bologna

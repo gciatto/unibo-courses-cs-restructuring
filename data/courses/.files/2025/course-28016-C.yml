@@ -15,13 +15,14 @@ teachers:
   name: Lanzoni, Massimo
   email: massimo.lanzoni@unibo.it
   website: https://www.unibo.it/sitoweb/massimo.lanzoni
-  role: associate professor
+  role:
+  - associate professor
   affiliation: dei
   ssd:
     name: IINF-01/A
     description: Elettronica
-  module:
-    teaching_id: '434709'
+  modules:
+  - teaching_id: '434709'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/434709
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/434709
@@ -33,7 +34,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea in Ingegneria informatica
     ssd: ING-INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -44,7 +44,20 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea in Ingegneria informatica
+- code: '9254'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-I
+  name:
+    it: Ingegneria informatica
+    en: Computer Engineering
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/9254
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/9254
 syllabus:
   it:
     title: 2025/2026 ELETTRONICA T — Università di Bologna

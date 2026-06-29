@@ -15,13 +15,14 @@ teachers:
   name: Ballerini, Francesco
   email: francesco.ballerini4@unibo.it
   website: https://www.unibo.it/sitoweb/francesco.ballerini4
-  role: phd student
+  role:
+  - phd student
   affiliation: disi
   ssd:
     name: ING-INF/05
     description: SISTEMI DI ELABORAZIONE DELLE INFORMAZIONI
-  module:
-    teaching_id: '530660'
+  modules:
+  - teaching_id: '530660'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/530660
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/530660
@@ -33,7 +34,6 @@ teachers:
       from: 2026-02-16
       to: 2026-06-04
     campus: Bologna
-    programme: Laurea Magistrale in Artificial Intelligence
     ssd: ING-INF/05
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -41,13 +41,14 @@ teachers:
   name: Costanzino, Alex
   email: alex.costanzino@unibo.it
   website: https://www.unibo.it/sitoweb/alex.costanzino
-  role: research scholarship holder
+  role:
+  - research scholarship holder
   affiliation: disi
   ssd:
     name: ING-INF/05
     description: SISTEMI DI ELABORAZIONE DELLE INFORMAZIONI
-  module:
-    teaching_id: '530660'
+  modules:
+  - teaching_id: '530660'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/530660
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/530660
@@ -58,7 +59,6 @@ teachers:
       from: 2026-02-16
       to: 2026-06-04
     campus: Bologna
-    programme: Laurea Magistrale in Artificial Intelligence
     ssd: ING-INF/05
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -66,13 +66,14 @@ teachers:
   name: Lisanti, Giuseppe
   email: giuseppe.lisanti@unibo.it
   website: https://www.unibo.it/sitoweb/giuseppe.lisanti
-  role: associate professor
+  role:
+  - associate professor
   affiliation: disi
   ssd:
     name: INFO-01/A
     description: Informatica
-  module:
-    teaching_id: '530660'
+  modules:
+  - teaching_id: '530660'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/530660
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/530660
@@ -84,7 +85,6 @@ teachers:
       from: 2026-02-16
       to: 2026-06-04
     campus: Bologna
-    programme: Laurea Magistrale in Artificial Intelligence
     ssd: ING-INF/05
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -92,13 +92,14 @@ teachers:
   name: Salti, Samuele
   email: samuele.salti@unibo.it
   website: https://www.unibo.it/sitoweb/samuele.salti
-  role: associate professor
+  role:
+  - associate professor
   affiliation: disi
   ssd:
     name: IINF-05/A
     description: Sistemi di elaborazione delle informazioni
-  module:
-    teaching_id: '530660'
+  modules:
+  - teaching_id: '530660'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/530660
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/530660
@@ -110,7 +111,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea Magistrale in Artificial Intelligence
     ssd: ING-INF/05
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -121,7 +121,20 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea Magistrale in Artificial Intelligence
+- code: '6700'
+  campus: Bologna
+  languages:
+  - english
+  duration: 2
+  access: Open access
+  name:
+    it: Artificial Intelligence
+    en: Artificial Intelligence
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6700
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6700
 syllabus:
   it:
     title: 2025/2026 IMAGE PROCESSING AND COMPUTER VISION — Università di Bologna

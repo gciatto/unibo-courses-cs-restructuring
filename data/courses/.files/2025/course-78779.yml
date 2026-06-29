@@ -15,13 +15,14 @@ teachers:
   name: Bellavista, Paolo
   email: paolo.bellavista@unibo.it
   website: https://www.unibo.it/sitoweb/paolo.bellavista
-  role: full professor
+  role:
+  - full professor
   affiliation: disi
   ssd:
     name: IINF-05/A
     description: Sistemi di elaborazione delle informazioni
-  module:
-    teaching_id: '468026'
+  modules:
+  - teaching_id: '468026'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/468026
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/468026
@@ -33,7 +34,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea Magistrale in Ingegneria informatica
     ssd: ING-INF/05
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -44,7 +44,20 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea Magistrale in Ingegneria informatica
+- code: '5826'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 2
+  access: Open access
+  name:
+    it: Ingegneria informatica
+    en: Computer Engineering
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/5826
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/5826
 syllabus:
   it:
     title: 2025/2026 MOBILE SYSTEMS M — Università di Bologna

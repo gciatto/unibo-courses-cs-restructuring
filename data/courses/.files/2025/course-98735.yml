@@ -15,10 +15,11 @@ teachers:
   name: Bartolini, Nicola
   email: nicola.bartolini11@unibo.it
   website: https://www.unibo.it/sitoweb/nicola.bartolini11
-  role: adjunct professor
+  role:
+  - adjunct professor
   affiliation: disa
-  module:
-    teaching_id: '518146'
+  modules:
+  - teaching_id: '518146'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/518146
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/518146
@@ -30,7 +31,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea Magistrale in Greening Energy Market and Finance
     ssd: INF/01
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -38,10 +38,11 @@ teachers:
   name: Cordioli, Alberto
   email: alberto.cordioli@unibo.it
   website: https://www.unibo.it/sitoweb/alberto.cordioli
-  role: adjunct professor
+  role:
+  - adjunct professor
   affiliation: stat
-  module:
-    teaching_id: '518146'
+  modules:
+  - teaching_id: '518146'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/518146
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/518146
@@ -53,7 +54,6 @@ teachers:
       from: 2026-02-16
       to: 2026-05-05
     campus: Bologna
-    programme: Laurea Magistrale in Greening Energy Market and Finance
     ssd: INF/01
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -64,7 +64,20 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea Magistrale in Greening Energy Market and Finance
+- code: '6693'
+  campus: Bologna
+  languages:
+  - english
+  duration: 2
+  access: Open access
+  name:
+    it: Greening Energy Market and Finance
+    en: Greening Energy Market and Finance
+  year: 2025
+  department: stat
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6693
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6693
 syllabus:
   it:
     title: 2025/2026 PYTHON CODING AND DATA SCIENCE — Università di Bologna

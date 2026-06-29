@@ -15,13 +15,14 @@ teachers:
   name: Callegari, Sergio
   email: sergio.callegari@unibo.it
   website: https://www.unibo.it/sitoweb/sergio.callegari
-  role: associate professor
+  role:
+  - associate professor
   affiliation: dei
   ssd:
     name: IINF-01/A
     description: Elettronica
-  module:
-    teaching_id: '384683'
+  modules:
+  - teaching_id: '384683'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/384683
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/384683
@@ -33,8 +34,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Cesena
-    programme: Laurea Magistrale in Ingegneria elettronica e telecomunicazioni per
-      l'energia
     ssd: ING-INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -45,7 +44,20 @@ integrated_course: ''
 campi:
 - Cesena
 programmes:
-- Laurea Magistrale in Ingegneria elettronica e telecomunicazioni per l'energia
+- code: '8770'
+  campus: Cesena
+  languages:
+  - italian
+  duration: 2
+  access: Open access
+  name:
+    it: Ingegneria elettronica e telecomunicazioni per l'energia
+    en: Electronics and Telecommunications Engineering for Energy
+  year: 2025
+  department: dei
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/8770
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/8770
 syllabus:
   it:
     title: 2025/2026 ELETTRONICA PER L'ELABORAZIONE ANALOGICA DEL SEGNALE LM — Università

@@ -15,10 +15,11 @@ teachers:
   name: Bocchi, Maria Francesca
   email: maria.bocchi4@unibo.it
   website: https://www.unibo.it/sitoweb/maria.bocchi4
-  role: phd student
+  role:
+  - phd student
   affiliation: ficlit
-  module:
-    teaching_id: '458983'
+  modules:
+  - teaching_id: '458983'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/458983
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/458983
@@ -31,7 +32,6 @@ teachers:
       from: 2025-11-14
       to: 2025-12-19
     campus: Bologna
-    programme: Laurea in Lettere Laurea in Lettere
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -39,13 +39,14 @@ teachers:
   name: Bruno, Enrica
   email: enrica.bruno2@unibo.it
   website: https://www.unibo.it/sitoweb/enrica.bruno2
-  role: phd student
+  role:
+  - phd student
   affiliation: ficlit
   ssd:
     name: M-STO/08
     description: ARCHIVISTICA, BIBLIOGRAFIA E BIBLIOTECONOMIA
-  module:
-    teaching_id: '458983'
+  modules:
+  - teaching_id: '458983'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/458983
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/458983
@@ -58,7 +59,6 @@ teachers:
       from: 2025-11-14
       to: 2025-12-19
     campus: Bologna
-    programme: Laurea in Lettere Laurea in Lettere
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -66,13 +66,14 @@ teachers:
   name: Peroni, Silvio
   email: silvio.peroni@unibo.it
   website: https://www.unibo.it/sitoweb/silvio.peroni
-  role: associate professor
+  role:
+  - associate professor
   affiliation: ficlit
   ssd:
     name: INFO-01/A
     description: Informatica
-  module:
-    teaching_id: '536056'
+  modules:
+  - teaching_id: '536056'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/536056
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/536056
@@ -86,7 +87,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea in Lettere Laurea in Lettere
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -97,7 +97,34 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea in Lettere Laurea in Lettere
+- code: '6601'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 3
+  access: Open access
+  name:
+    it: Lettere
+    en: Humanities
+  year: 2025
+  department: ficlit
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6601
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6601
+- code: '8850'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 3
+  access: Open access
+  name:
+    it: Lettere
+    en: Humanities
+  year: 2025
+  department: ficlit
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/8850
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/8850
 syllabus:
   it:
     title: 2025/2026 INFORMATICA DI BASE (1) (A-L) — Università di Bologna

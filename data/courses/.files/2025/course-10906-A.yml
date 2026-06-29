@@ -15,10 +15,11 @@ teachers:
   name: Dadi, Maichol
   email: maichol.dadi2@unibo.it
   website: https://www.unibo.it/sitoweb/maichol.dadi2
-  role: research fellow
+  role:
+  - research fellow
   affiliation: disi
-  module:
-    teaching_id: '498821'
+  modules:
+  - teaching_id: '498821'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/498821
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/498821
@@ -30,7 +31,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Cesena
-    programme: Laurea in Tecnologie dei sistemi informatici
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -38,13 +38,14 @@ teachers:
   name: Lumini, Alessandra
   email: alessandra.lumini@unibo.it
   website: https://www.unibo.it/sitoweb/alessandra.lumini
-  role: associate professor
+  role:
+  - associate professor
   affiliation: disi
   ssd:
     name: IINF-05/A
     description: Sistemi di elaborazione delle informazioni
-  module:
-    teaching_id: '498821'
+  modules:
+  - teaching_id: '498821'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/498821
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/498821
@@ -56,7 +57,6 @@ teachers:
       from: 2026-02-19
       to: 2026-06-04
     campus: Cesena
-    programme: Laurea in Tecnologie dei sistemi informatici
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -67,7 +67,20 @@ integrated_course: ''
 campi:
 - Cesena
 programmes:
-- Laurea in Tecnologie dei sistemi informatici
+- code: '6007'
+  campus: Cesena, Imola
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access (65 places available)
+  name:
+    it: Tecnologie dei sistemi informatici
+    en: Computer Systems Technologies
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6007
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6007
 syllabus:
   it:
     title: 2025/2026 BASI DI DATI — Università di Bologna

@@ -15,13 +15,14 @@ teachers:
   name: Ceccarini, Chiara
   email: chiara.ceccarini6@unibo.it
   website: https://www.unibo.it/sitoweb/chiara.ceccarini6
-  role: rtda
+  role:
+  - rtda
   affiliation: disi
   ssd:
     name: INFO-01/A
     description: Informatica
-  module:
-    teaching_id: '385090'
+  modules:
+  - teaching_id: '385090'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/385090
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/385090
@@ -33,7 +34,6 @@ teachers:
       from: 2026-02-16
       to: 2026-06-03
     campus: Cesena
-    programme: Laurea in Ingegneria e scienze informatiche
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -41,13 +41,14 @@ teachers:
   name: Prandi, Catia
   email: catia.prandi@unibo.it
   website: https://www.unibo.it/sitoweb/catia.prandi
-  role: associate professor
+  role:
+  - associate professor
   affiliation: disi
   ssd:
     name: INFO-01/A
     description: Informatica
-  module:
-    teaching_id: '385090'
+  modules:
+  - teaching_id: '385090'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/385090
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/385090
@@ -59,7 +60,6 @@ teachers:
       from: 2026-02-16
       to: 2026-06-03
     campus: Cesena
-    programme: Laurea in Ingegneria e scienze informatiche
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -67,13 +67,14 @@ teachers:
   name: Tumedei, Gianni
   email: gianni.tumedei2@unibo.it
   website: https://www.unibo.it/sitoweb/gianni.tumedei2
-  role: phd student
+  role:
+  - phd student
   affiliation: disi
   ssd:
     name: INF/01
     description: INFORMATICA
-  module:
-    teaching_id: '385090'
+  modules:
+  - teaching_id: '385090'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/385090
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/385090
@@ -84,7 +85,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Cesena
-    programme: Laurea in Ingegneria e scienze informatiche
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -95,7 +95,20 @@ integrated_course: ''
 campi:
 - Cesena
 programmes:
-- Laurea in Ingegneria e scienze informatiche
+- code: '8615'
+  campus: Cesena
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-I
+  name:
+    it: Ingegneria e scienze informatiche
+    en: Computer Science and Engineering
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/8615
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/8615
 syllabus:
   it:
     title: 2025/2026 PROGRAMMAZIONE DI SISTEMI MOBILE — Università di Bologna

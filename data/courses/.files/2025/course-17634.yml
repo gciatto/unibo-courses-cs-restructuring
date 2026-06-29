@@ -15,13 +15,14 @@ teachers:
   name: Cappelli, Raffaele
   email: raffaele.cappelli@unibo.it
   website: https://www.unibo.it/sitoweb/raffaele.cappelli
-  role: associate professor
+  role:
+  - associate professor
   affiliation: disi
   ssd:
     name: IINF-05/A
     description: Sistemi di elaborazione delle informazioni
-  module:
-    teaching_id: '421624'
+  modules:
+  - teaching_id: '421624'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/421624
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/421624
@@ -33,7 +34,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Cesena
-    programme: Laurea in Ingegneria e scienze informatiche
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -44,7 +44,20 @@ integrated_course: ''
 campi:
 - Cesena
 programmes:
-- Laurea in Ingegneria e scienze informatiche
+- code: '8615'
+  campus: Cesena
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-I
+  name:
+    it: Ingegneria e scienze informatiche
+    en: Computer Science and Engineering
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/8615
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/8615
 syllabus:
   it:
     title: 2025/2026 VISIONE ARTIFICIALE — Università di Bologna

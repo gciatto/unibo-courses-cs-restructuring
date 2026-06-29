@@ -15,13 +15,14 @@ teachers:
   name: Ceccarini, Chiara
   email: chiara.ceccarini6@unibo.it
   website: https://www.unibo.it/sitoweb/chiara.ceccarini6
-  role: rtda
+  role:
+  - rtda
   affiliation: disi
   ssd:
     name: INFO-01/A
     description: Informatica
-  module:
-    teaching_id: '498809'
+  modules:
+  - teaching_id: '498809'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/498809
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/498809
@@ -33,7 +34,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Cesena
-    programme: Laurea in Tecnologie dei sistemi informatici
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -41,10 +41,11 @@ teachers:
   name: Testa, Alex
   email: alex.testa2@unibo.it
   website: https://www.unibo.it/sitoweb/alex.testa2
-  role: teaching tutor
+  role:
+  - teaching tutor
   affiliation: disi
-  module:
-    teaching_id: '498809'
+  modules:
+  - teaching_id: '498809'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/498809
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/498809
@@ -56,7 +57,6 @@ teachers:
       from: 2025-09-18
       to: 2025-12-18
     campus: Cesena
-    programme: Laurea in Tecnologie dei sistemi informatici
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -67,7 +67,20 @@ integrated_course: ''
 campi:
 - Cesena
 programmes:
-- Laurea in Tecnologie dei sistemi informatici
+- code: '6007'
+  campus: Cesena, Imola
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access (65 places available)
+  name:
+    it: Tecnologie dei sistemi informatici
+    en: Computer Systems Technologies
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6007
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6007
 syllabus:
   it:
     title: 2025/2026 INGEGNERIA DEI SISTEMI WEB — Università di Bologna

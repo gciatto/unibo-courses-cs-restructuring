@@ -15,13 +15,14 @@ teachers:
   name: Barbaresi, Alberto
   email: alberto.barbaresi@unibo.it
   website: https://www.unibo.it/sitoweb/alberto.barbaresi
-  role: associate professor
+  role:
+  - associate professor
   affiliation: distal
   ssd:
     name: AGRI-04/C
     description: Costruzioni rurali e territorio agroforestale
-  module:
-    teaching_id: '517925'
+  modules:
+  - teaching_id: '517925'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/517925
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/517925
@@ -33,7 +34,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea in Scienze e tecnologie per il verde e il paesaggio
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -44,7 +44,20 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea in Scienze e tecnologie per il verde e il paesaggio
+- code: '6628'
+  campus: Imola
+  languages:
+  - italian
+  duration: 3
+  access: Open access
+  name:
+    it: Scienze e tecnologie per il verde e il paesaggio
+    en: Sciences and Technologies for Green and Landscape
+  year: 2025
+  department: distal
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6628
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6628
 syllabus:
   it:
     title: 2025/2026 RAPPRESENTAZIONE DIGITALE DEL PROGETTO DI PAESAGGIO — Università

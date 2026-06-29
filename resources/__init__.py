@@ -76,6 +76,7 @@ def checklist_for(map: FrozenDict) -> list[tuple[str, str]]:
             if value in checkmap:
                 raise ValueError(f"Duplicate value in checklist: {value!r} (keys: {checkmap[value]!r} and {key!r})")
             checkmap[value] = key
+        checkmap[key] = key
     checklist = list(checkmap.items())
     checklist.sort(key=lambda x: len(x[0]), reverse=True)
     return checklist

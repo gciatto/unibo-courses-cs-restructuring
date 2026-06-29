@@ -17,7 +17,6 @@ from download_teachings import (
     CourseMetadata,
     CourseSchedule,
     DEFAULT_OUTPUT,
-    SyllabusPage,
     Teacher,
     TeacherSsd,
 )
@@ -38,14 +37,13 @@ class TeachingModule(BaseModel):
     credits: int | None = None
     schedule: CourseSchedule | None = None
     campus: str = Field(default="")
-    programme: str = Field(default="")
     ssd: str = Field(default="")
     language: str = Field(default="")
     teaching_mode: str = Field(default="")
 
 
-class TeacherWithModule(Teacher):
-    module: TeachingModule = Field(default_factory=TeachingModule)
+class TeacherWithModules(Teacher):
+    modules: list[TeachingModule] = Field(default_factory=list)
 
 
 class MergedCourseTitle(BaseModel):
@@ -65,15 +63,15 @@ class MergedCourseMetadata(BaseModel):
     languages: list[str] = Field(default_factory=list)
     teaching_modes: list[str] = Field(default_factory=list)
     schedules: list[CourseSchedule | None] = Field(default_factory=list)
-    teachers: list[TeacherWithModule] = Field(default_factory=list)
+    teachers: list[TeacherWithModules] = Field(default_factory=list)
     course_title: MergedCourseTitle
     integrated_course: str = Field(default="")
     campi: list[str] = Field(default_factory=list)
-    programmes: list[str] = Field(default_factory=list)
+    programmes: list[dict[str, Any]] = Field(default_factory=list)
     syllabus: dict[str, MergedSyllabusPage] = Field(default_factory=dict)
 
 
-TeacherWithModule.model_rebuild(_types_namespace={"TeacherSsd": TeacherSsd})
+TeacherWithModules.model_rebuild(_types_namespace={"TeacherSsd": TeacherSsd})
 
 
 @dataclass(frozen=True)
@@ -229,10 +227,10 @@ def merge_value(
     return selected_value
 
 
-def build_teacher_entry(record: TeachingRecord) -> TeacherWithModule:
+def build_teacher_entry(record: TeachingRecord) -> tuple[str, dict[str, Any], TeachingModule]:
     teacher_payload = record.metadata.teacher.model_dump(by_alias=False, exclude_none=True)
     teaching_id = PATTERN_TEACHING_FILENAME.fullmatch(record.path.name).group("teaching_id")  # type: ignore[union-attr]
-    teacher_payload["module"] = {
+    module_payload = {
         "teaching_id": teaching_id,
         "url": record.metadata.url,
         "syllabus_urls": {
@@ -244,12 +242,37 @@ def build_teacher_entry(record: TeachingRecord) -> TeacherWithModule:
         "credits": record.metadata.credits,
         "schedule": record.metadata.schedule,
         "campus": record.metadata.campus,
-        "programme": record.metadata.programme,
         "ssd": record.metadata.ssd,
         "language": record.metadata.language,
         "teaching_mode": record.metadata.teaching_mode,
     }
-    return TeacherWithModule.model_validate(teacher_payload)
+    module = TeachingModule.model_validate(module_payload)
+    teacher_email = teacher_payload.get("teacher_email", "") or ""
+    return teacher_email, teacher_payload, module
+
+
+def merge_programmes_by_code(programmes: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    by_code: dict[str, dict[str, Any]] = {}
+    without_code: list[dict[str, Any]] = []
+    seen_without_code: set[str] = set()
+
+    for programme in programmes:
+        if not isinstance(programme, dict):
+            continue
+        code = str(programme.get("code") or "").strip()
+        if code:
+            by_code.setdefault(code, programme)
+            continue
+
+        signature = normalize_for_comparison(programme)
+        if signature in seen_without_code:
+            continue
+        seen_without_code.add(signature)
+        without_code.append(programme)
+
+    merged = [by_code[key] for key in sorted(by_code)]
+    merged.extend(without_code)
+    return merged
 
 
 def merge_syllabus(records: list[TeachingRecord]) -> dict[str, MergedSyllabusPage]:
@@ -331,8 +354,8 @@ def merge_records(records: list[TeachingRecord]) -> MergedCourseMetadata:
         raise ValueError("Cannot merge an empty set of teaching records.")
 
     first_metadata = records[0].metadata
-    teachers = [build_teacher_entry(record) for record in records]
-    teachers.sort(key=lambda teacher: (teacher.teacher_name, teacher.teacher_email, teacher.module.teaching_id))
+    teachers_by_email: dict[str, dict[str, Any]] = {}
+    modules_by_email: dict[str, list[TeachingModule]] = defaultdict(list)
 
     # Collect all unique values for list fields
     credits_set: dict[int | None, bool] = {}
@@ -341,9 +364,16 @@ def merge_records(records: list[TeachingRecord]) -> MergedCourseMetadata:
     teaching_modes_set: dict[str, bool] = {}
     schedules_set: dict[str, CourseSchedule | None] = {}
     campi_set: dict[str, bool] = {}
-    programmes_set: dict[str, bool] = {}
+    merged_programmes_source: list[dict[str, Any]] = []
 
     for record in records:
+        teacher_email, teacher_payload, module = build_teacher_entry(record)
+        key_email = teacher_email.strip().lower()
+        teacher_key = key_email if key_email else f"__record__:{record.path}"
+        if teacher_key not in teachers_by_email:
+            teachers_by_email[teacher_key] = teacher_payload
+        modules_by_email[teacher_key].append(module)
+
         if record.metadata.credits is not None:
             credits_set[record.metadata.credits] = True
         if record.metadata.ssd:
@@ -358,8 +388,15 @@ def merge_records(records: list[TeachingRecord]) -> MergedCourseMetadata:
             schedules_set[sched_key] = record.metadata.schedule
         if record.metadata.campus:
             campi_set[record.metadata.campus] = True
-        if record.metadata.programme:
-            programmes_set[record.metadata.programme] = True
+        merged_programmes_source.extend(record.metadata.programmes)
+
+    teachers: list[TeacherWithModules] = []
+    for teacher_key, teacher_payload in teachers_by_email.items():
+        modules = sorted(modules_by_email[teacher_key], key=lambda item: item.teaching_id)
+        payload = dict(teacher_payload)
+        payload["modules"] = [module.model_dump(by_alias=False, exclude_none=True) for module in modules]
+        teachers.append(TeacherWithModules.model_validate(payload))
+    teachers.sort(key=lambda teacher: (teacher.teacher_name, teacher.teacher_email))
 
     return MergedCourseMetadata(
         year=first_metadata.year,
@@ -376,7 +413,7 @@ def merge_records(records: list[TeachingRecord]) -> MergedCourseMetadata:
         ),
         integrated_course=merge_value(records, "integrated_course", lambda metadata: metadata.integrated_course) or "",
         campi=[c for c in campi_set.keys()],
-        programmes=[p for p in programmes_set.keys()],
+        programmes=merge_programmes_by_code(merged_programmes_source),
         syllabus=merge_syllabus(records),
     )
 

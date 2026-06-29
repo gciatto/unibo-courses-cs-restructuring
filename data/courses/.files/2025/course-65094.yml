@@ -15,10 +15,11 @@ teachers:
   name: Baglione, Enrico
   email: enrico.baglione@unibo.it
   website: https://www.unibo.it/sitoweb/enrico.baglione
-  role: adjunct professor
+  role:
+  - adjunct professor
   affiliation: difa
-  module:
-    teaching_id: '480805'
+  modules:
+  - teaching_id: '480805'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/480805
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/480805
@@ -30,7 +31,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea Magistrale in Science of Climate
     ssd: INF/01
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -41,7 +41,20 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea Magistrale in Science of Climate
+- code: '5895'
+  campus: Bologna
+  languages:
+  - english
+  duration: 2
+  access: Open access
+  name:
+    it: Science of Climate
+    en: Science of Climate
+  year: 2025
+  department: difa
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/5895
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/5895
 syllabus:
   it:
     title: 2025/2026 ADVANCED PROGRAMMING — Università di Bologna

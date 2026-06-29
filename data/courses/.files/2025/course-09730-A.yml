@@ -15,13 +15,14 @@ teachers:
   name: Casadei, Roberto
   email: roby.casadei@unibo.it
   website: https://www.unibo.it/sitoweb/roby.casadei
-  role: rtdb
+  role:
+  - rtdb
   affiliation: disi
   ssd:
     name: INFO-01/A
     description: Informatica
-  module:
-    teaching_id: '531744'
+  modules:
+  - teaching_id: '531744'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/531744
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/531744
@@ -33,7 +34,6 @@ teachers:
       from: 2026-02-16
       to: 2026-04-22
     campus: Cesena
-    programme: Laurea in Ingegneria biomedica
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -41,13 +41,14 @@ teachers:
   name: Domini, Davide
   email: davide.domini@unibo.it
   website: https://www.unibo.it/sitoweb/davide.domini
-  role: phd student
+  role:
+  - phd student
   affiliation: disi
   ssd:
     name: ING-INF/05
     description: SISTEMI DI ELABORAZIONE DELLE INFORMAZIONI
-  module:
-    teaching_id: '531744'
+  modules:
+  - teaching_id: '531744'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/531744
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/531744
@@ -58,7 +59,6 @@ teachers:
       from: 2026-02-16
       to: 2026-04-22
     campus: Cesena
-    programme: Laurea in Ingegneria biomedica
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -66,10 +66,11 @@ teachers:
   name: Micelli, Leonardo
   email: leonardo.micelli2@unibo.it
   website: https://www.unibo.it/sitoweb/leonardo.micelli2
-  role: teaching tutor
+  role:
+  - teaching tutor
   affiliation: dei
-  module:
-    teaching_id: '531744'
+  modules:
+  - teaching_id: '531744'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/531744
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/531744
@@ -80,7 +81,6 @@ teachers:
       from: 2026-02-16
       to: 2026-04-22
     campus: Cesena
-    programme: Laurea in Ingegneria biomedica
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -88,10 +88,12 @@ teachers:
   name: Montagna, Sara
   email: sara.montagna@unibo.it
   website: https://www.unibo.it/sitoweb/sara.montagna
-  role: external associate professor
+  role:
+  - associate professor
+  - external associate professor
   affiliation: unibo
-  module:
-    teaching_id: '531744'
+  modules:
+  - teaching_id: '531744'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/531744
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/531744
@@ -103,7 +105,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Cesena
-    programme: Laurea in Ingegneria biomedica
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -114,7 +115,34 @@ integrated_course: ''
 campi:
 - Cesena
 programmes:
-- Laurea in Ingegneria biomedica
+- code: '6669'
+  campus: Cesena
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-I (150 places available)
+  name:
+    it: Ingegneria biomedica
+    en: Biomedical Engineering
+  year: 2025
+  department: dei
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6669
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6669
+- code: '6670'
+  campus: Cesena
+  languages:
+  - italian
+  duration: 3
+  access: Open access - TOLC-I
+  name:
+    it: Ingegneria elettronica
+    en: Electronics Engineering
+  year: 2025
+  department: dei
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6670
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6670
 syllabus:
   it:
     title: 2025/2026 FONDAMENTI DI INFORMATICA — Università di Bologna

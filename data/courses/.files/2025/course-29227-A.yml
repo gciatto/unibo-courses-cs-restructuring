@@ -15,13 +15,14 @@ teachers:
   name: Acquaviva, Andrea
   email: andrea.acquaviva@unibo.it
   website: https://www.unibo.it/sitoweb/andrea.acquaviva
-  role: full professor
+  role:
+  - full professor
   affiliation: dei
   ssd:
     name: IINF-05/A
     description: Sistemi di elaborazione delle informazioni
-  module:
-    teaching_id: '536854'
+  modules:
+  - teaching_id: '536854'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/536854
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/536854
@@ -34,7 +35,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea in Ingegneria dell'automazione
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -42,13 +42,14 @@ teachers:
   name: De Filippo, Allegra
   email: allegra.defilippo@unibo.it
   website: https://www.unibo.it/sitoweb/allegra.defilippo
-  role: rtda
+  role:
+  - rtda
   affiliation: disi
   ssd:
     name: IINF-05/A
     description: Sistemi di elaborazione delle informazioni
-  module:
-    teaching_id: '536854'
+  modules:
+  - teaching_id: '536854'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/536854
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/536854
@@ -61,7 +62,6 @@ teachers:
       from: 2026-02-17
       to: 2026-06-04
     campus: Bologna
-    programme: Laurea in Ingegneria dell'automazione
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -69,13 +69,14 @@ teachers:
   name: Musa, Alberto
   email: alberto.musa@unibo.it
   website: https://www.unibo.it/sitoweb/alberto.musa
-  role: research fellow
+  role:
+  - research fellow
   affiliation: dei
   ssd:
     name: ING-INF/05
     description: SISTEMI DI ELABORAZIONE DELLE INFORMAZIONI
-  module:
-    teaching_id: '536854'
+  modules:
+  - teaching_id: '536854'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/536854
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/536854
@@ -87,7 +88,6 @@ teachers:
       from: 2026-02-17
       to: 2026-06-04
     campus: Bologna
-    programme: Laurea in Ingegneria dell'automazione
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -98,7 +98,20 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea in Ingegneria dell'automazione
+- code: '6671'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-I (200 places available)
+  name:
+    it: Ingegneria dell'automazione
+    en: Automation Engineering
+  year: 2025
+  department: dei
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6671
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6671
 syllabus:
   it:
     title: 2025/2026 FONDAMENTI DI INFORMATICA T (L-Z) — Università di Bologna

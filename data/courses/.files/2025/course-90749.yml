@@ -15,13 +15,14 @@ teachers:
   name: Davoli, Renzo
   email: renzo.davoli@unibo.it
   website: https://www.unibo.it/sitoweb/renzo.davoli
-  role: associate professor
+  role:
+  - associate professor
   affiliation: disi
   ssd:
     name: INFO-01/A
     description: Informatica
-  module:
-    teaching_id: '518540'
+  modules:
+  - teaching_id: '518540'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/518540
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/518540
@@ -33,7 +34,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea Magistrale in Informatica
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -41,10 +41,11 @@ teachers:
   name: Lodi, Michael
   email: michael.lodi@unibo.it
   website: https://www.unibo.it/sitoweb/michael.lodi
-  role: adjunct professor
+  role:
+  - adjunct professor
   affiliation: disi
-  module:
-    teaching_id: '518540'
+  modules:
+  - teaching_id: '518540'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/518540
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/518540
@@ -56,7 +57,6 @@ teachers:
       from: 2026-02-17
       to: 2026-05-20
     campus: Bologna
-    programme: Laurea Magistrale in Informatica
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -67,7 +67,20 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea Magistrale in Informatica
+- code: '6698'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 2
+  access: Open access
+  name:
+    it: Informatica
+    en: Computer Science
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6698
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6698
 syllabus:
   it:
     title: 2025/2026 DIDATTICA DELL'INFORMATICA — Università di Bologna

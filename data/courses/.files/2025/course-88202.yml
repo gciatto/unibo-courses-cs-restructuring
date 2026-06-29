@@ -15,13 +15,14 @@ teachers:
   name: Di Domenico, Nicolò
   email: nicolo.didomenico@unibo.it
   website: https://www.unibo.it/sitoweb/nicolo.didomenico
-  role: phd student
+  role:
+  - phd student
   affiliation: disi
   ssd:
     name: ING-INF/05
     description: SISTEMI DI ELABORAZIONE DELLE INFORMAZIONI
-  module:
-    teaching_id: '503880'
+  modules:
+  - teaching_id: '503880'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/503880
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/503880
@@ -33,8 +34,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Cesena
-    programme: Laurea Magistrale in Ingegneria elettronica e dell'informazione Laurea
-      Magistrale in Ingegneria elettronica e telecomunicazioni per l'energia
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -42,13 +41,14 @@ teachers:
   name: Maltoni, Davide
   email: davide.maltoni@unibo.it
   website: https://www.unibo.it/sitoweb/davide.maltoni
-  role: full professor
+  role:
+  - full professor
   affiliation: disi
   ssd:
     name: IINF-05/A
     description: Sistemi di elaborazione delle informazioni
-  module:
-    teaching_id: '503880'
+  modules:
+  - teaching_id: '503880'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/503880
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/503880
@@ -60,8 +60,6 @@ teachers:
       from: 2025-09-17
       to: 2025-12-17
     campus: Cesena
-    programme: Laurea Magistrale in Ingegneria elettronica e dell'informazione Laurea
-      Magistrale in Ingegneria elettronica e telecomunicazioni per l'energia
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -72,8 +70,49 @@ integrated_course: ''
 campi:
 - Cesena
 programmes:
-- Laurea Magistrale in Ingegneria elettronica e dell'informazione Laurea Magistrale
-  in Ingegneria elettronica e telecomunicazioni per l'energia
+- code: '6699'
+  campus: Cesena
+  languages:
+  - english
+  - italian
+  duration: 2
+  access: Open access
+  name:
+    it: Ingegneria e scienze informatiche
+    en: Computer Science and Engineering
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6699
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6699
+- code: '6715'
+  campus: Cesena
+  languages:
+  - italian
+  duration: 2
+  access: Open access
+  name:
+    it: Ingegneria elettronica e dell'informazione
+    en: Electronics and Information Engineering
+  year: 2025
+  department: dei
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6715
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6715
+- code: '8770'
+  campus: Cesena
+  languages:
+  - italian
+  duration: 2
+  access: Open access
+  name:
+    it: Ingegneria elettronica e telecomunicazioni per l'energia
+    en: Electronics and Telecommunications Engineering for Energy
+  year: 2025
+  department: dei
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/8770
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/8770
 syllabus:
   it:
     title: 2025/2026 MACHINE LEARNING LM — Università di Bologna

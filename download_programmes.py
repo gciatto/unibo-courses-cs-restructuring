@@ -6,7 +6,7 @@ import re
 import shlex
 import sys
 from typing import Annotated, Any
-from urllib.parse import parse_qs
+from urllib.parse import parse_qs, parse_qsl, urlencode, urlsplit, urlunsplit
 
 import yaml
 from bs4 import BeautifulSoup
@@ -28,8 +28,22 @@ from resources import classify_dept
 
 LOGGER = logging.getLogger(pathlib.Path(__file__).stem)
 
-ITALIAN_BASE_URL = "https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico"
-ENGLISH_BASE_URL = "https://www.unibo.it/en/study/first-and-single-cycle-degree"
+CATALOG_BASE_URLS = {
+    "first-single-cycle": {
+        "it": "https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico",
+        "en": "https://www.unibo.it/en/study/first-and-single-cycle-degree",
+        "default_duration": None,
+    },
+    "second-cycle": {
+        "it": "https://www.unibo.it/it/studiare/lauree-magistrali",
+        "en": "https://www.unibo.it/en/study/second-cycle-degree",
+        # Second-cycle cards do not display a duration field; Italian law fixes it at 2 years.
+        "default_duration": 2,
+    },
+}
+
+CATALOG_ALL = "all"
+DEFAULT_CATALOG = CATALOG_ALL
 
 DEFAULT_OUTPUT_DIR = DIR_DATA / "programmes"
 
@@ -108,7 +122,35 @@ class CrawledProgrammeCard(BaseModel):
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Crawl UniBo first-cycle and single-cycle degree programmes into YAML files.",
+        description=(
+            "Crawl UniBo degree programme catalogues (first/single-cycle or second-cycle) "
+            "into YAML files."
+        ),
+    )
+    parser.add_argument(
+        "--catalog",
+        choices=[CATALOG_ALL, *sorted(CATALOG_BASE_URLS.keys())],
+        default=DEFAULT_CATALOG,
+        help=(
+            "Programme catalogue to crawl "
+            f"(default: {DEFAULT_CATALOG})."
+        ),
+    )
+    parser.add_argument(
+        "--italian-base-url",
+        default=None,
+        help=(
+            "Optional override for the Italian listing base URL; if omitted, the value "
+            "for the selected --catalog is used."
+        ),
+    )
+    parser.add_argument(
+        "--english-base-url",
+        default=None,
+        help=(
+            "Optional override for the English listing base URL; if omitted, the value "
+            "for the selected --catalog is used."
+        ),
     )
     parser.add_argument(
         "--year",
@@ -265,7 +307,12 @@ def parse_department_buttons(html: str) -> dict[str, str]:
     return departments
 
 
-def parse_programme_cards(html: str, lang: str) -> dict[str, CrawledProgrammeCard]:
+def parse_programme_cards(
+    html: str,
+    lang: str,
+    *,
+    default_duration: int | None = None,
+) -> dict[str, CrawledProgrammeCard]:
     soup = BeautifulSoup(html, "html.parser")
     cards: dict[str, CrawledProgrammeCard] = {}
 
@@ -288,10 +335,21 @@ def parse_programme_cards(html: str, lang: str) -> dict[str, CrawledProgrammeCar
         anchor = item.select_one(".card-actions a[href]")
         url = normalize_spaces(anchor.get("href", "") if anchor else "")
 
-        try:
-            duration = parse_duration_years(raw_duration, code, lang)
-        except ValueError as error:
-            LOGGER.warning("%s", error)
+        if raw_duration:
+            try:
+                duration = parse_duration_years(raw_duration, code, lang)
+            except ValueError as error:
+                LOGGER.warning("%s", error)
+                continue
+        elif default_duration is not None:
+            duration = default_duration
+        else:
+            LOGGER.warning(
+                "Could not parse duration for programme %s (%s): %r",
+                code,
+                lang,
+                raw_duration,
+            )
             continue
 
         cards[code] = CrawledProgrammeCard(
@@ -332,14 +390,50 @@ def fetch_html(
     )
 
 
+def with_query_params(url: str, params: dict[str, Any]) -> str:
+    parsed = urlsplit(url)
+    query = dict(parse_qsl(parsed.query, keep_blank_values=True))
+    query.update({key: str(value) for key, value in params.items()})
+    return urlunsplit(
+        (
+            parsed.scheme,
+            parsed.netloc,
+            parsed.path,
+            urlencode(query),
+            parsed.fragment,
+        )
+    )
+
+
 def build_listing_url(base_url: str, year: int) -> str:
-    return f"{base_url}?orderby=department&annoAccademico={year}&corsiper=dipartimento"
+    return with_query_params(
+        base_url,
+        {
+            "orderby": "department",
+            "annoAccademico": year,
+            "corsiper": "dipartimento",
+        },
+    )
 
 
 def build_department_cards_url(base_url: str, year: int, dept_slug: str) -> str:
-    return (
-        f"{base_url}/elenco?orderby=department"
-        f"&annoAccademico={year}&corsiper=dipartimento&schede={dept_slug}"
+    parsed = urlsplit(base_url)
+    cards_path = f"{parsed.path.rstrip('/')}/elenco"
+    return urlunsplit(
+        (
+            parsed.scheme,
+            parsed.netloc,
+            cards_path,
+            urlencode(
+                {
+                    "orderby": "department",
+                    "annoAccademico": year,
+                    "corsiper": "dipartimento",
+                    "schede": dept_slug,
+                }
+            ),
+            parsed.fragment,
+        )
     )
 
 
@@ -410,59 +504,26 @@ def merge_programme(
 
 
 def crawl_and_write(args: argparse.Namespace) -> tuple[int, int]:
-    listing_url_it = build_listing_url(ITALIAN_BASE_URL, args.year)
-    listing_url_en = build_listing_url(ENGLISH_BASE_URL, args.year)
-
-    html_it = fetch_html(
-        listing_url_it,
-        timeout=args.timeout,
-        max_retries=args.max_retries,
-        initial_backoff=args.initial_backoff,
-        backoff_multiplier=args.backoff_multiplier,
-        max_backoff=args.max_backoff,
-        cache_dir=args.cache_dir,
-        use_cache=not args.no_cache,
-        refresh_cache=args.refresh_cache,
-    )
-    html_en = fetch_html(
-        listing_url_en,
-        timeout=args.timeout,
-        max_retries=args.max_retries,
-        initial_backoff=args.initial_backoff,
-        backoff_multiplier=args.backoff_multiplier,
-        max_backoff=args.max_backoff,
-        cache_dir=args.cache_dir,
-        use_cache=not args.no_cache,
-        refresh_cache=args.refresh_cache,
-    )
-
-    departments_it = parse_department_buttons(html_it)
-    departments_en = parse_department_buttons(html_en)
-    dept_slugs = sorted(set(departments_it) | set(departments_en))
-
     written_count = 0
     skipped_count = 0
 
-    for dept_slug in dept_slugs:
-        dept_name_it = departments_it.get(dept_slug, "")
-        dept_name_en = departments_en.get(dept_slug, "")
-        dept_name_for_classification = dept_name_it or dept_name_en
+    selected_catalogs = (
+        sorted(CATALOG_BASE_URLS)
+        if args.catalog == CATALOG_ALL
+        else [args.catalog]
+    )
 
-        dept_acronym = classify_dept(dept_name_for_classification)
-        if dept_acronym is None:
-            LOGGER.warning(
-                "Could not classify department slug=%s name=%r; skipping its programmes",
-                dept_slug,
-                dept_name_for_classification,
-            )
-            skipped_count += 1
-            continue
+    for catalog_name in selected_catalogs:
+        catalog_urls = CATALOG_BASE_URLS[catalog_name]
+        italian_base_url = args.italian_base_url or catalog_urls["it"]
+        english_base_url = args.english_base_url or catalog_urls["en"]
+        default_duration: int | None = catalog_urls.get("default_duration")
 
-        cards_url_it = build_department_cards_url(ITALIAN_BASE_URL, args.year, dept_slug)
-        cards_url_en = build_department_cards_url(ENGLISH_BASE_URL, args.year, dept_slug)
+        listing_url_it = build_listing_url(italian_base_url, args.year)
+        listing_url_en = build_listing_url(english_base_url, args.year)
 
-        cards_html_it = fetch_html(
-            cards_url_it,
+        html_it = fetch_html(
+            listing_url_it,
             timeout=args.timeout,
             max_retries=args.max_retries,
             initial_backoff=args.initial_backoff,
@@ -472,8 +533,8 @@ def crawl_and_write(args: argparse.Namespace) -> tuple[int, int]:
             use_cache=not args.no_cache,
             refresh_cache=args.refresh_cache,
         )
-        cards_html_en = fetch_html(
-            cards_url_en,
+        html_en = fetch_html(
+            listing_url_en,
             timeout=args.timeout,
             max_retries=args.max_retries,
             initial_backoff=args.initial_backoff,
@@ -484,38 +545,83 @@ def crawl_and_write(args: argparse.Namespace) -> tuple[int, int]:
             refresh_cache=args.refresh_cache,
         )
 
-        cards_it = parse_programme_cards(cards_html_it, "it")
-        cards_en = parse_programme_cards(cards_html_en, "en")
+        departments_it = parse_department_buttons(html_it)
+        departments_en = parse_department_buttons(html_en)
+        dept_slugs = sorted(set(departments_it) | set(departments_en))
 
-        all_codes = sorted(set(cards_it) | set(cards_en))
-        if not all_codes:
-            LOGGER.warning("No programmes found for department slug=%s", dept_slug)
-            continue
+        for dept_slug in dept_slugs:
+            dept_name_it = departments_it.get(dept_slug, "")
+            dept_name_en = departments_en.get(dept_slug, "")
+            dept_name_for_classification = dept_name_it or dept_name_en
 
-        for code in all_codes:
-            merged = merge_programme(
-                code=code,
-                year=args.year,
-                dept_acronym=dept_acronym,
-                it_card=cards_it.get(code),
-                en_card=cards_en.get(code),
-            )
-            if merged is None:
+            dept_acronym = classify_dept(dept_name_for_classification)
+            if dept_acronym is None:
+                LOGGER.warning(
+                    "Could not classify department slug=%s name=%r; skipping its programmes",
+                    dept_slug,
+                    dept_name_for_classification,
+                )
                 skipped_count += 1
                 continue
 
-            out_dir = args.output_dir / str(args.year) / dept_acronym
-            out_dir.mkdir(parents=True, exist_ok=True)
-            out_file = out_dir / f"programme-{code}.yml"
-            out_file.write_text(
-                yaml.safe_dump(
-                    merged.model_dump(exclude_none=True),
-                    sort_keys=False,
-                    allow_unicode=True,
-                ),
-                encoding="utf-8",
+            cards_url_it = build_department_cards_url(italian_base_url, args.year, dept_slug)
+            cards_url_en = build_department_cards_url(english_base_url, args.year, dept_slug)
+
+            cards_html_it = fetch_html(
+                cards_url_it,
+                timeout=args.timeout,
+                max_retries=args.max_retries,
+                initial_backoff=args.initial_backoff,
+                backoff_multiplier=args.backoff_multiplier,
+                max_backoff=args.max_backoff,
+                cache_dir=args.cache_dir,
+                use_cache=not args.no_cache,
+                refresh_cache=args.refresh_cache,
             )
-            written_count += 1
+            cards_html_en = fetch_html(
+                cards_url_en,
+                timeout=args.timeout,
+                max_retries=args.max_retries,
+                initial_backoff=args.initial_backoff,
+                backoff_multiplier=args.backoff_multiplier,
+                max_backoff=args.max_backoff,
+                cache_dir=args.cache_dir,
+                use_cache=not args.no_cache,
+                refresh_cache=args.refresh_cache,
+            )
+
+            cards_it = parse_programme_cards(cards_html_it, "it", default_duration=default_duration)
+            cards_en = parse_programme_cards(cards_html_en, "en", default_duration=default_duration)
+
+            all_codes = sorted(set(cards_it) | set(cards_en))
+            if not all_codes:
+                LOGGER.warning("No programmes found for department slug=%s", dept_slug)
+                continue
+
+            for code in all_codes:
+                merged = merge_programme(
+                    code=code,
+                    year=args.year,
+                    dept_acronym=dept_acronym,
+                    it_card=cards_it.get(code),
+                    en_card=cards_en.get(code),
+                )
+                if merged is None:
+                    skipped_count += 1
+                    continue
+
+                out_dir = args.output_dir / str(args.year) / dept_acronym
+                out_dir.mkdir(parents=True, exist_ok=True)
+                out_file = out_dir / f"programme-{code}.yml"
+                out_file.write_text(
+                    yaml.safe_dump(
+                        merged.model_dump(exclude_none=True),
+                        sort_keys=False,
+                        allow_unicode=True,
+                    ),
+                    encoding="utf-8",
+                )
+                written_count += 1
 
     return written_count, skipped_count
 
@@ -525,7 +631,11 @@ def main() -> int:
     LOGGER.info("Command line: %s", shlex.join(sys.argv))
 
     args = parse_args()
-    LOGGER.info("Starting crawl for year=%s", args.year)
+    LOGGER.info(
+        "Starting crawl for catalog=%s year=%s",
+        args.catalog,
+        args.year,
+    )
 
     written_count, skipped_count = crawl_and_write(args)
     LOGGER.info("Done. written=%s skipped=%s", written_count, skipped_count)

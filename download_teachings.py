@@ -53,6 +53,39 @@ PATTERN_TIMETABLE = re.compile(
 )
 PATTERN_DETAIL_AMONG_PARENTHESES = re.compile(r"\(([^)]+)\)")
 PATTERN_DETAIL_CFU = re.compile(r"\s*[-–—]\s*(\s*\d+\s*CFU\s*)\s*", re.IGNORECASE)
+PATTERN_MARKDOWN_LINK = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
+PATTERN_PROGRAMME_CODE_RAW = r"\(\s*cod\.\s*(\d+)\s*\)"
+PATTERN_PROGRAMME_MENTION_EN_START = (
+    r"(?:first|second|single)\s+cycle\s+degree\s+programme(?:s)?\s*"
+    r"(?:\((?:L|LT|LM|LMCU)\))?\s+in"
+)
+PATTERN_PROGRAMME_MENTION_IT_START = (
+    r"(?:corso\s*:\s*)?(?:corso\s+di\s+)?laurea(?:\s+magistrale)?(?:\s+a\s+ciclo\s+unico)?\s*"
+    r"(?:\((?:L|LM|LMCU)\))?\s+in"
+)
+PATTERN_PROGRAMME_MENTION_END = (
+    r"(?:Also\s+valid\s+for|Valido\s+anche\s+per|Campus\s+di|"
+    r"Risorse\s+didattiche\s+su\s+Virtuale|Teaching\s+resources\s+on\s+Virtuale|"
+    r"Orario\s+delle\s+lezioni|Course\s+Timetable|"
+    r"Conoscenze\s+e\s+abilit[aà]\s+da\s+conseguire|Learning\s+outcomes|"
+    r"##|[;,]|$)"
+)
+PATTERN_PROGRAMME_MENTION_EN = re.compile(
+    rf"(?:Also\s+valid\s+for\s+)?{PATTERN_PROGRAMME_MENTION_EN_START}"
+    rf"\s+(?P<title>.+?)"
+    rf"(?:\s*(?P<code>{PATTERN_PROGRAMME_CODE_RAW}))?"
+    rf"(?=\s*(?:{PATTERN_PROGRAMME_MENTION_END}|{PATTERN_PROGRAMME_MENTION_EN_START}|{PATTERN_PROGRAMME_MENTION_IT_START}))",
+    re.IGNORECASE,
+)
+PATTERN_PROGRAMME_MENTION_IT = re.compile(
+    rf"(?:Valido\s+anche\s+per\s+)?{PATTERN_PROGRAMME_MENTION_IT_START}"
+    rf"\s+(?P<title>.+?)"
+    rf"(?:\s*(?P<code>{PATTERN_PROGRAMME_CODE_RAW}))?"
+    rf"(?=\s*(?:{PATTERN_PROGRAMME_MENTION_END}|{PATTERN_PROGRAMME_MENTION_IT_START}|{PATTERN_PROGRAMME_MENTION_EN_START}))",
+    re.IGNORECASE,
+)
+PATTERN_PROGRAMME_CODE = re.compile(PATTERN_PROGRAMME_CODE_RAW, re.IGNORECASE)
+PATTERN_TRAILING_URL_PAREN = re.compile(r"\(https?://[^)]*\)")
 
 LOGGER = logging.getLogger(pathlib.Path(__file__).stem)
 
@@ -90,7 +123,7 @@ class CourseMetadata(BaseModel):
     course_title: CourseTitle
     integrated_course: str = Field(default="")
     campus: str = Field(default="")
-    programme: str = Field(default="")
+    programmes: list[dict[str, Any]] = Field(default_factory=list)
     syllabus: dict[str, "SyllabusPage"] = Field(default_factory=dict)
 
 
@@ -111,6 +144,11 @@ class CourseDetails(BaseModel):
     language: str = Field(default="")
     teaching_mode: str = Field(default="")
     schedule: CourseSchedule | None = None
+
+
+class ProgrammeMention(BaseModel):
+    title: str = Field(default="")
+    code: str = Field(default="")
 
 
 def clean_teacher_field(value: str) -> str:
@@ -344,6 +382,7 @@ def build_metadata(
     teacher_role: list[str],
     teacher_affiliation: str,
     teacher_ssd: TeacherSsd | None,
+    programmes: list[dict[str, Any]],
 ) -> CourseMetadata:
     return CourseMetadata(
         year=year,
@@ -365,9 +404,133 @@ def build_metadata(
         course_title=split_course_title((row.get("course_title") or "").strip()),
         integrated_course=(row.get("integrated_course") or "").strip(),
         campus=(row.get("campus") or "").strip(),
-        programme=(row.get("degree_course") or "").strip(),
+        programmes=programmes,
         syllabus=syllabus,
     )
+
+
+def normalize_programme_title_fragment(value: str) -> str:
+    value = PATTERN_TRAILING_URL_PAREN.sub("", value)
+    value = PATTERN_PROGRAMME_CODE.sub("", value)
+    value = value.strip(" .;,:-()[]{}\"'")
+    value = normalize_text(value)
+    return value
+
+
+def deduplicate_programme_mentions(mentions: Iterable[ProgrammeMention]) -> list[ProgrammeMention]:
+    deduplicated: list[ProgrammeMention] = []
+    seen: set[tuple[str, str]] = set()
+
+    for mention in mentions:
+        title_key = normalize_programme_title(mention.title)
+        key = (title_key, mention.code.strip())
+        if not title_key or key in seen:
+            continue
+        seen.add(key)
+        deduplicated.append(mention)
+
+    return deduplicated
+
+
+def extract_programme_mentions(markdown: str) -> list[ProgrammeMention]:
+    plain_text = PATTERN_MARKDOWN_LINK.sub(r"\1", markdown)
+    normalized_text = normalize_text(plain_text).replace("\n", " ")
+
+    mentions: list[ProgrammeMention] = []
+    for pattern in (PATTERN_PROGRAMME_MENTION_EN, PATTERN_PROGRAMME_MENTION_IT):
+        for match in pattern.finditer(normalized_text):
+            title_raw = normalize_programme_title_fragment(match.group("title"))
+            if not title_raw:
+                continue
+            code_match = PATTERN_PROGRAMME_CODE.search(match.group(0))
+            mentions.append(
+                ProgrammeMention(
+                    title=title_raw,
+                    code=(code_match.group(1) if code_match else ""),
+                ),
+            )
+
+    return deduplicate_programme_mentions(mentions)
+
+
+def resolve_programme_paths(
+    mention: ProgrammeMention,
+    year: int,
+    programme_lookup: ProgrammeLookup,
+) -> list[pathlib.Path]:
+    code_provided = bool(mention.code)
+
+    if mention.code:
+        code_matches = programme_lookup.by_year_and_code.get(year, {}).get(mention.code, [])
+        if len(code_matches) == 1:
+            return code_matches
+        if len(code_matches) > 1:
+            LOGGER.warning("Multiple programme files found for year=%s code=%s", year, mention.code)
+            return code_matches
+
+    normalized_title = normalize_programme_title(mention.title)
+    if not normalized_title:
+        return []
+
+    matches = programme_lookup.by_year_and_name.get(year, {}).get(normalized_title, [])
+    if code_provided and not matches:
+        return []
+    if len(matches) == 1:
+        if code_provided:
+            payload = yaml.safe_load(matches[0].read_text(encoding="utf-8")) or {}
+            payload_code = str(payload.get("code") or "").strip() if isinstance(payload, dict) else ""
+            if payload_code and payload_code != mention.code:
+                LOGGER.warning(
+                    "Ignoring title-based programme fallback for year=%s title=%r code=%s because matched file has code=%s",
+                    year,
+                    mention.title,
+                    mention.code,
+                    payload_code,
+                )
+                return []
+        return matches
+    if len(matches) > 1:
+        LOGGER.warning(
+            "Multiple programme files found for year=%s title=%r; including all matches",
+            year,
+            mention.title,
+        )
+        return matches
+    return []
+
+
+def resolve_programmes(
+    mentions: list[ProgrammeMention],
+    year: int,
+    programme_lookup: ProgrammeLookup,
+) -> list[dict[str, Any]]:
+    programmes: list[dict[str, Any]] = []
+    selected_paths: set[pathlib.Path] = set()
+
+    for mention in deduplicate_programme_mentions(mentions):
+        paths = resolve_programme_paths(mention, year, programme_lookup)
+        if not paths:
+            LOGGER.warning(
+                "Could not resolve programme for year=%s title=%r code=%r",
+                year,
+                mention.title,
+                mention.code,
+            )
+            continue
+
+        for path in paths:
+            if path in selected_paths:
+                continue
+
+            payload = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+            if not isinstance(payload, dict):
+                LOGGER.warning("Skipping invalid programme YAML at %s", path)
+                continue
+
+            selected_paths.add(path)
+            programmes.append(payload)
+
+    return programmes
 
 
 def extract_markdown_urls(markdown: str) -> list[str]:
@@ -793,15 +956,16 @@ def process_row(
     initial_backoff: float,
     backoff_multiplier: float,
     max_backoff: float,
+    programme_lookup: ProgrammeLookup,
 ) -> tuple[str, str]:
     course_context = format_course_context(row_index, row)
     course_url = (row.get("course_url") or "").strip()
     if not course_url:
-        return "skipped", f"empty course_url ({course_context})"
+        return "problem", f"empty course_url ({course_context})"
 
     teacher_email = (row.get("contact_email") or "").strip()
     if not teacher_email:
-        return "skipped", f"empty contact_email ({course_context})"
+        return "problem", f"empty contact_email ({course_context})"
 
     teacher_name = (row.get("contact_name") or "").strip() or "<missing teacher name>"
     teacher_website = (row.get("sito_web") or "").strip()
@@ -809,7 +973,7 @@ def process_row(
     try:
         year, course_id = parse_year_and_course_id(course_url)
     except ValueError as error:
-        return "skipped", f"{error} ({course_context})"
+        return "problem", f"{error} ({course_context})"
 
     language_urls = discover_language_urls(
         course_url,
@@ -822,8 +986,18 @@ def process_row(
 
     syllabus: dict[str, SyllabusPage] = {}
     details_by_language: dict[str, CourseDetails] = {}
+    mentioned_programmes: list[ProgrammeMention] = []
     searchable_fragments: list[str] = [(row.get("course_title") or "").strip()]
     page_errors: list[str] = []
+
+    # Decide skip as early as possible using title-only context first.
+    title_blacklist_matches = matching_keywords(searchable_fragments[0], blacklist)
+    if title_blacklist_matches:
+        present_terms = ", ".join(title_blacklist_matches)
+        return (
+            "skipped",
+            f"blacklist matched in title; present keywords: {present_terms} ({course_context})",
+        )
 
     for language in ("it", "en"):
         language_url = language_urls.get(language)
@@ -846,7 +1020,17 @@ def process_row(
 
         syllabus[language] = syllabus_page
         details_by_language[language] = page_details
+        mentioned_programmes.extend(extract_programme_mentions(cleaned_markdown))
         searchable_fragments.append(cleaned_markdown)
+
+        # Short-circuit as soon as we can decide to skip.
+        current_blacklist_matches = matching_keywords("\n".join(searchable_fragments), blacklist)
+        if current_blacklist_matches:
+            present_terms = ", ".join(current_blacklist_matches)
+            return (
+                "skipped",
+                f"blacklist matched; present keywords: {present_terms} ({course_context})",
+            )
 
     searchable_text = "\n".join(searchable_fragments)
     whitelist_matches = matching_keywords(searchable_text, whitelist)
@@ -942,6 +1126,13 @@ def process_row(
     course_dir.mkdir(parents=True, exist_ok=True)
 
     metadata_path = course_dir / f"teaching-{course_id}.yml"
+    resolved_programmes = resolve_programmes(mentioned_programmes, year, programme_lookup)
+    if not resolved_programmes:
+        LOGGER.warning(
+            "No programmes could be resolved for %s (%s)",
+            course_context,
+            "; ".join(f"{m.title} ({m.code})" for m in mentioned_programmes),
+        )
     metadata = build_metadata(
         row=row,
         year=year,
@@ -954,6 +1145,7 @@ def process_row(
         teacher_role=teacher_role,
         teacher_affiliation=teacher_affiliation,
         teacher_ssd=teacher_ssd,
+        programmes=resolved_programmes,
     )
     metadata_path.write_text(
         yaml.safe_dump(
@@ -1011,6 +1203,8 @@ def main() -> int:
         LOGGER.error("input file does not exist: %s", args.input)
         return 2
 
+    programme_lookup = build_programme_lookup()
+
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
     downloaded_count = 0
@@ -1037,6 +1231,7 @@ def main() -> int:
                     initial_backoff=args.initial_backoff,
                     backoff_multiplier=args.backoff_multiplier,
                     max_backoff=args.max_backoff,
+                    programme_lookup=programme_lookup,
                 )
             except (urllib.error.URLError, TimeoutError) as error:
                 failed_count += 1
@@ -1053,9 +1248,12 @@ def main() -> int:
             if status == "ok":
                 downloaded_count += 1
                 LOGGER.info(message)
+            elif status == "problem":
+                failed_count += 1
+                LOGGER.warning(message)
             elif status == "skipped":
                 skipped_count += 1
-                LOGGER.warning(message)
+                LOGGER.info(message)
             else:
                 failed_count += 1
                 LOGGER.error(message)

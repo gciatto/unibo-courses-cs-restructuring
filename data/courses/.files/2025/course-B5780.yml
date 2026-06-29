@@ -15,13 +15,14 @@ teachers:
   name: Lanese, Ivan
   email: ivan.lanese@unibo.it
   website: https://www.unibo.it/sitoweb/ivan.lanese
-  role: associate professor
+  role:
+  - associate professor
   affiliation: disi
   ssd:
     name: INFO-01/A
     description: Informatica
-  module:
-    teaching_id: '524682'
+  modules:
+  - teaching_id: '524682'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/524682
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/524682
@@ -33,7 +34,6 @@ teachers:
       from: 2025-11-03
       to: 2026-01-22
     campus: Bologna
-    programme: Laurea Magistrale in Bioinformatics
     ssd: INF/01
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -41,10 +41,11 @@ teachers:
   name: Manfredi, Matteo
   email: matteo.manfredi4@unibo.it
   website: https://www.unibo.it/sitoweb/matteo.manfredi4
-  role: adjunct professor
+  role:
+  - adjunct professor
   affiliation: fabit
-  module:
-    teaching_id: '524682'
+  modules:
+  - teaching_id: '524682'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/524682
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/524682
@@ -56,7 +57,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea Magistrale in Bioinformatics
     ssd: INF/01
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -67,7 +67,20 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea Magistrale in Bioinformatics
+- code: '6767'
+  campus: Bologna
+  languages:
+  - english
+  duration: 2
+  access: Open access
+  name:
+    it: Bioinformatics
+    en: Bioinformatics
+  year: 2025
+  department: fabit
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6767
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6767
 syllabus:
   it:
     title: 2025/2026 COMPUTATIONAL METHODS FOR BIOINFORMATICS — Università di Bologna

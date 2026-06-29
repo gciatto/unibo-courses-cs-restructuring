@@ -15,13 +15,14 @@ teachers:
   name: Di Modica, Giuseppe
   email: giuseppe.dimodica@unibo.it
   website: https://www.unibo.it/sitoweb/giuseppe.dimodica
-  role: associate professor
+  role:
+  - associate professor
   affiliation: disi
   ssd:
     name: IINF-05/A
     description: Sistemi di elaborazione delle informazioni
-  module:
-    teaching_id: '516294'
+  modules:
+  - teaching_id: '516294'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/516294
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/516294
@@ -33,7 +34,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea Magistrale in Precise and Sustainable Agriculture
     ssd: ING-INF/05
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -45,7 +45,20 @@ integrated_course: Componente del corso integrato TECHNOLOGY INNOVATION FOR SMAR
 campi:
 - Bologna
 programmes:
-- Laurea Magistrale in Precise and Sustainable Agriculture
+- code: '6786'
+  campus: Bologna
+  languages:
+  - english
+  duration: 2
+  access: Open access
+  name:
+    it: Precise and Sustainable Agriculture
+    en: Precise and Sustainable Agriculture
+  year: 2025
+  department: distal
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6786
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6786
 syllabus:
   it:
     title: 2025/2026 IOT AND BIG DATA FOR SMART AGRICULTURAL SYSTEMS — Università

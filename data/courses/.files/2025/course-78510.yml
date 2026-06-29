@@ -15,13 +15,14 @@ teachers:
   name: Gorrieri, Roberto
   email: roberto.gorrieri@unibo.it
   website: https://www.unibo.it/sitoweb/roberto.gorrieri
-  role: full professor
+  role:
+  - full professor
   affiliation: disi
   ssd:
     name: INFO-01/A
     description: Informatica
-  module:
-    teaching_id: '401461'
+  modules:
+  - teaching_id: '401461'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/401461
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/401461
@@ -33,7 +34,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea in Podologia (abilitante alla professione sanitaria di podologo)
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -44,7 +44,20 @@ integrated_course: Componente del corso integrato MANAGEMENT SANITARIO C.I. --
 campi:
 - Bologna
 programmes:
-- Laurea in Podologia (abilitante alla professione sanitaria di podologo)
+- code: '8479'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access at national level - local exam (13 places available)
+  name:
+    it: Podologia (abilitante alla professione sanitaria di podologo)
+    en: Podiatry
+  year: 2025
+  department: dibinem
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/8479
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/8479
 syllabus:
   it:
     title: 2025/2026 INFORMATICA -- — Università di Bologna

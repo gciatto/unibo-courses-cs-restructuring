@@ -15,13 +15,14 @@ teachers:
   name: Conti, Francesco
   email: f.conti@unibo.it
   website: https://www.unibo.it/sitoweb/f.conti
-  role: associate professor
+  role:
+  - associate professor
   affiliation: dei
   ssd:
     name: IINF-01/A
     description: Elettronica
-  module:
-    teaching_id: '341621'
+  modules:
+  - teaching_id: '341621'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/341621
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/341621
@@ -33,7 +34,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea Magistrale in Ingegneria elettronica
     ssd: ING-INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -41,13 +41,14 @@ teachers:
   name: Nadalini, Alessandro
   email: alessandro.nadalini3@unibo.it
   website: https://www.unibo.it/sitoweb/alessandro.nadalini3
-  role: phd student
+  role:
+  - phd student
   affiliation: dei
   ssd:
     name: ING-INF/01
     description: ELETTRONICA
-  module:
-    teaching_id: '341621'
+  modules:
+  - teaching_id: '341621'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/341621
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/341621
@@ -59,7 +60,6 @@ teachers:
       from: 2025-09-16
       to: 2025-12-19
     campus: Bologna
-    programme: Laurea Magistrale in Ingegneria elettronica
     ssd: ING-INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -67,13 +67,14 @@ teachers:
   name: Rossi, Davide
   email: davide.rossi@unibo.it
   website: https://www.unibo.it/sitoweb/davide.rossi
-  role: associate professor
+  role:
+  - associate professor
   affiliation: dei
   ssd:
     name: IINF-01/A
     description: Elettronica
-  module:
-    teaching_id: '341621'
+  modules:
+  - teaching_id: '341621'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/341621
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/341621
@@ -85,7 +86,6 @@ teachers:
       from: 2025-09-16
       to: 2025-12-19
     campus: Bologna
-    programme: Laurea Magistrale in Ingegneria elettronica
     ssd: ING-INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -96,7 +96,21 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea Magistrale in Ingegneria elettronica
+- code: 0934
+  campus: Bologna
+  languages:
+  - english
+  - italian
+  duration: 2
+  access: Open access
+  name:
+    it: Ingegneria elettronica
+    en: Electronic Engineering
+  year: 2025
+  department: dei
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/0934
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/0934
 syllabus:
   it:
     title: 2025/2026 ARCHITETTURE DIGITALI PER L'ELABORAZIONE DEL SEGNALE M — Università

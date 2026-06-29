@@ -15,13 +15,14 @@ teachers:
   name: Ciatto, Giovanni
   email: giovanni.ciatto@unibo.it
   website: https://www.unibo.it/sitoweb/giovanni.ciatto
-  role: tenure-track researcher
+  role:
+  - tenure-track researcher
   affiliation: disi
   ssd:
     name: IINF-05/A
     description: Sistemi di elaborazione delle informazioni
-  module:
-    teaching_id: '526532'
+  modules:
+  - teaching_id: '526532'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/526532
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/526532
@@ -33,7 +34,6 @@ teachers:
       from: 2025-09-19
       to: 2025-12-19
     campus: Cesena
-    programme: Laurea Magistrale in Ingegneria e scienze informatiche
     ssd: ING-INF/05
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -41,13 +41,14 @@ teachers:
   name: Magnini, Matteo
   email: matteo.magnini@unibo.it
   website: https://www.unibo.it/sitoweb/matteo.magnini
-  role: teaching tutor
+  role:
+  - teaching tutor
   affiliation: disi
   ssd:
     name: ING-INF/05
     description: SISTEMI DI ELABORAZIONE DELLE INFORMAZIONI
-  module:
-    teaching_id: '526532'
+  modules:
+  - teaching_id: '526532'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/526532
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/526532
@@ -58,7 +59,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Cesena
-    programme: Laurea Magistrale in Ingegneria e scienze informatiche
     ssd: ING-INF/05
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -66,13 +66,14 @@ teachers:
   name: Omicini, Andrea
   email: andrea.omicini@unibo.it
   website: https://www.unibo.it/sitoweb/andrea.omicini
-  role: full professor
+  role:
+  - full professor
   affiliation: disi
   ssd:
     name: IINF-05/A
     description: Sistemi di elaborazione delle informazioni
-  module:
-    teaching_id: '526532'
+  modules:
+  - teaching_id: '526532'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/526532
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/526532
@@ -84,7 +85,6 @@ teachers:
       from: 2025-09-19
       to: 2025-12-19
     campus: Cesena
-    programme: Laurea Magistrale in Ingegneria e scienze informatiche
     ssd: ING-INF/05
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -95,7 +95,35 @@ integrated_course: ''
 campi:
 - Cesena
 programmes:
-- Laurea Magistrale in Ingegneria e scienze informatiche
+- code: '5898'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 2
+  access: Open access
+  name:
+    it: Informatica
+    en: Computer Science
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/5898
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/5898
+- code: '6699'
+  campus: Cesena
+  languages:
+  - english
+  - italian
+  duration: 2
+  access: Open access
+  name:
+    it: Ingegneria e scienze informatiche
+    en: Computer Science and Engineering
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6699
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6699
 syllabus:
   it:
     title: 2025/2026 DISTRIBUTED SYSTEMS — Università di Bologna

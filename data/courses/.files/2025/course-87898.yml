@@ -15,10 +15,11 @@ teachers:
   name: Carioli, Gabriele
   email: gabriele.carioli@unibo.it
   website: https://www.unibo.it/sitoweb/gabriele.carioli
-  role: teaching tutor
+  role:
+  - teaching tutor
   affiliation: dit
-  module:
-    teaching_id: '523514'
+  modules:
+  - teaching_id: '523514'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/523514
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/523514
@@ -30,7 +31,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Forli
-    programme: Laurea Magistrale in Interpretazione
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -38,10 +38,11 @@ teachers:
   name: Lecci, Claudia
   email: claudia.lecci2@unibo.it
   website: https://www.unibo.it/sitoweb/claudia.lecci2
-  role: adjunct professor
+  role:
+  - adjunct professor
   affiliation: dit
-  module:
-    teaching_id: '523514'
+  modules:
+  - teaching_id: '523514'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/523514
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/523514
@@ -53,7 +54,6 @@ teachers:
       from: 2026-02-19
       to: 2026-05-14
     campus: Forli
-    programme: Laurea Magistrale in Interpretazione
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -65,7 +65,21 @@ integrated_course: Componente del corso integrato METODI, TECNOLOGIE E LINGUISTI
 campi:
 - Forli
 programmes:
-- Laurea Magistrale in Interpretazione
+- code: '6825'
+  campus: Forlì
+  languages:
+  - english
+  - italian
+  duration: 2
+  access: Restricted access (47 places available)
+  name:
+    it: Interpretazione
+    en: Intepreting
+  year: 2025
+  department: dit
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6825
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6825
 syllabus:
   it:
     title: 2025/2026 METODI E TECNOLOGIE PER L'INTERPRETAZIONE — Università di Bologna

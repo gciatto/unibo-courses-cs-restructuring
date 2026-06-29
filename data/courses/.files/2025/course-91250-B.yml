@@ -15,13 +15,14 @@ teachers:
   name: Asperti, Andrea
   email: asperti@cs.unibo.it
   website: https://www.unibo.it/sitoweb/andrea.asperti
-  role: full professor
+  role:
+  - full professor
   affiliation: disi
   ssd:
     name: INFO-01/A
     description: Informatica
-  module:
-    teaching_id: '530702'
+  modules:
+  - teaching_id: '530702'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/530702
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/530702
@@ -33,8 +34,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea Magistrale in Artificial Intelligence Laurea Magistrale in Artificial
-      Intelligence
     ssd: INF/01
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -46,7 +45,63 @@ integrated_course: Componente del corso integrato MACHINE LEARNING AND DEEP LEAR
 campi:
 - Bologna
 programmes:
-- Laurea Magistrale in Artificial Intelligence Laurea Magistrale in Artificial Intelligence
+- code: 0934
+  campus: Bologna
+  languages:
+  - english
+  - italian
+  duration: 2
+  access: Open access
+  name:
+    it: Ingegneria elettronica
+    en: Electronic Engineering
+  year: 2025
+  department: dei
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/0934
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/0934
+- code: '6700'
+  campus: Bologna
+  languages:
+  - english
+  duration: 2
+  access: Open access
+  name:
+    it: Artificial Intelligence
+    en: Artificial Intelligence
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6700
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6700
+- code: '8891'
+  campus: Bologna
+  languages:
+  - english
+  duration: 2
+  access: Open access
+  name:
+    it: Automation Engineering
+    en: Automation Engineering
+  year: 2025
+  department: dei
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/8891
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/8891
+- code: '9063'
+  campus: Bologna
+  languages:
+  - english
+  duration: 2
+  access: Open access
+  name:
+    it: Artificial Intelligence
+    en: Artificial Intelligence
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/9063
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/9063
 syllabus:
   it:
     title: 2025/2026 DEEP LEARNING — Università di Bologna

@@ -15,13 +15,14 @@ teachers:
   name: Mirri, Silvia
   email: silvia.mirri@unibo.it
   website: https://www.unibo.it/sitoweb/silvia.mirri
-  role: full professor
+  role:
+  - full professor
   affiliation: disi
   ssd:
     name: INFO-01/A
     description: Informatica
-  module:
-    teaching_id: '517116'
+  modules:
+  - teaching_id: '517116'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/517116
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/517116
@@ -33,7 +34,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Cesena
-    programme: Laurea Magistrale in Digital Transformation Management
     ssd: INF/01
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -41,13 +41,14 @@ teachers:
   name: Prandi, Catia
   email: catia.prandi@unibo.it
   website: https://www.unibo.it/sitoweb/catia.prandi
-  role: associate professor
+  role:
+  - associate professor
   affiliation: disi
   ssd:
     name: INFO-01/A
     description: Informatica
-  module:
-    teaching_id: '517116'
+  modules:
+  - teaching_id: '517116'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/517116
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/517116
@@ -59,7 +60,6 @@ teachers:
       from: 2025-09-17
       to: 2025-12-17
     campus: Cesena
-    programme: Laurea Magistrale in Digital Transformation Management
     ssd: INF/01
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -71,7 +71,20 @@ integrated_course: Componente del corso integrato OPERATING SYSTEMS, NETWORKS AN
 campi:
 - Cesena
 programmes:
-- Laurea Magistrale in Digital Transformation Management
+- code: '6823'
+  campus: Cesena, Forlì
+  languages:
+  - english
+  duration: 2
+  access: Restricted access (70 places available)
+  name:
+    it: Digital Transformation Management
+    en: Digital Transformation Management
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6823
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6823
 syllabus:
   it:
     title: 2025/2026 WEB AND MOBILE SYSTEMS — Università di Bologna

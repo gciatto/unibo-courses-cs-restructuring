@@ -15,13 +15,14 @@ teachers:
   name: Felli, Paolo
   email: paolo.felli@unibo.it
   website: https://www.unibo.it/sitoweb/paolo.felli
-  role: associate professor
+  role:
+  - associate professor
   affiliation: disi
   ssd:
     name: INFO-01/A
     description: Informatica
-  module:
-    teaching_id: '445693'
+  modules:
+  - teaching_id: '445693'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/445693
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/445693
@@ -33,7 +34,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea in Genomics
     ssd: INF/01
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -41,13 +41,14 @@ teachers:
   name: Sirbu, Alina
   email: alina.sirbu@unibo.it
   website: https://www.unibo.it/sitoweb/alina.sirbu
-  role: associate professor
+  role:
+  - associate professor
   affiliation: disi
   ssd:
     name: INFO-01/A
     description: Informatica
-  module:
-    teaching_id: '445693'
+  modules:
+  - teaching_id: '445693'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/445693
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/445693
@@ -59,7 +60,6 @@ teachers:
       from: 2026-03-05
       to: 2026-05-28
     campus: Bologna
-    programme: Laurea in Genomics
     ssd: INF/01
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -70,7 +70,20 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea in Genomics
+- code: '9211'
+  campus: Bologna
+  languages:
+  - english
+  duration: 3
+  access: Restricted access - TOLC-I EN
+  name:
+    it: Genomics
+    en: Genomics
+  year: 2025
+  department: fabit
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/9211
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/9211
 syllabus:
   it:
     title: 2025/2026 NETWORKS, SECURITY AND DATA BASES — Università di Bologna

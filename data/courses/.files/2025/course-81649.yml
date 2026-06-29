@@ -15,10 +15,11 @@ teachers:
   name: Masetti, Guido
   email: guido.masetti@unibo.it
   website: https://www.unibo.it/sitoweb/guido.masetti
-  role: emeritus professor
+  role:
+  - emeritus professor
   affiliation: unibo
-  module:
-    teaching_id: '514321'
+  modules:
+  - teaching_id: '514321'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/514321
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/514321
@@ -30,7 +31,6 @@ teachers:
       from: 2026-02-16
       to: 2026-06-05
     campus: Bologna
-    programme: Laurea Magistrale in Ingegneria elettronica
     ssd: ING-INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -38,10 +38,11 @@ teachers:
   name: Zauli, Matteo
   email: matteo.zauli7@unibo.it
   website: https://www.unibo.it/sitoweb/matteo.zauli7
-  role: post-doc research fellow
+  role:
+  - post-doc research fellow
   affiliation: dei
-  module:
-    teaching_id: '514321'
+  modules:
+  - teaching_id: '514321'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/514321
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/514321
@@ -53,7 +54,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea Magistrale in Ingegneria elettronica
     ssd: ING-INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -61,13 +61,14 @@ teachers:
   name: Zonzini, Federica
   email: federica.zonzini@unibo.it
   website: https://www.unibo.it/sitoweb/federica.zonzini
-  role: tenure-track researcher
+  role:
+  - tenure-track researcher
   affiliation: dei
   ssd:
     name: IINF-01/A
     description: Elettronica
-  module:
-    teaching_id: '514321'
+  modules:
+  - teaching_id: '514321'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/514321
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/514321
@@ -79,7 +80,6 @@ teachers:
       from: 2026-02-16
       to: 2026-06-05
     campus: Bologna
-    programme: Laurea Magistrale in Ingegneria elettronica
     ssd: ING-INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -90,7 +90,21 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea Magistrale in Ingegneria elettronica
+- code: '6716'
+  campus: Bologna
+  languages:
+  - english
+  - italian
+  duration: 2
+  access: Open access
+  name:
+    it: Ingegneria elettronica
+    en: Electronic Engineering
+  year: 2025
+  department: dei
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6716
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6716
 syllabus:
   it:
     title: 2025/2026 PROGETTO DI CIRCUITI E SISTEMI ANALOGICI M — Università di Bologna

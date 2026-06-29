@@ -15,13 +15,14 @@ teachers:
   name: Marasca, Gabriele
   email: gabriele.marasca2@unibo.it
   website: https://www.unibo.it/sitoweb/gabriele.marasca2
-  role: phd student
+  role:
+  - phd student
   affiliation: dei
   ssd:
     name: ING-INF/01
     description: ELETTRONICA
-  module:
-    teaching_id: '469210'
+  modules:
+  - teaching_id: '469210'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/469210
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/469210
@@ -33,7 +34,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Cesena
-    programme: Laurea in Ingegneria elettronica
     ssd: ING-INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -41,13 +41,14 @@ teachers:
   name: Romani, Aldo
   email: aldo.romani@unibo.it
   website: https://www.unibo.it/sitoweb/aldo.romani
-  role: associate professor
+  role:
+  - associate professor
   affiliation: dei
   ssd:
     name: IINF-01/A
     description: Elettronica
-  module:
-    teaching_id: '469210'
+  modules:
+  - teaching_id: '469210'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/469210
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/469210
@@ -59,7 +60,6 @@ teachers:
       from: 2026-02-16
       to: 2026-05-26
     campus: Cesena
-    programme: Laurea in Ingegneria elettronica
     ssd: ING-INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -70,7 +70,20 @@ integrated_course: ''
 campi:
 - Cesena
 programmes:
-- Laurea in Ingegneria elettronica
+- code: '5834'
+  campus: Cesena
+  languages:
+  - italian
+  duration: 3
+  access: Open access - TOLC-I
+  name:
+    it: Ingegneria elettronica
+    en: Electronics Engineering
+  year: 2025
+  department: dei
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/5834
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/5834
 syllabus:
   it:
     title: 2025/2026 ELETTRONICA DEI SISTEMI DIGITALI — Università di Bologna

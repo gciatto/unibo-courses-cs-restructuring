@@ -15,10 +15,11 @@ teachers:
   name: Russo, Stefano
   email: stefano.russo7@unibo.it
   website: https://www.unibo.it/sitoweb/stefano.russo7
-  role: adjunct professor
+  role:
+  - adjunct professor
   affiliation: dimec
-  module:
-    teaching_id: '524407'
+  modules:
+  - teaching_id: '524407'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/524407
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/524407
@@ -30,7 +31,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Ravenna
-    programme: Laurea in Scienze ambientali
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -41,7 +41,20 @@ integrated_course: ''
 campi:
 - Ravenna
 programmes:
-- Laurea in Scienze ambientali
+- code: '6642'
+  campus: Ravenna
+  languages:
+  - italian
+  duration: 3
+  access: Open access - TOLC-I
+  name:
+    it: Scienze ambientali
+    en: Environmental Sciences
+  year: 2025
+  department: bigea
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6642
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6642
 syllabus:
   it:
     title: 2025/2026 INFORMATICA PER LE SCIENZE AMBIENTALI — Università di Bologna

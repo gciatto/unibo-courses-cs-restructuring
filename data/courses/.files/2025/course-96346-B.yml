@@ -15,13 +15,14 @@ teachers:
   name: Tura, Francesco
   email: francesco.tura@unibo.it
   website: https://www.unibo.it/sitoweb/francesco.tura
-  role: researcher
+  role:
+  - researcher
   affiliation: dsg
   ssd:
     name: GIUR-17/A
     description: Filosofia del diritto
-  module:
-    teaching_id: '534208'
+  modules:
+  - teaching_id: '534208'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/534208
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/534208
@@ -33,8 +34,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea in Consulente del lavoro e delle relazioni aziendali Laurea
-      in Consulente del lavoro e delle relazioni aziendali
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -45,8 +44,34 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea in Consulente del lavoro e delle relazioni aziendali Laurea in Consulente
-  del lavoro e delle relazioni aziendali
+- code: '6606'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 3
+  access: Open access - TOLC-SU
+  name:
+    it: Consulente del lavoro e delle relazioni aziendali
+    en: Employment and Business Relations Consultant
+  year: 2025
+  department: dsg
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6606
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6606
+- code: '9230'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 3
+  access: Open access - TOLC-SU
+  name:
+    it: Consulente del lavoro e delle relazioni aziendali
+    en: Employment and Business Relations Consultant
+  year: 2025
+  department: dsg
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/9230
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/9230
 syllabus:
   it:
     title: 2025/2026 INFORMATICA — Università di Bologna

@@ -15,10 +15,11 @@ teachers:
   name: Somenzi, Damiano Marino
   email: damiano.somenzi@unibo.it
   website: https://www.unibo.it/sitoweb/damiano.somenzi
-  role: adjunct professor
+  role:
+  - adjunct professor
   affiliation: stat
-  module:
-    teaching_id: '454733'
+  modules:
+  - teaching_id: '454733'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/454733
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/454733
@@ -30,18 +31,10 @@ teachers:
       from: 2025-09-15
       to: 2025-10-23
     campus: Bologna
-    programme: Laurea in Scienze statistiche
     ssd: ING-INF/05
     language: English
     teaching_mode: In-person learning (entirely or partially)
-- id: '50421'
-  name: Somenzi, Damiano Marino
-  email: damiano.somenzi@unibo.it
-  website: https://www.unibo.it/sitoweb/damiano.somenzi
-  role: adjunct professor
-  affiliation: stat
-  module:
-    teaching_id: '466967'
+  - teaching_id: '466967'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/466967
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/466967
@@ -53,7 +46,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea Magistrale in Statistical Sciences
     ssd: ING-INF/05
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -65,8 +57,35 @@ integrated_course: Componente del corso integrato STATISTICAL METHODS FOR DATABA
 campi:
 - Bologna
 programmes:
-- Laurea in Scienze statistiche
-- Laurea Magistrale in Statistical Sciences
+- code: '8873'
+  campus: Bologna
+  languages:
+  - english
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-E EN
+  name:
+    it: Scienze statistiche
+    en: Statistical Sciences
+  year: 2025
+  department: stat
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/8873
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/8873
+- code: '9222'
+  campus: Bologna
+  languages:
+  - english
+  duration: 2
+  access: Open access
+  name:
+    it: Statistical Sciences
+    en: Statistical Sciences
+  year: 2025
+  department: stat
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/9222
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/9222
 syllabus:
   it:
     title: 2025/2026 DATABASES — Università di Bologna

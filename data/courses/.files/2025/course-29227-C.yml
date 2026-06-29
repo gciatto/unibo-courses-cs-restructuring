@@ -15,13 +15,14 @@ teachers:
   name: Baldini, Samuele
   email: samuele.baldini2@unibo.it
   website: https://www.unibo.it/sitoweb/samuele.baldini2
-  role: phd student
+  role:
+  - phd student
   affiliation: din
   ssd:
     name: ING-IND/19
     description: IMPIANTI NUCLEARI
-  module:
-    teaching_id: '513877'
+  modules:
+  - teaching_id: '513877'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/513877
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/513877
@@ -33,7 +34,6 @@ teachers:
       from: 2026-02-17
       to: 2026-06-04
     campus: Bologna
-    programme: Laurea in Ingegneria energetica
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -41,13 +41,14 @@ teachers:
   name: Lepore, Roberto
   email: roberto.lepore3@unibo.it
   website: https://www.unibo.it/sitoweb/roberto.lepore3
-  role: phd student
+  role:
+  - phd student
   affiliation: difa
   ssd:
     name: FIS/01
     description: FISICA SPERIMENTALE
-  module:
-    teaching_id: '513877'
+  modules:
+  - teaching_id: '513877'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/513877
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/513877
@@ -58,7 +59,6 @@ teachers:
       from: 2026-02-17
       to: 2026-06-04
     campus: Bologna
-    programme: Laurea in Ingegneria energetica
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -66,13 +66,14 @@ teachers:
   name: Manservisi, Sandro
   email: sandro.manservisi@unibo.it
   website: https://www.unibo.it/sitoweb/sandro.manservisi
-  role: full professor
+  role:
+  - full professor
   affiliation: din
   ssd:
     name: IIND-07/D
     description: Impianti nucleari
-  module:
-    teaching_id: '513877'
+  modules:
+  - teaching_id: '513877'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/513877
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/513877
@@ -84,7 +85,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea in Ingegneria energetica
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -92,13 +92,14 @@ teachers:
   name: Teodori, Francesco
   email: francesco.teodori@unibo.it
   website: https://www.unibo.it/sitoweb/francesco.teodori
-  role: researcher
+  role:
+  - researcher
   affiliation: din
   ssd:
     name: IIND-07/E
     description: Misure e strumentazione nucleari
-  module:
-    teaching_id: '513877'
+  modules:
+  - teaching_id: '513877'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/513877
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/513877
@@ -110,7 +111,6 @@ teachers:
       from: 2026-02-17
       to: 2026-06-04
     campus: Bologna
-    programme: Laurea in Ingegneria energetica
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -121,7 +121,20 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea in Ingegneria energetica
+- code: '6678'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-I (200 places available)
+  name:
+    it: Ingegneria energetica
+    en: Energy Engineering
+  year: 2025
+  department: din
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6678
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6678
 syllabus:
   it:
     title: 2025/2026 FONDAMENTI DI INFORMATICA T — Università di Bologna

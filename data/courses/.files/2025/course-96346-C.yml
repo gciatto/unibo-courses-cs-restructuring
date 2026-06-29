@@ -15,13 +15,14 @@ teachers:
   name: Felli, Paolo
   email: paolo.felli@unibo.it
   website: https://www.unibo.it/sitoweb/paolo.felli
-  role: associate professor
+  role:
+  - associate professor
   affiliation: disi
   ssd:
     name: INFO-01/A
     description: Informatica
-  module:
-    teaching_id: '520631'
+  modules:
+  - teaching_id: '520631'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/520631
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/520631
@@ -33,7 +34,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea in Scienza dei materiali
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -41,10 +41,11 @@ teachers:
   name: Romanella, Daniele
   email: daniele.romanella2@unibo.it
   website: https://www.unibo.it/sitoweb/daniele.romanella2
-  role: teaching tutor
+  role:
+  - teaching tutor
   affiliation: disi
-  module:
-    teaching_id: '520631'
+  modules:
+  - teaching_id: '520631'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/520631
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/520631
@@ -56,7 +57,6 @@ teachers:
       from: 2026-02-25
       to: 2026-05-13
     campus: Bologna
-    programme: Laurea in Scienza dei materiali
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -67,7 +67,20 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea in Scienza dei materiali
+- code: '6830'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 3
+  access: Open access - TOLC-I
+  name:
+    it: Scienza dei materiali
+    en: Materials Science
+  year: 2025
+  department: difa
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6830
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6830
 syllabus:
   it:
     title: 2025/2026 INFORMATICA — Università di Bologna

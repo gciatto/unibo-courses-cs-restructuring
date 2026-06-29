@@ -15,13 +15,14 @@ teachers:
   name: Giallorenzo, Saverio
   email: saverio.giallorenzo@unibo.it
   website: https://www.unibo.it/sitoweb/saverio.giallorenzo
-  role: tenure-track researcher
+  role:
+  - tenure-track researcher
   affiliation: disi
   ssd:
     name: INFO-01/A
     description: Informatica
-  module:
-    teaching_id: '467048'
+  modules:
+  - teaching_id: '467048'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/467048
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/467048
@@ -35,7 +36,6 @@ teachers:
       from: *id001
       to: *id002
     campus: Bologna
-    programme: Laurea Magistrale in Digital Humanities and Digital Knowledge
     ssd: INF/01
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -43,10 +43,11 @@ teachers:
   name: Sampò, Giorgia
   email: giorgia.sampo2@unibo.it
   website: https://www.unibo.it/sitoweb/giorgia.sampo2
-  role: teaching tutor
+  role:
+  - teaching tutor
   affiliation: ficlit
-  module:
-    teaching_id: '467048'
+  modules:
+  - teaching_id: '467048'
     url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/467048
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/467048
@@ -60,7 +61,6 @@ teachers:
       from: 2025-09-17
       to: 2025-10-23
     campus: Bologna
-    programme: Laurea Magistrale in Digital Humanities and Digital Knowledge
     ssd: INF/01
     language: English
     teaching_mode: In-person learning (entirely or partially)
@@ -71,7 +71,48 @@ integrated_course: ''
 campi:
 - Bologna
 programmes:
-- Laurea Magistrale in Digital Humanities and Digital Knowledge
+- code: '5898'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 2
+  access: Open access
+  name:
+    it: Informatica
+    en: Computer Science
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/5898
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/5898
+- code: '9063'
+  campus: Bologna
+  languages:
+  - english
+  duration: 2
+  access: Open access
+  name:
+    it: Artificial Intelligence
+    en: Artificial Intelligence
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/9063
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/9063
+- code: '9224'
+  campus: Bologna
+  languages:
+  - english
+  duration: 2
+  access: Open access
+  name:
+    it: Digital Humanities and Digital Knowledge
+    en: Digital Humanities and Digital Knowledge
+  year: 2025
+  department: ficlit
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/9224
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/9224
 syllabus:
   it:
     title: 2025/2026 NETWORK ANALYSIS (1) (LM) — Università di Bologna
