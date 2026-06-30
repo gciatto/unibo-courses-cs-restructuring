@@ -26,16 +26,32 @@ EXPECTED_COLUMNS = [
     "contact_uid",
     "contact_name",
     "contact_email",
-    "sito_web",
-    "didattica_url",
+    "teacher_website",
+    "teachings_url",
     "course_title",
     "course_url",
-    "integrated_course",
+    "module_of",
     "campus",
-    "degree_course",
+    "degree_programme",
     "lesson_period",
     "schedule_url",
     "virtuale_url",
+]
+
+EXPECTED_COLUMN_ALIASES = [
+    ("contact_uid",),
+    ("contact_name",),
+    ("contact_email",),
+    ("teacher_website", "sito_web"),
+    ("teachings_url", "didattica_url"),
+    ("course_title",),
+    ("course_url",),
+    ("module_of", "integrated_course"),
+    ("campus",),
+    ("degree_programme", "degree_course"),
+    ("lesson_period",),
+    ("schedule_url",),
+    ("virtuale_url",),
 ]
 
 PATTERN_SKIP_BEFORE = re.compile(r"^#\s+.*")
@@ -298,9 +314,17 @@ def contains_any(text: str, keywords: list[str]) -> bool:
     return bool(matching_keywords(text, keywords))
 
 
+def row_value(row: dict[str, str], *columns: str) -> str:
+    for column in columns:
+        value = row.get(column)
+        if value is not None and value.strip():
+            return value.strip()
+    return ""
+
+
 def format_course_context(row_index: int, row: dict[str, str]) -> str:
-    course_title = (row.get("course_title") or "").strip() or "<missing title>"
-    course_url = (row.get("course_url") or "").strip() or "<missing url>"
+    course_title = row_value(row, "course_title") or "<missing title>"
+    course_url = row_value(row, "course_url") or "<missing url>"
     return f"row={row_index} title={course_title!r} url={course_url}"
 
 
@@ -393,17 +417,17 @@ def build_metadata(
         teaching_mode=details.teaching_mode,
         schedule=details.schedule,
         teacher=Teacher(
-            teacher_id=(row.get("contact_uid") or "").strip(),
-            teacher_name=(row.get("contact_name") or "").strip(),
-            teacher_email=(row.get("contact_email") or "").strip(),
-            teacher_website=(row.get("sito_web") or "").strip(),
+            teacher_id=row_value(row, "contact_uid"),
+            teacher_name=row_value(row, "contact_name"),
+            teacher_email=row_value(row, "contact_email"),
+            teacher_website=row_value(row, "teacher_website", "sito_web"),
             teacher_role=teacher_role,
             teacher_affiliation=teacher_affiliation,
             teacher_ssd=teacher_ssd,
         ),
-        course_title=split_course_title((row.get("course_title") or "").strip()),
-        integrated_course=(row.get("integrated_course") or "").strip(),
-        campus=(row.get("campus") or "").strip(),
+        course_title=split_course_title(row_value(row, "course_title")),
+        integrated_course=row_value(row, "module_of", "integrated_course"),
+        campus=row_value(row, "campus"),
         programmes=programmes,
         syllabus=syllabus,
     )
@@ -959,16 +983,18 @@ def process_row(
     programme_lookup: ProgrammeLookup,
 ) -> tuple[str, str]:
     course_context = format_course_context(row_index, row)
-    course_url = (row.get("course_url") or "").strip()
+    course_url = row_value(row, "course_url")
     if not course_url:
+        if row_value(row, "course_title"):
+            return "skipped", f"non-downloadable teaching header ({course_context})"
         return "problem", f"empty course_url ({course_context})"
 
-    teacher_email = (row.get("contact_email") or "").strip()
+    teacher_email = row_value(row, "contact_email")
     if not teacher_email:
         return "problem", f"empty contact_email ({course_context})"
 
-    teacher_name = (row.get("contact_name") or "").strip() or "<missing teacher name>"
-    teacher_website = (row.get("sito_web") or "").strip()
+    teacher_name = row_value(row, "contact_name") or "<missing teacher name>"
+    teacher_website = row_value(row, "teacher_website", "sito_web")
 
     try:
         year, course_id = parse_year_and_course_id(course_url)
@@ -987,7 +1013,7 @@ def process_row(
     syllabus: dict[str, SyllabusPage] = {}
     details_by_language: dict[str, CourseDetails] = {}
     mentioned_programmes: list[ProgrammeMention] = []
-    searchable_fragments: list[str] = [(row.get("course_title") or "").strip()]
+    searchable_fragments: list[str] = [row_value(row, "course_title")]
     page_errors: list[str] = []
 
     # Decide skip as early as possible using title-only context first.
@@ -1165,8 +1191,12 @@ def process_row(
 
 
 def ensure_expected_columns(reader: csv.DictReader) -> None:
-    actual = reader.fieldnames or []
-    missing = [name for name in EXPECTED_COLUMNS if name not in actual]
+    actual = set(reader.fieldnames or [])
+    missing = [
+        aliases[0] if len(aliases) == 1 else f"{aliases[0]} (or {', '.join(aliases[1:])})"
+        for aliases in EXPECTED_COLUMN_ALIASES
+        if not any(alias in actual for alias in aliases)
+    ]
     if missing:
         missing_text = ", ".join(missing)
         raise ValueError(f"Input CSV is missing expected columns: {missing_text}")
