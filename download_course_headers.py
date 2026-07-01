@@ -270,6 +270,12 @@ def parse_args() -> argparse.Namespace:
         help="Maximum number of contact rows to process. Use 0 for all rows.",
     )
     parser.add_argument(
+        "--skip",
+        type=int,
+        default=0,
+        help="Number of contact rows to skip before processing.",
+    )
+    parser.add_argument(
         "--delay",
         type=float,
         default=0.0,
@@ -365,6 +371,10 @@ def main() -> int:
     initialize_courses_csv(args.output)
 
     for index, contact_row in enumerate(contact_rows, start=1):
+        if index <= args.skip:
+            LOGGER.debug("[%s] Skipping contact row: %s", index, contact_row.get("name", "<missing contact name>"))
+            continue
+
         teacher_website = (contact_row.get("website") or "").strip()
         contact_name = (contact_row.get("name") or "").strip() or "<missing contact name>"
 
