@@ -4,8 +4,8 @@ import unittest
 
 import yaml
 
-from _utils import build_programme_lookup
-from download_teachings import (
+from scraping._utils import build_programme_lookup
+from scraping.download_teachings import (
     DEFAULT_OUTPUT,
     ProgrammeMention,
     extract_degree_course_mentions,

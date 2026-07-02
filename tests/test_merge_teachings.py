@@ -4,7 +4,7 @@ import unittest
 
 import yaml
 
-from merge_teachings import merge_courses_tree
+from scraping.merge_teachings import merge_courses_tree
 
 
 COMMON_SYLLABUS = {

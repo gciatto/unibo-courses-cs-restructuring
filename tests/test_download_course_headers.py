@@ -1,6 +1,6 @@
 import unittest
 
-from download_course_headers import build_teachings_url, extract_teacher_slug, parse_teaching_courses
+from scraping.download_course_headers import build_teachings_url, extract_teacher_slug, parse_teaching_courses
 
 
 CONTACT_ROW = {

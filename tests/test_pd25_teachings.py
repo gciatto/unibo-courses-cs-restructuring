@@ -10,7 +10,7 @@ from typing import Any
 
 import yaml
 
-from _utils import normalize_programme_title
+from scraping._utils import normalize_programme_title
 from resources import classify_dept, classify_role
 
 

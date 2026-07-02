@@ -7,9 +7,9 @@ from unittest.mock import patch
 
 import yaml
 
-from _utils import build_programme_lookup
-from _utils import ProgrammeLookup
-from download_teachings import CourseDetails, SyllabusPage, build_metadata, ensure_expected_columns, process_row
+from scraping._utils import build_programme_lookup
+from scraping._utils import ProgrammeLookup
+from scraping.download_teachings import CourseDetails, SyllabusPage, build_metadata, ensure_expected_columns, process_row
 
 
 OLD_HEADER = (
@@ -126,10 +126,10 @@ class TestDownloadTeachingsHeaders(unittest.TestCase):
             }
 
             with patch(
-                "download_teachings.discover_language_urls",
+                "scraping.download_teachings.discover_language_urls",
                 return_value={"it": "https://example.invalid/it", "en": "https://example.invalid/en"},
             ), patch(
-                "download_teachings.parse_syllabus_page",
+                "scraping.download_teachings.parse_syllabus_page",
                 return_value=(
                     SyllabusPage(
                         url="https://example.invalid/it",

@@ -1,5 +1,5 @@
 import unittest
-from download_teachings import split_course_title, CourseTitle
+from scraping.download_teachings import split_course_title, CourseTitle
 
 
 TEST_TITLES = {
