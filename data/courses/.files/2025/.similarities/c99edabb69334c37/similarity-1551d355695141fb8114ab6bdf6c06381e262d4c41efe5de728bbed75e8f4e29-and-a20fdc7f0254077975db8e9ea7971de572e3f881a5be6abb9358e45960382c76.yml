@@ -1,0 +1,22 @@
+schema_version: 1
+model_config_hash: c99edabb69334c37
+course_a:
+  id: '90720'
+  path: data/courses/.files/2025/course-90720.yml
+  sha256: a20fdc7f0254077975db8e9ea7971de572e3f881a5be6abb9358e45960382c76
+course_b:
+  id: '95639'
+  path: data/courses/.files/2025/course-95639.yml
+  sha256: 1551d355695141fb8114ab6bdf6c06381e262d4c41efe5de728bbed75e8f4e29
+section_similarities:
+  course title.name: 0.25794285461741984
+  Learning outcomes: 0.5456240366425632
+  Course contents: 0.5707428813237753
+  Readings/Bibliography: 0.5341673384047833
+weights:
+  course title.name: 0.15
+  Learning outcomes: 0.35
+  Course contents: 0.35
+  Readings/Bibliography: 0.15
+weighted_similarity: 0.5095449502415489
+distance: 0.4904550497584511
