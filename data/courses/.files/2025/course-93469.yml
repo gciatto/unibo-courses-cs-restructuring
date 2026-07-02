@@ -9,7 +9,7 @@ teaching_modes:
 - In-person learning (entirely or partially)
 schedules:
 - from: &id001 2026-02-17
-  to: &id002 2026-05-22
+  to: &id002 2026-05-08
 teachers:
 - id: '24210'
   name: Roccetti, Marco
@@ -23,7 +23,7 @@ teachers:
     description: Informatica
   modules:
   - teaching_id: '479054'
-    url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/479054
+    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/479054
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/479054
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/479054
@@ -39,7 +39,7 @@ teachers:
     teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '93469'
-  name: HUMAN DATA SCIENCE
+  name: Human Data Science
 integrated_course: ''
 campi:
 - Bologna
@@ -75,27 +75,39 @@ syllabus:
         persone, possa essere perseguita evitando di porre scarsa attenzione sulla
         qualità dei dati, sul significato profondo del loro uso, e sul coinvolgimento
         della componente di competenze umane.
-      Contenuti: 'Human data science integra lo studio dei dati e della loro elaborazione
-        automatica con il coinvolgimento degli umani per ampliare l''ecosistema di
-        conoscenze a disposizione, al fine di renderlo concretamente fruibile, non
-        solo in termini di collegamento tra sistemi ma anche tra le persone e le idee.
-        Verrano, a questo proposito, presentati diversi casi di studio nei seguenti
-        ambiti:
+      Contenuti: 'Human Data Science integrates the study of data science with breakthroughs
+        in humans and algorithms to advance our ecosystem of knowledge and help everyone
+        make better, more insightful decisions. Case studies will be presented to
+        illustrate the following:
 
 
-        - Datification/Interaction with special data (e.g., medical)
+        - Inferential Modeling: Foundations of logical inference (Modus Ponens/Tollens)
+        vs. probabilistic reasoning (Bayesian updating) to model human reasoning and
+        decision-making under uncertainty.
 
-        - Predictive/Prescient intelligence
+        - Data reliability: Regression, Hypothesis testing, CI, sampling bias.
 
-        - Data Thinking
+        - Variance-based Analytics: Variance partitioning, reliability assessment,
+        and data integrity as critical tools to separate signal from noise in complex
+        human domains.
 
-        - Data deluge and profusion
+        - Datification/Interaction: Understanding how we transform human behavior
+        into data and the risks of misinterpretation.
 
-        - Human-Machine collaboration workflow
+        - Predictive/Prescient Intelligence: The promises and limits of forecasting
+        human-centric events.
 
-        - Models for humans and machines - Machine/Deep learning
+        - Data Thinking & Delusion: Navigating the data deluge, from information profusion
+        to the critical necessity of filtering.
 
-        - Human factors and ELSI'
+        - Models for Humans and Machines: Machine learning and Deep learning architectures
+        as cognitive augmentations rather than replacements.
+
+        - Human-Machine Collaboration Workflow: Designing feedback loops that maintain
+        human agency and oversight.
+
+        - Human factors and ELSI: Ethical, Legal, and Social Implications of algorithm-driven
+        decisions.'
       Testi/Bibliografia: Il docente renderà disponibile ad ogni lezione paper e report
         scientifici relativi all'argomento trattato
       Metodi didattici: Lezioni frontali e discussioni di progetti in classe
@@ -153,25 +165,39 @@ syllabus:
         those models as more than simple black boxes. Misuses of big data, lack of
         specific attention to their quality and absence of humans in the loop are
         discussed with the aim to understand what makes Data Science different.
-      Course contents: 'Human data science integrates the study of data science with
-        breakthroughs in humans and algorithms to advance our ecosystem of knowledge,
+      Course contents: 'Human Data Science integrates the study of data science with
+        breakthroughs in humans and algorithms to advance our ecosystem of knowledge
         and help everyone make better, more insightful decisions. Case studies will
         be presented to illustrate the following:
 
 
-        - Datification/Interaction with special data (e.g., medical)
+        - Inferential Modeling: Foundations of logical inference (Modus Ponens/Tollens)
+        vs. probabilistic reasoning (Bayesian updating) to model human reasoning and
+        decision-making under uncertainty.
 
-        - Predictive/Prescient intelligence
+        - Data reliability: Regression, Hypothesis testing, CI, sampling bias.
 
-        - Data Thinking/Data deluge
+        - Variance-based Analytics: Variance partitioning, reliability assessment,
+        and data integrity as critical tools to separate signal from noise in complex
+        human domains.
 
-        - Data deluge and profusion
+        - Datification/Interaction: Understanding how we transform human behavior
+        into data and the risks of misinterpretation.
 
-        - Human-Machine collaboration workflow
+        - Predictive/Prescient Intelligence: The promises and limits of forecasting
+        human-centric events.
 
-        - Models for humans and machines - Machine/Deep learning
+        - Data Thinking & Delusion: Navigating the data deluge, from information profusion
+        to the critical necessity of filtering.
 
-        - Human factors and ELSI'
+        - Models for Humans and Machines: Machine learning and Deep learning architectures
+        as cognitive augmentations rather than replacements.
+
+        - Human-Machine Collaboration Workflow: Designing feedback loops that maintain
+        human agency and oversight.
+
+        - Human factors and ELSI: Ethical, Legal, and Social Implications of algorithm-driven
+        decisions.'
       Readings/Bibliography: Scientific papers and reports delivered by the Lecturer
         during the course
       Teaching methods: Class lectures and projects discussion and development

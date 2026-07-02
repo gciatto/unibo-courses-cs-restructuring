@@ -9,7 +9,7 @@ teaching_modes:
 - In-person learning (entirely or partially)
 schedules:
 - from: &id001 2026-02-20
-  to: &id002 2026-06-05
+  to: &id002 2026-05-29
 teachers:
 - id: '30946'
   name: Callegati, Franco
@@ -23,7 +23,7 @@ teachers:
     description: Informatica
   modules:
   - teaching_id: '526560'
-    url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/526560
+    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/526560
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/526560
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/526560
@@ -31,8 +31,8 @@ teachers:
     - 6 cfu
     credits: 6
     schedule:
-      from: *id001
-      to: *id002
+      from: 2026-02-20
+      to: 2026-05-29
     campus: Cesena
     ssd: ING-INF/05
     language: English
@@ -49,23 +49,49 @@ teachers:
     description: Informatica
   modules:
   - teaching_id: '526560'
-    url: https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2025/526560
+    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/526560
     syllabus_urls:
       it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/526560
       en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/526560
     details:
-    - Modulo 2
+    - Module 2
     credits: 6
     schedule:
       from: 2026-02-20
-      to: 2026-06-05
+      to: 2026-05-29
+    campus: Cesena
+    ssd: ING-INF/05
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
+- id: '133157'
+  name: Rinieri, Lorenzo
+  email: lorenzo.rinieri@unibo.it
+  website: https://www.unibo.it/sitoweb/lorenzo.rinieri
+  role:
+  - adjunct professor
+  affiliation: disi
+  ssd:
+    name: INF/01
+    description: INFORMATICA
+  modules:
+  - teaching_id: '526560'
+    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/526560
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/526560
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/526560
+    details:
+    - Module 3
+    credits: 6
+    schedule:
+      from: *id001
+      to: *id002
     campus: Cesena
     ssd: ING-INF/05
     language: English
     teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '96995'
-  name: PROGRAMMABLE NETWORKING
+  name: Programmable Networking
 integrated_course: ''
 campi:
 - Cesena
