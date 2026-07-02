@@ -32,7 +32,7 @@ ROLE_PROGRESSION_RANK = {
     "tenure-track researcher": 2,
     "associate professor": 3,
     "full professor": 4,
-    "other": 5,
+    "other": 0,
 }
 
 PLACEHOLDER_VALUES = {
