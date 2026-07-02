@@ -1033,7 +1033,9 @@ def process_row(
 
     syllabus: dict[str, SyllabusPage] = {}
     details_by_language: dict[str, CourseDetails] = {}
-    mentioned_programmes = extract_degree_course_mentions((row.get("degree_course") or "").strip())
+    mentioned_programmes = extract_degree_course_mentions(
+        row_value(row, "degree_programme", "degree_course"),
+    )
     searchable_fragments: list[str] = [(row.get("course_title") or "").strip()]
     page_errors: list[str] = []
 
