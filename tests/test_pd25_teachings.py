@@ -91,6 +91,19 @@ def normalize_course_title(value: Any) -> str:
     return " ".join(text.split())
 
 
+def course_name_matches(row_course_name: Any, payload: dict[str, Any]) -> bool:
+    expected_name = normalize_course_title(row_course_name)
+    course_title = payload.get("course_title") or {}
+    actual_name = normalize_course_title(course_title.get("name"))
+    if expected_name == actual_name:
+        return True
+
+    syllabus = payload.get("syllabus") or {}
+    italian_syllabus = syllabus.get("it") if isinstance(syllabus, dict) else None
+    italian_title = italian_syllabus.get("title") if isinstance(italian_syllabus, dict) else None
+    return bool(expected_name and italian_title and expected_name in normalize_text(italian_title))
+
+
 def normalize_ssd(value: Any) -> str:
     return normalize_text(value)
 
@@ -221,7 +234,7 @@ def candidate_failures(
     if normalize_id(row.get("cod Materia")) != normalize_id(course_title.get("id")):
         failures.append(f"course_title.id {course_title.get('id')!r} != cod Materia {row.get('cod Materia')!r}")
 
-    if normalize_course_title(row.get("Materia reale")) != normalize_course_title(course_title.get("name")):
+    if not course_name_matches(row.get("Materia reale"), payload):
         failures.append(f"course_title.name {course_title.get('name')!r} != Materia reale {row.get('Materia reale')!r}")
 
     if not ssd_matches(row.get("SSD materia"), payload.get("ssd")):
