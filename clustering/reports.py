@@ -181,10 +181,21 @@ def _first_non_empty_string(values: Sequence[str | None]) -> str | None:
 def _extract_cluster_name(cluster_id: int, summary_item: dict[str, Any]) -> str:
     if cluster_id == -1:
         return "Noise"
-    keywords = [str(token).strip() for token in summary_item.get("top_keywords", []) if str(token).strip()]
-    if keywords:
-        return f"{' '.join(token.title() for token in keywords[:3])} ({cluster_id})"
     representative_titles = summary_item.get("representative_titles", [])
+
+    title_token_weights: Counter[str] = Counter()
+    for rank, title in enumerate(representative_titles[:5]):
+        weight = max(1, 5 - rank)
+        for token in re.findall(r"[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ0-9_'-]{2,}", str(title).casefold()):
+            if token in STOPWORDS:
+                continue
+            title_token_weights[token] += weight
+
+    if title_token_weights:
+        ordered_tokens = sorted(title_token_weights.items(), key=lambda item: (-item[1], item[0]))
+        synthesized = " ".join(token.title() for token, _ in ordered_tokens[:3])
+        return f"{synthesized} ({cluster_id})"
+
     if representative_titles:
         raw_title = str(representative_titles[0]).strip()
         words = [word for word in re.findall(r"[A-Za-zÀ-ÿ0-9]+", raw_title) if word]

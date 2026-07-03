@@ -62,17 +62,63 @@ def plot_similarity_heatmap(
         write_placeholder_png(path)
 
 
-def plot_cluster_sizes(path: pathlib.Path, labels: np.ndarray) -> None:
+def _cluster_color_map(
+    labels: np.ndarray,
+    cluster_name_by_id: dict[int, str],
+) -> tuple[list[int], dict[int, str], dict[int, str]]:
+    unique = sorted(int(label) for label in np.unique(labels))
+    color_by_id: dict[int, str] = {}
+    name_by_id: dict[int, str] = {}
+    palette = [
+        "#1f77b4",
+        "#ff7f0e",
+        "#2ca02c",
+        "#d62728",
+        "#9467bd",
+        "#8c564b",
+        "#e377c2",
+        "#7f7f7f",
+        "#bcbd22",
+        "#17becf",
+    ]
+    for index, cluster_id in enumerate(unique):
+        if cluster_id == -1:
+            color_by_id[cluster_id] = "#6b7280"
+        else:
+            color_by_id[cluster_id] = palette[index % len(palette)]
+        name_by_id[cluster_id] = cluster_name_by_id.get(cluster_id, f"Cluster {cluster_id}")
+    return unique, color_by_id, name_by_id
+
+
+def plot_cluster_sizes(
+    path: pathlib.Path,
+    labels: np.ndarray,
+    cluster_name_by_id: dict[int, str],
+) -> None:
     try:
         plt = _load_pyplot()
         unique, counts = np.unique(labels, return_counts=True)
+        unique_ids, color_by_id, name_by_id = _cluster_color_map(labels, cluster_name_by_id)
+        count_by_id = {int(label): int(count) for label, count in zip(unique, counts)}
         fig, ax = plt.subplots(figsize=(9, 5))
-        positions = np.arange(len(unique))
-        ax.bar(positions, counts, color="#3b82f6")
-        ax.set_xticks(positions, [str(int(label)) for label in unique])
+        positions = np.arange(len(unique_ids))
+        bar_counts = [count_by_id.get(cluster_id, 0) for cluster_id in unique_ids]
+        bar_colors = [color_by_id[cluster_id] for cluster_id in unique_ids]
+        ax.bar(positions, bar_counts, color=bar_colors)
+        ax.set_xticks(positions, [str(cluster_id) for cluster_id in unique_ids])
         ax.set_title("Cluster Sizes")
         ax.set_xlabel("Cluster")
         ax.set_ylabel("Courses")
+
+        from matplotlib.patches import Patch
+
+        legend_items = [
+            Patch(facecolor=color_by_id[cluster_id], edgecolor="none", label=name_by_id[cluster_id])
+            for cluster_id in unique_ids
+        ]
+        if legend_items:
+            ax.legend(handles=legend_items, title="Cluster names", loc="best", fontsize=8)
+
         fig.tight_layout()
         path.parent.mkdir(parents=True, exist_ok=True)
         fig.savefig(path, dpi=160)
@@ -82,7 +128,12 @@ def plot_cluster_sizes(path: pathlib.Path, labels: np.ndarray) -> None:
         write_placeholder_png(path)
 
 
-def plot_projection_pca(path: pathlib.Path, features: np.ndarray, labels: np.ndarray) -> None:
+def plot_projection_pca(
+    path: pathlib.Path,
+    features: np.ndarray,
+    labels: np.ndarray,
+    cluster_name_by_id: dict[int, str],
+) -> None:
     try:
         plt = _load_pyplot()
         if len(features) < 2:
@@ -92,12 +143,22 @@ def plot_projection_pca(path: pathlib.Path, features: np.ndarray, labels: np.nda
         from sklearn.decomposition import PCA
 
         projection = PCA(n_components=2, random_state=0).fit_transform(features)
+        unique_ids, color_by_id, name_by_id = _cluster_color_map(labels, cluster_name_by_id)
         fig, ax = plt.subplots(figsize=(8, 6))
-        scatter = ax.scatter(projection[:, 0], projection[:, 1], c=labels, cmap="tab20", s=36, alpha=0.9)
+        for cluster_id in unique_ids:
+            mask = labels == cluster_id
+            ax.scatter(
+                projection[mask, 0],
+                projection[mask, 1],
+                s=36,
+                alpha=0.9,
+                color=color_by_id[cluster_id],
+                label=name_by_id[cluster_id],
+            )
         ax.set_title("PCA Projection")
         ax.set_xlabel("PC1")
         ax.set_ylabel("PC2")
-        fig.colorbar(scatter, ax=ax, label="Cluster")
+        ax.legend(title="Cluster names", loc="best", fontsize=8)
         fig.tight_layout()
         path.parent.mkdir(parents=True, exist_ok=True)
         fig.savefig(path, dpi=160)
@@ -154,12 +215,13 @@ def generate_charts(
     *,
     algorithm: str,
     agglomerative_linkage: str,
+    cluster_name_by_id: dict[int, str],
 ) -> None:
     charts_dir = run_dir / "charts"
     charts_dir.mkdir(parents=True, exist_ok=True)
     plot_similarity_heatmap(charts_dir / "similarity_heatmap.png", similarity_matrix, labels)
-    plot_cluster_sizes(charts_dir / "cluster_sizes.png", labels)
-    plot_projection_pca(charts_dir / "projection_pca.png", features, labels)
+    plot_cluster_sizes(charts_dir / "cluster_sizes.png", labels, cluster_name_by_id)
+    plot_projection_pca(charts_dir / "projection_pca.png", features, labels, cluster_name_by_id)
     if algorithm == "agglomerative":
         plot_dendrogram(
             charts_dir / "dendrogram.png",

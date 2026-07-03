@@ -445,7 +445,11 @@ def run(args: argparse.Namespace, *, embedder: TextEmbedder | None = None) -> pa
 
     run_dir = make_run_dir(args.output_dir, args.year, args.algorithm)
     run_config = build_run_config(args, courses, weights, embedding_config, model_config_hash, cluster_result)
-    write_reports(run_dir, courses, similarity_matrix, distance_matrix, cluster_result, pair_payloads, run_config)
+    summary = write_reports(run_dir, courses, similarity_matrix, distance_matrix, cluster_result, pair_payloads, run_config)
+    cluster_name_by_id = {
+        int(cluster_id): str(item.get("cluster_name") or f"Cluster {cluster_id}")
+        for cluster_id, item in summary.items()
+    }
     generate_charts(
         run_dir,
         courses,
@@ -455,6 +459,7 @@ def run(args: argparse.Namespace, *, embedder: TextEmbedder | None = None) -> pa
         cluster_result.labels,
         algorithm=args.algorithm,
         agglomerative_linkage=args.agglomerative_linkage,
+        cluster_name_by_id=cluster_name_by_id,
     )
     return run_dir
 
