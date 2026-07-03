@@ -1,8 +1,8 @@
-command: cluster_courses.py --year 2025
+command: /Users/gciatto/Work/unibo-courses-cs-restructuring/clustering/cli.py
 arguments:
   year: 2025
   courses_dir: data/courses/.files
-  output_dir: clustering/runs
+  output_dir: data/clusters/runs
   embedding_model: sentence-transformers/paraphrase-multilingual-mpnet-base-v2
   device: auto
   embedding_batch_size: 32
@@ -56,40 +56,40 @@ clustering:
   n_clusters: 11
   cluster_count_scores:
   - k: 2
-    score: 0.04597878396389489
+    score: 0.0459787839599364
   - k: 3
-    score: 0.05712818507623206
+    score: 0.05712818507087075
   - k: 4
-    score: 0.051061805581221226
+    score: 0.0510618055739598
   - k: 5
-    score: 0.05109494807274409
+    score: 0.05109494806454162
   - k: 6
-    score: 0.05549030866056932
+    score: 0.05549030865002822
   - k: 7
-    score: 0.06095561618669304
+    score: 0.060955616173989834
   - k: 8
-    score: 0.05870819942505564
+    score: 0.058708199411893966
   - k: 9
-    score: 0.06405495343259869
+    score: 0.06405495341824406
   - k: 10
-    score: 0.06735965926843143
+    score: 0.06735965925388607
   - k: 11
-    score: 0.06998529181971101
+    score: 0.06998529179935065
   - k: 12
-    score: 0.06837325992700116
+    score: 0.06837325990622335
   - k: 13
-    score: 0.06886173720167253
+    score: 0.0688617371800997
   - k: 14
-    score: 0.06449309352634847
+    score: 0.06449309350378933
   - k: 15
-    score: 0.06065259013510542
+    score: 0.06065259011024077
   - k: 16
-    score: 0.05854080626683113
+    score: 0.058540806241395696
   - k: 17
-    score: 0.056997988430014766
+    score: 0.056997988402649545
   - k: 18
-    score: 0.060881597934686185
+    score: 0.060881597906052534
   - k: 19
-    score: 0.060532091190063954
+    score: 0.060532091153949134
   - k: 20
-    score: 0.05952262117139881
+    score: 0.05952262113488066

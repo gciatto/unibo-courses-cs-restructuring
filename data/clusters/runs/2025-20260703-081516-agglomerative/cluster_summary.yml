@@ -1,4 +1,5 @@
 0:
+  cluster_name: Design Systems Circuits (0)
   medoid_course_id: '28651'
   representative_titles:
   - Electronics T-A
@@ -8,17 +9,17 @@
   - Electronics
   size: 86
   strongest_pairs:
-  - course_a: '03716'
-    course_b: '03716'
+  - course_a: 03716-A
+    course_b: 03716-B
     similarity: 1.0
-  - course_a: '28020'
-    course_b: '28020'
+  - course_a: 28020-A
+    course_b: 28020-B
     similarity: 1.0
-  - course_a: '81678'
-    course_b: '81678'
+  - course_a: 81678-A
+    course_b: 81678-B
     similarity: 0.9766796325964802
-  - course_a: '28016'
-    course_b: '28016'
+  - course_a: 28016-A
+    course_b: 28016-B
     similarity: 0.9756210459221659
   - course_a: '78810'
     course_b: B5665
@@ -37,7 +38,8 @@
   - basic
   - electronic
 1:
-  medoid_course_id: 09730
+  cluster_name: Data Course Will (1)
+  medoid_course_id: 09730-A
   representative_titles:
   - Principles of Informatics
   - Foundations of Informatics A
@@ -46,20 +48,20 @@
   - Laboratory of Informatics
   size: 262
   strongest_pairs:
-  - course_a: '07276'
-    course_b: '96346'
+  - course_a: 07276-A
+    course_b: 96346-A
     similarity: 1.0
-  - course_a: '28024'
-    course_b: '28024'
+  - course_a: 28024-A
+    course_b: 28024-B
     similarity: 1.0
-  - course_a: '28659'
-    course_b: '28659'
+  - course_a: 28659-A
+    course_b: 28659-B
     similarity: 1.0
-  - course_a: '29227'
-    course_b: '29227'
+  - course_a: 29227-A
+    course_b: 29227-B
     similarity: 1.0
-  - course_a: '39176'
-    course_b: '39176'
+  - course_a: 39176-A
+    course_b: 39176-B
     similarity: 1.0
   top_keywords:
   - data
@@ -75,6 +77,7 @@
   - student
   - language
 2:
+  cluster_name: Project Management Business (2)
   medoid_course_id: '73435'
   representative_titles:
   - Project Management
@@ -98,6 +101,7 @@
   - software
   - traditional
 3:
+  cluster_name: Security Course Cryptography (3)
   medoid_course_id: '72942'
   representative_titles:
   - Information Security M
@@ -110,7 +114,7 @@
   - course_a: '90392'
     course_b: B8311
     similarity: 0.9463702279886312
-  - course_a: '93470'
+  - course_a: 93470-B
     course_b: B5793
     similarity: 0.8782752650341756
   - course_a: '88325'
@@ -119,7 +123,7 @@
   - course_a: B5793
     course_b: B5812
     similarity: 0.8238158028006259
-  - course_a: '93470'
+  - course_a: 93470-B
     course_b: B5812
     similarity: 0.8229896435485573
   top_keywords:
@@ -136,6 +140,7 @@
   - virtuale
   - cryptographic
 4:
+  cluster_name: Systems Simulation Models (4)
   medoid_course_id: '37760'
   representative_titles:
   - Systems Simulation
@@ -166,6 +171,7 @@
   - statistics
   - properties
 5:
+  cluster_name: Digital Course Transformation (5)
   medoid_course_id: B0061
   representative_titles:
   - Computer Methods for Digital Transformation
@@ -185,14 +191,15 @@
   - aims
   - provide
 6:
-  medoid_course_id: '96725'
+  cluster_name: Localization Software Guide (6)
+  medoid_course_id: 96725-A
   representative_titles:
   - IT and Game Localization
   - IT and Game Localization
   size: 2
   strongest_pairs:
-  - course_a: '96725'
-    course_b: '96725'
+  - course_a: 96725-A
+    course_b: 96725-B
     similarity: 1.0
   top_keywords:
   - localization
@@ -208,6 +215,7 @@
   - developer
   - topics
 7:
+  cluster_name: Course Operating Main (7)
   medoid_course_id: '58348'
   representative_titles:
   - Lab-based Course on Operating Systems
@@ -227,6 +235,7 @@
   - reasoning
   - concepts
 8:
+  cluster_name: Will Data Analytics (8)
   medoid_course_id: '95638'
   representative_titles:
   - Operational Analytics
@@ -246,6 +255,7 @@
   - analysis
   - processes
 9:
+  cluster_name: Services Cloud Part (9)
   medoid_course_id: '97431'
   representative_titles:
   - Scalable and Reliable Services M
@@ -269,6 +279,7 @@
   - critical
   - analyze
 10:
+  cluster_name: Android Applications Mobile (10)
   medoid_course_id: '66860'
   representative_titles:
   - Mobile Applications Laboratory
