@@ -36,6 +36,18 @@ class TestClusteringCourseIo(unittest.TestCase):
         self.assertEqual(course.course_id, "00819-B")
         self.assertEqual(course.title, "Programming")
 
+    def test_load_course_uses_filename_id_even_when_yaml_id_differs(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            path = pathlib.Path(tmp_dir) / "course-00819-B.yml"
+            path.write_text(
+                yaml.safe_dump({"course_title": {"id": "00819", "name": "Programming"}}, sort_keys=False),
+                encoding="utf-8",
+            )
+
+            course = load_course(path)
+
+        self.assertEqual(course.course_id, "00819-B")
+
 
 if __name__ == "__main__":
     unittest.main()

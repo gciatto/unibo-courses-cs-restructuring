@@ -45,11 +45,8 @@ def load_course(path: pathlib.Path) -> CourseRecord:
     if not isinstance(payload, dict):
         raise ValueError(f"Course YAML is not a mapping: {path}")
 
-    course_id = ""
-    course_title = payload.get("course_title")
-    if isinstance(course_title, dict):
-        course_id = str(course_title.get("id") or "").strip()
-    course_id = course_id or parse_course_id_from_filename(path)
+    # The filename is the canonical identifier for clustering instances.
+    course_id = parse_course_id_from_filename(path)
 
     sections, section_languages = extract_similarity_sections(payload)
     title = sections.get("course title.name") or ""

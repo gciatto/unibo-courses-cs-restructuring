@@ -84,6 +84,7 @@ class TestClusterCoursesCli(unittest.TestCase):
                 "distance_matrix.csv",
                 "clusters.csv",
                 "cluster_summary.yml",
+                "cluster_courses.yml",
                 "nearest_neighbors.csv",
                 "top_pairs.csv",
                 "charts/similarity_heatmap.png",
@@ -92,6 +93,14 @@ class TestClusterCoursesCli(unittest.TestCase):
                 "charts/dendrogram.png",
             ):
                 self.assertTrue((run_dir / relative).exists(), relative)
+
+            cluster_courses = yaml.safe_load((run_dir / "cluster_courses.yml").read_text(encoding="utf-8"))
+            self.assertIsInstance(cluster_courses, dict)
+            self.assertTrue(cluster_courses)
+            first_cluster = next(iter(cluster_courses.values()))
+            self.assertIn("index", first_cluster)
+            self.assertIn("courses", first_cluster)
+            self.assertTrue(first_cluster["courses"])
 
 
 if __name__ == "__main__":
