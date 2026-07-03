@@ -29,7 +29,7 @@ from clustering.similarities import DEFAULT_WEIGHTS, build_similarity_matrices, 
 
 LOGGER = logging.getLogger(__name__)
 DEFAULT_COURSES_DIR = pathlib.Path("data/courses/.files")
-DEFAULT_OUTPUT_DIR = pathlib.Path("clustering/runs")
+DEFAULT_OUTPUT_DIR = pathlib.Path("data/clusters/runs")
 
 
 def default_year() -> int:
