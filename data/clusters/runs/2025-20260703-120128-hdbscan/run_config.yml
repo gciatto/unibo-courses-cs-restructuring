@@ -1,0 +1,59 @@
+command: /Users/gciatto/Work/unibo-courses-cs-restructuring/clustering/cli.py --weight-title
+  0.1 --weight-learning-outcomes 0.45 --weight-course-contents 0.4 --weight-readings
+  0.05 --algorithm hdbscan
+arguments:
+  year: 2025
+  courses_dir: data/courses/.files
+  output_dir: data/clusters/runs
+  embedding_model: sentence-transformers/paraphrase-multilingual-mpnet-base-v2
+  device: auto
+  embedding_batch_size: 32
+  chunk_token_limit: 384
+  weight_title: 0.1
+  weight_learning_outcomes: 0.45
+  weight_course_contents: 0.4
+  weight_readings: 0.05
+  algorithm: hdbscan
+  n_clusters: auto
+  cluster_count_method: silhouette
+  k_min: 2
+  k_max: 20
+  agglomerative_linkage: average
+  distance_threshold: null
+  hdbscan_min_cluster_size: 5
+  hdbscan_min_samples: null
+  hdbscan_cluster_selection_epsilon: 0.0
+  hdbscan_cluster_selection_method: eom
+  spectral_assign_labels: kmeans
+  spectral_n_init: 10
+  kmeans_n_init: auto
+  kmeans_max_iter: 300
+  random_state: 42
+  limit: null
+  refresh_embeddings: false
+  refresh_similarities: false
+  no_cache: false
+  prune_cache: false
+  fake_embeddings: false
+course_count: 377
+weights:
+  course title.name: 0.1
+  Learning outcomes: 0.45
+  Course contents: 0.4
+  Readings/Bibliography: 0.05
+embedding:
+  schema_version: 1
+  embedding_model: sentence-transformers/paraphrase-multilingual-mpnet-base-v2
+  chunk_token_limit: 384
+  normalize_chunks_before_average: true
+  normalize_section_vectors: true
+  section_names:
+  - course title.name
+  - Learning outcomes
+  - Course contents
+  - Readings/Bibliography
+  model_config_hash: c99edabb69334c37
+clustering:
+  algorithm: hdbscan
+  n_clusters: null
+  cluster_count_scores: []
