@@ -100,7 +100,7 @@ def plot_cluster_sizes(
         unique, counts = np.unique(labels, return_counts=True)
         unique_ids, color_by_id, name_by_id = _cluster_color_map(labels, cluster_name_by_id)
         count_by_id = {int(label): int(count) for label, count in zip(unique, counts)}
-        fig, ax = plt.subplots(figsize=(9, 5))
+        fig, ax = plt.subplots(figsize=(24, 8))
         positions = np.arange(len(unique_ids))
         bar_counts = [count_by_id.get(cluster_id, 0) for cluster_id in unique_ids]
         bar_colors = [color_by_id[cluster_id] for cluster_id in unique_ids]
@@ -117,11 +117,18 @@ def plot_cluster_sizes(
             for cluster_id in unique_ids
         ]
         if legend_items:
-            ax.legend(handles=legend_items, title="Cluster names", loc="best", fontsize=8)
+            ax.legend(
+                handles=legend_items,
+                title="Cluster names",
+                loc="upper left",
+                bbox_to_anchor=(1.02, 1.0),
+                borderaxespad=0.0,
+                fontsize=8,
+            )
 
-        fig.tight_layout()
+        fig.tight_layout(rect=(0.0, 0.0, 0.58, 1.0))
         path.parent.mkdir(parents=True, exist_ok=True)
-        fig.savefig(path, dpi=160)
+        fig.savefig(path, dpi=160, bbox_inches="tight", pad_inches=0.3)
         plt.close(fig)
     except Exception as error:
         LOGGER.warning("Could not generate cluster size chart: %s", error)
@@ -140,11 +147,18 @@ def plot_projection_pca(
             write_placeholder_png(path)
             return
 
-        from sklearn.decomposition import PCA
+        try:
+            from sklearn.decomposition import PCA
 
-        projection = PCA(n_components=2, random_state=0).fit_transform(features)
+            projection = PCA(n_components=2, random_state=0).fit_transform(features)
+        except Exception:
+            # Fallback for environments without scikit-learn.
+            centered = np.asarray(features, dtype=float) - np.asarray(features, dtype=float).mean(axis=0, keepdims=True)
+            _, _, vt = np.linalg.svd(centered, full_matrices=False)
+            basis = vt[:2].T if vt.shape[0] >= 2 else np.pad(vt.T, ((0, 0), (0, 2 - vt.shape[0])))
+            projection = centered @ basis
         unique_ids, color_by_id, name_by_id = _cluster_color_map(labels, cluster_name_by_id)
-        fig, ax = plt.subplots(figsize=(8, 6))
+        fig, ax = plt.subplots(figsize=(24, 8))
         for cluster_id in unique_ids:
             mask = labels == cluster_id
             ax.scatter(
@@ -158,10 +172,16 @@ def plot_projection_pca(
         ax.set_title("PCA Projection")
         ax.set_xlabel("PC1")
         ax.set_ylabel("PC2")
-        ax.legend(title="Cluster names", loc="best", fontsize=8)
-        fig.tight_layout()
+        ax.legend(
+            title="Cluster names",
+            loc="upper left",
+            bbox_to_anchor=(1.02, 1.0),
+            borderaxespad=0.0,
+            fontsize=8,
+        )
+        fig.tight_layout(rect=(0.0, 0.0, 0.58, 1.0))
         path.parent.mkdir(parents=True, exist_ok=True)
-        fig.savefig(path, dpi=160)
+        fig.savefig(path, dpi=160, bbox_inches="tight", pad_inches=0.3)
         plt.close(fig)
     except Exception as error:
         LOGGER.warning("Could not generate PCA projection: %s", error)
