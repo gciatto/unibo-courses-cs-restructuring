@@ -6,6 +6,7 @@ import logging
 import pathlib
 import shlex
 import sys
+from textwrap import dedent
 from typing import Any, Sequence
 
 import yaml
@@ -32,6 +33,10 @@ DEFAULT_COURSES_DIR = pathlib.Path("data/courses/.files")
 DEFAULT_OUTPUT_DIR = pathlib.Path("data/clusters/runs")
 
 
+class HelpFormatter(argparse.ArgumentDefaultsHelpFormatter, argparse.RawDescriptionHelpFormatter):
+    """Show defaults and preserve line breaks in long help sections."""
+
+
 def default_year() -> int:
     return dt.date.today().year - 1
 
@@ -55,47 +60,254 @@ def kmeans_n_init_value(value: str) -> int | str:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Cluster UniBo courses by selected syllabus sections.")
-    parser.add_argument("--year", type=int, default=default_year(), help="Reference academic year (default: current year - 1).")
-    parser.add_argument("--courses-dir", type=pathlib.Path, default=DEFAULT_COURSES_DIR, help=f"Base course directory (default: {DEFAULT_COURSES_DIR}).")
-    parser.add_argument("--output-dir", type=pathlib.Path, default=DEFAULT_OUTPUT_DIR, help=f"Base output directory (default: {DEFAULT_OUTPUT_DIR}).")
-    parser.add_argument("--embedding-model", default=DEFAULT_EMBEDDING_MODEL, help=f"SentenceTransformer model name (default: {DEFAULT_EMBEDDING_MODEL}).")
-    parser.add_argument("--device", choices=["auto", "cpu", "cuda", "mps"], default="auto")
-    parser.add_argument("--embedding-batch-size", type=int, default=32)
-    parser.add_argument("--chunk-token-limit", type=int, default=384)
+    epilog = dedent(
+                """
+                Algorithm guidance:
+                    agglomerative
+                        + Interpretable hierarchy; works directly with precomputed distances.
+                        + Good default for medium-size datasets and dendrogram analysis.
+                        - Can be slower/more memory-heavy than centroid methods.
+                        - Requires n-clusters or careful distance-threshold tuning.
 
-    parser.add_argument("--weight-title", type=float, default=DEFAULT_WEIGHTS[SECTION_TITLE])
-    parser.add_argument("--weight-learning-outcomes", type=float, default=DEFAULT_WEIGHTS[SECTION_LEARNING_OUTCOMES])
-    parser.add_argument("--weight-course-contents", type=float, default=DEFAULT_WEIGHTS[SECTION_COURSE_CONTENTS])
-    parser.add_argument("--weight-readings", type=float, default=DEFAULT_WEIGHTS[SECTION_READINGS])
+                    hdbscan
+                        + Detects noise/outliers (label -1) and handles varying densities.
+                        + Does not require n-clusters.
+                        - Sensitive to min-cluster-size/min-samples choices.
+                        - May classify many borderline courses as noise if too strict.
 
-    parser.add_argument("--algorithm", choices=["agglomerative", "hdbscan", "spectral", "kmeans"], default="agglomerative")
-    parser.add_argument("--n-clusters", type=n_clusters_value, default="auto")
-    parser.add_argument("--cluster-count-method", choices=["silhouette", "calinski_harabasz", "davies_bouldin"], default="silhouette")
-    parser.add_argument("--k-min", type=int, default=2)
-    parser.add_argument("--k-max", type=int, default=20)
+                    spectral
+                        + Captures non-convex structure using similarity affinity.
+                        + Useful when pairwise similarity matrix is high quality.
+                        - Requires n-clusters.
+                        - More computationally expensive than kmeans at larger scale.
 
-    parser.add_argument("--agglomerative-linkage", choices=["average", "complete", "single", "ward"], default="average")
-    parser.add_argument("--distance-threshold", type=float, default=None)
+                    kmeans
+                        + Fast, scalable, strong baseline.
+                        + Easy to compare across runs with fixed random-state.
+                        - Requires n-clusters.
+                        - Assumes roughly compact/spherical cluster geometry.
 
-    parser.add_argument("--hdbscan-min-cluster-size", type=int, default=5)
-    parser.add_argument("--hdbscan-min-samples", type=int, default=None)
-    parser.add_argument("--hdbscan-cluster-selection-epsilon", type=float, default=0.0)
-    parser.add_argument("--hdbscan-cluster-selection-method", choices=["eom", "leaf"], default="eom")
+                Cluster-count guidance (used when --n-clusters auto):
+                    silhouette
+                        + Balanced compactness/separation, intuitive default.
+                        - Can prefer too few clusters in some datasets.
 
-    parser.add_argument("--spectral-assign-labels", choices=["kmeans", "discretize", "cluster_qr"], default="kmeans")
-    parser.add_argument("--spectral-n-init", type=int, default=10)
+                    calinski_harabasz
+                        + Fast and effective for compact, well-separated groups.
+                        - May favor larger k in some cases.
 
-    parser.add_argument("--kmeans-n-init", type=kmeans_n_init_value, default="auto")
-    parser.add_argument("--kmeans-max-iter", type=int, default=300)
+                    davies_bouldin
+                        + Penalizes overlapping clusters.
+                        - Lower-is-better metric can be less intuitive; sensitive to shape assumptions.
+                """
+    )
+    parser = argparse.ArgumentParser(
+        description="Cluster UniBo courses by selected syllabus sections.",
+        epilog=epilog,
+        formatter_class=HelpFormatter,
+    )
+    parser.add_argument(
+        "--year",
+        type=int,
+        default=default_year(),
+        help="Reference academic year to read from <courses-dir>/<year>/course-*.yml.",
+    )
+    parser.add_argument(
+        "--courses-dir",
+        type=pathlib.Path,
+        default=DEFAULT_COURSES_DIR,
+        help="Base directory containing year subdirectories with merged course files.",
+    )
+    parser.add_argument(
+        "--output-dir",
+        type=pathlib.Path,
+        default=DEFAULT_OUTPUT_DIR,
+        help="Base directory where run outputs are written as <year>-<timestamp>-<algorithm>.",
+    )
+    parser.add_argument(
+        "--embedding-model",
+        default=DEFAULT_EMBEDDING_MODEL,
+        help="Sentence-Transformers model used to embed section text.",
+    )
+    parser.add_argument(
+        "--device",
+        choices=["auto", "cpu", "cuda", "mps"],
+        default="auto",
+        help="Execution device for embedding inference.",
+    )
+    parser.add_argument(
+        "--embedding-batch-size",
+        type=int,
+        default=32,
+        help="Number of text chunks embedded per forward pass.",
+    )
+    parser.add_argument(
+        "--chunk-token-limit",
+        type=int,
+        default=384,
+        help="Approximate max token budget per chunk before splitting long sections.",
+    )
 
-    parser.add_argument("--random-state", type=int, default=42)
-    parser.add_argument("--limit", type=int, default=None)
-    parser.add_argument("--refresh-embeddings", action="store_true")
-    parser.add_argument("--refresh-similarities", action="store_true")
-    parser.add_argument("--no-cache", action="store_true")
-    parser.add_argument("--prune-cache", action="store_true")
-    parser.add_argument("--fake-embeddings", action="store_true", help=argparse.SUPPRESS)
+    parser.add_argument(
+        "--weight-title",
+        type=float,
+        default=DEFAULT_WEIGHTS[SECTION_TITLE],
+        help="Weight assigned to course title similarity.",
+    )
+    parser.add_argument(
+        "--weight-learning-outcomes",
+        type=float,
+        default=DEFAULT_WEIGHTS[SECTION_LEARNING_OUTCOMES],
+        help="Weight assigned to Learning outcomes similarity.",
+    )
+    parser.add_argument(
+        "--weight-course-contents",
+        type=float,
+        default=DEFAULT_WEIGHTS[SECTION_COURSE_CONTENTS],
+        help="Weight assigned to Course contents similarity.",
+    )
+    parser.add_argument(
+        "--weight-readings",
+        type=float,
+        default=DEFAULT_WEIGHTS[SECTION_READINGS],
+        help="Weight assigned to Readings/Bibliography similarity.",
+    )
+
+    parser.add_argument(
+        "--algorithm",
+        choices=["agglomerative", "hdbscan", "spectral", "kmeans"],
+        default="agglomerative",
+        help="Clustering algorithm to apply to the computed course representation.",
+    )
+    parser.add_argument(
+        "--n-clusters",
+        type=n_clusters_value,
+        default="auto",
+        help=(
+            "Number of clusters for algorithms that require it, or auto to search in [k-min, k-max]. "
+            "Applies to agglomerative/spectral/kmeans; ignored by hdbscan."
+        ),
+    )
+    parser.add_argument(
+        "--cluster-count-method",
+        choices=["silhouette", "calinski_harabasz", "davies_bouldin"],
+        default="silhouette",
+        help="Metric used when --n-clusters is auto.",
+    )
+    parser.add_argument(
+        "--k-min",
+        type=int,
+        default=2,
+        help="Lower bound for auto cluster-count search (agglomerative/spectral/kmeans only).",
+    )
+    parser.add_argument(
+        "--k-max",
+        type=int,
+        default=20,
+        help="Upper bound for auto cluster-count search (agglomerative/spectral/kmeans only).",
+    )
+
+    parser.add_argument(
+        "--agglomerative-linkage",
+        choices=["average", "complete", "single", "ward"],
+        default="average",
+        help="Linkage criterion for agglomerative clustering.",
+    )
+    parser.add_argument(
+        "--distance-threshold",
+        type=float,
+        default=None,
+        help="Optional merge-stop threshold for agglomerative clustering distance.",
+    )
+
+    parser.add_argument(
+        "--hdbscan-min-cluster-size",
+        type=int,
+        default=5,
+        help="Minimum size of a dense group to be considered a cluster by HDBSCAN.",
+    )
+    parser.add_argument(
+        "--hdbscan-min-samples",
+        type=int,
+        default=None,
+        help="Core-point neighborhood size for HDBSCAN; when omitted, implementation default is used.",
+    )
+    parser.add_argument(
+        "--hdbscan-cluster-selection-epsilon",
+        type=float,
+        default=0.0,
+        help="Distance tolerance for merging nearby HDBSCAN clusters.",
+    )
+    parser.add_argument(
+        "--hdbscan-cluster-selection-method",
+        choices=["eom", "leaf"],
+        default="eom",
+        help="HDBSCAN strategy for selecting final clusters from the hierarchy.",
+    )
+
+    parser.add_argument(
+        "--spectral-assign-labels",
+        choices=["kmeans", "discretize", "cluster_qr"],
+        default="kmeans",
+        help="Label assignment strategy after spectral embedding.",
+    )
+    parser.add_argument(
+        "--spectral-n-init",
+        type=int,
+        default=10,
+        help="Number of initializations for spectral clustering internals (when applicable).",
+    )
+
+    parser.add_argument(
+        "--kmeans-n-init",
+        type=kmeans_n_init_value,
+        default="auto",
+        help="Number of centroid initializations for KMeans, or auto.",
+    )
+    parser.add_argument(
+        "--kmeans-max-iter",
+        type=int,
+        default=300,
+        help="Maximum number of iterations for each KMeans initialization.",
+    )
+
+    parser.add_argument(
+        "--random-state",
+        type=int,
+        default=42,
+        help="Random seed for stochastic clustering components.",
+    )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help="Limit the number of discovered course files for faster smoke runs.",
+    )
+    parser.add_argument(
+        "--refresh-embeddings",
+        action="store_true",
+        help="Recompute and overwrite embedding cache files for selected courses.",
+    )
+    parser.add_argument(
+        "--refresh-similarities",
+        action="store_true",
+        help="Recompute and overwrite pairwise similarity cache files.",
+    )
+    parser.add_argument(
+        "--no-cache",
+        action="store_true",
+        help="Disable reading and writing all caches for this run.",
+    )
+    parser.add_argument(
+        "--prune-cache",
+        action="store_true",
+        help="Remove stale cache files under the selected year/model before clustering.",
+    )
+    parser.add_argument(
+        "--fake-embeddings",
+        action="store_true",
+        help="Use deterministic hash-based embeddings (testing/debug only, no semantic meaning).",
+    )
     return parser
 
 
