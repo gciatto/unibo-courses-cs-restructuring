@@ -24,6 +24,7 @@ from clustering.embeddings import (
     load_or_compute_embeddings,
 )
 from clustering.reports import write_reports
+from clustering.run_artifacts import regenerate_run_artifacts
 from clustering.sections import SECTION_COURSE_CONTENTS, SECTION_LEARNING_OUTCOMES, SECTION_READINGS, SECTION_TITLE
 from clustering.similarities import DEFAULT_WEIGHTS, build_similarity_matrices, normalize_weights
 
@@ -123,6 +124,13 @@ def build_parser() -> argparse.ArgumentParser:
         type=pathlib.Path,
         default=DEFAULT_OUTPUT_DIR,
         help="Base directory where run outputs are written as <year>-<timestamp>-<algorithm>.",
+    )
+    parser.add_argument(
+        "--regenerate-charts",
+        type=pathlib.Path,
+        default=None,
+        metavar="RUN_DIR",
+        help="Regenerate charts and cluster_courses.short.yml for an existing clustering experiment directory.",
     )
     parser.add_argument(
         "--embedding-model",
@@ -469,7 +477,10 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
     try:
-        run_dir = run(args)
+        if args.regenerate_charts is not None:
+            run_dir = regenerate_run_artifacts(args.regenerate_charts)
+        else:
+            run_dir = run(args)
     except Exception as error:
         LOGGER.error("%s", error)
         return 1

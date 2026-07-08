@@ -227,6 +227,44 @@ def _teacher_handle(teacher: Any) -> str | None:
     return _slugify_teacher(raw_name)
 
 
+def _teacher_email_handle(teacher: Any) -> str | None:
+    if not isinstance(teacher, dict):
+        return None
+    email = teacher.get("email")
+    if not isinstance(email, str):
+        return None
+    local_part, separator, _ = email.strip().casefold().partition("@")
+    if not separator or not local_part:
+        return None
+    return local_part
+
+
+def _teacher_email_handles(course: CourseRecord) -> list[str]:
+    teachers = course.raw.get("teachers") if isinstance(course.raw, dict) else None
+    if not isinstance(teachers, list):
+        return []
+    return sorted({handle for handle in (_teacher_email_handle(item) for item in teachers) if handle})
+
+
+def course_short_label(course: CourseRecord) -> str:
+    return f"{course.course_id} – {course.title or ''}"
+
+
+def _course_short_yaml_value(course: CourseRecord) -> str:
+    return f"{course.title or ''} | {', '.join(_teacher_email_handles(course))}"
+
+
+def _cluster_display_key(cluster_id: int, cluster_name: Any) -> str:
+    if cluster_name is None:
+        name = "Noise" if cluster_id == -1 else f"Cluster {cluster_id}"
+    else:
+        name = str(cluster_name).strip() or ("Noise" if cluster_id == -1 else f"Cluster {cluster_id}")
+    suffix = f"({cluster_id})"
+    if name.endswith(suffix):
+        return name
+    return f"{name} {suffix}"
+
+
 def _course_year(course: CourseRecord) -> int | None:
     year_value = course.raw.get("year") if isinstance(course.raw, dict) else None
     if isinstance(year_value, int):
@@ -331,6 +369,28 @@ def write_cluster_courses_yaml(
             "courses": [_course_cluster_entry(courses[index]) for index in clusters[cluster_id]],
         }
     path.write_text(yaml.safe_dump(payload, sort_keys=True, allow_unicode=True), encoding="utf-8")
+
+
+def write_cluster_courses_short_yaml(
+    path: pathlib.Path,
+    courses: Sequence[CourseRecord],
+    labels: np.ndarray,
+    summary: dict[int, dict[str, Any]],
+) -> None:
+    clusters = cluster_indices(labels)
+    payload: dict[str, dict[str, Any]] = {}
+    for cluster_id in sorted(clusters):
+        summary_item = summary.get(cluster_id, {})
+        cluster_key = _cluster_display_key(cluster_id, summary_item.get("cluster_name"))
+        ordered_indices = sorted(clusters[cluster_id], key=lambda index: courses[index].course_id)
+        payload[cluster_key] = {
+            "size": len(ordered_indices),
+            "courses": {
+                courses[index].course_id: _course_short_yaml_value(courses[index])
+                for index in ordered_indices
+            },
+        }
+    path.write_text(yaml.safe_dump(payload, sort_keys=False, allow_unicode=True), encoding="utf-8")
 
 
 def build_cluster_summary(
@@ -442,6 +502,7 @@ def write_reports(
     write_clusters_csv(run_dir / "clusters.csv", courses, cluster_result.labels, similarity_matrix)
     write_cluster_summary(run_dir / "cluster_summary.yml", summary)
     write_cluster_courses_yaml(run_dir / "cluster_courses.yml", courses, cluster_result.labels, summary)
+    write_cluster_courses_short_yaml(run_dir / "cluster_courses.short.yml", courses, cluster_result.labels, summary)
     write_nearest_neighbors_csv(run_dir / "nearest_neighbors.csv", courses, similarity_matrix, top_n=nearest_neighbor_count)
     write_top_pairs_csv(run_dir / "top_pairs.csv", pair_payloads)
     return summary
