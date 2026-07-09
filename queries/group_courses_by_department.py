@@ -34,7 +34,6 @@ def dump_yaml(data: list, path: str) -> None:
     with open(path, "w", encoding="utf-8") as f:
         yaml.dump(data, f, allow_unicode=True, sort_keys=False, default_flow_style=False)
 
-
 def build_department_courses(records: list) -> dict:
     """
     Returns: { department_name: { (id, name, credits): course_dict, ... }, ... }
@@ -45,6 +44,7 @@ def build_department_courses(records: list) -> dict:
     for record in records:
         dept    = (record.get("Department") or "").strip()
         courses = record.get("Courses") or []
+        name    = record.get("Name") or "Unknown"
 
         for course in courses:
             cid     = str(course.get("id",      "")).strip()
@@ -53,7 +53,9 @@ def build_department_courses(records: list) -> dict:
             key     = (cid, cname, credits)
 
             if key not in dept_courses[dept]:
-                dept_courses[dept][key] = {"id": cid, "name": cname, "credits": credits}
+                dept_courses[dept][key] = {"name": [ name ], "id": cid, "course_name": cname, "credits": credits}
+            else: 
+                dept_courses[dept][key]["name"].append( name )
 
     return dept_courses
 

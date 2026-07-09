@@ -85,14 +85,30 @@ def main():
                 course_name = f"Unknown (parse error: {exc})"
                 course_credits = f"Unknown (parse error: {exc})"
 
-            try:
-                courses.add((course_id, course_name, course_credits))
-            except Exception as exc:
-                print( exc )
-                print( (course_id, course_name, course_credits) )
 
+            course = (course_id, course_name, course_credits)
+            courses.add( course )
+
+        name = contact.get("name", "Unknown").strip()
+        dept = contact.get("department", "Unknown").strip().replace("\"","'")
+        print(f"- Name: \"{name}\"")
+        print(f"  Department: \"{dept}\"")
+        print(f"  Courses:")
         for cid, cname, ccredits in courses:
-            print(f"- id: {cid}\n  name: \"{cname}\"\n  credits: {ccredits}")
+            print(f"    - id: {cid}\n      name: \"{cname}\"\n      credits: {ccredits}")
+
+
+
+
+
+        #     try:
+        #         courses.add((course_id, course_name, course_credits))
+        #     except Exception as exc:
+        #         print( exc )
+        #         print( (course_id, course_name, course_credits) )
+
+        # for cid, cname, ccredits in courses:
+        #     print(f"- id: {cid}\n  name: \"{cname}\"\n  credits: {ccredits}")
 
 if __name__ == "__main__":
     main()

@@ -23,12 +23,13 @@ def load_disi_courses() -> set:
     disi_courses = set()
     with open("courses_disi.yaml", encoding="utf-8") as fh:
         data = yaml.safe_load(fh)
-    for course in data:
-        cid  = course.get("id", {}) or "Unknown"
-        name = course.get("name", {}) or "Unknown"
-        ccredits = course.get("credits", {}) or 0
-        course = (cid, name, ccredits)
-        disi_courses.add( course )
+    for person in data:
+        for course in person.get("Courses",[]) or []:
+            cid  = str(course.get("id", {})) or "Unknown"
+            name = course.get("name", {}).strip().replace("\"","'") or "Unknown"
+            ccredits = course.get("credits", {}) or 0
+            course = (cid, name, ccredits)
+            disi_courses.add( course )
     return disi_courses
 
 def extract_email_name(email: str) -> str:
@@ -48,7 +49,9 @@ def parse_course_yaml(path: str) -> dict:
 
 
 def main():
-    disi_courses = load_disi_courses();
+    disi_courses = load_disi_courses()
+
+    # print( disi_courses )
 
     if not os.path.isfile(CONTACTS_CSV):
         sys.exit(f"ERROR: contacts file not found: {CONTACTS_CSV}")
@@ -63,6 +66,7 @@ def main():
 
     if not os.path.isdir(COURSES_DIR):
         sys.exit(f"ERROR: courses directory not found: {COURSES_DIR}")
+
 
     for contact in non_disi:
         email = contact.get("email", "").strip()
@@ -102,14 +106,17 @@ def main():
             course = (course_id, course_name, course_credits)
             if ( not course in disi_courses ):
                 courses.add( course )
+            # else:
+            #     print( f"Excluding #{course}" )
 
-        name = contact.get("name", "Unknown").strip()
-        dept = contact.get("department", "Unknown").strip().replace("\"","'")
-        print(f"- Name: \"{name}\"")
-        print(f"  Department: \"{dept}\"")
-        print(f"  Courses:")
-        for cid, cname, ccredits in courses:
-            print(f"    - id: {cid}\n      name: \"{cname}\"\n      credits: {ccredits}")
+        if( len( courses ) > 0 ):
+            name = contact.get("name", "Unknown").strip()
+            dept = contact.get("department", "Unknown").strip().replace("\"","'")
+            print(f"- Name: \"{name}\"")
+            print(f"  Department: \"{dept}\"")
+            print(f"  Courses:")
+            for cid, cname, ccredits in courses:
+                print(f"    - id: {cid}\n      name: \"{cname}\"\n      credits: {ccredits}")
 
 
 if __name__ == "__main__":
