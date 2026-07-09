@@ -47,12 +47,22 @@ def _load_course_from_run_row(row: dict[str, str]) -> CourseRecord:
     raw: dict[str, Any] = {}
     sections: dict[str, str | None] = {}
     section_languages: dict[str, str | None] = {}
+    credits = 0
+    ssd = ""
+    disi_teacher = False
+    disi_cds = False
+    campus = ""
     if course_path.exists():
         try:
             loaded = load_course(course_path)
             raw = loaded.raw
             sections = loaded.sections
             section_languages = loaded.section_languages
+            credits = loaded.credits
+            ssd = loaded.ssd
+            disi_teacher = loaded.DISI_teacher
+            disi_cds = loaded.DISI_cds
+            campus = loaded.campus
         except Exception as error:
             LOGGER.warning("Could not load course metadata from %s: %s", course_path, error)
 
@@ -61,6 +71,11 @@ def _load_course_from_run_row(row: dict[str, str]) -> CourseRecord:
         path=course_path,
         sha256=course_sha256,
         title=course_title,
+        credits=credits,
+        ssd=ssd,
+        DISI_teacher=disi_teacher,
+        DISI_cds=disi_cds,
+        campus=campus,
         sections=sections,
         section_languages=section_languages,
         raw=raw,

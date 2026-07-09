@@ -245,9 +245,14 @@ def _teacher_email_handles(course: CourseRecord) -> list[str]:
         return []
     return sorted({handle for handle in (_teacher_email_handle(item) for item in teachers) if handle})
 
-
 def course_short_label(course: CourseRecord) -> str:
-    return f"{course.course_id} – {course.title or ''}"
+    teacher_flag = "*" if course.DISI_teacher else "-"
+    programme_flag = "*" if course.DISI_cds else "-"
+    credits = course.credits if course.credits else 0
+    return (
+        f"{course.course_id} – {course.title or ''} "
+        f"[{course.ssd} {credits}CFU {teacher_flag}{programme_flag} {course.campus}]"
+    )
 
 
 def _course_short_yaml_value(course: CourseRecord) -> str:

@@ -24,6 +24,7 @@ def write_placeholder_png(path: pathlib.Path) -> None:
     path.write_bytes(PLACEHOLDER_PNG)
 
 
+
 def _load_pyplot():
     os.environ.setdefault("MPLCONFIGDIR", "/tmp/matplotlib")
     import matplotlib
