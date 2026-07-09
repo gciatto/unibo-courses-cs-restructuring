@@ -16,7 +16,8 @@ REPO_ROOT = ".."
 
 CONTACTS_CSV   = os.path.join(REPO_ROOT, "data", "contacts.csv")
 COURSES_DIR    = os.path.join(REPO_ROOT, "data", "courses")
-TARGET_DEPT    = "Dipartimento di Informatica - Scienza e Ingegneria"
+TARGET_DEPT    = "disi"
+# TARGET_DEPT    = "Dipartimento di Informatica - Scienza e Ingegneria"
 
 
 def extract_email_name(email: str) -> str:

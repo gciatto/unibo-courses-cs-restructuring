@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-plot_credits_by_department.py
+plot_people_by_department.py
 
 Usage:
-    python plot_credits_by_department.py <input.yaml>
+    python plot_people_by_department.py <input.yaml>
 
 Reads the aggregated department-courses YAML file and produces:
-  - credits_by_dept_bar.pdf  — horizontal bar chart, all departments
+  - people_by_dept_bar.pdf  — horizontal bar chart, all departments
 """
 
 import sys
@@ -26,17 +26,20 @@ def load_yaml(path: str) -> list:
         return yaml.safe_load(f)
 
 
-def aggregate_credits(data: list) -> pd.DataFrame:
+def aggregate_people(data: list) -> pd.DataFrame:
     rows = []
     for entry in data:
         dept  = (entry.get("Department") or "(no department)").strip().replace("\n", " ")
         if not dept:
             dept = "(no department)"
-        total = sum(c.get("credits", 0) or 0 for c in (entry.get("Courses") or []))
-        rows.append({"department": dept, "credits": total})
+        dept_people = set()
+        for course in entry.get( "Courses" ):
+            for person in course.get( "name" ):
+                dept_people.add( person );
+        rows.append({"department": dept, "people": len( dept_people )})
     return (
         pd.DataFrame(rows)
-        .sort_values("credits", ascending=False)
+        .sort_values("people", ascending=False)
         .reset_index(drop=True)
     )
 
@@ -70,29 +73,29 @@ def save_meta(pdf_path: str, caption: str, description: str = "") -> None:
         json.dump({"caption": caption, "description": description}, f)
 
 
-def make_bar(df: pd.DataFrame, out: str = "credits_by_dept_bar.pdf") -> None:
-    bar_df = df.sort_values("credits", ascending=True).copy()
+def make_bar(df: pd.DataFrame, out: str = "people_by_dept_bar.pdf") -> None:
+    bar_df = df.sort_values("people", ascending=True).copy()
     bar_df["short"] = bar_df["department"].apply(shorten)
     bar_df["label"] = bar_df["short"].apply(wrap_label)
 
     fig = go.Figure(go.Bar(
-        x=bar_df["credits"],
+        x=bar_df["people"],
         y=bar_df["label"],
         orientation="h",
         marker_color=pio.templates["seaborn"].layout.colorway[0],
-        text=bar_df["credits"],
+        text=bar_df["people"],
         textposition="outside",
         cliponaxis=False,
     ))
     fig.update_layout(
         title={
-            "text": ( "Total Credits by Department" )
+            "text": ( "Total People by Department" )
         },
         height=1000,
         width=1100,
         margin=dict(l=260, r=90, t=110, b=40),
     )
-    fig.update_xaxes(title_text="Total Credits")
+    fig.update_xaxes(title_text="Total People")
     fig.update_yaxes(title_text="", tickfont=dict(size=11))
 
     if os.path.exists( out ):
@@ -103,14 +106,14 @@ def make_bar(df: pd.DataFrame, out: str = "credits_by_dept_bar.pdf") -> None:
 
 def main() -> None:
     if len(sys.argv) != 2:
-        print("Usage: python plot_credits_by_department.py <input.yaml>",
+        print("Usage: python plot_people_by_department.py <input.yaml>",
               file=sys.stderr)
         sys.exit(1)
 
     data = load_yaml(sys.argv[1])
-    df   = aggregate_credits(data)
+    df   = aggregate_people(data)
 
-    print(f"Loaded {len(df)} departments, total credits: {df['credits'].sum()}")
+    print(f"Loaded {len(df)} departments, total people: {df['people'].sum()}")
 
     make_bar(df)
 

@@ -27,7 +27,7 @@ def load_disi_courses() -> set:
         for course in person.get("Courses",[]) or []:
             cid  = str(course.get("id", {})) or "Unknown"
             name = course.get("name", {}).strip().replace("\"","'") or "Unknown"
-            ccredits = course.get("credits", {}) or 0
+            ccredits = course.get("credits", 0) or 0
             course = (cid, name, ccredits)
             disi_courses.add( course )
     return disi_courses
@@ -40,7 +40,7 @@ def parse_course_yaml(path: str) -> dict:
     with open(path, encoding="utf-8") as fh:
         data = yaml.safe_load(fh)
     course_title = data.get("course_title", {}) or {}
-    course_credits = data.get("credits", {}) or {}
+    course_credits = data.get("credits", 0) or 0
     return {
         "id":   str(course_title.get("id", "")).strip(),
         "name": str(course_title.get("name", "Unknown")).strip(),
@@ -104,10 +104,13 @@ def main():
                 course_credits = f"Unknown (parse error: {exc})"
 
             course = (course_id, course_name, course_credits)
+            # try:
             if ( not course in disi_courses ):
                 courses.add( course )
-            # else:
-            #     print( f"Excluding #{course}" )
+                # else:
+                #     print( f"Excluding #{course}" )
+            # except:
+            #     print( course )
 
         if( len( courses ) > 0 ):
             name = contact.get("name", "Unknown").strip()
