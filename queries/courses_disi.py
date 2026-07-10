@@ -91,8 +91,10 @@ def main():
             courses.add( course )
 
         name = contact.get("name", "Unknown").strip()
+        uid = contact.get("uid", "Unknown").strip()
         dept = contact.get("department", "Unknown").strip().replace("\"","'")
         print(f"- Name: \"{name}\"")
+        print(f"  UID: \"{uid}\"")
         print(f"  Department: \"{dept}\"")
         print(f"  Courses:")
         for cid, cname, ccredits in courses:

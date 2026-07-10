@@ -16,7 +16,7 @@ REPO_ROOT = ".."
 
 CONTACTS_CSV   = os.path.join(REPO_ROOT, "data", "contacts.csv")
 COURSES_DIR    = os.path.join(REPO_ROOT, "data", "courses")
-TARGET_DEPT    = "Dipartimento di Informatica - Scienza e Ingegneria"
+TARGET_DEPT    = "disi"
 
 
 def load_disi_courses() -> set:
@@ -114,8 +114,10 @@ def main():
 
         if( len( courses ) > 0 ):
             name = contact.get("name", "Unknown").strip()
+            uid = contact.get("uid", "Unknown").strip()
             dept = contact.get("department", "Unknown").strip().replace("\"","'")
             print(f"- Name: \"{name}\"")
+            print(f"  UID: \"{uid}\"")
             print(f"  Department: \"{dept}\"")
             print(f"  Courses:")
             for cid, cname, ccredits in courses:

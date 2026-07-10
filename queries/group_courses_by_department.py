@@ -45,6 +45,7 @@ def build_department_courses(records: list) -> dict:
         dept    = (record.get("Department") or "").strip()
         courses = record.get("Courses") or []
         name    = record.get("Name") or "Unknown"
+        uid    = record.get("UID") or "Unknown"
 
         for course in courses:
             cid     = str(course.get("id",      "")).strip()
@@ -53,9 +54,9 @@ def build_department_courses(records: list) -> dict:
             key     = (cid, cname, credits)
 
             if key not in dept_courses[dept]:
-                dept_courses[dept][key] = {"name": [ name ], "id": cid, "course_name": cname, "credits": credits}
+                dept_courses[dept][key] = {"teachers": [ { "name": name, "uid": uid } ], "id": cid, "name": cname, "credits": credits}
             else: 
-                dept_courses[dept][key]["name"].append( name )
+                dept_courses[dept][key]["teachers"].append( { "name": name, "uid": uid } )
 
     return dept_courses
 

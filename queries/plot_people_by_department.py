@@ -18,12 +18,21 @@ import pandas as pd
 import plotly.graph_objects as go
 import plotly.io as pio
 import os
+import csv
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
+
+REPO_ROOT = ".."
+CONTACTS_CSV   = os.path.join(REPO_ROOT, "data", "contacts.csv")
+
+
+with open(CONTACTS_CSV, encoding="utf-8", newline="") as fh:
+    contacts = csv.DictReader(fh,fieldnames='uid').__dict__
 
 def load_yaml(path: str) -> list:
     with open(path, "r", encoding="utf-8") as f:
         return yaml.safe_load(f)
+
 
 
 def aggregate_people(data: list) -> pd.DataFrame:
