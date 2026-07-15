@@ -8,8 +8,8 @@ languages:
 teaching_modes:
 - In-person learning (entirely or partially)
 schedules:
-- from: &id001 2025-09-23
-  to: &id002 2025-12-16
+- from: &id001 2026-02-17
+  to: &id002 2026-06-03
 teachers:
 - id: '30318'
   name: Asperti, Andrea
@@ -22,11 +22,67 @@ teachers:
     name: INFO-01/A
     description: Informatica
   modules:
-  - teaching_id: '493201'
-    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/493201
+  - teaching_id: '455262'
+    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/455262
     syllabus_urls:
-      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/493201
-      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/493201
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/455262
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/455262
+    details:
+    - 6 cfu
+    credits: 6
+    schedule:
+      from: 2026-02-17
+      to: 2026-06-03
+    campus: Bologna
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
+  - teaching_id: '530702'
+    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/530702
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/530702
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/530702
+    details:
+    - 6 cfu
+    credits: 6
+    schedule:
+      from: 2026-02-17
+      to: 2026-06-03
+    campus: Bologna
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
+- id: '178110'
+  name: Tartufoli, Beniamino
+  email: beniamino.tartufoli@unibo.it
+  website: https://www.unibo.it/sitoweb/beniamino.tartufoli
+  role:
+  - phd student
+  affiliation: difa
+  ssd:
+    name: GEO/12
+    description: OCEANOGRAFIA E FISICA DELL'ATMOSFERA
+  modules:
+  - teaching_id: '455262'
+    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/455262
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/455262
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/455262
+    details:
+    - 6 cfu
+    credits: 6
+    schedule:
+      from: 2026-02-17
+      to: 2026-06-03
+    campus: Bologna
+    ssd: INF/01
+    language: English
+    teaching_mode: In-person learning (entirely or partially)
+  - teaching_id: '502284'
+    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/502284
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/502284
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/502284
     details:
     - 6 cfu
     credits: 6
@@ -37,111 +93,131 @@ teachers:
     ssd: INF/01
     language: English
     teaching_mode: In-person learning (entirely or partially)
-- id: '169368'
-  name: Luise, Alberto
-  email: alberto.luise@unibo.it
-  website: https://www.unibo.it/sitoweb/alberto.luise
-  role:
-  - phd student
-  affiliation: disi
-  ssd:
-    name: ING-INF/05
-    description: SISTEMI DI ELABORAZIONE DELLE INFORMAZIONI
-  modules:
-  - teaching_id: '493201'
-    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/493201
-    syllabus_urls:
-      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/493201
-      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/493201
-    details:
-    - 6 cfu
-    credits: 6
-    schedule:
-      from: 2025-09-23
-      to: 2025-12-16
-    campus: Bologna
-    ssd: INF/01
-    language: English
-    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '91250'
-  name: DEEP LEARNING
-integrated_course: ''
+  name: Deep Learning
+integrated_course: Module of Machine Learning and Deep learning I.C.
 campi:
 - Bologna
 programmes:
-- code: '5898'
+- code: 0934
   campus: Bologna
   languages:
+  - english
   - italian
   duration: 2
   access: Open access
   name:
-    it: Informatica
-    en: Computer Science
+    it: Ingegneria elettronica
+    en: Electronic Engineering
   year: 2025
-  department: disi
+  department: dei
   urls:
-    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/5898
-    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/5898
-- code: '6640'
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/0934
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/0934
+- code: '6671'
   campus: Bologna
   languages:
   - italian
   duration: 3
-  access: Restricted access - TOLC-I (150 places available)
+  access: Restricted access - TOLC-I (200 places available)
   name:
-    it: Informatica
-    en: Computer Science
+    it: Ingegneria dell'automazione
+    en: Automation Engineering
+  year: 2025
+  department: dei
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6671
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6671
+- code: '6700'
+  campus: Bologna
+  languages:
+  - english
+  duration: 2
+  access: Open access
+  name:
+    it: Artificial Intelligence
+    en: Artificial Intelligence
   year: 2025
   department: disi
   urls:
-    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6640
-    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6640
-- code: '6698'
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6700
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6700
+- code: '6711'
   campus: Bologna
   languages:
+  - english
+  duration: 2
+  access: Open access
+  name:
+    it: Automation Engineering
+    en: Automation Engineering
+  year: 2025
+  department: dei
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6711
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6711
+- code: '6716'
+  campus: Bologna
+  languages:
+  - english
   - italian
   duration: 2
   access: Open access
   name:
-    it: Informatica
-    en: Computer Science
+    it: Ingegneria elettronica
+    en: Electronic Engineering
+  year: 2025
+  department: dei
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6716
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6716
+- code: '8891'
+  campus: Bologna
+  languages:
+  - english
+  duration: 2
+  access: Open access
+  name:
+    it: Automation Engineering
+    en: Automation Engineering
+  year: 2025
+  department: dei
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/8891
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/8891
+- code: '9063'
+  campus: Bologna
+  languages:
+  - english
+  duration: 2
+  access: Open access
+  name:
+    it: Artificial Intelligence
+    en: Artificial Intelligence
   year: 2025
   department: disi
   urls:
-    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6698
-    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6698
-- code: '8009'
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/9063
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/9063
+- code: '9217'
   campus: Bologna
   languages:
   - italian
   duration: 3
   access: Restricted access - TOLC-I
   name:
-    it: Informatica
-    en: Computer Science
+    it: Ingegneria dell'automazione
+    en: Automation Engineering
   year: 2025
-  department: disi
+  department: dei
   urls:
-    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/8009
-    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/8009
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/9217
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/9217
 syllabus:
   it:
     title: 2025/2026 DEEP LEARNING — Università di Bologna
     contents:
-      Conoscenze e abilità da conseguire: 'L''insegnamento è incentrato su tecniche
-        avanzate di Machine Learning, con particolare attenzione all''area del Deep
-        Learning. Al termine dell''attività formativa, lo studente comprende le idee
-        fondamentali, gli sviluppi recenti e le applicazioni potenziali dei sistemi
-        neurali (artificiali) profondi. Lo studente apprende tecniche supervisionate
-        e non supervisionate, architetture neurali di base, metodi per visualizzare
-        e interpretare il comportamento dei modelli, tecniche antagoniste e generative,
-        apprendimento per rinforzo e reti ricorrenti. Lo studente è capace di utilizzare
-        tali tecnologie per la risoluzione di problemi di classificazione
-
-        e interpretazione dei dati in domini applicativi concreti, tra cui computer
-        vision e elaborazione del linguaggio naturale'
       Contenuti: 'Il corso comincia con una introduzione alle Reti Neurali e al Deep
         Learning, e al loro tipico meccanismo di addestramento: l''algoritmo di backpropagation.
 
@@ -167,7 +243,8 @@ syllabus:
         Prerequisiti
 
 
-        Si presuppongono conoscenze di:
+        Il corso è mutuato da un corso integrato con Machine Learning del Corso di
+        Studi in Artificial Intelligence. Si presuppongono conoscenze di:
 
 
         - machine learning
@@ -177,17 +254,17 @@ syllabus:
         - algebra
 
         - pyhton'
-      Testi/Bibliografia: 'Letture suggerite:
+      Testi/Bibliografia: 'Testi consigliati:
 
 
-        - Dive into Deep Learning (https://d2l.ai/)
+        - Dive into deep learning (https://d2l.ai/) [https://d2l.ai/]
 
-        - I.Goodfellow, Y.Bengio, A.Courville. Deep Learning (https://www.deeplearningbook.org/front_matter.pdf).
+        - I.Goodfellow, Y.Bengio, A.Courville Deep Learning (https://www.deeplearningbook.org/front_matter.pdf).
         MIT Press.
 
 
-        Altri puntatori a material on line saranno forniti ad ogni lezione, in aggiunta
-        alle slides del corso.'
+        Per ogni lezione verrano forniti puntatori specifici a materiale disponibileon
+        line, in aggiunta alle slides del corso.'
       Metodi didattici: 'Lezioni frontali basate su slides, con discussione di esempi
         pratici mediante l''uso di python notebooks.
 
@@ -207,20 +284,24 @@ syllabus:
         slides. Si forniranno esempi concreti e funzionanti mediante l'uso di python
         notebooks.
       Orario di ricevimento: Consulta il sito web di Andrea Asperti (https://www.unibo.it/sitoweb/andrea.asperti)
-  en:
-    title: 2025/2026 DEEP LEARNING — University of Bologna
-    contents:
-      Learning outcomes: 'The course is centered on advanced Machine Learning techniques,
-        with particular emphasis on Deep Learning.
-
-        At the end of the course, the student understands the foundational ideas,
-        the most recent advances and the potential applications of deep neural systems.
-        The student lerans supervised and unsupervised techniques, basic neural topologies,
+      Conoscenze e abilità da conseguire:
+      - At the end of the course, the student understands the foundational ideas,
+        recent advances and application potential of deep neural systems. The student
+        understands supervised and unsupervised techniques, basic neural topologies,
         methods for visualizing and understanding the behavior on neural nets, adversarial
         and generative techniques, reinforcement learning, and recurrent networks.
-        The student is able to apply such technologies to address classification,
-        interpretation and data mining problems in concrete applicative domains, comprising
-        computer vision and natural languages processing.'
+        The student is able to apply such technologies to solving classification problems
+        in realistic domains.
+      - Al termine dell'attività formativa, lo studente comprende le idee fondamentali,
+        gli sviluppi recenti e le applicazioni potenziali dei sistemi neuronali (artificiali)
+        profondi. Lo studente comprende tecniche supervisionate e non supervisionate,
+        topologie neurali di base, metodi per visualizzare e capire il comportamento
+        delle reti neurali, tecniche antagoniste e generative, apprendimento per rinforzo
+        e reti ricorrenti. Lo studente è capace di applicare tali tecnologie a risolvere
+        problemi di classificazione in domini realistici.
+  en:
+    title: 2025/2026 Deep Learning — University of Bologna
+    contents:
       Course contents: 'The course begins with an introduction to Neural Networks
         and Deep Learning, focusing on their typical training mechanism: the backpropagation
         algorithm.
@@ -247,7 +328,9 @@ syllabus:
         Prerequisites:
 
 
-        Knowledge of the following subjects is assumed:
+        The course is part of the integrated curriculum with Machine Learning from
+        the Artificial Intelligence Studies Program. Knowledge of the following subjects
+        is assumed:
 
 
         - Machine Learning
@@ -283,3 +366,10 @@ syllabus:
       Teaching tools: Lectures will make extensive usage of slides. Working examples
         will be delivered by means on python notebooks.
       Office hours: See the website of Andrea Asperti (https://www.unibo.it/sitoweb/andrea.asperti/en)
+      Learning outcomes: At the end of the course, the student understands the foundational
+        ideas, recent advances and application potential of deep neural systems. The
+        student understands supervised and unsupervised techniques, basic neural topologies,
+        methods for visualizing and understanding the behavior on neural nets, adversarial
+        and generative techniques, reinforcement learning, and recurrent networks.
+        The student is able to apply such technologies to solving classification problems
+        in realistic domains.

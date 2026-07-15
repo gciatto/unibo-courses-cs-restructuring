@@ -104,24 +104,6 @@ syllabus:
   it:
     title: 2025/2026 COMPLEMENTI DI LINGUAGGI DI PROGRAMMAZIONE — Università di Bologna
     contents:
-      Conoscenze e abilità da conseguire: Lo sviluppo del software moderno richiede
-        strumenti veloci e sofisticati per la trasformazione e l'analisi. Ad esempio,
-        il codice Java viene verificato dalla Virtual Machine prima di eseguirlo per
-        controllare alcune proprietà di base sull'uso della memoria e dei lock. Facebook,
-        prima del rilascio, verifica le proprie app attraverso un analizzatore statico
-        che esclude l'assenza di bug senza alcuna esecuzione del codice. Le stesse
-        applicazioni performance-critical e per l'asset-management sarebbero impossibili
-        da costruire e far evolvere senza compilatori in grado di ottenere codice
-        macchina ottimizzato e corretto a partire da codice di alto livello. L'obiettivo
-        del corso è di presentare le moderne tecniche di trasformazione e analisi
-        del codice e di mostrarne la loro realizzazione. Per questo motivo il corso
-        farà riferimento a un framework, ANTLR, ampiamente utilizzato sia nel mondo
-        accademico che in quello industriale per implementare linguaggi, strumenti
-        e framework di ogni sorta. Ad esempio, Twitter search usa ANTLR per il parsing
-        delle query, processando oltre 2 miliardi di query al giorno. Al termine dell'attività
-        formativa lo studente conosce i fondamenti della trasformazione e analisi
-        statica del codice. Sarà in grado di applicare la teoria estendendo un linguaggio
-        piccolo, ma espressivo, per mezzo del framework ANTLR.
       Contenuti: 'Introduzione alla trasformazione di codice ed analisi. Il framework
         ANTLR e la sua analisi lessicale e sintattica. Analisi Semantica: la tabella
         dei simboli, il type checking, la verifica statica di proprietà come risorse
@@ -149,28 +131,27 @@ syllabus:
         in gruppo (di al massimo 3 persone). Il voto massimo dell'orale e 5 punti.
       Strumenti a supporto della didattica: Proiettore, lavagna, computer, laboratorio.
       Orario di ricevimento: Consulta il sito web di Cosimo Laneve (https://www.unibo.it/sitoweb/cosimo.laneve)
+      Conoscenze e abilità da conseguire: Lo sviluppo del software moderno richiede
+        strumenti veloci e sofisticati per la trasformazione e l'analisi. Ad esempio,
+        il codice Java viene verificato dalla Virtual Machine prima di eseguirlo per
+        controllare alcune proprietà di base sull'uso della memoria e dei lock. Facebook,
+        prima del rilascio, verifica le proprie app attraverso un analizzatore statico
+        che esclude l'assenza di bug senza alcuna esecuzione del codice. Le stesse
+        applicazioni performance-critical e per l'asset-management sarebbero impossibili
+        da costruire e far evolvere senza compilatori in grado di ottenere codice
+        macchina ottimizzato e corretto a partire da codice di alto livello. L'obiettivo
+        del corso è di presentare le moderne tecniche di trasformazione e analisi
+        del codice e di mostrarne la loro realizzazione. Per questo motivo il corso
+        farà riferimento a un framework, ANTLR, ampiamente utilizzato sia nel mondo
+        accademico che in quello industriale per implementare linguaggi, strumenti
+        e framework di ogni sorta. Ad esempio, Twitter search usa ANTLR per il parsing
+        delle query, processando oltre 2 miliardi di query al giorno. Al termine dell'attività
+        formativa lo studente conosce i fondamenti della trasformazione e analisi
+        statica del codice. Sarà in grado di applicare la teoria estendendo un linguaggio
+        piccolo, ma espressivo, per mezzo del framework ANTLR.
   en:
     title: 2025/2026 Complements of Programming Languages — University of Bologna
     contents:
-      Learning outcomes: 'Nowadays the software development requires fast and sophisticated
-        code transformation and analysis tools. For example, Java code is verified
-        by the Virtual Machine before execution to check basic correctness properties
-        about the memory and the locks that are used. Facebook, before releasing its
-        mobile apps, always submits them to a tool that finds bugs without running
-        the code. The applications of performance-critical systems and asset-management
-        systems would be impossible to build and evolve without compilers that derive
-        correct and optimized machine code from high-level source code. The objective
-        of this course is to discuss modern code transformation and analysis techniques
-        and illustrate their implementation. For this reason, the course will refer
-        to a framework, ANTLR, now widely used in academia and industry to build all
-        sorts of languages, tools, and frameworks. For example, Twitter search uses
-        ANTLR for query parsing, with over 2 billion queries a day.
-
-
-        LEARNING OUTCOMES: At the end of the course, the student knows the fundamentals
-        of code transformation and static analysis. He is able to apply the theory
-        by extending a small, yet expressive and powerful language, by means of the
-        ANTLR framework.'
       Course contents: 'Introduction to code transformation and analysis. The ANTLR
         framework and the corresponding Lexical and Syntactical Analysis. Semantic
         analysis: symbol table, type checking, static analysis of properties about
@@ -201,3 +182,22 @@ syllabus:
         maximum score for the oral part is 5 points.'
       Teaching tools: Projector, blackboard, laptop, computing laboratory
       Office hours: See the website of Cosimo Laneve (https://www.unibo.it/sitoweb/cosimo.laneve/en)
+      Learning outcomes: 'Nowadays the software development requires fast and sophisticated
+        code transformation and analysis tools. For example, Java code is verified
+        by the Virtual Machine before execution to check basic correctness properties
+        about the memory and the locks that are used. Facebook, before releasing its
+        mobile apps, always submits them to a tool that finds bugs without running
+        the code. The applications of performance-critical systems and asset-management
+        systems would be impossible to build and evolve without compilers that derive
+        correct and optimized machine code from high-level source code. The objective
+        of this course is to discuss modern code transformation and analysis techniques
+        and illustrate their implementation. For this reason, the course will refer
+        to a framework, ANTLR, now widely used in academia and industry to build all
+        sorts of languages, tools, and frameworks. For example, Twitter search uses
+        ANTLR for query parsing, with over 2 billion queries a day.
+
+
+        LEARNING OUTCOMES: At the end of the course, the student knows the fundamentals
+        of code transformation and static analysis. He is able to apply the theory
+        by extending a small, yet expressive and powerful language, by means of the
+        ANTLR framework.'

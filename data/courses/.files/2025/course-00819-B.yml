@@ -10,6 +10,8 @@ teaching_modes:
 schedules:
 - from: &id001 2025-09-22
   to: &id002 2025-12-10
+- from: &id003 2025-09-17
+  to: &id004 2025-12-17
 teachers:
 - id: '137179'
   name: Bedei, Andrea
@@ -37,6 +39,33 @@ teachers:
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
+- id: '33312'
+  name: Carbonaro, Antonella
+  email: antonella.carbonaro@unibo.it
+  website: https://www.unibo.it/sitoweb/antonella.carbonaro
+  role:
+  - associate professor
+  affiliation: disi
+  ssd:
+    name: INFO-01/A
+    description: Informatica
+  modules:
+  - teaching_id: '536894'
+    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/536894
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/536894
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/536894
+    details:
+    - CL.A
+    - 12 cfu
+    credits: 12
+    schedule:
+      from: 2025-09-17
+      to: 2025-12-17
+    campus: Cesena
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '128709'
   name: Girau, Roberto
   email: roberto.girau@unibo.it
@@ -60,6 +89,53 @@ teachers:
     schedule:
       from: *id001
       to: *id002
+    campus: Cesena
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
+- id: '134243'
+  name: Negri, Andrea
+  email: andrea.negri6@unibo.it
+  website: https://www.unibo.it/sitoweb/andrea.negri6
+  role:
+  - teaching tutor
+  affiliation: disi
+  modules:
+  - teaching_id: '536894'
+    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/536894
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/536894
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/536894
+    details:
+    - CL.A
+    credits: 12
+    schedule:
+      from: 2025-09-17
+      to: 2025-12-17
+    campus: Cesena
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
+- id: '38941'
+  name: Ravaioli, Mirko
+  email: mirko.ravaioli@unibo.it
+  website: https://www.unibo.it/sitoweb/mirko.ravaioli
+  role:
+  - adjunct professor
+  affiliation: din
+  modules:
+  - teaching_id: '536894'
+    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/536894
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/536894
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/536894
+    details:
+    - CL.A
+    - Module 2
+    credits: 12
+    schedule:
+      from: *id003
+      to: *id004
     campus: Cesena
     ssd: INF/01
     language: Italian
@@ -160,9 +236,6 @@ syllabus:
   it:
     title: 2025/2026 PROGRAMMAZIONE (CL.B) — Università di Bologna
     contents:
-      Conoscenze e abilità da conseguire: Al termine del corso, lo studente ha una
-        competenza di base sulla programmazione mediante linguaggio C e sull'analisi
-        di alcuni problemi fondamentali e dei relativi algoritmi risolutori.
       Contenuti: 'Il corso di Programmazione è finalizzato a fornire una competenza
         di base sulla programmazione dei calcolatori elettronici. Non sono richiesti
         prerequisiti di tipo informatico. Viene inizialmente fornita una prima descrizione
@@ -221,12 +294,12 @@ syllabus:
 
 
         Consulta il sito web di Roberto Girau (https://www.unibo.it/sitoweb/roberto.girau)'
+      Conoscenze e abilità da conseguire: Al termine del corso, lo studente ha una
+        competenza di base sulla programmazione mediante linguaggio C e sull'analisi
+        di alcuni problemi fondamentali e dei relativi algoritmi risolutori.
   en:
     title: 2025/2026 Programming (CL.B) — University of Bologna
     contents:
-      Learning outcomes: At the end of the course, the student will have a basic understanding
-        of programming in the C language, as well as the ability to analyze some fundamental
-        problems and their corresponding solution algorithms.
       Course contents: "The Programming course aims to provide basic competence in\
         \ computer programming. No prior knowledge of computer science is required.\
         \ Initially, a basic description of the algorithmic approach to problem-solving\
@@ -269,3 +342,10 @@ syllabus:
 
 
         See the website of Roberto Girau (https://www.unibo.it/sitoweb/roberto.girau/en)'
+      Learning outcomes:
+      - At the end of the course, the student will have a basic understanding of programming
+        in the C language, as well as the ability to analyze some fundamental problems
+        and their corresponding solution algorithms.
+      - After completing the course, the student has a strong knowledge of programming
+        using C language and the analysis of some fundamental problems and related
+        algorithms solvers.

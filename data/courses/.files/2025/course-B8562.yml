@@ -104,24 +104,6 @@ syllabus:
   it:
     title: 2025/2026 SISTEMI CONCORRENTI E PARALLELI M — Università di Bologna
     contents:
-      Conoscenze e abilità da conseguire: Al termine del corso lo studente possiede
-        conoscenze approfondite a) sull’organizzazione dei sistemi di elaborazione
-        concorrenti e paralleli, in relazione alle caratteristiche dell’hardware utilizzato
-        e con particolare riguardo ad architetture multiprocessore, multicomputer
-        e a sistemi paralleli ad elevate prestazioni (HPC); b) sulle caratteristiche
-        e sulla struttura interna dei sistemi operativi a supporto dell’esecuzione
-        di applicazioni concorrenti e parallele; c) sui modelli e sugli strumenti
-        per la sincronizzazione tra processi nel modello a memoria comune e nel modello
-        a scambio di messaggi; d) sulle metodologie e sui linguaggi per il progetto
-        di applicazioni concorrenti; e) sulle metodologie e sui linguaggi per il progetto
-        di applicazioni parallele in sistemi paralleli ad elevate prestazioni (HPC),
-        con particolare riguardo al modello architetturale MIMD. In particolare, sa
-        risolvere problemi di sincronizzazione tra attività concorrenti/parallele
-        nel modello a memoria comune e in quello a scambio di messaggi, sa sviluppare
-        programmi concorrenti utilizzando linguaggi di alto livello basati sia sulla
-        condivisione di variabili sia sullo scambio di messaggi, sa sviluppare programmi
-        paralleli in sistemi HPC, con particolare riguardo al modello architetturale
-        MIMD, e sa valutarne le prestazioni.
       Contenuti: '1.Introduzione:
 
 
@@ -301,34 +283,27 @@ syllabus:
         L''insegnamento contribuisce al perseguimento degli Obiettivi
 
         di Sviluppo Sostenibile dell''Agenda 2030 dell''ONU.'
+      Conoscenze e abilità da conseguire: Al termine del corso lo studente possiede
+        conoscenze approfondite a) sull’organizzazione dei sistemi di elaborazione
+        concorrenti e paralleli, in relazione alle caratteristiche dell’hardware utilizzato
+        e con particolare riguardo ad architetture multiprocessore, multicomputer
+        e a sistemi paralleli ad elevate prestazioni (HPC); b) sulle caratteristiche
+        e sulla struttura interna dei sistemi operativi a supporto dell’esecuzione
+        di applicazioni concorrenti e parallele; c) sui modelli e sugli strumenti
+        per la sincronizzazione tra processi nel modello a memoria comune e nel modello
+        a scambio di messaggi; d) sulle metodologie e sui linguaggi per il progetto
+        di applicazioni concorrenti; e) sulle metodologie e sui linguaggi per il progetto
+        di applicazioni parallele in sistemi paralleli ad elevate prestazioni (HPC),
+        con particolare riguardo al modello architetturale MIMD. In particolare, sa
+        risolvere problemi di sincronizzazione tra attività concorrenti/parallele
+        nel modello a memoria comune e in quello a scambio di messaggi, sa sviluppare
+        programmi concorrenti utilizzando linguaggi di alto livello basati sia sulla
+        condivisione di variabili sia sullo scambio di messaggi, sa sviluppare programmi
+        paralleli in sistemi HPC, con particolare riguardo al modello architetturale
+        MIMD, e sa valutarne le prestazioni.
   en:
     title: 2025/2026 SISTEMI CONCORRENTI E PARALLELI M — University of Bologna
     contents:
-      Learning outcomes: 'At the end of the course, the student has an in-depth understanding
-        of:
-
-        a) the organization of concurrent and parallel computing systems, in relation
-        to the characteristics of the hardware used, with particular focus on multiprocessor
-        architectures, multicomputers, and high-performance computing (HPC) systems;
-
-        b) the features and internal structure of operating systems that support the
-        execution of concurrent and parallel applications;
-
-        c) the models and tools for process synchronization in both the shared memory
-        model and the message-passing model;
-
-        d) the methodologies and programming languages for designing concurrent applications;
-
-        e) the methodologies and programming languages for designing parallel applications
-        on high-performance computing (HPC) systems, with particular reference to
-        the MIMD architectural model.
-
-
-        In particular, the student is able to solve synchronization problems among
-        concurrent/parallel activities in both the shared memory and message-passing
-        models, develop concurrent programs using high-level languages based on both
-        shared variables and message passing, develop parallel programs on HPC systems—especially
-        within the MIMD architectural model—and evaluate their performance.'
       Course contents: '1. Introduction:
 
 
@@ -504,3 +479,28 @@ syllabus:
 
         This teaching activity contributes to the achievement of the Sustainable Development
         Goals of the UN 2030 Agenda.'
+      Learning outcomes: 'At the end of the course, the student has an in-depth understanding
+        of:
+
+        a) the organization of concurrent and parallel computing systems, in relation
+        to the characteristics of the hardware used, with particular focus on multiprocessor
+        architectures, multicomputers, and high-performance computing (HPC) systems;
+
+        b) the features and internal structure of operating systems that support the
+        execution of concurrent and parallel applications;
+
+        c) the models and tools for process synchronization in both the shared memory
+        model and the message-passing model;
+
+        d) the methodologies and programming languages for designing concurrent applications;
+
+        e) the methodologies and programming languages for designing parallel applications
+        on high-performance computing (HPC) systems, with particular reference to
+        the MIMD architectural model.
+
+
+        In particular, the student is able to solve synchronization problems among
+        concurrent/parallel activities in both the shared memory and message-passing
+        models, develop concurrent programs using high-level languages based on both
+        shared variables and message passing, develop parallel programs on HPC systems—especially
+        within the MIMD architectural model—and evaluate their performance.'

@@ -1,0 +1,842 @@
+2026-07-15 11:02:24 INFO merge_teachings: Command line: /Users/gciatto/Work/unibo-courses-cs-restructuring/scraping/merge_teachings.py
+2026-07-15 11:02:42 INFO sentence_transformers.base.model: No device provided, using mps
+2026-07-15 11:02:42 INFO httpx: HTTP Request: GET https://huggingface.co/api/agent-harnesses "HTTP/1.1 200 OK"
+2026-07-15 11:02:42 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-15 11:02:42 WARNING huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-15 11:02:42 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/modules.json "HTTP/1.1 200 OK"
+2026-07-15 11:02:42 INFO httpx: HTTP Request: GET https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/modules.json "HTTP/1.1 200 OK"
+2026-07-15 11:02:42 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-15 11:02:42 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-07-15 11:02:42 INFO httpx: HTTP Request: GET https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-07-15 11:02:42 INFO sentence_transformers.base.model: Loading SentenceTransformer model from sentence-transformers/paraphrase-multilingual-mpnet-base-v2.
+2026-07-15 11:02:42 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-15 11:02:42 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-07-15 11:02:43 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-07-15 11:02:43 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/README.md "HTTP/1.1 200 OK"
+2026-07-15 11:02:43 INFO httpx: HTTP Request: GET https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/README.md "HTTP/1.1 200 OK"
+2026-07-15 11:02:43 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-15 11:02:43 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/modules.json "HTTP/1.1 200 OK"
+2026-07-15 11:02:43 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-15 11:02:43 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-07-15 11:02:43 INFO httpx: HTTP Request: GET https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-07-15 11:02:43 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-07-15 11:02:43 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-15 11:02:43 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/config.json "HTTP/1.1 200 OK"
+2026-07-15 11:02:43 INFO httpx: HTTP Request: GET https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/config.json "HTTP/1.1 200 OK"
+2026-07-15 11:02:43 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 3264.80it/s]
+2026-07-15 11:02:59 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-07-15 11:02:59 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-07-15 11:02:59 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-07-15 11:02:59 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-07-15 11:03:00 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-15 11:03:00 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-15 11:03:00 INFO httpx: HTTP Request: GET https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-15 11:03:00 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-15 11:03:00 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/config.json "HTTP/1.1 200 OK"
+2026-07-15 11:03:00 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-15 11:03:00 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/config.json "HTTP/1.1 200 OK"
+2026-07-15 11:03:00 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-15 11:03:00 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-15 11:03:00 INFO httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-07-15 11:03:00 INFO httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-07-15 11:03:01 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/sentencepiece.bpe.model "HTTP/1.1 302 Found"
+2026-07-15 11:03:01 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/tokenizer.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-15 11:03:01 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/tokenizer.json "HTTP/1.1 200 OK"
+2026-07-15 11:03:02 INFO httpx: HTTP Request: GET https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/tokenizer.json "HTTP/1.1 200 OK"
+2026-07-15 11:03:02 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/added_tokens.json "HTTP/1.1 404 Not Found"
+2026-07-15 11:03:02 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/special_tokens_map.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-15 11:03:02 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/special_tokens_map.json "HTTP/1.1 200 OK"
+2026-07-15 11:03:02 INFO httpx: HTTP Request: GET https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/special_tokens_map.json "HTTP/1.1 200 OK"
+2026-07-15 11:03:02 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-07-15 11:03:03 INFO httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2 "HTTP/1.1 200 OK"
+2026-07-15 11:03:03 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-15 11:03:03 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-07-15 11:03:03 INFO httpx: HTTP Request: GET https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-07-15 11:03:03 INFO httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2 "HTTP/1.1 200 OK"
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.45s/it]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.45s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  7.31it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  7.30it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  7.14it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  7.14it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 28.04it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 27.24it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 43.98it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 47.07it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 25.47it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 43.48it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 47.81it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 47.13it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 25.97it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 43.93it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 47.27it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 46.26it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 25.85it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 25.78it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 25.89it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 25.57it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.64it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.71it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 25.29it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 25.44it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 25.22it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.48it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.48it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.12it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 39.88it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 40.47it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 43.55it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 43.94it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.97it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 42.11it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.73it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 42.29it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 46.47it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 47.68it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 47.00it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 47.14it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 21.99it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 44.51it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.10it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 44.66it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 46.80it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 46.80it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 45.88it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 46.93it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 45.41it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 46.24it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 46.96it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 45.65it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.53it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 42.37it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.44it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 42.73it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 47.48it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 47.73it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 47.82it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.97it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 46.06it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.81it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 46.52it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 47.28it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 25.02it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 43.12it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 47.16it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 46.08it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.98it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 43.24it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 46.29it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 45.65it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 47.85it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.84it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 43.33it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 46.57it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 46.48it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.85it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 42.89it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 46.29it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 45.91it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 47.37it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.89it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 42.34it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.09it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 46.13it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.13it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 43.94it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 46.03it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 44.58it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.02it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 42.17it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 44.66it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 44.86it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.43it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.53it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.09it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.20it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 41.20it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.09it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 40.61it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.13it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 41.04it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.98it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.85it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 41.55it/s]
+2026-07-15 11:03:11 WARNING merge_teachings: Course 00819 in year 2025 has 3 merge components; using suffixes
+2026-07-15 11:03:11 WARNING merge_teachings: Conflicting syllabus[it] for course 00819 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alina.sirbu/2025/teaching-524297.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/angelo.diiorio/2025/teaching-523706.yml
+2026-07-15 11:03:11 WARNING merge_teachings: Conflicting syllabus[en] for course 00819 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alina.sirbu/2025/teaching-524297.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/angelo.diiorio/2025/teaching-523706.yml
+2026-07-15 11:03:11 WARNING merge_teachings: Conflicting syllabus[it] for course 00819 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alina.sirbu/2025/teaching-524297.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/roberto.amadini/2025/teaching-523706.yml
+2026-07-15 11:03:11 WARNING merge_teachings: Conflicting syllabus[en] for course 00819 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alina.sirbu/2025/teaching-524297.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/roberto.amadini/2025/teaching-523706.yml
+2026-07-15 11:03:11 WARNING merge_teachings: Conflicting syllabus[it] for course 00819 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alina.sirbu/2025/teaching-524297.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/simone.gazza/2025/teaching-523706.yml
+2026-07-15 11:03:11 WARNING merge_teachings: Conflicting syllabus[en] for course 00819 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alina.sirbu/2025/teaching-524297.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/simone.gazza/2025/teaching-523706.yml
+2026-07-15 11:03:11 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-00819.yml from 7 teaching file(s)
+2026-07-15 11:03:11 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-00819-A.yml from 3 teaching file(s)
+2026-07-15 11:03:11 WARNING merge_teachings: Conflicting syllabus[it] for course 00819 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.bedei3/2025/teaching-536897.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.negri6/2025/teaching-536894.yml
+2026-07-15 11:03:11 WARNING merge_teachings: Conflicting syllabus[en] for course 00819 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.bedei3/2025/teaching-536897.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.negri6/2025/teaching-536894.yml
+2026-07-15 11:03:11 WARNING merge_teachings: Conflicting syllabus[it] for course 00819 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.bedei3/2025/teaching-536897.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/antonella.carbonaro/2025/teaching-536894.yml
+2026-07-15 11:03:11 WARNING merge_teachings: Conflicting syllabus[en] for course 00819 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.bedei3/2025/teaching-536897.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/antonella.carbonaro/2025/teaching-536894.yml
+2026-07-15 11:03:11 WARNING merge_teachings: Conflicting syllabus[it] for course 00819 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.bedei3/2025/teaching-536897.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/mirko.ravaioli/2025/teaching-536894.yml
+2026-07-15 11:03:11 WARNING merge_teachings: Conflicting syllabus[en] for course 00819 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.bedei3/2025/teaching-536897.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/mirko.ravaioli/2025/teaching-536894.yml
+2026-07-15 11:03:11 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-00819-B.yml from 6 teaching file(s)
+2026-07-15 11:03:11 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-03716.yml from 2 teaching file(s)
+2026-07-15 11:03:11 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-04138.yml from 4 teaching file(s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 21.66it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.49it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.44it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.75it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 25.00it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 25.55it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  8.14it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  8.13it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 25.33it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 25.88it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 34.44it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 25.59it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 25.35it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 25.42it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 34.94it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 35.52it/s]
+2026-07-15 11:03:12 WARNING merge_teachings: Course 07276 in year 2025 has 4 merge components; using suffixes
+2026-07-15 11:03:12 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-07276.yml from 1 teaching file(s)
+2026-07-15 11:03:12 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-07276-A.yml from 4 teaching file(s)
+2026-07-15 11:03:12 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-07276-B.yml from 1 teaching file(s)
+2026-07-15 11:03:12 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-07276-C.yml from 1 teaching file(s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 11.15it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 39.01it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 39.97it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 40.41it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 38.72it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 39.93it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 40.24it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 40.79it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 39.89it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 39.41it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 39.36it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 14.09it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 43.98it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 44.52it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 41.91it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 39.21it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 45.51it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 45.44it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 45.02it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 45.05it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 40.71it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 40.02it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 39.69it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 39.58it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 39.41it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 40.17it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 40.21it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 40.10it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 42.41it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 44.34it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 42.96it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 43.40it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 43.48it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 42.50it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 42.87it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 43.65it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 44.13it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 43.72it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 43.25it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 43.27it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 43.58it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 42.54it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 43.12it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 44.10it/s]
+2026-07-15 11:03:13 WARNING merge_teachings: Course 08574 in year 2025 has 3 merge components; using suffixes
+2026-07-15 11:03:13 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-08574.yml from 2 teaching file(s)
+2026-07-15 11:03:13 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-08574-A.yml from 6 teaching file(s)
+2026-07-15 11:03:13 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-08574-B.yml from 4 teaching file(s)
+2026-07-15 11:03:13 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-09032.yml from 2 teaching file(s)
+2026-07-15 11:03:14 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-09679.yml from 1 teaching file(s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 10.70it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 35.39it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 35.94it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 36.30it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 37.92it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 37.24it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 37.06it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 36.65it/s]
+2026-07-15 11:03:14 WARNING merge_teachings: Course 09730 in year 2025 has 2 merge components; using suffixes
+2026-07-15 11:03:14 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-09730.yml from 4 teaching file(s)
+2026-07-15 11:03:14 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-09730-A.yml from 2 teaching file(s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 20.83it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 31.12it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 31.33it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 31.24it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 31.46it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 30.64it/s]
+2026-07-15 11:03:14 WARNING merge_teachings: Course 10906 in year 2025 has 2 merge components; using suffixes
+2026-07-15 11:03:14 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-10906.yml from 2 teaching file(s)
+2026-07-15 11:03:14 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-10906-A.yml from 3 teaching file(s)
+2026-07-15 11:03:14 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-11925.yml from 3 teaching file(s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 17.70it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.24it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.33it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.39it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.22it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.97it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.24it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.58it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.04it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.85it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.13it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.52it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 35.17it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.72it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.78it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.02it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.50it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.86it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 21.97it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 32.05it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 33.46it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.17it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.03it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.39it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.72it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.01it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.87it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.51it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.09it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.04it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 21.76it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.10it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.53it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.71it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.81it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.97it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.36it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.96it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.30it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.40it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.33it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.45it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 32.10it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 32.46it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.07it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 33.50it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 32.30it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.34it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.15it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.35it/s]
+2026-07-15 11:03:17 WARNING merge_teachings: Course 11929 in year 2025 has 3 merge components; using suffixes
+2026-07-15 11:03:17 WARNING merge_teachings: Conflicting syllabus[it] for course 11929 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/a.melis/2025/teaching-536877.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/gloria.semprini2/2025/teaching-536880.yml
+2026-07-15 11:03:17 WARNING merge_teachings: Conflicting syllabus[en] for course 11929 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/a.melis/2025/teaching-536877.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/gloria.semprini2/2025/teaching-536880.yml
+2026-07-15 11:03:17 WARNING merge_teachings: Conflicting syllabus[it] for course 11929 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/a.melis/2025/teaching-536877.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/moreno.marzolla/2025/teaching-536880.yml
+2026-07-15 11:03:17 WARNING merge_teachings: Conflicting syllabus[en] for course 11929 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/a.melis/2025/teaching-536877.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/moreno.marzolla/2025/teaching-536880.yml
+2026-07-15 11:03:17 WARNING merge_teachings: Conflicting syllabus[it] for course 11929 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/a.melis/2025/teaching-536877.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/vittorio.maniezzo/2025/teaching-536880.yml
+2026-07-15 11:03:17 WARNING merge_teachings: Conflicting syllabus[en] for course 11929 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/a.melis/2025/teaching-536877.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/vittorio.maniezzo/2025/teaching-536880.yml
+2026-07-15 11:03:17 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-11929.yml from 7 teaching file(s)
+2026-07-15 11:03:17 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-11929-A.yml from 4 teaching file(s)
+2026-07-15 11:03:17 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-11929-B.yml from 2 teaching file(s)
+2026-07-15 11:03:17 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-11933.yml from 1 teaching file(s)
+2026-07-15 11:03:17 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-14015.yml from 1 teaching file(s)
+2026-07-15 11:03:17 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-15305.yml from 4 teaching file(s)
+2026-07-15 11:03:17 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-15920.yml from 1 teaching file(s)
+2026-07-15 11:03:17 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-16692.yml from 2 teaching file(s)
+2026-07-15 11:03:17 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-16870.yml from 2 teaching file(s)
+2026-07-15 11:03:17 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-17628.yml from 1 teaching file(s)
+2026-07-15 11:03:17 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-17634.yml from 1 teaching file(s)
+2026-07-15 11:03:17 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-20741.yml from 1 teaching file(s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  8.54it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  8.53it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.04it/s]
+2026-07-15 11:03:17 WARNING merge_teachings: Course 27311 in year 2025 has 2 merge components; using suffixes
+2026-07-15 11:03:17 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-27311.yml from 1 teaching file(s)
+2026-07-15 11:03:17 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-27311-A.yml from 1 teaching file(s)
+2026-07-15 11:03:17 WARNING merge_teachings: Conflicting syllabus[it] for course 28004 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessio.benenati2/2025/teaching-536944.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/francesco.giordani8/2025/teaching-536947.yml
+2026-07-15 11:03:17 WARNING merge_teachings: Conflicting syllabus[en] for course 28004 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessio.benenati2/2025/teaching-536944.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/francesco.giordani8/2025/teaching-536947.yml
+2026-07-15 11:03:17 WARNING merge_teachings: Conflicting syllabus[it] for course 28004 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessio.benenati2/2025/teaching-536944.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/wilma.penzo/2025/teaching-536947.yml
+2026-07-15 11:03:17 WARNING merge_teachings: Conflicting syllabus[en] for course 28004 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessio.benenati2/2025/teaching-536944.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/wilma.penzo/2025/teaching-536947.yml
+2026-07-15 11:03:17 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-28004.yml from 4 teaching file(s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.04it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.12it/s]
+2026-07-15 11:03:17 WARNING merge_teachings: Course 28011 in year 2025 has 2 merge components; using suffixes
+2026-07-15 11:03:17 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-28011.yml from 1 teaching file(s)
+2026-07-15 11:03:17 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-28011-A.yml from 2 teaching file(s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 11.49it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 32.47it/s]
+2026-07-15 11:03:18 WARNING merge_teachings: Course 28012 in year 2025 has 2 merge components; using suffixes
+2026-07-15 11:03:18 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-28012.yml from 1 teaching file(s)
+2026-07-15 11:03:18 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-28012-A.yml from 2 teaching file(s)
+2026-07-15 11:03:18 WARNING merge_teachings: Conflicting syllabus[it] for course 28020 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessandro.zanni3/2025/teaching-447114.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessandro.zanni3/2025/teaching-447115.yml
+2026-07-15 11:03:18 WARNING merge_teachings: Conflicting syllabus[en] for course 28020 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessandro.zanni3/2025/teaching-447114.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessandro.zanni3/2025/teaching-447115.yml
+2026-07-15 11:03:18 WARNING merge_teachings: Conflicting syllabus[it] for course 28020 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessandro.zanni3/2025/teaching-447114.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/anna.ciampolini/2025/teaching-447115.yml
+2026-07-15 11:03:18 WARNING merge_teachings: Conflicting syllabus[en] for course 28020 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessandro.zanni3/2025/teaching-447114.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/anna.ciampolini/2025/teaching-447115.yml
+2026-07-15 11:03:18 WARNING merge_teachings: Conflicting syllabus[it] for course 28020 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessandro.zanni3/2025/teaching-447114.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/daniela.loreti/2025/teaching-447115.yml
+2026-07-15 11:03:18 WARNING merge_teachings: Conflicting syllabus[en] for course 28020 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessandro.zanni3/2025/teaching-447114.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/daniela.loreti/2025/teaching-447115.yml
+2026-07-15 11:03:18 WARNING merge_teachings: Conflicting syllabus[it] for course 28020 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessandro.zanni3/2025/teaching-447114.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/pietro.bertozzi4/2025/teaching-447115.yml
+2026-07-15 11:03:18 WARNING merge_teachings: Conflicting syllabus[en] for course 28020 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessandro.zanni3/2025/teaching-447114.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/pietro.bertozzi4/2025/teaching-447115.yml
+2026-07-15 11:03:18 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-28020.yml from 8 teaching file(s)
+2026-07-15 11:03:18 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-28021.yml from 2 teaching file(s)
+2026-07-15 11:03:18 WARNING merge_teachings: Conflicting syllabus[it] for course 28024 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.sabbioni5/2025/teaching-545734.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/antonio.corradi/2025/teaching-545733.yml
+2026-07-15 11:03:18 WARNING merge_teachings: Conflicting syllabus[en] for course 28024 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.sabbioni5/2025/teaching-545734.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/antonio.corradi/2025/teaching-545733.yml
+2026-07-15 11:03:18 WARNING merge_teachings: Conflicting syllabus[it] for course 28024 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.sabbioni5/2025/teaching-545734.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/armir.bujari/2025/teaching-545733.yml
+2026-07-15 11:03:18 WARNING merge_teachings: Conflicting syllabus[en] for course 28024 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.sabbioni5/2025/teaching-545734.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/armir.bujari/2025/teaching-545733.yml
+2026-07-15 11:03:18 WARNING merge_teachings: Conflicting syllabus[it] for course 28024 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.sabbioni5/2025/teaching-545734.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/giuseppe.martuscelli/2025/teaching-545733.yml
+2026-07-15 11:03:18 WARNING merge_teachings: Conflicting syllabus[en] for course 28024 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.sabbioni5/2025/teaching-545734.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/giuseppe.martuscelli/2025/teaching-545733.yml
+2026-07-15 11:03:18 WARNING merge_teachings: Conflicting syllabus[it] for course 28024 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.sabbioni5/2025/teaching-545734.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/sofia.montebugnoli3/2025/teaching-545733.yml
+2026-07-15 11:03:18 WARNING merge_teachings: Conflicting syllabus[en] for course 28024 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.sabbioni5/2025/teaching-545734.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/sofia.montebugnoli3/2025/teaching-545733.yml
+2026-07-15 11:03:18 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-28024.yml from 8 teaching file(s)
+2026-07-15 11:03:18 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-28027.yml from 2 teaching file(s)
+2026-07-15 11:03:18 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-28040.yml from 4 teaching file(s)
+2026-07-15 11:03:18 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-28106.yml from 1 teaching file(s)
+2026-07-15 11:03:18 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-28623.yml from 3 teaching file(s)
+2026-07-15 11:03:18 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-28652.yml from 2 teaching file(s)
+2026-07-15 11:03:18 WARNING merge_teachings: Conflicting syllabus[it] for course 28659 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.garbugli/2025/teaching-461146.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/elisa.drudi5/2025/teaching-461147.yml
+2026-07-15 11:03:18 WARNING merge_teachings: Conflicting syllabus[en] for course 28659 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.garbugli/2025/teaching-461146.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/elisa.drudi5/2025/teaching-461147.yml
+2026-07-15 11:03:18 WARNING merge_teachings: Conflicting syllabus[it] for course 28659 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.garbugli/2025/teaching-461146.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/giuseppe.dimodica/2025/teaching-461147.yml
+2026-07-15 11:03:18 WARNING merge_teachings: Conflicting syllabus[en] for course 28659 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.garbugli/2025/teaching-461146.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/giuseppe.dimodica/2025/teaching-461147.yml
+2026-07-15 11:03:18 WARNING merge_teachings: Conflicting syllabus[it] for course 28659 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.garbugli/2025/teaching-461146.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/paolo.bellavista/2025/teaching-461147.yml
+2026-07-15 11:03:18 WARNING merge_teachings: Conflicting syllabus[en] for course 28659 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.garbugli/2025/teaching-461146.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/paolo.bellavista/2025/teaching-461147.yml
+2026-07-15 11:03:18 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-28659.yml from 5 teaching file(s)
+2026-07-15 11:03:18 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-28796.yml from 2 teaching file(s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 20.81it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.57it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.92it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.40it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.17it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.08it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.69it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 19.71it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 21.60it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.57it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.21it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.46it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.40it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.48it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 21.24it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 21.49it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 21.31it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.01it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 20.73it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 21.78it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.41it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.86it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.82it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.21it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.67it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.03it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.04it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.68it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.05it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.62it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.84it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.84it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.37it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.18it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.09it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.76it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.55it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 21.94it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 21.12it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 20.61it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.21it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 21.30it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 20.63it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 40.53it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 39.13it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 39.21it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 40.73it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.79it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.01it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 39.71it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 40.90it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.11it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.66it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 38.35it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 37.45it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 40.35it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.65it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.54it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.16it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.37it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.41it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.80it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.60it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.53it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 21.77it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 20.33it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 37.07it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 34.97it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 30.08it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 32.40it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 31.31it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 38.31it/s]
+2026-07-15 11:03:22 WARNING merge_teachings: Course 29227 in year 2025 has 3 merge components; using suffixes
+2026-07-15 11:03:22 WARNING merge_teachings: Conflicting syllabus[it] for course 29227 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alberto.musa/2025/teaching-536851.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alberto.musa/2025/teaching-536854.yml
+2026-07-15 11:03:22 WARNING merge_teachings: Conflicting syllabus[en] for course 29227 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alberto.musa/2025/teaching-536851.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alberto.musa/2025/teaching-536854.yml
+2026-07-15 11:03:22 WARNING merge_teachings: Conflicting syllabus[it] for course 29227 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alberto.musa/2025/teaching-536851.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/allegra.defilippo/2025/teaching-536854.yml
+2026-07-15 11:03:22 WARNING merge_teachings: Conflicting syllabus[en] for course 29227 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alberto.musa/2025/teaching-536851.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/allegra.defilippo/2025/teaching-536854.yml
+2026-07-15 11:03:22 WARNING merge_teachings: Conflicting syllabus[it] for course 29227 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alberto.musa/2025/teaching-536851.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.acquaviva/2025/teaching-536854.yml
+2026-07-15 11:03:22 WARNING merge_teachings: Conflicting syllabus[en] for course 29227 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alberto.musa/2025/teaching-536851.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.acquaviva/2025/teaching-536854.yml
+2026-07-15 11:03:22 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-29227.yml from 7 teaching file(s)
+2026-07-15 11:03:22 WARNING merge_teachings: Conflicting syllabus[it] for course 29227 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/federico.giangolini2/2025/teaching-333852.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/marco.barbieri33/2025/teaching-333853.yml
+2026-07-15 11:03:22 WARNING merge_teachings: Conflicting syllabus[en] for course 29227 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/federico.giangolini2/2025/teaching-333852.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/marco.barbieri33/2025/teaching-333853.yml
+2026-07-15 11:03:22 WARNING merge_teachings: Conflicting syllabus[it] for course 29227 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/federico.giangolini2/2025/teaching-333852.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/ruben.scardovelli/2025/teaching-333853.yml
+2026-07-15 11:03:22 WARNING merge_teachings: Conflicting syllabus[en] for course 29227 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/federico.giangolini2/2025/teaching-333852.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/ruben.scardovelli/2025/teaching-333853.yml
+2026-07-15 11:03:22 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-29227-A.yml from 4 teaching file(s)
+2026-07-15 11:03:22 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-29227-B.yml from 4 teaching file(s)
+2026-07-15 11:03:22 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-30376.yml from 2 teaching file(s)
+2026-07-15 11:03:22 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-37085.yml from 1 teaching file(s)
+2026-07-15 11:03:22 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-37262.yml from 1 teaching file(s)
+2026-07-15 11:03:22 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-37635.yml from 4 teaching file(s)
+2026-07-15 11:03:22 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-37760.yml from 2 teaching file(s)
+2026-07-15 11:03:22 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-37925.yml from 2 teaching file(s)
+2026-07-15 11:03:22 WARNING merge_teachings: Conflicting integrated_course for course 39176 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/stefano.russo7/2025/teaching-359962.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/stefano.russo7/2025/teaching-544376.yml
+2026-07-15 11:03:22 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-39176.yml from 2 teaching file(s)
+2026-07-15 11:03:22 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-40720.yml from 3 teaching file(s)
+2026-07-15 11:03:22 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-41169.yml from 1 teaching file(s)
+2026-07-15 11:03:22 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-41588.yml from 1 teaching file(s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 30.10it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 34.52it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 34.53it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 34.49it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 34.16it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 34.37it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 34.31it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 34.14it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 34.70it/s]
+2026-07-15 11:03:22 WARNING merge_teachings: Course 41731 in year 2025 has 2 merge components; using suffixes
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-41731.yml from 3 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-41731-A.yml from 3 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-42500.yml from 2 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-47240.yml from 2 teaching file(s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.06it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 35.65it/s]
+2026-07-15 11:03:23 WARNING merge_teachings: Course 48693 in year 2025 has 2 merge components; using suffixes
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-48693.yml from 2 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-48693-A.yml from 1 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-57828.yml from 1 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-58348.yml from 2 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-58423.yml from 2 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-58437.yml from 1 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-60348.yml from 2 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-65094.yml from 1 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-66857.yml from 2 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-66858.yml from 2 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-66860.yml from 1 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-66870.yml from 1 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-69259.yml from 1 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-69430.yml from 2 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-69661.yml from 3 teaching file(s)
+2026-07-15 11:03:23 WARNING merge_teachings: Conflicting syllabus[it] for course 69731 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/davide.maltoni/2025/teaching-536883.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/matteo.ferrara/2025/teaching-536886.yml
+2026-07-15 11:03:23 WARNING merge_teachings: Conflicting syllabus[en] for course 69731 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/davide.maltoni/2025/teaching-536883.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/matteo.ferrara/2025/teaching-536886.yml
+2026-07-15 11:03:23 WARNING merge_teachings: Conflicting syllabus[it] for course 69731 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/davide.maltoni/2025/teaching-536883.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/raffaele.cappelli/2025/teaching-536886.yml
+2026-07-15 11:03:23 WARNING merge_teachings: Conflicting syllabus[en] for course 69731 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/davide.maltoni/2025/teaching-536883.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/raffaele.cappelli/2025/teaching-536886.yml
+2026-07-15 11:03:23 WARNING merge_teachings: Conflicting syllabus[it] for course 69731 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/davide.maltoni/2025/teaching-536883.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/serafino.pandolfini2/2025/teaching-536886.yml
+2026-07-15 11:03:23 WARNING merge_teachings: Conflicting syllabus[en] for course 69731 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/davide.maltoni/2025/teaching-536883.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/serafino.pandolfini2/2025/teaching-536886.yml
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-69731.yml from 7 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-69867.yml from 2 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-70155.yml from 2 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-70210.yml from 1 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-70219.yml from 4 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-70226.yml from 2 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-72671.yml from 1 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-72778.yml from 1 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-72787.yml from 3 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-72796.yml from 2 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-72938.yml from 2 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-72939.yml from 1 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-72940.yml from 1 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-72942.yml from 2 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-72945.yml from 1 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-73025.yml from 2 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-73149.yml from 1 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-73273.yml from 1 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-73302.yml from 3 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-73435.yml from 1 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-75198.yml from 1 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-75835.yml from 3 teaching file(s)
+2026-07-15 11:03:23 WARNING merge_teachings: Conflicting syllabus[it] for course 75969 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/enrica.bruno2/2025/teaching-458983.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/ivan.heibi2/2025/teaching-536057.yml
+2026-07-15 11:03:23 WARNING merge_teachings: Conflicting syllabus[en] for course 75969 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/enrica.bruno2/2025/teaching-458983.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/ivan.heibi2/2025/teaching-536057.yml
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-75969.yml from 4 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-76011.yml from 1 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-77780.yml from 2 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-77933.yml from 2 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-78096.yml from 2 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-78510.yml from 1 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-78778.yml from 2 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-78779.yml from 1 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-78810.yml from 3 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-79194.yml from 2 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-81609.yml from 1 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-81610.yml from 2 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-81612.yml from 3 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-81672.yml from 1 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-81676.yml from 1 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-81678.yml from 3 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-81683.yml from 4 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-81917.yml from 2 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-81932.yml from 2 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-81934.yml from 1 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-81940.yml from 3 teaching file(s)
+2026-07-15 11:03:23 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-81942.yml from 2 teaching file(s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  9.30it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  9.29it/s]
+2026-07-15 11:03:24 WARNING merge_teachings: Course 82202 in year 2025 has 2 merge components; using suffixes
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-82202.yml from 1 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-82202-A.yml from 1 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-84339.yml from 2 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-84401.yml from 3 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-84530.yml from 2 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-84531.yml from 2 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-85189.yml from 2 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-85285.yml from 3 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-85301.yml from 2 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-85445.yml from 1 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-85446.yml from 1 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-85573.yml from 3 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-85728.yml from 2 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-87469.yml from 1 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-87474.yml from 3 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-87898.yml from 2 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-87901.yml from 1 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-88016.yml from 1 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-88145.yml from 2 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-88146.yml from 2 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-88155.yml from 4 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-88202.yml from 2 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-88324.yml from 3 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-88325.yml from 3 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-88566.yml from 4 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-89988.yml from 3 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-90074.yml from 1 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-90106.yml from 3 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-90107.yml from 3 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-90147.yml from 1 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-90157.yml from 1 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-90477.yml from 2 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-90720.yml from 3 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-90730.yml from 2 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-90748.yml from 1 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-90749.yml from 2 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-90864.yml from 1 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-91161.yml from 2 teaching file(s)
+2026-07-15 11:03:24 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-91248.yml from 5 teaching file(s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 21.45it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.24it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.26it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.75it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.60it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.02it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 20.29it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.00it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.02it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.91it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.43it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 26.96it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 26.82it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 26.59it/s]
+2026-07-15 11:03:25 WARNING merge_teachings: Course 91250 in year 2025 has 3 merge components; using suffixes
+2026-07-15 11:03:25 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-91250.yml from 2 teaching file(s)
+2026-07-15 11:03:25 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-91250-A.yml from 4 teaching file(s)
+2026-07-15 11:03:25 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-91250-B.yml from 1 teaching file(s)
+2026-07-15 11:03:25 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-91254.yml from 4 teaching file(s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.13it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 31.79it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 31.95it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 31.76it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 34.71it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 34.81it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 34.64it/s]
+2026-07-15 11:03:25 WARNING merge_teachings: Course 91258 in year 2025 has 3 merge components; using suffixes
+2026-07-15 11:03:25 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-91258.yml from 1 teaching file(s)
+2026-07-15 11:03:25 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-91258-A.yml from 3 teaching file(s)
+2026-07-15 11:03:25 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-91258-B.yml from 1 teaching file(s)
+2026-07-15 11:03:25 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-91259.yml from 3 teaching file(s)
+2026-07-15 11:03:25 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-91261.yml from 2 teaching file(s)
+2026-07-15 11:03:25 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-91264.yml from 3 teaching file(s)
+2026-07-15 11:03:25 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-91265.yml from 2 teaching file(s)
+2026-07-15 11:03:25 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-91266.yml from 2 teaching file(s)
+2026-07-15 11:03:25 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-91267.yml from 1 teaching file(s)
+2026-07-15 11:03:25 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-91269.yml from 2 teaching file(s)
+2026-07-15 11:03:25 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-91411.yml from 1 teaching file(s)
+2026-07-15 11:03:25 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-91602.yml from 1 teaching file(s)
+2026-07-15 11:03:25 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-91685.yml from 1 teaching file(s)
+2026-07-15 11:03:25 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-91721.yml from 1 teaching file(s)
+2026-07-15 11:03:25 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-91762.yml from 3 teaching file(s)
+2026-07-15 11:03:25 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-92858.yml from 2 teaching file(s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 20.53it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 29.18it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 29.07it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 28.81it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 28.87it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 28.53it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 28.38it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 28.04it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 27.61it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 27.74it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 28.13it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 27.10it/s]
+2026-07-15 11:03:26 WARNING merge_teachings: Course 93034 in year 2025 has 2 merge components; using suffixes
+2026-07-15 11:03:26 WARNING merge_teachings: Conflicting syllabus[it] for course 93034 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessandro.aimi/2025/teaching-543007.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.borghesi3/2025/teaching-543008.yml
+2026-07-15 11:03:26 WARNING merge_teachings: Conflicting syllabus[en] for course 93034 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessandro.aimi/2025/teaching-543007.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/andrea.borghesi3/2025/teaching-543008.yml
+2026-07-15 11:03:26 WARNING merge_teachings: Conflicting syllabus[it] for course 93034 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessandro.aimi/2025/teaching-543007.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/angelo.quarta2/2025/teaching-543008.yml
+2026-07-15 11:03:26 WARNING merge_teachings: Conflicting syllabus[en] for course 93034 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessandro.aimi/2025/teaching-543007.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/angelo.quarta2/2025/teaching-543008.yml
+2026-07-15 11:03:26 WARNING merge_teachings: Conflicting syllabus[it] for course 93034 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessandro.aimi/2025/teaching-543007.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/davide.tazzioli/2025/teaching-543008.yml
+2026-07-15 11:03:26 WARNING merge_teachings: Conflicting syllabus[en] for course 93034 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessandro.aimi/2025/teaching-543007.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/davide.tazzioli/2025/teaching-543008.yml
+2026-07-15 11:03:26 WARNING merge_teachings: Conflicting syllabus[it] for course 93034 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessandro.aimi/2025/teaching-543007.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/federico.chesani/2025/teaching-543008.yml
+2026-07-15 11:03:26 WARNING merge_teachings: Conflicting syllabus[en] for course 93034 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessandro.aimi/2025/teaching-543007.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/federico.chesani/2025/teaching-543008.yml
+2026-07-15 11:03:26 WARNING merge_teachings: Conflicting syllabus[it] for course 93034 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessandro.aimi/2025/teaching-543007.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/giulia.grundler2/2025/teaching-543008.yml
+2026-07-15 11:03:26 WARNING merge_teachings: Conflicting syllabus[en] for course 93034 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessandro.aimi/2025/teaching-543007.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/giulia.grundler2/2025/teaching-543008.yml
+2026-07-15 11:03:26 WARNING merge_teachings: Conflicting syllabus[it] for course 93034 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessandro.aimi/2025/teaching-543007.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/william.crawfordiii/2025/teaching-543008.yml
+2026-07-15 11:03:26 WARNING merge_teachings: Conflicting syllabus[en] for course 93034 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/alessandro.aimi/2025/teaching-543007.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/william.crawfordiii/2025/teaching-543008.yml
+2026-07-15 11:03:26 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-93034.yml from 12 teaching file(s)
+2026-07-15 11:03:26 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-93034-A.yml from 1 teaching file(s)
+2026-07-15 11:03:26 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-93315.yml from 3 teaching file(s)
+2026-07-15 11:03:26 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-93319.yml from 2 teaching file(s)
+2026-07-15 11:03:26 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-93333.yml from 1 teaching file(s)
+2026-07-15 11:03:26 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-93363.yml from 2 teaching file(s)
+2026-07-15 11:03:26 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-93379.yml from 1 teaching file(s)
+2026-07-15 11:03:26 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-93466.yml from 2 teaching file(s)
+2026-07-15 11:03:26 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-93467.yml from 2 teaching file(s)
+2026-07-15 11:03:26 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-93468.yml from 3 teaching file(s)
+2026-07-15 11:03:26 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-93469.yml from 1 teaching file(s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.39it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.84it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.68it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.93it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.15it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.34it/s]
+2026-07-15 11:03:27 WARNING merge_teachings: Course 93470 in year 2025 has 2 merge components; using suffixes
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-93470.yml from 3 teaching file(s)
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-93470-A.yml from 2 teaching file(s)
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-93478.yml from 2 teaching file(s)
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-93653.yml from 1 teaching file(s)
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-93669.yml from 2 teaching file(s)
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-94442.yml from 2 teaching file(s)
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-95602.yml from 3 teaching file(s)
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-95604.yml from 2 teaching file(s)
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-95605.yml from 2 teaching file(s)
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-95611.yml from 1 teaching file(s)
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-95627.yml from 2 teaching file(s)
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-95630.yml from 2 teaching file(s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 21.53it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.72it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 21.53it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.24it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.45it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.63it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.55it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.76it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.75it/s]
+2026-07-15 11:03:27 WARNING merge_teachings: Course 95631 in year 2025 has 2 merge components; using suffixes
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-95631.yml from 3 teaching file(s)
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-95631-A.yml from 3 teaching file(s)
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-95632.yml from 2 teaching file(s)
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-95638.yml from 1 teaching file(s)
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-95639.yml from 1 teaching file(s)
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-95644.yml from 3 teaching file(s)
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-95645.yml from 3 teaching file(s)
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-95646.yml from 3 teaching file(s)
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-95648.yml from 4 teaching file(s)
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-95782.yml from 2 teaching file(s)
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-95965.yml from 1 teaching file(s)
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-96007.yml from 2 teaching file(s)
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-96142.yml from 2 teaching file(s)
+2026-07-15 11:03:27 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-96143.yml from 2 teaching file(s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 30.02it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 25.45it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 25.80it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 35.01it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 24.77it/s]
+2026-07-15 11:03:28 WARNING merge_teachings: Course 96346 in year 2025 has 3 merge components; using suffixes
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-96346.yml from 2 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-96346-A.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-96346-B.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-96642.yml from 2 teaching file(s)
+2026-07-15 11:03:28 WARNING merge_teachings: Conflicting syllabus[it] for course 96725 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/carlos.laordentovar3/2025/teaching-485396.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/carlos.laordentovar3/2025/teaching-485397.yml
+2026-07-15 11:03:28 WARNING merge_teachings: Conflicting syllabus[en] for course 96725 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/carlos.laordentovar3/2025/teaching-485396.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/carlos.laordentovar3/2025/teaching-485397.yml
+2026-07-15 11:03:28 WARNING merge_teachings: Conflicting syllabus[it] for course 96725 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/carlos.laordentovar3/2025/teaching-485396.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/marco.locatelli5/2025/teaching-485397.yml
+2026-07-15 11:03:28 WARNING merge_teachings: Conflicting syllabus[en] for course 96725 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/carlos.laordentovar3/2025/teaching-485396.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/marco.locatelli5/2025/teaching-485397.yml
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-96725.yml from 4 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-96793.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-96859.yml from 2 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-96994.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-96995.yml from 3 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-97431.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-97466.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-98618.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-98671.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-98735.yml from 2 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-98931.yml from 3 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-99195.yml from 2 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B0009.yml from 2 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B0010.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B0011.yml from 3 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B0061.yml from 2 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B0063.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B0064.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B0069.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B0070.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B0073.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B0074.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B0385.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B0832.yml from 3 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B0833.yml from 3 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B1459.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B1703.yml from 2 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B1873.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B1874.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B2125.yml from 3 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B2133.yml from 3 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B2696.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B3567.yml from 3 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B4826.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B4913.yml from 5 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B4925.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B4940.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B4948.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B5026.yml from 2 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B5059.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B5079.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B5292.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B5293.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B5474.yml from 2 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B5665.yml from 3 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B5674.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B5722.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B5727.yml from 5 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B5780.yml from 2 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B5782.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B5793.yml from 2 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B5796.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B5812.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B6082.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B8018.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B8019.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B8105.yml from 2 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B8159.yml from 1 teaching file(s)
+2026-07-15 11:03:28 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B8396.yml from 1 teaching file(s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 21.54it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 21.92it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 23.06it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 22.43it/s]
+2026-07-15 11:03:29 WARNING merge_teachings: Conflicting syllabus[it] for course B8536 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/claudia.lecci2/2025/teaching-549092.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/claudia.lecci2/2025/teaching-549093.yml
+2026-07-15 11:03:29 WARNING merge_teachings: Conflicting syllabus[en] for course B8536 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/claudia.lecci2/2025/teaching-549092.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/claudia.lecci2/2025/teaching-549093.yml
+2026-07-15 11:03:29 WARNING merge_teachings: Conflicting syllabus[it] for course B8536 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/claudia.lecci2/2025/teaching-549092.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/claudia.lecci2/2025/teaching-553146.yml
+2026-07-15 11:03:29 WARNING merge_teachings: Conflicting syllabus[en] for course B8536 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/claudia.lecci2/2025/teaching-549092.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/claudia.lecci2/2025/teaching-553146.yml
+2026-07-15 11:03:29 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B8536.yml from 3 teaching file(s)
+2026-07-15 11:03:29 WARNING merge_teachings: Conflicting syllabus[it] for course B8554 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/ambra.molesini/2025/teaching-543011.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/ambra.molesini/2025/teaching-543012.yml
+2026-07-15 11:03:29 WARNING merge_teachings: Conflicting syllabus[en] for course B8554 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/ambra.molesini/2025/teaching-543011.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/ambra.molesini/2025/teaching-543012.yml
+2026-07-15 11:03:29 WARNING merge_teachings: Conflicting syllabus[it] for course B8554 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/ambra.molesini/2025/teaching-543011.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/enrico.denti/2025/teaching-543012.yml
+2026-07-15 11:03:29 WARNING merge_teachings: Conflicting syllabus[en] for course B8554 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/ambra.molesini/2025/teaching-543011.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/enrico.denti/2025/teaching-543012.yml
+2026-07-15 11:03:29 WARNING merge_teachings: Conflicting syllabus[it] for course B8554 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/ambra.molesini/2025/teaching-543011.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/gabriele.doti/2025/teaching-543012.yml
+2026-07-15 11:03:29 WARNING merge_teachings: Conflicting syllabus[en] for course B8554 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/ambra.molesini/2025/teaching-543011.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/gabriele.doti/2025/teaching-543012.yml
+2026-07-15 11:03:29 WARNING merge_teachings: Conflicting syllabus[it] for course B8554 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/ambra.molesini/2025/teaching-543011.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/lorenzo.arlotti5/2025/teaching-543012.yml
+2026-07-15 11:03:29 WARNING merge_teachings: Conflicting syllabus[en] for course B8554 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/ambra.molesini/2025/teaching-543011.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/lorenzo.arlotti5/2025/teaching-543012.yml
+2026-07-15 11:03:29 WARNING merge_teachings: Conflicting syllabus[it] for course B8554 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/ambra.molesini/2025/teaching-543011.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/lorenzo.zoccadelli/2025/teaching-543012.yml
+2026-07-15 11:03:29 WARNING merge_teachings: Conflicting syllabus[en] for course B8554 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/ambra.molesini/2025/teaching-543011.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/lorenzo.zoccadelli/2025/teaching-543012.yml
+2026-07-15 11:03:29 WARNING merge_teachings: Conflicting syllabus[it] for course B8554 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/ambra.molesini/2025/teaching-543011.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/michele.proietti4/2025/teaching-543012.yml
+2026-07-15 11:03:29 WARNING merge_teachings: Conflicting syllabus[en] for course B8554 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/ambra.molesini/2025/teaching-543011.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/michele.proietti4/2025/teaching-543012.yml
+2026-07-15 11:03:29 WARNING merge_teachings: Conflicting syllabus[it] for course B8554 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/ambra.molesini/2025/teaching-543011.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/n.leonetti/2025/teaching-543012.yml
+2026-07-15 11:03:29 WARNING merge_teachings: Conflicting syllabus[en] for course B8554 in year 2025; keeping value from /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/ambra.molesini/2025/teaching-543011.yml and ignoring /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/n.leonetti/2025/teaching-543012.yml
+2026-07-15 11:03:29 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B8554.yml from 14 teaching file(s)
+2026-07-15 11:03:29 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B8561.yml from 2 teaching file(s)
+2026-07-15 11:03:29 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B8562.yml from 1 teaching file(s)
+2026-07-15 11:03:29 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B8563.yml from 2 teaching file(s)
+2026-07-15 11:03:29 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B8603.yml from 1 teaching file(s)
+2026-07-15 11:03:29 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B8836.yml from 1 teaching file(s)
+2026-07-15 11:03:29 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B8905.yml from 1 teaching file(s)
+2026-07-15 11:03:29 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B8929.yml from 1 teaching file(s)
+2026-07-15 11:03:29 INFO merge_teachings: Wrote /Users/gciatto/Work/unibo-courses-cs-restructuring/data/courses/.files/2025/course-B9254.yml from 1 teaching file(s)
+2026-07-15 11:03:29 INFO merge_teachings: Done. merged=293 symlinks=632

@@ -2,280 +2,290 @@ year: 2025
 credits:
 - 6
 ssds:
-- INF/01
+- ING-INF/05
 languages:
-- English
+- Italian
 teaching_modes:
 - In-person learning (entirely or partially)
 schedules:
-- from: &id001 2026-02-17
-  to: &id002 2026-06-03
+- from: &id001 2026-02-16
+  to: &id002 2026-05-19
 teachers:
-- id: '30318'
-  name: Asperti, Andrea
-  email: asperti@cs.unibo.it
-  website: https://www.unibo.it/sitoweb/andrea.asperti
+- id: '45909'
+  name: Ferrara, Matteo
+  email: matteo.ferrara@unibo.it
+  website: https://www.unibo.it/sitoweb/matteo.ferrara
   role:
-  - full professor
+  - associate professor
   affiliation: disi
   ssd:
-    name: INFO-01/A
-    description: Informatica
+    name: IINF-05/A
+    description: Sistemi di elaborazione delle informazioni
   modules:
-  - teaching_id: '530702'
-    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/530702
+  - teaching_id: '455807'
+    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/455807
     syllabus_urls:
-      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/530702
-      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/530702
-    details:
-    - 6 cfu
-    credits: 6
-    schedule:
-      from: 2026-02-17
-      to: 2026-06-03
-    campus: Bologna
-    ssd: INF/01
-    language: English
-    teaching_mode: In-person learning (entirely or partially)
-- id: '178110'
-  name: Tartufoli, Beniamino
-  email: beniamino.tartufoli@unibo.it
-  website: https://www.unibo.it/sitoweb/beniamino.tartufoli
-  role:
-  - phd student
-  affiliation: difa
-  ssd:
-    name: GEO/12
-    description: OCEANOGRAFIA E FISICA DELL'ATMOSFERA
-  modules:
-  - teaching_id: '502284'
-    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/502284
-    syllabus_urls:
-      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/502284
-      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/502284
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/455807
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/455807
     details:
     - 6 cfu
     credits: 6
     schedule:
       from: *id001
       to: *id002
-    campus: Bologna
-    ssd: INF/01
-    language: English
+    campus: Cesena
+    ssd: ING-INF/05
+    language: Italian
     teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '91250'
   name: Deep Learning
-integrated_course: Module of Machine Learning and Deep learning I.C.
+integrated_course: ''
 campi:
-- Bologna
+- Cesena
 programmes:
-- code: 0934
-  campus: Bologna
+- code: '6673'
+  campus: Cesena
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-I (244 places available)
+  name:
+    it: Ingegneria e scienze informatiche
+    en: Computer Science and Engineering
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6673
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6673
+- code: '6699'
+  campus: Cesena
   languages:
   - english
   - italian
   duration: 2
   access: Open access
   name:
-    it: Ingegneria elettronica
-    en: Electronic Engineering
-  year: 2025
-  department: dei
-  urls:
-    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/0934
-    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/0934
-- code: '6700'
-  campus: Bologna
-  languages:
-  - english
-  duration: 2
-  access: Open access
-  name:
-    it: Artificial Intelligence
-    en: Artificial Intelligence
+    it: Ingegneria e scienze informatiche
+    en: Computer Science and Engineering
   year: 2025
   department: disi
   urls:
-    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6700
-    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6700
-- code: '8891'
-  campus: Bologna
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6699
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6699
+- code: '8614'
+  campus: Cesena
   languages:
   - english
+  - italian
   duration: 2
   access: Open access
   name:
-    it: Automation Engineering
-    en: Automation Engineering
-  year: 2025
-  department: dei
-  urls:
-    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/8891
-    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/8891
-- code: '9063'
-  campus: Bologna
-  languages:
-  - english
-  duration: 2
-  access: Open access
-  name:
-    it: Artificial Intelligence
-    en: Artificial Intelligence
+    it: Ingegneria e scienze informatiche
+    en: Computer Science and Engineering
   year: 2025
   department: disi
   urls:
-    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/9063
-    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/9063
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/8614
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/8614
+- code: '8615'
+  campus: Cesena
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-I
+  name:
+    it: Ingegneria e scienze informatiche
+    en: Computer Science and Engineering
+  year: 2025
+  department: disi
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/8615
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/8615
 syllabus:
   it:
     title: 2025/2026 DEEP LEARNING — Università di Bologna
     contents:
-      Conoscenze e abilità da conseguire: Al termine dell'attività formativa, lo studente
-        comprende le idee fondamentali, gli sviluppi recenti e le applicazioni potenziali
-        dei sistemi neuronali (artificiali) profondi. Lo studente comprende tecniche
-        supervisionate e non supervisionate, topologie neurali di base, metodi per
-        visualizzare e capire il comportamento delle reti neurali, tecniche antagoniste
-        e generative, apprendimento per rinforzo e reti ricorrenti. Lo studente è
-        capace di applicare tali tecnologie a risolvere problemi di classificazione
-        in domini realistici.
-      Contenuti: 'Il corso comincia con una introduzione alle Reti Neurali e al Deep
-        Learning, e al loro tipico meccanismo di addestramento: l''algoritmo di backpropagation.
+      Contenuti: '- Introduzione al deep learning
+
+        - Algebra lineare, calculus e differenziazione automatica
+
+        - Reti neurali
+
+        - Backpropagation
+
+        - Algoritmi di ottimizzazione
+
+        - Convolutional Neural Networks (CNN)
+
+        - Reti ricorrenti (RNN)
+
+        - Transformers
+
+        - AutoEncoders (AE)
+
+        - Modelli generativi
+
+        - Reinforcement Learning (RL)
+
+        - Natural Language Processing (NLP) (un esempio pratico)'
+      Testi/Bibliografia: 'Slide del corso.
 
 
-        Si discuteranno i principali tipi di reti neurali: feed forward, convoluzionali
-        e ricorrenti, fornendo esempi concreti e discutendo architetture che si sono
-        dimostrate utili per elaborazione di immagini, localizzazione, segmentazione,
-        trasferimento di stile, elaborazione del testo e molti altre applicazioni.
+        Testi consigliati:
 
 
-        Investigheremo tecniche per la visualizzazione del comportamento delle unita''
-        neurali nascoste (tematica collegata a deep dreams e inceptionism), tecniche
-        per ingannare le reti neural, e moderne tecniche generative tra cui i recenti
-        diffusion models.
+        - C. M. Bishop, and H. Bishop, "Deep Learning: Foundations and Concepts (https://link.springer.com/book/10.1007/978-3-031-45468-4)",
+        Springer, 2024.
+
+        - F. Chollet, "Deep Learning with Python (2nd edition) (https://www.manning.com/books/deep-learning-with-python-second-edition)",
+        Manning Publications Co., USA, 2021.
+
+        - A. Zhang, Z. C. Lipton, M. Li, and A. J. Smola, "Dive into Deep Learning
+        (https://d2l.ai/index.html)", 2020.
+
+        - M. Elgendy, "Deep Learning for Vision Systems (https://www.manning.com/books/deep-learning-for-vision-systems)",
+        Manning Publications Co., USA, 2020.
+
+        - A. Geron, “Hands-on Machine Learning with Scikit-Learn, Keras, and TensorFlow:
+        Concepts, Tools, and Techniques to Build Intelligent Systems (https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/)”,
+        O''Reilly Media, Inc., USA, 2019.
+
+        - M. Nielsen, "Neural Networks and Deep Learning (http://neuralnetworksanddeeplearning.com/index.html)",
+        2019.
+
+        - I. Goodfellow, Y. Bengio, and A. Courville, "Deep Learning (http://www.deeplearningbook.org/)",
+        MIT Press, 2016.'
+      Metodi didattici: 'Lezioni frontali ed esercitazioni guidate.
 
 
-        La parte finale del corso sara'' destinata ad una introduzione al Deep Reinforcement
-        Learning, con particolare attenzione alla progettazione di agenti per video
-        giochi, guida autonoma, ed ad altre situazioni che richiedono comportamenti
-        intelligenti complessi e adattivi.
+        Nota: in considerazione della tipologia di attività e dei metodi didattici
+        adottati, la frequenza di questa attività formativa richiede la preventiva
+        partecipazione di tutti gli studenti ai moduli 1 e 2 di formazione sulla sicurezza
+        nei luoghi di studio (https://elearning-sicurezza.unibo.it/), in modalità
+        e-learning.'
+      Modalità di verifica e valutazione dell'apprendimento: L'esame consiste nella
+        realizzazione e discussione di un progetto di deep learning e in una prova
+        orale (sull'intero programma del corso) volta a valutare le conoscenze che
+        lo studente ha acquisito.
+      Strumenti a supporto della didattica: 'Librerie e tool di sviluppo per il deep
+        learning:
 
 
-        Prerequisiti
+        - Python
+
+        - Jupyter
+
+        - Tensorflow
+
+        - Keras'
+      Orario di ricevimento: Consulta il sito web di Matteo Ferrara (https://www.unibo.it/sitoweb/matteo.ferrara)
+      SDGs: 'Istruzione di qualità
 
 
-        Il corso è mutuato da un corso integrato con Machine Learning del Corso di
-        Studi in Artificial Intelligence. Si presuppongono conoscenze di:
+        L''insegnamento contribuisce al perseguimento degli Obiettivi
+
+        di Sviluppo Sostenibile dell''Agenda 2030 dell''ONU.'
+      Conoscenze e abilità da conseguire: 'Il corso ha l''obiettivo di fornire agli
+        studenti competenze avanzate (sia teoriche che pratiche) nell''ambito del
+        machine learning, con particolare riferimento al deep learning.
+
+        Al termine del corso, anche grazie all''attività di laboratorio, lo studente
+        sarà in grado di:
 
 
-        - machine learning
+        - addestrare/ottimizzare in maniera approfondita sistemi in grado di apprendere
+        in maniera automatica;
 
-        - analisi
+        - selezionare e personalizzare la tecnica di machine learning più opportuna
+        da utilizzare in ambiti applicativi reali;
 
-        - algebra
-
-        - pyhton'
-      Testi/Bibliografia: 'Testi consigliati:
-
-
-        - Dive into deep learning (https://d2l.ai/) [https://d2l.ai/]
-
-        - I.Goodfellow, Y.Bengio, A.Courville Deep Learning (https://www.deeplearningbook.org/front_matter.pdf).
-        MIT Press.
-
-
-        Per ogni lezione verrano forniti puntatori specifici a materiale disponibileon
-        line, in aggiunta alle slides del corso.'
-      Metodi didattici: 'Lezioni frontali basate su slides, con discussione di esempi
-        pratici mediante l''uso di python notebooks.
-
-
-        Si prevede anche lo svolgimento di laboratori integrativi, per ulteriori 12
-        ore.'
-      Modalità di verifica e valutazione dell'apprendimento: 'Progetto individuale
-        su tracce definite dal docente.
-
-
-        Il voto può essere integrato mediante un esame orale opzionale.
-
-
-        Questa modalita'' di verifica puo essere soggetta a cambiamenti in conseguenza
-        del numero degli sudenti iscritti.'
-      Strumenti a supporto della didattica: Le lezioni faranno un uso estensivo di
-        slides. Si forniranno esempi concreti e funzionanti mediante l'uso di python
-        notebooks.
-      Orario di ricevimento: Consulta il sito web di Andrea Asperti (https://www.unibo.it/sitoweb/andrea.asperti)
+        - utilizzare tecniche avanzate in ambito deep learning.'
   en:
     title: 2025/2026 Deep Learning — University of Bologna
     contents:
-      Learning outcomes: At the end of the course, the student understands the foundational
-        ideas, recent advances and application potential of deep neural systems. The
-        student understands supervised and unsupervised techniques, basic neural topologies,
-        methods for visualizing and understanding the behavior on neural nets, adversarial
-        and generative techniques, reinforcement learning, and recurrent networks.
-        The student is able to apply such technologies to solving classification problems
-        in realistic domains.
-      Course contents: 'The course begins with an introduction to Neural Networks
-        and Deep Learning, focusing on their typical training mechanism: the backpropagation
-        algorithm.
+      Course contents: '- Introduction to deep learning
+
+        - Linear algebra, calculus and automatic differentiation
+
+        - Artificial neural networks
+
+        - Backpropagation
+
+        - Optimization algorithms
+
+        - Convolutional Neural Networks (CNN)
+
+        - Recurrent Neural Networks (RNN)
+
+        - Transformers
+
+        - AutoEncoders (AE)
+
+        - Generative models
+
+        - Reinforcement Learning (RL)
+
+        - Natural Language Processing (NLP) (a practical example)'
+      Readings/Bibliography: 'Slides of the course.
 
 
-        We will discuss the main types of neural networks: feedforward, convolutional,
-        and recurrent, providing concrete examples and examining architectures that
-        have proven useful for image processing, localization, segmentation, style
-        transfer, text processing, and many other applications.
+        Suggested reading:
 
 
-        Techniques for visualizing the behavior of hidden neural units will be explored,
-        including those related to deep dreams and inceptionism. We will also cover
-        techniques for fooling neural networks and modern generative techniques, including
-        recent diffusion models.
+        - C. M. Bishop, and H. Bishop, "Deep Learning: Foundations and Concepts (https://link.springer.com/book/10.1007/978-3-031-45468-4)",
+        Springer, 2024.
+
+        - F. Chollet, "Deep Learning with Python (2nd edition) (https://www.manning.com/books/deep-learning-with-python-second-edition)",
+        Manning Publications Co., USA, 2021.
+
+        - A. Zhang, Z. C. Lipton, M. Li, and A. J. Smola, "Dive into Deep Learning
+        (https://d2l.ai/index.html)", 2020.
+
+        - M. Elgendy, "Deep Learning for Vision Systems (https://www.manning.com/books/deep-learning-for-vision-systems)",
+        Manning Publications Co., USA, 2020.
+
+        - A. Geron, “Hands-on Machine Learning with Scikit-Learn, Keras, and TensorFlow:
+        Concepts, Tools, and Techniques to Build Intelligent Systems (https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/)”,
+        O''Reilly Media, Inc., USA, 2019.
+
+        - M. Nielsen, "Neural Networks and Deep Learning (http://neuralnetworksanddeeplearning.com/index.html)",
+        2019.
+
+        - I. Goodfellow, Y. Bengio, and A. Courville, "Deep Learning (http://www.deeplearningbook.org/)",
+        MIT Press, 2016.'
+      Teaching methods: 'Lectures + Practical (guided) sessions in lab.
 
 
-        The final part of the course will be dedicated to an introduction to Deep
-        Reinforcement Learning, with particular attention to designing agents for
-        video games, autonomous driving, and other situations that require complex
-        and adaptive intelligent behaviors.
+        Note: as concerns the teaching methods of this course unit, all students must
+        attend the online e-learning modules 1 and 2 on health and safety (https://elearning-sicurezza.unibo.it/?lang=en).'
+      Assessment methods: The examination consists of the realization and discussion
+        of a deep learning project and an oral test.
+      Teaching tools: 'Software libraries and tools for deep learning:
 
 
-        Prerequisites:
+        - Python
+
+        - Jupyter
+
+        - Tensorflow
+
+        - Keras'
+      Office hours: See the website of Matteo Ferrara (https://www.unibo.it/sitoweb/matteo.ferrara/en)
+      SDGs: 'Quality education
 
 
-        The course is part of the integrated curriculum with Machine Learning from
-        the Artificial Intelligence Studies Program. Knowledge of the following subjects
-        is assumed:
+        This teaching activity contributes to the achievement of the Sustainable Development
+        Goals of the UN 2030 Agenda.'
+      Learning outcomes: 'The course aims at providing advanced skills (both theoretical
+        and practical) on machine learning and, in particular, on deep learning.
+
+        At the end of the course the student will be able to:
 
 
-        - Machine Learning
+        - in-depth train and optimize deep learning approaches;
 
-        - Analysis
+        - choose and customize the most appropriate techniques to be used in real
+        application scenarios;
 
-        - Algebra
-
-        - Python'
-      Readings/Bibliography: 'Suggested readings:
-
-
-        - Dive into Deep Learning (https://d2l.ai/)
-
-        - I.Goodfellow, Y.Bengio, A.Courville. Deep Learning (https://www.deeplearningbook.org/front_matter.pdf).
-        MIT Press.
-
-
-        Specific pointers to on line material will be provided at each lesson, in
-        addition to the slides of the course.'
-      Teaching methods: 'Frontal lessons based on slides, with discussion of practical
-        examples via pyhton notebooks.
-
-
-        We also foresee laboratories held by tutors, for 12 additional hours.'
-      Assessment methods: 'Individual project on topics defined by the teacher.
-
-
-        The grade can be optionally integrated by an oral examination.
-
-
-        The assesment method may change in relation with the attendance.'
-      Teaching tools: Lectures will make extensive usage of slides. Working examples
-        will be delivered by means on python notebooks.
-      Office hours: See the website of Andrea Asperti (https://www.unibo.it/sitoweb/andrea.asperti/en)
+        - use advanced deep learning techniques.'

@@ -1,6 +1,6 @@
 year: 2025
 credits:
-- 12
+- 6
 ssds:
 - INF/01
 languages:
@@ -8,9 +8,35 @@ languages:
 teaching_modes:
 - In-person learning (entirely or partially)
 schedules:
-- from: &id001 2026-02-16
-  to: &id002 2026-05-27
+- from: &id001 2025-09-18
+  to: &id002 2025-12-15
 teachers:
+- id: '61169'
+  name: Casadei, Roberto
+  email: roby.casadei@unibo.it
+  website: https://www.unibo.it/sitoweb/roby.casadei
+  role:
+  - rtdb
+  affiliation: disi
+  ssd:
+    name: INFO-01/A
+    description: Informatica
+  modules:
+  - teaching_id: '498823'
+    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/498823
+    syllabus_urls:
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/498823
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/498823
+    details:
+    - 6 cfu
+    credits: 6
+    schedule:
+      from: 2025-09-18
+      to: 2025-12-15
+    campus: Cesena
+    ssd: INF/01
+    language: Italian
+    teaching_mode: In-person learning (entirely or partially)
 - id: '30927'
   name: Maniezzo, Vittorio
   email: vittorio.maniezzo@unibo.it
@@ -22,15 +48,14 @@ teachers:
     name: INFO-01/A
     description: Informatica
   modules:
-  - teaching_id: '536880'
-    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/536880
+  - teaching_id: '498823'
+    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/498823
     syllabus_urls:
-      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/536880
-      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/536880
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/498823
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/498823
     details:
-    - CL.B
-    - 12 cfu
-    credits: 12
+    - Module 2
+    credits: 6
     schedule:
       from: *id001
       to: *id002
@@ -38,255 +63,187 @@ teachers:
     ssd: INF/01
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
-- id: '42372'
-  name: Marzolla, Moreno
-  email: moreno.marzolla@unibo.it
-  website: https://www.unibo.it/sitoweb/moreno.marzolla
-  role:
-  - associate professor
-  affiliation: disi
-  ssd:
-    name: INFO-01/A
-    description: Informatica
-  modules:
-  - teaching_id: '536880'
-    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/536880
-    syllabus_urls:
-      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/536880
-      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/536880
-    details:
-    - CL.B
-    - Module 2
-    credits: 12
-    schedule:
-      from: 2026-02-16
-      to: 2026-05-27
-    campus: Cesena
-    ssd: INF/01
-    language: Italian
-    teaching_mode: In-person learning (entirely or partially)
-- id: '177520'
-  name: Semprini, Gloria
-  email: gloria.semprini2@unibo.it
-  website: https://www.unibo.it/sitoweb/gloria.semprini2
-  role:
-  - teaching tutor
-  affiliation: disi
-  modules:
-  - teaching_id: '536880'
-    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/536880
-    syllabus_urls:
-      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/536880
-      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/536880
-    details:
-    - CL.B
-    credits: 12
-    schedule:
-      from: 2026-02-16
-      to: 2026-05-27
-    campus: Cesena
-    ssd: INF/01
-    language: Italian
-    teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '11929'
-  name: Algorithms and Data Structures
+  name: Algorithm and Data Structures
 integrated_course: ''
 campi:
 - Cesena
 programmes:
-- code: '6673'
-  campus: Cesena
+- code: '6007'
+  campus: Cesena, Imola
   languages:
   - italian
   duration: 3
-  access: Restricted access - TOLC-I (244 places available)
+  access: Restricted access (65 places available)
   name:
-    it: Ingegneria e scienze informatiche
-    en: Computer Science and Engineering
+    it: Tecnologie dei sistemi informatici
+    en: Computer Systems Technologies
   year: 2025
   department: disi
   urls:
-    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6673
-    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6673
-- code: '6699'
-  campus: Cesena
-  languages:
-  - english
-  - italian
-  duration: 2
-  access: Open access
-  name:
-    it: Ingegneria e scienze informatiche
-    en: Computer Science and Engineering
-  year: 2025
-  department: disi
-  urls:
-    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6699
-    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6699
-- code: '8614'
-  campus: Cesena
-  languages:
-  - english
-  - italian
-  duration: 2
-  access: Open access
-  name:
-    it: Ingegneria e scienze informatiche
-    en: Computer Science and Engineering
-  year: 2025
-  department: disi
-  urls:
-    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/8614
-    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/8614
-- code: '8615'
-  campus: Cesena
-  languages:
-  - italian
-  duration: 3
-  access: Restricted access - TOLC-I
-  name:
-    it: Ingegneria e scienze informatiche
-    en: Computer Science and Engineering
-  year: 2025
-  department: disi
-  urls:
-    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/8615
-    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/8615
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6007
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6007
 syllabus:
   it:
-    title: 2025/2026 ALGORITMI E STRUTTURE DATI (CL.B) — Università di Bologna
+    title: 2025/2026 ALGORITMI E STRUTTURE DATI — Università di Bologna
     contents:
-      Conoscenze e abilità da conseguire: "Al termine del corso, lo studente conosce:\n\
-        \n- gli algoritmi per risolvere problemi computazionali di base su strutture\
-        \ dati elementari;\n- le tecniche di base per calcolare il costo computazionale\
-        \ degli algoritmi;\n- le classi di complessità computazionale P, NP e NP-hard.\n\
-        \  In particolare, lo studente è in grado di:\n- progettare algoritmi efficienti\
-        \ per risolvere semplici problemi computazionali;\n- stimare in ordine di\
-        \ grandezza il costo computazionale degli algoritmi;\n- analizzare la complessità\
-        \ computazionale di problemi computazionali di base;\n- dare una valutazione\
-        \ circa l'efficienza e la correttezza di un algoritmo;\n- elaborare e presentare\
-        \ un progetto per la risoluzione di problemi computazionali di base."
-      Contenuti: '-matematica discreta elementare per calcolare gli ordini di grandezza;
+      Contenuti: 'Il corso consiste di due moduli, uno propriamente di introduzione
+        agli algoritmi e strutture dati e il secondo di introduzione al linguaggio
+        Python. Gli algoritmi e le strutture dati di interesse saranno presentati
+        con un linguaggio astratto (pseudocodice) indipendente da dettagli sintattici
+        e nelle esercitazioni verranno poi tradotti con riferimento principalmente
+        al linguaggio C. Il linguaggio Python offrirà un''altra prospettiva, utile
+        sia in questo corso e soprattutto in altri corsi successivi.
 
 
-        - Algoritmi di ordinamento;
-
-        - Mediano e selezione;
-
-        - Strutture dati elementari: pile, code, alberi, grafi
-
-        - algoritmi di visita su grafi
-
-        - algoritmi di base su grafi
+        Gli argomenti trattati durante il corso includono:
 
 
-        -classi P e NP
+        - concetti di algoritmi ed efficienza/complessità
+
+        - analisi e notazione asintotica della complessità (O-grande)
+
+        - algoritmi ricorsivi e metodologia divide-et-impera
+
+        - algoritmi di ricerca
+
+        - algoritmi di ordinamento
+
+        - strutture dati elementari: pile, code, liste
+
+        - tabelle hash
+
+        - grafi e algoritmi di visita su grafi
+
+        - alberi binari di ricerca'
+      Testi/Bibliografia: 'Il materiale fornito è necessario e sufficiente.
 
 
-        -problemi NP-Hard'
-      Testi/Bibliografia: T. Cormen, C. Leiserson, R. Rivest. Introduzione agli algoritmi
-        e strutture dati, Mc Graw Hill. 4 ed.
-      Metodi didattici: Lezioni frontali ed eserciitazioni in aula.
-      Modalità di verifica e valutazione dell'apprendimento: 'Esame scritto e orale
-        opzionale aggiuntivo. Progetto.
+        Per approfondimenti, si suggeriscono i seguenti testi:
 
 
-        La verifica si compone di due prove, progetto e scritto (orale opzionale).
-        Il progetto deve essere consegnato e approvato prima dello scritto e non concorre
-        al giudizio finale ma abilita solo all''iscrizione alla prova scritta.
+        - Introduzione agli algoritmi e strutture dati. Thomas H. Cormen, Charles
+        E. Leiserson, Ronald L. Rivest. McGraw-Hill Education, 2010
+
+        - Algoritmi e strutture dati - Astrazione, progetto e realizzazione. Pasquale
+        Foggia, Mario Vento. McGraw-Hill, 2011'
+      Metodi didattici: '- Lezioni frontali
+
+        - Esercitazioni in laboratorio
 
 
-        La frequenza alle lezioni è molto consigliata ma non indispensabile.
+        In considerazione della tipologia di attività e dei metodi didattici adottati,
+        la frequenza di questa attività formativa richiede la preventiva partecipazione
+        di tutti gli studenti ai Moduli 1 e 2 di formazione sulla sicurezza nei luoghi
+        di studio, https://corsi.unibo.it/laurea/TecnologieSistemiInformatici/formazione-obbligatoria-su-sicurezza-e-salute
+        in modalità e-learning.'
+      Modalità di verifica e valutazione dell'apprendimento: "L'esame consisterà in\
+        \ due parti\n\n1. un piccolo progetto (esercizio) relativo al modulo Python,\
+        \ che costituirà criterio di ammissione allo scritto (senza voto), e\n2. in\
+        \ una prova scritta/pratica al computer contenente domande relative a valutare\
+        \ le conoscenze acquisite ed esercizi pratici di implementazione di algoritmi/strutture\
+        \ dati (in C e/o Python) per la verifica delle competenze. Il voto finale\
+        \ sarà dato dalla somma dei punteggi degli esercizi di tale prova.\n  Alle\
+        \ Studentesse e agli Studenti con DSA o disabilità temporanee o permanenti\
+        \ si raccomanda di contattare per tempo l’ufficio di Ateneo responsabile,\
+        \ all'indirizzo https://site.unibo.it/studenti-con-disabilita-e-dsa/it. Sarà\
+        \ cura dell'ufficio proporre eventuali adattamenti, che dovranno comunque\
+        \ essere sottoposti, con un anticipo di 15 giorni, all’approvazione del/la\
+        \ docente, che ne valuterà l'opportunità anche in relazione agli obiettivi\
+        \ formativi dell'insegnamento."
+      Strumenti a supporto della didattica: '- Dispense a cura dei docenti
+
+        - Esempi di codice e notebook Jupyter
+
+        - Esercitazioni (con soluzioni)'
+      Orario di ricevimento: 'Consulta il sito web di Roberto Casadei (https://www.unibo.it/sitoweb/roby.casadei)
 
 
-        La prova scritta, della durata di 1.5 h, è composta di tre esercizi, un quiz
-        a scelta multipla e una domanda teorica riferite alla verifica di conoscenze
-        (sapere) e un esercizio riferito alle abilità (saper fare), declinate nel
-        quadro “conoscenze ed abilità da conseguire”.
-
-
-        Non sono ammessi durante le prove strumenti quali ausili di calcolo, vocabolari,
-        codici, ecc.
-
-
-        La partecipazione attiva alle lezioni verrà premiata.'
-      Strumenti a supporto della didattica: Dispense a cura del docente riferite al
-        libro di testo. Non sono sostitutive del testo stesso.
-      Orario di ricevimento: 'Consulta il sito web di Vittorio Maniezzo (https://www.unibo.it/sitoweb/vittorio.maniezzo)
-
-
-        Consulta il sito web di Moreno Marzolla (https://www.unibo.it/sitoweb/moreno.marzolla)'
+        Consulta il sito web di Vittorio Maniezzo (https://www.unibo.it/sitoweb/vittorio.maniezzo)'
+      Conoscenze e abilità da conseguire: Al termine del corso, lo studente conosce
+        le strutture dati di base e gli algoritmi in grado di operare su di esse.
+        Lo studente conosce le principali tecniche per la stima del costo computazionale
+        di algoritmi, ed è in grado di progettare e realizzare soluzioni efficienti
+        per risolvere problemi comuni nell'ambito delle discipline legate alla tecnologia
+        dell'informazione.
   en:
-    title: 2025/2026 Algorithms and Data Structures (CL.B) — University of Bologna
+    title: 2025/2026 Algorithm and Data Structures — University of Bologna
     contents:
-      Learning outcomes: 'Upon completion of the course, the student knows:
+      Course contents: 'The course consists of two modules: one primarily introducing
+        algorithms and data structures, and the second introducing the Python language.
+        The algorithms and data structures of interest will be presented using an
+        abstract language (pseudocode) independent of syntactical details, and during
+        the exercises, they will then be translated mainly using the C language. Python
+        will offer another perspective, useful both in this course and especially
+        in subsequent courses.
 
 
-        - algorithms for solving basic computational problems on elementary data structures;
-
-        - basic techniques for calculating the computational cost of algorithms;
-
-        - the P, NP, and NP-hard computational complexity classes.
+        The topics covered during the course include:
 
 
-        In particular, the student is able to:
+        - Concepts of algorithms and efficiency/complexity
+
+        - Analysis and asymptotic notation of complexity (Big O)
+
+        - Recursive algorithms and the divide-and-conquer methodology
+
+        - Search algorithms
+
+        - Sorting algorithms
+
+        - Elementary data structures: stacks, queues, lists
+
+        - Hash tables
+
+        - Graphs and graph traversal algorithms
+
+        - Binary search trees'
+      Readings/Bibliography: 'The provided material is necessary and sufficient.
 
 
-        - design efficient algorithms for solving simple computational problems;
-
-        - estimate in order of magnitude the computational cost of algorithms;
-
-        - analyze the computational complexity of basic computational problems;
-
-        - assess the efficiency and correctness of an algorithm;
-
-        - design and develop a solution for basic computational problems.'
-      Course contents: '- basic notion of discrete mathematics for analyzing order
-        of magnitude
-
-        - Sorting
-
-        - Median and selection
-
-        - Elementary data structures: stacks, queues, graphs
-
-        - Search algorithms on graphs
-
-        - basic algorithms on graphs
-
-        - Classes P and NP
-
-        - NP hard Problems'
-      Readings/Bibliography: T. Cormen, C. Leiserson, R. Rivest. Introduction to algorithms.
-        MIT Press.
-      Teaching methods: Lectures in class
-      Assessment methods: 'Additional optional written and oral exams. Project.
+        For further study, the following texts are suggested:
 
 
-        The exam consists of two tests, a project and a written (optional oral) exam.
-        The project must be submitted and approved prior to the written exam and does
-        not contribute to the final grade, but only qualifies the student to take
-        the written exam.
+        - Introduzione agli algoritmi e strutture dati. Thomas H. Cormen, Charles
+        E. Leiserson, Ronald L. Rivest. McGraw-Hill Education, 2010
+
+        - Algoritmi e strutture dati - Astrazione, progetto e realizzazione. Pasquale
+        Foggia, Mario Vento. McGraw-Hill, 2011'
+      Teaching methods: '- Lectures
+
+        - Practical exercises in lab
 
 
-        Attendance is strongly recommended but not required.
+        Considering the type of activity and the teaching methods adopted, the attendance
+        of this training activity requires the prior participation of all students
+        in the training modules 1 and 2 on safety in the study places, https://corsi.unibo.it/laurea/TecnologieSistemiInformatici/formazione-obbligatoria-su-sicurezza-e-salute
+        in e-learning mode.'
+      Assessment methods: "The exam will consist of two parts:\n\n1. A small project\
+        \ (exercise) related to the Python module, which will be a criterion for admission\
+        \ to the written exam (without grade), and\n2. A written/practical exam containing\
+        \ questions on theoretical aspects for the assessment of the acquired knowledge\
+        \ and practical implementation exercises of algorithms/data structures (in\
+        \ C and/or Python) for the assessment of the competences. The final grade\
+        \ will be computed as the sum of the grades of the individual exercises.\n\
+        \  Students with specific learning disorders (DSA) or temporary or permanent\
+        \ disabilities are advised to contact the responsible University office in\
+        \ advance, at the address https://site.unibo.it/studenti-con-disabilita-e-dsa/en.\
+        \ The office will take care of proposing any necessary adjustments, which\
+        \ must in any case be submitted, at least 15 days in advance, for the approval\
+        \ of the instructor, who will assess their appropriateness also in relation\
+        \ to the learning objectives of the course."
+      Teaching tools: '- Handouts (slides) prepared by the instructors
+
+        - Source code examples and Jupyter notebooks
+
+        - Exercises (with solutions)'
+      Office hours: 'See the website of Roberto Casadei (https://www.unibo.it/sitoweb/roby.casadei/en)
 
 
-        The written exam, which lasts 1.5 hours, consists of three exercises, a multiple-choice
-        quiz and a theoretical question that tests knowledge (knowing) and an exercise
-        that tests skills (knowing how to do), which are discussed in the "Knowledge
-        and Skills to be Achieved" section.
-
-
-        Tools such as calculators, vocabularies, codes, etc. are not allowed during
-        the tests.
-
-
-        Active participation in class is rewarded.'
-      Teaching tools: Lecture notes and handouts related to the textbook. They are
-        not a substitute for the book itself.
-      Office hours: 'See the website of Vittorio Maniezzo (https://www.unibo.it/sitoweb/vittorio.maniezzo/en)
-
-
-        See the website of Moreno Marzolla (https://www.unibo.it/sitoweb/moreno.marzolla/en)'
+        See the website of Vittorio Maniezzo (https://www.unibo.it/sitoweb/vittorio.maniezzo/en)'
+      Learning outcomes: At the end of the course, the student knows the basic data
+        structures and the notable algorithms from the literature operating on them.
+        The student is familiar with the main techniques for estimating the computational
+        cost of algorithms and is able to design and implement efficient solutions
+        to solve common problems in the field of information technology disciplines.

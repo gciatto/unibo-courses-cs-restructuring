@@ -1,6 +1,6 @@
 year: 2025
 credits:
-- 2
+- 6
 ssds:
 - INF/01
 languages:
@@ -8,25 +8,28 @@ languages:
 teaching_modes:
 - In-person learning (entirely or partially)
 schedules:
-- from: &id001 2025-11-10
-  to: &id002 2025-12-16
+- from: &id001 2026-02-23
+  to: &id002 2026-04-20
 teachers:
-- id: '45506'
-  name: Cercenelli, Laura
-  email: laura.cercenelli@unibo.it
-  website: https://www.unibo.it/sitoweb/laura.cercenelli
+- id: '24434'
+  name: Tura, Francesco
+  email: francesco.tura@unibo.it
+  website: https://www.unibo.it/sitoweb/francesco.tura
   role:
-  - adjunct professor
-  affiliation: dibinem
+  - researcher
+  affiliation: dsg
+  ssd:
+    name: GIUR-17/A
+    description: Filosofia del diritto
   modules:
-  - teaching_id: '483266'
-    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/483266
+  - teaching_id: '534208'
+    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/534208
     syllabus_urls:
-      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/483266
-      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/483266
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/534208
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/534208
     details:
-    - 2 cfu
-    credits: 2
+    - 6 cfu
+    credits: 6
     schedule:
       from: *id001
       to: *id002
@@ -36,274 +39,233 @@ teachers:
     teaching_mode: In-person learning (entirely or partially)
 course_title:
   id: '96346'
-  name: Computer Science
-integrated_course: Module of Physics, Statistics and Computer Science (Integrated
-  Course)
+  name: Informatics
+integrated_course: ''
 campi:
 - Bologna
 programmes:
-- code: '5915'
+- code: '6606'
   campus: Bologna
   languages:
   - italian
   duration: 3
-  access: Restricted access at national level - local exam (19 places available)
+  access: Open access - TOLC-SU
   name:
-    it: Tecniche ortopediche (abilitante alla professione sanitaria di tecnico ortopedico)
-    en: Orthopaedics Techniques
+    it: Consulente del lavoro e delle relazioni aziendali
+    en: Employment and Business Relations Consultant
   year: 2025
-  department: dibinem
+  department: dsg
   urls:
-    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/5915
-    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/5915
-- code: '8470'
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6606
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6606
+- code: '9230'
   campus: Bologna
   languages:
   - italian
   duration: 3
-  access: Restricted access at national level - local exam (21 places available)
+  access: Open access - TOLC-SU
   name:
-    it: Dietistica (abilitante alla professione sanitaria di dietista)
-    en: Dietistic
+    it: Consulente del lavoro e delle relazioni aziendali
+    en: Employment and Business Relations Consultant
   year: 2025
-  department: dimec
+  department: dsg
   urls:
-    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/8470
-    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/8470
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/9230
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/9230
 syllabus:
   it:
     title: 2025/2026 INFORMATICA — Università di Bologna
     contents:
-      Conoscenze e abilità da conseguire: 'Al termine del modulo lo studente possiede
-        le conoscenze di base sui seguenti argomenti: Sistemi di numerazione, le quattro
-        operazioni in base binaria. Elementi algebra di Boole e funzioni logiche (and
-        - or - not -xor). La struttura di un elaboratore HW (CPU memoria interna,
-        memoria di massa, periferiche di IO) e SW (sistema operativo e programmi/app).
-        Lo studente dovrà avere la capacità di sviluppare semplici programmi per PC
-        utilizzando un linguaggio ad alto Livello (C++, Basic, Phyton, Java ...) utilizzando
-        un ambiente di sviluppo a scelta. Cenni di programmazione ad oggetti. Lo studente
-        dovrà avere la conoscenza dei principali formati digitali per le immagini
-        e la modellazione solida.'
-      Contenuti: 'Introduzione all’Informatica e sua evoluzione:
+      Contenuti: 'Parte Prima: Dematerializzazione e tecnologie di interazione alternative
+        alla carta
 
 
-        - cenni storici e nascita di Internet;
+        - I documenti su supporto elettronico
 
-        - introduzione all’Intelligenza Artificiale e sue applicazioni in Medicina.
+        - L''inquadramento comunitario della transizione digitale
 
+        - L''identificazione informatica
 
-        Rappresentazione delle informazioni:
+        - I servizi fiduciari elettronici
 
-
-        - Codifica di numeri e sistemi di numerazione;
-
-        - Le quattro operazioni in base binaria;
-
-        - Codifica digitale di testi e immagini;
+        - La gestione informatica dei documenti elettronici
 
 
-        Struttura HW e SW di un elaboratore;
+        Parte Seconda: I portali della pubblica amministrazione italiana
 
 
-        Algebra booleana;
+        - Registro delle Imprese
+
+        - Sportello Unico delle Attività Produttive (SUAP)
+
+        - Servizi Regionali per le Comunicazioni Obbligatorie
+
+        - Agenzia delle entrate
+
+        - Istituto Nazionale della Previdenza Sociale (INPS)
+
+        - Istituto Nazionale per l''Assicurazione contro gli Infortuni sul Lavoro
+        (INAIL)
+
+        - Portale dei Servizi Telematici (PST) per i Servizi Online Giudice di Pace
+
+        - Polizia di Stato per richiesta passaporto biometrico
+
+        - Ministero dell''Interno per prenotazione Carta d''Identità Elettronica
 
 
-        Programmazione e Algoritmi;
+        L''insegnamento partecipa al progetto di innovazione didattica dell''Ateneo'
+      Testi/Bibliografia: 'Francesco Tura, La transizione digitale nei servizi per
+        cittadini e imprese, Seconda edizione aggiornata, Bologna, Esculapio, 2025.
 
 
-        Approfondimenti su strumenti di utilità personale (Microsoft Word/Excel/PowerPoint);
-        gestione dei dati della ricerca (protezione dei dati personali; protezione
-        file).
+        N.B. Si sconsiglia vivamente di utilizzare, per la preparazione dell''esame,
+        materiale didattico diverso dal libro di testo e da quanto illustrato a lezione
+        e sintetizzato nelle diapositive pubblicate su virtuale.unibo.it.
+
+        Qualsiasi altro materiale, di qualsiasi altra provenienza, potrebbe infatti
+        risultare obsoleto, inesatto o fuorviante.'
+      Metodi didattici: 'Lezioni frontali.
 
 
-        Parte riservata al CdL Tecniche Ortopediche:
+        Durante il corso delle lezioni verranno organizzati alcuni test di autovalutazione
+        su parti del programma, per lo svolgimento dei quali gli studenti potranno
+        utilizzare il materiale didattico. Le suddette prove non comportano alcuna
+        valutazione.'
+      Modalità di verifica e valutazione dell'apprendimento: 'L''esame consiste in
+        una prova scritta con sei domande a risposta aperta su altrettante tematiche
+        attinenti a quelle indicate in Programma/Contenuti, da svolgersi in un tempo
+        massimo di novanta minuti. Ad ogni risposta sono attribuiti da zero a cinque
+        punti, individuati in base alla pertinenza e alla correttezza della risposta
+        nonché alla padronanza del linguaggio. Un sesto punto è riservato alle risposte
+        corrette che siano anche particolarmente esaustive e particolareggiate. Il
+        voto dell''esame scritto corrisponde alla somma dei punteggi ottenuti nelle
+        sei domande. In caso di somma maggiore o uguale a trentatré viene assegnata
+        la lode.
 
 
-        Tecnologie per la modellazione 3D delle strutture anatomiche;
+        Lo studente può altresì richiedere una prova orale integrativa consistente
+        in una sola domanda su una tematica attinente a quelle indicate in Programma/Contenuti
+        e che può portare ad una variazione massima del voto finale di tre punti in
+        più o in meno rispetto alla votazione conseguita nella prova scritta. La valutazione
+        della prova orale terrà conto della preparazione dimostrata dallo studente,
+        dalla sua capacità critica e dalla padronanza del linguaggio. La data della
+        prova orale è unica per ogni appello e viene comunicata contestualmente alla
+        pubblicazione del risultato della prova scritta.
 
 
-        Tecnologie e materiali per la stampa additiva in medicina;
+        Gli studenti che nella prova scritta abbiano riportato una votazione di almeno
+        15/30 possono anch''essi richiedere la prova orale, la quale si svolgerà con
+        le stesse modalità sopra riportate e in questo caso comporterà al massimo
+        (in caso di esito positivo) la votazione di 18/30.
 
 
-        Software di segmentazione e modellazione 3D in ambito medicale.
-
-
-        Sessioni pratiche di progettazione 3D di dispositivi personalizzati (ESERCITAZIONI
-        Lab. Informatico)'
-      Testi/Bibliografia: Slides del corso messe a disposizione dal docente sulle
-        piattaforme di Ateneo
-      Metodi didattici: Lezioni frontali con ausilio di Power Point e di video. Metodi
-        interattivi/esercitazioni per favorire la partecipazione attiva degli studenti.
-      Modalità di verifica e valutazione dell'apprendimento: 'L’iscrizione all’appello
-        avviene obbligatoriamente tramite Alma Esami.
-
-
-        La prova finale consiste in un esame scritto costituito da 16 domande a risposta
-        multipla, ciascuna del valore di 2 punti, ad eccezione di una domanda dal
-        valore di 1 punto, per un punteggio massimo complessivo di 31. Il punteggio
-        di 31/31 corrisponde all’attribuzione del voto di 30 e lode.
-
-
-        Le domande riguardano gli argomenti trattati nel programma del corso e sono
-        finalizzate a verificare:
-
-
-        - la conoscenza e comprensione dei contenuti fondamentali;
-
-        - la capacità di applicare le conoscenze acquisite per la risoluzione di problemi/esercizi
-        pratici.
-
-
-        L’esame si considera superato con un punteggio pari o superiore a 18/31.
-
-        Il punteggio finale sarà espresso in trentesimi (+lode) e integrato, nel calcolo
-        complessivo del Corso Integrato (FISICA, STATISTICA E INFORMATICA), mediante
-        media matematica ponderata in base ai crediti formativi di ciascun modulo.
-
-
-        Gradazione del voto finale
-
-
-        - 18–19/31→ Conoscenza sufficiente dei principali argomenti del corso (riposte
-        corrette: 9-10/16)
-
-        - 20–24/31 → Buona conoscenza dei contenuti (riposte corrette: 10-12/16)
-
-        - 25–28/31 → Conoscenza ampia e articolata della materia (riposte corrette:
-        tra 13-14/16).
-
-        - 29–31/31→ Preparazione completa e approfondita (risposte corrette: 15-16/16).'
-      Strumenti a supporto della didattica: 'Durante le lezioni verranno fatte proiezioni
-        con Power Point e proiezioni di video didattici. Verranno messe a disposizione
-        anche postazioni informatiche di Ateneo per esercitazioni al calcolatore con
-        software di modellazione 3D.
-
-
-        I materiali didattici ritenuti utili ai fini della preparazione ed integrativi
-        verranno messi in rete sulle piattaforme di Ateneo oppure sono disponibili
-        presso il docente
-
-
-        Gli studenti con disturbi dell''apprendimento e disabilità temporanee o permanenti
-        sono invitati a contattare l''ufficio dedicato (https://site.unibo.it/studenti-con-disabilita-e-dsa/it/per-studenti)
-        il più presto possibile in modo da poter convenire sulle opportune misure
-        compensative. La richiesta deve essere presentata in anticipo (15 giorni prima
-        della data dell''esame) al docente, che valuterà l''adeguatezza delle misure
-        tenendo conto degli obiettivi didattici.'
-      Orario di ricevimento: Consulta il sito web di Laura Cercenelli (https://www.unibo.it/sitoweb/laura.cercenelli)
+        Si segnala che non potranno in alcun modo essere ammessi a sostenere l''esame
+        gli studenti che non si siano regolarmente iscritti al relativo appello entro
+        la data di chiusura delle liste, stabilita in sette giorni prima della data
+        dell''esame. Nel caso in cui uno studente riscontri problemi tecnici o burocratici
+        nell''iscrizione, è pregato di rivolgersi al docente prima della chiusura
+        delle liste, in modo da permettere la risoluzione del problema in tempo utile,
+        eventualmente interagendo con la Segreteria.'
+      Strumenti a supporto della didattica: Libro di testo e diapositive illustrate
+        a lezione.
+      Orario di ricevimento: Consulta il sito web di Francesco Tura (https://www.unibo.it/sitoweb/francesco.tura)
+      Conoscenze e abilità da conseguire: Al termine del corso lo Studente avrà la
+        conoscenza dei principali sistemi di identificazione informatica del cittadino
+        che accede a servizi online. Sarà inoltre in grado di utilizzare i principali
+        sportelli telematici della Pubblica Amministrazione, tra i quali quello dell'INPS,
+        dell'INAIL, dell'Agenzia delle Entrate, nonché registrare una nuova attività
+        imprenditoriale sul Registro delle imprese della locale Camera di Commercio.
+        Infine saprà consultare le principali banche dati documentali, in particolare
+        quelle contenenti la normativa, la giurisprudenza e la dotrina relative a
+        tematiche di diritto del lavoro.
   en:
-    title: 2025/2026 Computer Science — University of Bologna
+    title: 2025/2026 Informatics — University of Bologna
     contents:
-      Learning outcomes: At the end of the module the student has the basic knowledge
-        on the following topics:systems of numeration, the four operations in binary
-        basis. Elements of Boolean algebra and logical functions. The HW structure
-        of a computer (CPU internal memory, mass memory, IO peripherals) and the SW
-        (operating system and programs/apps). Basic principles of algorithms and programmimg.
-        The student will also acquire knowledge of the main digital formats for images
-        and 3D modeling software for medical applications.
-      Course contents: 'Introduction to Computer Science (CS) and its evolution:
+      Course contents: 'First Part: Dematerialisation and no paper transaction technologies
 
 
-        - CS history and birth of Internet;
+        - Electronic documents
 
-        - introduction to Artificial Intelligence and its applications in Medicine
+        - UE Legislation on digital transformation
 
+        - Electronic Identification
 
-        Representation of the Information:
+        - Electronic Trust Services
 
-
-        - Encoding of numbers and numbering systems;
-
-        - The four operations in binary basis
-
-        - Digital coding of texts and images;
+        - Electronic document management
 
 
-        HW and SW structure of a computer;
+        Second Part: Italian Government portals
 
 
-        Boolean algebra;
+        - Italian Companies House
+
+        - Italian municipal desks for productive activities (SUAP)
+
+        - Regional information services for mandatory communications
+
+        - Revenue Agency
+
+        - Italian national institution of social security (INPS)
+
+        - Italian National Institute for Insurance Against Occupational Accidents
+        (INAIL)
+
+        - Telematic services for Justice of the Peace - Italian Police service for
+        biometric passport - Italian Department of Interior service for electronic
+        identity card
 
 
-        Programming and Algorithms;
+        This course takes part into the Bologna University didactic innovation project'
+      Readings/Bibliography: 'Francesco Tura, La transizione digitale nei servizi
+        per cittadini e imprese, Seconda edizione aggiornata, Bologna, Esculapio,
+        2025.
 
 
-        Insights on personal utility tools (Microsoft Word/Excel/PowerPoint) (EXERCISE
-        IT Lab.); Research data management (personal data protection; file protection).
+        P.S. It is very not recommended to use other educational material that is
+        not textbook or slides published on virtuale.unibo.it.
+
+        Every educational material with other origin could be obsolete, inaccurate
+        or misleading.'
+      Teaching methods: 'Frontal lessons.
 
 
-        Section reserved to CdL Orthopedic Techniques:
+        Some self-assessment tests, regarding parts of the programme, will be organised
+        during term time. Students can perform them by using books and notes. Such
+        tests do not involve any evaluation.'
+      Assessment methods: 'The examination consists in a written test composed by
+        six open answering questions regarding as many themes choosen from the ones
+        listed in Course contents. Maximum time: 90 minutes. Zero to five points are
+        given to each of the six themes, such rating depending on relevance, correctness,
+        and of fluency of the answer. A sixth point is given to very exhaustive and
+        detailed correct answers. The final mark is determined by summing all points
+        obtained in the various answers. Praise is granted if the sum is greater or
+        equal to thirty-three.
 
 
-        Technologies for 3D modeling of anatomical structures;
+        Students may ask an additional oral test (only one question regarding a theme
+        choosen from the ones listed in Course contents): in that case the final mark
+        can differ at most of three units (more or less) compared to the one of written
+        test. The oral text evaluation depends on students'' knowledges, critical
+        reasoning ability, and sound use of language. The (unique) oral test date
+        is published jointly to the results of written test.
+
+        Even students who achieve an evaluation correspondig to at least 15/30 in
+        the written test may ask to take the oral test, and in that case the final
+        mark cannot exceed 18/30.
 
 
-        Technologies and materials for additive printing in medicine;
+        Students who do have not signed up in the dedicated list within its expiration
+        date (seven days before) cannot absolutely take the test. Students having
+        technical or burocratic problems in signing up must contact the teacher before
+        the expiration date.'
+      Teaching tools: Textbook and slides illustrated during classes.
+      Office hours: See the website of Francesco Tura (https://www.unibo.it/sitoweb/francesco.tura/en)
+      Learning outcomes: 'At the end of the course students will have got knowlegde
+        of all main e-government authentication systems.
 
+        Moreover they will be able to use online services provided by Italian government
+        bodies such as INPS, INAIL, Italian Revenue Agency, Local Chambers of Commerce.
 
-        Segmentation and 3D modeling software in the medical field;
-
-
-        Practical sessions of 3D design of customized devices (EXERCISES Computer
-        Lab)'
-      Readings/Bibliography: Course presentation slides uploaded by the professor
-        to the university platforms
-      Teaching methods: Lectures supported by PowerPoint and videos. Interactive methods
-        and exercises to encourage active student participation.
-      Assessment methods: 'Enrollment for the exam session is mandatory through AlmaEsami.
-        The final assessment consists of a written exam made up of 16 multiple-choice
-        questions, each worth 2 points, except for one question worth 1 point, for
-        a maximum total score of 31. A score of 31/31 corresponds to a grade of 30
-        cum laude.
-
-
-        The questions cover the topics included in the course program and are designed
-        to assess:
-
-
-        - the knowledge and understanding of the fundamental content;
-
-        - the capacity to use the acquired knowledge to address practical tasks and
-        problem-solving exercises
-
-
-        The exam is considered passed with a score of 18/31 or higher.
-
-        The final score will be expressed on a 30-point scale (cum laude) and will
-        be integrated into the overall calculation of the Integrated Course (PHYSICS,
-        STATISTICS, AND COMPUTER SCIENCE) using a weighted arithmetic average based
-        on the credits of each module.
-
-
-        Final grade scale
-
-
-        - 18–19/31 → Sufficient knowledge of the main course topics (correct answers:
-        9–10/16)
-
-        - 20–24/31 → Good knowledge of the contents (correct answers: 10–12/16)
-
-        - 25–28/31 → Broad and thorough knowledge of the subject (correct answers:
-        13–14/16)
-
-        - 29–31/31 → Complete and in-depth preparation (correct answers: 15–16/16)'
-      Teaching tools: 'During the lectures, PowerPoint presentations and educational
-        videos will be projected.
-
-        University computer workstations will also be made available for practical
-        exercises using 3D modeling software.
-
-
-        Teaching materials considered useful for exam preparation or as supplementary
-        resources will be uploaded to the university platforms or can be obtained
-        directly from the professor.
-
-
-        Students with learning disabilities or temporary/permanent impairments are
-        invited to contact the dedicated office (https://site.unibo.it/studenti-con-disabilita-e-dsa/it/per-studenti
-        ) as early as possible in order to agree on appropriate compensatory measures.
-
-        The request must be submitted to the professor in advance (at least 15 days
-        before the exam date), who will assess the suitability of the measures in
-        light of the learning objectives'
-      Office hours: See the website of Laura Cercenelli (https://www.unibo.it/sitoweb/laura.cercenelli/en)
+        Lastly they will easily consult documentary databanks.'

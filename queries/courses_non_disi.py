@@ -29,7 +29,7 @@ def load_disi_courses() -> set:
     for person in data:
         for course in person.get("Courses",[]) or []:
             cid  = str(course.get("id", {})) or "Unknown"
-            name = course.get("name", {}).strip().replace("\"","'") or "Unknown"
+            name = course.get("name", {}).strip().replace("\"","'").lower() or "Unknown"
             ccredits = course.get("credits", 0) or 0
             course = (cid, name, ccredits)
             disi_courses.add( course )
@@ -158,7 +158,7 @@ def main():
         yaml_files = []
         for dirpath, _dirs, files in os.walk(contact_dir):
             for fname in sorted(files):
-                if fname.endswith(".yml"):
+                if fname.startswith("course-") and fname.endswith(".yml"):
                     yaml_files.append(os.path.join(dirpath, fname))
 
         if not yaml_files:
@@ -172,7 +172,7 @@ def main():
             try:
                 info = parse_course_yaml(ypath)
                 course_id   = info["id"]
-                course_name = info["name"].strip().replace("\"","'")
+                course_name = info["name"].strip().replace("\"","'").lower()
                 course_credits = info["credits"]
                 syllabus = info["syllabus"]
                 programmes = info["programmes"]

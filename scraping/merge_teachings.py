@@ -1,4 +1,5 @@
 import argparse
+from difflib import SequenceMatcher
 import logging
 import os
 import pathlib
@@ -7,11 +8,15 @@ import shlex
 import sys
 from collections import defaultdict
 from dataclasses import dataclass
+from functools import cache
 from typing import Any, Callable
+
+import numpy as np
 
 import yaml
 from pydantic import BaseModel, Field
 
+from clustering.sections import normalize_label, normalize_text
 from scraping._utils import configure_logging
 from scraping.download_teachings import (
     CourseMetadata,
@@ -25,6 +30,15 @@ from scraping.download_teachings import (
 DEFAULT_INPUT_DIR = DEFAULT_OUTPUT
 DEFAULT_MERGED_DIRNAME = ".files"
 PATTERN_TEACHING_FILENAME = re.compile(r"^teaching-(?P<teaching_id>[^/]+)\.yml$")
+DEFAULT_LEARNING_OUTCOMES_SIMILARITY_BACKEND = "embedding"
+DEFAULT_LEARNING_OUTCOMES_SIMILARITY_THRESHOLD = 95.0
+DEFAULT_LEARNING_OUTCOMES_EMBEDDING_MODEL = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
+
+LEARNING_OUTCOMES_LABELS = {
+    normalize_label("Learning outcomes"),
+    normalize_label("Conoscenze e abilita da conseguire"),
+    normalize_label("Conoscenze e abilità da conseguire"),
+}
 
 LOGGER = logging.getLogger(pathlib.Path(__file__).stem)
 
@@ -53,7 +67,7 @@ class MergedCourseTitle(BaseModel):
 
 class MergedSyllabusPage(BaseModel):
     title: str = Field(default="")
-    contents: dict[str, str] = Field(default_factory=dict)
+    contents: dict[str, Any] = Field(default_factory=dict)
 
 
 class MergedCourseMetadata(BaseModel):
@@ -91,7 +105,150 @@ def parse_args() -> argparse.Namespace:
         default=DEFAULT_INPUT_DIR,
         help=f"Courses directory containing TEACHER/YEAR/teaching-*.yml (default: {DEFAULT_INPUT_DIR}).",
     )
+    parser.add_argument(
+        "--learning-outcomes-similarity-backend",
+        choices=["text", "token", "embedding"],
+        default=DEFAULT_LEARNING_OUTCOMES_SIMILARITY_BACKEND,
+        help="Backend used to compare learning outcomes when exact syllabus matches are not available.",
+    )
+    parser.add_argument(
+        "--learning-outcomes-similarity-threshold",
+        type=float,
+        default=DEFAULT_LEARNING_OUTCOMES_SIMILARITY_THRESHOLD,
+        help="Minimum learning-outcomes similarity percentage required for merging.",
+    )
+    parser.add_argument(
+        "--learning-outcomes-embedding-model",
+        default=DEFAULT_LEARNING_OUTCOMES_EMBEDDING_MODEL,
+        help="Sentence-Transformers model used for learning-outcomes similarity when the embedding backend is selected.",
+    )
     return parser.parse_args()
+
+
+def teaching_id_from_path(path: pathlib.Path) -> str:
+    match = PATTERN_TEACHING_FILENAME.fullmatch(path.name)
+    if match is None:
+        raise ValueError(f"Unexpected teaching filename: {path}")
+    return match.group("teaching_id")
+
+
+def is_learning_outcomes_label(label: str) -> bool:
+    return normalize_label(label) in LEARNING_OUTCOMES_LABELS
+
+
+def strip_learning_outcomes(contents: dict[str, Any]) -> dict[str, Any]:
+    return {
+        label: value
+        for label, value in contents.items()
+        if not is_learning_outcomes_label(str(label))
+    }
+
+
+def extract_learning_outcomes(contents: dict[str, Any]) -> str:
+    for label, value in contents.items():
+        if is_learning_outcomes_label(str(label)):
+            text = normalize_text(value)
+            if text:
+                return text
+    return ""
+
+
+def syllabus_core_signature(syllabus: dict[str, Any]) -> str:
+    payload: dict[str, Any] = {}
+    for lang in sorted(syllabus):
+        page = syllabus_page_to_dict(syllabus[lang])
+        contents = page.get("contents", {})
+        payload[lang] = {
+            "title": normalize_text(page.get("title")),
+            "contents": strip_learning_outcomes(contents) if isinstance(contents, dict) else {},
+        }
+    return normalize_for_comparison(payload)
+
+
+def page_signature_without_learning_outcomes(page: Any) -> str:
+    page_data = syllabus_page_to_dict(page)
+    contents = page_data.get("contents", {})
+    payload = {
+        "title": normalize_text(page_data.get("title")),
+        "contents": strip_learning_outcomes(contents) if isinstance(contents, dict) else {},
+    }
+    return normalize_for_comparison(payload)
+
+
+def text_similarity_percent(text_a: str, text_b: str) -> float:
+    return SequenceMatcher(None, text_a, text_b).ratio() * 100.0
+
+
+def token_similarity_percent(text_a: str, text_b: str) -> float:
+    tokens_a = set(re.findall(r"\w+", text_a.lower()))
+    tokens_b = set(re.findall(r"\w+", text_b.lower()))
+    if not tokens_a and not tokens_b:
+        return 100.0
+    union = tokens_a | tokens_b
+    if not union:
+        return 0.0
+    return (len(tokens_a & tokens_b) / len(union)) * 100.0
+
+
+@cache
+def load_embedding_model(model_name: str):
+    from sentence_transformers import SentenceTransformer
+
+    return SentenceTransformer(model_name)
+
+
+def embedding_similarity_percent(text_a: str, text_b: str, model_name: str) -> float:
+    model = load_embedding_model(model_name)
+    vectors = model.encode([text_a, text_b], normalize_embeddings=True)
+    similarity = float(np.dot(vectors[0], vectors[1]))
+    return max(0.0, similarity) * 100.0
+
+
+def learning_outcomes_similarity_percent(
+    text_a: str,
+    text_b: str,
+    backend: str,
+    embedding_model: str,
+) -> float:
+    normalized_a = normalize_text(text_a)
+    normalized_b = normalize_text(text_b)
+    if not normalized_a and not normalized_b:
+        return 100.0
+    if backend == "text":
+        return text_similarity_percent(normalized_a, normalized_b)
+    if backend == "token":
+        return token_similarity_percent(normalized_a, normalized_b)
+    if backend == "embedding":
+        return embedding_similarity_percent(normalized_a, normalized_b, embedding_model)
+    raise ValueError(f"Unsupported learning outcomes similarity backend: {backend}")
+
+
+def course_programme_code_set(metadata: CourseMetadata) -> frozenset[str]:
+    return frozenset(
+        str(programme.get("code") or "")
+        for programme in metadata.programmes
+        if str(programme.get("code") or "").strip()
+    )
+
+
+def merge_suffix(index: int) -> str:
+    suffix = ""
+    value = index
+    while True:
+        value, remainder = divmod(value, 26)
+        suffix = chr(ord("A") + remainder) + suffix
+        if value == 0:
+            break
+        value -= 1
+    return f"-{suffix}"
+
+
+def syllabus_page_to_dict(page: Any) -> dict[str, Any]:
+    if isinstance(page, BaseModel):
+        return page.model_dump(by_alias=True, exclude_none=True)
+    if isinstance(page, dict):
+        return page
+    return {}
 
 
 def normalize_teaching_payload(raw_data: dict[str, Any]) -> dict[str, Any]:
@@ -229,7 +386,7 @@ def merge_value(
 
 def build_teacher_entry(record: TeachingRecord) -> tuple[str, dict[str, Any], TeachingModule]:
     teacher_payload = record.metadata.teacher.model_dump(by_alias=False, exclude_none=True)
-    teaching_id = PATTERN_TEACHING_FILENAME.fullmatch(record.path.name).group("teaching_id")  # type: ignore[union-attr]
+    teaching_id = teaching_id_from_path(record.path)
     module_payload = {
         "teaching_id": teaching_id,
         "url": record.metadata.url,
@@ -278,16 +435,32 @@ def merge_programmes_by_code(programmes: list[dict[str, Any]]) -> list[dict[str,
 def merge_syllabus(records: list[TeachingRecord]) -> dict[str, MergedSyllabusPage]:
     merged: dict[str, MergedSyllabusPage] = {}
     selected_paths: dict[str, pathlib.Path] = {}
+    learning_outcomes_labels: dict[str, str] = {}
+    learning_outcomes_values: dict[str, list[str]] = defaultdict(list)
+    learning_outcomes_seen: dict[str, set[str]] = defaultdict(set)
 
     for record in records:
         syllabus = record.metadata.syllabus
         if not has_value(syllabus):
             continue
         for lang, page in syllabus.items():
-            candidate = MergedSyllabusPage(title=page.title, contents=page.contents)
+            page_data = syllabus_page_to_dict(page)
+            page_contents = page_data.get("contents", {}) if isinstance(page_data, dict) else {}
+            candidate = MergedSyllabusPage(
+                title=normalize_text(page_data.get("title")),
+                contents=strip_learning_outcomes(page_contents) if isinstance(page_contents, dict) else {},
+            )
             if lang not in merged:
                 merged[lang] = candidate
                 selected_paths[lang] = record.path
+                for label, value in (page_contents or {}).items():
+                    if is_learning_outcomes_label(str(label)):
+                        learning_outcomes_labels[lang] = str(label)
+                        text = normalize_text(value)
+                        if text and text not in learning_outcomes_seen[lang]:
+                            learning_outcomes_seen[lang].add(text)
+                            learning_outcomes_values[lang].append(text)
+                        break
             else:
                 existing_norm = normalize_for_comparison(merged[lang])
                 candidate_norm = normalize_for_comparison(candidate)
@@ -302,51 +475,126 @@ def merge_syllabus(records: list[TeachingRecord]) -> dict[str, MergedSyllabusPag
                         selected_paths[lang],
                         record.path,
                     )
+                if lang not in learning_outcomes_labels:
+                    for label in page_contents:
+                        if is_learning_outcomes_label(str(label)):
+                            learning_outcomes_labels[lang] = str(label)
+                            break
+                lo_text = extract_learning_outcomes(page_contents)
+                if lo_text and lo_text not in learning_outcomes_seen[lang]:
+                    learning_outcomes_seen[lang].add(lo_text)
+                    learning_outcomes_values[lang].append(lo_text)
+
+    for lang, page in merged.items():
+        label = learning_outcomes_labels.get(lang)
+        values = learning_outcomes_values.get(lang, [])
+        if label and values:
+            contents = dict(page.contents)
+            contents[label] = values[0] if len(values) == 1 else values
+            merged[lang] = MergedSyllabusPage(title=page.title, contents=contents)
 
     return merged
 
 
-def get_syllabus_signature(record: TeachingRecord) -> str:
-    """Get a normalized signature of syllabi to group records with identical syllabi."""
-    syllabus_dict = {}
-    for lang, page in record.metadata.syllabus.items():
-        syllabus_dict[lang] = {
-            "title": page.title,
-            "contents": page.contents,
-        }
-    return normalize_for_comparison(syllabus_dict)
+def records_share_teaching_id(record_a: TeachingRecord, record_b: TeachingRecord) -> bool:
+    return record_a.metadata.year == record_b.metadata.year and teaching_id_from_path(record_a.path) == teaching_id_from_path(record_b.path)
 
 
-def generate_course_suffixes(
-    course_groups: dict[tuple[int, str, str], list[TeachingRecord]],
-) -> dict[tuple[int, str, str], str]:
-    """Generate suffixes for course files with multiple syllabi using deterministic letter assignment."""
-    suffixes: dict[tuple[int, str, str], str] = {}
+def records_share_programme_codes(record_a: TeachingRecord, record_b: TeachingRecord) -> bool:
+    return course_programme_code_set(record_a.metadata) == course_programme_code_set(record_b.metadata)
 
-    # Group by (year, course_id) to find conflicts
-    by_course_id: dict[tuple[int, str], list[tuple[int, str, str]]] = defaultdict(list)
-    for key in course_groups.keys():
-        year, course_id, syllabus_sig = key
-        by_course_id[(year, course_id)].append(key)
 
-    for (year, course_id), keys in by_course_id.items():
-        if len(keys) == 1:
-            # No conflict, no suffix needed
-            suffixes[keys[0]] = ""
-        else:
-            # Multiple syllabi: assign letters A, B, C, etc. sorted deterministically by syllabus signature
-            LOGGER.warning(
-                "Course %s in year %s has %d different syllabi; using letter suffixes",
-                course_id,
-                year,
-                len(keys),
-            )
-            # Sort by syllabus signature to ensure deterministic assignment
-            sorted_keys = sorted(keys, key=lambda k: k[2])  # Sort by syllabus_sig (index 2)
-            for i, key in enumerate(sorted_keys):
-                suffixes[key] = f"-{chr(ord('A') + i)}"
+def records_share_syllabus_without_learning_outcomes(record_a: TeachingRecord, record_b: TeachingRecord) -> bool:
+    return syllabus_core_signature(record_a.metadata.syllabus) == syllabus_core_signature(record_b.metadata.syllabus)
 
-    return suffixes
+
+def records_share_learning_outcomes(
+    record_a: TeachingRecord,
+    record_b: TeachingRecord,
+    backend: str,
+    threshold: float,
+    embedding_model: str,
+) -> bool:
+    shared_languages = sorted(set(record_a.metadata.syllabus) & set(record_b.metadata.syllabus))
+    comparisons = 0
+    for lang in shared_languages:
+        page_a = syllabus_page_to_dict(record_a.metadata.syllabus[lang])
+        page_b = syllabus_page_to_dict(record_b.metadata.syllabus[lang])
+        if not page_a or not page_b:
+            continue
+        lo_a = extract_learning_outcomes(page_a.get("contents", {}) if isinstance(page_a, dict) else {})
+        lo_b = extract_learning_outcomes(page_b.get("contents", {}) if isinstance(page_b, dict) else {})
+        if not lo_a and not lo_b:
+            continue
+        comparisons += 1
+        similarity = learning_outcomes_similarity_percent(lo_a, lo_b, backend, embedding_model)
+        if similarity < threshold:
+            return False
+    return comparisons > 0
+
+
+def records_should_merge(
+    record_a: TeachingRecord,
+    record_b: TeachingRecord,
+    learning_outcomes_similarity_backend: str,
+    learning_outcomes_similarity_threshold: float,
+    learning_outcomes_embedding_model: str,
+) -> bool:
+    if record_a.metadata.course_title.id != record_b.metadata.course_title.id:
+        return False
+    if records_share_teaching_id(record_a, record_b):
+        return True
+    if records_share_programme_codes(record_a, record_b):
+        return True
+    if records_share_syllabus_without_learning_outcomes(record_a, record_b):
+        return True
+    return records_share_learning_outcomes(
+        record_a,
+        record_b,
+        learning_outcomes_similarity_backend,
+        learning_outcomes_similarity_threshold,
+        learning_outcomes_embedding_model,
+    )
+
+
+def group_records(
+    records: list[TeachingRecord],
+    learning_outcomes_similarity_backend: str,
+    learning_outcomes_similarity_threshold: float,
+    learning_outcomes_embedding_model: str,
+) -> list[list[TeachingRecord]]:
+    if not records:
+        return []
+
+    parents = list(range(len(records)))
+
+    def find(index: int) -> int:
+        while parents[index] != index:
+            parents[index] = parents[parents[index]]
+            index = parents[index]
+        return index
+
+    def union(index_a: int, index_b: int) -> None:
+        root_a = find(index_a)
+        root_b = find(index_b)
+        if root_a != root_b:
+            parents[root_b] = root_a
+
+    for index_a in range(len(records)):
+        for index_b in range(index_a + 1, len(records)):
+            if records_should_merge(
+                records[index_a],
+                records[index_b],
+                learning_outcomes_similarity_backend,
+                learning_outcomes_similarity_threshold,
+                learning_outcomes_embedding_model,
+            ):
+                union(index_a, index_b)
+
+    grouped: dict[int, list[TeachingRecord]] = defaultdict(list)
+    for index, record in enumerate(records):
+        grouped[find(index)].append(record)
+    return [grouped[root] for root in sorted(grouped)]
 
 
 def merge_records(records: list[TeachingRecord]) -> MergedCourseMetadata:
@@ -433,44 +681,69 @@ def ensure_symlink(link_path: pathlib.Path, target_path: pathlib.Path) -> None:
     link_path.symlink_to(relative_target)
 
 
-def merge_courses_tree(courses_dir: pathlib.Path) -> tuple[int, int]:
+def component_signature(records: list[TeachingRecord]) -> str:
+    return normalize_for_comparison([record.path.as_posix() for record in records])
+
+
+def merge_courses_tree(
+    courses_dir: pathlib.Path,
+    learning_outcomes_similarity_backend: str = DEFAULT_LEARNING_OUTCOMES_SIMILARITY_BACKEND,
+    learning_outcomes_similarity_threshold: float = DEFAULT_LEARNING_OUTCOMES_SIMILARITY_THRESHOLD,
+    learning_outcomes_embedding_model: str = DEFAULT_LEARNING_OUTCOMES_EMBEDDING_MODEL,
+) -> tuple[int, int]:
     records = iter_teaching_records(courses_dir)
-    grouped_records: dict[tuple[int, str, str], list[TeachingRecord]] = defaultdict(list)
+    grouped_records: dict[tuple[int, str], list[TeachingRecord]] = defaultdict(list)
 
-    # Group by (year, course_id, syllabus_signature)
+    # Group by (year, course_id) first; different course ids are never merged.
     for record in records:
-        syllabus_sig = get_syllabus_signature(record)
-        grouped_records[(record.metadata.year, record.metadata.course_title.id, syllabus_sig)].append(record)
-
-    # Generate suffixes for courses with conflicting syllabi
-    suffixes = generate_course_suffixes(grouped_records)
+        grouped_records[(record.metadata.year, record.metadata.course_title.id)].append(record)
 
     merged_count = 0
     symlink_count = 0
 
-    for (year, course_id, syllabus_sig), course_records in sorted(grouped_records.items()):
+    for (year, course_id), course_records in sorted(grouped_records.items()):
         merged_dir = courses_dir / DEFAULT_MERGED_DIRNAME / str(year)
         merged_dir.mkdir(parents=True, exist_ok=True)
 
-        suffix = suffixes.get((year, course_id, syllabus_sig), "")
-        merged_path = merged_dir / f"course-{course_id}{suffix}.yml"
-        merged_metadata = merge_records(course_records)
-        merged_path.write_text(
-            yaml.safe_dump(
-                merged_metadata.model_dump(by_alias=True, exclude_none=True),
-                sort_keys=False,
-                allow_unicode=True,
-            ),
-            encoding="utf-8",
+        components = group_records(
+            course_records,
+            learning_outcomes_similarity_backend,
+            learning_outcomes_similarity_threshold,
+            learning_outcomes_embedding_model,
         )
-        merged_count += 1
+        if len(components) > 1:
+            LOGGER.warning(
+                "Course %s in year %s has %d merge components; using suffixes",
+                course_id,
+                year,
+                len(components),
+            )
 
-        for record in course_records:
-            symlink_path = record.year_dir / f"course-{course_id}{suffix}.yml"
-            ensure_symlink(symlink_path, merged_path)
-            symlink_count += 1
+        indexed_components = sorted(
+            enumerate(components),
+            key=lambda item: component_signature(item[1]),
+        )
 
-        LOGGER.info("Wrote %s from %s teaching file(s)", merged_path, len(course_records))
+        for component_index, (_, component_records) in enumerate(indexed_components):
+            suffix = "" if component_index == 0 else merge_suffix(component_index - 1)
+            merged_path = merged_dir / f"course-{course_id}{suffix}.yml"
+            merged_metadata = merge_records(component_records)
+            merged_path.write_text(
+                yaml.safe_dump(
+                    merged_metadata.model_dump(by_alias=True, exclude_none=True),
+                    sort_keys=False,
+                    allow_unicode=True,
+                ),
+                encoding="utf-8",
+            )
+            merged_count += 1
+
+            for record in component_records:
+                symlink_path = record.year_dir / f"course-{course_id}{suffix}.yml"
+                ensure_symlink(symlink_path, merged_path)
+                symlink_count += 1
+
+            LOGGER.info("Wrote %s from %s teaching file(s)", merged_path, len(component_records))
 
     return merged_count, symlink_count
 
@@ -484,7 +757,12 @@ def main() -> int:
         LOGGER.error("courses directory does not exist: %s", args.courses_dir)
         return 2
 
-    merged_count, symlink_count = merge_courses_tree(args.courses_dir)
+    merged_count, symlink_count = merge_courses_tree(
+        args.courses_dir,
+        learning_outcomes_similarity_backend=args.learning_outcomes_similarity_backend,
+        learning_outcomes_similarity_threshold=args.learning_outcomes_similarity_threshold,
+        learning_outcomes_embedding_model=args.learning_outcomes_embedding_model,
+    )
     LOGGER.info("Done. merged=%s symlinks=%s", merged_count, symlink_count)
     return 0
 

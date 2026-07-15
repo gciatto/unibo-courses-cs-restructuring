@@ -8,102 +8,52 @@ languages:
 teaching_modes:
 - In-person learning (entirely or partially)
 schedules:
-- from: &id001 2026-02-16
-  to: &id002 2026-04-22
+- from: &id001 2026-02-25
+  to: &id002 2026-06-04
 teachers:
-- id: '61169'
-  name: Casadei, Roberto
-  email: roby.casadei@unibo.it
-  website: https://www.unibo.it/sitoweb/roby.casadei
+- id: '134286'
+  name: Cantelli, Martina
+  email: martina.cantelli6@unibo.it
+  website: https://www.unibo.it/sitoweb/martina.cantelli6
   role:
-  - rtdb
-  affiliation: disi
-  ssd:
-    name: INFO-01/A
-    description: Informatica
+  - teaching tutor
+  affiliation: din
   modules:
-  - teaching_id: '531744'
-    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/531744
+  - teaching_id: '514508'
+    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/514508
     syllabus_urls:
-      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/531744
-      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/531744
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/514508
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/514508
     details:
     - 6 cfu
     credits: 6
     schedule:
-      from: 2026-02-16
-      to: 2026-04-22
-    campus: Cesena
+      from: 2026-02-25
+      to: 2026-06-04
+    campus: Forli
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
-- id: '121200'
-  name: Domini, Davide
-  email: davide.domini@unibo.it
-  website: https://www.unibo.it/sitoweb/davide.domini
+- id: '38941'
+  name: Ravaioli, Mirko
+  email: mirko.ravaioli@unibo.it
+  website: https://www.unibo.it/sitoweb/mirko.ravaioli
   role:
-  - phd student
-  affiliation: disi
-  ssd:
-    name: ING-INF/05
-    description: SISTEMI DI ELABORAZIONE DELLE INFORMAZIONI
+  - adjunct professor
+  affiliation: din
   modules:
-  - teaching_id: '531744'
-    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/531744
+  - teaching_id: '534687'
+    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/534687
     syllabus_urls:
-      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/531744
-      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/531744
-    details: []
-    credits: 6
-    schedule:
-      from: 2026-02-16
-      to: 2026-04-22
-    campus: Cesena
-    ssd: ING-INF/05
-    language: Italian
-    teaching_mode: In-person learning (entirely or partially)
-- id: '131388'
-  name: Micelli, Leonardo
-  email: leonardo.micelli2@unibo.it
-  website: https://www.unibo.it/sitoweb/leonardo.micelli2
-  role:
-  - teaching tutor
-  affiliation: dei
-  modules:
-  - teaching_id: '531744'
-    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/531744
-    syllabus_urls:
-      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/531744
-      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/531744
-    details: []
-    credits: 6
-    schedule:
-      from: 2026-02-16
-      to: 2026-04-22
-    campus: Cesena
-    ssd: ING-INF/05
-    language: Italian
-    teaching_mode: In-person learning (entirely or partially)
-- id: '42142'
-  name: Montagna, Sara
-  email: sara.montagna@unibo.it
-  website: https://www.unibo.it/sitoweb/sara.montagna
-  role:
-  - external associate professor
-  affiliation: unibo
-  modules:
-  - teaching_id: '531744'
-    url: https://www.unibo.it/en/study/phd-professional-masters-specialisation-schools-and-other-programmes/course-unit-catalogue/course-unit/2025/531744
-    syllabus_urls:
-      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/531744
-      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/531744
+      it: https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2025/534687
+      en: https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2025/534687
     details:
-    - Module 2
+    - 6 cfu
     credits: 6
     schedule:
       from: *id001
       to: *id002
-    campus: Cesena
+    campus: Forli
     ssd: ING-INF/05
     language: Italian
     teaching_mode: In-person learning (entirely or partially)
@@ -112,241 +62,282 @@ course_title:
   name: Principles of Informatics
 integrated_course: ''
 campi:
-- Cesena
+- Forli
 programmes:
-- code: '6669'
-  campus: Cesena
-  languages:
-  - italian
-  duration: 3
-  access: Restricted access - TOLC-I (150 places available)
-  name:
-    it: Ingegneria biomedica
-    en: Biomedical Engineering
-  year: 2025
-  department: dei
-  urls:
-    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6669
-    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6669
-- code: '6670'
-  campus: Cesena
-  languages:
-  - italian
-  duration: 3
-  access: Open access - TOLC-I
-  name:
-    it: Ingegneria elettronica
-    en: Electronics Engineering
-  year: 2025
-  department: dei
-  urls:
-    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6670
-    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6670
-- code: '6705'
-  campus: Cesena
-  languages:
-  - english
-  duration: 2
-  access: Open access
-  name:
-    it: Biomedical Engineering
-    en: Biomedical Engineering
-  year: 2025
-  department: dei
-  urls:
-    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6705
-    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6705
-- code: '9082'
-  campus: Cesena
+- code: 0927
+  campus: Bologna
   languages:
   - italian
   duration: 3
   access: Restricted access - TOLC-I
   name:
-    it: Ingegneria biomedica
-    en: Biomedical Engineering
+    it: Ingegneria meccanica
+    en: Mechanical Engineering
   year: 2025
-  department: dei
+  department: din
   urls:
-    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/9082
-    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/9082
-- code: '9266'
-  campus: Cesena
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/0927
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/0927
+- code: 0949
+  campus: Forlì
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-I
+  name:
+    it: Ingegneria meccanica
+    en: Mechanical Engineering
+  year: 2025
+  department: din
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/0949
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/0949
+- code: '5723'
+  campus: Forlì
   languages:
   - english
   duration: 2
+  access: Restricted access
+  name:
+    it: Aerospace Engineering
+    en: Aerospace Engineering
+  year: 2025
+  department: din
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/5723
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/5723
+- code: '5724'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 2
   access: Open access
   name:
-    it: Biomedical Engineering
-    en: Biomedical Engineering
+    it: Ingegneria meccanica
+    en: Mechanical Engineering
   year: 2025
-  department: dei
+  department: din
   urls:
-    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/9266
-    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/9266
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/5724
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/5724
+- code: '6676'
+  campus: Forlì
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-I (130 places available)
+  name:
+    it: Ingegneria aerospaziale
+    en: Aerospace Engineering
+  year: 2025
+  department: din
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6676
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6676
+- code: '6677'
+  campus: Forlì
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-I (130 places available)
+  name:
+    it: Ingegneria meccanica
+    en: Mechanical Engineering
+  year: 2025
+  department: din
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6677
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6677
+- code: '6680'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-I (229 places available)
+  name:
+    it: Ingegneria meccanica
+    en: Mechanical Engineering
+  year: 2025
+  department: din
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/6680
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/6680
+- code: '6704'
+  campus: Forlì
+  languages:
+  - english
+  duration: 2
+  access: Restricted access (80 places available)
+  name:
+    it: Aerospace Engineering
+    en: Aerospace Engineering
+  year: 2025
+  department: din
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6704
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6704
+- code: '6721'
+  campus: Bologna
+  languages:
+  - italian
+  duration: 2
+  access: Open access
+  name:
+    it: Ingegneria meccanica
+    en: Mechanical Engineering
+  year: 2025
+  department: din
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-magistrali/corso/2025/6721
+    en: https://www.unibo.it/en/study/second-cycle-degree/programme/2025/6721
+- code: '9234'
+  campus: Forlì
+  languages:
+  - italian
+  duration: 3
+  access: Restricted access - TOLC-I
+  name:
+    it: Ingegneria aerospaziale
+    en: Aerospace Engineering
+  year: 2025
+  department: din
+  urls:
+    it: https://www.unibo.it/it/studiare/lauree-e-lauree-magistrali-a-ciclo-unico/corso/2025/9234
+    en: https://www.unibo.it/en/study/first-and-single-cycle-degree/programme/2025/9234
 syllabus:
   it:
     title: 2025/2026 FONDAMENTI DI INFORMATICA — Università di Bologna
     contents:
-      Conoscenze e abilità da conseguire: "Al termine del corso, lo studente possiede\
-        \ le conoscenze di base dei concetti di computazione, di programmazione imperativa,\
-        \ strutturata, e di strutture dati e loro algoritmi. In particolare, lo studente\
-        \ è in grado di:\n\n- progettare algoritmi base per la manipolazione di strutture\n\
-        \  dati\n- realizzare tali algoritmi in un linguaggio di programmazione."
-      Contenuti: 'Introduzione all''informatica: panoramica della disciplina.
+      Contenuti: 'Architettura di base dei calcolatori: architettura di Von Neuman;
+        struttura di una CPU.
 
 
-        Architettura dei calcolatori: architettura di Von Neuman; componenti dei computer
-        moderni; livelli software.
-
-
-        Rappresentazione dell''informazione: codice binario; rappresentazione dell''informazione
-        numerica (rappresentazione in complemento a due, rappresentazione floating-point);
+        Rappresentazione dell''informazione: rappresentazione dell''informazione numerica
+        (rappresentazione in complemento a due, rappresentazione floating-point);
         rappresentazione dell''informazione non numerica.
 
 
-        Introduzione agli algoritmi, strutture dati, e programmazione: definizione
-        di algoritmo ed esempi; strutture dati fondamentali; notazioni di rappresentazione
-        di algoritmi (pseudocodice, diagrammi di flusso); linguaggi di programmazione.
+        Logica Booleana: Algebra di Boole. Espressioni e funzioni booleane. Porte
+        logiche e schemi circuitali.
 
 
-        Linguaggio C: costrutti fondamentali del linguaggio: tipi, operatori, espressioni,
-        funzioni, strutture di controllo, cicli, funzioni; programmazione strutturata;
-        iterazione e ricorsione; array e puntatori; allocazione dinamica della memoria;
-        algoritmi su array (inversione, ordinamento, ricerca sequenziale, ricerca
-        binaria); stringhe.'
-      Testi/Bibliografia: 'Testi suggeriti:
+        Introduzione agli algoritmi e alle strutture dati: definizione di algoritmo
+        ed esempi; strutture dati fondamentali.
 
 
-        - J. G. Brookshear and Stephen G. Kochan. Fondamenti di Informatica e Programmazione
-        in C. Pearson, 2016. ISBN: 978-8865183694
-
-        - Paul J. Deitel, Harvey M. Deitel, "Il linguaggio C: fondamenti e tecniche
-        di programmazione", 9/Ed, Pearson, ISBN 978-8891906236 (ISBN edizione digitale:
-        978-8891906243)
+        Introduzione all''intelligenza artificiale: concetti e strumenti fondamentali.
 
 
-        Approfondimenti sulla programmazione in C:
+        Il linguaggio MATLAB/Octave: Costrutti fondamentali. Strutture dati. Operazioni
+        su vettori e matrici. Elementi di programmazione vettoriale. Input e Output.
+        Funzioni. Visibilità delle variabili. Uso di funzioni grafiche.'
+      Testi/Bibliografia: 'Approfondimenti sulla parte di teoria:
 
 
-        - Brian W. Kernighan and Dennis M. Ritchie, "The C Programming Language, Second
-        Edition", Prentice Hall, Inc., 1988. ISBN 0-13-110362-8 (paperback), 0-13-110370-9
-        (hardback).'
-      Metodi didattici: 'La didattica si svolge mediante lezioni frontali accompagnate
-        da esercitazioni pratiche al laboratorio, strutturate secondo approcci attivi.
-        Durante le lezioni teoriche vengono introdotti i concetti base dell''informatica,
-        e vengono via via descritti i costrutti di programmazione che sono poi oggetto
-        di esercitazioni parzialmente guidate, con la supervisione dei docenti. Di
-        tutti gli esercizi proposti viene poi fornita una possibile soluzione sul
-        sito web del corso, allo scopo di supportare le attività di studio individuale.
-        Alcune esercitazioni sono rivolte a simulare lo svolgimento dell''esame finale.
+        J. Glenn Brookshear, Dennis Brylow “Informatica—una panoramica generale”,
+        12/ed., Pearson 2016
 
 
-        In considerazione della tipologia di attività e dei metodi didattici adottati,
-        la frequenza di questa attività formativa richiede la preventiva partecipazione
-        di tutti gli studenti ai moduli 1 e 2 di formazione sulla sicurezza nei luoghi
-        di studio, in modalità e-learning.'
+        G. Michael Schneider, Judith L. Gersting "Informatica " Edizione italiana
+        a cura di Antonio Gentile e Roberto Pirrone - Maggioli, 2013
+
+
+        Testo sulla programmazione in MATLAB:
+
+
+        S. Attaway. MATLAB - A Practical Introduction to Programming and Problem Solving.
+        5th Edition, Elsevier 2019.
+
+
+        (la versione elettronica della quinta edizione del testo è scaricabile dal
+        sito della casa editrice gratuitamente per gli studenti dell''Università di
+        Bologna)'
+      Metodi didattici: Lezioni in cui verranno introdotti i vari argomenti ed esercitazioni
+        in cui ogni argomento sarà accompagnato da esempi, casi di studio ed esercizi.
       Modalità di verifica e valutazione dell'apprendimento: 'Gli studenti saranno
-        valutati in base allo svolgimento di una prova scritta/pratica nella piattaforma
-        EOL (Esami Online) composta da domande di tipo teorico ed esercizi da risolvere
-        al computer. L''esame è strutturato in modo tale da valutare il raggiungimento
-        degli obiettivi didattici; in particolare, la capacità di ragionare in termini
-        logici e algoritmici e le competenze di analisi, progettazione, ed implementazione
-        di programmi in linguaggio C.
+        valutati considerando di base 2 prove:
 
 
-        Alle Studentesse e agli Studenti con DSA o disabilità temporanee o permanenti
-        si raccomanda di contattare per tempo l’ufficio di Ateneo responsabile, all''indirizzo
-        https://site.unibo.it/studenti-con-disabilita-e-dsa/it. Sarà cura dell''ufficio
-        proporre eventuali adattamenti, che dovranno comunque essere sottoposti, con
-        un anticipo di 15 giorni, all’approvazione del/la docente, che ne valuterà
-        l''opportunità anche in relazione agli obiettivi formativi dell''insegnamento.'
+        - pratica: sviluppando autonomamente a casa dei progettini software in Matlab
+
+        - scritto: composto da esercizi e domande di tipo teorico
+
+
+        Sarà eventualmente disponibile anche un esame orale.
+
+
+        L''esame è strutturato in modo tale da valutare il raggiungimento degli obiettivi
+        didattici; in particolare, la capacità di ragionare in termini logici e algoritmici
+        e le competenze di analisi e sintesi di programmi in linguaggio MATLAB/Octav'
       Strumenti a supporto della didattica: Nel corso sarà utilizzato anche materiale
         didattico fornito dal docente (in particolare, lucidi e dispense con esercizi
-        e problemi vari). L'attività di laboratorio supporterà l'apprendimento pratico.
-        Sarà presente un tutor per supportare l'attività laboratoriale.
-      Orario di ricevimento: 'Consulta il sito web di Roberto Casadei (https://www.unibo.it/sitoweb/roby.casadei)
-
-
-        Consulta il sito web di Sara Montagna (https://www.unibo.it/sitoweb/sara.montagna)'
+        e problemi vari).
+      Orario di ricevimento: Consulta il sito web di Mirko Ravaioli (https://www.unibo.it/sitoweb/mirko.ravaioli)
+      Conoscenze e abilità da conseguire: Al termine del corso lo studente possiede
+        le nozioni fondamentali riguardanti le macchine digitali e l'architettura
+        dei calcolatori e il loro uso nell'elaborazione dell'informazione. Inoltre,
+        possiede le conoscenze utili alla progettazione di algoritmi e gli strumenti
+        necessari alla loro implementazione mediante un linguaggio di alto livello
+        per risolvere semplici problemi dell’ingegneria.
   en:
     title: 2025/2026 Principles of Informatics — University of Bologna
     contents:
-      Learning outcomes: 'At the end of the course, the student will be acquainted
-        with the basics of information representation, computation, algorithms, and
-        computer programming (in particular: imperative, structured programming).
-        The student will be able to design and implement algorithms in a programming
-        language.'
-      Course contents: 'Introduction to informatics: an overview of the field.
+      Course contents: 'Basic computer architecture: Von Neuman architecture; structure
+        of a CPU.
 
 
-        Basics of computer architecture: Von Neuman architecture; main components
-        of modern computers; software levels.
+        Information representation: representation of numerical information (two''s
+        complement representation, floating-point representation); representation
+        of non-numerical information.
 
 
-        Representation of information: binary code; representation of numeric information
-        (two''s complement, floating-point representation); representation of non-numeric
-        information.
+        Boolean logic: Boolean algebra. Boolean expressions and functions. Logic gates
+        and circuit diagrams.
 
 
-        Introduction to algorithms, data structures, and programming: definition of
-        algorithm; examples of algorithms; fundamental data structures; notations
-        for representing algorithms (pseudo-code, flow diagrams); programming languages.
+        Introduction to algorithms and data structures: definition of algorithm and
+        examples; fundamental data structures.
 
 
-        The C programming language: fundamental constructs of the language: types,
-        values, operators, expressions, functions, control flow structures, cycles;
-        structured programming; iteration and recursion; arrays e pointers; algorithms
-        on arrays (reverse, ordering, search); strings of characters.'
-      Readings/Bibliography: 'Suggested textbooks:
+        The MATLAB / Octave language: Fundamental constructs. Data structures. Operations
+        on vectors and matrices. Vector programming elements. Input and Output. Functions.
+        Visibility of variables. Use of graphic functions.'
+      Readings/Bibliography: 'J. Glenn Brookshear, Dennis Brylow “Informatica—una
+        panoramica generale”, 12/ed., Pearson 2016
 
 
-        - Paul J. Deitel, Harvey M. Deitel, "Il linguaggio C: fondamenti e tecniche
-        di programmazione", 9/Ed, Pearson, ISBN 978-8891906236 (ISBN e-book: 978-8891906243)
-
-        - Brookshear, J. Glenn. Computer science: an overview. Boston: Addison-Wesley,
-        2012.
+        G. Michael Schneider, Judith L. Gersting "Informatica " Edizione italiana
+        a cura di Antonio Gentile e Roberto Pirrone - Maggioli, 2013
 
 
-        For further topics on the C programming language:
+        Testo sulla programmazione in MATLAB:
 
 
-        - Brian W. Kernighan and Dennis M. Ritchie, "The C Programming Language, Second
-        Edition", Prentice Hall, Inc., 1988. ISBN 0-13-110362-8 (paperback), 0-13-110370-9
-        (hardback).'
-      Teaching methods: 'Teaching is carried out through lectures accompanied by practical
-        exercises in the laboratory, structured according to active learning approaches.
-        During the theoretical lessons, the basic concepts of computer science are
-        introduced, and programming constructs are gradually described, which then
-        become the subject of partially guided exercises under the supervision of
-        the instructors. Solutions for all the proposed exercises is then provided
-        on the course website, in order to support individual study activities. Some
-        exercises are aimed at simulating the final exam.
+        S. Attaway. MATLAB - A Practical Introduction to Programming and Problem Solving.
+        5th Edition, Elsevier 2019'
+      Teaching methods: Lessons in which the various topics will be introduced and
+        exercises in which each topic will be accompanied by examples, case studies
+        and exercises.
+      Assessment methods: 'Students will be assessed considering 2 basic tests:
 
 
-        Considering the type of activities and the teaching methods adopted, attendance
-        of this training activity requires all students to have previously completed
-        modules 1 and 2 of the safety training for study environments, in e-learning
-        mode.'
-      Assessment methods: 'Students will be assessed based on a written/practical
-        test in EOL (Esami Online) consisting of theoretical questions and exercises
-        to be solved on the computer. The exam is designed to evaluate the achievement
-        of the learning objectives; in particular, the ability to think in logical
-        and algorithmic terms, as well as the skills in analysis, design, and implementation
-        of programs in the C language.
+        - autonomously developing software projects in Matlab at home
+
+        - composed of exercises and theoretical questions
 
 
-        Students with specific learning disorders (DSA) or temporary or permanent
-        disabilities are advised to contact the responsible University office in advance,
-        at the address https://site.unibo.it/studenti-con-disabilita-e-dsa/en. The
-        office will take care of proposing any necessary adjustments, which must in
-        any case be submitted, at least 15 days in advance, for the approval of the
-        instructor, who will assess their appropriateness also in relation to the
-        learning objectives of the course.'
-      Teaching tools: The professors will provide materials to facilitate learning,
-        including slides, lecture notes, and exercises. Laboratory classes will support
-        practice. Tutoring will be provided to support learning throughout the coursework.
-      Office hours: 'See the website of Roberto Casadei (https://www.unibo.it/sitoweb/roby.casadei/en)
+        An oral exam will eventually be available.
 
 
-        See the website of Sara Montagna (https://www.unibo.it/sitoweb/sara.montagna/en)'
+        The exam is structured in such a way as to evaluate the achievement of the
+        didactic objectives; in particular, the ability to reason in logical and algorithmic
+        terms and the skills of analysis and synthesis of programs in MATLAB / Octav
+        language'
+      Teaching tools: The course will also use didactic material provided by the teacher
+        (in particular, slides and handouts with various exercises and problems).
+      Office hours: See the website of Mirko Ravaioli (https://www.unibo.it/sitoweb/mirko.ravaioli/en)
+      Learning outcomes: At the end of the course the student possesses the fundamental
+        notions regarding digital machines and the architecture of computers and their
+        use in information processing. In addition, he possesses the knowledge useful
+        for the design of algorithms and the tools necessary for their implementation
+        using a high-level language to solve simple engineering problems.

@@ -1,0 +1,90 @@
+command: /Users/gciatto/Work/unibo-courses-cs-restructuring/clustering/cli.py --weight-title
+  0.1 --weight-learning-outcomes 0.45 --weight-course-contents 0.4 --weight-readings
+  0.05 --k-min 16 --k-max 30 --algorithm spectral
+arguments:
+  year: 2025
+  courses_dir: data/courses/.files
+  output_dir: data/clusters/runs
+  regenerate_charts: null
+  embedding_model: sentence-transformers/paraphrase-multilingual-mpnet-base-v2
+  device: auto
+  embedding_batch_size: 32
+  chunk_token_limit: 384
+  weight_title: 0.1
+  weight_learning_outcomes: 0.45
+  weight_course_contents: 0.4
+  weight_readings: 0.05
+  algorithm: spectral
+  n_clusters: auto
+  cluster_count_method: silhouette
+  k_min: 16
+  k_max: 30
+  agglomerative_linkage: average
+  distance_threshold: null
+  hdbscan_min_cluster_size: 5
+  hdbscan_min_samples: null
+  hdbscan_cluster_selection_epsilon: 0.0
+  hdbscan_cluster_selection_method: eom
+  spectral_assign_labels: kmeans
+  spectral_n_init: 10
+  kmeans_n_init: auto
+  kmeans_max_iter: 300
+  random_state: 42
+  limit: null
+  refresh_embeddings: false
+  refresh_similarities: false
+  no_cache: false
+  prune_cache: false
+  fake_embeddings: false
+course_count: 293
+weights:
+  course title.name: 0.1
+  Learning outcomes: 0.45
+  Course contents: 0.4
+  Readings/Bibliography: 0.05
+embedding:
+  schema_version: 1
+  embedding_model: sentence-transformers/paraphrase-multilingual-mpnet-base-v2
+  chunk_token_limit: 384
+  normalize_chunks_before_average: true
+  normalize_section_vectors: true
+  section_names:
+  - course title.name
+  - Learning outcomes
+  - Course contents
+  - Readings/Bibliography
+  model_config_hash: c99edabb69334c37
+clustering:
+  algorithm: spectral
+  n_clusters: 30
+  cluster_count_scores:
+  - k: 16
+    score: 0.05437073321598358
+  - k: 17
+    score: 0.054926640684149215
+  - k: 18
+    score: 0.05195344263737649
+  - k: 19
+    score: 0.059235599605423246
+  - k: 20
+    score: 0.059460430621489126
+  - k: 21
+    score: 0.062067391599319045
+  - k: 22
+    score: 0.06816253559647133
+  - k: 23
+    score: 0.071281157428485
+  - k: 24
+    score: 0.07306418050579196
+  - k: 25
+    score: 0.07007383289346246
+  - k: 26
+    score: 0.06594996977943905
+  - k: 27
+    score: 0.0715254555571255
+  - k: 28
+    score: 0.0740702197120753
+  - k: 29
+    score: 0.07526543216525343
+  - k: 30
+    score: 0.07718312336283434
