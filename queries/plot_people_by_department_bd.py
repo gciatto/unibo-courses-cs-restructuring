@@ -18,6 +18,7 @@ import textwrap
 import yaml
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib import cm
 import os
 import csv
 
@@ -113,18 +114,21 @@ def make_bar(df: pd.DataFrame, out: str = "people_by_dept_bd_bar.pdf") -> None:
     role_cols = [c for c in df.columns if c not in ("department", "people", "short", "label")]
 
     fig, ax = plt.subplots(figsize=(11, 10))
-    colorway = ["#4C72B0", "#55A868", "#C44E52", "#8172B2", "#CCB974", "#64B5CD"]
+    # Build one distinct color per role to avoid repeated legend colors.
+    colorway = [cm.tab20(i) for i in range(len(role_cols))]
     left = pd.Series([0] * len(bar_df), index=bar_df.index)
 
     for i, role in enumerate(role_cols):
         values = bar_df[role]
-        ax.barh(
+        bars = ax.barh(
             bar_df["label"],
             values,
             left=left,
             label=role,
             color=colorway[i % len(colorway)],
         )
+        labels = [str(int(v)) if float(v) > 0 else "" for v in values]
+        ax.bar_label(bars, labels=labels, label_type="center", fontsize=8, color="white")
         left = left + values
 
     ax.set_title("Total People by Department, Partitioned by Role")
@@ -136,12 +140,12 @@ def make_bar(df: pd.DataFrame, out: str = "people_by_dept_bd_bar.pdf") -> None:
     ax.set_xlim(0, max_value * 1.06 if max_value else 1)
     ax.legend(
         title="Role",
-        loc="upper right",
-        bbox_to_anchor=(1.0, 1.02),
+        loc="lower center",
+        bbox_to_anchor=(0.5, 1.02),
         ncol=2,
         frameon=True,
     )
-    fig.subplots_adjust(left=0.26, right=0.98, top=0.90, bottom=0.08)
+    fig.subplots_adjust(left=0.26, right=0.98, top=0.78, bottom=0.08)
 
     if os.path.exists(out):
         os.remove(out)
