@@ -15,8 +15,7 @@ import textwrap
 
 import yaml
 import pandas as pd
-import plotly.graph_objects as go
-import plotly.io as pio
+import matplotlib.pyplot as plt
 import os
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
@@ -62,7 +61,7 @@ def shorten(name: str, maxlen: int = 38) -> str:
 
 
 def wrap_label(name: str, width: int = 32) -> str:
-    return "<br>".join(textwrap.wrap(name, width))
+    return "\n".join(textwrap.wrap(name, width))
 
 
 def save_meta(pdf_path: str, caption: str, description: str = "") -> None:
@@ -75,29 +74,33 @@ def make_bar(df: pd.DataFrame, out: str = "credits_by_dept_bar.pdf") -> None:
     bar_df["short"] = bar_df["department"].apply(shorten)
     bar_df["label"] = bar_df["short"].apply(wrap_label)
 
-    fig = go.Figure(go.Bar(
-        x=bar_df["credits"],
-        y=bar_df["label"],
-        orientation="h",
-        marker_color=pio.templates["seaborn"].layout.colorway[0],
-        text=bar_df["credits"],
-        textposition="outside",
-        cliponaxis=False,
-    ))
-    fig.update_layout(
-        title={
-            "text": ( "Total Credits by Department" )
-        },
-        height=1000,
-        width=1100,
-        margin=dict(l=260, r=90, t=110, b=40),
-    )
-    fig.update_xaxes(title_text="Total Credits")
-    fig.update_yaxes(title_text="", tickfont=dict(size=11))
+    fig, ax = plt.subplots(figsize=(11, 10))
+    bars = ax.barh(bar_df["label"], bar_df["credits"], color="#4C72B0")
+
+    ax.set_title("Total Credits by Department")
+    ax.set_xlabel("Total Credits")
+    ax.set_ylabel("")
+    ax.tick_params(axis="y", labelsize=11)
+
+    max_value = float(bar_df["credits"].max()) if not bar_df.empty else 0.0
+    x_offset = max(1.0, max_value * 0.01)
+    for bar, value in zip(bars, bar_df["credits"]):
+        ax.text(
+            float(value) + x_offset,
+            bar.get_y() + bar.get_height() / 2,
+            f"{int(value)}",
+            va="center",
+            ha="left",
+            fontsize=10,
+        )
+
+    ax.set_xlim(0, max_value + x_offset * 8)
+    fig.subplots_adjust(left=0.26, right=0.98, top=0.90, bottom=0.08)
 
     if os.path.exists( out ):
         os.remove( out )
-    fig.write_image(out)
+    fig.savefig(out, format="pdf")
+    plt.close(fig)
     print(f"Saved  {out}")
 
 

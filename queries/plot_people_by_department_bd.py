@@ -17,8 +17,7 @@ import textwrap
 
 import yaml
 import pandas as pd
-import plotly.graph_objects as go
-import plotly.io as pio
+import matplotlib.pyplot as plt
 import os
 import csv
 
@@ -112,33 +111,42 @@ def make_bar(df: pd.DataFrame, out: str = "people_by_dept_bd_bar.pdf") -> None:
     bar_df["label"] = bar_df["short"].apply(wrap_label)
 
     role_cols = [c for c in df.columns if c not in ("department", "people", "short", "label")]
-    colorway = pio.templates["seaborn"].layout.colorway
 
-    fig = go.Figure()
+    fig, ax = plt.subplots(figsize=(11, 10))
+    colorway = ["#4C72B0", "#55A868", "#C44E52", "#8172B2", "#CCB974", "#64B5CD"]
+    left = pd.Series([0] * len(bar_df), index=bar_df.index)
+
     for i, role in enumerate(role_cols):
-        fig.add_trace(go.Bar(
-            x=bar_df[role],
-            y=bar_df["label"],
-            orientation="h",
-            name=role,
-            marker_color=colorway[i % len(colorway)],
-        ))
+        values = bar_df[role]
+        ax.barh(
+            bar_df["label"],
+            values,
+            left=left,
+            label=role,
+            color=colorway[i % len(colorway)],
+        )
+        left = left + values
 
-    fig.update_layout(
-        barmode="stack",
-        title={"text": ("Total People by Department, Partitioned by Role")},
-        height=1000,
-        width=1100,
-        margin=dict(l=260, r=90, t=110, b=40),
-        legend=dict(title="Role", orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+    ax.set_title("Total People by Department, Partitioned by Role")
+    ax.set_xlabel("Total People")
+    ax.set_ylabel("")
+    ax.tick_params(axis="y", labelsize=11)
+
+    max_value = float(bar_df["people"].max()) if not bar_df.empty else 0.0
+    ax.set_xlim(0, max_value * 1.06 if max_value else 1)
+    ax.legend(
+        title="Role",
+        loc="upper right",
+        bbox_to_anchor=(1.0, 1.02),
+        ncol=2,
+        frameon=True,
     )
-
-    fig.update_xaxes(title_text="Total People")
-    fig.update_yaxes(title_text="", tickfont=dict(size=11))
+    fig.subplots_adjust(left=0.26, right=0.98, top=0.90, bottom=0.08)
 
     if os.path.exists(out):
         os.remove(out)
-    fig.write_image(out)
+    fig.savefig(out, format="pdf")
+    plt.close(fig)
     print(f"Saved {out}")
 
 
