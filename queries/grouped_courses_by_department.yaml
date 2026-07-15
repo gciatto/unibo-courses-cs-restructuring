@@ -82,14 +82,14 @@
     id: '98618'
     name: '''document digitization techniques '''
     credits: 6
-  - teachers:
-    - name: Barzaghi, Sebastian
-      uid: '121048'
-    id: B5079
-    name: digital humanities and data management for cultural heritage
-    credits: 6
 - Department: dei
   Courses:
+  - teachers:
+    - name: Micelli, Leonardo
+      uid: '131388'
+    id: '15305'
+    name: foundations of informatics a
+    credits: 6
   - teachers:
     - name: Sarti, Elena
       uid: '180206'
@@ -140,6 +140,14 @@
     id: B8561
     name: architetture dei calcolatori m
     credits: 8
+- Department: dibinem
+  Courses:
+  - teachers:
+    - name: Bonini, Roberto
+      uid: '146356'
+    id: '37635'
+    name: data structure and algorithms
+    credits: 12
 - Department: dicam
   Courses:
   - teachers:
@@ -215,8 +223,6 @@
   - teachers:
     - name: Piccinini, Filippo
       uid: '47531'
-    - name: Russo, Stefano
-      uid: '107594'
     id: '82202'
     name: informatic
     credits: 2
@@ -225,12 +231,6 @@
       uid: '47531'
     id: '88016'
     name: statistics
-    credits: 2
-  - teachers:
-    - name: Cercenelli, Laura
-      uid: '45506'
-    id: '96346'
-    name: computer science
     credits: 2
 - Department: dimevet
   Courses:
@@ -327,21 +327,9 @@
   - teachers:
     - name: Barron Cedeno, Luis Alberto
       uid: '106204'
-    id: B0385
-    name: natural language processing
-    credits: 6
-  - teachers:
-    - name: Barron Cedeno, Luis Alberto
-      uid: '106204'
     id: B2696
     name: 'language, technology, research i: computational thinking'
     credits: 6
-  - teachers:
-    - name: Lecci, Claudia
-      uid: '42597'
-    id: B6082
-    name: technology-assisted interpreting i
-    credits: 8
   - teachers:
     - name: Lecci, Claudia
       uid: '42597'
@@ -423,6 +411,18 @@
       uid: '46984'
     id: '90157'
     name: open science
+    credits: 6
+  - teachers:
+    - name: Spinaci, Gianmarco
+      uid: '95575'
+    id: '90720'
+    name: usability & user experience design
+    credits: 6
+  - teachers:
+    - name: Sampò, Giorgia
+      uid: '142209'
+    id: '95782'
+    name: network analysis
     credits: 6
   - teachers:
     - name: Peroni, Silvio
@@ -532,12 +532,6 @@
     id: B5293
     name: computer studies and humanities
     credits: 3
-  - teachers:
-    - name: Presutti, Valentina
-      uid: '36732'
-    id: B8929
-    name: computer studies and human sciences
-    credits: 6
 - Department: mat
   Courses:
   - teachers:
@@ -577,6 +571,12 @@
     name: databases
     credits: 6
   - teachers:
+    - name: Ronchieri, Elisabetta
+      uid: '124216'
+    id: '90477'
+    name: machine learning systems for data science
+    credits: 10
+  - teachers:
     - name: Somenzi, Damiano Marino
       uid: '50421'
     id: '96793'
@@ -589,4 +589,12 @@
       uid: '166955'
     id: '98735'
     name: python coding and data science
+    credits: 6
+- Department: unibo
+  Courses:
+  - teachers:
+    - name: Montagna, Sara
+      uid: '42142'
+    id: '15305'
+    name: foundations of informatics a
     credits: 6

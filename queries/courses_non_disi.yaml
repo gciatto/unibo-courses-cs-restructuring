@@ -58,28 +58,25 @@
   UID: "106204"
   Department: "dit"
   Courses:
-    - id: B2696
-      name: "language, technology, research i: computational thinking"
-      credits: 6
-    - id: B0385
-      name: "natural language processing"
-      credits: 6
     - id: 91258
       name: "natural language processing"
       credits: 5
+    - id: B2696
+      name: "language, technology, research i: computational thinking"
+      credits: 6
 - Name: "Bartolini, Andrea"
   UID: "46417"
   Department: "dei"
   Courses:
+    - id: 69430
+      name: "computer architectures m"
+      credits: 6
     - id: 88145
       name: "fundamentals of computer programming p1"
       credits: 3
     - id: B8561
       name: "architetture dei calcolatori m"
       credits: 8
-    - id: 69430
-      name: "computer architectures m"
-      credits: 6
 - Name: "Bartolini, Nicola"
   UID: "133101"
   Department: "stat"
@@ -93,9 +90,6 @@
   Courses:
     - id: 48693
       name: "computer science for cultural heritage"
-      credits: 6
-    - id: B5079
-      name: "digital humanities and data management for cultural heritage"
       credits: 6
 - Name: "Bergamaschi, Francesco"
   UID: "53327"
@@ -125,6 +119,13 @@
     - id: 75969
       name: "basic informatics"
       credits: 6
+- Name: "Bonini, Roberto"
+  UID: "146356"
+  Department: "dibinem"
+  Courses:
+    - id: 37635
+      name: "data structure and algorithms"
+      credits: 12
 - Name: "Bonora, Paolo"
   UID: "82752"
   Department: "ficlit"
@@ -192,9 +193,6 @@
   UID: "45506"
   Department: "dimec"
   Courses:
-    - id: 96346
-      name: "computer science"
-      credits: 2
     - id: 07276
       name: "computer science"
       credits: 1
@@ -265,24 +263,24 @@
   UID: "73928"
   Department: "filo"
   Courses:
-    - id: B8836
-      name: "universal semantics"
+    - id: 85446
+      name: "knowledge representation and extraction"
       credits: 6
     - id: B4948
       name: "cognitive sematics for artificial intelligence"
       credits: 6
-    - id: 85446
-      name: "knowledge representation and extraction"
+    - id: B8836
+      name: "universal semantics"
       credits: 6
 - Name: "Garagnani, Massimiliano"
   UID: "177443"
   Department: "filo"
   Courses:
-    - id: 73149
-      name: "logic for informatics"
-      credits: 6
     - id: 27311
       name: "humanistic it"
+      credits: 6
+    - id: 73149
+      name: "logic for informatics"
       credits: 6
     - id: B8905
       name: "foundations of programming"
@@ -332,18 +330,15 @@
   UID: "42597"
   Department: "dit"
   Courses:
-    - id: B8536
-      name: "computer-aided human translation: cat, mt and ai"
+    - id: 87898
+      name: "methods and technologies for interpreting"
       credits: 5
     - id: 87901
       name: "methods and advanced technologies for interpreting"
       credits: 5
-    - id: 87898
-      name: "methods and technologies for interpreting"
+    - id: B8536
+      name: "computer-aided human translation: cat, mt and ai"
       credits: 5
-    - id: B6082
-      name: "technology-assisted interpreting i"
-      credits: 8
 - Name: "Lepore, Roberto"
   UID: "170626"
   Department: "difa"
@@ -376,12 +371,12 @@
   UID: "133108"
   Department: "dei"
   Courses:
-    - id: B8561
-      name: "architetture dei calcolatori m"
-      credits: 8
     - id: 69430
       name: "computer architectures m"
       credits: 6
+    - id: B8561
+      name: "architetture dei calcolatori m"
+      credits: 8
 - Name: "Manservisi, Sandro"
   UID: "34009"
   Department: "din"
@@ -393,17 +388,24 @@
   UID: "46524"
   Department: "dar"
   Courses:
+    - id: 90864
+      name: "elements of computer technologies for fashion e-commerce"
+      credits: 6
     - id: 91721
       name: "laboratory of virtual reality and advanced reality"
       credits: 6
     - id: B4925
       name: "immersive technologies for fashion"
       credits: 6
-    - id: 90864
-      name: "elements of computer technologies for fashion e-commerce"
-      credits: 6
     - id: B4940
       name: "data science for fashion system"
+      credits: 6
+- Name: "Micelli, Leonardo"
+  UID: "131388"
+  Department: "dei"
+  Courses:
+    - id: 15305
+      name: "foundations of informatics a"
       credits: 6
 - Name: "Moni, Cristina"
   UID: "42714"
@@ -412,6 +414,13 @@
     - id: 20741
       name: "information processing systems"
       credits: 1
+- Name: "Montagna, Sara"
+  UID: "42142"
+  Department: "unibo"
+  Courses:
+    - id: 15305
+      name: "foundations of informatics a"
+      credits: 6
 - Name: "Natali, Antonio"
   UID: "15250"
   Department: ""
@@ -439,11 +448,11 @@
     - id: 90157
       name: "open science"
       credits: 6
-    - id: B8105
-      name: "computational management of data"
-      credits: 12
     - id: B1703
       name: "introduction to programming"
+      credits: 12
+    - id: B8105
+      name: "computational management of data"
       credits: 12
 - Name: "Pescarin, Sofia"
   UID: "112282"
@@ -466,12 +475,12 @@
   UID: "47475"
   Department: "sps"
   Courses:
-    - id: B0064
-      name: "introduction to data science and computational thinking"
-      credits: 8
     - id: B0063
       name: "programming laboratory"
       credits: 4
+    - id: B0064
+      name: "introduction to data science and computational thinking"
+      credits: 8
 - Name: "Presutti, Valentina"
   UID: "36732"
   Department: "lilec"
@@ -479,15 +488,12 @@
     - id: 91265
       name: "knowledge engineering"
       credits: 6
-    - id: B5292
-      name: "knowledge engeneering for the humanities"
-      credits: 3
     - id: B0070
       name: "metodologie e tecniche di simulazione"
       credits: 8
-    - id: B8929
-      name: "computer studies and human sciences"
-      credits: 6
+    - id: B5292
+      name: "knowledge engeneering for the humanities"
+      credits: 3
     - id: B5293
       name: "computer studies and humanities"
       credits: 3
@@ -498,6 +504,13 @@
     - id: 81917
       name: "interaction multimedia services"
       credits: 5
+- Name: "Ronchieri, Elisabetta"
+  UID: "124216"
+  Department: "stat"
+  Courses:
+    - id: 90477
+      name: "machine learning systems for data science"
+      credits: 10
 - Name: "Ronsivalle, Gaetano Bruno"
   UID: "131796"
   Department: "disa"
@@ -512,15 +525,19 @@
     - id: 28106
       name: "computer science for environmental sciences"
       credits: 6
-    - id: 82202
-      name: "informatic"
-      credits: 2
-    - id: 57828
-      name: "informatics"
-      credits: 3
     - id: 39176
       name: "basic and laboratory informatics"
       credits: 3
+    - id: 57828
+      name: "informatics"
+      credits: 3
+- Name: "Sampò, Giorgia"
+  UID: "142209"
+  Department: "ficlit"
+  Courses:
+    - id: 95782
+      name: "network analysis"
+      credits: 6
 - Name: "Sarti, Elena"
   UID: "180206"
   Department: "dei"
@@ -551,6 +568,13 @@
       credits: 6
     - id: 96793
       name: "information systems and database management"
+      credits: 6
+- Name: "Spinaci, Gianmarco"
+  UID: "95575"
+  Department: "ficlit"
+  Courses:
+    - id: 90720
+      name: "usability & user experience design"
       credits: 6
 - Name: "Tartagni, Marco"
   UID: "30933"
