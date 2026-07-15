@@ -1,0 +1,340 @@
+2026-07-15 11:58:37,733 INFO clustering.embeddings: Embedding 1/293 data/courses/.files/2025/course-00819-A.yml
+2026-07-15 11:58:41,155 INFO clustering.embeddings: Loading embedding model sentence-transformers/paraphrase-multilingual-mpnet-base-v2 on mps
+2026-07-15 11:58:41,482 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-15 11:58:41,483 WARNING huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-15 11:58:41,518 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/modules.json "HTTP/1.1 200 OK"
+2026-07-15 11:58:41,658 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-15 11:58:41,693 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-07-15 11:58:41,696 INFO sentence_transformers.base.model: Loading SentenceTransformer model from sentence-transformers/paraphrase-multilingual-mpnet-base-v2.
+2026-07-15 11:58:41,833 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-15 11:58:41,869 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-07-15 11:58:42,011 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-07-15 11:58:42,046 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/README.md "HTTP/1.1 200 OK"
+2026-07-15 11:58:42,185 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-15 11:58:42,220 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/modules.json "HTTP/1.1 200 OK"
+2026-07-15 11:58:42,363 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-15 11:58:42,397 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-07-15 11:58:42,542 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-07-15 11:58:42,711 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-15 11:58:42,747 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/config.json "HTTP/1.1 200 OK"
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6645.70it/s]
+2026-07-15 11:58:43,049 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-07-15 11:58:43,184 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-07-15 11:58:43,322 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-07-15 11:58:43,464 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-07-15 11:58:43,601 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-15 11:58:43,636 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-15 11:58:43,781 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-15 11:58:43,816 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/config.json "HTTP/1.1 200 OK"
+2026-07-15 11:58:43,970 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-15 11:58:44,003 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/config.json "HTTP/1.1 200 OK"
+2026-07-15 11:58:44,142 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-15 11:58:44,175 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-15 11:58:44,321 INFO httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-07-15 11:58:44,465 INFO httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-07-15 11:58:45,442 INFO httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2 "HTTP/1.1 200 OK"
+2026-07-15 11:58:45,603 INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-15 11:58:45,638 INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/4328cf26390c98c5e3c738b4460a05b95f4911f5/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-07-15 11:58:45,779 INFO httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2 "HTTP/1.1 200 OK"
+/Users/gciatto/Work/unibo-courses-cs-restructuring/clustering/embeddings.py:94: FutureWarning: The `get_sentence_embedding_dimension` method has been renamed to `get_embedding_dimension`.
+  self.dimension = int(self._model.get_sentence_embedding_dimension())
+2026-07-15 11:58:48,369 INFO clustering.embeddings: Embedding 2/293 data/courses/.files/2025/course-00819-B.yml
+2026-07-15 11:58:48,712 INFO clustering.embeddings: Embedding 3/293 data/courses/.files/2025/course-00819.yml
+2026-07-15 11:58:48,986 INFO clustering.embeddings: Embedding 4/293 data/courses/.files/2025/course-03716.yml
+2026-07-15 11:58:49,495 INFO clustering.embeddings: Embedding 5/293 data/courses/.files/2025/course-04138.yml
+2026-07-15 11:58:50,163 INFO clustering.embeddings: Embedding 6/293 data/courses/.files/2025/course-07276-A.yml
+2026-07-15 11:58:50,324 INFO clustering.embeddings: Embedding 7/293 data/courses/.files/2025/course-07276-B.yml
+2026-07-15 11:58:50,719 INFO clustering.embeddings: Embedding 8/293 data/courses/.files/2025/course-07276-C.yml
+2026-07-15 11:58:50,896 INFO clustering.embeddings: Embedding 9/293 data/courses/.files/2025/course-07276.yml
+2026-07-15 11:58:51,137 INFO clustering.embeddings: Embedding 10/293 data/courses/.files/2025/course-08574-A.yml
+2026-07-15 11:58:51,389 INFO clustering.embeddings: Embedding 11/293 data/courses/.files/2025/course-08574-B.yml
+2026-07-15 11:58:51,577 INFO clustering.embeddings: Embedding 12/293 data/courses/.files/2025/course-08574.yml
+2026-07-15 11:58:51,773 INFO clustering.embeddings: Embedding 13/293 data/courses/.files/2025/course-09032.yml
+2026-07-15 11:58:52,026 INFO clustering.embeddings: Embedding 14/293 data/courses/.files/2025/course-09679.yml
+2026-07-15 11:58:52,209 INFO clustering.embeddings: Embedding 15/293 data/courses/.files/2025/course-09730-A.yml
+2026-07-15 11:58:52,489 INFO clustering.embeddings: Embedding 16/293 data/courses/.files/2025/course-09730.yml
+2026-07-15 11:58:52,678 INFO clustering.embeddings: Embedding 17/293 data/courses/.files/2025/course-10906-A.yml
+2026-07-15 11:58:52,916 INFO clustering.embeddings: Embedding 18/293 data/courses/.files/2025/course-10906.yml
+2026-07-15 11:58:53,058 INFO clustering.embeddings: Embedding 19/293 data/courses/.files/2025/course-11925.yml
+2026-07-15 11:58:53,182 INFO clustering.embeddings: Embedding 20/293 data/courses/.files/2025/course-11929-A.yml
+2026-07-15 11:58:53,487 INFO clustering.embeddings: Embedding 21/293 data/courses/.files/2025/course-11929-B.yml
+2026-07-15 11:58:53,678 INFO clustering.embeddings: Embedding 22/293 data/courses/.files/2025/course-11929.yml
+2026-07-15 11:58:53,804 INFO clustering.embeddings: Embedding 23/293 data/courses/.files/2025/course-11933.yml
+2026-07-15 11:58:53,970 INFO clustering.embeddings: Embedding 24/293 data/courses/.files/2025/course-14015.yml
+2026-07-15 11:58:54,104 INFO clustering.embeddings: Embedding 25/293 data/courses/.files/2025/course-15305.yml
+2026-07-15 11:58:54,465 INFO clustering.embeddings: Embedding 26/293 data/courses/.files/2025/course-15920.yml
+2026-07-15 11:58:54,587 INFO clustering.embeddings: Embedding 27/293 data/courses/.files/2025/course-16692.yml
+2026-07-15 11:58:54,761 INFO clustering.embeddings: Embedding 28/293 data/courses/.files/2025/course-16870.yml
+2026-07-15 11:58:54,896 INFO clustering.embeddings: Embedding 29/293 data/courses/.files/2025/course-17628.yml
+2026-07-15 11:58:55,414 INFO clustering.embeddings: Embedding 30/293 data/courses/.files/2025/course-17634.yml
+2026-07-15 11:58:55,528 INFO clustering.embeddings: Embedding 31/293 data/courses/.files/2025/course-20741.yml
+2026-07-15 11:58:55,610 INFO clustering.embeddings: Embedding 32/293 data/courses/.files/2025/course-27311-A.yml
+2026-07-15 11:58:55,801 INFO clustering.embeddings: Embedding 33/293 data/courses/.files/2025/course-27311.yml
+2026-07-15 11:58:55,966 INFO clustering.embeddings: Embedding 34/293 data/courses/.files/2025/course-28004.yml
+2026-07-15 11:58:56,137 INFO clustering.embeddings: Embedding 35/293 data/courses/.files/2025/course-28011-A.yml
+2026-07-15 11:58:56,302 INFO clustering.embeddings: Embedding 36/293 data/courses/.files/2025/course-28011.yml
+2026-07-15 11:58:56,476 INFO clustering.embeddings: Embedding 37/293 data/courses/.files/2025/course-28012-A.yml
+2026-07-15 11:58:56,618 INFO clustering.embeddings: Embedding 38/293 data/courses/.files/2025/course-28012.yml
+2026-07-15 11:58:56,765 INFO clustering.embeddings: Embedding 39/293 data/courses/.files/2025/course-28020.yml
+2026-07-15 11:58:57,015 INFO clustering.embeddings: Embedding 40/293 data/courses/.files/2025/course-28021.yml
+2026-07-15 11:58:57,164 INFO clustering.embeddings: Embedding 41/293 data/courses/.files/2025/course-28024.yml
+2026-07-15 11:58:57,578 INFO clustering.embeddings: Embedding 42/293 data/courses/.files/2025/course-28027.yml
+2026-07-15 11:58:57,776 INFO clustering.embeddings: Embedding 43/293 data/courses/.files/2025/course-28040.yml
+2026-07-15 11:58:57,911 INFO clustering.embeddings: Embedding 44/293 data/courses/.files/2025/course-28106.yml
+2026-07-15 11:58:58,113 INFO clustering.embeddings: Embedding 45/293 data/courses/.files/2025/course-28623.yml
+2026-07-15 11:58:58,310 INFO clustering.embeddings: Embedding 46/293 data/courses/.files/2025/course-28652.yml
+2026-07-15 11:58:58,591 INFO clustering.embeddings: Embedding 47/293 data/courses/.files/2025/course-28659.yml
+2026-07-15 11:58:58,805 INFO clustering.embeddings: Embedding 48/293 data/courses/.files/2025/course-28796.yml
+2026-07-15 11:58:58,940 INFO clustering.embeddings: Embedding 49/293 data/courses/.files/2025/course-29227-A.yml
+2026-07-15 11:58:59,095 INFO clustering.embeddings: Embedding 50/293 data/courses/.files/2025/course-29227-B.yml
+2026-07-15 11:58:59,335 INFO clustering.embeddings: Embedding 51/293 data/courses/.files/2025/course-29227.yml
+2026-07-15 11:58:59,485 INFO clustering.embeddings: Embedding 52/293 data/courses/.files/2025/course-30376.yml
+2026-07-15 11:58:59,658 INFO clustering.embeddings: Embedding 53/293 data/courses/.files/2025/course-37085.yml
+2026-07-15 11:58:59,814 INFO clustering.embeddings: Embedding 54/293 data/courses/.files/2025/course-37262.yml
+2026-07-15 11:59:00,014 INFO clustering.embeddings: Embedding 55/293 data/courses/.files/2025/course-37635.yml
+2026-07-15 11:59:00,243 INFO clustering.embeddings: Embedding 56/293 data/courses/.files/2025/course-37760.yml
+2026-07-15 11:59:00,369 INFO clustering.embeddings: Embedding 57/293 data/courses/.files/2025/course-37925.yml
+2026-07-15 11:59:00,484 INFO clustering.embeddings: Embedding 58/293 data/courses/.files/2025/course-39176.yml
+2026-07-15 11:59:00,772 INFO clustering.embeddings: Embedding 59/293 data/courses/.files/2025/course-40720.yml
+2026-07-15 11:59:01,249 INFO clustering.embeddings: Embedding 60/293 data/courses/.files/2025/course-41169.yml
+2026-07-15 11:59:01,408 INFO clustering.embeddings: Embedding 61/293 data/courses/.files/2025/course-41588.yml
+2026-07-15 11:59:01,624 INFO clustering.embeddings: Embedding 62/293 data/courses/.files/2025/course-41731-A.yml
+2026-07-15 11:59:01,785 INFO clustering.embeddings: Embedding 63/293 data/courses/.files/2025/course-41731.yml
+2026-07-15 11:59:01,945 INFO clustering.embeddings: Embedding 64/293 data/courses/.files/2025/course-42500.yml
+2026-07-15 11:59:02,148 INFO clustering.embeddings: Embedding 65/293 data/courses/.files/2025/course-47240.yml
+2026-07-15 11:59:02,266 INFO clustering.embeddings: Embedding 66/293 data/courses/.files/2025/course-48693-A.yml
+2026-07-15 11:59:02,470 INFO clustering.embeddings: Embedding 67/293 data/courses/.files/2025/course-48693.yml
+2026-07-15 11:59:02,614 INFO clustering.embeddings: Embedding 68/293 data/courses/.files/2025/course-57828.yml
+2026-07-15 11:59:02,933 INFO clustering.embeddings: Embedding 69/293 data/courses/.files/2025/course-58348.yml
+2026-07-15 11:59:03,050 INFO clustering.embeddings: Embedding 70/293 data/courses/.files/2025/course-58423.yml
+2026-07-15 11:59:03,167 INFO clustering.embeddings: Embedding 71/293 data/courses/.files/2025/course-58437.yml
+2026-07-15 11:59:03,386 INFO clustering.embeddings: Embedding 72/293 data/courses/.files/2025/course-60348.yml
+2026-07-15 11:59:03,613 INFO clustering.embeddings: Embedding 73/293 data/courses/.files/2025/course-65094.yml
+2026-07-15 11:59:03,775 INFO clustering.embeddings: Embedding 74/293 data/courses/.files/2025/course-66857.yml
+2026-07-15 11:59:03,927 INFO clustering.embeddings: Embedding 75/293 data/courses/.files/2025/course-66858.yml
+2026-07-15 11:59:04,053 INFO clustering.embeddings: Embedding 76/293 data/courses/.files/2025/course-66860.yml
+2026-07-15 11:59:04,181 INFO clustering.embeddings: Embedding 77/293 data/courses/.files/2025/course-66870.yml
+2026-07-15 11:59:04,310 INFO clustering.embeddings: Embedding 78/293 data/courses/.files/2025/course-69259.yml
+2026-07-15 11:59:04,440 INFO clustering.embeddings: Embedding 79/293 data/courses/.files/2025/course-69430.yml
+2026-07-15 11:59:04,638 INFO clustering.embeddings: Embedding 80/293 data/courses/.files/2025/course-69661.yml
+2026-07-15 11:59:04,762 INFO clustering.embeddings: Embedding 81/293 data/courses/.files/2025/course-69731.yml
+2026-07-15 11:59:04,948 INFO clustering.embeddings: Embedding 82/293 data/courses/.files/2025/course-69867.yml
+2026-07-15 11:59:05,085 INFO clustering.embeddings: Embedding 83/293 data/courses/.files/2025/course-70155.yml
+2026-07-15 11:59:05,493 INFO clustering.embeddings: Embedding 84/293 data/courses/.files/2025/course-70210.yml
+2026-07-15 11:59:05,706 INFO clustering.embeddings: Embedding 85/293 data/courses/.files/2025/course-70219.yml
+2026-07-15 11:59:05,834 INFO clustering.embeddings: Embedding 86/293 data/courses/.files/2025/course-70226.yml
+2026-07-15 11:59:05,988 INFO clustering.embeddings: Embedding 87/293 data/courses/.files/2025/course-72671.yml
+2026-07-15 11:59:06,147 INFO clustering.embeddings: Embedding 88/293 data/courses/.files/2025/course-72778.yml
+2026-07-15 11:59:06,340 INFO clustering.embeddings: Embedding 89/293 data/courses/.files/2025/course-72787.yml
+2026-07-15 11:59:06,481 INFO clustering.embeddings: Embedding 90/293 data/courses/.files/2025/course-72796.yml
+2026-07-15 11:59:06,676 INFO clustering.embeddings: Embedding 91/293 data/courses/.files/2025/course-72938.yml
+2026-07-15 11:59:06,862 INFO clustering.embeddings: Embedding 92/293 data/courses/.files/2025/course-72939.yml
+2026-07-15 11:59:07,014 INFO clustering.embeddings: Embedding 93/293 data/courses/.files/2025/course-72940.yml
+2026-07-15 11:59:07,197 INFO clustering.embeddings: Embedding 94/293 data/courses/.files/2025/course-72942.yml
+2026-07-15 11:59:07,516 INFO clustering.embeddings: Embedding 95/293 data/courses/.files/2025/course-72945.yml
+2026-07-15 11:59:07,647 INFO clustering.embeddings: Embedding 96/293 data/courses/.files/2025/course-73025.yml
+2026-07-15 11:59:08,398 INFO clustering.embeddings: Embedding 97/293 data/courses/.files/2025/course-73149.yml
+2026-07-15 11:59:08,569 INFO clustering.embeddings: Embedding 98/293 data/courses/.files/2025/course-73273.yml
+2026-07-15 11:59:08,699 INFO clustering.embeddings: Embedding 99/293 data/courses/.files/2025/course-73302.yml
+2026-07-15 11:59:08,830 INFO clustering.embeddings: Embedding 100/293 data/courses/.files/2025/course-73435.yml
+2026-07-15 11:59:08,968 INFO clustering.embeddings: Embedding 101/293 data/courses/.files/2025/course-75198.yml
+2026-07-15 11:59:09,105 INFO clustering.embeddings: Embedding 102/293 data/courses/.files/2025/course-75835.yml
+2026-07-15 11:59:09,250 INFO clustering.embeddings: Embedding 103/293 data/courses/.files/2025/course-75969.yml
+2026-07-15 11:59:09,439 INFO clustering.embeddings: Embedding 104/293 data/courses/.files/2025/course-76011.yml
+2026-07-15 11:59:09,982 INFO clustering.embeddings: Embedding 105/293 data/courses/.files/2025/course-77780.yml
+2026-07-15 11:59:10,176 INFO clustering.embeddings: Embedding 106/293 data/courses/.files/2025/course-77933.yml
+2026-07-15 11:59:10,520 INFO clustering.embeddings: Embedding 107/293 data/courses/.files/2025/course-78096.yml
+2026-07-15 11:59:10,858 INFO clustering.embeddings: Embedding 108/293 data/courses/.files/2025/course-78510.yml
+2026-07-15 11:59:11,006 INFO clustering.embeddings: Embedding 109/293 data/courses/.files/2025/course-78778.yml
+2026-07-15 11:59:11,165 INFO clustering.embeddings: Embedding 110/293 data/courses/.files/2025/course-78779.yml
+2026-07-15 11:59:11,851 INFO clustering.embeddings: Embedding 111/293 data/courses/.files/2025/course-78810.yml
+2026-07-15 11:59:12,072 INFO clustering.embeddings: Embedding 112/293 data/courses/.files/2025/course-79194.yml
+2026-07-15 11:59:12,241 INFO clustering.embeddings: Embedding 113/293 data/courses/.files/2025/course-81609.yml
+2026-07-15 11:59:12,442 INFO clustering.embeddings: Embedding 114/293 data/courses/.files/2025/course-81610.yml
+2026-07-15 11:59:12,588 INFO clustering.embeddings: Embedding 115/293 data/courses/.files/2025/course-81612.yml
+2026-07-15 11:59:12,882 INFO clustering.embeddings: Embedding 116/293 data/courses/.files/2025/course-81672.yml
+2026-07-15 11:59:13,048 INFO clustering.embeddings: Embedding 117/293 data/courses/.files/2025/course-81676.yml
+2026-07-15 11:59:13,240 INFO clustering.embeddings: Embedding 118/293 data/courses/.files/2025/course-81678.yml
+2026-07-15 11:59:13,433 INFO clustering.embeddings: Embedding 119/293 data/courses/.files/2025/course-81683.yml
+2026-07-15 11:59:13,811 INFO clustering.embeddings: Embedding 120/293 data/courses/.files/2025/course-81917.yml
+2026-07-15 11:59:14,400 INFO clustering.embeddings: Embedding 121/293 data/courses/.files/2025/course-81932.yml
+2026-07-15 11:59:14,750 INFO clustering.embeddings: Embedding 122/293 data/courses/.files/2025/course-81934.yml
+2026-07-15 11:59:14,906 INFO clustering.embeddings: Embedding 123/293 data/courses/.files/2025/course-81940.yml
+2026-07-15 11:59:15,065 INFO clustering.embeddings: Embedding 124/293 data/courses/.files/2025/course-81942.yml
+2026-07-15 11:59:15,228 INFO clustering.embeddings: Embedding 125/293 data/courses/.files/2025/course-82202-A.yml
+2026-07-15 11:59:15,504 INFO clustering.embeddings: Embedding 126/293 data/courses/.files/2025/course-82202.yml
+2026-07-15 11:59:15,744 INFO clustering.embeddings: Embedding 127/293 data/courses/.files/2025/course-84339.yml
+2026-07-15 11:59:15,912 INFO clustering.embeddings: Embedding 128/293 data/courses/.files/2025/course-84401.yml
+2026-07-15 11:59:16,269 INFO clustering.embeddings: Embedding 129/293 data/courses/.files/2025/course-84530.yml
+2026-07-15 11:59:16,441 INFO clustering.embeddings: Embedding 130/293 data/courses/.files/2025/course-84531.yml
+2026-07-15 11:59:16,931 INFO clustering.embeddings: Embedding 131/293 data/courses/.files/2025/course-85189.yml
+2026-07-15 11:59:17,303 INFO clustering.embeddings: Embedding 132/293 data/courses/.files/2025/course-85285.yml
+2026-07-15 11:59:17,480 INFO clustering.embeddings: Embedding 133/293 data/courses/.files/2025/course-85301.yml
+2026-07-15 11:59:17,593 INFO clustering.embeddings: Embedding 134/293 data/courses/.files/2025/course-85445.yml
+2026-07-15 11:59:17,737 INFO clustering.embeddings: Embedding 135/293 data/courses/.files/2025/course-85446.yml
+2026-07-15 11:59:17,908 INFO clustering.embeddings: Embedding 136/293 data/courses/.files/2025/course-85573.yml
+2026-07-15 11:59:18,096 INFO clustering.embeddings: Embedding 137/293 data/courses/.files/2025/course-85728.yml
+2026-07-15 11:59:18,274 INFO clustering.embeddings: Embedding 138/293 data/courses/.files/2025/course-87469.yml
+2026-07-15 11:59:18,425 INFO clustering.embeddings: Embedding 139/293 data/courses/.files/2025/course-87474.yml
+2026-07-15 11:59:18,606 INFO clustering.embeddings: Embedding 140/293 data/courses/.files/2025/course-87898.yml
+2026-07-15 11:59:19,040 INFO clustering.embeddings: Embedding 141/293 data/courses/.files/2025/course-87901.yml
+2026-07-15 11:59:19,602 INFO clustering.embeddings: Embedding 142/293 data/courses/.files/2025/course-88016.yml
+2026-07-15 11:59:19,737 INFO clustering.embeddings: Embedding 143/293 data/courses/.files/2025/course-88145.yml
+2026-07-15 11:59:19,890 INFO clustering.embeddings: Embedding 144/293 data/courses/.files/2025/course-88146.yml
+2026-07-15 11:59:19,992 INFO clustering.embeddings: Embedding 145/293 data/courses/.files/2025/course-88155.yml
+2026-07-15 11:59:20,135 INFO clustering.embeddings: Embedding 146/293 data/courses/.files/2025/course-88202.yml
+2026-07-15 11:59:20,245 INFO clustering.embeddings: Embedding 147/293 data/courses/.files/2025/course-88324.yml
+2026-07-15 11:59:20,547 INFO clustering.embeddings: Embedding 148/293 data/courses/.files/2025/course-88325.yml
+2026-07-15 11:59:20,996 INFO clustering.embeddings: Embedding 149/293 data/courses/.files/2025/course-88566.yml
+2026-07-15 11:59:21,191 INFO clustering.embeddings: Embedding 150/293 data/courses/.files/2025/course-89988.yml
+2026-07-15 11:59:21,357 INFO clustering.embeddings: Embedding 151/293 data/courses/.files/2025/course-90074.yml
+2026-07-15 11:59:21,684 INFO clustering.embeddings: Embedding 152/293 data/courses/.files/2025/course-90106.yml
+2026-07-15 11:59:21,823 INFO clustering.embeddings: Embedding 153/293 data/courses/.files/2025/course-90107.yml
+2026-07-15 11:59:21,929 INFO clustering.embeddings: Embedding 154/293 data/courses/.files/2025/course-90147.yml
+2026-07-15 11:59:22,197 INFO clustering.embeddings: Embedding 155/293 data/courses/.files/2025/course-90157.yml
+2026-07-15 11:59:22,492 INFO clustering.embeddings: Embedding 156/293 data/courses/.files/2025/course-90477.yml
+2026-07-15 11:59:22,847 INFO clustering.embeddings: Embedding 157/293 data/courses/.files/2025/course-90720.yml
+2026-07-15 11:59:23,040 INFO clustering.embeddings: Embedding 158/293 data/courses/.files/2025/course-90730.yml
+2026-07-15 11:59:23,531 INFO clustering.embeddings: Embedding 159/293 data/courses/.files/2025/course-90748.yml
+2026-07-15 11:59:23,710 INFO clustering.embeddings: Embedding 160/293 data/courses/.files/2025/course-90749.yml
+2026-07-15 11:59:24,131 INFO clustering.embeddings: Embedding 161/293 data/courses/.files/2025/course-90864.yml
+2026-07-15 11:59:24,262 INFO clustering.embeddings: Embedding 162/293 data/courses/.files/2025/course-91161.yml
+2026-07-15 11:59:24,490 INFO clustering.embeddings: Embedding 163/293 data/courses/.files/2025/course-91248.yml
+2026-07-15 11:59:24,830 INFO clustering.embeddings: Embedding 164/293 data/courses/.files/2025/course-91250-A.yml
+2026-07-15 11:59:25,031 INFO clustering.embeddings: Embedding 165/293 data/courses/.files/2025/course-91250-B.yml
+2026-07-15 11:59:25,195 INFO clustering.embeddings: Embedding 166/293 data/courses/.files/2025/course-91250.yml
+2026-07-15 11:59:25,387 INFO clustering.embeddings: Embedding 167/293 data/courses/.files/2025/course-91254.yml
+2026-07-15 11:59:25,616 INFO clustering.embeddings: Embedding 168/293 data/courses/.files/2025/course-91258-A.yml
+2026-07-15 11:59:25,783 INFO clustering.embeddings: Embedding 169/293 data/courses/.files/2025/course-91258-B.yml
+2026-07-15 11:59:26,112 INFO clustering.embeddings: Embedding 170/293 data/courses/.files/2025/course-91258.yml
+2026-07-15 11:59:26,292 INFO clustering.embeddings: Embedding 171/293 data/courses/.files/2025/course-91259.yml
+2026-07-15 11:59:26,654 INFO clustering.embeddings: Embedding 172/293 data/courses/.files/2025/course-91261.yml
+2026-07-15 11:59:26,850 INFO clustering.embeddings: Embedding 173/293 data/courses/.files/2025/course-91264.yml
+2026-07-15 11:59:27,035 INFO clustering.embeddings: Embedding 174/293 data/courses/.files/2025/course-91265.yml
+2026-07-15 11:59:27,207 INFO clustering.embeddings: Embedding 175/293 data/courses/.files/2025/course-91266.yml
+2026-07-15 11:59:27,459 INFO clustering.embeddings: Embedding 176/293 data/courses/.files/2025/course-91267.yml
+2026-07-15 11:59:27,633 INFO clustering.embeddings: Embedding 177/293 data/courses/.files/2025/course-91269.yml
+2026-07-15 11:59:27,950 INFO clustering.embeddings: Embedding 178/293 data/courses/.files/2025/course-91411.yml
+2026-07-15 11:59:28,197 INFO clustering.embeddings: Embedding 179/293 data/courses/.files/2025/course-91602.yml
+2026-07-15 11:59:28,320 INFO clustering.embeddings: Embedding 180/293 data/courses/.files/2025/course-91685.yml
+2026-07-15 11:59:28,523 INFO clustering.embeddings: Embedding 181/293 data/courses/.files/2025/course-91721.yml
+2026-07-15 11:59:28,652 INFO clustering.embeddings: Embedding 182/293 data/courses/.files/2025/course-91762.yml
+2026-07-15 11:59:28,893 INFO clustering.embeddings: Embedding 183/293 data/courses/.files/2025/course-92858.yml
+2026-07-15 11:59:29,126 INFO clustering.embeddings: Embedding 184/293 data/courses/.files/2025/course-93034-A.yml
+2026-07-15 11:59:29,367 INFO clustering.embeddings: Embedding 185/293 data/courses/.files/2025/course-93034.yml
+2026-07-15 11:59:29,539 INFO clustering.embeddings: Embedding 186/293 data/courses/.files/2025/course-93315.yml
+2026-07-15 11:59:29,714 INFO clustering.embeddings: Embedding 187/293 data/courses/.files/2025/course-93319.yml
+2026-07-15 11:59:29,887 INFO clustering.embeddings: Embedding 188/293 data/courses/.files/2025/course-93333.yml
+2026-07-15 11:59:30,001 INFO clustering.embeddings: Embedding 189/293 data/courses/.files/2025/course-93363.yml
+2026-07-15 11:59:30,119 INFO clustering.embeddings: Embedding 190/293 data/courses/.files/2025/course-93379.yml
+2026-07-15 11:59:30,299 INFO clustering.embeddings: Embedding 191/293 data/courses/.files/2025/course-93466.yml
+2026-07-15 11:59:30,438 INFO clustering.embeddings: Embedding 192/293 data/courses/.files/2025/course-93467.yml
+2026-07-15 11:59:30,591 INFO clustering.embeddings: Embedding 193/293 data/courses/.files/2025/course-93468.yml
+2026-07-15 11:59:30,753 INFO clustering.embeddings: Embedding 194/293 data/courses/.files/2025/course-93469.yml
+2026-07-15 11:59:30,891 INFO clustering.embeddings: Embedding 195/293 data/courses/.files/2025/course-93470-A.yml
+2026-07-15 11:59:31,048 INFO clustering.embeddings: Embedding 196/293 data/courses/.files/2025/course-93470.yml
+2026-07-15 11:59:31,262 INFO clustering.embeddings: Embedding 197/293 data/courses/.files/2025/course-93478.yml
+2026-07-15 11:59:31,490 INFO clustering.embeddings: Embedding 198/293 data/courses/.files/2025/course-93653.yml
+2026-07-15 11:59:31,736 INFO clustering.embeddings: Embedding 199/293 data/courses/.files/2025/course-93669.yml
+2026-07-15 11:59:31,943 INFO clustering.embeddings: Embedding 200/293 data/courses/.files/2025/course-94442.yml
+2026-07-15 11:59:32,232 INFO clustering.embeddings: Embedding 201/293 data/courses/.files/2025/course-95602.yml
+2026-07-15 11:59:32,452 INFO clustering.embeddings: Embedding 202/293 data/courses/.files/2025/course-95604.yml
+2026-07-15 11:59:32,589 INFO clustering.embeddings: Embedding 203/293 data/courses/.files/2025/course-95605.yml
+2026-07-15 11:59:32,742 INFO clustering.embeddings: Embedding 204/293 data/courses/.files/2025/course-95611.yml
+2026-07-15 11:59:32,877 INFO clustering.embeddings: Embedding 205/293 data/courses/.files/2025/course-95627.yml
+2026-07-15 11:59:34,023 INFO clustering.embeddings: Embedding 206/293 data/courses/.files/2025/course-95630.yml
+2026-07-15 11:59:34,293 INFO clustering.embeddings: Embedding 207/293 data/courses/.files/2025/course-95631-A.yml
+2026-07-15 11:59:34,758 INFO clustering.embeddings: Embedding 208/293 data/courses/.files/2025/course-95631.yml
+2026-07-15 11:59:35,001 INFO clustering.embeddings: Embedding 209/293 data/courses/.files/2025/course-95632.yml
+2026-07-15 11:59:35,150 INFO clustering.embeddings: Embedding 210/293 data/courses/.files/2025/course-95638.yml
+2026-07-15 11:59:35,287 INFO clustering.embeddings: Embedding 211/293 data/courses/.files/2025/course-95639.yml
+2026-07-15 11:59:35,575 INFO clustering.embeddings: Embedding 212/293 data/courses/.files/2025/course-95644.yml
+2026-07-15 11:59:35,736 INFO clustering.embeddings: Embedding 213/293 data/courses/.files/2025/course-95645.yml
+2026-07-15 11:59:35,875 INFO clustering.embeddings: Embedding 214/293 data/courses/.files/2025/course-95646.yml
+2026-07-15 11:59:36,017 INFO clustering.embeddings: Embedding 215/293 data/courses/.files/2025/course-95648.yml
+2026-07-15 11:59:36,169 INFO clustering.embeddings: Embedding 216/293 data/courses/.files/2025/course-95782.yml
+2026-07-15 11:59:36,529 INFO clustering.embeddings: Embedding 217/293 data/courses/.files/2025/course-95965.yml
+2026-07-15 11:59:36,690 INFO clustering.embeddings: Embedding 218/293 data/courses/.files/2025/course-96007.yml
+2026-07-15 11:59:36,851 INFO clustering.embeddings: Embedding 219/293 data/courses/.files/2025/course-96142.yml
+2026-07-15 11:59:37,071 INFO clustering.embeddings: Embedding 220/293 data/courses/.files/2025/course-96143.yml
+2026-07-15 11:59:37,382 INFO clustering.embeddings: Embedding 221/293 data/courses/.files/2025/course-96346-A.yml
+2026-07-15 11:59:37,569 INFO clustering.embeddings: Embedding 222/293 data/courses/.files/2025/course-96346-B.yml
+2026-07-15 11:59:37,737 INFO clustering.embeddings: Embedding 223/293 data/courses/.files/2025/course-96346.yml
+2026-07-15 11:59:37,904 INFO clustering.embeddings: Embedding 224/293 data/courses/.files/2025/course-96642.yml
+2026-07-15 11:59:38,097 INFO clustering.embeddings: Embedding 225/293 data/courses/.files/2025/course-96725.yml
+2026-07-15 11:59:38,248 INFO clustering.embeddings: Embedding 226/293 data/courses/.files/2025/course-96793.yml
+2026-07-15 11:59:38,441 INFO clustering.embeddings: Embedding 227/293 data/courses/.files/2025/course-96859.yml
+2026-07-15 11:59:38,663 INFO clustering.embeddings: Embedding 228/293 data/courses/.files/2025/course-96994.yml
+2026-07-15 11:59:38,993 INFO clustering.embeddings: Embedding 229/293 data/courses/.files/2025/course-96995.yml
+2026-07-15 11:59:39,162 INFO clustering.embeddings: Embedding 230/293 data/courses/.files/2025/course-97431.yml
+2026-07-15 11:59:39,457 INFO clustering.embeddings: Embedding 231/293 data/courses/.files/2025/course-97466.yml
+2026-07-15 11:59:40,043 INFO clustering.embeddings: Embedding 232/293 data/courses/.files/2025/course-98618.yml
+2026-07-15 11:59:40,396 INFO clustering.embeddings: Embedding 233/293 data/courses/.files/2025/course-98671.yml
+2026-07-15 11:59:40,530 INFO clustering.embeddings: Embedding 234/293 data/courses/.files/2025/course-98735.yml
+2026-07-15 11:59:40,731 INFO clustering.embeddings: Embedding 235/293 data/courses/.files/2025/course-98931.yml
+2026-07-15 11:59:41,037 INFO clustering.embeddings: Embedding 236/293 data/courses/.files/2025/course-99195.yml
+2026-07-15 11:59:41,172 INFO clustering.embeddings: Embedding 237/293 data/courses/.files/2025/course-B0009.yml
+2026-07-15 11:59:41,343 INFO clustering.embeddings: Embedding 238/293 data/courses/.files/2025/course-B0010.yml
+2026-07-15 11:59:41,503 INFO clustering.embeddings: Embedding 239/293 data/courses/.files/2025/course-B0011.yml
+2026-07-15 11:59:41,746 INFO clustering.embeddings: Embedding 240/293 data/courses/.files/2025/course-B0061.yml
+2026-07-15 11:59:41,852 INFO clustering.embeddings: Embedding 241/293 data/courses/.files/2025/course-B0063.yml
+2026-07-15 11:59:41,997 INFO clustering.embeddings: Embedding 242/293 data/courses/.files/2025/course-B0064.yml
+2026-07-15 11:59:42,159 INFO clustering.embeddings: Embedding 243/293 data/courses/.files/2025/course-B0069.yml
+2026-07-15 11:59:42,304 INFO clustering.embeddings: Embedding 244/293 data/courses/.files/2025/course-B0070.yml
+2026-07-15 11:59:42,509 INFO clustering.embeddings: Embedding 245/293 data/courses/.files/2025/course-B0073.yml
+2026-07-15 11:59:42,694 INFO clustering.embeddings: Embedding 246/293 data/courses/.files/2025/course-B0074.yml
+2026-07-15 11:59:42,812 INFO clustering.embeddings: Embedding 247/293 data/courses/.files/2025/course-B0385.yml
+2026-07-15 11:59:42,958 INFO clustering.embeddings: Embedding 248/293 data/courses/.files/2025/course-B0832.yml
+2026-07-15 11:59:43,223 INFO clustering.embeddings: Embedding 249/293 data/courses/.files/2025/course-B0833.yml
+2026-07-15 11:59:43,561 INFO clustering.embeddings: Embedding 250/293 data/courses/.files/2025/course-B1459.yml
+2026-07-15 11:59:43,679 INFO clustering.embeddings: Embedding 251/293 data/courses/.files/2025/course-B1703.yml
+2026-07-15 11:59:43,953 INFO clustering.embeddings: Embedding 252/293 data/courses/.files/2025/course-B1873.yml
+2026-07-15 11:59:44,299 INFO clustering.embeddings: Embedding 253/293 data/courses/.files/2025/course-B1874.yml
+2026-07-15 11:59:44,504 INFO clustering.embeddings: Embedding 254/293 data/courses/.files/2025/course-B2125.yml
+2026-07-15 11:59:44,699 INFO clustering.embeddings: Embedding 255/293 data/courses/.files/2025/course-B2133.yml
+2026-07-15 11:59:45,049 INFO clustering.embeddings: Embedding 256/293 data/courses/.files/2025/course-B2696.yml
+2026-07-15 11:59:45,188 INFO clustering.embeddings: Embedding 257/293 data/courses/.files/2025/course-B3567.yml
+2026-07-15 11:59:45,335 INFO clustering.embeddings: Embedding 258/293 data/courses/.files/2025/course-B4826.yml
+2026-07-15 11:59:45,584 INFO clustering.embeddings: Embedding 259/293 data/courses/.files/2025/course-B4913.yml
+2026-07-15 11:59:45,778 INFO clustering.embeddings: Embedding 260/293 data/courses/.files/2025/course-B4925.yml
+2026-07-15 11:59:45,893 INFO clustering.embeddings: Embedding 261/293 data/courses/.files/2025/course-B4940.yml
+2026-07-15 11:59:46,019 INFO clustering.embeddings: Embedding 262/293 data/courses/.files/2025/course-B4948.yml
+2026-07-15 11:59:46,212 INFO clustering.embeddings: Embedding 263/293 data/courses/.files/2025/course-B5026.yml
+2026-07-15 11:59:46,334 INFO clustering.embeddings: Embedding 264/293 data/courses/.files/2025/course-B5059.yml
+2026-07-15 11:59:46,846 INFO clustering.embeddings: Embedding 265/293 data/courses/.files/2025/course-B5079.yml
+2026-07-15 11:59:47,074 INFO clustering.embeddings: Embedding 266/293 data/courses/.files/2025/course-B5292.yml
+2026-07-15 11:59:47,290 INFO clustering.embeddings: Embedding 267/293 data/courses/.files/2025/course-B5293.yml
+2026-07-15 11:59:47,452 INFO clustering.embeddings: Embedding 268/293 data/courses/.files/2025/course-B5474.yml
+2026-07-15 11:59:47,652 INFO clustering.embeddings: Embedding 269/293 data/courses/.files/2025/course-B5665.yml
+2026-07-15 11:59:47,872 INFO clustering.embeddings: Embedding 270/293 data/courses/.files/2025/course-B5674.yml
+2026-07-15 11:59:48,023 INFO clustering.embeddings: Embedding 271/293 data/courses/.files/2025/course-B5722.yml
+2026-07-15 11:59:48,810 INFO clustering.embeddings: Embedding 272/293 data/courses/.files/2025/course-B5727.yml
+2026-07-15 11:59:49,139 INFO clustering.embeddings: Embedding 273/293 data/courses/.files/2025/course-B5780.yml
+2026-07-15 11:59:49,301 INFO clustering.embeddings: Embedding 274/293 data/courses/.files/2025/course-B5782.yml
+2026-07-15 11:59:49,604 INFO clustering.embeddings: Embedding 275/293 data/courses/.files/2025/course-B5793.yml
+2026-07-15 11:59:49,746 INFO clustering.embeddings: Embedding 276/293 data/courses/.files/2025/course-B5796.yml
+2026-07-15 11:59:49,914 INFO clustering.embeddings: Embedding 277/293 data/courses/.files/2025/course-B5812.yml
+2026-07-15 11:59:50,069 INFO clustering.embeddings: Embedding 278/293 data/courses/.files/2025/course-B6082.yml
+2026-07-15 11:59:50,561 INFO clustering.embeddings: Embedding 279/293 data/courses/.files/2025/course-B8018.yml
+2026-07-15 11:59:50,790 INFO clustering.embeddings: Embedding 280/293 data/courses/.files/2025/course-B8019.yml
+2026-07-15 11:59:50,983 INFO clustering.embeddings: Embedding 281/293 data/courses/.files/2025/course-B8105.yml
+2026-07-15 11:59:51,303 INFO clustering.embeddings: Embedding 282/293 data/courses/.files/2025/course-B8159.yml
+2026-07-15 11:59:51,705 INFO clustering.embeddings: Embedding 283/293 data/courses/.files/2025/course-B8396.yml
+2026-07-15 11:59:51,884 INFO clustering.embeddings: Embedding 284/293 data/courses/.files/2025/course-B8536.yml
+2026-07-15 11:59:52,356 INFO clustering.embeddings: Embedding 285/293 data/courses/.files/2025/course-B8554.yml
+2026-07-15 11:59:52,619 INFO clustering.embeddings: Embedding 286/293 data/courses/.files/2025/course-B8561.yml
+2026-07-15 11:59:52,785 INFO clustering.embeddings: Embedding 287/293 data/courses/.files/2025/course-B8562.yml
+2026-07-15 11:59:53,178 INFO clustering.embeddings: Embedding 288/293 data/courses/.files/2025/course-B8563.yml
+2026-07-15 11:59:53,437 INFO clustering.embeddings: Embedding 289/293 data/courses/.files/2025/course-B8603.yml
+2026-07-15 11:59:53,616 INFO clustering.embeddings: Embedding 290/293 data/courses/.files/2025/course-B8836.yml
+2026-07-15 11:59:53,790 INFO clustering.embeddings: Embedding 291/293 data/courses/.files/2025/course-B8905.yml
+2026-07-15 11:59:53,978 INFO clustering.embeddings: Embedding 292/293 data/courses/.files/2025/course-B8929.yml
+2026-07-15 11:59:54,141 INFO clustering.embeddings: Embedding 293/293 data/courses/.files/2025/course-B9254.yml
+2026-07-15 12:00:29,485 WARNING matplotlib.font_manager: Matplotlib is building the font cache; this may take a moment.
+2026-07-15 12:00:39,222 INFO matplotlib.font_manager: Failed to extract font properties from /System/Library/Fonts/Apple Color Emoji.ttc: Non-scalable fonts are not supported
+2026-07-15 12:00:39,327 INFO matplotlib.font_manager: Failed to extract font properties from /System/Library/PrivateFrameworks/FontServices.framework/Resources/Reserved/PingFangUI.ttc: FT_Open_Face (ft2font.cpp line 200) failed with error 0x02: unknown file format
+2026-07-15 12:00:39,330 INFO matplotlib.font_manager: Failed to extract font properties from /System/Library/Fonts/Supplemental/NISC18030.ttf: Non-scalable fonts are not supported
+2026-07-15 12:00:39,416 INFO matplotlib.font_manager: Failed to extract font properties from /System/Library/Fonts/LastResort.otf: tuple indices must be integers or slices, not str
+2026-07-15 12:00:39,550 INFO matplotlib.font_manager: generated new fontManager
+run_dir: data/clusters/runs/2025-20260715-120023-kmeans
