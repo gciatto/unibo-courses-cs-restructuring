@@ -31,7 +31,7 @@ def parse_course_yaml(path: str) -> dict:
     course_credits = data.get("credits", {}) or [0]
     return {
         "id":   str(course_title.get("id", "")).strip(),
-        "name": str(course_title.get("name", "Unknown")).strip(),
+        "name": str(course_title.get("name", "Unknown")).strip().lower(),
         "credits": course_credits[0] if isinstance(course_credits, (list, tuple)) else course_credits
     }
 
@@ -65,7 +65,7 @@ def main():
         yaml_files = []
         for dirpath, _dirs, files in os.walk(contact_dir):
             for fname in sorted(files):
-                if fname.endswith(".yml"):
+                if fname.startswith("course") and fname.endswith(".yml"):
                     yaml_files.append(os.path.join(dirpath, fname))
 
         if not yaml_files:
