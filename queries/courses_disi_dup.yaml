@@ -25,22 +25,22 @@
     - id: 00819
       name: "Programming"
       credits: 9
-    - id: 91762
-      name: "Combinatorial Decision Making and Optimization"
-      credits: 6
     - id: B0069
       name: "Artificial Intelligence for Digital Innovation"
       credits: 8
+    - id: 91762
+      name: "Combinatorial Decision Making and Optimization"
+      credits: 6
 - Name: "Amoroso, Alessandro"
   UID: "30905"
   Department: "disi"
   Courses:
-    - id: 81676
-      name: "Digital Forensic"
-      credits: 6
     - id: 85285
       name: "Programming"
       credits: 12
+    - id: 81676
+      name: "Digital Forensic"
+      credits: 6
 - Name: "Andruccioli, Manuel"
   UID: "156364"
   Department: "disi"
@@ -65,14 +65,11 @@
     - id: 91250
       name: "DEEP LEARNING"
       credits: 6
-    - id: 91250
-      name: "Deep Learning"
-      credits: 6
-    - id: 91250
-      name: "Deep Learning"
-      credits: 6
     - id: 93319
       name: "INTRODUZIONE ALL'APPRENDIMENTO AUTOMATICO"
+      credits: 6
+    - id: 91250
+      name: "Deep Learning"
       credits: 6
 - Name: "Bacchiani, Lorenzo"
   UID: "125005"
@@ -99,6 +96,9 @@
   UID: "181793"
   Department: "disi"
   Courses:
+    - id: B0833
+      name: "Computer Security Laboratory T"
+      credits: 6
     - id: 88325
       name: "Computer and Network Security Lab T"
       credits: 6
@@ -106,22 +106,28 @@
   UID: "34532"
   Department: "disi"
   Courses:
+    - id: 91269
+      name: "Multimedia Data Management"
+      credits: 6
     - id: 77933
       name: "Multimedia Data Management M"
       credits: 6
     - id: 94442
       name: "Design of Web Applications T"
       credits: 6
+    - id: 78096
+      name: "Multimedia Data Management M"
+      credits: 8
 - Name: "Bartolomei, Luca"
   UID: "113292"
   Department: "disi"
   Courses:
-    - id: 28011
-      name: "RETI LOGICHE T"
-      credits: 6
     - id: 88146
       name: "Fundamentals of Computer Programming P2"
       credits: 3
+    - id: 28011
+      name: "RETI LOGICHE T"
+      credits: 6
 - Name: "Bartolucci, Filippo"
   UID: "153815"
   Department: "disi"
@@ -135,10 +141,10 @@
   Courses:
     - id: 00819
       name: "Programming"
-      credits: 12
+      credits: 9
     - id: 00819
       name: "Programming"
-      credits: 9
+      credits: 12
 - Name: "Bellavista, Paolo"
   UID: "34533"
   Department: "disi"
@@ -187,12 +193,12 @@
   UID: "47850"
   Department: "disi"
   Courses:
-    - id: 93034
-      name: "Foundations of Computer Science T"
-      credits: 12
     - id: 96143
       name: "Methods and Models for Data Analytics M"
       credits: 6
+    - id: 93034
+      name: "Foundations of Computer Science T"
+      credits: 12
 - Name: "Branchetti, Simone"
   UID: "156769"
   Department: "disi"
@@ -230,11 +236,11 @@
     - id: 77780
       name: "Embedded Systems Programming and Internet of Things"
       credits: 6
-    - id: 95639
-      name: "Industry 4.0"
-      credits: 6
     - id: 96859
       name: "Embedded Systems and Internet of Things"
+      credits: 6
+    - id: 95639
+      name: "Industry 4.0"
       credits: 6
 - Name: "Calegari, Roberta"
   UID: "39443"
@@ -247,51 +253,51 @@
   UID: "30946"
   Department: "disi"
   Courses:
-    - id: 70226
-      name: "Network Programming"
-      credits: 6
     - id: 95604
       name: "Operating Systems and Networks"
+      credits: 6
+    - id: 96995
+      name: "Programmable Networking"
       credits: 6
     - id: 95644
       name: "Computer Networks and Network Programming"
       credits: 6
-    - id: 96995
-      name: "Programmable Networking"
+    - id: 70226
+      name: "Network Programming"
       credits: 6
 - Name: "Capone, Orazio Andrea"
   UID: "167840"
   Department: "disi"
   Courses:
-    - id: 00819
-      name: "Programming"
-      credits: 12
     - id: 66857
       name: "Logic for Computer Science"
       credits: 6
     - id: 90106
       name: "Software Engineering"
       credits: 9
+    - id: 00819
+      name: "Programming"
+      credits: 12
 - Name: "Cappelli, Raffaele"
   UID: "34354"
   Department: "disi"
   Courses:
-    - id: 17634
-      name: "Computer Vision"
-      credits: 6
     - id: 69731
       name: "Computer Architecture"
       credits: 12
+    - id: 17634
+      name: "Computer Vision"
+      credits: 6
 - Name: "Carbonaro, Antonella"
   UID: "33312"
   Department: "disi"
   Courses:
-    - id: 00819
-      name: "Programming"
-      credits: 12
     - id: 42500
       name: "Semantic Web"
       credits: 6
+    - id: 00819
+      name: "Programming"
+      credits: 12
 - Name: "Caruso, Marco"
   UID: "181794"
   Department: "disi"
@@ -303,11 +309,14 @@
   UID: "61169"
   Department: "disi"
   Courses:
+    - id: 11929
+      name: "Algorithm and Data Structures"
+      credits: 6
     - id: 09730
       name: "Principles of Informatics"
       credits: 6
-    - id: 11929
-      name: "Algorithm and Data Structures"
+    - id: 15305
+      name: "Foundations of Informatics A"
       credits: 6
 - Name: "Cavalcanti, Ugo Leone"
   UID: "916282"
@@ -320,11 +329,11 @@
   UID: "108414"
   Department: "disi"
   Courses:
-    - id: 47240
-      name: "Web Systems Engineering"
-      credits: 6
     - id: 72787
       name: "Mobile Application Programming"
+      credits: 6
+    - id: 47240
+      name: "Web Systems Engineering"
       credits: 6
 - Name: "Cerda, Remy Liam"
   UID: "175763"
@@ -337,19 +346,22 @@
   UID: "36176"
   Department: "disi"
   Courses:
+    - id: 93034
+      name: "Foundations of Computer Science T"
+      credits: 12
     - id: 72938
       name: "Foundations Of Artificial Intelligence T"
       credits: 8
     - id: 91248
       name: "Fundamentals of Artificial Intelligence and Knowledge Representation"
       credits: 12
-    - id: 93034
-      name: "Foundations of Computer Science T"
-      credits: 12
 - Name: "Chirichella, Davide"
   UID: "174498"
   Department: "disi"
   Courses:
+    - id: B0832
+      name: "Administration of Systems T"
+      credits: 6
     - id: 88324
       name: "System Administration T"
       credits: 6
@@ -364,40 +376,40 @@
   UID: "16884"
   Department: "disi"
   Courses:
-    - id: 28027
-      name: "Information Systems T"
-      credits: 9
     - id: 84530
       name: "Database and Big Data Technologies M"
       credits: 8
+    - id: 28027
+      name: "Information Systems T"
+      credits: 9
 - Name: "Ciampolini, Anna"
   UID: "30202"
   Department: "disi"
   Courses:
-    - id: 28020
-      name: "Operating Systems T"
-      credits: 9
     - id: B8562
       name: "SISTEMI CONCORRENTI E PARALLELI M"
       credits: 8
+    - id: 28020
+      name: "Operating Systems T"
+      credits: 9
 - Name: "Ciatto, Giovanni"
   UID: "76853"
   Department: "disi"
   Courses:
-    - id: 87474
-      name: "Distributed Systems"
-      credits: 6
-    - id: 93468
-      name: "Distributed Software Systems"
-      credits: 6
-    - id: 93669
-      name: "Intelligent Systems Engineering"
+    - id: B0011
+      name: "Software Process Engineering"
       credits: 6
     - id: 95627
       name: "Software Engineering"
       credits: 6
-    - id: B0011
-      name: "Software Process Engineering"
+    - id: 93468
+      name: "Distributed Software Systems"
+      credits: 6
+    - id: 87474
+      name: "Distributed Systems"
+      credits: 6
+    - id: 93669
+      name: "Intelligent Systems Engineering"
       credits: 6
 - Name: "Cohen, David"
   UID: "176989"
@@ -422,6 +434,9 @@
     - id: B5812
       name: "Cybersecurity Governance"
       credits: 8
+    - id: B5796
+      name: "Scalable and Reliable Services M"
+      credits: 8
 - Name: "Cortecchia, Angela"
   UID: "131117"
   Department: "disi"
@@ -433,12 +448,12 @@
   UID: "124120"
   Department: "disi"
   Courses:
-    - id: 69661
-      name: "Image Processing And Computer Vision M"
-      credits: 6
     - id: 73302
       name: "Computer Vision And Image Processing M"
       credits: 8
+    - id: 69661
+      name: "Image Processing And Computer Vision M"
+      credits: 6
     - id: 91254
       name: "Image Processing and Computer Vision"
       credits: 6
@@ -453,12 +468,12 @@
   UID: "97266"
   Department: "disi"
   Courses:
-    - id: 69661
-      name: "Image Processing And Computer Vision M"
-      credits: 6
     - id: 73302
       name: "Computer Vision And Image Processing M"
       credits: 8
+    - id: 69661
+      name: "Image Processing And Computer Vision M"
+      credits: 6
 - Name: "Dadi, Maichol"
   UID: "151230"
   Department: "disi"
@@ -470,14 +485,14 @@
   UID: "39882"
   Department: "disi"
   Courses:
-    - id: 93467
-      name: "Cryptography"
+    - id: B5026
+      name: "Introduction to Computability and Complexity"
       credits: 6
     - id: B3567
       name: "INTRODUCTION TO QUANTUM COMPUTING"
       credits: 6
-    - id: B5026
-      name: "Introduction to Computability and Complexity"
+    - id: 93467
+      name: "Cryptography"
       credits: 6
 - Name: "D'Angelo, Gabriele"
   UID: "36196"
@@ -504,15 +519,15 @@
   UID: "30054"
   Department: "disi"
   Courses:
-    - id: 08574
-      name: "Operating Systems"
-      credits: 12
     - id: 37925
       name: "Virtual System Design"
       credits: 6
     - id: 81678
       name: "Laboratory of Making"
       credits: 6
+    - id: 08574
+      name: "Operating Systems"
+      credits: 12
     - id: 90749
       name: "Computing Education"
       credits: 6
@@ -520,21 +535,21 @@
   UID: "61037"
   Department: "disi"
   Courses:
-    - id: 29227
-      name: "Foundations of Informatics T"
-      credits: 9
     - id: 78778
       name: "Intelligent Systems M"
       credits: 8
+    - id: 29227
+      name: "Foundations of Informatics T"
+      credits: 9
 - Name: "Delnevo, Giovanni"
   UID: "76770"
   Department: "disi"
   Courses:
-    - id: 41731
-      name: "Web-related Technologies"
-      credits: 6
     - id: 95645
       name: "Foundations of Web Systems"
+      credits: 6
+    - id: 41731
+      name: "Web-related Technologies"
       credits: 6
 - Name: "Denti, Enrico"
   UID: "31888"
@@ -550,6 +565,9 @@
   UID: "126636"
   Department: "disi"
   Courses:
+    - id: 37635
+      name: "Data Structure and Algorithms"
+      credits: 12
     - id: 11929
       name: "Algorithms and Data Structures"
       credits: 12
@@ -557,45 +575,54 @@
   UID: "149981"
   Department: "disi"
   Courses:
+    - id: 81610
+      name: "Machine Learning"
+      credits: 6
     - id: 10906
       name: "Databases"
       credits: 12
-    - id: 81610
+    - id: 88202
       name: "Machine Learning"
       credits: 6
 - Name: "Di Felice, Marco"
   UID: "41697"
   Department: "disi"
   Courses:
-    - id: 70155
-      name: "Data Bases"
-      credits: 9
-    - id: 81683
-      name: "Internet of Things"
-      credits: 6
     - id: 84401
       name: "Context-Aware Systems"
       credits: 6
+    - id: 81683
+      name: "Internet of Things"
+      credits: 6
+    - id: 70155
+      name: "Data Bases"
+      credits: 9
 - Name: "Di Iorio, Angelo"
   UID: "41449"
   Department: "disi"
   Courses:
-    - id: 00819
-      name: "Programming"
-      credits: 9
-    - id: 41731
-      name: "Web-related Technologies"
-      credits: 6
-    - id: B0061
-      name: "Computer Methods for Digital Transformation"
-      credits: 8
     - id: B0073
       name: "ELABORAZIONE DI TESTI E GESTIONE DOCUMENTALE"
       credits: 8
+    - id: B0061
+      name: "Computer Methods for Digital Transformation"
+      credits: 8
+    - id: 41731
+      name: "Web-related Technologies"
+      credits: 6
+    - id: 75835
+      name: "Web Technologies"
+      credits: 6
+    - id: 00819
+      name: "Programming"
+      credits: 9
 - Name: "Di Lena, Pietro"
   UID: "40940"
   Department: "disi"
   Courses:
+    - id: 37635
+      name: "Data Structure and Algorithms"
+      credits: 12
     - id: 11929
       name: "Algorithms and Data Structures"
       credits: 12
@@ -609,12 +636,12 @@
     - id: 28659
       name: "Web Technologies T"
       credits: 9
-    - id: 93034
-      name: "Foundations of Computer Science T"
-      credits: 12
     - id: 93653
       name: "Iot And Big Data For Smart Agricultural Systems"
       credits: 5
+    - id: 93034
+      name: "Foundations of Computer Science T"
+      credits: 12
 - Name: "Dinelli, Michele"
   UID: "128557"
   Department: "disi"
@@ -629,24 +656,27 @@
   UID: "30722"
   Department: "disi"
   Courses:
+    - id: 73302
+      name: "Computer Vision And Image Processing M"
+      credits: 8
     - id: 28012
       name: "Electronic Calculators T"
       credits: 6
     - id: 69661
       name: "Image Processing And Computer Vision M"
       credits: 6
-    - id: 73302
-      name: "Computer Vision And Image Processing M"
-      credits: 8
 - Name: "Domini, Davide"
   UID: "121200"
   Department: "disi"
   Courses:
+    - id: 95627
+      name: "Software Engineering"
+      credits: 6
     - id: 09730
       name: "Principles of Informatics"
       credits: 6
-    - id: 95627
-      name: "Software Engineering"
+    - id: 15305
+      name: "Foundations of Informatics A"
       credits: 6
 - Name: "Donati, Nicolò"
   UID: "156770"
@@ -659,12 +689,12 @@
   UID: "181776"
   Department: "disi"
   Courses:
-    - id: 28020
-      name: "Operating Systems T"
-      credits: 9
     - id: B8554
       name: "SISTEMI SOFTWARE A OGGETTI T"
       credits: 12
+    - id: 28020
+      name: "Operating Systems T"
+      credits: 9
 - Name: "Elias, Jocelyne"
   UID: "118578"
   Department: "disi"
@@ -693,14 +723,14 @@
   UID: "145082"
   Department: "disi"
   Courses:
+    - id: 96346
+      name: "INFORMATICA"
+      credits: 6
     - id: 11925
       name: "Computer Architecture"
       credits: 6
     - id: 91161
       name: "Networks, Security And Data Bases"
-      credits: 6
-    - id: 96346
-      name: "INFORMATICA"
       credits: 6
 - Name: "Ferrara, Matteo"
   UID: "45909"
@@ -716,18 +746,18 @@
   UID: "39118"
   Department: "disi"
   Courses:
-    - id: 08574
-      name: "Operating Systems"
-      credits: 12
-    - id: 90748
-      name: "Blockchain and Cryptocurrencies"
-      credits: 6
     - id: 93470
       name: "Cybersecurity"
       credits: 6
     - id: 95646
       name: "Virtualized Systems"
       credits: 6
+    - id: 90748
+      name: "Blockchain and Cryptocurrencies"
+      credits: 6
+    - id: 08574
+      name: "Operating Systems"
+      credits: 12
 - Name: "Filaseta, Angelo"
   UID: "152439"
   Department: "disi"
@@ -773,6 +803,9 @@
   UID: "52663"
   Department: "disi"
   Courses:
+    - id: 98931
+      name: "Fundamentals of Artificial Intelligence"
+      credits: 6
     - id: 91248
       name: "Fundamentals of Artificial Intelligence and Knowledge Representation"
       credits: 12
@@ -787,14 +820,14 @@
   UID: "34486"
   Department: "disi"
   Courses:
+    - id: B5727
+      name: "Introduction to Languages for Artificial Intelligence"
+      credits: 6
     - id: 04138
       name: "Programming Languages"
       credits: 12
     - id: 81940
       name: "Artificial Intelligence"
-      credits: 6
-    - id: B5727
-      name: "Introduction to Languages for Artificial Intelligence"
       credits: 6
 - Name: "Galassi, Andrea"
   UID: "93519"
@@ -803,21 +836,24 @@
     - id: 78810
       name: "Real Time Systems for Automation M"
       credits: 12
+    - id: B5665
+      name: "Real Time Systems and Programming for Automation M"
+      credits: 12
 - Name: "Gallinucci, Enrico"
   UID: "47836"
   Department: "disi"
   Courses:
-    - id: 30376
-      name: "Business Intelligence"
-      credits: 6
-    - id: 81932
-      name: "Big Data"
+    - id: 95630
+      name: "Big Data and Cloud Platforms"
       credits: 6
     - id: 95602
       name: "Programming and Computer Architectures"
       credits: 12
-    - id: 95630
-      name: "Big Data and Cloud Platforms"
+    - id: 81932
+      name: "Big Data"
+      credits: 6
+    - id: 30376
+      name: "Business Intelligence"
       credits: 6
 - Name: "Garbugli, Andrea"
   UID: "107696"
@@ -830,14 +866,14 @@
   UID: "30458"
   Department: "disi"
   Courses:
+    - id: 89988
+      name: "Elements of Informatics"
+      credits: 6
     - id: 07276
       name: "Computer Science"
       credits: 2
     - id: 37262
       name: "Computer Programming"
-      credits: 6
-    - id: 89988
-      name: "Elements of Informatics"
       credits: 6
 - Name: "Gazza, Simone"
   UID: "161224"
@@ -850,6 +886,9 @@
   UID: "165430"
   Department: "disi"
   Courses:
+    - id: B2125
+      name: "Machine Learning and Data Mining M"
+      credits: 8
     - id: 95631
       name: "Machine Learning and Data Mining"
       credits: 6
@@ -857,22 +896,28 @@
   UID: "156771"
   Department: "disi"
   Courses:
+    - id: 91269
+      name: "Multimedia Data Management"
+      credits: 6
     - id: 77933
       name: "Multimedia Data Management M"
       credits: 6
+    - id: 78096
+      name: "Multimedia Data Management M"
+      credits: 8
 - Name: "Ghini, Vittorio"
   UID: "31994"
   Department: "disi"
   Courses:
-    - id: 08574
-      name: "Operating Systems"
-      credits: 12
     - id: 95646
       name: "Virtualized Systems"
       credits: 6
     - id: 96642
       name: "Virtualization and System Integration"
       credits: 6
+    - id: 08574
+      name: "Operating Systems"
+      credits: 12
 - Name: "Giallorenzo, Saverio"
   UID: "48366"
   Department: "disi"
@@ -880,6 +925,9 @@
     - id: 04138
       name: "Programming Languages"
       credits: 12
+    - id: 95782
+      name: "Network Analysis"
+      credits: 6
     - id: 90730
       name: "Social Network Analysis"
       credits: 6
@@ -887,6 +935,9 @@
   UID: "78606"
   Department: "disi"
   Courses:
+    - id: 98931
+      name: "Fundamentals of Artificial Intelligence"
+      credits: 6
     - id: 91248
       name: "Fundamentals of Artificial Intelligence and Knowledge Representation"
       credits: 12
@@ -894,27 +945,33 @@
   UID: "128709"
   Department: "disi"
   Courses:
-    - id: 00819
-      name: "Programming"
-      credits: 12
-    - id: 00819
-      name: "Programming"
-      credits: 9
     - id: 90074
       name: "Smart Vehicular Systems"
       credits: 6
     - id: 95604
       name: "Operating Systems and Networks"
       credits: 6
+    - id: 00819
+      name: "Programming"
+      credits: 12
+    - id: 00819
+      name: "Programming"
+      credits: 9
+    - id: 96994
+      name: "Smart Vehicular-Systems"
+      credits: 6
 - Name: "Golfarelli, Matteo"
   UID: "33159"
   Department: "disi"
   Courses:
+    - id: 40720
+      name: "Data Mining"
+      credits: 6
     - id: 09679
       name: "Data Base Sistems"
       credits: 6
-    - id: 40720
-      name: "Data Mining"
+    - id: 95631
+      name: "Machine Learning and Data Mining"
       credits: 6
     - id: 84339
       name: "Advanced Database Systems"
@@ -926,12 +983,12 @@
   UID: "30055"
   Department: "disi"
   Courses:
-    - id: 04138
-      name: "Programming Languages"
-      credits: 12
     - id: 66870
       name: "Concurrent Models and Systems"
       credits: 6
+    - id: 04138
+      name: "Programming Languages"
+      credits: 12
     - id: 78510
       name: "Informatics"
       credits: 2
@@ -949,6 +1006,9 @@
   UID: "134786"
   Department: "disi"
   Courses:
+    - id: 90106
+      name: "Software Engineering"
+      credits: 9
     - id: 16870
       name: "Programming Laboratory"
       credits: 6
@@ -965,6 +1025,9 @@
     - id: 78810
       name: "Real Time Systems for Automation M"
       credits: 12
+    - id: B5665
+      name: "Real Time Systems and Programming for Automation M"
+      credits: 12
     - id: 93034
       name: "Foundations of Computer Science T"
       credits: 12
@@ -979,11 +1042,14 @@
   UID: "142565"
   Department: "disi"
   Courses:
-    - id: 81940
-      name: "Artificial Intelligence"
-      credits: 6
+    - id: B2125
+      name: "Machine Learning and Data Mining M"
+      credits: 8
     - id: 95631
       name: "Machine Learning and Data Mining"
+      credits: 6
+    - id: 81940
+      name: "Artificial Intelligence"
       credits: 6
 - Name: "Helal, Abdelsalam Ali"
   UID: "155230"
@@ -999,6 +1065,9 @@
   UID: "154840"
   Department: "disi"
   Courses:
+    - id: B0832
+      name: "Administration of Systems T"
+      credits: 6
     - id: 88324
       name: "System Administration T"
       credits: 6
@@ -1047,28 +1116,28 @@
   UID: "43238"
   Department: "disi"
   Courses:
-    - id: 11925
-      name: "Computer Architecture"
-      credits: 6
+    - id: B5780
+      name: "Computational Methods for Bioinformatics"
+      credits: 10
     - id: B3567
       name: "INTRODUCTION TO QUANTUM COMPUTING"
+      credits: 6
+    - id: 11925
+      name: "Computer Architecture"
       credits: 6
     - id: B5474
       name: "ARCHITETTURE SOFTWARE A MICROSERVIZI"
       credits: 6
-    - id: B5780
-      name: "Computational Methods for Bioinformatics"
-      credits: 10
 - Name: "Laneve, Cosimo"
   UID: "30761"
   Department: "disi"
   Courses:
-    - id: 00819
-      name: "Programming"
-      credits: 12
     - id: 72671
       name: "Complements of Programming Languages"
       credits: 6
+    - id: 00819
+      name: "Programming"
+      credits: 12
 - Name: "Leonetti, Nicola"
   UID: "135413"
   Department: "disi"
@@ -1090,18 +1159,18 @@
   UID: "51341"
   Department: "disi"
   Courses:
-    - id: 90749
-      name: "Computing Education"
-      credits: 6
     - id: B5727
       name: "Introduction to Languages for Artificial Intelligence"
+      credits: 6
+    - id: 90749
+      name: "Computing Education"
       credits: 6
 - Name: "Lodi, Stefano"
   UID: "30938"
   Department: "disi"
   Courses:
-    - id: 85189
-      name: "Systems and Algorithms for Data Science"
+    - id: 90477
+      name: "Machine Learning Systems For Data Science"
       credits: 10
     - id: B2133
       name: "Big Data Analytics and Text Mining"
@@ -1109,6 +1178,9 @@
     - id: B8159
       name: "INFORMATICA"
       credits: 8
+    - id: 85189
+      name: "Systems and Algorithms for Data Science"
+      credits: 10
 - Name: "Loli Piccolomini, Elena"
   UID: "30063"
   Department: "disi"
@@ -1120,11 +1192,11 @@
   UID: "40878"
   Department: "disi"
   Courses:
-    - id: 91261
-      name: "Artificial Intelligence in Industry"
-      credits: 6
     - id: 93034
       name: "Foundations of Computer Science T"
+      credits: 6
+    - id: 91261
+      name: "Artificial Intelligence in Industry"
       credits: 6
 - Name: "Loreti, Daniela"
   UID: "48810"
@@ -1147,11 +1219,14 @@
   UID: "35622"
   Department: "disi"
   Courses:
-    - id: 10906
-      name: "Databases"
+    - id: 95611
+      name: "Database Systems"
       credits: 6
     - id: 84339
       name: "Advanced Database Systems"
+      credits: 6
+    - id: 10906
+      name: "Databases"
       credits: 6
 - Name: "Magnini, Matteo"
   UID: "130322"
@@ -1167,15 +1242,18 @@
   UID: "127088"
   Department: "disi"
   Courses:
-    - id: 11933
-      name: "Theoretical Computer Science"
-      credits: 6
-    - id: 85301
-      name: "Algorithms and Data Structures in Biology"
-      credits: 6
     - id: C7674
       name: "INTRODUZIONE ALLE TECNICHE DI MEMORIA E ALLE METODOLOGIE DI STUDIO"
       credits: 0
+    - id: 85301
+      name: "Algorithms and Data Structures in Biology"
+      credits: 6
+    - id: 41169
+      name: "Theoretical Computer Science"
+      credits: 6
+    - id: 11933
+      name: "Theoretical Computer Science"
+      credits: 6
 - Name: "Maltoni, Davide"
   UID: "31756"
   Department: "disi"
@@ -1184,6 +1262,9 @@
       name: "Computer Architecture"
       credits: 12
     - id: 81610
+      name: "Machine Learning"
+      credits: 6
+    - id: 88202
       name: "Machine Learning"
       credits: 6
 - Name: "Mancini, Eleonora"
@@ -1243,6 +1324,9 @@
     - id: 91685
       name: "History of Informatics and Computing Systems"
       credits: 6
+    - id: 28040
+      name: "Information Technology"
+      credits: 6
 - Name: "Martuscelli, Giuseppe"
   UID: "93521"
   Department: "disi"
@@ -1254,12 +1338,12 @@
   UID: "42372"
   Department: "disi"
   Courses:
-    - id: 11929
-      name: "Algorithms and Data Structures"
-      credits: 12
     - id: 58437
       name: "Parallel Calculus"
       credits: 6
+    - id: 11929
+      name: "Algorithms and Data Structures"
+      credits: 12
     - id: 72778
       name: "High-Performance Computing"
       credits: 6
@@ -1270,15 +1354,15 @@
   UID: "34908"
   Department: "disi"
   Courses:
+    - id: B8563
+      name: "SISTEMI DI ELABORAZIONE ACCELERATA M"
+      credits: 8
     - id: 28012
       name: "Electronic Calculators T"
       credits: 6
     - id: 88146
       name: "Fundamentals of Computer Programming P2"
       credits: 3
-    - id: B8563
-      name: "SISTEMI DI ELABORAZIONE ACCELERATA M"
-      credits: 8
 - Name: "Melacini, Giacomo"
   UID: "153302"
   Department: "disi"
@@ -1290,12 +1374,12 @@
   UID: "51394"
   Department: "disi"
   Courses:
-    - id: 11929
-      name: "Algorithms and Data Structures"
-      credits: 12
     - id: 95644
       name: "Computer Networks and Network Programming"
       credits: 6
+    - id: 11929
+      name: "Algorithms and Data Structures"
+      credits: 12
     - id: 96995
       name: "Programmable Networking"
       credits: 6
@@ -1313,6 +1397,9 @@
     - id: 78778
       name: "Intelligent Systems M"
       credits: 8
+    - id: 98931
+      name: "Fundamentals of Artificial Intelligence"
+      credits: 6
     - id: 91248
       name: "Fundamentals of Artificial Intelligence and Knowledge Representation"
       credits: 12
@@ -1320,17 +1407,17 @@
   UID: "36979"
   Department: "disi"
   Courses:
-    - id: 41731
-      name: "Web-related Technologies"
-      credits: 6
     - id: 69867
       name: "Web Services and Applications"
+      credits: 6
+    - id: 95645
+      name: "Foundations of Web Systems"
       credits: 6
     - id: 95605
       name: "Web and Mobile Systems"
       credits: 6
-    - id: 95645
-      name: "Foundations of Web Systems"
+    - id: 41731
+      name: "Web-related Technologies"
       credits: 6
 - Name: "Missiroli, Marcello"
   UID: "82451"
@@ -1350,12 +1437,12 @@
   UID: "148068"
   Department: "disi"
   Courses:
-    - id: 28024
-      name: "Computer Networks T"
-      credits: 9
     - id: 73025
       name: "Distributed Systems M"
       credits: 8
+    - id: 28024
+      name: "Computer Networks T"
+      credits: 9
 - Name: "Montesi, Danilo"
   UID: "33449"
   Department: "disi"
@@ -1396,11 +1483,11 @@
     - id: 42500
       name: "Semantic Web"
       credits: 6
-    - id: 72796
-      name: "Data Intensive Applications"
-      credits: 6
     - id: B2133
       name: "Big Data Analytics and Text Mining"
+      credits: 6
+    - id: 72796
+      name: "Data Intensive Applications"
       credits: 6
 - Name: "Musolesi, Mirco"
   UID: "116869"
@@ -1420,12 +1507,12 @@
   UID: "176530"
   Department: "disi"
   Courses:
-    - id: 10906
-      name: "Databases"
-      credits: 12
     - id: 96007
       name: "Foundations of Computer Architecture and Operating Systems"
       credits: 6
+    - id: 10906
+      name: "Databases"
+      credits: 12
 - Name: "Olaiya, Kelvin Oluwada Milare Obuneme"
   UID: "132031"
   Department: "disi"
@@ -1440,11 +1527,11 @@
     - id: 87474
       name: "Distributed Systems"
       credits: 6
-    - id: 93468
-      name: "Distributed Software Systems"
-      credits: 6
     - id: 93669
       name: "Intelligent Systems Engineering"
+      credits: 6
+    - id: 93468
+      name: "Distributed Software Systems"
       credits: 6
 - Name: "Orlandello, Luca"
   UID: "165306"
@@ -1474,12 +1561,18 @@
   UID: "150019"
   Department: "disi"
   Courses:
-    - id: 41731
-      name: "Web-related Technologies"
+    - id: 75835
+      name: "Web Technologies"
       credits: 6
     - id: 90106
       name: "Software Engineering"
       credits: 9
+    - id: 90106
+      name: "INGEGNERIA DEL SOFTWARE"
+      credits: 9
+    - id: 41731
+      name: "Web-related Technologies"
+      credits: 6
 - Name: "Pappacoda, Gianmarco"
   UID: "154932"
   Department: "disi"
@@ -1494,6 +1587,9 @@
     - id: 40720
       name: "Data Mining"
       credits: 6
+    - id: 95631
+      name: "Machine Learning and Data Mining"
+      credits: 6
 - Name: "Pasolini, Roberto"
   UID: "46528"
   Department: "disi"
@@ -1505,12 +1601,12 @@
   UID: "32360"
   Department: "disi"
   Courses:
-    - id: 28021
-      name: "Software Engineering T"
-      credits: 9
     - id: 84530
       name: "Database and Big Data Technologies M"
       credits: 8
+    - id: 28021
+      name: "Software Engineering T"
+      credits: 9
 - Name: "Pedretti, Carlo Teo"
   UID: "120976"
   Department: "disi"
@@ -1518,8 +1614,17 @@
     - id: 41731
       name: "Web-related Technologies"
       credits: 6
+    - id: 90720
+      name: "Usability & User Experience Design"
+      credits: 6
     - id: 85573
       name: "Usability and User Experience"
+      credits: 6
+    - id: 91264
+      name: "User Experience Design"
+      credits: 6
+    - id: 75835
+      name: "Web Technologies"
       credits: 6
 - Name: "Pellegrini, Lorenzo"
   UID: "107699"
@@ -1532,12 +1637,12 @@
   UID: "139687"
   Department: "disi"
   Courses:
-    - id: 04138
-      name: "Programming Languages"
-      credits: 12
     - id: B5727
       name: "Introduction to Languages for Artificial Intelligence"
       credits: 6
+    - id: 04138
+      name: "Programming Languages"
+      credits: 12
 - Name: "Penzo, Wilma"
   UID: "31245"
   Department: "disi"
@@ -1556,6 +1661,9 @@
   UID: "181792"
   Department: "disi"
   Courses:
+    - id: B0833
+      name: "Computer Security Laboratory T"
+      credits: 6
     - id: 88325
       name: "Computer and Network Security Lab T"
       credits: 6
@@ -1611,21 +1719,21 @@
   UID: "50846"
   Department: "disi"
   Courses:
-    - id: 28011
-      name: "RETI LOGICHE T"
-      credits: 6
     - id: 91602
       name: "Computer Architectures"
+      credits: 6
+    - id: 28011
+      name: "RETI LOGICHE T"
       credits: 6
 - Name: "Prandi, Catia"
   UID: "46456"
   Department: "disi"
   Courses:
-    - id: 72787
-      name: "Mobile Application Programming"
-      credits: 6
     - id: 81934
       name: "HUMAN COMPUTER INTERACTION"
+      credits: 6
+    - id: 72787
+      name: "Mobile Application Programming"
       credits: 6
     - id: 95605
       name: "Web and Mobile Systems"
@@ -1634,11 +1742,17 @@
   UID: "33518"
   Department: "disi"
   Courses:
-    - id: 88324
-      name: "System Administration T"
+    - id: B0832
+      name: "Administration of Systems T"
       credits: 6
     - id: 88325
       name: "Computer and Network Security Lab T"
+      credits: 6
+    - id: 88324
+      name: "System Administration T"
+      credits: 6
+    - id: B0833
+      name: "Computer Security Laboratory T"
       credits: 6
 - Name: "Proietti, Michele"
   UID: "150977"
@@ -1651,30 +1765,30 @@
   UID: "150603"
   Department: "disi"
   Courses:
-    - id: 28021
-      name: "Software Engineering T"
-      credits: 9
-    - id: 91762
-      name: "Combinatorial Decision Making and Optimization"
-      credits: 6
     - id: 93034
       name: "Foundations of Computer Science T"
       credits: 12
+    - id: 91762
+      name: "Combinatorial Decision Making and Optimization"
+      credits: 6
+    - id: 28021
+      name: "Software Engineering T"
+      credits: 9
 - Name: "Ricci, Alessandro"
   UID: "36525"
   Department: "disi"
   Courses:
-    - id: 17628
-      name: "Concurrent and Distributed Programming"
+    - id: B0010
+      name: "Software Architecture and Platforms"
       credits: 6
     - id: 77780
       name: "Embedded Systems Programming and Internet of Things"
       credits: 6
+    - id: 17628
+      name: "Concurrent and Distributed Programming"
+      credits: 6
     - id: 96859
       name: "Embedded Systems and Internet of Things"
-      credits: 6
-    - id: B0010
-      name: "Software Architecture and Platforms"
       credits: 6
 - Name: "Rinieri, Lorenzo"
   UID: "133157"
@@ -1693,22 +1807,22 @@
     - id: 09032
       name: "Software Engineering"
       credits: 6
-    - id: 30376
-      name: "Business Intelligence"
-      credits: 6
     - id: 96142
       name: "Business Intelligence and Big Data M"
+      credits: 6
+    - id: 30376
+      name: "Business Intelligence"
       credits: 6
 - Name: "Roccetti, Marco"
   UID: "24210"
   Department: "disi"
   Courses:
-    - id: 58423
-      name: "Internet Architecture"
-      credits: 9
     - id: 93469
       name: "Human Data Science"
       credits: 6
+    - id: 58423
+      name: "Internet Architecture"
+      credits: 9
 - Name: "Roffia, Luca"
   UID: "34910"
   Department: "disi"
@@ -1734,19 +1848,22 @@
   UID: "171074"
   Department: "disi"
   Courses:
-    - id: 00819
-      name: "Programming"
-      credits: 12
-    - id: 11925
-      name: "Computer Architecture"
-      credits: 6
     - id: 96346
       name: "INFORMATICA"
       credits: 6
+    - id: 11925
+      name: "Computer Architecture"
+      credits: 6
+    - id: 00819
+      name: "Programming"
+      credits: 12
 - Name: "Rossi, Davide"
   UID: "35634"
   Department: "disi"
   Courses:
+    - id: 90106
+      name: "Software Engineering"
+      credits: 9
     - id: 66858
       name: "Software Engineering"
       credits: 6
@@ -1760,12 +1877,12 @@
   UID: "102111"
   Department: "disi"
   Courses:
-    - id: 28024
-      name: "Computer Networks T"
-      credits: 9
     - id: 84531
       name: "Infrastructures For Cloud Computing and Big Data M"
       credits: 8
+    - id: 28024
+      name: "Computer Networks T"
+      credits: 9
 - Name: "Sacerdoti Coen, Claudio"
   UID: "38895"
   Department: "disi"
@@ -1779,22 +1896,22 @@
   Courses:
     - id: 00819
       name: "Programming"
-      credits: 12
+      credits: 9
     - id: 00819
       name: "Programming"
-      credits: 9
+      credits: 12
 - Name: "Salti, Samuele"
   UID: "43286"
   Department: "disi"
   Courses:
-    - id: 28011
-      name: "Logic Design T"
+    - id: 91266
+      name: "Machine Learning for Computer Vision"
       credits: 6
     - id: 91254
       name: "Image Processing and Computer Vision"
       credits: 6
-    - id: 91266
-      name: "Machine Learning for Computer Vision"
+    - id: 28011
+      name: "Logic Design T"
       credits: 6
 - Name: "Sangiorgi, Davide"
   UID: "35688"
@@ -1810,12 +1927,15 @@
   UID: "30315"
   Department: "disi"
   Courses:
-    - id: 60348
-      name: "Informatics"
-      credits: 10
+    - id: B2125
+      name: "Machine Learning and Data Mining M"
+      credits: 8
     - id: 95631
       name: "Machine Learning and Data Mining"
       credits: 6
+    - id: 60348
+      name: "Informatics"
+      credits: 10
 - Name: "Schimmenti, Andrea"
   UID: "89954"
   Department: "disi"
@@ -1834,28 +1954,25 @@
   UID: "177520"
   Department: "disi"
   Courses:
-    - id: 11929
-      name: "Algorithms and Data Structures"
-      credits: 12
-    - id: 11929
-      name: "Algorithms and Data Structures"
-      credits: 12
     - id: 69731
       name: "Computer Architecture"
+      credits: 12
+    - id: 11929
+      name: "Algorithms and Data Structures"
       credits: 12
 - Name: "Sirbu, Alina"
   UID: "50151"
   Department: "disi"
   Courses:
-    - id: 00819
-      name: "Programming"
-      credits: 12
-    - id: 41588
-      name: "INTRODUZIONE ALL'ANALISI DEI DATI"
-      credits: 6
     - id: 91161
       name: "Networks, Security And Data Bases"
       credits: 6
+    - id: 41588
+      name: "INTRODUZIONE ALL'ANALISI DEI DATI"
+      credits: 6
+    - id: 00819
+      name: "Programming"
+      credits: 12
 - Name: "Succi, Giancarlo"
   UID: "139848"
   Department: "disi"
@@ -1863,12 +1980,12 @@
     - id: 90106
       name: "INGEGNERIA DEL SOFTWARE"
       credits: 9
-    - id: B0074
-      name: "PIATTAFORME PER LA TRASFORMAZIONE DIGITALE"
-      credits: 8
     - id: B1459
       name: "ARTIFICIAL INTELLIGENCE, BLOCKCHAIN E CRIPTOVALUTE NELLO SVILUPPO SOFTWARE"
       credits: 6
+    - id: B0074
+      name: "PIATTAFORME PER LA TRASFORMAZIONE DIGITALE"
+      credits: 8
 - Name: "Tagliavini, Giuseppe"
   UID: "46245"
   Department: "disi"
@@ -1880,21 +1997,21 @@
   UID: "121108"
   Department: "disi"
   Courses:
-    - id: 28024
-      name: "Computer Networks T"
-      credits: 9
     - id: 93034
       name: "Foundations of Computer Science T"
       credits: 12
+    - id: 28024
+      name: "Computer Networks T"
+      credits: 9
 - Name: "Testa, Alex"
   UID: "154903"
   Department: "disi"
   Courses:
-    - id: 47240
-      name: "Web Systems Engineering"
-      credits: 6
     - id: 95645
       name: "Foundations of Web Systems"
+      credits: 6
+    - id: 47240
+      name: "Web Systems Engineering"
       credits: 6
 - Name: "Torroni, Paolo"
   UID: "36361"
@@ -1903,12 +2020,15 @@
     - id: 78810
       name: "Real Time Systems for Automation M"
       credits: 12
-    - id: 91248
-      name: "Fundamentals of Artificial Intelligence and Knowledge Representation"
+    - id: B5665
+      name: "Real Time Systems and Programming for Automation M"
       credits: 12
     - id: 91258
       name: "Natural Language Processing"
       credits: 6
+    - id: 91248
+      name: "Fundamentals of Artificial Intelligence and Knowledge Representation"
+      credits: 12
 - Name: "Tosi, Fabio"
   UID: "93475"
   Department: "disi"
@@ -1920,11 +2040,11 @@
   UID: "47258"
   Department: "disi"
   Courses:
-    - id: 69259
-      name: "Computer Science"
-      credits: 6
     - id: 84401
       name: "Context-Aware Systems"
+      credits: 6
+    - id: 69259
+      name: "Computer Science"
       credits: 6
 - Name: "Tumedei, Gianni"
   UID: "120929"
@@ -1937,12 +2057,12 @@
   UID: "35642"
   Department: "disi"
   Courses:
-    - id: 70219
-      name: "Object-Oriented Programming"
-      credits: 12
     - id: 81612
       name: "Programming and Development paradigms"
       credits: 6
+    - id: 70219
+      name: "Object-Oriented Programming"
+      credits: 12
     - id: B0009
       name: "Advanced Software Modelling and Design"
       credits: 6
@@ -1957,8 +2077,8 @@
   UID: "31569"
   Department: "disi"
   Courses:
-    - id: 85445
-      name: "Information Modelling and Web Technologies"
+    - id: 90720
+      name: "Usability & User Experience Design"
       credits: 6
     - id: 85573
       name: "Usability and User Experience"
@@ -1966,6 +2086,12 @@
     - id: 88566
       name: "Web Technology"
       credits: 9
+    - id: 91264
+      name: "User Experience Design"
+      credits: 6
+    - id: 85445
+      name: "Information Modelling and Web Technologies"
+      credits: 6
 - Name: "Zandoli, Silvia"
   UID: "137879"
   Department: "disi"
@@ -1980,16 +2106,19 @@
   UID: "50856"
   Department: "disi"
   Courses:
-    - id: 28020
-      name: "Operating Systems T"
-      credits: 9
     - id: 88155
       name: "Industrial Informatics P"
       credits: 6
+    - id: 28020
+      name: "Operating Systems T"
+      credits: 9
 - Name: "Zavattaro, Gianluigi"
   UID: "33342"
   Department: "disi"
   Courses:
+    - id: 37635
+      name: "Data Structure and Algorithms"
+      credits: 12
     - id: 11929
       name: "Algorithms and Data Structures"
       credits: 12

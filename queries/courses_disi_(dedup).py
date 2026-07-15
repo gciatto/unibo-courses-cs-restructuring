@@ -1,8 +1,7 @@
 """
-Loads contacts from data/contacts.csv on the local file system, filters out
-those from "Dipartimento di Informatica - Scienza e Ingegneria", then checks
-if each contact has a folder under data/courses/<email_name>/ and prints the
-courses found therein.
+Loads contacts from data/contacts.csv on the local file system and merge courses
+that are the similar. If the courses are not equal but just similar, we choose
+the (title of the) one that's part of the degree of the department of the teacher, otherwise, we pick one at random.
 """
 
 import csv
@@ -20,20 +19,8 @@ REPO_ROOT = ".."
 CONTACTS_CSV   = os.path.join(REPO_ROOT, "data", "contacts.csv")
 COURSES_DIR    = os.path.join(REPO_ROOT, "data", "courses")
 TARGET_DEPT    = "disi"
+# TARGET_DEPT    = "Dipartimento di Informatica - Scienza e Ingegneria"
 
-
-def load_disi_courses() -> set:
-    disi_courses = set()
-    with open("courses_disi.yaml", encoding="utf-8") as fh:
-        data = yaml.safe_load(fh)
-    for person in data:
-        for course in person.get("Courses",[]) or []:
-            cid  = str(course.get("id", {})) or "Unknown"
-            name = course.get("name", {}).strip().replace("\"","'") or "Unknown"
-            ccredits = course.get("credits", 0) or 0
-            course = (cid, name, ccredits)
-            disi_courses.add( course )
-    return disi_courses
 
 def extract_email_name(email: str) -> str:
     return email.split("@")[0] if "@" in email else email
@@ -43,7 +30,7 @@ def parse_course_yaml(path: str) -> dict:
     with open(path, encoding="utf-8") as fh:
         data = yaml.safe_load(fh)
     course_title = data.get("course_title", {}) or {}
-    course_credits = data.get("credits", 0) or 0
+    course_credits = data.get("credits", {}) or [0]
     programmes = data.get("programmes", {}) or [0]
     syllabus = data.get("syllabus", {}) or [0]
     return {
@@ -53,7 +40,6 @@ def parse_course_yaml(path: str) -> dict:
         "programmes": programmes,
         "syllabus": syllabus
     }
-
 
 # UTILITIES FOR COURSE SYLLABI SIMILARITY SCORE
 
@@ -125,26 +111,21 @@ def syllabus_similarity(syllabus_a: dict, syllabus_b: dict,
 # ---------------------------------------------
 
 def main():
-    disi_courses = load_disi_courses()
-
-    # print( disi_courses )
-
     if not os.path.isfile(CONTACTS_CSV):
         sys.exit(f"ERROR: contacts file not found: {CONTACTS_CSV}")
 
     with open(CONTACTS_CSV, encoding="utf-8", newline="") as fh:
         contacts = list(csv.DictReader(fh))
 
-    non_disi = [
+    disi = [
         c for c in contacts
-        if c.get("department", "").strip() != TARGET_DEPT
+        if c.get("department", "").strip() == TARGET_DEPT
     ]
 
     if not os.path.isdir(COURSES_DIR):
         sys.exit(f"ERROR: courses directory not found: {COURSES_DIR}")
 
-
-    for contact in non_disi:
+    for contact in disi:
         email = contact.get("email", "").strip()
         if not email:
             continue
@@ -184,34 +165,33 @@ def main():
                 programmes = f"Unknown (parse error: {exc})"
 
             course = { "cid": course_id, "name": course_name, "credits": course_credits, "programmes": programmes, "syllabus": syllabus }
+            include = True
+            if( len( courses ) > 0 ):
+                for other_course in courses:
+                    if syllabus_similarity( other_course[ "syllabus" ], course[ "syllabus" ] ) > 0.95: # type: ignore
+                        include = False
+                        break
+            if include:
+             courses.append( course )
 
-            # try:
-            if ( not (course["cid"],course["name"],course["credits"]) in disi_courses ):
-                include = True
-                if( len( courses ) > 0 ):
-                    for other_course in courses:
-                        if syllabus_similarity( other_course[ "syllabus" ], course[ "syllabus" ] ) > 0.95: # type: ignore
-                            include = False
-                            break
-                if include:
-                    courses.append( course )
-                
-                # else:
-                #     print( f"Excluding #{course}" )
-            # except:
-            #     print( course )
+        name = contact.get("name", "Unknown").strip()
+        uid = contact.get("uid", "Unknown").strip()
+        dept = contact.get("department", "Unknown").strip().replace("\"","'")
+        print(f"- Name: \"{name}\"")
+        print(f"  UID: \"{uid}\"")
+        print(f"  Department: \"{dept}\"")
+        print(f"  Courses:")
+        for course in courses:
+            print(f"    - id: {course['cid']}\n      name: \"{course['name']}\"\n      credits: {course['credits']}")
 
-        if( len( courses ) > 0 ):
-            name = contact.get("name", "Unknown").strip()
-            uid = contact.get("uid", "Unknown").strip()
-            dept = contact.get("department", "Unknown").strip().replace("\"","'")
-            print(f"- Name: \"{name}\"")
-            print(f"  UID: \"{uid}\"")
-            print(f"  Department: \"{dept}\"")
-            print(f"  Courses:")
-            for course in courses:
-                print(f"    - id: {course['cid']}\n      name: \"{course['name']}\"\n      credits: {course['credits']}")
+        #     try:
+        #         courses.add((course_id, course_name, course_credits))
+        #     except Exception as exc:
+        #         print( exc )
+        #         print( (course_id, course_name, course_credits) )
 
+        # for cid, cname, ccredits in courses:
+        #     print(f"- id: {cid}\n  name: \"{cname}\"\n  credits: {ccredits}")
 
 if __name__ == "__main__":
     main()
