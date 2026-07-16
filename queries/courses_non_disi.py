@@ -127,8 +127,6 @@ def syllabus_similarity(syllabus_a: dict, syllabus_b: dict,
 def main():
     disi_courses = load_disi_courses()
 
-    # print( disi_courses )
-
     if not os.path.isfile(CONTACTS_CSV):
         sys.exit(f"ERROR: contacts file not found: {CONTACTS_CSV}")
 
@@ -143,6 +141,7 @@ def main():
     if not os.path.isdir(COURSES_DIR):
         sys.exit(f"ERROR: courses directory not found: {COURSES_DIR}")
 
+    output = []
 
     for contact in non_disi:
         email = contact.get("email", "").strip()
@@ -153,7 +152,7 @@ def main():
         contact_dir = os.path.join(COURSES_DIR, email_name)
 
         if not os.path.isdir(contact_dir):
-            continue  # This contact has no folder
+            continue
 
         yaml_files = []
         for dirpath, _dirs, files in os.walk(contact_dir):
@@ -167,51 +166,67 @@ def main():
         courses = []
         for ypath in yaml_files:
             fname = os.path.basename(ypath)
-            file_id = re.sub(r"[^\d]", "", fname)  # digits from filename as fallback
+            file_id = re.sub(r"[^\d]", "", fname)
 
             try:
                 info = parse_course_yaml(ypath)
-                course_id   = info["id"]
-                course_name = info["name"].strip().replace("\"","'").lower()
+                course_id = info["id"]
+                course_name = info["name"].strip().replace('"', "'").lower()
                 course_credits = info["credits"]
                 syllabus = info["syllabus"]
                 programmes = info["programmes"]
             except Exception as exc:
-                course_id   = file_id
+                course_id = file_id
                 course_name = f"Unknown (parse error: {exc})"
                 course_credits = f"Unknown (parse error: {exc})"
                 syllabus = f"Unknown (parse error: {exc})"
                 programmes = f"Unknown (parse error: {exc})"
 
-            course = { "cid": course_id, "name": course_name, "credits": course_credits, "programmes": programmes, "syllabus": syllabus }
+            course = {
+                "id": course_id,
+                "name": course_name,
+                "credits": course_credits,
+                "programmes": programmes,
+                "syllabus": syllabus,
+            }
 
-            # try:
-            if ( not (course["cid"],course["name"],course["credits"]) in disi_courses ):
+            if (course_id, course_name, course_credits) not in disi_courses:
                 include = True
-                if( len( courses ) > 0 ):
-                    for other_course in courses:
-                        if syllabus_similarity( other_course[ "syllabus" ], course[ "syllabus" ] ) > 0.95: # type: ignore
-                            include = False
-                            break
+                for other_course in courses:
+                    if syllabus_similarity(other_course["syllabus"], course["syllabus"]) > 0.95:  # type: ignore
+                        include = False
+                        break
                 if include:
-                    courses.append( course )
-                
-                # else:
-                #     print( f"Excluding #{course}" )
-            # except:
-            #     print( course )
+                    courses.append(course)
 
-        if( len( courses ) > 0 ):
+        if courses:
             name = contact.get("name", "Unknown").strip()
             uid = contact.get("uid", "Unknown").strip()
-            dept = contact.get("department", "Unknown").strip().replace("\"","'")
-            print(f"- Name: \"{name}\"")
-            print(f"  UID: \"{uid}\"")
-            print(f"  Department: \"{dept}\"")
-            print(f"  Courses:")
-            for course in courses:
-                print(f"    - id: {course['cid']}\n      name: \"{course['name']}\"\n      credits: {course['credits']}")
+            dept = contact.get("department", "Unknown").strip().replace('"', "'")
 
+            output.append({
+                "name": name,
+                "uid": uid,
+                "department": dept,
+                "courses": [
+                    {
+                        "id": course["id"],
+                        "name": course["name"],
+                        "credits": course["credits"],
+                        "programmes": [p.get("code") for p in course["programmes"] if p.get("code")]
+                    }
+                    for course in courses
+                ],
+            })
+
+    with open("courses_non_disi.yaml", "w", encoding="utf-8") as fh:
+        yaml.safe_dump(
+            output,
+            fh,
+            allow_unicode=True,
+            sort_keys=False,
+            default_flow_style=False,
+        )
 
 if __name__ == "__main__":
     main()

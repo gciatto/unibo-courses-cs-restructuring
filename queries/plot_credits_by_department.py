@@ -28,10 +28,10 @@ def load_yaml(path: str) -> list:
 def aggregate_credits(data: list) -> pd.DataFrame:
     rows = []
     for entry in data:
-        dept  = (entry.get("Department") or "(no department)").strip().replace("\n", " ")
+        dept  = (entry.get("department") or "(no department)").strip().replace("\n", " ")
         if not dept:
             dept = "(no department)"
-        total = sum(c.get("credits", 0) or 0 for c in (entry.get("Courses") or []))
+        total = sum(c.get("credits", 0) or 0 for c in (entry.get("courses") or []))
         rows.append({"department": dept, "credits": total})
     return (
         pd.DataFrame(rows)
@@ -39,40 +39,10 @@ def aggregate_credits(data: list) -> pd.DataFrame:
         .reset_index(drop=True)
     )
 
-
-def shorten(name: str, maxlen: int = 38) -> str:
-    subs = {
-        "Dipartimento di ": "Dip. ",
-        "Alma Mater Studiorum - Università di Bologna": "Alma Mater",
-        "Centro Interdipartimentale di Ricerca Industriale su ICT": "CIRI ICT",
-        "Centro di Ricerca sui Sistemi Elettronici per l'Ingegneria "
-        "dell'Informazione\ne delle Telecomunicazioni 'Ercole De Castro' - "
-        "ARCES (Advanced Research Center\non Electronic System)": "ARCES",
-        "AFORM - Settore Servizi didattici Ingegneria-Architettura - "
-        "Ufficio\nServizi di supporto per l'offerta formativa e la "
-        "programmazione didattica": "AFORM - Ufficio Off. Formativa",
-    }
-    for k, v in subs.items():
-        name = name.replace(k, v)
-    name = name.replace("\n", " ")
-    if len(name) > maxlen:
-        name = name[:maxlen - 1] + "\u2026"
-    return name
-
-
-def wrap_label(name: str, width: int = 32) -> str:
-    return "\n".join(textwrap.wrap(name, width))
-
-
-def save_meta(pdf_path: str, caption: str, description: str = "") -> None:
-    with open(pdf_path + ".meta.json", "w", encoding="utf-8") as f:
-        json.dump({"caption": caption, "description": description}, f)
-
-
 def make_bar(df: pd.DataFrame, out: str = "credits_by_dept_bar.pdf") -> None:
     bar_df = df.sort_values("credits", ascending=True).copy()
-    bar_df["short"] = bar_df["department"].apply(shorten)
-    bar_df["label"] = bar_df["short"].apply(wrap_label)
+    bar_df["short"] = bar_df["department"]
+    bar_df["label"] = bar_df["department"]
 
     fig, ax = plt.subplots(figsize=(11, 10))
     bars = ax.barh(bar_df["label"], bar_df["credits"], color="#4C72B0")

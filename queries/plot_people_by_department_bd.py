@@ -52,12 +52,12 @@ def aggregate_people(data: list) -> pd.DataFrame:
     """Aggregate people per department, and split the count by role."""
     rows = []
     for entry in data:
-        dept = (entry.get("Department") or "(no department)").strip().replace("\n", " ")
+        dept = (entry.get("department") or "(no department)").strip().replace("\n", " ")
         if not dept:
             dept = "(no department)"
 
         dept_people = set()
-        for course in entry.get("Courses"):
+        for course in entry.get("courses"):
             for person in course.get("teachers"):
                 dept_people.add(person.get("uid"))
 
@@ -77,45 +77,16 @@ def aggregate_people(data: list) -> pd.DataFrame:
     return df.sort_values("people", ascending=False).reset_index(drop=True)
 
 
-def shorten(name: str, maxlen: int = 38) -> str:
-    subs = {
-        "Dipartimento di ": "Dip. ",
-        "Alma Mater Studiorum - Università di Bologna": "Alma Mater",
-        "Centro Interdipartimentale di Ricerca Industriale su ICT": "CIRI ICT",
-        "Centro di Ricerca sui Sistemi Elettronici per l'Ingegneria "
-        "dell'Informazione\ne delle Telecomunicazioni 'Ercole De Castro' - "
-        "ARCES (Advanced Research Center\non Electronic System)": "ARCES",
-        "AFORM - Settore Servizi didattici Ingegneria-Architettura - "
-        "Ufficio\nServizi di supporto per l'offerta formativa e la "
-        "programmazione didattica": "AFORM - Ufficio Off. Formativa",
-    }
-    for k, v in subs.items():
-        name = name.replace(k, v)
-    name = name.replace("\n", " ")
-    if len(name) > maxlen:
-        name = name[:maxlen - 1] + "\u2026"
-    return name
-
-
-def wrap_label(name: str, width: int = 32) -> str:
-    return "\n".join(textwrap.wrap(name, width))
-
-
-def save_meta(pdf_path: str, caption: str, description: str = "") -> None:
-    with open(pdf_path + ".meta.json", "w", encoding="utf-8") as f:
-        json.dump({"caption": caption, "description": description}, f)
-
-
 def make_bar(df: pd.DataFrame, out: str = "people_by_dept_bd_bar.pdf") -> None:
     bar_df = df.sort_values("people", ascending=True).copy()
-    bar_df["short"] = bar_df["department"].apply(shorten)
-    bar_df["label"] = bar_df["short"].apply(wrap_label)
+    bar_df["short"] = bar_df["department"]
+    bar_df["label"] = bar_df["department"]
 
     role_cols = [c for c in df.columns if c not in ("department", "people", "short", "label")]
 
     fig, ax = plt.subplots(figsize=(11, 10))
     # Build one distinct color per role to avoid repeated legend colors.
-    colorway = [cm.tab20(i) for i in range(len(role_cols))]
+    colorway = [cm.tab20(i) for i in range(len(role_cols))] # type: ignore
     left = pd.Series([0] * len(bar_df), index=bar_df.index)
 
     for i, role in enumerate(role_cols):

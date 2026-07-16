@@ -125,6 +125,8 @@ def main():
     if not os.path.isdir(COURSES_DIR):
         sys.exit(f"ERROR: courses directory not found: {COURSES_DIR}")
 
+    output = []
+
     for contact in disi:
         email = contact.get("email", "").strip()
         if not email:
@@ -134,7 +136,7 @@ def main():
         contact_dir = os.path.join(COURSES_DIR, email_name)
 
         if not os.path.isdir(contact_dir):
-            continue  # This contact has no folder
+            continue
 
         yaml_files = []
         for dirpath, _dirs, files in os.walk(contact_dir):
@@ -148,50 +150,66 @@ def main():
         courses = []
         for ypath in yaml_files:
             fname = os.path.basename(ypath)
-            file_id = re.sub(r"[^\d]", "", fname)  # digits from filename as fallback
+            file_id = re.sub(r"[^\d]", "", fname)
 
             try:
                 info = parse_course_yaml(ypath)
-                course_id   = info["id"]
-                course_name = info["name"].strip().replace("\"","'")
+                course_id = info["id"]
+                course_name = info["name"].strip().replace('"', "'")
                 course_credits = info["credits"]
                 syllabus = info["syllabus"]
                 programmes = info["programmes"]
             except Exception as exc:
-                course_id   = file_id
+                course_id = file_id
                 course_name = f"Unknown (parse error: {exc})"
                 course_credits = f"Unknown (parse error: {exc})"
                 syllabus = f"Unknown (parse error: {exc})"
                 programmes = f"Unknown (parse error: {exc})"
 
-            course = { "cid": course_id, "name": course_name, "credits": course_credits, "programmes": programmes, "syllabus": syllabus }
+            course = {
+                "id": course_id,
+                "name": course_name,
+                "credits": course_credits,
+                "programmes": programmes,
+                "syllabus": syllabus,
+            }
+
             include = True
-            if( len( courses ) > 0 ):
+            if len(courses) > 0:
                 for other_course in courses:
-                    if syllabus_similarity( other_course[ "syllabus" ], course[ "syllabus" ] ) > 0.95: # type: ignore
+                    if syllabus_similarity(other_course["syllabus"], course["syllabus"]) > 0.95:  # type: ignore
                         include = False
                         break
+
             if include:
-             courses.append( course )
+                courses.append(course)
 
-        name = contact.get("name", "Unknown").strip()
-        uid = contact.get("uid", "Unknown").strip()
-        dept = contact.get("department", "Unknown").strip().replace("\"","'")
-        print(f"- Name: \"{name}\"")
-        print(f"  UID: \"{uid}\"")
-        print(f"  Department: \"{dept}\"")
-        print(f"  Courses:")
-        for course in courses:
-            print(f"    - id: {course['cid']}\n      name: \"{course['name']}\"\n      credits: {course['credits']}")
+        person = {
+            "name": contact.get("name", "Unknown").strip(),
+            "uid": contact.get("uid", "Unknown").strip(),
+            "department": contact.get("department", "Unknown").strip().replace('"', "'"),
+            "courses": [
+                {
+                    "id": course["id"],
+                    "name": course["name"],
+                    "credits": course["credits"],
+                    "programmes": [{"code": p.get("code"), "dept": p.get("department")} for p in course["programmes"]]
+                }
+                for course in courses
+            ],
+        }
 
-        #     try:
-        #         courses.add((course_id, course_name, course_credits))
-        #     except Exception as exc:
-        #         print( exc )
-        #         print( (course_id, course_name, course_credits) )
+        output.append(person)
 
-        # for cid, cname, ccredits in courses:
-        #     print(f"- id: {cid}\n  name: \"{cname}\"\n  credits: {ccredits}")
+    with open("courses_disi.yaml", "w", encoding="utf-8") as fh:
+        yaml.safe_dump(
+            output,
+            fh,
+            allow_unicode=True,
+            sort_keys=False,
+            default_flow_style=False,
+        )
+
 
 if __name__ == "__main__":
     main()

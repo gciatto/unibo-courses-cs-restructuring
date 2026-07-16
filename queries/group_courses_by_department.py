@@ -42,10 +42,10 @@ def build_department_courses(records: list) -> dict:
     dept_courses: dict[str, dict] = defaultdict(dict)
 
     for record in records:
-        dept    = (record.get("Department") or "").strip()
-        courses = record.get("Courses") or []
-        name    = record.get("Name") or "Unknown"
-        uid    = record.get("UID") or "Unknown"
+        dept    = (record.get("department") or "").strip()
+        courses = record.get("courses") or []
+        name    = record.get("name") or "Unknown"
+        uid    = record.get("uid") or "Unknown"
 
         for course in courses:
             cid     = str(course.get("id",      "")).strip()
@@ -67,7 +67,7 @@ def build_output(dept_courses: dict) -> list:
         courses = list(dept_courses[dept_name].values())
         # Sort by id then name for deterministic output
         courses.sort(key=lambda c: (c["id"], c["name"]))
-        output.append({"Department": dept_name, "Courses": courses})
+        output.append({"department": dept_name, "courses": courses})
     return output
 
 
@@ -88,7 +88,7 @@ def main() -> None:
 
     dump_yaml(output, output_path)
 
-    total = sum(len(d["Courses"]) for d in output)
+    total = sum(len(d["courses"]) for d in output)
     print(f"Writing  {output_path!r} ...")
     print(f"  → {len(output)} departments, {total} unique courses.")
     print("Done.")
