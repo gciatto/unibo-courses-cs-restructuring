@@ -27,11 +27,12 @@ def load_disi_courses() -> set:
     with open("courses_disi.yaml", encoding="utf-8") as fh:
         data = yaml.safe_load(fh)
     for person in data:
-        for course in person.get("Courses",[]) or []:
+        for course in person.get("courses",[]) or []:
             cid  = str(course.get("id", {})) or "Unknown"
             name = course.get("name", {}).strip().replace("\"","'").lower() or "Unknown"
             ccredits = course.get("credits", 0) or 0
-            course = (cid, name, ccredits)
+            codes = frozenset([ p.get("code") for p in course.get("programmes") ])
+            course = (cid, name, ccredits, codes)
             disi_courses.add( course )
     return disi_courses
 
@@ -190,7 +191,7 @@ def main():
                 "syllabus": syllabus,
             }
 
-            if (course_id, course_name, course_credits) not in disi_courses:
+            if (course_id, course_name, course_credits, frozenset([ p.get("code") for p in programmes])) not in disi_courses: # type: ignore
                 include = True
                 for other_course in courses:
                     if syllabus_similarity(other_course["syllabus"], course["syllabus"]) > 0.95:  # type: ignore
@@ -213,7 +214,7 @@ def main():
                         "id": course["id"],
                         "name": course["name"],
                         "credits": course["credits"],
-                        "programmes": [p.get("code") for p in course["programmes"] if p.get("code")]
+                        "programmes": [ str(p.get("code")) for p in course["programmes"]]
                     }
                     for course in courses
                 ],
@@ -226,6 +227,7 @@ def main():
             allow_unicode=True,
             sort_keys=False,
             default_flow_style=False,
+            default_style="'"
         )
 
 if __name__ == "__main__":

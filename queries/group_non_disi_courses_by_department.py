@@ -1,23 +1,4 @@
 #!/usr/bin/env python3
-"""
-group_courses_by_department.py
-
-Usage:
-    python group_courses_by_department.py <input.yaml> <output.yaml>
-
-Reads a YAML file whose top-level structure is a list of records, each with:
-  - Name:       <person name>
-  - Department: <department name>
-  - Courses:
-    - id:      <course id>
-      name:    <course name>
-      credits: <number of credits>
-
-Produces a YAML file that groups courses by Department.
-Within each department, courses with the same (id, name, credits) are merged
-into a single entry (deduplication).
-"""
-
 import sys
 import yaml
 from collections import defaultdict
@@ -73,7 +54,7 @@ def build_output(dept_courses: dict) -> list:
 
 def main() -> None:
     if len(sys.argv) != 3:
-        print("Usage: python group_courses_by_department.py <input.yaml> <output.yaml>",
+        print("Usage: python file.py <input.yaml> <output.yaml>",
               file=sys.stderr)
         sys.exit(1)
 

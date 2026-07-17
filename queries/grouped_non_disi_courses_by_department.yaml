@@ -1,12 +1,6 @@
 - department: ''
   courses:
   - teachers:
-    - name: Corradi, Antonio
-      uid: '15896'
-    id: '28024'
-    name: computer networks t
-    credits: 9
-  - teachers:
     - name: Natali, Antonio
       uid: '15250'
     id: '72939'
@@ -18,90 +12,6 @@
     id: '72945'
     name: real-time systems m
     credits: 8
-  - teachers:
-    - name: Corradi, Antonio
-      uid: '15896'
-    id: '84531'
-    name: infrastructures for cloud computing and big data m
-    credits: 8
-- department: acce
-  courses:
-  - teachers:
-    - name: Moretti, Mauro
-      uid: '34604'
-    - name: Quattrini, Erik Marino
-      uid: '34782'
-    id: 08574
-    name: operating systems
-    credits: 12
-  - teachers:
-    - name: Barbone, Ciro
-      uid: '31628'
-    id: '96642'
-    name: virtualization and system integration
-    credits: 6
-- department: aform
-  courses:
-  - teachers:
-    - name: Deluigi, Luca
-      uid: '107170'
-    id: '95648'
-    name: software design and development
-    credits: 9
-  - teachers:
-    - name: Molesini, Ambra
-      uid: '40922'
-    id: B8554
-    name: sistemi software a oggetti t
-    credits: 12
-- department: arces
-  courses:
-  - teachers:
-    - name: Ribeiro Zyrianoff, Ivan Dimitry
-      uid: '124073'
-    id: '81683'
-    name: internet of things
-    credits: 6
-  - teachers:
-    - name: Ribeiro Zyrianoff, Ivan Dimitry
-      uid: '124073'
-    id: '93315'
-    name: computer networks
-    credits: 12
-- department: ciri-ict
-  courses:
-  - teachers:
-    - name: Calvio, Alessandro
-      uid: '113265'
-    id: '28623'
-    name: foundations of informatics and laboratory
-    credits: 12
-  - teachers:
-    - name: Drudi, Elisa
-      uid: '159004'
-    id: '28659'
-    name: web technologies t
-    credits: 9
-  - teachers:
-    - name: Ruggeri, Federico
-      uid: '105956'
-    id: '91258'
-    name: natural language processing
-    credits: 6
-  - teachers:
-    - name: Ruggeri, Federico
-      uid: '105956'
-    id: B5727
-    name: introduction to languages for artificial intelligence
-    credits: 6
-- department: ctl
-  courses:
-  - teachers:
-    - name: Sciullo, Luca
-      uid: '75949'
-    id: 08574
-    name: operating systems
-    credits: 12
 - department: da
   courses:
   - teachers:
@@ -120,12 +30,6 @@
     credits: 5
 - department: dar
   courses:
-  - teachers:
-    - name: Armandi, Vincenzo
-      uid: '139913'
-    id: '58423'
-    name: internet architecture
-    credits: 9
   - teachers:
     - name: Cascarano, Pasquale
       uid: '96981'
@@ -181,39 +85,17 @@
 - department: dei
   courses:
   - teachers:
-    - name: Sarti, Elena
-      uid: '180206'
-    id: '03716'
-    name: digital design principles and computer architecture
-    credits: 9
-  - teachers:
     - name: Micelli, Leonardo
       uid: '131388'
-    id: 09730
-    name: principles of informatics
+    id: '15305'
+    name: foundations of informatics a
     credits: 6
-  - teachers:
-    - name: Marasca, Gabriele
-      uid: '149544'
-    id: '16692'
-    name: laboratory of informatics
-    credits: 3
   - teachers:
     - name: Acquaviva, Andrea
       uid: '114772'
     id: '28011'
     name: logic design t
     credits: 6
-  - teachers:
-    - name: Acquaviva, Andrea
-      uid: '114772'
-    - name: Bompani, Luca
-      uid: '143073'
-    - name: Musa, Alberto
-      uid: '134813'
-    id: '29227'
-    name: foundations of informatics t
-    credits: 9
   - teachers:
     - name: Borsatti, Davide
       uid: '88386'
@@ -229,18 +111,6 @@
     name: computer architectures m
     credits: 6
   - teachers:
-    - name: Leone, Davide
-      uid: '178095'
-    id: '72938'
-    name: foundations of artificial intelligence t
-    credits: 8
-  - teachers:
-    - name: Barchi, Francesco
-      uid: '118631'
-    id: '85728'
-    name: real time os m
-    credits: 6
-  - teachers:
     - name: Bartolini, Andrea
       uid: '46417'
     - name: Venieri, Emanuele
@@ -248,20 +118,6 @@
     id: '88145'
     name: fundamentals of computer programming p1
     credits: 3
-  - teachers:
-    - name: Sartini, Matteo
-      uid: '40789'
-    id: '88155'
-    name: industrial informatics p
-    credits: 6
-  - teachers:
-    - name: Benini, Luca
-      uid: '31791'
-    - name: Nadalini, Davide
-      uid: '130252'
-    id: '91259'
-    name: architecture and platforms for artificial intelligence
-    credits: 6
   - teachers:
     - name: Acquaviva, Andrea
       uid: '114772'
@@ -289,8 +145,8 @@
   - teachers:
     - name: Bonini, Roberto
       uid: '146356'
-    id: '11929'
-    name: algorithms and data structures
+    id: '37635'
+    name: data structure and algorithms
     credits: 12
 - department: dicam
   courses:
@@ -303,12 +159,6 @@
 - department: difa
   courses:
   - teachers:
-    - name: Bassi, Luca
-      uid: '153816'
-    id: 08574
-    name: operating systems
-    credits: 12
-  - teachers:
     - name: Lepore, Roberto
       uid: '170626'
     id: '29227'
@@ -319,20 +169,6 @@
       uid: '53384'
     id: '65094'
     name: advanced programming
-    credits: 6
-  - teachers:
-    - name: Borghi, Nicola
-      uid: '92566'
-    - name: Moresco, Michele Ennio Maria
-      uid: '46216'
-    id: '89988'
-    name: elements of informatics
-    credits: 6
-  - teachers:
-    - name: Tartufoli, Beniamino
-      uid: '178110'
-    id: '91250'
-    name: deep learning
     credits: 6
 - department: dimec
   courses:
@@ -413,12 +249,6 @@
 - department: din
   courses:
   - teachers:
-    - name: Ravaioli, Mirko
-      uid: '38941'
-    id: 00819
-    name: programming
-    credits: 12
-  - teachers:
     - name: Cantelli, Martina
       uid: '134286'
     - name: Ravaioli, Mirko
@@ -426,18 +256,6 @@
     id: 09730
     name: principles of informatics
     credits: 6
-  - teachers:
-    - name: Giordani, Francesco
-      uid: '171863'
-    id: '28004'
-    name: foundations of informatics t-1
-    credits: 9
-  - teachers:
-    - name: Tomasi, Cesare
-      uid: '184213'
-    id: '28652'
-    name: it systems t-1
-    credits: 9
   - teachers:
     - name: Baldini, Samuele
       uid: '167749'
@@ -455,12 +273,6 @@
       uid: '34580'
     id: '29227'
     name: foundations of informatics t
-    credits: 6
-  - teachers:
-    - name: Ravaldi, Federico
-      uid: '82279'
-    id: '96142'
-    name: business intelligence and big data m
     credits: 6
 - department: disa
   courses:
@@ -549,12 +361,6 @@
 - department: dsg
   courses:
   - teachers:
-    - name: Arruzzoli, Arianna
-      uid: '160315'
-    id: 08574
-    name: operating systems
-    credits: 12
-  - teachers:
     - name: Tura, Francesco
       uid: '24434'
     id: '96346'
@@ -571,14 +377,8 @@
   - teachers:
     - name: Corona, Gaia
       uid: '170301'
-    id: '07276'
-    name: computer science
-    credits: 8
-  - teachers:
-    - name: Cormio, Anna
-      uid: '169199'
-    id: '85301'
-    name: algorithms and data structures in biology
+    id: '28040'
+    name: information technology
     credits: 6
   - teachers:
     - name: Nuzzolese, Andrea Giovanni
@@ -594,12 +394,6 @@
     id: '93363'
     name: advanced programming
     credits: 6
-  - teachers:
-    - name: Manfredi, Matteo
-      uid: '116677'
-    id: B5780
-    name: computational methods for bioinformatics
-    credits: 10
 - department: ficlit
   courses:
   - teachers:
@@ -621,36 +415,28 @@
     name: basic informatics
     credits: 6
   - teachers:
-    - name: Spinaci, Gianmarco
-      uid: '95575'
-    id: '85573'
-    name: usability and user experience
-    credits: 6
-  - teachers:
-    - name: Grillo, Remo
-      uid: '146461'
-    - name: Spinaci, Gianmarco
-      uid: '95575'
-    id: '88566'
-    name: web technology
-    credits: 9
-  - teachers:
     - name: Peroni, Silvio
       uid: '46984'
     id: '90157'
     name: open science
     credits: 6
   - teachers:
-    - name: Sampò, Giorgia
-      uid: '142209'
-    id: '90730'
-    name: social network analysis
+    - name: Spinaci, Gianmarco
+      uid: '95575'
+    id: '90720'
+    name: usability & user experience design
     credits: 6
   - teachers:
     - name: Tamburini, Fabio
       uid: '31280'
     id: '91258'
     name: natural language processing
+    credits: 6
+  - teachers:
+    - name: Sampò, Giorgia
+      uid: '142209'
+    id: '95782'
+    name: network analysis
     credits: 6
   - teachers:
     - name: Peroni, Silvio
@@ -767,41 +553,17 @@
       uid: '172409'
     - name: Sbaraglia, Marco
       uid: '43417'
-    id: '07276'
-    name: computer science
-    credits: 8
-  - teachers:
-    - name: Iannoli, Andrea
-      uid: '143916'
-    id: 08574
-    name: operating systems
-    credits: 9
+    id: '28040'
+    name: information technology
+    credits: 6
   - teachers:
     - name: Boschetti, Marco Antonio
       uid: '35610'
     id: '73435'
     name: project management
     credits: 6
-  - teachers:
-    - name: Iannoli, Andrea
-      uid: '143916'
-    id: '81678'
-    name: laboratory of making
-    credits: 6
-  - teachers:
-    - name: Mazza, Milena
-      uid: '182315'
-    id: '93315'
-    name: computer networks
-    credits: 12
 - department: sps
   courses:
-  - teachers:
-    - name: Lodi, Giorgia
-      uid: '36736'
-    id: B0061
-    name: computer methods for digital transformation
-    credits: 8
   - teachers:
     - name: Poggi, Francesco
       uid: '47475'
@@ -817,12 +579,6 @@
 - department: stat
   courses:
   - teachers:
-    - name: Remoli, Gloria
-      uid: '146734'
-    id: '60348'
-    name: informatics
-    credits: 10
-  - teachers:
     - name: Somenzi, Damiano Marino
       uid: '50421'
     id: '79194'
@@ -831,8 +587,8 @@
   - teachers:
     - name: Ronchieri, Elisabetta
       uid: '124216'
-    id: '85189'
-    name: systems and algorithms for data science
+    id: '90477'
+    name: machine learning systems for data science
     credits: 10
   - teachers:
     - name: Somenzi, Damiano Marino
@@ -853,12 +609,6 @@
   - teachers:
     - name: Montagna, Sara
       uid: '42142'
-    id: 09730
-    name: principles of informatics
-    credits: 6
-  - teachers:
-    - name: Donatiello, Lorenzo
-      uid: '16885'
-    id: '37760'
-    name: systems simulation
+    id: '15305'
+    name: foundations of informatics a
     credits: 6

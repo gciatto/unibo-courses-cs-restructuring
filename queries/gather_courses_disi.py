@@ -193,7 +193,7 @@ def main():
                     "id": course["id"],
                     "name": course["name"],
                     "credits": course["credits"],
-                    "programmes": [{"code": p.get("code"), "dept": p.get("department")} for p in course["programmes"]]
+                    "programmes": [{"code": str(p.get("code")), "dept": p.get("department")} for p in course["programmes"]]
                 }
                 for course in courses
             ],
@@ -208,6 +208,7 @@ def main():
             allow_unicode=True,
             sort_keys=False,
             default_flow_style=False,
+            default_style="'"
         )
 
 

@@ -1,15 +1,4 @@
 #!/usr/bin/env python3
-"""
-plot_people_by_department_bd.py
-
-Usage:
-python plot_people_by_department_bd.py <yaml_path>
-
-Reads the aggregated department-courses YAML file and produces:
-- people_by_dept_bar.pdf — horizontal stacked bar chart, all departments,
-  with each bar partitioned by the role (from contacts.csv) of the people
-  counted in that department.
-"""
 
 import sys
 import json
@@ -77,7 +66,7 @@ def aggregate_people(data: list) -> pd.DataFrame:
     return df.sort_values("people", ascending=False).reset_index(drop=True)
 
 
-def make_bar(df: pd.DataFrame, out: str = "people_by_dept_bd_bar.pdf") -> None:
+def make_bar(df: pd.DataFrame, out: str = "_other_people_by_dept_bd.pdf") -> None:
     bar_df = df.sort_values("people", ascending=True).copy()
     bar_df["short"] = bar_df["department"]
     bar_df["label"] = bar_df["department"]
@@ -127,7 +116,7 @@ def make_bar(df: pd.DataFrame, out: str = "people_by_dept_bd_bar.pdf") -> None:
 
 def main() -> None:
     if len(sys.argv) != 2:
-        print("Usage: python plot_people_by_department_bd.py <yaml_path>",
+        print("Usage: python file.py <yaml_path>",
               file=sys.stderr)
         sys.exit(1)
 

@@ -2,7 +2,7 @@ from collections import defaultdict
 import yaml
 
 INPUT_YAML = "disi_service_courses.yaml"
-OUTPUT_YAML = "grouped_service_courses_by_department.yaml"
+OUTPUT_YAML = "grouped_disi_service_courses_by_department.yaml"
 
 def dept_label_from_course(course: dict) -> str:
     """
