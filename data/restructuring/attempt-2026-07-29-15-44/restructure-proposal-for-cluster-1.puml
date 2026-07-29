@@ -1,0 +1,281 @@
+@startuml
+hide methods
+hide stereotypes
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #E8F1FB
+  BorderColor #356A9A
+}
+
+class "Computing Foundations" as CF {
+  computing_history
+  information_representation
+  computer_architecture
+  program_execution
+  operating_systems
+  computer_networking
+  data_security
+}
+note right of CF
+<b>Target-topic descriptions</b>
+computing_history: History of computers.
+information_representation: Binary, numeric, and nonnumeric information encoding.
+computer_architecture: Von Neumann operation, computer organization, and performance.
+program_execution: Program execution models and hardware/software interaction.
+operating_systems: Operating systems as computer software.
+computer_networking: Local and wide-area networks, email, Internet, and Web access.
+data_security: Data security in computer and network use.
+end note
+
+class "Programming Foundations" as PF {
+  algorithmic_reasoning
+  algorithm_notation
+  imperative_programming
+  control_flow_recursion
+  programming_languages
+  programming_tools
+  development_phases
+}
+note right of PF
+<b>Target-topic descriptions</b>
+algorithmic_reasoning: Problem analysis, solution algorithms, and intuitive algorithmic complexity.
+algorithm_notation: Pseudocode and flow diagrams for representing algorithms.
+imperative_programming: Structured programming, variables, statements, and imperative organization.
+control_flow_recursion: Selection, iteration, cycles, recursion, and their use in programs.
+programming_languages: Language history, syntax, semantics, and high- versus low-level languages.
+programming_tools: Editors, compilers, interpreters, and debuggers.
+development_phases: Phases involved in developing a program.
+end note
+
+class "C Programming and Runtime" as CP {
+  c_language
+  c_memory
+  c_runtime
+}
+note right of CP
+<b>Target-topic descriptions</b>
+c_language: C program structure, types, declarations, functions, input/output, strings, and files.
+c_memory: Pointers, addresses, pointer arithmetic, dynamic allocation, and memory leaks in C.
+c_runtime: Activation records and parameter passing in the runtime representation of C programs.
+end note
+
+class "Data Structures and Algorithms" as DSA {
+  data_structures
+  linear_algorithms
+  algorithm_complexity
+}
+note right of DSA
+<b>Target-topic descriptions</b>
+data_structures: Arrays, matrices, lists, trees, vectors, stacks, and queues.
+linear_algorithms: Construction, search, ordering, reversal, sorting, queue, and stack algorithms.
+algorithm_complexity: Intuitive analysis of computational complexity.
+end note
+
+class "Digital Systems and Processor Architecture" as DSPA {
+  digital_logic
+  sequential_systems
+  processor_architecture
+  low_level_languages
+  memory_io
+  hardware_system_design
+}
+note right of DSPA
+<b>Target-topic descriptions</b>
+digital_logic: Boolean algebra and principles of logic design.
+sequential_systems: Combinational, asynchronous, synchronous, and finite-state logic networks.
+processor_architecture: CPU organization, DLX, ISA, machine language, and RISC/CISC comparison.
+low_level_languages: Assembly and machine language as computer-system operation levels.
+memory_io: Memory devices, addresses, words, and input/output addressing.
+hardware_system_design: Interrupts, microprocessor-system design, parallel architectures, and hardware/software interaction.
+end note
+
+class "Programming Paradigms and Languages" as PPL {
+  object_oriented_programming
+  functional_programming
+  logic_programming
+  language_implementations
+}
+note right of PPL
+<b>Target-topic descriptions</b>
+object_oriented_programming: Objects, classes, inheritance, and object-oriented design.
+functional_programming: Functional programming techniques and functional approaches.
+logic_programming: Prolog logic programming and Java/Prolog integration.
+language_implementations: Fundamental and advanced constructs of Java, C++, Scala, and their typing or paradigm features.
+end note
+
+class "Software Engineering Practice" as SEP {
+  software_methodologies
+  software_quality
+  software_testing
+  software_evolution
+  delivery_automation
+  project_documentation
+}
+note right of SEP
+<b>Target-topic descriptions</b>
+software_methodologies: Waterfall, agile, Scrum, and methodologies for complex software systems.
+software_quality: Clean code, effective programming, and quality-oriented development.
+software_testing: Unit testing, test-driven development, and agile testing.
+software_evolution: Refactoring and design patterns, including architectural patterns.
+delivery_automation: Continuous integration and continuous delivery.
+project_documentation: Documentation practices for software projects.
+end note
+
+class "Scientific and Statistical Computing" as SSC {
+  numerical_methods
+  scientific_programming
+  statistical_data_analysis
+}
+note right of SSC
+<b>Target-topic descriptions</b>
+numerical_methods: Elementary approximation of functions, derivatives, integrals, and zeros.
+scientific_programming: MATLAB/Octave and R programming, including vectors, matrices, functions, graphics, and random values.
+statistical_data_analysis: Data catalogs, sampling, correlation, graphical/numerical analysis, and statistical modelling.
+end note
+
+class "Databases, Networks, and Security" as DBNS {
+  relational_data
+  sql_data_management
+  database_integrity
+  network_services
+}
+note right of DBNS
+<b>Target-topic descriptions</b>
+relational_data: Attributes, tuples, relations, schemas, and relational algebra.
+sql_data_management: SQL querying, joins, subqueries, aggregation, table modification, privileges, and views.
+database_integrity: Keys, superkeys, primary and unique constraints, foreign keys, and referential integrity.
+network_services: Networking concepts, Internet access, Web access, email, and security context.
+end note
+
+class "Computability and Complexity" as CCT {
+  computability
+  formal_computation
+  complexity_theory
+}
+note right of CCT
+<b>Target-topic descriptions</b>
+computability: Computable and non-computable functions and the limits of problem solutions.
+formal_computation: Turing machines and formal models of computation.
+complexity_theory: Computational complexity of classical algorithms.
+end note
+
+class "Quantum Computing" as QC {
+  quantum_foundations
+  quantum_circuits
+  quantum_algorithms
+  quantum_information
+}
+note right of QC
+<b>Target-topic descriptions</b>
+quantum_foundations: Quantum computing as an alternative paradigm, qubits, linear algebra, and complex Hilbert spaces.
+quantum_circuits: Quantum computational models, circuit notation, graphical languages, and sample circuits.
+quantum_algorithms: Simon's, Grover's, and Shor's algorithms and quantum computational complexity.
+quantum_information: Quantum protocols, cryptography, programming, and error correction.
+end note
+
+' Propaedeutic hierarchy
+CF <|-- PF
+CF <|-- DSPA
+CF <|-- DBNS
+PF <|-- CP
+PF <|-- DSA
+PF <|-- PPL
+PF <|-- SEP
+PF <|-- SSC
+PF <|-- CCT
+DSPA <|-- QC
+CCT <|-- QC
+
+' Existing courses
+class "00819-B\nProgramming" as O00819B #Transparent
+class "03716\nDigital Design Principles and Computer Architecture" as O03716 #Transparent
+class "09730\nPrinciples of Informatics" as O09730 #Transparent
+class "09730-A\nPrinciples of Informatics" as O09730A #Transparent
+class "15305\nFoundations of Informatics A" as O15305 #Transparent
+class "28004\nFoundations of Informatics T-1" as O28004 #Transparent
+class "28011-A\nLogic Design T" as O28011A #Transparent
+class "28623\nFoundations of Informatics and Laboratory" as O28623 #Transparent
+class "29227-A\nFoundations of Informatics T" as O29227A #Transparent
+class "60348\nInformatics" as O60348 #Transparent
+class "69731\nComputer Architecture" as O69731 #Transparent
+class "81612\nProgramming and Development paradigms" as O81612 #Transparent
+class "88146\nFundamentals of Computer Programming P2" as O88146 #Transparent
+class "89988\nElements of Informatics" as O89988 #Transparent
+class "93034\nFoundations of Computer Science T" as O93034 #Transparent
+class "B3567\nINTRODUCTION TO QUANTUM COMPUTING" as OB3567 #Transparent
+class "B8159\nINFORMATICA" as OB8159 #Transparent
+
+' Subsumption links
+O00819B ..> PF
+O00819B ..> CP
+O00819B ..> DSA
+
+O03716 ..> CF
+O03716 ..> DSPA
+
+O09730 ..> CF
+O09730 ..> PF
+O09730 ..> DSA
+O09730A ..> CF
+O09730A ..> PF
+O09730A ..> DSPA
+O09730A ..> SSC
+O15305 ..> CF
+O15305 ..> PF
+O15305 ..> DSA
+
+O28004 ..> CF
+O28004 ..> PF
+O28004 ..> PPL
+O28004 ..> DSA
+
+O28011A ..> DSPA
+
+O28623 ..> CF
+O28623 ..> PF
+O28623 ..> CP
+O28623 ..> DSA
+
+O29227A ..> CF
+O29227A ..> PPL
+O29227A ..> SSC
+
+O60348 ..> CF
+O60348 ..> PF
+O60348 ..> DBNS
+O60348 ..> SSC
+
+O69731 ..> CF
+O69731 ..> DSPA
+
+O81612 ..> PF
+O81612 ..> PPL
+O81612 ..> SEP
+
+O88146 ..> CF
+O88146 ..> DSPA
+
+O89988 ..> PF
+O89988 ..> PPL
+O89988 ..> SSC
+
+O93034 ..> CF
+O93034 ..> PF
+O93034 ..> CP
+O93034 ..> DSA
+O93034 ..> CCT
+
+OB3567 ..> QC
+OB8159 ..> CF
+OB8159 ..> DBNS
+OB8159 ..> SSC
+
+legend right
+|= New proposed course |
+|<#E8F1FB>| Proposed course |
+|<#FFFFFF>| Existing course (transparent) |
+..> Dashed arrow: existing course is subsumed by proposed course
+<|-- Propedeutic dependency: source course is prerequisite for target course
+endlegend
+@enduml
