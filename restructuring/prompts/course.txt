@@ -1,17 +1,31 @@
-Analyze the next old course in this cluster.
+Analyze the next course in this cluster.
 
 <metadata_not_evidence>
 course_id: $course_id
 course_title: $course_title
 </metadata_not_evidence>
 
+These are all the topics devised so far in the current cluster.
 <current_topics>
 $current_topics
 </current_topics>
 
+This is the description of the current course.
 <syllabus_markdown>
 $syllabus_markdown
 </syllabus_markdown>
 
-Return the complete refined topic ontology after considering only this syllabus markdown, then
-select in covered_topic_keys exactly the refined topics covered by this course.
+By considering the current course's syllabus ONLY, infer which topics are actually
+covered by this course.
+You may decide the update the topic dictionary if needed.
+You should return:
+1. covered_topic_keys: the complete assignment for this current course;
+2. topic_diffs: only the ordered changes needed for the current topic dictionary.
+
+Each diff may
+- remove topic keys,
+- upsert new or revised key-description topics, and
+- replace assignments for earlier courses affected by removed, renamed, merged,
+  or split topics.
+
+Do not repeat unchanged topics or unchanged earlier-course assignments.

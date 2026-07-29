@@ -9,11 +9,11 @@ from typing import Any, Iterable
 import yaml
 
 from clustering.sections import normalize_label, normalize_text
-from restructuring.models import ClusterInput, CourseInput, FinalClusterResponse, ModelConfig
+from restructuring.models import ClusterInput, CourseInput, ModelConfig
 
 
 REPOSITORY_ROOT = pathlib.Path(__file__).resolve().parent.parent
-PROMPT_VERSION = 2
+PROMPT_VERSION = 3
 DEFAULT_SYLLABUS_SECTION_KEYS = ("title", "outcomes", "contents")
 
 SYLLABUS_SECTION_ALIASES: dict[str, tuple[str, ...]] = {
@@ -233,11 +233,13 @@ def conversation_cache_key(
     config: ModelConfig,
     *,
     syllabus_section_keys: Iterable[str] | None = None,
+    topic_conversation_mode: str = "stateless",
 ) -> tuple[str, dict[str, Any]]:
     selected_section_keys = normalize_syllabus_section_keys(syllabus_section_keys)
     metadata = {
         "prompt_version": PROMPT_VERSION,
         "syllabus_sections": list(selected_section_keys),
+        "topic_conversation_mode": topic_conversation_mode,
         "endpoint": config.endpoint,
         "model_parameters": config.cache_parameters(),
         "cluster": {"id": cluster.cluster_id, "name": cluster.name},
@@ -278,59 +280,94 @@ def _atomic_write_text(path: pathlib.Path, contents: str) -> None:
     temporary.replace(path)
 
 
-def write_cache(path: pathlib.Path, cache_key: str, metadata: dict[str, Any], messages: list[dict[str, str]]) -> None:
+def write_cache(
+    path: pathlib.Path,
+    cache_key: str,
+    metadata: dict[str, Any],
+    messages: list[dict[str, str]],
+) -> None:
     payload = {"cache_key": cache_key, "metadata": metadata, "messages": messages}
     _atomic_write_text(path, yaml.safe_dump(payload, sort_keys=False, allow_unicode=True))
 
 
-def validate_final_response(cluster: ClusterInput, response: FinalClusterResponse) -> None:
-    expected_ids = {course.course_id for course in cluster.courses}
-    actual_ids = {course.course_id for course in response.course_topics}
-    if actual_ids != expected_ids:
-        missing = sorted(expected_ids - actual_ids)
-        extra = sorted(actual_ids - expected_ids)
-        raise ValueError(f"Final response has wrong course IDs; missing={missing}, extra={extra}")
-    plantuml = response.plantuml.strip()
+def validate_plantuml(cluster: ClusterInput, plantuml: str) -> None:
+    plantuml = plantuml.strip()
     if not plantuml.startswith("@startuml") or not plantuml.endswith("@enduml"):
         raise ValueError("PlantUML must start with @startuml and end with @enduml")
     if "note " not in plantuml.casefold():
         raise ValueError("PlantUML must contain note boxes with topic descriptions")
     for course in cluster.courses:
         declaration = re.search(
-            rf'class\s+"[^"]*{re.escape(course.course_id)}[^"]*"\s+as\s+([A-Za-z_][A-Za-z0-9_]*)[^\n]*#',
+            rf'class\s+"[^\n]*{re.escape(course.course_id)}[^\n]*"\s+as\s+'
+            rf"([A-Za-z_][A-Za-z0-9_]*)[^\n]*#",
             plantuml,
             re.IGNORECASE,
         )
         if declaration is None:
-            raise ValueError(f"PlantUML is missing a styled old-course class for {course.course_id}")
+            raise ValueError(
+                f"PlantUML is missing a styled old-course class for {course.course_id}"
+            )
         alias = declaration.group(1)
-        dashed_link = any(alias in line and ".." in line for line in plantuml.splitlines())
+        dashed_link = any(
+            alias in line and ".." in line
+            for line in plantuml.splitlines()
+        )
         if not dashed_link:
-            raise ValueError(f"PlantUML old course {course.course_id} has no dashed subsumption link")
+            raise ValueError(
+                f"PlantUML old course {course.course_id} has no dashed subsumption link"
+            )
 
 
-def write_cluster_artifacts(output_dir: pathlib.Path, cluster: ClusterInput, response: FinalClusterResponse) -> None:
-    topics = {topic.key: topic.description.strip() for topic in sorted(response.topics, key=lambda item: item.key)}
+def write_cluster_topics(
+    output_dir: pathlib.Path,
+    cluster: ClusterInput,
+    topics: dict[str, str],
+) -> pathlib.Path:
+    sorted_topics = {
+        key: topics[key].strip()
+        for key in sorted(topics)
+    }
     cluster_payload = {
         "cluster": {"id": cluster.cluster_id, "name": cluster.name},
-        "topics": topics,
+        "topics": sorted_topics,
     }
     cluster_path = output_dir / f"topics-of-cluster-{cluster.cluster_id}.yml"
-    _atomic_write_text(cluster_path, yaml.safe_dump(cluster_payload, sort_keys=False, allow_unicode=True))
-    memberships = {item.course_id: item.topic_keys for item in response.course_topics}
-    courses = {course.course_id: course for course in cluster.courses}
-    for course_id in sorted(courses, key=lambda value: (value.casefold(), value)):
-        course = courses[course_id]
-        course_topics = {
-            key: topics[key]
-            for key in sorted(set(memberships[course_id]))
-        }
-        course_payload = {
-            "cluster": {"id": cluster.cluster_id, "name": cluster.name},
-            "course": {"id": course.course_id, "name": course.title},
-            "topics": course_topics,
-        }
-        path = output_dir / f"topics-of-course-{course.course_id}.yml"
-        _atomic_write_text(path, yaml.safe_dump(course_payload, sort_keys=False, allow_unicode=True))
-    plantuml_path = output_dir / f"restructure-proposal-for-cluster-{cluster.cluster_id}.puml"
-    _atomic_write_text(plantuml_path, response.plantuml.strip() + "\n")
+    _atomic_write_text(
+        cluster_path,
+        yaml.safe_dump(cluster_payload, sort_keys=False, allow_unicode=True),
+    )
+    return cluster_path
+
+
+def write_course_topics(
+    output_dir: pathlib.Path,
+    cluster: ClusterInput,
+    course: CourseInput,
+    topics: dict[str, str],
+    topic_keys: Iterable[str],
+) -> pathlib.Path:
+    course_topics = {
+        key: topics[key]
+        for key in sorted(set(topic_keys))
+    }
+    course_payload = {
+        "cluster": {"id": cluster.cluster_id, "name": cluster.name},
+        "course": {"id": course.course_id, "name": course.title},
+        "topics": course_topics,
+    }
+    path = output_dir / f"topics-of-course-{course.course_id}.yml"
+    _atomic_write_text(
+        path,
+        yaml.safe_dump(course_payload, sort_keys=False, allow_unicode=True),
+    )
+    return path
+
+
+def write_plantuml(
+    output_dir: pathlib.Path,
+    cluster_id: int,
+    plantuml: str,
+) -> pathlib.Path:
+    plantuml_path = output_dir / f"restructure-proposal-for-cluster-{cluster_id}.puml"
+    _atomic_write_text(plantuml_path, plantuml.strip() + "\n")
+    return plantuml_path

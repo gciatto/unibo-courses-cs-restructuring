@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import json
 import pathlib
+import re
 import tempfile
 import unittest
 from datetime import datetime
@@ -8,10 +10,12 @@ from types import SimpleNamespace
 from unittest.mock import patch
 
 import yaml
+from pydantic import ValidationError
 
 from restructuring.cli import build_parser
 from restructuring.io import (
     DEFAULT_SYLLABUS_SECTION_KEYS,
+    PROMPT_VERSION,
     conversation_cache_key,
     load_clusters,
     select_clusters,
@@ -21,16 +25,20 @@ from restructuring.models import (
     CourseInput,
     CourseTopicMembership,
     CourseTopicsResponse,
-    FinalClusterResponse,
     ModelConfig,
+    PlantUMLResponse,
     RetryConfig,
     Topic,
+    TopicDiff,
 )
 from restructuring.workflow import (
     PROMPTS_DIR,
-    call_with_backoff,
+    SYSTEM_PROMPT,
+    ClusterTopicState,
     PlantUMLRenderError,
-    process_cluster,
+    apply_topic_response,
+    call_with_backoff,
+    process_cluster_topics,
     render_plantuml_svg,
     run_restructuring,
 )
@@ -56,25 +64,72 @@ def cluster(cluster_id: int, name: str, *courses: CourseInput) -> ClusterInput:
     return ClusterInput(cluster_id=cluster_id, name=name, courses=tuple(courses))
 
 
+def topic_response(
+    covered: list[str],
+    *,
+    remove: list[str] | None = None,
+    upsert: list[Topic] | None = None,
+    updates: list[CourseTopicMembership] | None = None,
+) -> CourseTopicsResponse:
+    diffs = []
+    if remove or upsert or updates:
+        diffs.append(
+            TopicDiff(
+                remove_topic_keys=remove or [],
+                upsert_topics=upsert or [],
+                course_topic_updates=updates or [],
+            )
+        )
+    return CourseTopicsResponse(covered_topic_keys=covered, topic_diffs=diffs)
+
+
+def valid_plantuml(*course_ids: str) -> str:
+    old_classes = "\n".join(
+        f'class "{course_id} - Old {course_id}" as OLD_{course_id} #Transparent'
+        for course_id in course_ids
+    )
+    links = "\n".join(
+        f"OLD_{course_id} ..> Foundations : subsumed by"
+        for course_id in course_ids
+    )
+    return f"""@startuml
+{old_classes}
+class Foundations {{
+  alpha
+}}
+note right of Foundations
+alpha: Alpha supported by the syllabi.
+end note
+{links}
+@enduml"""
+
+
 class FakeCompletions:
-    def __init__(self, responses: list[object]):
+    def __init__(self, responses: list[object], on_parse=None):
         self.responses = list(responses)
         self.calls: list[dict] = []
+        self.on_parse = on_parse
 
     def parse(self, **arguments):
         self.calls.append(arguments)
+        if self.on_parse is not None:
+            self.on_parse(arguments)
         if not self.responses:
             raise AssertionError("Unexpected API call")
         response = self.responses.pop(0)
         if isinstance(response, Exception):
             raise response
-        message = SimpleNamespace(parsed=response, content=response.model_dump_json(), refusal=None)
+        message = SimpleNamespace(
+            parsed=response,
+            content=response.model_dump_json(),
+            refusal=None,
+        )
         return SimpleNamespace(choices=[SimpleNamespace(message=message)])
 
 
 class FakeClient:
-    def __init__(self, responses: list[object]):
-        self.completions = FakeCompletions(responses)
+    def __init__(self, responses: list[object], on_parse=None):
+        self.completions = FakeCompletions(responses, on_parse)
         self.chat = SimpleNamespace(completions=self.completions)
 
 
@@ -91,40 +146,51 @@ class FakePlantUMLRenderer:
         pathlib.Path(path).write_text(self.svg, encoding="utf-8")
 
 
-def response_for_course(*topics: Topic, covered: list[str]) -> CourseTopicsResponse:
-    return CourseTopicsResponse(topics=list(topics), covered_topic_keys=covered)
-
-
-def final_response() -> FinalClusterResponse:
-    return FinalClusterResponse(
-        topics=[
-            Topic(key="alpha", description="Alpha from the supplied syllabus."),
-            Topic(key="beta", description="Beta from the supplied syllabus."),
-        ],
-        course_topics=[
-            CourseTopicMembership(course_id="A", topic_keys=["alpha"]),
-            CourseTopicMembership(course_id="B", topic_keys=["beta"]),
-        ],
-        plantuml="""@startuml
-class "A - Old A" as OLD_A #Transparent
-class "B - Old B" as OLD_B #Transparent
-class Foundations {
-  alpha
-}
-class Advanced {
-  beta
-}
-note right of Foundations
-alpha: Alpha from the supplied syllabus.
-end note
-note right of Advanced
-beta: Beta from the supplied syllabus.
-end note
-Foundations <|-- Advanced
-OLD_A ..> Foundations : subsumed by
-OLD_B ..> Advanced : subsumed by
-@enduml""",
+def write_cluster_input(root: pathlib.Path, item: ClusterInput) -> pathlib.Path:
+    raw_courses = []
+    for current in item.courses:
+        path = root / f"course-{current.course_id}.yml"
+        path.write_text(
+            yaml.safe_dump(
+                {
+                    "course_title": {
+                        "id": current.course_id,
+                        "name": current.title,
+                    },
+                    "syllabus": {
+                        "en": {
+                            "contents": {
+                                "Course contents": current.course_contents,
+                                "Learning outcomes": current.learning_outcomes,
+                            }
+                        }
+                    },
+                },
+                sort_keys=False,
+            ),
+            encoding="utf-8",
+        )
+        raw_courses.append(
+            {
+                "id": current.course_id,
+                "name": current.title,
+                "path": str(path),
+            }
+        )
+    input_path = root / "clusters.yml"
+    input_path.write_text(
+        yaml.safe_dump(
+            {
+                item.name: {
+                    "index": item.cluster_id,
+                    "courses": raw_courses,
+                }
+            },
+            sort_keys=False,
+        ),
+        encoding="utf-8",
     )
+    return input_path
 
 
 class TestClusterSelection(unittest.TestCase):
@@ -160,7 +226,7 @@ class TestClusterSelection(unittest.TestCase):
 
 
 class TestRestructuringCli(unittest.TestCase):
-    def test_configuration_uses_environment_and_cli_precedence(self):
+    def test_configuration_and_conversation_mode(self):
         environment = {
             "OPENAI_BASE_URL": "https://environment.test/v1",
             "OPENAI_MODEL": "environment-model",
@@ -169,36 +235,40 @@ class TestRestructuringCli(unittest.TestCase):
         }
         with patch.dict("os.environ", environment, clear=False):
             environmental = build_parser().parse_args(["clusters.yml"])
-            overridden = build_parser().parse_args([
-                "clusters.yml",
-                "--endpoint",
-                "https://cli.test/v1",
-                "--model",
-                "cli-model",
-                "--max-retries",
-                "2",
-            ])
+            overridden = build_parser().parse_args(
+                [
+                    "clusters.yml",
+                    "--endpoint",
+                    "https://cli.test/v1",
+                    "--topic-conversation-mode",
+                    "full",
+                ]
+            )
         self.assertEqual(environmental.endpoint, "https://environment.test/v1")
         self.assertEqual(environmental.model, "environment-model")
         self.assertEqual(environmental.temperature, 0.25)
-        self.assertEqual(environmental.max_retries, 9)
+        self.assertEqual(environmental.topic_conversation_mode, "stateless")
         self.assertEqual(overridden.endpoint, "https://cli.test/v1")
-        self.assertEqual(overridden.model, "cli-model")
-        self.assertEqual(overridden.max_retries, 2)
+        self.assertEqual(overridden.topic_conversation_mode, "full")
 
     def test_syllabus_sections_can_be_selected(self):
-        parsed = build_parser().parse_args([
-            "clusters.yml",
-            "--syllabus-sections",
-            "title",
-            "bib",
-            "office_hours",
-        ])
-        self.assertEqual(parsed.syllabus_sections, ["title", "bib", "office_hours"])
+        parsed = build_parser().parse_args(
+            [
+                "clusters.yml",
+                "--syllabus-sections",
+                "title",
+                "bib",
+                "office_hours",
+            ]
+        )
+        self.assertEqual(
+            parsed.syllabus_sections,
+            ["title", "bib", "office_hours"],
+        )
 
 
 class TestInputAndCache(unittest.TestCase):
-    def test_extracts_english_first_with_per_section_italian_fallback(self):
+    def test_extracts_selected_markdown_sections_with_english_fallback(self):
         with tempfile.TemporaryDirectory() as tmp_dir:
             root = pathlib.Path(tmp_dir)
             course_path = root / "course-A.yml"
@@ -207,59 +277,15 @@ class TestInputAndCache(unittest.TestCase):
                     {
                         "course_title": {"id": "A", "name": "Do not trust this"},
                         "syllabus": {
-                            "en": {"contents": {"Course contents": "English contents"}},
-                            "it": {
-                                "contents": {
-                                    "Contenuti": "Contenuti italiani",
-                                    "Conoscenze e abilità da conseguire": "Esiti italiani",
-                                }
-                            },
-                        },
-                    },
-                    sort_keys=False,
-                    allow_unicode=True,
-                ),
-                encoding="utf-8",
-            )
-            input_path = root / "clusters.yml"
-            input_path.write_text(
-                yaml.safe_dump({
-                    "Cluster (4)": {
-                        "index": 4,
-                        "courses": [{"id": "A", "name": "Fallback", "path": str(course_path)}],
-                    }
-                }),
-                encoding="utf-8",
-            )
-            loaded = load_clusters(input_path)[0].courses[0]
-        self.assertEqual(loaded.course_contents, "English contents")
-        self.assertEqual(loaded.course_contents_language, "en")
-        self.assertEqual(loaded.learning_outcomes, "Esiti italiani")
-        self.assertEqual(loaded.learning_outcomes_language, "it")
-        self.assertEqual(
-            loaded.syllabus_sections,
-            (("Conoscenze e abilità da conseguire", "Esiti italiani"), ("Course contents", "English contents")),
-        )
-
-    def test_loads_selected_sections_into_markdown_order(self):
-        with tempfile.TemporaryDirectory() as tmp_dir:
-            root = pathlib.Path(tmp_dir)
-            course_path = root / "course-A.yml"
-            course_path.write_text(
-                yaml.safe_dump(
-                    {
-                        "course_title": {"id": "A", "name": "Reusable title"},
-                        "syllabus": {
                             "en": {
                                 "contents": {
-                                    "Learning outcomes": "English outcomes",
                                     "Course contents": "English contents",
-                                    "Readings/Bibliography": "English bibliography",
+                                    "Readings/Bibliography": "English readings",
                                 }
                             },
                             "it": {
                                 "contents": {
-                                    "Orario di ricevimento": "Ricevimento italiano",
+                                    "Conoscenze e abilità da conseguire": "Esiti italiani",
                                 }
                             },
                         },
@@ -275,7 +301,13 @@ class TestInputAndCache(unittest.TestCase):
                     {
                         "Cluster (4)": {
                             "index": 4,
-                            "courses": [{"id": "A", "name": "Fallback", "path": str(course_path)}],
+                            "courses": [
+                                {
+                                    "id": "A",
+                                    "name": "Fallback",
+                                    "path": str(course_path),
+                                }
+                            ],
                         }
                     }
                 ),
@@ -283,221 +315,416 @@ class TestInputAndCache(unittest.TestCase):
             )
             loaded = load_clusters(
                 input_path,
-                syllabus_section_keys=("title", "outcomes", "contents", "bib", "office_hours"),
+                ("title", "outcomes", "contents", "bib"),
             )[0].courses[0]
         self.assertEqual(
             loaded.syllabus_sections,
             (
-                ("Learning outcomes", "English outcomes"),
+                ("Conoscenze e abilità da conseguire", "Esiti italiani"),
                 ("Course contents", "English contents"),
-                ("Readings/Bibliography", "English bibliography"),
-                ("Orario di ricevimento", "Ricevimento italiano"),
+                ("Readings/Bibliography", "English readings"),
             ),
         )
 
-    def test_cache_key_is_stable_and_sensitive_to_configuration(self):
+    def test_cache_key_includes_prompt_sections_and_conversation_mode(self):
         item = cluster(7, "Cluster (7)", course("B"), course("A"))
         config = ModelConfig(endpoint="https://example.test/v1", model="model")
-        first, metadata = conversation_cache_key(item, config)
-        second, _ = conversation_cache_key(item, config)
-        changed, _ = conversation_cache_key(
+        stateless, metadata = conversation_cache_key(item, config)
+        full, _ = conversation_cache_key(
             item,
-            ModelConfig(endpoint="https://other.test/v1", model="model"),
+            config,
+            topic_conversation_mode="full",
         )
-        self.assertEqual(first, second)
-        self.assertNotEqual(first, changed)
+        self.assertNotEqual(stateless, full)
         self.assertEqual(metadata["course_ids"], ["A", "B"])
-        self.assertEqual(metadata["syllabus_sections"], list(DEFAULT_SYLLABUS_SECTION_KEYS))
-        self.assertEqual(metadata["prompt_version"], 2)
+        self.assertEqual(
+            metadata["syllabus_sections"],
+            list(DEFAULT_SYLLABUS_SECTION_KEYS),
+        )
+        self.assertEqual(metadata["topic_conversation_mode"], "stateless")
+        self.assertEqual(metadata["prompt_version"], PROMPT_VERSION)
+        self.assertEqual(PROMPT_VERSION, 3)
+
+
+class TestIncrementalTopicState(unittest.TestCase):
+    def setUp(self):
+        self.cluster = cluster(
+            5,
+            "Example (5)",
+            course("A"),
+            course("B", "Beta material"),
+            course("C", "Gamma material"),
+        )
+
+    def test_applies_add_update_split_merge_rename_and_delete_diffs(self):
+        state, rewritten, changed = apply_topic_response(
+            self.cluster,
+            0,
+            ClusterTopicState({}, {}),
+            topic_response(
+                ["alpha", "obsolete"],
+                upsert=[
+                    Topic(key="alpha", description="Initial alpha"),
+                    Topic(key="obsolete", description="Remove later"),
+                ],
+            ),
+        )
+        self.assertEqual(rewritten, {"A"})
+        self.assertEqual(changed, {"alpha", "obsolete"})
+
+        state, rewritten, _ = apply_topic_response(
+            self.cluster,
+            1,
+            state,
+            topic_response(
+                ["gamma"],
+                remove=["obsolete"],
+                upsert=[
+                    Topic(key="alpha", description="Refined alpha"),
+                    Topic(key="beta", description="Split beta"),
+                    Topic(key="gamma", description="Current gamma"),
+                ],
+                updates=[
+                    CourseTopicMembership(
+                        course_id="A",
+                        topic_keys=["alpha", "beta"],
+                    )
+                ],
+            ),
+        )
+        self.assertEqual(rewritten, {"A", "B"})
+        self.assertEqual(state.memberships["A"], ["alpha", "beta"])
+        self.assertNotIn("obsolete", state.topics)
+
+        state, rewritten, _ = apply_topic_response(
+            self.cluster,
+            2,
+            state,
+            topic_response(
+                ["foundations"],
+                remove=["alpha", "beta"],
+                upsert=[
+                    Topic(
+                        key="foundations",
+                        description="Merged and renamed foundations",
+                    )
+                ],
+                updates=[
+                    CourseTopicMembership(
+                        course_id="A",
+                        topic_keys=["foundations"],
+                    )
+                ],
+            ),
+        )
+        self.assertEqual(state.memberships["A"], ["foundations"])
+        self.assertEqual(state.memberships["C"], ["foundations"])
+        self.assertEqual(rewritten, {"A", "C"})
+
+    def test_rejects_dangling_future_and_conflicting_updates(self):
+        state = ClusterTopicState(
+            {"alpha": "Alpha"},
+            {"A": ["alpha"]},
+        )
+        with self.assertRaisesRegex(ValueError, "explicit replacement"):
+            apply_topic_response(
+                self.cluster,
+                1,
+                state,
+                topic_response(
+                    [],
+                    remove=["alpha"],
+                    upsert=[Topic(key="beta", description="Beta")],
+                ),
+            )
+        with self.assertRaisesRegex(ValueError, "previously processed"):
+            apply_topic_response(
+                self.cluster,
+                1,
+                state,
+                topic_response(
+                    ["alpha"],
+                    updates=[
+                        CourseTopicMembership(
+                            course_id="C",
+                            topic_keys=["alpha"],
+                        )
+                    ],
+                ),
+            )
+        response = CourseTopicsResponse(
+            covered_topic_keys=["alpha"],
+            topic_diffs=[
+                TopicDiff(
+                    upsert_topics=[Topic(key="beta", description="First")]
+                ),
+                TopicDiff(
+                    upsert_topics=[Topic(key="beta", description="Second")]
+                ),
+            ],
+        )
+        with self.assertRaisesRegex(ValueError, "conflicts"):
+            apply_topic_response(self.cluster, 1, state, response)
+        with self.assertRaises(ValidationError):
+            CourseTopicsResponse(covered_topic_keys=["Not-Snake"], topic_diffs=[])
 
 
 class TestWorkflow(unittest.TestCase):
     def setUp(self):
-        self.cluster = cluster(5, "Example (5)", course("A"), course("B", "Beta material"))
-        self.config = ModelConfig(endpoint="https://example.test/v1", model="test-model")
+        self.cluster = cluster(
+            5,
+            "Example (5)",
+            course("A"),
+            course("B", "Beta material"),
+        )
+        self.config = ModelConfig(
+            endpoint="https://example.test/v1",
+            model="test-model",
+        )
         self.retry = RetryConfig(max_retries=0)
-        self.first = response_for_course(
-            Topic(key="alpha", description="Alpha from evidence."),
-            covered=["alpha"],
+        self.first = topic_response(
+            ["alpha"],
+            upsert=[Topic(key="alpha", description="Alpha from evidence.")],
         )
-        self.second = response_for_course(
-            Topic(key="alpha", description="Alpha from evidence."),
-            Topic(key="beta", description="Beta from evidence."),
-            covered=["beta"],
+        self.second = topic_response(
+            ["beta"],
+            upsert=[Topic(key="beta", description="Beta from evidence.")],
         )
 
-    def test_processes_sequentially_and_reuses_complete_cache(self):
-        with tempfile.TemporaryDirectory() as tmp_dir:
-            cache_dir = pathlib.Path(tmp_dir)
-            client = FakeClient([self.first, self.second, final_response()])
-            result = process_cluster(self.cluster, client, self.config, self.retry, cache_dir)
-            self.assertEqual(result.plantuml, final_response().plantuml)
-            self.assertEqual(len(client.completions.calls), 3)
-            second_prompt = client.completions.calls[1]["messages"][-1]["content"]
-            self.assertIn("# Misleading title B", second_prompt)
-            self.assertIn("## Learning outcomes", second_prompt)
-            self.assertIn("## Course contents", second_prompt)
-            self.assertIn("<syllabus_markdown>", second_prompt)
-            cached_files = list(cache_dir.glob("*.yml"))
-            self.assertEqual(len(cached_files), 1)
-            payload = yaml.safe_load(cached_files[0].read_text(encoding="utf-8"))
-            self.assertEqual(len(payload["messages"]), 7)
-
-            no_calls = FakeClient([])
-            cached_result = process_cluster(self.cluster, no_calls, self.config, self.retry, cache_dir)
-            self.assertEqual(cached_result.plantuml, result.plantuml)
-            self.assertEqual(no_calls.completions.calls, [])
-
-            refreshed = FakeClient([self.first, self.second, final_response()])
-            process_cluster(
-                self.cluster,
-                refreshed,
-                self.config,
-                self.retry,
-                cache_dir,
-                refresh_cache=True,
-            )
-            self.assertEqual(len(refreshed.completions.calls), 3)
-
-    def test_prompts_are_loaded_from_external_text_files(self):
+    def test_prompts_separate_topic_and_plantuml_instructions(self):
         self.assertEqual(
             {path.name for path in PROMPTS_DIR.glob("*.txt")},
-            {"system.txt", "course.txt", "final.txt"},
+            {
+                "system.txt",
+                "course.txt",
+                "plantuml.txt",
+                "plantuml_repair.txt",
+            },
         )
+        self.assertNotIn("PlantUML", SYSTEM_PROMPT)
         self.assertIn(
-            "Never infer a topic from a course title",
-            (PROMPTS_DIR / "system.txt").read_text(encoding="utf-8"),
+            "Return complete PlantUML",
+            (PROMPTS_DIR / "plantuml.txt").read_text(encoding="utf-8"),
         )
 
-    def test_changed_course_prompt_reuses_prefix_and_replaces_suffix(self):
+    def test_stateless_and_full_modes_control_request_history(self):
+        for mode, expected_message_counts in (
+            ("stateless", [2, 2]),
+            ("full", [2, 4]),
+        ):
+            with self.subTest(mode=mode), tempfile.TemporaryDirectory() as tmp_dir:
+                root = pathlib.Path(tmp_dir)
+                client = FakeClient([self.first, self.second])
+                process_cluster_topics(
+                    self.cluster,
+                    client,
+                    self.config,
+                    self.retry,
+                    root / "cache",
+                    root / "output",
+                    topic_conversation_mode=mode,
+                )
+                self.assertEqual(
+                    [
+                        len(call["messages"])
+                        for call in client.completions.calls
+                    ],
+                    expected_message_counts,
+                )
+                second_prompt = client.completions.calls[1]["messages"][-1]["content"]
+                self.assertIn('"alpha": "Alpha from evidence."', second_prompt)
+                self.assertIn("# Misleading title B", second_prompt)
+                self.assertIn("<syllabus_markdown>", second_prompt)
+
+    def test_incremental_artifacts_are_rebuilt_from_complete_cache(self):
         with tempfile.TemporaryDirectory() as tmp_dir:
-            cache_dir = pathlib.Path(tmp_dir)
-            process_cluster(
+            root = pathlib.Path(tmp_dir)
+            cache_dir = root / "cache"
+            first_output = root / "first"
+            second_refines_description = topic_response(
+                ["beta"],
+                upsert=[
+                    Topic(
+                        key="alpha",
+                        description="Alpha refined by later evidence.",
+                    ),
+                    Topic(key="beta", description="Beta from evidence."),
+                ],
+            )
+            process_cluster_topics(
                 self.cluster,
-                FakeClient([self.first, self.second, final_response()]),
+                FakeClient([self.first, second_refines_description]),
                 self.config,
                 self.retry,
                 cache_dir,
+                first_output,
             )
-            changed = cluster(5, "Example (5)", course("A"), course("B", "Changed beta evidence"))
-            client = FakeClient([self.second, final_response()])
-            process_cluster(changed, client, self.config, self.retry, cache_dir)
-            self.assertEqual(len(client.completions.calls), 2)
+            payload = yaml.safe_load(
+                (first_output / "topics-of-cluster-5.yml").read_text()
+            )
+            self.assertEqual(list(payload["topics"]), ["alpha", "beta"])
+            course_a = yaml.safe_load(
+                (first_output / "topics-of-course-A.yml").read_text()
+            )
+            self.assertEqual(
+                course_a["topics"]["alpha"],
+                "Alpha refined by later evidence.",
+            )
 
-    def test_writes_timestamped_yaml_and_plantuml_artifacts(self):
+            second_output = root / "second"
+            no_calls = FakeClient([])
+            process_cluster_topics(
+                self.cluster,
+                no_calls,
+                self.config,
+                self.retry,
+                cache_dir,
+                second_output,
+            )
+            self.assertEqual(no_calls.completions.calls, [])
+            self.assertEqual(
+                (first_output / "topics-of-cluster-5.yml").read_text(),
+                (second_output / "topics-of-cluster-5.yml").read_text(),
+            )
+            self.assertTrue((second_output / "topics-of-course-A.yml").exists())
+            self.assertTrue((second_output / "topics-of-course-B.yml").exists())
+
+    def test_topics_exist_before_plantuml_and_success_writes_svg(self):
         with tempfile.TemporaryDirectory() as tmp_dir:
             root = pathlib.Path(tmp_dir)
-            input_path = root / "clusters.yml"
-            course_paths = []
-            for item in self.cluster.courses:
-                path = root / f"course-{item.course_id}.yml"
-                path.write_text(
-                    yaml.safe_dump({
-                        "course_title": {"id": item.course_id, "name": item.title},
-                        "syllabus": {
-                            "en": {
-                                "contents": {
-                                    "Course contents": item.course_contents,
-                                    "Learning outcomes": item.learning_outcomes,
-                                }
-                            }
-                        },
-                    }),
-                    encoding="utf-8",
-                )
-                course_paths.append(path)
-            input_path.write_text(
-                yaml.safe_dump({
-                    self.cluster.name: {
-                        "index": self.cluster.cluster_id,
-                        "courses": [
-                            {"id": item.course_id, "name": item.title, "path": str(path)}
-                            for item, path in zip(self.cluster.courses, course_paths)
-                        ],
-                    }
-                }),
-                encoding="utf-8",
-            )
+            input_path = write_cluster_input(root, self.cluster)
+            output_root = root / "output"
+
+            def check_before_plantuml(arguments):
+                if arguments["response_format"] is PlantUMLResponse:
+                    attempt = output_root / "attempt-2026-07-29-12-34"
+                    self.assertTrue(
+                        (attempt / "topics-of-cluster-5.yml").exists()
+                    )
+                    self.assertTrue(
+                        (attempt / "topics-of-course-A.yml").exists()
+                    )
+                    self.assertTrue(
+                        (attempt / "topics-of-course-B.yml").exists()
+                    )
+
             output_dir = run_restructuring(
                 input_path,
                 self.config,
                 self.retry,
-                client=FakeClient([self.first, self.second, final_response()]),
+                client=FakeClient(
+                    [
+                        self.first,
+                        self.second,
+                        PlantUMLResponse(
+                            plantuml=valid_plantuml("A", "B")
+                        ),
+                    ],
+                    on_parse=check_before_plantuml,
+                ),
+                cache_dir=root / "cache",
+                output_root=output_root,
+                now=datetime(2026, 7, 29, 12, 34),
+                plantuml_renderer=FakePlantUMLRenderer(),
+            )
+            puml = output_dir / "restructure-proposal-for-cluster-5.puml"
+            self.assertTrue(puml.read_text().startswith("@startuml"))
+            self.assertEqual(
+                puml.with_suffix(".svg").read_text(encoding="utf-8"),
+                "<svg></svg>",
+            )
+
+    def test_syntax_failure_regenerates_and_overwrites_puml(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = pathlib.Path(tmp_dir)
+            input_path = write_cluster_input(root, self.cluster)
+            repaired = valid_plantuml("A", "B")
+            output_dir = run_restructuring(
+                input_path,
+                self.config,
+                RetryConfig(max_retries=1, initial_backoff=0),
+                client=FakeClient(
+                    [
+                        self.first,
+                        self.second,
+                        PlantUMLResponse(
+                            plantuml="@startuml\nclass Broken\n@enduml"
+                        ),
+                        PlantUMLResponse(plantuml=repaired),
+                    ]
+                ),
                 cache_dir=root / "cache",
                 output_root=root / "output",
                 now=datetime(2026, 7, 29, 12, 34),
                 plantuml_renderer=FakePlantUMLRenderer(),
             )
-            self.assertEqual(output_dir.name, "attempt-2026-07-29-12-34")
-            self.assertTrue((output_dir / "topics-of-cluster-5.yml").exists())
-            self.assertTrue((output_dir / "topics-of-course-A.yml").exists())
-            self.assertTrue((output_dir / "topics-of-course-B.yml").exists())
-            plantuml = (output_dir / "restructure-proposal-for-cluster-5.puml").read_text()
-            self.assertTrue(plantuml.startswith("@startuml"))
-            svg = output_dir / "restructure-proposal-for-cluster-5.svg"
-            self.assertEqual(svg.read_text(encoding="utf-8"), "<svg></svg>")
-            cluster_payload = yaml.safe_load((output_dir / "topics-of-cluster-5.yml").read_text())
-            self.assertEqual(list(cluster_payload["topics"]), ["alpha", "beta"])
+            puml = output_dir / "restructure-proposal-for-cluster-5.puml"
+            self.assertEqual(puml.read_text().strip(), repaired)
+            self.assertTrue(puml.with_suffix(".svg").exists())
 
-    def test_writes_artifacts_before_plantuml_rendering_fails(self):
+    def test_render_failure_is_nonfatal_and_preserves_puml(self):
+        class FailingRenderer(FakePlantUMLRenderer):
+            def dump(self, path: str, output_format: str, code: str) -> None:
+                self.calls.append((path, output_format, code))
+                raise TimeoutError("remote service unavailable")
+
         with tempfile.TemporaryDirectory() as tmp_dir:
             root = pathlib.Path(tmp_dir)
-            input_path = root / "clusters.yml"
-            course_paths = []
-            for item in self.cluster.courses:
-                path = root / f"course-{item.course_id}.yml"
-                path.write_text(
-                    yaml.safe_dump({
-                        "course_title": {"id": item.course_id, "name": item.title},
-                        "syllabus": {
-                            "en": {
-                                "contents": {
-                                    "Course contents": item.course_contents,
-                                    "Learning outcomes": item.learning_outcomes,
-                                }
-                            }
-                        },
-                    }),
-                    encoding="utf-8",
-                )
-                course_paths.append(path)
-            input_path.write_text(
-                yaml.safe_dump({
-                    self.cluster.name: {
-                        "index": self.cluster.cluster_id,
-                        "courses": [
-                            {"id": item.course_id, "name": item.title, "path": str(path)}
-                            for item, path in zip(self.cluster.courses, course_paths)
-                        ],
-                    }
-                }),
-                encoding="utf-8",
+            input_path = write_cluster_input(root, self.cluster)
+            output_dir = run_restructuring(
+                input_path,
+                self.config,
+                self.retry,
+                client=FakeClient(
+                    [
+                        self.first,
+                        self.second,
+                        PlantUMLResponse(
+                            plantuml=valid_plantuml("A", "B")
+                        ),
+                    ]
+                ),
+                cache_dir=root / "cache",
+                output_root=root / "output",
+                now=datetime(2026, 7, 29, 12, 34),
+                plantuml_renderer=FailingRenderer(),
             )
+            puml = output_dir / "restructure-proposal-for-cluster-5.puml"
+            self.assertTrue(puml.exists())
+            self.assertFalse(puml.with_suffix(".svg").exists())
+            self.assertTrue((output_dir / "topics-of-cluster-5.yml").exists())
 
-            class FailingPlantUMLRenderer(FakePlantUMLRenderer):
-                def dump(self, path: str, output_format: str, code: str) -> None:
-                    self.calls.append((path, output_format, code))
-                    raise TimeoutError("temporary renderer timeout")
-
-            with self.assertRaises(PlantUMLRenderError):
-                run_restructuring(
-                    input_path,
-                    self.config,
-                    self.retry,
-                    client=FakeClient([self.first, self.second, final_response()]),
-                    cache_dir=root / "cache",
-                    output_root=root / "output",
-                    now=datetime(2026, 7, 29, 12, 34),
-                    plantuml_renderer=FailingPlantUMLRenderer(),
-                )
-
-            output_dir = root / "output" / "attempt-2026-07-29-12-34"
+    def test_plantuml_llm_failure_is_nonfatal_after_topic_artifacts(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = pathlib.Path(tmp_dir)
+            input_path = write_cluster_input(root, self.cluster)
+            output_dir = run_restructuring(
+                input_path,
+                self.config,
+                self.retry,
+                client=FakeClient(
+                    [
+                        self.first,
+                        self.second,
+                        RuntimeError("diagram model unavailable"),
+                    ]
+                ),
+                cache_dir=root / "cache",
+                output_root=root / "output",
+                now=datetime(2026, 7, 29, 12, 34),
+                plantuml_renderer=FakePlantUMLRenderer(),
+            )
             self.assertTrue((output_dir / "topics-of-cluster-5.yml").exists())
             self.assertTrue((output_dir / "topics-of-course-A.yml").exists())
             self.assertTrue((output_dir / "topics-of-course-B.yml").exists())
-            self.assertTrue((output_dir / "restructure-proposal-for-cluster-5.puml").exists())
+            self.assertFalse(
+                (
+                    output_dir
+                    / "restructure-proposal-for-cluster-5.puml"
+                ).exists()
+            )
 
-    def test_plantuml_rendering_retries_and_rejects_error_svg(self):
+    def test_plantuml_rendering_retries_network_but_not_syntax(self):
         with tempfile.TemporaryDirectory() as tmp_dir:
             destination = pathlib.Path(tmp_dir) / "proposal.svg"
             renderer = FakePlantUMLRenderer(failures=2)
@@ -505,27 +732,25 @@ class TestWorkflow(unittest.TestCase):
             render_plantuml_svg(
                 "@startuml\nclass A\n@enduml",
                 destination,
-                RetryConfig(max_retries=2, initial_backoff=1, max_backoff=60),
+                RetryConfig(max_retries=2, initial_backoff=1),
                 renderer=renderer,
                 sleep=sleeps.append,
                 random_uniform=lambda _minimum, maximum: maximum,
             )
             self.assertEqual(len(renderer.calls), 3)
             self.assertEqual(sleeps, [1, 2])
-            self.assertTrue(destination.exists())
-
             with self.assertRaisesRegex(ValueError, "syntax-error SVG"):
                 render_plantuml_svg(
                     "@startuml\nbad\n@enduml",
                     destination,
-                    RetryConfig(max_retries=0),
+                    RetryConfig(max_retries=3),
                     renderer=FakePlantUMLRenderer(
-                        svg="<svg><text>Syntax Error? (Assumed diagram type: class)</text></svg>"
+                        svg="<svg><text>Syntax Error?</text></svg>"
                     ),
-                    sleep=lambda _: self.fail("must not sleep"),
+                    sleep=lambda _: self.fail("syntax must not be retried"),
                 )
 
-    def test_retry_uses_exponential_backoff_and_skips_permanent_errors(self):
+    def test_generic_retry_skips_permanent_errors(self):
         class RateLimitError(Exception):
             pass
 
@@ -541,7 +766,7 @@ class TestWorkflow(unittest.TestCase):
 
         result = call_with_backoff(
             operation,
-            RetryConfig(max_retries=3, initial_backoff=1, max_backoff=60),
+            RetryConfig(max_retries=3, initial_backoff=1),
             sleep=sleeps.append,
             random_uniform=lambda _minimum, maximum: maximum,
         )
@@ -556,7 +781,7 @@ class TestWorkflow(unittest.TestCase):
 
 
 class TestRepositoryRestructuringInput(unittest.TestCase):
-    def test_real_input_discovers_30_clusters_and_293_courses(self):
+    def test_real_input_processes_30_clusters_and_293_courses_with_fake_model(self):
         path = pathlib.Path(
             "data/clusters/runs/2025-20260715-120359-spectral/cluster_courses.yml"
         )
@@ -565,6 +790,109 @@ class TestRepositoryRestructuringInput(unittest.TestCase):
         clusters = load_clusters(path)
         self.assertEqual(len(clusters), 30)
         self.assertEqual(sum(len(item.courses) for item in clusters), 293)
+
+        class DeterministicCompletions:
+            def __init__(self):
+                self.calls = 0
+
+            def parse(self, **arguments):
+                self.calls += 1
+                prompt = arguments["messages"][-1]["content"]
+                if arguments["response_format"] is CourseTopicsResponse:
+                    current = re.search(
+                        r"<current_topics>\s*(.*?)\s*</current_topics>",
+                        prompt,
+                        re.DOTALL,
+                    )
+                    assert current is not None
+                    topics = json.loads(current.group(1))
+                    response = topic_response(
+                        ["cluster_topic"],
+                        upsert=(
+                            [
+                                Topic(
+                                    key="cluster_topic",
+                                    description="Deterministic syllabus topic.",
+                                )
+                            ]
+                            if not topics
+                            else []
+                        ),
+                    )
+                else:
+                    labels_match = re.search(
+                        r"<old_course_labels>\s*(.*?)\s*</old_course_labels>",
+                        prompt,
+                        re.DOTALL,
+                    )
+                    assert labels_match is not None
+                    labels = json.loads(labels_match.group(1))
+                    declarations = "\n".join(
+                        f'class "{item["id"]} - {item["title"].replace(chr(34), chr(39))}" '
+                        f"as OLD_{index} #Transparent"
+                        for index, item in enumerate(labels)
+                    )
+                    links = "\n".join(
+                        f"OLD_{index} ..> Proposed : subsumed by"
+                        for index in range(len(labels))
+                    )
+                    response = PlantUMLResponse(
+                        plantuml=f"""@startuml
+{declarations}
+class Proposed {{
+  cluster_topic
+}}
+note right of Proposed
+cluster_topic: Deterministic syllabus topic.
+end note
+{links}
+@enduml"""
+                    )
+                message = SimpleNamespace(
+                    parsed=response,
+                    content=response.model_dump_json(),
+                    refusal=None,
+                )
+                return SimpleNamespace(
+                    choices=[SimpleNamespace(message=message)]
+                )
+
+        completions = DeterministicCompletions()
+        fake_client = SimpleNamespace(
+            chat=SimpleNamespace(completions=completions)
+        )
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = pathlib.Path(tmp_dir)
+            output = run_restructuring(
+                path,
+                ModelConfig(
+                    endpoint="https://example.test/v1",
+                    model="deterministic",
+                ),
+                RetryConfig(max_retries=0),
+                client=fake_client,
+                plantuml_renderer=FakePlantUMLRenderer(),
+                cache_dir=root / "cache",
+                output_root=root / "output",
+                now=datetime(2026, 7, 29, 16, 45),
+            )
+            self.assertEqual(
+                len(list(output.glob("topics-of-cluster-*.yml"))),
+                30,
+            )
+            self.assertEqual(
+                len(list(output.glob("topics-of-course-*.yml"))),
+                293,
+            )
+            self.assertEqual(
+                len(list(output.glob("restructure-proposal-*.puml"))),
+                30,
+            )
+            self.assertEqual(
+                len(list(output.glob("restructure-proposal-*.svg"))),
+                30,
+            )
+        self.assertEqual(completions.calls, 293 + 30)
 
 
 if __name__ == "__main__":

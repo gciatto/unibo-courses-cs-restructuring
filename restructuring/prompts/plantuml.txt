@@ -1,0 +1,38 @@
+The syllabus-grounded topic analysis is complete.
+Now propose a rational restructuring of all the courses in this cluster
+as a hierarchy of new courses, and return render-ready PlantUML class-diagram source code.
+
+In creating the hirarchy, you should try to factorise propedeutic knowledge into new general courses,
+possibly abstracting or grouping the old ones on per-topic basis.
+You may also invent new courses or topics, as long as they make sense in the general picture,
+e.g. to fill gaps.
+
+<cluster_metadata>
+cluster_id: $cluster_id
+cluster_name: $cluster_name
+</cluster_metadata>
+
+<topics>
+$current_topics
+</topics>
+
+<topics_to_course_assignments>
+$course_memberships
+</topics_to_course_assignments>
+
+<courses_metadata>
+$old_courses
+</courses_metadata>
+
+Diagram requirements:
+- Return complete PlantUML from @startuml through @enduml.
+- New classes represent proposed courses and contain only target topic keys as fields.
+- The proposed curriculum may group or abstract source topics into sensible target
+  topics.
+- Put every target-topic description in a PlantUML note box, not in a class field.
+- Use A <|-- B to mean B depends on or is propaedeutically after A. Multiple
+  inheritance is allowed.
+- Show every old course as a differently coloured or transparent class labelled with
+  its ID and title.
+- Connect every old course to every new class that subsumes it with a dashed arrow.
+- Every old course must appear and have at least one dashed subsumption link.

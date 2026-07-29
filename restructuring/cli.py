@@ -7,7 +7,7 @@ import pathlib
 
 from restructuring.models import ModelConfig, RetryConfig
 from restructuring.io import DEFAULT_SYLLABUS_SECTION_KEYS
-from restructuring.workflow import run_restructuring
+from restructuring.workflow import TOPIC_CONVERSATION_MODES, run_restructuring
 
 
 DEFAULT_ENDPOINT = "https://api.openai.com/v1"
@@ -65,6 +65,16 @@ def build_parser() -> argparse.ArgumentParser:
             "Keywords: title, outcomes, contents, bib, teaching_methods, assessment, teaching_tools, office_hours."
         ),
     )
+    parser.add_argument(
+        "--topic-conversation-mode",
+        choices=TOPIC_CONVERSATION_MODES,
+        default="stateless",
+        help=(
+            "Context retained across topic-extraction calls: 'stateless' sends only "
+            "the current ontology and syllabus (default), while 'full' also sends "
+            "all preceding course turns."
+        ),
+    )
     parser.add_argument("--refresh-cache", action="store_true")
     return parser
 
@@ -110,6 +120,7 @@ def main() -> None:
                 max_backoff=args.max_backoff,
             ),
             syllabus_section_keys=tuple(args.syllabus_sections),
+            topic_conversation_mode=args.topic_conversation_mode,
             cluster_ids=tuple(args.cluster_id),
             cluster_name_regexes=tuple(args.cluster_name_regex),
             refresh_cache=args.refresh_cache,

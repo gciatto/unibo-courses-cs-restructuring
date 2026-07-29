@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from typing import Any
 
@@ -10,29 +11,10 @@ TOPIC_KEY_PATTERN = r"^[a-z][a-z0-9]*(?:_[a-z0-9]+)*$"
 
 
 class Topic(BaseModel):
-    model_config = ConfigDict(extra="forbid")
+    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
 
     key: str = Field(pattern=TOPIC_KEY_PATTERN)
     description: str = Field(min_length=1)
-
-
-class CourseTopicsResponse(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-
-    topics: list[Topic]
-    covered_topic_keys: list[str]
-
-    @model_validator(mode="after")
-    def validate_topics(self) -> "CourseTopicsResponse":
-        keys = [topic.key for topic in self.topics]
-        if len(keys) != len(set(keys)):
-            raise ValueError("topic keys must be unique")
-        unknown = sorted(set(self.covered_topic_keys) - set(keys))
-        if unknown:
-            raise ValueError(f"covered topics are not present in topics: {unknown}")
-        if len(self.covered_topic_keys) != len(set(self.covered_topic_keys)):
-            raise ValueError("covered_topic_keys must be unique")
-        return self
 
 
 class CourseTopicMembership(BaseModel):
@@ -41,30 +23,81 @@ class CourseTopicMembership(BaseModel):
     course_id: str = Field(min_length=1)
     topic_keys: list[str]
 
+    @model_validator(mode="after")
+    def validate_topic_keys(self) -> "CourseTopicMembership":
+        if len(self.topic_keys) != len(set(self.topic_keys)):
+            raise ValueError("topic_keys must be unique")
+        invalid = sorted(
+            key for key in self.topic_keys
+            if re.fullmatch(TOPIC_KEY_PATTERN, key) is None
+        )
+        if invalid:
+            raise ValueError(f"invalid topic keys: {invalid}")
+        return self
 
-class FinalClusterResponse(BaseModel):
+
+class TopicDiff(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    topics: list[Topic]
-    course_topics: list[CourseTopicMembership]
-    plantuml: str = Field(min_length=1)
+    remove_topic_keys: list[str] = Field(default_factory=list)
+    upsert_topics: list[Topic] = Field(default_factory=list)
+    course_topic_updates: list[CourseTopicMembership] = Field(default_factory=list)
 
     @model_validator(mode="after")
-    def validate_topics(self) -> "FinalClusterResponse":
-        keys = [topic.key for topic in self.topics]
-        if len(keys) != len(set(keys)):
-            raise ValueError("topic keys must be unique")
-        course_ids = [course.course_id for course in self.course_topics]
-        if len(course_ids) != len(set(course_ids)):
-            raise ValueError("course IDs in course_topics must be unique")
-        known = set(keys)
-        for course in self.course_topics:
-            unknown = sorted(set(course.topic_keys) - known)
-            if unknown:
-                raise ValueError(f"course {course.course_id} references unknown topics: {unknown}")
-            if len(course.topic_keys) != len(set(course.topic_keys)):
-                raise ValueError(f"course {course.course_id} has duplicate topic keys")
+    def validate_diff(self) -> "TopicDiff":
+        if (
+            not self.remove_topic_keys
+            and not self.upsert_topics
+            and not self.course_topic_updates
+        ):
+            raise ValueError("a topic diff must contain at least one change")
+        if len(self.remove_topic_keys) != len(set(self.remove_topic_keys)):
+            raise ValueError("remove_topic_keys must be unique")
+        invalid = sorted(
+            key for key in self.remove_topic_keys
+            if re.fullmatch(TOPIC_KEY_PATTERN, key) is None
+        )
+        if invalid:
+            raise ValueError(f"invalid removed topic keys: {invalid}")
+        upserted = [topic.key for topic in self.upsert_topics]
+        if len(upserted) != len(set(upserted)):
+            raise ValueError("upsert topic keys must be unique within a diff")
+        updated_courses = [item.course_id for item in self.course_topic_updates]
+        if len(updated_courses) != len(set(updated_courses)):
+            raise ValueError(
+                "course assignment updates must be unique within a diff"
+            )
+        overlap = sorted(set(self.remove_topic_keys) & set(upserted))
+        if overlap:
+            raise ValueError(
+                f"a diff cannot remove and upsert the same topics: {overlap}"
+            )
         return self
+
+
+class CourseTopicsResponse(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    covered_topic_keys: list[str]
+    topic_diffs: list[TopicDiff] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def validate_response(self) -> "CourseTopicsResponse":
+        if len(self.covered_topic_keys) != len(set(self.covered_topic_keys)):
+            raise ValueError("covered_topic_keys must be unique")
+        invalid = sorted(
+            key for key in self.covered_topic_keys
+            if re.fullmatch(TOPIC_KEY_PATTERN, key) is None
+        )
+        if invalid:
+            raise ValueError(f"invalid covered topic keys: {invalid}")
+        return self
+
+
+class PlantUMLResponse(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    plantuml: str = Field(min_length=1)
 
 
 @dataclass(frozen=True)
@@ -107,4 +140,3 @@ class RetryConfig:
     max_retries: int = 6
     initial_backoff: float = 1.0
     max_backoff: float = 60.0
-
