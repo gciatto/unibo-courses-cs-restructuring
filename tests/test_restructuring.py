@@ -29,6 +29,7 @@ from restructuring.models import (
 from restructuring.workflow import (
     PROMPTS_DIR,
     call_with_backoff,
+    PlantUMLRenderError,
     process_cluster,
     render_plantuml_svg,
     run_restructuring,
@@ -437,6 +438,64 @@ class TestWorkflow(unittest.TestCase):
             self.assertEqual(svg.read_text(encoding="utf-8"), "<svg></svg>")
             cluster_payload = yaml.safe_load((output_dir / "topics-of-cluster-5.yml").read_text())
             self.assertEqual(list(cluster_payload["topics"]), ["alpha", "beta"])
+
+    def test_writes_artifacts_before_plantuml_rendering_fails(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = pathlib.Path(tmp_dir)
+            input_path = root / "clusters.yml"
+            course_paths = []
+            for item in self.cluster.courses:
+                path = root / f"course-{item.course_id}.yml"
+                path.write_text(
+                    yaml.safe_dump({
+                        "course_title": {"id": item.course_id, "name": item.title},
+                        "syllabus": {
+                            "en": {
+                                "contents": {
+                                    "Course contents": item.course_contents,
+                                    "Learning outcomes": item.learning_outcomes,
+                                }
+                            }
+                        },
+                    }),
+                    encoding="utf-8",
+                )
+                course_paths.append(path)
+            input_path.write_text(
+                yaml.safe_dump({
+                    self.cluster.name: {
+                        "index": self.cluster.cluster_id,
+                        "courses": [
+                            {"id": item.course_id, "name": item.title, "path": str(path)}
+                            for item, path in zip(self.cluster.courses, course_paths)
+                        ],
+                    }
+                }),
+                encoding="utf-8",
+            )
+
+            class FailingPlantUMLRenderer(FakePlantUMLRenderer):
+                def dump(self, path: str, output_format: str, code: str) -> None:
+                    self.calls.append((path, output_format, code))
+                    raise TimeoutError("temporary renderer timeout")
+
+            with self.assertRaises(PlantUMLRenderError):
+                run_restructuring(
+                    input_path,
+                    self.config,
+                    self.retry,
+                    client=FakeClient([self.first, self.second, final_response()]),
+                    cache_dir=root / "cache",
+                    output_root=root / "output",
+                    now=datetime(2026, 7, 29, 12, 34),
+                    plantuml_renderer=FailingPlantUMLRenderer(),
+                )
+
+            output_dir = root / "output" / "attempt-2026-07-29-12-34"
+            self.assertTrue((output_dir / "topics-of-cluster-5.yml").exists())
+            self.assertTrue((output_dir / "topics-of-course-A.yml").exists())
+            self.assertTrue((output_dir / "topics-of-course-B.yml").exists())
+            self.assertTrue((output_dir / "restructure-proposal-for-cluster-5.puml").exists())
 
     def test_plantuml_rendering_retries_and_rejects_error_svg(self):
         with tempfile.TemporaryDirectory() as tmp_dir:

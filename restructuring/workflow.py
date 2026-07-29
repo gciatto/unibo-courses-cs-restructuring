@@ -420,6 +420,7 @@ def run_restructuring(
             sleep=sleep,
             random_uniform=random_uniform,
         )
+        write_cluster_artifacts(output_dir, cluster, response)
         svg_path = (
             output_dir
             / f"restructure-proposal-for-cluster-{cluster.cluster_id}.svg"
@@ -433,5 +434,4 @@ def run_restructuring(
             sleep=sleep,
             random_uniform=random_uniform,
         )
-        write_cluster_artifacts(output_dir, cluster, response)
     return output_dir
