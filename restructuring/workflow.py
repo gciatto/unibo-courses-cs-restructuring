@@ -13,12 +13,14 @@ from typing import Any, Callable, TypeVar
 from pydantic import BaseModel, ValidationError
 
 from restructuring.io import (
+    DEFAULT_SYLLABUS_SECTION_KEYS,
     REPOSITORY_ROOT,
     conversation_cache_key,
-    load_cache,
     load_clusters,
+    load_cache,
     select_clusters,
     validate_final_response,
+    normalize_syllabus_section_keys,
     write_cache,
     write_cluster_artifacts,
 )
@@ -43,6 +45,7 @@ def _load_prompt(name: str) -> str:
 SYSTEM_PROMPT = _load_prompt("system.txt")
 COURSE_PROMPT = string.Template(_load_prompt("course.txt"))
 FINAL_PROMPT = string.Template(_load_prompt("final.txt"))
+PROMPT_SYLLABUS_SECTION_KEYS = DEFAULT_SYLLABUS_SECTION_KEYS
 
 
 T = TypeVar("T", bound=BaseModel)
@@ -55,26 +58,21 @@ def topics_mapping(response: CourseTopicsResponse) -> dict[str, str]:
     }
 
 
+def course_syllabus_markdown(course: CourseInput) -> str:
+    lines = [f"# {course.title}" if course.title else f"# {course.course_id}"]
+    for heading, text in course.syllabus_sections:
+        lines.extend(["", f"## {heading}", "", text])
+    return "\n".join(lines).strip()
+
+
 def course_prompt(course: CourseInput, current_topics: dict[str, str]) -> str:
-    evidence = {
-        "course_contents": {
-            "language": course.course_contents_language,
-            "text": course.course_contents,
-        },
-        "learning_outcomes": {
-            "language": course.learning_outcomes_language,
-            "text": course.learning_outcomes,
-        },
-    }
     return COURSE_PROMPT.substitute(
         course_id=course.course_id,
         course_title=course.title,
         current_topics=json.dumps(
             current_topics, ensure_ascii=False, sort_keys=True, indent=2
         ),
-        syllabus_evidence=json.dumps(
-            evidence, ensure_ascii=False, sort_keys=True, indent=2
-        ),
+        syllabus_markdown=course_syllabus_markdown(course),
     )
 
 
@@ -226,11 +224,17 @@ def process_cluster(
     retry: RetryConfig,
     cache_dir: pathlib.Path,
     *,
+    syllabus_section_keys: tuple[str, ...] = PROMPT_SYLLABUS_SECTION_KEYS,
     refresh_cache: bool = False,
     sleep: Callable[[float], None] = time.sleep,
     random_uniform: Callable[[float, float], float] = random.uniform,
 ) -> FinalClusterResponse:
-    cache_key, metadata = conversation_cache_key(cluster, config)
+    normalized_section_keys = normalize_syllabus_section_keys(syllabus_section_keys)
+    cache_key, metadata = conversation_cache_key(
+        cluster,
+        config,
+        syllabus_section_keys=normalized_section_keys,
+    )
     cache_path = cache_dir / f"{cache_key}.yml"
     system_message = {"role": "system", "content": SYSTEM_PROMPT}
     cached = [] if refresh_cache else load_cache(cache_path, metadata)
@@ -378,6 +382,7 @@ def run_restructuring(
     config: ModelConfig,
     retry: RetryConfig,
     *,
+    syllabus_section_keys: tuple[str, ...] = PROMPT_SYLLABUS_SECTION_KEYS,
     cluster_ids: tuple[int, ...] = (),
     cluster_name_regexes: tuple[str, ...] = (),
     refresh_cache: bool = False,
@@ -390,7 +395,12 @@ def run_restructuring(
     sleep: Callable[[float], None] = time.sleep,
     random_uniform: Callable[[float, float], float] = random.uniform,
 ) -> pathlib.Path:
-    clusters = select_clusters(load_clusters(input_path), cluster_ids, cluster_name_regexes)
+    normalized_section_keys = normalize_syllabus_section_keys(syllabus_section_keys)
+    clusters = select_clusters(
+        load_clusters(input_path, normalized_section_keys),
+        cluster_ids,
+        cluster_name_regexes,
+    )
     output_dir = create_attempt_directory(
         output_root or REPOSITORY_ROOT / "data" / "restructuring",
         now,
@@ -405,6 +415,7 @@ def run_restructuring(
             config,
             retry,
             resolved_cache_dir,
+            syllabus_section_keys=normalized_section_keys,
             refresh_cache=refresh_cache,
             sleep=sleep,
             random_uniform=random_uniform,

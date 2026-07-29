@@ -76,6 +76,7 @@ class CourseInput:
     course_contents_language: str | None
     learning_outcomes: str
     learning_outcomes_language: str | None
+    syllabus_sections: tuple[tuple[str, str], ...] = ()
 
 
 @dataclass(frozen=True)

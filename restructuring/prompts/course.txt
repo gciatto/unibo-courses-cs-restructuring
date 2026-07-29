@@ -9,9 +9,9 @@ course_title: $course_title
 $current_topics
 </current_topics>
 
-<syllabus_evidence>
-$syllabus_evidence
-</syllabus_evidence>
+<syllabus_markdown>
+$syllabus_markdown
+</syllabus_markdown>
 
-Return the complete refined topic ontology after considering only this syllabus, then
+Return the complete refined topic ontology after considering only this syllabus markdown, then
 select in covered_topic_keys exactly the refined topics covered by this course.

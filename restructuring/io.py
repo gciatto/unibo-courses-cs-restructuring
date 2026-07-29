@@ -8,11 +8,107 @@ from typing import Any, Iterable
 
 import yaml
 
-from clustering.sections import SECTION_COURSE_CONTENTS, SECTION_LEARNING_OUTCOMES, extract_similarity_sections
+from clustering.sections import normalize_label, normalize_text
 from restructuring.models import ClusterInput, CourseInput, FinalClusterResponse, ModelConfig
 
 
 REPOSITORY_ROOT = pathlib.Path(__file__).resolve().parent.parent
+PROMPT_VERSION = 2
+DEFAULT_SYLLABUS_SECTION_KEYS = ("title", "outcomes", "contents")
+
+SYLLABUS_SECTION_ALIASES: dict[str, tuple[str, ...]] = {
+    "outcomes": (
+        "Learning outcomes",
+        "Conoscenze e abilità da conseguire",
+        "Conoscenze e abilita da conseguire",
+    ),
+    "contents": (
+        "Course contents",
+        "Contenuti",
+    ),
+    "bib": (
+        "Readings/Bibliography",
+        "Testi/Bibliografia",
+    ),
+    "teaching_methods": (
+        "Teaching methods",
+        "Modalità didattiche",
+    ),
+    "assessment": (
+        "Assessment methods",
+        "Modalità di verifica e valutazione dell'apprendimento",
+    ),
+    "teaching_tools": (
+        "Teaching tools",
+        "Strumenti didattici",
+    ),
+    "office_hours": (
+        "Office hours",
+        "Orario di ricevimento",
+    ),
+}
+
+
+def normalize_syllabus_section_keys(section_keys: Iterable[str] | None = None) -> tuple[str, ...]:
+    keys = DEFAULT_SYLLABUS_SECTION_KEYS if section_keys is None else tuple(section_keys)
+    normalized: list[str] = []
+    seen: set[str] = set()
+    valid_keys = {"title"} | set(SYLLABUS_SECTION_ALIASES)
+    for key in keys:
+        if key not in valid_keys:
+            raise ValueError(f"Unknown syllabus section keyword: {key}")
+        if key in seen:
+            continue
+        seen.add(key)
+        normalized.append(key)
+    return tuple(normalized)
+
+
+def _contents_for_language(payload: dict[str, Any], language: str) -> dict[str, Any]:
+    syllabus = payload.get("syllabus")
+    if not isinstance(syllabus, dict):
+        return {}
+    page = syllabus.get(language)
+    if not isinstance(page, dict):
+        return {}
+    contents = page.get("contents")
+    return contents if isinstance(contents, dict) else {}
+
+
+def _section_text(contents: dict[str, Any], aliases: tuple[str, ...]) -> tuple[str, str] | None:
+    normalized_aliases = {normalize_label(alias) for alias in aliases}
+    for label, value in contents.items():
+        if normalize_label(str(label)) in normalized_aliases:
+            text = normalize_text(value)
+            if text:
+                return str(label).strip(), text
+    return None
+
+
+def _section_language(payload: dict[str, Any], aliases: tuple[str, ...]) -> str | None:
+    if _section_text(_contents_for_language(payload, "en"), aliases) is not None:
+        return "en"
+    if _section_text(_contents_for_language(payload, "it"), aliases) is not None:
+        return "it"
+    return None
+
+
+def extract_course_syllabus_sections(
+    payload: dict[str, Any],
+    section_keys: Iterable[str] | None = None,
+) -> tuple[tuple[str, str], ...]:
+    selected_keys = normalize_syllabus_section_keys(section_keys)
+    sections: list[tuple[str, str]] = []
+    for section_key in selected_keys:
+        if section_key == "title":
+            continue
+        aliases = SYLLABUS_SECTION_ALIASES[section_key]
+        for language in ("en", "it"):
+            found = _section_text(_contents_for_language(payload, language), aliases)
+            if found is not None:
+                sections.append(found)
+                break
+    return tuple(sections)
 
 
 def load_yaml_mapping(path: pathlib.Path, description: str) -> dict[str, Any]:
@@ -42,8 +138,12 @@ def _resolve_course_path(raw_path: Any, input_path: pathlib.Path) -> pathlib.Pat
     raise ValueError(f"Course file does not exist: {path}")
 
 
-def load_clusters(input_path: pathlib.Path) -> list[ClusterInput]:
+def load_clusters(
+    input_path: pathlib.Path,
+    syllabus_section_keys: Iterable[str] | None = None,
+) -> list[ClusterInput]:
     input_path = input_path.resolve()
+    selected_section_keys = normalize_syllabus_section_keys(syllabus_section_keys)
     payload = load_yaml_mapping(input_path, "Cluster YAML")
     clusters: list[ClusterInput] = []
     seen_cluster_ids: set[int] = set()
@@ -75,16 +175,23 @@ def load_clusters(input_path: pathlib.Path) -> list[ClusterInput]:
             if not course_id:
                 raise ValueError(f"Course in {course_path} is missing its ID")
             title = str(course_title.get("name") or raw_course.get("name") or "").strip()
-            sections, languages = extract_similarity_sections(course_payload)
+            syllabus_sections = extract_course_syllabus_sections(course_payload, selected_section_keys)
+            contents_text = _section_text(_contents_for_language(course_payload, "en"), SYLLABUS_SECTION_ALIASES["contents"])
+            if contents_text is None:
+                contents_text = _section_text(_contents_for_language(course_payload, "it"), SYLLABUS_SECTION_ALIASES["contents"])
+            outcomes_text = _section_text(_contents_for_language(course_payload, "en"), SYLLABUS_SECTION_ALIASES["outcomes"])
+            if outcomes_text is None:
+                outcomes_text = _section_text(_contents_for_language(course_payload, "it"), SYLLABUS_SECTION_ALIASES["outcomes"])
             courses.append(
                 CourseInput(
                     course_id=course_id,
                     title=title,
                     path=str(course_path),
-                    course_contents=sections.get(SECTION_COURSE_CONTENTS) or "",
-                    course_contents_language=languages.get(SECTION_COURSE_CONTENTS),
-                    learning_outcomes=sections.get(SECTION_LEARNING_OUTCOMES) or "",
-                    learning_outcomes_language=languages.get(SECTION_LEARNING_OUTCOMES),
+                    course_contents=contents_text[1] if contents_text is not None else "",
+                    course_contents_language=_section_language(course_payload, SYLLABUS_SECTION_ALIASES["contents"]),
+                    learning_outcomes=outcomes_text[1] if outcomes_text is not None else "",
+                    learning_outcomes_language=_section_language(course_payload, SYLLABUS_SECTION_ALIASES["outcomes"]),
+                    syllabus_sections=syllabus_sections,
                 )
             )
         courses.sort(key=lambda course: (course.course_id.casefold(), course.course_id))
@@ -121,8 +228,16 @@ def select_clusters(
     return selected
 
 
-def conversation_cache_key(cluster: ClusterInput, config: ModelConfig) -> tuple[str, dict[str, Any]]:
+def conversation_cache_key(
+    cluster: ClusterInput,
+    config: ModelConfig,
+    *,
+    syllabus_section_keys: Iterable[str] | None = None,
+) -> tuple[str, dict[str, Any]]:
+    selected_section_keys = normalize_syllabus_section_keys(syllabus_section_keys)
     metadata = {
+        "prompt_version": PROMPT_VERSION,
+        "syllabus_sections": list(selected_section_keys),
         "endpoint": config.endpoint,
         "model_parameters": config.cache_parameters(),
         "cluster": {"id": cluster.cluster_id, "name": cluster.name},

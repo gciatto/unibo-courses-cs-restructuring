@@ -11,6 +11,7 @@ import yaml
 
 from restructuring.cli import build_parser
 from restructuring.io import (
+    DEFAULT_SYLLABUS_SECTION_KEYS,
     conversation_cache_key,
     load_clusters,
     select_clusters,
@@ -43,6 +44,10 @@ def course(course_id: str, contents: str = "Alpha material") -> CourseInput:
         course_contents_language="en",
         learning_outcomes="Apply the supplied material.",
         learning_outcomes_language="en",
+        syllabus_sections=(
+            ("Learning outcomes", "Apply the supplied material."),
+            ("Course contents", contents),
+        ),
     )
 
 
@@ -180,6 +185,16 @@ class TestRestructuringCli(unittest.TestCase):
         self.assertEqual(overridden.model, "cli-model")
         self.assertEqual(overridden.max_retries, 2)
 
+    def test_syllabus_sections_can_be_selected(self):
+        parsed = build_parser().parse_args([
+            "clusters.yml",
+            "--syllabus-sections",
+            "title",
+            "bib",
+            "office_hours",
+        ])
+        self.assertEqual(parsed.syllabus_sections, ["title", "bib", "office_hours"])
+
 
 class TestInputAndCache(unittest.TestCase):
     def test_extracts_english_first_with_per_section_italian_fallback(self):
@@ -220,6 +235,64 @@ class TestInputAndCache(unittest.TestCase):
         self.assertEqual(loaded.course_contents_language, "en")
         self.assertEqual(loaded.learning_outcomes, "Esiti italiani")
         self.assertEqual(loaded.learning_outcomes_language, "it")
+        self.assertEqual(
+            loaded.syllabus_sections,
+            (("Conoscenze e abilità da conseguire", "Esiti italiani"), ("Course contents", "English contents")),
+        )
+
+    def test_loads_selected_sections_into_markdown_order(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = pathlib.Path(tmp_dir)
+            course_path = root / "course-A.yml"
+            course_path.write_text(
+                yaml.safe_dump(
+                    {
+                        "course_title": {"id": "A", "name": "Reusable title"},
+                        "syllabus": {
+                            "en": {
+                                "contents": {
+                                    "Learning outcomes": "English outcomes",
+                                    "Course contents": "English contents",
+                                    "Readings/Bibliography": "English bibliography",
+                                }
+                            },
+                            "it": {
+                                "contents": {
+                                    "Orario di ricevimento": "Ricevimento italiano",
+                                }
+                            },
+                        },
+                    },
+                    sort_keys=False,
+                    allow_unicode=True,
+                ),
+                encoding="utf-8",
+            )
+            input_path = root / "clusters.yml"
+            input_path.write_text(
+                yaml.safe_dump(
+                    {
+                        "Cluster (4)": {
+                            "index": 4,
+                            "courses": [{"id": "A", "name": "Fallback", "path": str(course_path)}],
+                        }
+                    }
+                ),
+                encoding="utf-8",
+            )
+            loaded = load_clusters(
+                input_path,
+                syllabus_section_keys=("title", "outcomes", "contents", "bib", "office_hours"),
+            )[0].courses[0]
+        self.assertEqual(
+            loaded.syllabus_sections,
+            (
+                ("Learning outcomes", "English outcomes"),
+                ("Course contents", "English contents"),
+                ("Readings/Bibliography", "English bibliography"),
+                ("Orario di ricevimento", "Ricevimento italiano"),
+            ),
+        )
 
     def test_cache_key_is_stable_and_sensitive_to_configuration(self):
         item = cluster(7, "Cluster (7)", course("B"), course("A"))
@@ -233,6 +306,8 @@ class TestInputAndCache(unittest.TestCase):
         self.assertEqual(first, second)
         self.assertNotEqual(first, changed)
         self.assertEqual(metadata["course_ids"], ["A", "B"])
+        self.assertEqual(metadata["syllabus_sections"], list(DEFAULT_SYLLABUS_SECTION_KEYS))
+        self.assertEqual(metadata["prompt_version"], 2)
 
 
 class TestWorkflow(unittest.TestCase):
@@ -258,9 +333,10 @@ class TestWorkflow(unittest.TestCase):
             self.assertEqual(result.plantuml, final_response().plantuml)
             self.assertEqual(len(client.completions.calls), 3)
             second_prompt = client.completions.calls[1]["messages"][-1]["content"]
-            self.assertIn('"alpha": "Alpha from evidence."', second_prompt)
-            self.assertIn("<metadata_not_evidence>", second_prompt)
-            self.assertIn("<syllabus_evidence>", second_prompt)
+            self.assertIn("# Misleading title B", second_prompt)
+            self.assertIn("## Learning outcomes", second_prompt)
+            self.assertIn("## Course contents", second_prompt)
+            self.assertIn("<syllabus_markdown>", second_prompt)
             cached_files = list(cache_dir.glob("*.yml"))
             self.assertEqual(len(cached_files), 1)
             payload = yaml.safe_load(cached_files[0].read_text(encoding="utf-8"))

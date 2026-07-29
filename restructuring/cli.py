@@ -6,6 +6,7 @@ import os
 import pathlib
 
 from restructuring.models import ModelConfig, RetryConfig
+from restructuring.io import DEFAULT_SYLLABUS_SECTION_KEYS
 from restructuring.workflow import run_restructuring
 
 
@@ -53,6 +54,17 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--cluster-id", type=int, action="append", default=[])
     parser.add_argument("--cluster-name-regex", action="append", default=[])
+    parser.add_argument(
+        "--syllabus-sections",
+        nargs="+",
+        default=list(DEFAULT_SYLLABUS_SECTION_KEYS),
+        choices=("title", "outcomes", "contents", "bib", "teaching_methods", "assessment", "teaching_tools", "office_hours"),
+        metavar="SECTION",
+        help=(
+            "Syllabus sections to include in the reconstructed markdown. "
+            "Keywords: title, outcomes, contents, bib, teaching_methods, assessment, teaching_tools, office_hours."
+        ),
+    )
     parser.add_argument("--refresh-cache", action="store_true")
     return parser
 
@@ -97,6 +109,7 @@ def main() -> None:
                 initial_backoff=args.initial_backoff,
                 max_backoff=args.max_backoff,
             ),
+            syllabus_section_keys=tuple(args.syllabus_sections),
             cluster_ids=tuple(args.cluster_id),
             cluster_name_regexes=tuple(args.cluster_name_regex),
             refresh_cache=args.refresh_cache,
