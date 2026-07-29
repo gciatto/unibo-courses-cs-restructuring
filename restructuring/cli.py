@@ -10,7 +10,7 @@ from restructuring.workflow import run_restructuring
 
 
 DEFAULT_ENDPOINT = "https://api.openai.com/v1"
-DEFAULT_MODEL = "gpt-5.6-terra"
+DEFAULT_MODEL = "gpt-5.6-luna"
 
 
 def build_parser() -> argparse.ArgumentParser:
