@@ -29,7 +29,7 @@ Diagram requirements:
 - New classes represent proposed courses and contain only target topic keys as fields.
 - The proposed curriculum may group or abstract source topics into sensible target
   topics.
-- Put every target-topic description in a PlantUML note box, not in a class field.
+- Put all mentioned topics descriptions in a separate note block, acting as legend.
 - Use A <|-- B to mean B depends on or is propaedeutically after A. Multiple
   inheritance is allowed.
 - Show every old course as a differently coloured or transparent class labelled with
