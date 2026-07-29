@@ -1,0 +1,294 @@
+@startuml
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam linetype ortho
+skinparam classAttributeIconSize 0
+skinparam class {
+  BorderColor #35566F
+  ArrowColor #526D82
+}
+
+left to right direction
+
+title Proposed curriculum hierarchy — Informatics Principles Foundations
+
+package "Proposed curriculum" {
+  class "Computing Foundations" as new_foundations #D9EAF7 {
+    informatics_and_computing_context
+    computational_problem_solving
+    information_representation
+    algorithm_notation
+    computer_system_overview
+  }
+
+  class "Programming Fundamentals" as new_programming #D9EAF7 {
+    imperative_programming
+    control_flow_and_iteration
+    functions_parameters_and_recursion
+    primitive_and_aggregate_data
+    program_io
+    program_development_tools
+  }
+
+  class "Data Structures and Algorithms" as new_dsa #D9EAF7 {
+    abstract_data_types
+    linear_and_linked_structures
+    stacks_queues_and_trees
+    memory_management_and_pointers
+    searching_sorting_and_complexity
+  }
+
+  class "Scientific Computing and Data Analysis" as new_scientific #D9EAF7 {
+    array_matrix_computing
+    numerical_methods
+    scientific_programming_workflows
+    scientific_data_formats_and_export
+    statistical_data_analysis
+    visualization_and_packages
+  }
+
+  class "Digital Logic Design" as new_logic #D9EAF7 {
+    boolean_logic
+    combinational_circuit_design
+    finite_state_models
+    sequential_circuit_design
+  }
+
+  class "Computer Architecture" as new_architecture #D9EAF7 {
+    instruction_set_and_assembly
+    processor_organization
+    memory_io_and_interrupts
+    computer_performance_and_parallelism
+    microprocessor_system_design
+  }
+
+  class "Systems and Networks" as new_systems #D9EAF7 {
+    operating_systems
+    computer_networking_and_internet
+    data_security
+    unix_and_system_tools
+  }
+
+  class "Programming Languages and Paradigms" as new_paradigms #D9EAF7 {
+    language_syntax_semantics_and_runtime
+    object_oriented_programming
+    functional_programming
+    logic_programming
+    multiparadigm_integration
+  }
+
+  class "Software Engineering Practice" as new_software_engineering #D9EAF7 {
+    development_processes_and_agile
+    testing_and_quality
+    refactoring_and_design_patterns
+    continuous_delivery_and_documentation
+  }
+
+  class "Relational Databases" as new_databases #D9EAF7 {
+    relational_data_model_and_algebra
+    sql_definition_manipulation_and_queries
+    database_integrity_views_and_access
+  }
+
+  class "Quantum Computing Foundations" as new_quantum_foundations #D9EAF7 {
+    quantum_mathematical_foundations
+    qubits_and_quantum_circuits
+    quantum_programming_models
+  }
+
+  class "Quantum Algorithms and Technologies" as new_quantum_advanced #D9EAF7 {
+    quantum_algorithms_and_complexity
+    quantum_error_correction
+    quantum_protocols_and_cryptography
+  }
+}
+
+' A <|-- B means that B is propaedeutically after A.
+new_foundations <|-- new_programming
+new_foundations <|-- new_logic
+new_foundations <|-- new_quantum_foundations
+new_programming <|-- new_dsa
+new_programming <|-- new_scientific
+new_programming <|-- new_paradigms
+new_programming <|-- new_databases
+new_logic <|-- new_architecture
+new_architecture <|-- new_systems
+new_dsa <|-- new_software_engineering
+new_paradigms <|-- new_software_engineering
+new_quantum_foundations <|-- new_quantum_advanced
+
+package "Legacy courses" {
+  class "00819-B\nProgramming" as old_00819_B #F2F2F2
+  class "03716\nDigital Design Principles and Computer Architecture" as old_03716 #F2F2F2
+  class "09730\nPrinciples of Informatics" as old_09730 #F2F2F2
+  class "09730-A\nPrinciples of Informatics" as old_09730_A #F2F2F2
+  class "15305\nFoundations of Informatics A" as old_15305 #F2F2F2
+  class "28004\nFoundations of Informatics T-1" as old_28004 #F2F2F2
+  class "28011-A\nLogic Design T" as old_28011_A #F2F2F2
+  class "28623\nFoundations of Informatics and Laboratory" as old_28623 #F2F2F2
+  class "29227-A\nFoundations of Informatics T" as old_29227_A #F2F2F2
+  class "60348\nInformatics" as old_60348 #F2F2F2
+  class "69731\nComputer Architecture" as old_69731 #F2F2F2
+  class "81612\nProgramming and Development paradigms" as old_81612 #F2F2F2
+  class "88146\nFundamentals of Computer Programming P2" as old_88146 #F2F2F2
+  class "89988\nElements of Informatics" as old_89988 #F2F2F2
+  class "93034\nFoundations of Computer Science T" as old_93034 #F2F2F2
+  class "B3567\nINTRODUCTION TO QUANTUM COMPUTING" as old_B3567 #F2F2F2
+  class "B8159\nINFORMATICA" as old_B8159 #F2F2F2
+}
+
+old_00819_B ..> new_programming : subsumed by
+old_00819_B ..> new_dsa : subsumed by
+
+old_03716 ..> new_logic : subsumed by
+old_03716 ..> new_architecture : subsumed by
+
+old_09730 ..> new_foundations : subsumed by
+old_09730 ..> new_programming : subsumed by
+old_09730 ..> new_dsa : subsumed by
+
+old_09730_A ..> new_foundations : subsumed by
+old_09730_A ..> new_logic : subsumed by
+old_09730_A ..> new_scientific : subsumed by
+
+old_15305 ..> new_foundations : subsumed by
+old_15305 ..> new_programming : subsumed by
+old_15305 ..> new_dsa : subsumed by
+old_15305 ..> new_paradigms : subsumed by
+
+old_28004 ..> new_foundations : subsumed by
+old_28004 ..> new_programming : subsumed by
+old_28004 ..> new_dsa : subsumed by
+old_28004 ..> new_paradigms : subsumed by
+old_28004 ..> new_systems : subsumed by
+
+old_28011_A ..> new_logic : subsumed by
+
+old_28623 ..> new_foundations : subsumed by
+old_28623 ..> new_programming : subsumed by
+old_28623 ..> new_dsa : subsumed by
+old_28623 ..> new_scientific : subsumed by
+old_28623 ..> new_systems : subsumed by
+
+old_29227_A ..> new_foundations : subsumed by
+old_29227_A ..> new_programming : subsumed by
+old_29227_A ..> new_paradigms : subsumed by
+old_29227_A ..> new_scientific : subsumed by
+old_29227_A ..> new_systems : subsumed by
+
+old_60348 ..> new_foundations : subsumed by
+old_60348 ..> new_programming : subsumed by
+old_60348 ..> new_scientific : subsumed by
+old_60348 ..> new_systems : subsumed by
+
+old_69731 ..> new_foundations : subsumed by
+old_69731 ..> new_logic : subsumed by
+old_69731 ..> new_architecture : subsumed by
+
+old_81612 ..> new_paradigms : subsumed by
+old_81612 ..> new_software_engineering : subsumed by
+
+old_88146 ..> new_logic : subsumed by
+old_88146 ..> new_architecture : subsumed by
+
+old_89988 ..> new_foundations : subsumed by
+old_89988 ..> new_programming : subsumed by
+old_89988 ..> new_scientific : subsumed by
+old_89988 ..> new_paradigms : subsumed by
+
+old_93034 ..> new_foundations : subsumed by
+old_93034 ..> new_programming : subsumed by
+old_93034 ..> new_dsa : subsumed by
+old_93034 ..> new_paradigms : subsumed by
+old_93034 ..> new_systems : subsumed by
+
+old_B3567 ..> new_quantum_foundations : subsumed by
+old_B3567 ..> new_quantum_advanced : subsumed by
+
+old_B8159 ..> new_foundations : subsumed by
+old_B8159 ..> new_scientific : subsumed by
+old_B8159 ..> new_systems : subsumed by
+old_B8159 ..> new_databases : subsumed by
+
+note as TopicLegend
+<b>Target-topic legend</b>
+
+<b>Computing Foundations</b>
+informatics_and_computing_context — Informatics, ICT, computer history, software categories, and the role and use of computing systems.
+computational_problem_solving — Translating small problems into computational solutions through systematic algorithm design.
+information_representation — Binary and other representations of numeric and non-numeric information in computers.
+algorithm_notation — Representation of algorithms with pseudocode, flow diagrams, and comparable notations.
+computer_system_overview — Introductory organization of hardware, software, memory, processors, and their interactions.
+
+<b>Programming Fundamentals</b>
+imperative_programming — Core imperative, structured, and modular program construction across introductory languages.
+control_flow_and_iteration — Sequence, selection, loops, and iterative solution techniques.
+functions_parameters_and_recursion — Functions, procedures, scope, parameter passing, activation behavior, and recursion.
+primitive_and_aggregate_data — Primitive values, strings, records or structures, arrays, matrices, and language-level data types.
+program_io — Console and file input/output in introductory programming environments.
+program_development_tools — Editors, compilers, interpreters, debuggers, command-line environments, and basic development workflow.
+
+<b>Data Structures and Algorithms</b>
+abstract_data_types — Specification and implementation of reusable abstract data types.
+linear_and_linked_structures — Arrays, lists, linked representations, and algorithms over linear collections.
+stacks_queues_and_trees — Construction and use of stacks, queues, and tree structures.
+memory_management_and_pointers — Addresses, pointers, dynamic allocation, memory organization, and memory-leak concerns.
+searching_sorting_and_complexity — Searching, ordering, sorting, numerical algorithm analysis, and introductory complexity reasoning.
+
+<b>Scientific Computing and Data Analysis</b>
+array_matrix_computing — Vector, array, and matrix operations in scientific programming environments.
+numerical_methods — Numerical algorithms for approximation, roots, derivatives, integrals, and related computations.
+scientific_programming_workflows — Use of MATLAB/Octave, Python, R, or C++ for numerical and scientific problem solving.
+scientific_data_formats_and_export — Reading scientific catalogs and formats and exporting results to CSV or spreadsheets.
+statistical_data_analysis — Sample selection, correlations, random values, and statistical data modeling.
+visualization_and_packages — Graphics, scientific modules, and package-based analytical workflows.
+
+<b>Digital Logic Design</b>
+boolean_logic — Boolean algebra, expressions, functions, gates, and circuit representations.
+combinational_circuit_design — Analysis and synthesis of combinational logic networks.
+finite_state_models — Finite-state machines for representing sequential system behavior.
+sequential_circuit_design — Analysis and synthesis of synchronous and asynchronous sequential networks.
+
+<b>Computer Architecture</b>
+instruction_set_and_assembly — Machine languages, instruction-set architectures, assembly programming, and RISC/CISC styles.
+processor_organization — CPU structure, Von Neumann organization, execution models, and processor implementations such as DLX.
+memory_io_and_interrupts — Memory devices, addressing, input/output addressing, and interrupts.
+computer_performance_and_parallelism — Performance measurement, architectural performance effects, and parallel architectures.
+microprocessor_system_design — Design and organization of simple microprocessor-based systems.
+
+<b>Systems and Networks</b>
+operating_systems — Operating systems as the software layer managing computer operation and resources.
+computer_networking_and_internet — Networking concepts, Internet services, communication protocols, the web, and DNS.
+data_security — Introductory principles concerning the security of stored and communicated data.
+unix_and_system_tools — Unix command-line use and system-oriented programming environments and tools.
+
+<b>Programming Languages and Paradigms</b>
+language_syntax_semantics_and_runtime — Language history, EBNF syntax, semantics, execution models, and run-time activation records.
+object_oriented_programming — Classes, inheritance, polymorphism, templates or typing mechanisms, and object-oriented program design.
+functional_programming — Functional programming, functions as abstractions, and lambda-calculus foundations.
+logic_programming — Declarative logic programming and implementation with Prolog.
+multiparadigm_integration — Combination and integration of imperative, object-oriented, functional, and logic-programming approaches.
+
+<b>Software Engineering Practice</b>
+development_processes_and_agile — Program-development phases, software methodologies, agile processes, and Scrum.
+testing_and_quality — Unit testing, test-driven development, agile testing, clean code, and software-quality practices.
+refactoring_and_design_patterns — Refactoring and the use of design and architectural patterns to improve software structure.
+continuous_delivery_and_documentation — Continuous integration, continuous delivery, and project documentation practices.
+
+<b>Relational Databases</b>
+relational_data_model_and_algebra — Relations, tuples, attributes, schemas, databases, and relational-algebra operations.
+sql_definition_manipulation_and_queries — SQL schema definition, data modification, joins, subqueries, grouping, aggregation, and set operations.
+database_integrity_views_and_access — Keys, referential integrity, views, and management of database access privileges.
+
+<b>Quantum Computing Foundations</b>
+quantum_mathematical_foundations — Linear algebra, complex Hilbert spaces, and mathematical foundations for quantum computation.
+qubits_and_quantum_circuits — Mathematical representation of qubits and quantum circuits as computational models.
+quantum_programming_models — Quantum programming and graphical languages used to express quantum circuits.
+
+<b>Quantum Algorithms and Technologies</b>
+quantum_algorithms_and_complexity — Quantum algorithms such as Deutsch, Bernstein–Vazirani, Simon, Grover, and Shor, with quantum complexity concepts.
+quantum_error_correction — Principles and methods for detecting and correcting errors in quantum computation.
+quantum_protocols_and_cryptography — Quantum protocols, advanced applications, and quantum cryptography.
+end note
+
+@enduml
