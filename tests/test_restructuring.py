@@ -26,8 +26,10 @@ from restructuring.models import (
     Topic,
 )
 from restructuring.workflow import (
+    PROMPTS_DIR,
     call_with_backoff,
     process_cluster,
+    render_plantuml_svg,
     run_restructuring,
 )
 
@@ -68,6 +70,19 @@ class FakeClient:
     def __init__(self, responses: list[object]):
         self.completions = FakeCompletions(responses)
         self.chat = SimpleNamespace(completions=self.completions)
+
+
+class FakePlantUMLRenderer:
+    def __init__(self, failures: int = 0, svg: str = "<svg></svg>"):
+        self.failures = failures
+        self.svg = svg
+        self.calls: list[tuple[str, str, str]] = []
+
+    def dump(self, path: str, output_format: str, code: str) -> None:
+        self.calls.append((path, output_format, code))
+        if len(self.calls) <= self.failures:
+            raise TimeoutError("temporary renderer timeout")
+        pathlib.Path(path).write_text(self.svg, encoding="utf-8")
 
 
 def response_for_course(*topics: Topic, covered: list[str]) -> CourseTopicsResponse:
@@ -267,6 +282,16 @@ class TestWorkflow(unittest.TestCase):
             )
             self.assertEqual(len(refreshed.completions.calls), 3)
 
+    def test_prompts_are_loaded_from_external_text_files(self):
+        self.assertEqual(
+            {path.name for path in PROMPTS_DIR.glob("*.txt")},
+            {"system.txt", "course.txt", "final.txt"},
+        )
+        self.assertIn(
+            "Never infer a topic from a course title",
+            (PROMPTS_DIR / "system.txt").read_text(encoding="utf-8"),
+        )
+
     def test_changed_course_prompt_reuses_prefix_and_replaces_suffix(self):
         with tempfile.TemporaryDirectory() as tmp_dir:
             cache_dir = pathlib.Path(tmp_dir)
@@ -324,6 +349,7 @@ class TestWorkflow(unittest.TestCase):
                 cache_dir=root / "cache",
                 output_root=root / "output",
                 now=datetime(2026, 7, 29, 12, 34),
+                plantuml_renderer=FakePlantUMLRenderer(),
             )
             self.assertEqual(output_dir.name, "attempt-2026-07-29-12-34")
             self.assertTrue((output_dir / "topics-of-cluster-5.yml").exists())
@@ -331,8 +357,38 @@ class TestWorkflow(unittest.TestCase):
             self.assertTrue((output_dir / "topics-of-course-B.yml").exists())
             plantuml = (output_dir / "restructure-proposal-for-cluster-5.puml").read_text()
             self.assertTrue(plantuml.startswith("@startuml"))
+            svg = output_dir / "restructure-proposal-for-cluster-5.svg"
+            self.assertEqual(svg.read_text(encoding="utf-8"), "<svg></svg>")
             cluster_payload = yaml.safe_load((output_dir / "topics-of-cluster-5.yml").read_text())
             self.assertEqual(list(cluster_payload["topics"]), ["alpha", "beta"])
+
+    def test_plantuml_rendering_retries_and_rejects_error_svg(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            destination = pathlib.Path(tmp_dir) / "proposal.svg"
+            renderer = FakePlantUMLRenderer(failures=2)
+            sleeps: list[float] = []
+            render_plantuml_svg(
+                "@startuml\nclass A\n@enduml",
+                destination,
+                RetryConfig(max_retries=2, initial_backoff=1, max_backoff=60),
+                renderer=renderer,
+                sleep=sleeps.append,
+                random_uniform=lambda _minimum, maximum: maximum,
+            )
+            self.assertEqual(len(renderer.calls), 3)
+            self.assertEqual(sleeps, [1, 2])
+            self.assertTrue(destination.exists())
+
+            with self.assertRaisesRegex(ValueError, "syntax-error SVG"):
+                render_plantuml_svg(
+                    "@startuml\nbad\n@enduml",
+                    destination,
+                    RetryConfig(max_retries=0),
+                    renderer=FakePlantUMLRenderer(
+                        svg="<svg><text>Syntax Error? (Assumed diagram type: class)</text></svg>"
+                    ),
+                    sleep=lambda _: self.fail("must not sleep"),
+                )
 
     def test_retry_uses_exponential_backoff_and_skips_permanent_errors(self):
         class RateLimitError(Exception):

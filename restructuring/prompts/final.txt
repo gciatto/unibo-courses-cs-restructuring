@@ -1,0 +1,23 @@
+All old courses in this cluster have now been examined.
+
+<cluster_metadata>
+cluster_id: $cluster_id
+cluster_name: $cluster_name
+</cluster_metadata>
+
+<current_source_topics>
+$current_topics
+</current_source_topics>
+
+<provisional_course_memberships>
+$provisional_memberships
+</provisional_course_memberships>
+
+<old_course_labels>
+$old_courses
+</old_course_labels>
+
+Produce the final reconciled source-topic ontology and a course_topics entry for every
+old course, using only final topic keys. Then produce the complete PlantUML restructuring
+proposal according to the system rules. Every old course ID and title must appear in the
+diagram, and every old course must have at least one dashed link to a proposed new class.

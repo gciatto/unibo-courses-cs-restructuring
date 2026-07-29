@@ -1,0 +1,17 @@
+Analyze the next old course in this cluster.
+
+<metadata_not_evidence>
+course_id: $course_id
+course_title: $course_title
+</metadata_not_evidence>
+
+<current_topics>
+$current_topics
+</current_topics>
+
+<syllabus_evidence>
+$syllabus_evidence
+</syllabus_evidence>
+
+Return the complete refined topic ontology after considering only this syllabus, then
+select in covered_topic_keys exactly the refined topics covered by this course.

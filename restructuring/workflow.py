@@ -5,6 +5,7 @@ import logging
 import os
 import pathlib
 import random
+import string
 import time
 from datetime import datetime
 from typing import Any, Callable, TypeVar
@@ -32,36 +33,16 @@ from restructuring.models import (
 
 LOGGER = logging.getLogger(__name__)
 
+PROMPTS_DIR = pathlib.Path(__file__).resolve().parent / "prompts"
 
-SYSTEM_PROMPT = """You are a curriculum analyst and software-architecture modeller.
 
-Work on exactly one cluster of existing university courses per conversation. Build a
-canonical ontology of topics actually supported by the supplied syllabus evidence,
-then propose a rational hierarchy of new courses.
+def _load_prompt(name: str) -> str:
+    return (PROMPTS_DIR / name).read_text(encoding="utf-8").strip()
 
-Grounding rules:
-- Treat course IDs and titles as labels only. Never infer a topic from a course title,
-  cluster title, common expectations, or outside knowledge.
-- A source topic may be created or assigned to a course only when it is supported by
-  that course's supplied Course contents or Learning outcomes.
-- Topic keys must be short, lowercase snake_case identifiers. Descriptions must state
-  what the supplied syllabi actually cover.
-- As new evidence arrives, refine the complete ontology: update descriptions, merge
-  duplicates, split overly broad topics, and return the entire revised ontology.
-- covered_topic_keys must select only topics evidenced by the current syllabus.
 
-Final restructuring rules:
-- Reconcile every old course against one final source-topic ontology.
-- The proposed new curriculum may group or abstract source topics into sensible target
-  topics, but must not claim that an old course covers unsupported source material.
-- Return render-ready PlantUML from @startuml through @enduml.
-- New classes represent proposed courses; their fields contain only target topic keys.
-- Put target-topic descriptions in PlantUML note boxes, not in class fields.
-- Use A <|-- B to mean B depends on or is propaedeutically after A; multiple inheritance
-  is allowed.
-- Show every old course as a differently coloured or transparent class labelled with
-  its ID and title, and connect it to every subsuming new class with dashed arrows.
-"""
+SYSTEM_PROMPT = _load_prompt("system.txt")
+COURSE_PROMPT = string.Template(_load_prompt("course.txt"))
+FINAL_PROMPT = string.Template(_load_prompt("final.txt"))
 
 
 T = TypeVar("T", bound=BaseModel)
@@ -85,23 +66,16 @@ def course_prompt(course: CourseInput, current_topics: dict[str, str]) -> str:
             "text": course.learning_outcomes,
         },
     }
-    return f"""Analyze the next old course in this cluster.
-
-<metadata_not_evidence>
-course_id: {course.course_id}
-course_title: {course.title}
-</metadata_not_evidence>
-
-<current_topics>
-{json.dumps(current_topics, ensure_ascii=False, sort_keys=True, indent=2)}
-</current_topics>
-
-<syllabus_evidence>
-{json.dumps(evidence, ensure_ascii=False, sort_keys=True, indent=2)}
-</syllabus_evidence>
-
-Return the complete refined topic ontology after considering only this syllabus, then
-select in covered_topic_keys exactly the refined topics covered by this course."""
+    return COURSE_PROMPT.substitute(
+        course_id=course.course_id,
+        course_title=course.title,
+        current_topics=json.dumps(
+            current_topics, ensure_ascii=False, sort_keys=True, indent=2
+        ),
+        syllabus_evidence=json.dumps(
+            evidence, ensure_ascii=False, sort_keys=True, indent=2
+        ),
+    )
 
 
 def final_prompt(
@@ -113,33 +87,23 @@ def final_prompt(
         {"id": course.course_id, "title": course.title}
         for course in cluster.courses
     ]
-    return f"""All old courses in this cluster have now been examined.
-
-<cluster_metadata>
-cluster_id: {cluster.cluster_id}
-cluster_name: {cluster.name}
-</cluster_metadata>
-
-<current_source_topics>
-{json.dumps(current_topics, ensure_ascii=False, sort_keys=True, indent=2)}
-</current_source_topics>
-
-<provisional_course_memberships>
-{json.dumps(provisional_memberships, ensure_ascii=False, sort_keys=True, indent=2)}
-</provisional_course_memberships>
-
-<old_course_labels>
-{json.dumps(old_courses, ensure_ascii=False, sort_keys=True, indent=2)}
-</old_course_labels>
-
-Produce the final reconciled source-topic ontology and a course_topics entry for every
-old course, using only final topic keys. Then produce the complete PlantUML restructuring
-proposal according to the system rules. Every old course ID and title must appear in the
-diagram, and every old course must have at least one dashed link to a proposed new class."""
+    return FINAL_PROMPT.substitute(
+        cluster_id=cluster.cluster_id,
+        cluster_name=cluster.name,
+        current_topics=json.dumps(
+            current_topics, ensure_ascii=False, sort_keys=True, indent=2
+        ),
+        provisional_memberships=json.dumps(
+            provisional_memberships, ensure_ascii=False, sort_keys=True, indent=2
+        ),
+        old_courses=json.dumps(
+            old_courses, ensure_ascii=False, sort_keys=True, indent=2
+        ),
+    )
 
 
 def _is_retryable(error: Exception) -> bool:
-    if isinstance(error, (ValidationError, ResponseValidationError)):
+    if isinstance(error, (ValidationError, ResponseValidationError, PlantUMLRenderError)):
         return True
     status_code = getattr(error, "status_code", None)
     if status_code in {408, 409, 429} or isinstance(status_code, int) and status_code >= 500:
@@ -153,6 +117,14 @@ def _is_retryable(error: Exception) -> bool:
 
 
 class ResponseValidationError(ValueError):
+    pass
+
+
+class PlantUMLRenderError(RuntimeError):
+    pass
+
+
+class PlantUMLSyntaxError(ValueError):
     pass
 
 
@@ -172,7 +144,7 @@ def call_with_backoff(
             ceiling = min(retry.max_backoff, retry.initial_backoff * (2**attempt))
             delay = random_uniform(ceiling / 2, ceiling) if ceiling > 0 else 0
             LOGGER.warning(
-                "Retryable LLM error %s; retrying in %.2f seconds (%d/%d)",
+                "Retryable operation error %s; retrying in %.2f seconds (%d/%d)",
                 error.__class__.__name__,
                 delay,
                 attempt + 1,
@@ -341,6 +313,56 @@ def create_openai_client(config: ModelConfig, request_timeout: float) -> Any:
     )
 
 
+def create_plantuml_renderer() -> Any:
+    try:
+        from plantumlcli import RemotePlantuml
+    except ImportError as error:
+        raise RuntimeError(
+            "The 'plantumlcli' package is required; install requirements.txt"
+        ) from error
+    return RemotePlantuml.autoload()
+
+
+def render_plantuml_svg(
+    plantuml: str,
+    destination: pathlib.Path,
+    retry: RetryConfig,
+    *,
+    renderer: Any | None = None,
+    sleep: Callable[[float], None] = time.sleep,
+    random_uniform: Callable[[float, float], float] = random.uniform,
+) -> None:
+    resolved_renderer = renderer or create_plantuml_renderer()
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    temporary = destination.with_name(f".{destination.stem}.tmp.svg")
+
+    def operation() -> None:
+        try:
+            temporary.unlink(missing_ok=True)
+            resolved_renderer.dump(str(temporary), "svg", plantuml)
+            svg = temporary.read_text(encoding="utf-8")
+        except Exception as error:
+            temporary.unlink(missing_ok=True)
+            raise PlantUMLRenderError(
+                f"PlantUML remote rendering failed: {error}"
+            ) from error
+        normalized = svg.casefold()
+        error_markers = ("syntax error", "error line", "[from string")
+        if "<svg" not in normalized or any(marker in normalized for marker in error_markers):
+            temporary.unlink(missing_ok=True)
+            raise PlantUMLSyntaxError(
+                "PlantUML server returned an invalid or syntax-error SVG"
+            )
+        temporary.replace(destination)
+
+    call_with_backoff(
+        operation,
+        retry,
+        sleep=sleep,
+        random_uniform=random_uniform,
+    )
+
+
 def create_attempt_directory(output_root: pathlib.Path, now: datetime | None = None) -> pathlib.Path:
     timestamp = (now or datetime.now()).strftime("%Y-%m-%d-%H-%M")
     output_dir = output_root / f"attempt-{timestamp}"
@@ -363,6 +385,7 @@ def run_restructuring(
     cache_dir: pathlib.Path | None = None,
     output_root: pathlib.Path | None = None,
     client: Any | None = None,
+    plantuml_renderer: Any | None = None,
     now: datetime | None = None,
     sleep: Callable[[float], None] = time.sleep,
     random_uniform: Callable[[float, float], float] = random.uniform,
@@ -383,6 +406,19 @@ def run_restructuring(
             retry,
             resolved_cache_dir,
             refresh_cache=refresh_cache,
+            sleep=sleep,
+            random_uniform=random_uniform,
+        )
+        svg_path = (
+            output_dir
+            / f"restructure-proposal-for-cluster-{cluster.cluster_id}.svg"
+        )
+        LOGGER.info("Cluster %s: validating PlantUML and rendering SVG", cluster.cluster_id)
+        render_plantuml_svg(
+            response.plantuml,
+            svg_path,
+            retry,
+            renderer=plantuml_renderer,
             sleep=sleep,
             random_uniform=random_uniform,
         )
