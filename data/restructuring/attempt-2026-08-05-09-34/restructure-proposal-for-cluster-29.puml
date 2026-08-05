@@ -1,0 +1,229 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #E8F1FB
+  BorderColor #24527A
+}
+skinparam class<<old_course>> {
+  BackgroundColor #F3F3F3
+  BorderColor #999999
+  FontColor #555555
+}
+
+package "Proposed curriculum" {
+  class digital_literacy {
+    digital_literacy
+  }
+  class programming_foundations {
+    programming_foundations
+  }
+  class computer_architecture {
+    computer_architecture
+  }
+  class operating_systems {
+    operating_systems
+  }
+  class networks_distributed {
+    networks_distributed
+  }
+  class data_information_systems {
+    data_information_systems
+  }
+  class security_trust {
+    security_trust
+  }
+  class digital_forensics {
+    digital_forensics
+  }
+  class health_informatics {
+    health_informatics
+  }
+  class geospatial_computing {
+    geospatial_computing
+  }
+  class digital_government_documents {
+    digital_government_documents
+  }
+  class research_and_ai {
+    research_and_ai
+  }
+}
+
+digital_literacy <|-- programming_foundations
+computer_architecture <|-- operating_systems
+computer_architecture <|-- networks_distributed
+operating_systems <|-- networks_distributed
+programming_foundations <|-- data_information_systems
+networks_distributed <|-- security_trust
+data_information_systems <|-- health_informatics
+data_information_systems <|-- geospatial_computing
+digital_literacy <|-- digital_government_documents
+programming_foundations <|-- research_and_ai
+security_trust <|-- digital_forensics
+operating_systems <|-- digital_forensics
+networks_distributed <|-- digital_forensics
+
+class "07276\nComputer Science" as course_07276 <<old_course>> #F3F3F3
+class "07276-C\nComputer Science" as course_07276_C <<old_course>> #F3F3F3
+class "08574\nOperating Systems" as course_08574 <<old_course>> #F3F3F3
+class "08574-A\nOperating Systems" as course_08574_A <<old_course>> #F3F3F3
+class "11925\nComputer Architecture" as course_11925 <<old_course>> #F3F3F3
+class "15920\nComputer Lab" as course_15920 <<old_course>> #F3F3F3
+class "20741\nInformation Processing Systems" as course_20741 <<old_course>> #F3F3F3
+class "28106\nComputer Science for Environmental Sciences" as course_28106 <<old_course>> #F3F3F3
+class "39176\nBasic and Laboratory Informatics" as course_39176 <<old_course>> #F3F3F3
+class "57828\nInformatics" as course_57828 <<old_course>> #F3F3F3
+class "69259\nComputer Science" as course_69259 <<old_course>> #F3F3F3
+class "75198\nHealth Information Processing Systems" as course_75198 <<old_course>> #F3F3F3
+class "78510\nInformatics" as course_78510 <<old_course>> #F3F3F3
+class "81676\nDigital Forensic" as course_81676 <<old_course>> #F3F3F3
+class "82202\nInformatic" as course_82202 <<old_course>> #F3F3F3
+class "82202-A\nInformatic" as course_82202_A <<old_course>> #F3F3F3
+class "96007\nFoundations of Computer Architecture and Operating Systems" as course_96007 <<old_course>> #F3F3F3
+class "96346-A\nInformatics" as course_96346_A <<old_course>> #F3F3F3
+class "B4826\nInformatics for the Humanities" as course_B4826 <<old_course>> #F3F3F3
+
+course_07276 ..> digital_literacy
+course_07276 ..> networks_distributed
+course_07276 ..> operating_systems
+course_07276 ..> security_trust
+course_07276_C ..> digital_literacy
+course_07276_C ..> networks_distributed
+course_07276_C ..> data_information_systems
+course_07276_C ..> health_informatics
+course_07276_C ..> research_and_ai
+course_08574 ..> operating_systems
+course_08574 ..> networks_distributed
+course_08574 ..> programming_foundations
+course_08574 ..> security_trust
+course_08574_A ..> operating_systems
+course_08574_A ..> programming_foundations
+course_08574_A ..> networks_distributed
+course_11925 ..> computer_architecture
+course_11925 ..> operating_systems
+course_15920 ..> digital_literacy
+course_15920 ..> data_information_systems
+course_20741 ..> operating_systems
+course_20741 ..> networks_distributed
+course_20741 ..> data_information_systems
+course_28106 ..> digital_literacy
+course_28106 ..> programming_foundations
+course_28106 ..> networks_distributed
+course_28106 ..> data_information_systems
+course_39176 ..> digital_literacy
+course_39176 ..> networks_distributed
+course_39176 ..> data_information_systems
+course_39176 ..> health_informatics
+course_39176 ..> security_trust
+course_57828 ..> digital_literacy
+course_57828 ..> computer_architecture
+course_57828 ..> operating_systems
+course_57828 ..> networks_distributed
+course_57828 ..> programming_foundations
+course_57828 ..> data_information_systems
+course_57828 ..> security_trust
+course_69259 ..> computer_architecture
+course_69259 ..> programming_foundations
+course_69259 ..> data_information_systems
+course_69259 ..> geospatial_computing
+course_75198 ..> data_information_systems
+course_75198 ..> health_informatics
+course_78510 ..> digital_literacy
+course_78510 ..> computer_architecture
+course_78510 ..> operating_systems
+course_78510 ..> networks_distributed
+course_78510 ..> programming_foundations
+course_78510 ..> security_trust
+course_78510 ..> health_informatics
+course_81676 ..> digital_forensics
+course_81676 ..> security_trust
+course_81676 ..> operating_systems
+course_81676 ..> networks_distributed
+course_82202 ..> digital_literacy
+course_82202 ..> networks_distributed
+course_82202 ..> data_information_systems
+course_82202 ..> security_trust
+course_82202 ..> health_informatics
+course_82202_A ..> digital_literacy
+course_82202_A ..> networks_distributed
+course_82202_A ..> data_information_systems
+course_82202_A ..> security_trust
+course_82202_A ..> health_informatics
+course_96007 ..> computer_architecture
+course_96007 ..> operating_systems
+course_96007 ..> programming_foundations
+course_96346_A ..> digital_government_documents
+course_B4826 ..> digital_literacy
+course_B4826 ..> programming_foundations
+course_B4826 ..> networks_distributed
+course_B4826 ..> data_information_systems
+course_B4826 ..> research_and_ai
+
+note right of digital_literacy
+<b>Topic legend</b>
+
+digital_literacy:
+Computer fundamentals; computer hardware and software; computing history;
+Internet and World Wide Web; email and messaging; word processing,
+spreadsheets, presentations, Web search, cloud services, online
+collaboration, and social networks.
+
+programming_foundations:
+Visual block programming; programming-language principles; ANSI C;
+Python scripting; VBA and macros; regular expressions; data structures.
+
+computer_architecture:
+Binary and number systems; computer arithmetic; Boolean algebra and
+digital logic circuits; CPU, memory, bus, instruction sets; assembly,
+machine language, and low-level programming.
+
+operating_systems:
+Operating-system structure and functions; processes and threads; CPU
+scheduling; concurrency and parallelism; memory and I/O management;
+file systems; shell scripting; virtualization, containers, Docker,
+Kubernetes, and infrastructure- and platform-as-a-service services.
+
+networks_distributed:
+Computer networks and protocols; Internet communication; distributed
+systems and distributed communication.
+
+data_information_systems:
+Database concepts; relational databases, keys, SQL, tables and queries;
+large-scale datasets; information-system organization, workflows,
+archiving, authorization, and administration.
+
+security_trust:
+IT security, privacy, health-data protection, workstation and network
+security, cryptography, electronic identification, electronic trust
+services, certified email, and digital signatures.
+
+digital_forensics:
+Digital-forensics professions and investigations; evidence acquisition,
+conservation, validation, chain of custody, live acquisition, analysis,
+tools, reporting, testimony, ethics, and computer, file-system, cloud,
+network, mobile-device, email/social-media, and graphics forensics.
+
+health_informatics:
+Italian health-system organization; laboratory and hospital information
+systems; healthcare indicators; SDO and DRG case-mix systems; electronic
+health records; medical devices; EEG processing; and telemedicine.
+
+geospatial_computing:
+GIS, geographical-data management and analysis, numerical cartography,
+projections, coordinate systems, representation, georeferencing, and
+digital graphics.
+
+digital_government_documents:
+Electronic documents and dematerialized transactions; document
+management; EU digital-transformation legislation; documentary databases;
+Italian government portals and online services; and authentication.
+
+research_and_ai:
+Bibliography construction with Google Scholar, Scopus, and search engines;
+LaTeX and Overleaf; machine learning for text analysis; and AI
+applications, including AI-assisted VBA macro generation.
+end note
+
+@enduml
