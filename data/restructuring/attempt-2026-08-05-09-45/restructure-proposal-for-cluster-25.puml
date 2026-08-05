@@ -1,0 +1,244 @@
+@startuml
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam class {
+  BackgroundColor #EAF2F8
+  BorderColor #2C3E50
+}
+skinparam class<<old>> {
+  BackgroundColor transparent
+  BorderColor #7F8C8D
+  FontColor #566573
+}
+
+class "Programming Foundations" as PF {
+  programming_basics
+  programming_paradigms
+  algorithms
+  language_types
+  programming_practice
+}
+class "Programming Languages and Formal Methods" as PL {
+  formal_languages
+  syntax_parsing
+  semantics_implementation
+  language_runtime
+}
+class "Operating Systems" as OS {
+  os_architecture
+  process_thread_management
+  memory_storage_io
+  os_administration_security
+}
+class "Concurrency and Real-Time Systems" as CR {
+  concurrency_models
+  synchronization_coordination
+  asynchronous_distributed_communication
+  realtime_systems
+  concurrency_verification
+}
+class "Database Systems" as DB {
+  relational_data
+  data_modeling
+  sql_querying
+  database_physical_design
+  transaction_recovery
+  distributed_databases
+}
+class "Software Engineering" as SE {
+  software_lifecycle
+  requirements_and_design
+  software_quality_testing
+  software_configuration
+  domain_modeling
+}
+class "Distributed Enterprise Systems" as DE {
+  distributed_architectures
+  enterprise_frameworks
+  middleware_and_services
+  enterprise_persistence
+  enterprise_runtime
+}
+class "Cloud and Systems Administration" as CA {
+  virtualization_and_containers
+  infrastructure_automation
+  network_systems
+  identity_and_system_security
+  system_observability
+  availability_and_integration
+}
+class "Information Systems and Project Management" as IP {
+  information_systems
+  process_and_data_modeling
+  information_systems_planning
+  project_management
+}
+class "Industrial Artificial Intelligence" as AI {
+  industrial_machine_learning
+  optimization_and_simulation
+  predictive_maintenance
+  responsible_recommendation
+}
+class "Human-Centered Web and Services" as UX {
+  user_research_and_design
+  service_prototyping
+  web_and_interactive_programming
+  web_application_security
+  quantitative_evaluation
+}
+
+PF <|-- PL
+PF <|-- OS
+PF <|-- SE
+PF <|-- DB
+PF <|-- UX
+PF <|-- AI
+OS <|-- CR
+CR <|-- DE
+SE <|-- DE
+DB <|-- DE
+OS <|-- CA
+DE <|-- CA
+IP <|-- SE
+
+class "04138 - Programming Languages" as C04138 <<old>> #transparent
+class "08574-B - Operating Systems" as C08574B <<old>> #transparent
+class "09032 - Software Engineering" as C09032 <<old>> #transparent
+class "09679 - Data Base Sistems" as C09679 <<old>> #transparent
+class "17628 - Concurrent and Distributed Programming" as C17628 <<old>> #transparent
+class "28020 - Operating Systems T" as C28020 <<old>> #transparent
+class "28652 - IT Systems T-1" as C28652 <<old>> #transparent
+class "73025 - Distributed Systems M" as C73025 <<old>> #transparent
+class "73435 - Project Management" as C73435 <<old>> #transparent
+class "78810 - Real Time Systems for Automation M" as C78810 <<old>> #transparent
+class "81917 - Interaction Multimedia Services" as C81917 <<old>> #transparent
+class "88155 - Industrial Informatics P" as C88155 <<old>> #transparent
+class "88324 - System Administration T" as C88324 <<old>> #transparent
+class "91261 - Artificial Intelligence in Industry" as C91261 <<old>> #transparent
+class "96642 - Virtualization and System Integration" as C96642 <<old>> #transparent
+class "B0011 - Software Process Engineering" as CB0011 <<old>> #transparent
+class "B0832 - Administration of Systems T" as CB0832 <<old>> #transparent
+class "B5665 - Real Time Systems and Programming for Automation M" as CB5665 <<old>> #transparent
+
+C04138 ..> PF
+C04138 ..> PL
+C04138 ..> CR
+C08574B ..> PF
+C08574B ..> OS
+C09032 ..> PF
+C09032 ..> SE
+C09032 ..> UX
+C09679 ..> DB
+C09679 ..> IP
+C17628 ..> PF
+C17628 ..> CR
+C17628 ..> DE
+C28020 ..> OS
+C28020 ..> CR
+C28652 ..> DB
+C28652 ..> IP
+C73025 ..> SE
+C73025 ..> DE
+C73025 ..> CA
+C73435 ..> IP
+C78810 ..> OS
+C78810 ..> CR
+C81917 ..> PF
+C81917 ..> UX
+C81917 ..> AI
+C81917 ..> CA
+C88155 ..> OS
+C88155 ..> CR
+C88324 ..> OS
+C88324 ..> CA
+C91261 ..> AI
+C96642 ..> DE
+C96642 ..> CA
+CB0011 ..> PF
+CB0011 ..> SE
+CB0011 ..> CA
+CB0832 ..> OS
+CB0832 ..> CA
+CB5665 ..> OS
+CB5665 ..> CR
+
+note right of PF
+<b>Topic legend</b>
+
+<b>Programming Foundations</b>
+programming_basics: introductory programming constructs, control flow, procedures, recursion and exceptions.
+programming_paradigms: object-oriented, functional, logical and concurrent programming paradigms.
+algorithms: design and analysis of simple algorithms.
+language_types: types, type checking, subtyping, inheritance and parameter mechanisms.
+programming_practice: C, Python, Kotlin, debugging and programming tools.
+
+<b>Programming Languages and Formal Methods</b>
+formal_languages: regular and context-free languages, grammars, automata and pumping theorems.
+syntax_parsing: BNF, lexical analysis and deterministic context-free parsing.
+semantics_implementation: syntax, semantics, pragmatics, SOS, interpreters and compilers.
+language_runtime: environments, scopes, activation records, heaps and memory management.
+
+<b>Operating Systems</b>
+os_architecture: structure and organization of multitasking operating systems.
+process_thread_management: processes, scheduling, threads and system calls.
+memory_storage_io: memory, filesystems, secondary storage and I/O device management.
+os_administration_security: Unix/Linux administration, shell scripting and authorization.
+
+<b>Concurrency and Real-Time Systems</b>
+concurrency_models: concurrent, shared-memory, actor and message-passing models.
+synchronization_coordination: semaphores, monitors, deadlocks and shared-resource protocols.
+asynchronous_distributed_communication: futures, promises, event loops, reactive programming, RPC and middleware communication.
+realtime_systems: real-time characteristics, periodic and aperiodic scheduling and hard real-time programming.
+concurrency_verification: Petri Nets, Statecharts, safety, liveness, temporal logic and model checking.
+
+<b>Database Systems</b>
+relational_data: relational databases, relational algebra and database integration.
+data_modeling: Entity-Relationship modeling and logical relational schema design.
+sql_querying: SQL definition, manipulation, queries, views and database applications.
+database_physical_design: indexes, B+ trees, query processing, joins and database parallelism.
+transaction_recovery: transactions, concurrency control, distributed transactions and recovery.
+distributed_databases: fragmentation, replication and distributed database organization.
+
+<b>Software Engineering</b>
+software_lifecycle: software lifecycle phases, production and maintenance.
+requirements_and_design: requirements engineering, object-oriented design, UML and software architecture.
+software_quality_testing: quality assurance, certification, automated and multi-target testing.
+software_configuration: version control, software versioning, build automation, continuous integration and delivery.
+domain_modeling: Domain-Driven Design, domain-specific languages, model-driven design and transformations.
+
+<b>Distributed Enterprise Systems</b>
+distributed_architectures: distributed, component-based, three-tier, Web-integrated and microservice architectures.
+enterprise_frameworks: Spring, dependency injection, aspect-oriented programming and Enterprise JavaBeans.
+middleware_and_services: service-oriented computing, message-oriented middleware, RPC and serverless models.
+enterprise_persistence: JPA, Hibernate, object-relational mapping, queries and persistence performance.
+enterprise_runtime: application servers, naming, clustering, transactions, monitoring, scalability and fault tolerance.
+
+<b>Cloud and Systems Administration</b>
+virtualization_and_containers: virtualization, Docker, images, Compose, container networking and orchestration.
+infrastructure_automation: centralized configuration, Configuration as Code, deployment automation and cloud management.
+network_systems: network configuration, routing, DNS, network administration, monitoring and troubleshooting.
+identity_and_system_security: LDAP, Active Directory, Kerberos, authorization, firewalls, proxies and secure communications.
+system_observability: system and distributed-service monitoring, SNMP, JMX and performance observation.
+availability_and_integration: high availability, distributed filesystems, block storage, industrial protocols and heterogeneous system integration.
+
+<b>Information Systems and Project Management</b>
+information_systems: classification, management, architecture and design of enterprise information systems.
+process_and_data_modeling: Data-Flow Diagrams, workflow schemata and organizational process analysis.
+information_systems_planning: feasibility, cost-benefit, risk, scope, ERP, CRM, application portfolios, BPR and master data management.
+project_management: lifecycle, approaches, process groups, knowledge areas and project/program/portfolio management.
+
+<b>Industrial Artificial Intelligence</b>
+industrial_machine_learning: artificial intelligence and machine learning applied to industrial use cases.
+optimization_and_simulation: mathematical modeling, combinatorial optimization, resource and production planning, power networks and simulation.
+predictive_maintenance: time-series models, Remaining Useful Life estimation, anomaly detection and maintenance policies.
+responsible_recommendation: recommendation systems, probabilistic models and fairness constraints.
+
+<b>Human-Centered Web and Services</b>
+user_research_and_design: user-centered design, HCI/UX, interviews, observation, personas and experience mapping.
+service_prototyping: service design, journey and ecosystem maps, blueprints, prototyping and usability testing.
+web_and_interactive_programming: HTML, JavaScript, Web systems, event-driven programming and user interfaces.
+web_application_security: security of Web and mobile applications.
+quantitative_evaluation: survey design and statistical analysis for quantitative research.
+end note
+@enduml
