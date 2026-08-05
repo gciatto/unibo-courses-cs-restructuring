@@ -1,0 +1,293 @@
+@startuml
+' Proposed hierarchical curriculum for cluster 7
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam class {
+  BackgroundColor #EAF2F8
+  BorderColor #1F4E79
+}
+
+package "Proposed curriculum" {
+  class computational_foundations <<new>> {
+    computational_thinking
+    programming_basics
+    computation_limits
+  }
+
+  class python_programming <<new>> {
+    python_language
+    program_control
+    python_software_tools
+  }
+
+  class algorithms_data_structures <<new>> {
+    data_structures
+    algorithm_design
+    algorithm_analysis
+  }
+
+  class systems_architecture <<new>> {
+    computer_systems
+    architecture_hardware
+    operating_systems
+    distributed_computing
+  }
+
+  class software_design <<new>> {
+    object_oriented_design
+    software_quality
+    software_modeling
+  }
+
+  class data_handling <<new>> {
+    data_representation
+    data_wrangling
+    data_visualization
+    digital_productivity
+  }
+
+  class scientific_statistics <<new>> {
+    scientific_computing
+    statistical_computing
+  }
+
+  class data_science <<new>> {
+    data_analytics
+    data_pipelines
+    domain_data
+  }
+
+  class machine_learning_ai <<new>> {
+    machine_learning
+    deep_learning_ai
+    language_ai
+  }
+
+  computational_foundations <|-- python_programming
+  computational_foundations <|-- algorithms_data_structures
+  computational_foundations <|-- systems_architecture
+  python_programming <|-- software_design
+  python_programming <|-- data_handling
+  algorithms_data_structures <|-- scientific_statistics
+  data_handling <|-- scientific_statistics
+  data_handling <|-- data_science
+  scientific_statistics <|-- data_science
+  systems_architecture <|-- data_science
+  data_science <|-- machine_learning_ai
+}
+
+' Legacy courses
+class "07276-A\nComputer Science" as old_07276 #FCE4D6
+class "28040\nInformation Technology" as old_28040 #FCE4D6
+class "37262\nComputer Programming" as old_37262 #FCE4D6
+class "41588\nINTRODUZIONE ALL'ANALISI DEI DATI" as old_41588 #FCE4D6
+class "65094\nADVANCED PROGRAMMING" as old_65094 #FCE4D6
+class "85189\nSystems and Algorithms for Data Science" as old_85189 #FCE4D6
+class "85285\nProgramming" as old_85285 #FCE4D6
+class "90477\nMachine Learning Systems For Data Science" as old_90477 #FCE4D6
+class "93333\nProgramming Lab" as old_93333 #FCE4D6
+class "93363\nAdvanced Programming" as old_93363 #FCE4D6
+class "95602\nProgramming and Computer Architectures" as old_95602 #FCE4D6
+class "96346\nINFORMATICA" as old_96346 #FCE4D6
+class "98735\nPython Coding and Data Science" as old_98735 #FCE4D6
+class "B0063\nProgramming Laboratory" as old_B0063 #FCE4D6
+class "B0064\nIntroduction to Data Science and Computational Thinking" as old_B0064 #FCE4D6
+class "B5780\nComputational Methods for Bioinformatics" as old_B5780 #FCE4D6
+class "B8905\nFoundations of Programming" as old_B8905 #FCE4D6
+
+' Subsumption links from legacy courses to proposed courses
+old_07276 ..> computational_foundations : subsumes
+old_07276 ..> algorithms_data_structures : subsumes
+old_07276 ..> python_programming : subsumes
+
+old_28040 ..> computational_foundations : subsumes
+old_28040 ..> algorithms_data_structures : subsumes
+old_28040 ..> python_programming : subsumes
+
+old_37262 ..> computational_foundations : subsumes
+old_37262 ..> python_programming : subsumes
+old_37262 ..> data_handling : subsumes
+old_37262 ..> systems_architecture : subsumes
+
+old_41588 ..> computational_foundations : subsumes
+old_41588 ..> python_programming : subsumes
+old_41588 ..> data_handling : subsumes
+old_41588 ..> scientific_statistics : subsumes
+old_41588 ..> data_science : subsumes
+
+old_65094 ..> python_programming : subsumes
+old_65094 ..> data_handling : subsumes
+old_65094 ..> scientific_statistics : subsumes
+
+old_85189 ..> python_programming : subsumes
+old_85189 ..> algorithms_data_structures : subsumes
+old_85189 ..> data_science : subsumes
+old_85189 ..> machine_learning_ai : subsumes
+
+old_85285 ..> computational_foundations : subsumes
+old_85285 ..> python_programming : subsumes
+old_85285 ..> algorithms_data_structures : subsumes
+old_85285 ..> scientific_statistics : subsumes
+old_85285 ..> software_design : subsumes
+
+old_90477 ..> python_programming : subsumes
+old_90477 ..> data_science : subsumes
+old_90477 ..> machine_learning_ai : subsumes
+
+old_93333 ..> computational_foundations : subsumes
+old_93333 ..> python_programming : subsumes
+old_93333 ..> algorithms_data_structures : subsumes
+
+old_93363 ..> python_programming : subsumes
+old_93363 ..> systems_architecture : subsumes
+old_93363 ..> data_handling : subsumes
+old_93363 ..> software_design : subsumes
+
+old_95602 ..> computational_foundations : subsumes
+old_95602 ..> python_programming : subsumes
+old_95602 ..> systems_architecture : subsumes
+old_95602 ..> data_handling : subsumes
+
+old_96346 ..> computational_foundations : subsumes
+old_96346 ..> algorithms_data_structures : subsumes
+old_96346 ..> python_programming : subsumes
+
+old_98735 ..> computational_foundations : subsumes
+old_98735 ..> python_programming : subsumes
+old_98735 ..> data_handling : subsumes
+old_98735 ..> scientific_statistics : subsumes
+old_98735 ..> data_science : subsumes
+
+old_B0063 ..> computational_foundations : subsumes
+old_B0063 ..> python_programming : subsumes
+old_B0063 ..> data_handling : subsumes
+old_B0063 ..> scientific_statistics : subsumes
+
+old_B0064 ..> computational_foundations : subsumes
+old_B0064 ..> python_programming : subsumes
+old_B0064 ..> data_handling : subsumes
+old_B0064 ..> software_design : subsumes
+old_B0064 ..> data_science : subsumes
+
+old_B5780 ..> python_programming : subsumes
+old_B5780 ..> algorithms_data_structures : subsumes
+old_B5780 ..> systems_architecture : subsumes
+
+old_B8905 ..> computational_foundations : subsumes
+old_B8905 ..> python_programming : subsumes
+old_B8905 ..> software_design : subsumes
+
+note right of computational_foundations
+  TOPIC LEGEND
+
+  computational_thinking:
+  Computational thinking and algorithmic problem solving.
+
+  programming_basics:
+  Variables, expressions, statements, functions,
+  conditionals, and iteration.
+
+  computation_limits:
+  Computational complexity, abstract machines,
+  and undecidable problems.
+
+  python_language:
+  Python programming, names, visibility,
+  mutable and immutable objects.
+
+  program_control:
+  Recursion, iteration, higher-order functions,
+  exceptions, assertions, and interactive programs.
+
+  python_software_tools:
+  Python modules, packages, development environments,
+  file operations, shell commands, testing, and debugging.
+
+  data_structures:
+  Data structures and abstract data types used in programs.
+
+  algorithm_design:
+  Sorting, dynamic programming, and sequence alignment algorithms.
+
+  algorithm_analysis:
+  Analysis of algorithmic procedures and computational complexity.
+
+  computer_systems:
+  Operating systems, computer networks, and information systems.
+
+  architecture_hardware:
+  Computer architecture, digital logic, chips, CPUs,
+  memory, storage, input/output, and performance.
+
+  operating_systems:
+  Operating-system concepts, including Linux as a work environment.
+
+  distributed_computing:
+  Parallel computing, cloud computing, and big-data processing.
+
+  object_oriented_design:
+  Classes, objects, attributes, methods, and object-oriented computing.
+
+  software_quality:
+  Software production, program evaluation, testing, and debugging.
+
+  software_modeling:
+  UML for visualizing software application design.
+
+  data_representation:
+  Data types, tables, data models, JSON, CSV,
+  web pages, and multimedia representations.
+
+  data_wrangling:
+  CSV processing, data cleaning, web scraping,
+  and manipulation with Python data-analysis tools.
+
+  data_visualization:
+  Graphs as computational representations and visualization libraries.
+
+  digital_productivity:
+  Spreadsheets, word processing, image manipulation,
+  graphics, and search engines as software tools.
+
+  scientific_computing:
+  Scientific computing with Python for analyzing,
+  visualizing, and modeling scientific datasets,
+  including numerical physical-equation models.
+
+  statistical_computing:
+  Statistical libraries, inference, probability distributions,
+  confidence intervals, statistical tests, model analysis,
+  and Monte Carlo simulation.
+
+  data_analytics:
+  Descriptive, diagnostic, predictive, and prescriptive
+  analytics, including regression and classification.
+
+  data_pipelines:
+  Data acquisition through analysis and valorization.
+
+  domain_data:
+  Biological data types and structures, plus financial
+  problems and access to financial data.
+
+  machine_learning:
+  Supervised and unsupervised machine-learning algorithms
+  and models used in data-science applications.
+
+  deep_learning_ai:
+  Neural networks, convolutional, recurrent, and LSTM networks,
+  GANs, autoencoders, transformers, and machine-learning frameworks.
+
+  language_ai:
+  Natural-language processing, topic modeling,
+  and large language models.
+end note
+
+legend
+  <back:#EAF2F8>New course</back>
+  <back:#FCE4D6>Legacy course</back>
+  Solid inheritance: prerequisite/propaedeutic dependency
+  Dashed arrow: legacy-course content subsumed by proposed course
+endlegend
+@enduml
