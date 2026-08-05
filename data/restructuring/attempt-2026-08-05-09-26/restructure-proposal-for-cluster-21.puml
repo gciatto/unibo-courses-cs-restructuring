@@ -1,0 +1,289 @@
+@startuml
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam packageStyle rectangle
+
+class AI_Foundations {
+  ai_introduction
+  ai_problem_solving_search
+  ai_agents
+  cognitive_science
+}
+class AI_Programming {
+  python_programming
+  functional_programming
+  procedural_declarative_programming
+  abstract_machines
+  logic_programming
+  prolog_logic_programming
+}
+class Symbolic_AI {
+  knowledge_based_systems
+  knowledge_representation
+  logical_inference
+  rule_based_systems
+  constraint_satisfaction
+  automated_reasoning
+}
+class Optimization_and_Planning {
+  automated_planning
+  games_constraint_planning
+  optimization
+  linear_programming
+  integer_linear_programming
+  constraint_programming
+  boolean_satisfiability
+  satisfiability_modulo_theories
+  probabilistic_reasoning
+}
+class Machine_Learning {
+  machine_learning
+  supervised_learning
+  unsupervised_learning
+  neural_networks
+  deep_learning
+  statistical_inference
+  predictive_modeling
+}
+class Data_Intelligence {
+  data_exploration
+  data_mining
+  data_quality_bias
+  datafication
+  decision_support_systems
+  esg_performance_monitoring
+}
+class Generative_and_Language_AI {
+  natural_language_processing
+  language_models
+  large_language_models
+  generative_learning
+  human_feedback_learning
+}
+class Autonomous_and_Robotic_Systems {
+  autonomous_systems
+  adaptive_autonomous_systems
+  perception_actuation
+  robotics
+  robot_navigation
+  behavior_based_robotics
+  behavior_trees
+  evolutionary_robotics
+  fuzzy_logic
+  reinforcement_learning
+  robot_learning
+  swarm_robotics
+  bio_inspired_adaptation
+}
+class Multi_Agent_Systems {
+  multi_agent_systems
+  multi_agent_programming
+  multi_agent_simulation
+  agent_coordination
+  coordination_mechanisms
+  self_organizing_systems
+  algorithmic_game_theory
+  multi_agent_reinforcement_learning
+  multi_armed_bandits
+  swarm_intelligence
+}
+class Human_Centered_and_Responsible_AI {
+  ai_ethics
+  ai_philosophical_aspects
+  ai_safety
+  ai_alignment
+  explainable_ai
+  human_computer_interaction
+  human_machine_collaboration
+  systematic_literature_review
+}
+
+AI_Foundations <|-- AI_Programming
+AI_Foundations <|-- Symbolic_AI
+AI_Foundations <|-- Machine_Learning
+AI_Foundations <|-- Autonomous_and_Robotic_Systems
+AI_Foundations <|-- Human_Centered_and_Responsible_AI
+Symbolic_AI <|-- Optimization_and_Planning
+Machine_Learning <|-- Data_Intelligence
+Machine_Learning <|-- Generative_and_Language_AI
+Machine_Learning <|-- Autonomous_and_Robotic_Systems
+Machine_Learning <|-- Multi_Agent_Systems
+Autonomous_and_Robotic_Systems <|-- Multi_Agent_Systems
+Human_Centered_and_Responsible_AI <|-- Generative_and_Language_AI
+Human_Centered_and_Responsible_AI <|-- Multi_Agent_Systems
+
+class "72938\nFoundations Of Artificial Intelligence T" as C72938 #DDEEFF {
+}
+class "78778\nIntelligent Systems M" as C78778 #DDEEFF {
+}
+class "81940\nArtificial Intelligence" as C81940 #DDEEFF {
+}
+class "90147\nArtificial intelligence" as C90147 #DDEEFF {
+}
+class "91248\nFundamentals of Artificial Intelligence and Knowledge Representation" as C91248 #DDEEFF {
+}
+class "91267\nMulti-Agent Systems" as C91267 #DDEEFF {
+}
+class "91411\nIntelligent Robotic Systems" as C91411 #DDEEFF {
+}
+class "91762\nCombinatorial Decision Making and Optimization" as C91762 #DDEEFF {
+}
+class "92858\nAutonomous and Adaptive Systems M" as C92858 #DDEEFF {
+}
+class "93469\nHuman Data Science" as C93469 #DDEEFF {
+}
+class "93669\nIntelligent Systems Engineering" as C93669 #DDEEFF {
+}
+class "95965\nArtificial Intelligence and Machine Learning for Business" as C95965 #DDEEFF {
+}
+class "98931\nFundamentals of Artificial Intelligence" as C98931 #DDEEFF {
+}
+class "B0069\nArtificial Intelligence for Digital Innovation" as CB0069 #DDEEFF {
+}
+class "B5727\nIntroduction to Languages for Artificial Intelligence" as CB5727 #DDEEFF {
+}
+
+C72938 ..> AI_Foundations
+C72938 ..> AI_Programming
+C72938 ..> Symbolic_AI
+C78778 ..> AI_Foundations
+C78778 ..> Machine_Learning
+C78778 ..> Optimization_and_Planning
+C78778 ..> Multi_Agent_Systems
+C81940 ..> AI_Foundations
+C81940 ..> Symbolic_AI
+C81940 ..> Machine_Learning
+C81940 ..> Optimization_and_Planning
+C81940 ..> Generative_and_Language_AI
+C90147 ..> AI_Foundations
+C90147 ..> Symbolic_AI
+C90147 ..> Machine_Learning
+C90147 ..> Generative_and_Language_AI
+C90147 ..> Autonomous_and_Robotic_Systems
+C90147 ..> Human_Centered_and_Responsible_AI
+C91248 ..> AI_Foundations
+C91248 ..> Symbolic_AI
+C91248 ..> Optimization_and_Planning
+C91248 ..> AI_Programming
+C91267 ..> AI_Foundations
+C91267 ..> Multi_Agent_Systems
+C91267 ..> Symbolic_AI
+C91411 ..> AI_Foundations
+C91411 ..> Optimization_and_Planning
+C91411 ..> Autonomous_and_Robotic_Systems
+C91762 ..> Optimization_and_Planning
+C92858 ..> AI_Foundations
+C92858 ..> Machine_Learning
+C92858 ..> Autonomous_and_Robotic_Systems
+C92858 ..> Multi_Agent_Systems
+C92858 ..> Generative_and_Language_AI
+C92858 ..> Human_Centered_and_Responsible_AI
+C93469 ..> Machine_Learning
+C93469 ..> Data_Intelligence
+C93469 ..> Human_Centered_and_Responsible_AI
+C93669 ..> AI_Foundations
+C93669 ..> Symbolic_AI
+C93669 ..> Autonomous_and_Robotic_Systems
+C93669 ..> Multi_Agent_Systems
+C93669 ..> Generative_and_Language_AI
+C93669 ..> Human_Centered_and_Responsible_AI
+C95965 ..> Machine_Learning
+C95965 ..> Data_Intelligence
+C98931 ..> AI_Foundations
+C98931 ..> Symbolic_AI
+C98931 ..> Optimization_and_Planning
+C98931 ..> AI_Programming
+CB0069 ..> AI_Foundations
+CB0069 ..> Machine_Learning
+CB0069 ..> Symbolic_AI
+CB0069 ..> Generative_and_Language_AI
+CB0069 ..> Human_Centered_and_Responsible_AI
+CB5727 ..> AI_Programming
+CB5727 ..> Symbolic_AI
+
+note right of AI_Foundations
+<b>Topic descriptions</b>
+ai_introduction: History, applications, principles, and methods of AI.
+ai_problem_solving_search: State representations, reasoning, and informed or uninformed search.
+ai_agents: The notion and role of agents in AI systems.
+cognitive_science: Classical and contemporary cognitive science related to AI.
+python_programming: Python functions, data types, mutability, objects, exceptions, and NumPy.
+functional_programming: Functional programming concepts and techniques.
+procedural_declarative_programming: Practical systems using procedural and declarative languages.
+abstract_machines: Models of program execution and language implementation.
+logic_programming: Logic programming as an AI programming and reasoning approach.
+prolog_logic_programming: Prolog solvers, programs, meta-predicates, and meta-interpreters.
+knowledge_based_systems: Architecture and implementation of explicit-knowledge problem-solving systems.
+knowledge_representation: Semantic networks, description logics, ontologies, actions, events, and rules.
+logical_inference: Formal inference including Modus Ponens and Modus Tollens.
+rule_based_systems: Prolog extensions, forward chaining, RETE, and Drools.
+constraint_satisfaction: Constraint satisfaction as symbolic AI problem solving.
+automated_reasoning: Automated reasoning and reasoning agents.
+automated_planning: Linear, partial-order, graph-based planning, and scheduling.
+games_constraint_planning: AI methods applied to games, CSPs, and planning.
+optimization: Local search, metaheuristics, decomposition, relaxation, and branch-and-bound.
+linear_programming: Simplex algorithm and linear-programming duality.
+integer_linear_programming: Integer linear programming and hybrid extensions.
+constraint_programming: Modeling, propagation, constraints, heuristics, restarts, and LNS.
+boolean_satisfiability: SAT encodings, resolution, propagation, DPLL, and clause learning.
+satisfiability_modulo_theories: DPLL(T), theory solvers, and combinations of theories.
+probabilistic_reasoning: Bayesian representation, independence, and exact or approximate inference.
+machine_learning: Symbolic and sub-symbolic learning, including trees, forests, neural, Bayesian, and inductive-logic methods.
+supervised_learning: Prediction and recommendation from labeled data.
+unsupervised_learning: Discovering patterns without labeled outcomes.
+neural_networks: Neural-network models and methods.
+deep_learning: Deep learning as a machine-learning subfield.
+statistical_inference: Regression, testing, intervals, sampling, variance, and reliability.
+predictive_modeling: Business predictions and recommendations.
+data_exploration: Operational exploration and analysis of business data.
+data_mining: Classification, clustering, regression, and automatic learning for business data.
+data_quality_bias: Dataset reliability, integrity, sampling bias, and signal-noise separation.
+datafication: Converting behavior into data and risks of misinterpretation.
+decision_support_systems: Evidence-based decision processes, structures, and implementation.
+esg_performance_monitoring: ESG performance systems using machine-learning or data-science tools.
+natural_language_processing: Natural language processing as an AI area.
+language_models: Models for processing and generating language.
+large_language_models: Large language models as AI technology.
+generative_learning: Generative learning and AI creativity.
+human_feedback_learning: RLHF and Direct Preference Optimization for agentic and generative systems.
+autonomous_systems: Concepts and definitions of autonomy.
+adaptive_autonomous_systems: Intelligent machines that learn through environmental interaction.
+perception_actuation: Technologies for sensing and acting in environments.
+robotics: Robotics and AI implications for recent robotics.
+robot_navigation: Path planning using informed search such as A*.
+behavior_based_robotics: Coordinating robot behaviors and tuning control software.
+behavior_trees: Organizing and controlling robot behaviors.
+evolutionary_robotics: Artificial evolution and automatic robot-program design.
+fuzzy_logic: Fuzzy logic and systems in intelligent robotics.
+reinforcement_learning: Reinforcement learning for robot adaptation and behavior acquisition.
+robot_learning: Associative, value-based, and intrinsically motivated robot learning.
+swarm_robotics: Multiple interacting robots and swarm-based behavior.
+bio_inspired_adaptation: Bio-inspired adaptive-system approaches.
+multi_agent_systems: Agent-oriented modeling and engineering of complex computational and socio-technical systems.
+multi_agent_programming: JADE, Jason, and programming intentional agents.
+multi_agent_simulation: Simulation for introductory multi-agent-system study.
+agent_coordination: Coordination mechanisms, including nature-inspired approaches.
+coordination_mechanisms: Cooperation and coordination in multi-agent systems.
+self_organizing_systems: Self-organisation in multi-agent systems.
+algorithmic_game_theory: Cooperation, coordination, and social dilemmas in multi-agent learning.
+multi_agent_reinforcement_learning: Reinforcement learning with multiple learning agents.
+multi_armed_bandits: Bandit methods for sequential decision making.
+swarm_intelligence: Ant-, bee-, and particle-swarm-inspired optimization.
+ai_ethics: Ethical issues in AI and cognitive science.
+ai_philosophical_aspects: Philosophical aspects and future AI challenges.
+ai_safety: AI risks and safeguards.
+ai_alignment: Safety, value alignment, controllability, and self-awareness problems.
+explainable_ai: Approaches to making AI systems understandable.
+human_computer_interaction: Human-computer interaction issues related to AI.
+human_machine_collaboration: Human agency, oversight, and action-feedback workflows.
+systematic_literature_review: Systematic review methodology for intelligent and autonomous systems.
+end note
+
+legend
+  |= Color |= Meaning |
+  |<#DDEEFF>| Existing course |
+  | white | Proposed course |
+  | ..> | Existing course subsumed by proposed course |
+endlegend
+@enduml
