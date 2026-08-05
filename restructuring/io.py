@@ -13,7 +13,7 @@ from restructuring.models import ClusterInput, CourseInput, ModelConfig
 
 
 REPOSITORY_ROOT = pathlib.Path(__file__).resolve().parent.parent
-PROMPT_VERSION = 3
+PROMPT_VERSION = 4
 DEFAULT_SYLLABUS_SECTION_KEYS = ("title", "outcomes", "contents")
 
 SYLLABUS_SECTION_ALIASES: dict[str, tuple[str, ...]] = {

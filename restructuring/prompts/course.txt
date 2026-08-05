@@ -29,3 +29,6 @@ Each diff may
   or split topics.
 
 Do not repeat unchanged topics or unchanged earlier-course assignments.
+When the topic dictionary needs no changes, return topic_diffs as an empty array.
+Never include a diff whose remove_topic_keys, upsert_topics, and
+course_topic_updates arrays are all empty.

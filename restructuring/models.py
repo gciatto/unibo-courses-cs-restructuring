@@ -45,12 +45,6 @@ class TopicDiff(BaseModel):
 
     @model_validator(mode="after")
     def validate_diff(self) -> "TopicDiff":
-        if (
-            not self.remove_topic_keys
-            and not self.upsert_topics
-            and not self.course_topic_updates
-        ):
-            raise ValueError("a topic diff must contain at least one change")
         if len(self.remove_topic_keys) != len(set(self.remove_topic_keys)):
             raise ValueError("remove_topic_keys must be unique")
         invalid = sorted(
@@ -83,6 +77,16 @@ class CourseTopicsResponse(BaseModel):
 
     @model_validator(mode="after")
     def validate_response(self) -> "CourseTopicsResponse":
+        # Structured-output schemas cannot express the cross-field constraint that
+        # at least one of a diff's three arrays must be non-empty. Treat an empty
+        # diff as the model's harmless, verbose spelling of "no changes".
+        self.topic_diffs = [
+            diff
+            for diff in self.topic_diffs
+            if diff.remove_topic_keys
+            or diff.upsert_topics
+            or diff.course_topic_updates
+        ]
         if len(self.covered_topic_keys) != len(set(self.covered_topic_keys)):
             raise ValueError("covered_topic_keys must be unique")
         invalid = sorted(

@@ -343,7 +343,7 @@ class TestInputAndCache(unittest.TestCase):
         )
         self.assertEqual(metadata["topic_conversation_mode"], "stateless")
         self.assertEqual(metadata["prompt_version"], PROMPT_VERSION)
-        self.assertEqual(PROMPT_VERSION, 3)
+        self.assertEqual(PROMPT_VERSION, 4)
 
 
 class TestIncrementalTopicState(unittest.TestCase):
@@ -420,6 +420,32 @@ class TestIncrementalTopicState(unittest.TestCase):
         self.assertEqual(state.memberships["A"], ["foundations"])
         self.assertEqual(state.memberships["C"], ["foundations"])
         self.assertEqual(rewritten, {"A", "C"})
+
+    def test_normalizes_empty_topic_diff_to_no_changes(self):
+        response = CourseTopicsResponse.model_validate(
+            {
+                "covered_topic_keys": ["alpha"],
+                "topic_diffs": [
+                    {
+                        "remove_topic_keys": [],
+                        "upsert_topics": [],
+                        "course_topic_updates": [],
+                    }
+                ],
+            }
+        )
+
+        self.assertEqual(response.topic_diffs, [])
+        state, rewritten, changed = apply_topic_response(
+            self.cluster,
+            1,
+            ClusterTopicState({"alpha": "Alpha"}, {"A": ["alpha"]}),
+            response,
+        )
+        self.assertEqual(state.topics, {"alpha": "Alpha"})
+        self.assertEqual(state.memberships["B"], ["alpha"])
+        self.assertEqual(rewritten, {"B"})
+        self.assertEqual(changed, set())
 
     def test_rejects_dangling_future_and_conflicting_updates(self):
         state = ClusterTopicState(
