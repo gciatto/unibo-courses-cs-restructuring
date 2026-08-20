@@ -20,7 +20,7 @@ import yaml
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 DEFAULT_INPUT = SCRIPT_DIR / "grouped_disi_service_courses_by_department.yaml"
-DEFAULT_OUTPUT = SCRIPT_DIR / "_grouped_disi_service_courses_sankey.pdf"
+DEFAULT_OUTPUT = SCRIPT_DIR / "_disi_service_courses_sankey.pdf"
 
 
 def numeric_credits(value: Any, course_id: str) -> float:
@@ -83,6 +83,20 @@ def load_flows(path: Path, language: str) -> dict[str, Any]:
                 course_key = (course_id, course_name, credits)
                 course_labels[course_key] = f"{course_name} ({credits:g} CFU)"
                 course_programme[(course_key, programme_key)] = credits
+
+    # A course may be offered by several programmes in the same department.
+    # Split its credits evenly across those links so the department receives
+    # the course's CFU exactly once instead of once per programme.
+    links_per_course_department = defaultdict(int)
+    for course, programme in course_programme:
+        department = programme_departments[programme]
+        links_per_course_department[(course, department)] += 1
+
+    course_programme = {
+        (course, programme): credits
+        / links_per_course_department[(course, programme_departments[programme])]
+        for (course, programme), credits in course_programme.items()
+    }
 
     programme_department = defaultdict(float)
     for (_course, programme), credits in course_programme.items():
