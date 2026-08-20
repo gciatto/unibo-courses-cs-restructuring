@@ -1,614 +1,1204 @@
-- department: ''
-  courses:
-  - teachers:
-    - name: Natali, Antonio
-      uid: '15250'
-    id: '72939'
-    name: software systems engineering m
-    credits: 8
-  - teachers:
-    - name: Faldella, Eugenio
-      uid: '14728'
-    id: '72945'
-    name: real-time systems m
-    credits: 8
-- department: da
-  courses:
-  - teachers:
-    - name: Gamberini, Enrico
-      uid: '41700'
-    id: '70210'
-    name: lab-based course on computer graphics
-    credits: 2
-  - teachers:
-    - name: Carnevali, Massimo
-      uid: '95345'
-    - name: Protti, Federica
-      uid: '132844'
-    id: '81917'
-    name: interaction multimedia services
-    credits: 5
-- department: dar
-  courses:
-  - teachers:
-    - name: Cascarano, Pasquale
-      uid: '96981'
-    id: '73273'
-    name: informatic tecnologies for fashion
-    credits: 6
-  - teachers:
-    - name: Marfia, Gustavo
-      uid: '46524'
-    id: '90864'
-    name: elements of computer technologies for fashion e-commerce
-    credits: 6
-  - teachers:
-    - name: Marfia, Gustavo
-      uid: '46524'
-    id: '91721'
-    name: laboratory of virtual reality and advanced reality
-    credits: 6
-  - teachers:
-    - name: Marfia, Gustavo
-      uid: '46524'
-    id: B4925
-    name: immersive technologies for fashion
-    credits: 6
-  - teachers:
-    - name: Marfia, Gustavo
-      uid: '46524'
-    id: B4940
-    name: data science for fashion system
-    credits: 6
-- department: dbc
-  courses:
-  - teachers:
-    - name: Barzaghi, Sebastian
-      uid: '121048'
-    - name: Zambruno, Simone
-      uid: '47967'
-    id: '48693'
-    name: computer science for cultural heritage
-    credits: 6
-  - teachers:
-    - name: Campedelli, Alessandro
-      uid: '46301'
-    id: '76011'
-    name: multimedia technologies in archaelogy
-    credits: 6
-  - teachers:
-    - name: Groppo, Emilia Adele
-      uid: '132778'
-    id: '98618'
-    name: '''document digitization techniques '''
-    credits: 6
-- department: dei
-  courses:
-  - teachers:
-    - name: Micelli, Leonardo
-      uid: '131388'
-    id: '15305'
-    name: foundations of informatics a
-    credits: 6
-  - teachers:
-    - name: Acquaviva, Andrea
-      uid: '114772'
-    id: '28011'
-    name: logic design t
-    credits: 6
-  - teachers:
-    - name: Borsatti, Davide
-      uid: '88386'
-    id: '37085'
-    name: principles, models and applications for distributed systems m
-    credits: 6
-  - teachers:
-    - name: Bartolini, Andrea
-      uid: '46417'
-    - name: Manoni, Simone
-      uid: '133108'
-    id: '69430'
-    name: computer architectures m
-    credits: 6
-  - teachers:
-    - name: Bartolini, Andrea
-      uid: '46417'
-    - name: Venieri, Emanuele
-      uid: '157052'
-    id: '88145'
-    name: fundamentals of computer programming p1
-    credits: 3
-  - teachers:
-    - name: Acquaviva, Andrea
-      uid: '114772'
-    - name: Barchi, Francesco
-      uid: '118631'
-    id: '99195'
-    name: cyber-physical systems programming m
-    credits: 6
-  - teachers:
-    - name: Tartagni, Marco
-      uid: '30933'
-    id: B5722
-    name: embedded sensors
-    credits: 6
-  - teachers:
-    - name: Bartolini, Andrea
-      uid: '46417'
-    - name: Manoni, Simone
-      uid: '133108'
-    id: B8561
-    name: architetture dei calcolatori m
-    credits: 8
-- department: dibinem
-  courses:
-  - teachers:
-    - name: Bonini, Roberto
-      uid: '146356'
-    id: '37635'
-    name: data structure and algorithms
-    credits: 12
-- department: dicam
-  courses:
-  - teachers:
-    - name: Forte, Anna
-      uid: '102793'
-    id: '48693'
-    name: computer science for cultural heritage
-    credits: 6
-- department: difa
-  courses:
-  - teachers:
-    - name: Lepore, Roberto
-      uid: '170626'
-    id: '29227'
-    name: foundations of informatics t
-    credits: 6
-  - teachers:
-    - name: Baglione, Enrico
-      uid: '53384'
-    id: '65094'
-    name: advanced programming
-    credits: 6
-- department: dimec
-  courses:
-  - teachers:
-    - name: Cercenelli, Laura
-      uid: '45506'
-    id: '07276'
-    name: computer science
-    credits: 1
-  - teachers:
-    - name: Gesuato, Alessandro
-      uid: '50376'
-    id: '07276'
-    name: computer science
-    credits: 3
-  - teachers:
-    - name: Gesuato, Alessandro
-      uid: '50376'
-    id: '15920'
-    name: computer lab
-    credits: 1
-  - teachers:
-    - name: Moni, Cristina
-      uid: '42714'
-    id: '20741'
-    name: information processing systems
-    credits: 1
-  - teachers:
-    - name: Russo, Stefano
-      uid: '107594'
-    id: '28106'
-    name: computer science for environmental sciences
-    credits: 6
-  - teachers:
-    - name: Russo, Stefano
-      uid: '107594'
-    id: '39176'
-    name: basic and laboratory informatics
-    credits: 3
-  - teachers:
-    - name: Russo, Stefano
-      uid: '107594'
-    id: '57828'
-    name: informatics
-    credits: 3
-  - teachers:
-    - name: Favero, Luca
-      uid: '48256'
-    id: '75198'
-    name: health information processing systems
-    credits: 1
-  - teachers:
-    - name: Piccinini, Filippo
-      uid: '47531'
-    id: '82202'
-    name: informatic
-    credits: 2
-  - teachers:
-    - name: Piccinini, Filippo
-      uid: '47531'
-    id: '88016'
-    name: statistics
-    credits: 2
-- department: dimevet
-  courses:
-  - teachers:
-    - name: Magro, Giuseppe
-      uid: '143518'
-    id: '95965'
-    name: artificial intelligence and machine learning for business
-    credits: 6
-  - teachers:
-    - name: Vecchio, Yari
-      uid: '95916'
-    id: B9254
-    name: basic it skills
-    credits: 1
-- department: din
-  courses:
-  - teachers:
-    - name: Cantelli, Martina
-      uid: '134286'
-    - name: Ravaioli, Mirko
-      uid: '38941'
-    id: 09730
-    name: principles of informatics
-    credits: 6
-  - teachers:
-    - name: Baldini, Samuele
-      uid: '167749'
-    - name: Barbieri, Marco
-      uid: '147178'
-    - name: Bornia, Giorgio
-      uid: '43626'
-    - name: Giangolini, Federico
-      uid: '147844'
-    - name: Manservisi, Sandro
-      uid: '34009'
-    - name: Scardovelli, Ruben
-      uid: '30586'
-    - name: Teodori, Francesco
-      uid: '34580'
-    id: '29227'
-    name: foundations of informatics t
-    credits: 6
-- department: disa
-  courses:
-  - teachers:
-    - name: Ronsivalle, Gaetano Bruno
-      uid: '131796'
-    id: '93379'
-    name: digital culture
-    credits: 9
-  - teachers:
-    - name: Bergamaschi, Francesco
-      uid: '53327'
-    id: '98671'
-    name: business analytics
-    credits: 3
-  - teachers:
-    - name: Bersaglia, Luca
-      uid: '41421'
-    id: B5674
-    name: management of digital media
-    credits: 5
-- department: distal
-  courses:
-  - teachers:
-    - name: Barbaresi, Alberto
-      uid: '40030'
-    id: '97466'
-    name: digital represention of the landscape project
-    credits: 6
-- department: dit
-  courses:
-  - teachers:
-    - name: Carioli, Gabriele
-      uid: '41480'
-    - name: Lecci, Claudia
-      uid: '42597'
-    id: '87898'
-    name: methods and technologies for interpreting
-    credits: 5
-  - teachers:
-    - name: Lecci, Claudia
-      uid: '42597'
-    id: '87901'
-    name: methods and advanced technologies for interpreting
-    credits: 5
-  - teachers:
-    - name: Barron Cedeno, Luis Alberto
-      uid: '106204'
-    id: '91258'
-    name: natural language processing
-    credits: 5
-  - teachers:
-    - name: La Orden Tovar, Carlos
-      uid: '139495'
-    - name: Locatelli, Marco
-      uid: '73620'
-    id: '96725'
-    name: it and game localization
-    credits: 5
-  - teachers:
-    - name: Barron Cedeno, Luis Alberto
-      uid: '106204'
-    id: B2696
-    name: 'language, technology, research i: computational thinking'
-    credits: 6
-  - teachers:
-    - name: Lecci, Claudia
-      uid: '42597'
-    id: B8536
-    name: 'computer-aided human translation: cat, mt and ai'
-    credits: 5
-  - teachers:
-    - name: Astolfi, Luca
-      uid: '73254'
-    id: B8603
-    name: machine translation and artificial intelligence for language services
-    credits: 5
-- department: dse
-  courses:
-  - teachers:
-    - name: Zuppiroli, Sara
-      uid: '47472'
-    id: '93333'
-    name: programming lab
-    credits: 3
-- department: dsg
-  courses:
-  - teachers:
-    - name: Tura, Francesco
-      uid: '24434'
-    id: '96346'
-    name: informatics
-    credits: 6
-  - teachers:
-    - name: Corazza, Michele
-      uid: '116978'
-    id: B1703
-    name: introduction to programming
-    credits: 12
-- department: fabit
-  courses:
-  - teachers:
-    - name: Corona, Gaia
-      uid: '170301'
-    id: '28040'
-    name: information technology
-    credits: 6
-  - teachers:
-    - name: Nuzzolese, Andrea Giovanni
-      uid: '48389'
-    id: '91265'
-    name: knowledge engineering
-    credits: 6
-  - teachers:
-    - name: Lippolis, Anna Sofia
-      uid: '134897'
-    - name: Nuzzolese, Andrea Giovanni
-      uid: '48389'
-    id: '93363'
-    name: advanced programming
-    credits: 6
-- department: ficlit
-  courses:
-  - teachers:
-    - name: Tomasi, Francesca
-      uid: '34612'
-    id: '27311'
-    name: humanistic it
-    credits: 6
-  - teachers:
-    - name: Bocchi, Maria Francesca
-      uid: '114797'
-    - name: Bruno, Enrica
-      uid: '138739'
-    - name: Heibi, Ivan
-      uid: '98399'
-    - name: Peroni, Silvio
-      uid: '46984'
-    id: '75969'
-    name: basic informatics
-    credits: 6
-  - teachers:
-    - name: Peroni, Silvio
-      uid: '46984'
-    id: '90157'
-    name: open science
-    credits: 6
-  - teachers:
-    - name: Spinaci, Gianmarco
-      uid: '95575'
-    id: '90720'
-    name: usability & user experience design
-    credits: 6
-  - teachers:
-    - name: Tamburini, Fabio
-      uid: '31280'
-    id: '91258'
-    name: natural language processing
-    credits: 6
-  - teachers:
-    - name: Sampò, Giorgia
-      uid: '142209'
-    id: '95782'
-    name: network analysis
-    credits: 6
-  - teachers:
-    - name: Peroni, Silvio
-      uid: '46984'
-    id: B1703
-    name: introduction to programming
-    credits: 12
-  - teachers:
-    - name: Colavizza, Giovanni
-      uid: '131426'
-    id: B1873
-    name: machine learning for humanities
-    credits: 6
-  - teachers:
-    - name: Bonora, Paolo
-      uid: '82752'
-    id: B1874
-    name: project management and software engineering for cultural heritage
-    credits: 6
-  - teachers:
-    - name: Pescarin, Sofia
-      uid: '112282'
-    id: B5059
-    name: interaction media design
-    credits: 6
-  - teachers:
-    - name: Heibi, Ivan
-      uid: '98399'
-    - name: Peroni, Silvio
-      uid: '46984'
-    id: B8105
-    name: computational management of data
-    credits: 12
-- department: filo
-  courses:
-  - teachers:
-    - name: Garagnani, Massimiliano
-      uid: '177443'
-    id: '27311'
-    name: humanistic it
-    credits: 6
-  - teachers:
-    - name: Garagnani, Massimiliano
-      uid: '177443'
-    id: '73149'
-    name: logic for informatics
-    credits: 6
-  - teachers:
-    - name: Gangemi, Aldo
-      uid: '73928'
-    id: '85446'
-    name: knowledge representation and extraction
-    credits: 6
-  - teachers:
-    - name: Bianchini, Francesco
-      uid: '41640'
-    id: '90147'
-    name: artificial intelligence
-    credits: 6
-  - teachers:
-    - name: Gangemi, Aldo
-      uid: '73928'
-    id: B4948
-    name: cognitive sematics for artificial intelligence
-    credits: 6
-  - teachers:
-    - name: Gangemi, Aldo
-      uid: '73928'
-    id: B8836
-    name: universal semantics
-    credits: 6
-  - teachers:
-    - name: Garagnani, Massimiliano
-      uid: '177443'
-    id: B8905
-    name: foundations of programming
-    credits: 6
-- department: lilec
-  courses:
-  - teachers:
-    - name: Presutti, Valentina
-      uid: '36732'
-    id: '91265'
-    name: knowledge engineering
-    credits: 6
-  - teachers:
-    - name: Presutti, Valentina
-      uid: '36732'
-    id: B0070
-    name: metodologie e tecniche di simulazione
-    credits: 8
-  - teachers:
-    - name: Asprino, Luigi
-      uid: '55638'
-    id: B4826
-    name: informatics for the humanities
-    credits: 3
-  - teachers:
-    - name: Presutti, Valentina
-      uid: '36732'
-    id: B5292
-    name: knowledge engeneering for the humanities
-    credits: 3
-  - teachers:
-    - name: Presutti, Valentina
-      uid: '36732'
-    id: B5293
-    name: computer studies and humanities
-    credits: 3
-- department: mat
-  courses:
-  - teachers:
-    - name: Del Duchetto, Federica
-      uid: '172409'
-    - name: Sbaraglia, Marco
-      uid: '43417'
-    id: '28040'
-    name: information technology
-    credits: 6
-  - teachers:
-    - name: Boschetti, Marco Antonio
-      uid: '35610'
-    id: '73435'
-    name: project management
-    credits: 6
-- department: sps
-  courses:
-  - teachers:
-    - name: Poggi, Francesco
-      uid: '47475'
-    id: B0063
-    name: programming laboratory
-    credits: 4
-  - teachers:
-    - name: Poggi, Francesco
-      uid: '47475'
-    id: B0064
-    name: introduction to data science and computational thinking
-    credits: 8
-- department: stat
-  courses:
-  - teachers:
-    - name: Somenzi, Damiano Marino
-      uid: '50421'
-    id: '79194'
-    name: databases
-    credits: 6
-  - teachers:
-    - name: Ronchieri, Elisabetta
-      uid: '124216'
-    id: '90477'
-    name: machine learning systems for data science
-    credits: 10
-  - teachers:
-    - name: Somenzi, Damiano Marino
-      uid: '50421'
-    id: '96793'
-    name: information systems and database management
-    credits: 6
-  - teachers:
-    - name: Bartolini, Nicola
-      uid: '133101'
-    - name: Cordioli, Alberto
-      uid: '166955'
-    id: '98735'
-    name: python coding and data science
-    credits: 6
-- department: unibo
-  courses:
-  - teachers:
-    - name: Montagna, Sara
-      uid: '42142'
-    id: '15305'
-    name: foundations of informatics a
-    credits: 6
+- dept: bigea
+  programmes:
+  - codes:
+    - '6642'
+    - '8011'
+    merged: true
+    name:
+      it: Scienze ambientali
+      en: Environmental Sciences
+    courses:
+    - teacher_name: Russo, Stefano
+      teacher_uid: '107594'
+      course_id: '28106'
+      course_name: computer science for environmental sciences
+      credits: 6
+- dept: da
+  programmes:
+  - codes:
+    - '6685'
+    - '9256'
+    merged: true
+    name:
+      it: Advanced Design
+      en: Advanced Design
+    courses:
+    - teacher_name: Carnevali, Massimo
+      teacher_uid: '95345'
+      course_id: '81917'
+      course_name: interaction multimedia services
+      credits: 5
+    - teacher_name: Protti, Federica
+      teacher_uid: '132844'
+      course_id: '81917'
+      course_name: interaction multimedia services
+      credits: 5
+  - codes:
+    - '6729'
+    - '9265'
+    merged: true
+    name:
+      it: Architettura
+      en: Architecture
+    courses:
+    - teacher_name: Gamberini, Enrico
+      teacher_uid: '41700'
+      course_id: '70210'
+      course_name: lab-based course on computer graphics
+      credits: 2
+- dept: dar
+  programmes:
+  - codes:
+    - '5975'
+    - '6620'
+    merged: true
+    name:
+      it: Scienze della comunicazione
+      en: Communication Sciences
+    courses:
+    - teacher_name: Garagnani, Massimiliano
+      teacher_uid: '177443'
+      course_id: '27311'
+      course_name: humanistic it
+      credits: 6
+  - codes:
+    - '6059'
+    - '6780'
+    merged: true
+    name:
+      it: Fashion Studies
+      en: Fashion Studies
+    courses:
+    - teacher_name: Marfia, Gustavo
+      teacher_uid: '46524'
+      course_id: B4940
+      course_name: data science for fashion system
+      credits: 6
+    - teacher_name: Marfia, Gustavo
+      teacher_uid: '46524'
+      course_id: B4925
+      course_name: immersive technologies for fashion
+      credits: 6
+  - codes:
+    - '6636'
+    - '9064'
+    merged: true
+    name:
+      it: Culture e pratiche della moda
+      en: Fashion Cultures and Practices
+    courses:
+    - teacher_name: Marfia, Gustavo
+      teacher_uid: '46524'
+      course_id: '90864'
+      course_name: elements of computer technologies for fashion e-commerce
+      credits: 6
+    - teacher_name: Cascarano, Pasquale
+      teacher_uid: '96981'
+      course_id: '73273'
+      course_name: informatic tecnologies for fashion
+      credits: 6
+- dept: dbc
+  programmes:
+  - codes:
+    - '6703'
+    - '9218'
+    merged: true
+    name:
+      it: 'Beni archeologici, artistici e del paesaggio: storia, tutela e valorizzazione'
+      en: History, preservation and enhancement of artistic and archaeological heritage
+        and landscape
+    courses:
+    - teacher_name: Barzaghi, Sebastian
+      teacher_uid: '121048'
+      course_id: '48693'
+      course_name: computer science for cultural heritage
+      credits: 6
+    - teacher_name: Campedelli, Alessandro
+      teacher_uid: '46301'
+      course_id: '76011'
+      course_name: multimedia technologies in archaelogy
+      credits: 6
+  - codes:
+    - '6740'
+    - '9077'
+    merged: true
+    name:
+      it: Scienze del libro e del documento
+      en: Library and Archive Science
+    courses:
+    - teacher_name: Groppo, Emilia Adele
+      teacher_uid: '132778'
+      course_id: '98618'
+      course_name: '''document digitization techniques '''
+      credits: 6
+    - teacher_name: Barzaghi, Sebastian
+      teacher_uid: '121048'
+      course_id: '48693'
+      course_name: computer science for cultural heritage
+      credits: 6
+  - codes:
+    - '8616'
+    merged: false
+    name:
+      it: Conservazione e restauro dei beni culturali (abilitante ai sensi del d.
+        lgs n. 42/2004)
+      en: Conservation and restoration of cultural heritage
+    courses:
+    - teacher_name: Forte, Anna
+      teacher_uid: '102793'
+      course_id: '48693'
+      course_name: computer science for cultural heritage
+      credits: 6
+    - teacher_name: Zambruno, Simone
+      teacher_uid: '47967'
+      course_id: '48693'
+      course_name: computer science for cultural heritage
+      credits: 6
+- dept: dei
+  programmes:
+  - codes:
+    - 0934
+    - '6716'
+    merged: true
+    name:
+      it: Ingegneria elettronica
+      en: Electronic Engineering
+    courses:
+    - teacher_name: Bartolini, Andrea
+      teacher_uid: '46417'
+      course_id: B8561
+      course_name: architetture dei calcolatori m
+      credits: 8
+    - teacher_name: Manoni, Simone
+      teacher_uid: '133108'
+      course_id: B8561
+      course_name: architetture dei calcolatori m
+      credits: 8
+    - teacher_name: Bartolini, Andrea
+      teacher_uid: '46417'
+      course_id: '69430'
+      course_name: computer architectures m
+      credits: 6
+    - teacher_name: Manoni, Simone
+      teacher_uid: '133108'
+      course_id: '69430'
+      course_name: computer architectures m
+      credits: 6
+    - teacher_name: Acquaviva, Andrea
+      teacher_uid: '114772'
+      course_id: '99195'
+      course_name: cyber-physical systems programming m
+      credits: 6
+    - teacher_name: Barchi, Francesco
+      teacher_uid: '118631'
+      course_id: '99195'
+      course_name: cyber-physical systems programming m
+      credits: 6
+  - codes:
+    - '6009'
+    merged: false
+    name:
+      it: Meccatronica
+      en: Mechatronics
+    courses:
+    - teacher_name: Bartolini, Andrea
+      teacher_uid: '46417'
+      course_id: '88145'
+      course_name: fundamentals of computer programming p1
+      credits: 3
+    - teacher_name: Venieri, Emanuele
+      teacher_uid: '157052'
+      course_id: '88145'
+      course_name: fundamentals of computer programming p1
+      credits: 3
+  - codes:
+    - '6671'
+    - '9217'
+    merged: true
+    name:
+      it: Ingegneria dell'automazione
+      en: Automation Engineering
+    courses:
+    - teacher_name: Acquaviva, Andrea
+      teacher_uid: '114772'
+      course_id: '99195'
+      course_name: cyber-physical systems programming m
+      credits: 6
+    - teacher_name: Barchi, Francesco
+      teacher_uid: '118631'
+      course_id: '99195'
+      course_name: cyber-physical systems programming m
+      credits: 6
+  - codes:
+    - '6672'
+    - '9065'
+    merged: true
+    name:
+      it: Ingegneria elettronica e telecomunicazioni
+      en: Electronics and Telecommunications Engineering
+    courses:
+    - teacher_name: Acquaviva, Andrea
+      teacher_uid: '114772'
+      course_id: '28011'
+      course_name: logic design t
+      credits: 6
+  - codes:
+    - '6711'
+    - '8891'
+    merged: true
+    name:
+      it: Automation Engineering
+      en: Automation Engineering
+    courses:
+    - teacher_name: Acquaviva, Andrea
+      teacher_uid: '114772'
+      course_id: '99195'
+      course_name: cyber-physical systems programming m
+      credits: 6
+    - teacher_name: Barchi, Francesco
+      teacher_uid: '118631'
+      course_id: '99195'
+      course_name: cyber-physical systems programming m
+      credits: 6
+  - codes:
+    - '6715'
+    merged: false
+    name:
+      it: Ingegneria elettronica e dell'informazione
+      en: Electronics and Information Engineering
+    courses:
+    - teacher_name: Tartagni, Marco
+      teacher_uid: '30933'
+      course_id: B5722
+      course_name: embedded sensors
+      credits: 6
+  - codes:
+    - '9205'
+    merged: false
+    name:
+      it: Telecommunications Engineering
+      en: Telecommunications Engineering
+    courses:
+    - teacher_name: Borsatti, Davide
+      teacher_uid: '88386'
+      course_id: '37085'
+      course_name: principles, models and applications for distributed systems m
+      credits: 6
+  - codes:
+    - '9266'
+    merged: false
+    name:
+      it: Biomedical Engineering
+      en: Biomedical Engineering
+    courses:
+    - teacher_name: Tartagni, Marco
+      teacher_uid: '30933'
+      course_id: B5722
+      course_name: embedded sensors
+      credits: 6
+- dept: dibinem
+  programmes:
+  - codes:
+    - '5915'
+    merged: false
+    name:
+      it: Tecniche ortopediche (abilitante alla professione sanitaria di tecnico ortopedico)
+      en: Orthopaedics Techniques
+    courses:
+    - teacher_name: Cercenelli, Laura
+      teacher_uid: '45506'
+      course_id: '07276'
+      course_name: computer science
+      credits: 1
+  - codes:
+    - '8481'
+    merged: false
+    name:
+      it: Igiene dentale (abilitante alla professione sanitaria di igienista dentale)
+      en: Dental Hygiene
+    courses:
+    - teacher_name: Gesuato, Alessandro
+      teacher_uid: '50376'
+      course_id: '15920'
+      course_name: computer lab
+      credits: 1
+    - teacher_name: Gesuato, Alessandro
+      teacher_uid: '50376'
+      course_id: '07276'
+      course_name: computer science
+      credits: 3
+  - codes:
+    - '8482'
+    merged: false
+    name:
+      it: Tecniche di neurofisiopatologia (abilitante alla professione sanitaria di
+        tecnico di neurofisiopatologia)
+      en: Neurophysiopathology techniques
+    courses:
+    - teacher_name: Russo, Stefano
+      teacher_uid: '107594'
+      course_id: '39176'
+      course_name: basic and laboratory informatics
+      credits: 3
+  - codes:
+    - '9080'
+    merged: false
+    name:
+      it: Logopedia (abilitante alla professione sanitaria di logopedista)
+      en: Speech and Language Therapy
+    courses:
+    - teacher_name: Piccinini, Filippo
+      teacher_uid: '47531'
+      course_id: '82202'
+      course_name: informatic
+      credits: 2
+    - teacher_name: Piccinini, Filippo
+      teacher_uid: '47531'
+      course_id: '88016'
+      course_name: statistics
+      credits: 2
+- dept: difa
+  programmes:
+  - codes:
+    - '5895'
+    - '6697'
+    merged: true
+    name:
+      it: Science of Climate
+      en: Science of Climate
+    courses:
+    - teacher_name: Baglione, Enrico
+      teacher_uid: '53384'
+      course_id: '65094'
+      course_name: advanced programming
+      credits: 6
+- dept: dimec
+  programmes:
+  - codes:
+    - '6064'
+    merged: false
+    name:
+      it: Ostetricia (abilitante alla professione sanitaria di ostetrica/o)
+      en: Midwifery
+    courses:
+    - teacher_name: Russo, Stefano
+      teacher_uid: '107594'
+      course_id: '39176'
+      course_name: basic and laboratory informatics
+      credits: 3
+  - codes:
+    - '8470'
+    merged: false
+    name:
+      it: Dietistica (abilitante alla professione sanitaria di dietista)
+      en: Dietistic
+    courses:
+    - teacher_name: Cercenelli, Laura
+      teacher_uid: '45506'
+      course_id: '07276'
+      course_name: computer science
+      credits: 1
+  - codes:
+    - '8484'
+    merged: false
+    name:
+      it: Tecniche di laboratorio biomedico (abilitante alla professione sanitaria
+        di tecnico di laboratorio biomedico)
+      en: Biomedical Laboratory techniques
+    courses:
+    - teacher_name: Russo, Stefano
+      teacher_uid: '107594'
+      course_id: '39176'
+      course_name: basic and laboratory informatics
+      credits: 3
+    - teacher_name: Moni, Cristina
+      teacher_uid: '42714'
+      course_id: '20741'
+      course_name: information processing systems
+      credits: 1
+  - codes:
+    - '8487'
+    merged: false
+    name:
+      it: Tecniche della prevenzione nell'ambiente e nei luoghi di lavoro (abilitante
+        alla professione sanitaria di tecnico della prevenzione nell'ambiente e nei
+        luoghi di lavoro)
+      en: Environment and Workplace Prevention Techniques
+    courses:
+    - teacher_name: Russo, Stefano
+      teacher_uid: '107594'
+      course_id: '57828'
+      course_name: informatics
+      credits: 3
+  - codes:
+    - '8488'
+    merged: false
+    name:
+      it: Scienze infermieristiche e ostetriche
+      en: Nursing and Midwifery Sciences
+    courses:
+    - teacher_name: Favero, Luca
+      teacher_uid: '48256'
+      course_id: '75198'
+      course_name: health information processing systems
+      credits: 1
+- dept: dimevet
+  programmes:
+  - codes:
+    - '5814'
+    - '6815'
+    merged: true
+    name:
+      it: Food Animal Metabolism and Management in the Circular Economy
+      en: Food Animal Metabolism and Management in the Circular Economy
+    courses:
+    - teacher_name: Magro, Giuseppe
+      teacher_uid: '143518'
+      course_id: '95965'
+      course_name: artificial intelligence and machine learning for business
+      credits: 6
+  - codes:
+    - '5984'
+    - '6735'
+    - '8617'
+    merged: true
+    name:
+      it: Medicina veterinaria
+      en: Veterinary Medicine
+    courses:
+    - teacher_name: Vecchio, Yari
+      teacher_uid: '95916'
+      course_id: B9254
+      course_name: basic it skills
+      credits: 1
+  - codes:
+    - '6197'
+    merged: false
+    name:
+      it: Veterinary Medicine
+      en: Veterinary Medicine
+    courses:
+    - teacher_name: Vecchio, Yari
+      teacher_uid: '95916'
+      course_id: B9254
+      course_name: basic it skills
+      credits: 1
+- dept: din
+  programmes:
+  - codes:
+    - 0924
+    - '5978'
+    - '6678'
+    - '6717'
+    merged: true
+    name:
+      it: Ingegneria energetica
+      en: Energy Engineering
+    courses:
+    - teacher_name: Baldini, Samuele
+      teacher_uid: '167749'
+      course_id: '29227'
+      course_name: foundations of informatics t
+      credits: 6
+    - teacher_name: Lepore, Roberto
+      teacher_uid: '170626'
+      course_id: '29227'
+      course_name: foundations of informatics t
+      credits: 6
+    - teacher_name: Manservisi, Sandro
+      teacher_uid: '34009'
+      course_id: '29227'
+      course_name: foundations of informatics t
+      credits: 6
+    - teacher_name: Teodori, Francesco
+      teacher_uid: '34580'
+      course_id: '29227'
+      course_name: foundations of informatics t
+      credits: 6
+  - codes:
+    - 0927
+    - 0949
+    - '5724'
+    - '6677'
+    - '6680'
+    - '6721'
+    merged: true
+    name:
+      it: Ingegneria meccanica
+      en: Mechanical Engineering
+    courses:
+    - teacher_name: Barbieri, Marco
+      teacher_uid: '147178'
+      course_id: '29227'
+      course_name: foundations of informatics t
+      credits: 6
+    - teacher_name: Bornia, Giorgio
+      teacher_uid: '43626'
+      course_id: '29227'
+      course_name: foundations of informatics t
+      credits: 6
+    - teacher_name: Giangolini, Federico
+      teacher_uid: '147844'
+      course_id: '29227'
+      course_name: foundations of informatics t
+      credits: 6
+    - teacher_name: Scardovelli, Ruben
+      teacher_uid: '30586'
+      course_id: '29227'
+      course_name: foundations of informatics t
+      credits: 6
+    - teacher_name: Cantelli, Martina
+      teacher_uid: '134286'
+      course_id: 09730
+      course_name: principles of informatics
+      credits: 6
+    - teacher_name: Ravaioli, Mirko
+      teacher_uid: '38941'
+      course_id: 09730
+      course_name: principles of informatics
+      credits: 6
+  - codes:
+    - '5723'
+    - '6704'
+    merged: true
+    name:
+      it: Aerospace Engineering
+      en: Aerospace Engineering
+    courses:
+    - teacher_name: Cantelli, Martina
+      teacher_uid: '134286'
+      course_id: 09730
+      course_name: principles of informatics
+      credits: 6
+    - teacher_name: Ravaioli, Mirko
+      teacher_uid: '38941'
+      course_id: 09730
+      course_name: principles of informatics
+      credits: 6
+  - codes:
+    - '6676'
+    - '9234'
+    merged: true
+    name:
+      it: Ingegneria aerospaziale
+      en: Aerospace Engineering
+    courses:
+    - teacher_name: Cantelli, Martina
+      teacher_uid: '134286'
+      course_id: 09730
+      course_name: principles of informatics
+      credits: 6
+    - teacher_name: Ravaioli, Mirko
+      teacher_uid: '38941'
+      course_id: 09730
+      course_name: principles of informatics
+      credits: 6
+- dept: disa
+  programmes:
+  - codes:
+    - '5892'
+    - '6614'
+    merged: true
+    name:
+      it: Management and Economics
+      en: Management and Economics
+    courses:
+    - teacher_name: Bergamaschi, Francesco
+      teacher_uid: '53327'
+      course_id: '98671'
+      course_name: business analytics
+      credits: 3
+  - codes:
+    - '6114'
+    - '6795'
+    merged: true
+    name:
+      it: Innovation and Organization of Culture and the Arts
+      en: Innovation and Organization of Culture and the Arts
+    courses:
+    - teacher_name: Bersaglia, Luca
+      teacher_uid: '41421'
+      course_id: B5674
+      course_name: management of digital media
+      credits: 5
+  - codes:
+    - '6613'
+    - '8406'
+    merged: true
+    name:
+      it: Management e marketing
+      en: Management and Marketing
+    courses:
+    - teacher_name: Ronsivalle, Gaetano Bruno
+      teacher_uid: '131796'
+      course_id: '93379'
+      course_name: digital culture
+      credits: 9
+- dept: disci
+  programmes:
+  - codes:
+    - 0962
+    - '6664'
+    merged: true
+    name:
+      it: Storia
+      en: History
+    courses:
+    - teacher_name: Barzaghi, Sebastian
+      teacher_uid: '121048'
+      course_id: '48693'
+      course_name: computer science for cultural heritage
+      credits: 6
+    - teacher_name: Campedelli, Alessandro
+      teacher_uid: '46301'
+      course_id: '76011'
+      course_name: multimedia technologies in archaelogy
+      credits: 6
+- dept: disi
+  programmes:
+  - codes:
+    - '5826'
+    - '6668'
+    - '6719'
+    - '9254'
+    merged: true
+    name:
+      it: Ingegneria informatica
+      en: Computer Engineering
+    courses:
+    - teacher_name: Bartolini, Andrea
+      teacher_uid: '46417'
+      course_id: B8561
+      course_name: architetture dei calcolatori m
+      credits: 8
+    - teacher_name: Manoni, Simone
+      teacher_uid: '133108'
+      course_id: B8561
+      course_name: architetture dei calcolatori m
+      credits: 8
+    - teacher_name: Bartolini, Andrea
+      teacher_uid: '46417'
+      course_id: '69430'
+      course_name: computer architectures m
+      credits: 6
+    - teacher_name: Manoni, Simone
+      teacher_uid: '133108'
+      course_id: '69430'
+      course_name: computer architectures m
+      credits: 6
+    - teacher_name: Faldella, Eugenio
+      teacher_uid: '14728'
+      course_id: '72945'
+      course_name: real-time systems m
+      credits: 8
+    - teacher_name: Natali, Antonio
+      teacher_uid: '15250'
+      course_id: '72939'
+      course_name: software systems engineering m
+      credits: 8
+  - codes:
+    - '5898'
+    - '6640'
+    - '6698'
+    - '8009'
+    merged: true
+    name:
+      it: Informatica
+      en: Computer Science
+    courses:
+    - teacher_name: Marfia, Gustavo
+      teacher_uid: '46524'
+      course_id: '91721'
+      course_name: laboratory of virtual reality and advanced reality
+      credits: 6
+    - teacher_name: Tamburini, Fabio
+      teacher_uid: '31280'
+      course_id: '91258'
+      course_name: natural language processing
+      credits: 6
+  - codes:
+    - '6673'
+    - '6699'
+    - '8614'
+    - '8615'
+    merged: true
+    name:
+      it: Ingegneria e scienze informatiche
+      en: Computer Science and Engineering
+    courses:
+    - teacher_name: Tartagni, Marco
+      teacher_uid: '30933'
+      course_id: B5722
+      course_name: embedded sensors
+      credits: 6
+    - teacher_name: Boschetti, Marco Antonio
+      teacher_uid: '35610'
+      course_id: '73435'
+      course_name: project management
+      credits: 6
+  - codes:
+    - '6700'
+    - '9063'
+    merged: true
+    name:
+      it: Artificial Intelligence
+      en: Artificial Intelligence
+    courses:
+    - teacher_name: Nuzzolese, Andrea Giovanni
+      teacher_uid: '48389'
+      course_id: '91265'
+      course_name: knowledge engineering
+      credits: 6
+    - teacher_name: Presutti, Valentina
+      teacher_uid: '36732'
+      course_id: '91265'
+      course_name: knowledge engineering
+      credits: 6
+- dept: distal
+  programmes:
+  - codes:
+    - '5830'
+    - '6628'
+    merged: true
+    name:
+      it: Scienze e tecnologie per il verde e il paesaggio
+      en: Sciences and Technologies for Green and Landscape
+    courses:
+    - teacher_name: Barbaresi, Alberto
+      teacher_uid: '40030'
+      course_id: '97466'
+      course_name: digital represention of the landscape project
+      credits: 6
+- dept: dit
+  programmes:
+  - codes:
+    - '5979'
+    - '6604'
+    merged: true
+    name:
+      it: Lingue e tecnologie per la comunicazione interculturale
+      en: Languages and Technologies for Intercultural Communication
+    courses:
+    - teacher_name: Barron Cedeno, Luis Alberto
+      teacher_uid: '106204'
+      course_id: B2696
+      course_name: 'language, technology, research i: computational thinking'
+      credits: 6
+  - codes:
+    - '6057'
+    - '6825'
+    merged: true
+    name:
+      it: Interpretazione
+      en: Intepreting
+    courses:
+    - teacher_name: Lecci, Claudia
+      teacher_uid: '42597'
+      course_id: B8536
+      course_name: 'computer-aided human translation: cat, mt and ai'
+      credits: 5
+    - teacher_name: Lecci, Claudia
+      teacher_uid: '42597'
+      course_id: '87901'
+      course_name: methods and advanced technologies for interpreting
+      credits: 5
+    - teacher_name: Carioli, Gabriele
+      teacher_uid: '41480'
+      course_id: '87898'
+      course_name: methods and technologies for interpreting
+      credits: 5
+    - teacher_name: Lecci, Claudia
+      teacher_uid: '42597'
+      course_id: '87898'
+      course_name: methods and technologies for interpreting
+      credits: 5
+  - codes:
+    - '6826'
+    - '9174'
+    merged: true
+    name:
+      it: Specialized Translation
+      en: Specialized Translation
+    courses:
+    - teacher_name: Lecci, Claudia
+      teacher_uid: '42597'
+      course_id: B8536
+      course_name: 'computer-aided human translation: cat, mt and ai'
+      credits: 5
+    - teacher_name: La Orden Tovar, Carlos
+      teacher_uid: '139495'
+      course_id: '96725'
+      course_name: it and game localization
+      credits: 5
+    - teacher_name: Locatelli, Marco
+      teacher_uid: '73620'
+      course_id: '96725'
+      course_name: it and game localization
+      credits: 5
+    - teacher_name: Astolfi, Luca
+      teacher_uid: '73254'
+      course_id: B8603
+      course_name: machine translation and artificial intelligence for language services
+      credits: 5
+    - teacher_name: Barron Cedeno, Luis Alberto
+      teacher_uid: '106204'
+      course_id: '91258'
+      course_name: natural language processing
+      credits: 5
+- dept: dse
+  programmes:
+  - codes:
+    - '6644'
+    - '8038'
+    merged: true
+    name:
+      it: Economia, mercati e istituzioni
+      en: Economics, Markets and Institutions
+    courses:
+    - teacher_name: Zuppiroli, Sara
+      teacher_uid: '47472'
+      course_id: '93333'
+      course_name: programming lab
+      credits: 3
+- dept: dsg
+  programmes:
+  - codes:
+    - '6606'
+    - '9230'
+    merged: true
+    name:
+      it: Consulente del lavoro e delle relazioni aziendali
+      en: Employment and Business Relations Consultant
+    courses:
+    - teacher_name: Tura, Francesco
+      teacher_uid: '24434'
+      course_id: '96346'
+      course_name: informatics
+      credits: 6
+- dept: fabit
+  programmes:
+  - codes:
+    - '6619'
+    - '9211'
+    merged: true
+    name:
+      it: Genomics
+      en: Genomics
+    courses:
+    - teacher_name: Lippolis, Anna Sofia
+      teacher_uid: '134897'
+      course_id: '93363'
+      course_name: advanced programming
+      credits: 6
+    - teacher_name: Nuzzolese, Andrea Giovanni
+      teacher_uid: '48389'
+      course_id: '93363'
+      course_name: advanced programming
+      credits: 6
+- dept: ficlit
+  programmes:
+  - codes:
+    - '5946'
+    - '6725'
+    merged: true
+    name:
+      it: Dati, metodi e modelli per le scienze linguistiche
+      en: Data, Methods and Theoretical Models For Linguistics
+    courses:
+    - teacher_name: Corazza, Michele
+      teacher_uid: '116978'
+      course_id: B1703
+      course_name: introduction to programming
+      credits: 12
+    - teacher_name: Peroni, Silvio
+      teacher_uid: '46984'
+      course_id: B1703
+      course_name: introduction to programming
+      credits: 12
+  - codes:
+    - '6601'
+    - '8850'
+    merged: true
+    name:
+      it: Lettere
+      en: Humanities
+    courses:
+    - teacher_name: Bianchini, Francesco
+      teacher_uid: '41640'
+      course_id: '90147'
+      course_name: artificial intelligence
+      credits: 6
+    - teacher_name: Bocchi, Maria Francesca
+      teacher_uid: '114797'
+      course_id: '75969'
+      course_name: basic informatics
+      credits: 6
+    - teacher_name: Bruno, Enrica
+      teacher_uid: '138739'
+      course_id: '75969'
+      course_name: basic informatics
+      credits: 6
+    - teacher_name: Heibi, Ivan
+      teacher_uid: '98399'
+      course_id: '75969'
+      course_name: basic informatics
+      credits: 6
+    - teacher_name: Peroni, Silvio
+      teacher_uid: '46984'
+      course_id: '75969'
+      course_name: basic informatics
+      credits: 6
+    - teacher_name: Tomasi, Francesca
+      teacher_uid: '34612'
+      course_id: '27311'
+      course_name: humanistic it
+      credits: 6
+  - codes:
+    - '6736'
+    - '9224'
+    merged: true
+    name:
+      it: Digital Humanities and Digital Knowledge
+      en: Digital Humanities and Digital Knowledge
+    courses:
+    - teacher_name: Heibi, Ivan
+      teacher_uid: '98399'
+      course_id: B8105
+      course_name: computational management of data
+      credits: 12
+    - teacher_name: Peroni, Silvio
+      teacher_uid: '46984'
+      course_id: B8105
+      course_name: computational management of data
+      credits: 12
+    - teacher_name: Pescarin, Sofia
+      teacher_uid: '112282'
+      course_id: B5059
+      course_name: interaction media design
+      credits: 6
+    - teacher_name: Gangemi, Aldo
+      teacher_uid: '73928'
+      course_id: '85446'
+      course_name: knowledge representation and extraction
+      credits: 6
+    - teacher_name: Colavizza, Giovanni
+      teacher_uid: '131426'
+      course_id: B1873
+      course_name: machine learning for humanities
+      credits: 6
+    - teacher_name: Tamburini, Fabio
+      teacher_uid: '31280'
+      course_id: '91258'
+      course_name: natural language processing
+      credits: 6
+    - teacher_name: Peroni, Silvio
+      teacher_uid: '46984'
+      course_id: '90157'
+      course_name: open science
+      credits: 6
+    - teacher_name: Bonora, Paolo
+      teacher_uid: '82752'
+      course_id: B1874
+      course_name: project management and software engineering for cultural heritage
+      credits: 6
+- dept: filo
+  programmes:
+  - codes:
+    - '6665'
+    - '9216'
+    merged: true
+    name:
+      it: Filosofia
+      en: Philosophy
+    courses:
+    - teacher_name: Bianchini, Francesco
+      teacher_uid: '41640'
+      course_id: '90147'
+      course_name: artificial intelligence
+      credits: 6
+    - teacher_name: Garagnani, Massimiliano
+      teacher_uid: '177443'
+      course_id: '27311'
+      course_name: humanistic it
+      credits: 6
+    - teacher_name: Garagnani, Massimiliano
+      teacher_uid: '177443'
+      course_id: '73149'
+      course_name: logic for informatics
+      credits: 6
+  - codes:
+    - '6805'
+    - '8773'
+    merged: true
+    name:
+      it: Scienze filosofiche
+      en: Philosophical Sciences
+    courses:
+    - teacher_name: Gangemi, Aldo
+      teacher_uid: '73928'
+      course_id: B4948
+      course_name: cognitive sematics for artificial intelligence
+      credits: 6
+  - codes:
+    - '6824'
+    - '8886'
+    merged: true
+    name:
+      it: Semiotica
+      en: Semiotics
+    courses:
+    - teacher_name: Gangemi, Aldo
+      teacher_uid: '73928'
+      course_id: B4948
+      course_name: cognitive sematics for artificial intelligence
+      credits: 6
+    - teacher_name: Presutti, Valentina
+      teacher_uid: '36732'
+      course_id: B5293
+      course_name: computer studies and humanities
+      credits: 3
+    - teacher_name: Garagnani, Massimiliano
+      teacher_uid: '177443'
+      course_id: B8905
+      course_name: foundations of programming
+      credits: 6
+    - teacher_name: Tamburini, Fabio
+      teacher_uid: '31280'
+      course_id: '91258'
+      course_name: natural language processing
+      credits: 6
+    - teacher_name: Gangemi, Aldo
+      teacher_uid: '73928'
+      course_id: B8836
+      course_name: universal semantics
+      credits: 6
+- dept: lilec
+  programmes:
+  - codes:
+    - 0979
+    - '6602'
+    merged: true
+    name:
+      it: Lingue e letterature straniere
+      en: Foreign Languages and Literature
+    courses:
+    - teacher_name: Asprino, Luigi
+      teacher_uid: '55638'
+      course_id: B4826
+      course_name: informatics for the humanities
+      credits: 3
+  - codes:
+    - '6603'
+    - '9264'
+    merged: true
+    name:
+      it: Lingue, mercati e culture dell'Asia e dell'Africa mediterranea
+      en: Languages, Markets and Cultures of Asia and Mediterranean Africa
+    courses:
+    - teacher_name: Asprino, Luigi
+      teacher_uid: '55638'
+      course_id: B4826
+      course_name: informatics for the humanities
+      credits: 3
+  - codes:
+    - '6724'
+    - '8874'
+    merged: true
+    name:
+      it: Language, Society and Communication
+      en: Language, Society and Communication
+    courses:
+    - teacher_name: Presutti, Valentina
+      teacher_uid: '36732'
+      course_id: B5293
+      course_name: computer studies and humanities
+      credits: 3
+    - teacher_name: Presutti, Valentina
+      teacher_uid: '36732'
+      course_id: B5292
+      course_name: knowledge engeneering for the humanities
+      credits: 3
+- dept: sps
+  programmes:
+  - codes:
+    - '5889'
+    - '6777'
+    merged: true
+    name:
+      it: Governance e politiche dell'innovazione digitale
+      en: Digital Innovation Policies and Governance
+    courses:
+    - teacher_name: Poggi, Francesco
+      teacher_uid: '47475'
+      course_id: B0064
+      course_name: introduction to data science and computational thinking
+      credits: 8
+    - teacher_name: Presutti, Valentina
+      teacher_uid: '36732'
+      course_id: B0070
+      course_name: metodologie e tecniche di simulazione
+      credits: 8
+    - teacher_name: Poggi, Francesco
+      teacher_uid: '47475'
+      course_id: B0063
+      course_name: programming laboratory
+      credits: 4
+- dept: stat
+  programmes:
+  - codes:
+    - '5885'
+    - '6693'
+    merged: true
+    name:
+      it: Greening Energy Market and Finance
+      en: Greening Energy Market and Finance
+    courses:
+    - teacher_name: Bartolini, Nicola
+      teacher_uid: '133101'
+      course_id: '98735'
+      course_name: python coding and data science
+      credits: 6
+    - teacher_name: Cordioli, Alberto
+      teacher_uid: '166955'
+      course_id: '98735'
+      course_name: python coding and data science
+      credits: 6
+  - codes:
+    - '6661'
+    - '8873'
+    merged: true
+    name:
+      it: Scienze statistiche
+      en: Statistical Sciences
+    courses:
+    - teacher_name: Somenzi, Damiano Marino
+      teacher_uid: '50421'
+      course_id: '79194'
+      course_name: databases
+      credits: 6
+  - codes:
+    - '6810'
+    - '9222'
+    merged: true
+    name:
+      it: Statistical Sciences
+      en: Statistical Sciences
+    courses:
+    - teacher_name: Somenzi, Damiano Marino
+      teacher_uid: '50421'
+      course_id: '79194'
+      course_name: databases
+      credits: 6
+  - codes:
+    - '6811'
+    - '8876'
+    merged: true
+    name:
+      it: Statistica, economia e impresa
+      en: Statistics, Economics and Business
+    courses:
+    - teacher_name: Somenzi, Damiano Marino
+      teacher_uid: '50421'
+      course_id: '96793'
+      course_name: information systems and database management
+      credits: 6

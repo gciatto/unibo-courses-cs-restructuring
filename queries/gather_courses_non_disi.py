@@ -214,7 +214,13 @@ def main():
                         "id": course["id"],
                         "name": course["name"],
                         "credits": course["credits"],
-                        "programmes": [ str(p.get("code")) for p in course["programmes"]]
+                        "programmes": [
+                            {
+                                "code": str(programme.get("code")),
+                                "dept": programme.get("department"),
+                            }
+                            for programme in course["programmes"]
+                        ],
                     }
                     for course in courses
                 ],

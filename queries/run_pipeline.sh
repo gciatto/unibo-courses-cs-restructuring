@@ -27,6 +27,10 @@ echo "Grouping non-DISI courses"
 uv run python group_non_disi_courses_by_department.py courses_non_disi.yaml grouped_non_disi_courses_by_department.yaml
 echo "Grouping service DISI courses"
 uv run python group_disi_service_courses_by_department.py
+echo "Plotting DISI service course-to-programme Sankey diagram"
+uv run python plot_grouped_disi_service_courses_sankey.py
+echo "Plotting non-DISI course-to-programme Sankey diagram"
+uv run python plot_other_people_sankey.py
 echo "Plotting non-DISI courses credits by department"
 uv run python plot_other_credits_by_department.py grouped_non_disi_courses_by_department.yaml
 echo "Plotting non-DISI courses credits by department (breakdown)"

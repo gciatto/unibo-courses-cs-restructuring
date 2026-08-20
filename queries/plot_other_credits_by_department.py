@@ -19,10 +19,32 @@ def load_yaml(path: str) -> list:
 def aggregate_credits(data: list) -> pd.DataFrame:
     rows = []
     for entry in data:
-        dept  = (entry.get("department") or "(no department)").strip().replace("\n", " ")
+        dept = (
+            entry.get("dept")
+            or entry.get("department")
+            or "(no department)"
+        ).strip().replace("\n", " ")
         if not dept:
             dept = "(no department)"
-        total = sum(c.get("credits", 0) or 0 for c in (entry.get("courses") or []))
+
+        if entry.get("programmes") is not None:
+            # A course may occur in several programmes or once per co-teacher.
+            # Count each distinct course only once within its department.
+            courses = {}
+            for programme in entry.get("programmes") or []:
+                for course in programme.get("courses") or []:
+                    course_id = str(course.get("course_id") or "").strip()
+                    course_name = str(course.get("course_name") or "").strip()
+                    credits = course.get("credits", 0) or 0
+                    courses[(course_id, course_name, credits)] = credits
+            total = sum(courses.values())
+        else:
+            # Backward compatibility with the former flat grouped schema.
+            total = sum(
+                course.get("credits", 0) or 0
+                for course in entry.get("courses") or []
+            )
+
         rows.append({"department": dept, "credits": total})
     return (
         pd.DataFrame(rows)
@@ -56,11 +78,11 @@ def make_bar(df: pd.DataFrame, out: str = "_other_credits_by_dept.pdf") -> None:
         )
 
     ax.set_xlim(0, max_value + x_offset * 8)
-    fig.subplots_adjust(left=0.26, right=0.98, top=0.90, bottom=0.08)
+    fig.subplots_adjust(left=0.16, right=0.995, top=0.95, bottom=0.06)
 
     if os.path.exists( out ):
         os.remove( out )
-    fig.savefig(out, format="pdf")
+    fig.savefig(out, format="pdf", bbox_inches="tight", pad_inches=0.04)
     plt.close(fig)
     print(f"Saved  {out}")
 
