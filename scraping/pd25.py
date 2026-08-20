@@ -1,0 +1,360 @@
+"""Shared normalization/matching helpers for cross-referencing pd25.csv (an
+external per-teaching dataset supplied by Claudio) against our own crawled
+data/courses/<teacher>/<year>/teaching-*.yml files.
+
+Used by tests.test_pd25_teachings (pd25 -> yaml coverage check) and by
+compare_pd25 (yaml -> pd25 cross-reference report).
+"""
+
+from __future__ import annotations
+
+import csv
+import pathlib
+import re
+import unicodedata
+import warnings
+from collections.abc import Callable, Iterable
+from typing import Any
+
+import yaml
+
+from scraping._utils import normalize_programme_title
+from resources import classify_dept, classify_role
+
+
+ROOT_DIR = pathlib.Path(__file__).resolve().parents[1]
+CSV_PATH = ROOT_DIR / "tests" / "pd25.csv"
+COURSES_DIR = ROOT_DIR / "data" / "courses"
+
+ROLE_PROGRESSION_RANK = {
+    "adjunct professor": 0,
+    "rtda": 1,
+    "rtdb": 2,
+    "tenure-track researcher": 2,
+    "associate professor": 3,
+    "full professor": 4,
+    "other": 0,
+}
+
+PLACEHOLDER_VALUES = {
+    "",
+    "-",
+    "'-",
+    "-1",
+    "0",
+    "000000",
+    "000000000000",
+    "campus non definito",
+    "n.d.",
+    "n.d",
+    "non assegnato",
+}
+
+SSD_ALIASES = {
+    "agr/01": {"agr/01", "agri-01/a"},
+    "agr/10": {"agr/10", "agri-04/c"},
+    "fis/05": {"fis/05", "phys-05/a"},
+    "fis/07": {"fis/07", "phys-06/a"},
+    "inf/01": {"inf/01", "info-01/a"},
+    "ing-ind/19": {"ing-ind/19", "iind-07/d"},
+    "ing-ind/20": {"ing-ind/20", "iind-07/e"},
+    "ing-inf/01": {"ing-inf/01", "iinf-01/a"},
+    "ing-inf/03": {"ing-inf/03", "iinf-03/a"},
+    "ing-inf/05": {"ing-inf/05", "iinf-05/a"},
+    "ius/20": {"ius/20", "giur-17/a", "phil-02/a"},
+    "mat/08": {"mat/08", "math-05/a"},
+    "mat/09": {"mat/09", "math-06/a"},
+    "m-sto/08": {"m-sto/08", "hist-04/c"},
+}
+
+
+def clean(value: Any) -> str:
+    return str(value or "").replace("\xa0", " ").strip()
+
+
+def normalize_text(value: Any) -> str:
+    return " ".join(clean(value).split()).casefold()
+
+
+def normalize_city(value: Any) -> str:
+    text = normalize_text(value).replace("'", "")
+    text = unicodedata.normalize("NFKD", text)
+    text = "".join(char for char in text if not unicodedata.combining(char))
+    return text
+
+
+def is_placeholder(value: Any) -> bool:
+    return normalize_text(value).strip("'") in PLACEHOLDER_VALUES
+
+
+def normalize_id(value: Any) -> str:
+    text = clean(value).strip("'")
+    if text.endswith(".0") and text[:-2].isdigit():
+        text = text[:-2]
+    if text.isdigit():
+        text = str(int(text))
+    return text.casefold()
+
+
+def normalize_course_title(value: Any) -> str:
+    text = normalize_text(value)
+    text = re.sub(r"\s*[-–—]\s*\d+\s*cfu\s*$", " ", text, flags=re.IGNORECASE)
+    text = re.sub(
+        r"\s*\((?:\d+|l|lm|lt|lmcu|i\.?c\.?|c\.?i\.?|\d+\s*cfu)\)\s*",
+        " ",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(r"\b\d+\s*cfu\b", " ", text, flags=re.IGNORECASE)
+    return " ".join(text.split())
+
+
+def course_name_matches(row_course_name: Any, payload: dict[str, Any]) -> bool:
+    expected_name = normalize_course_title(row_course_name)
+    course_title = payload.get("course_title") or {}
+    actual_name = normalize_course_title(course_title.get("name"))
+    if expected_name == actual_name:
+        return True
+
+    syllabus = payload.get("syllabus") or {}
+    italian_syllabus = syllabus.get("it") if isinstance(syllabus, dict) else None
+    italian_title = italian_syllabus.get("title") if isinstance(italian_syllabus, dict) else None
+    return bool(expected_name and italian_title and expected_name in normalize_text(italian_title))
+
+
+def normalize_ssd(value: Any) -> str:
+    return normalize_text(value)
+
+
+def ssd_matches(expected: Any, actual: Any) -> bool:
+    if is_placeholder(expected):
+        return True
+
+    normalized_expected = normalize_ssd(expected)
+    normalized_actual = normalize_ssd(actual)
+    return normalized_actual in SSD_ALIASES.get(normalized_expected, {normalized_expected})
+
+
+def programme_names(programme: dict[str, Any]) -> set[str]:
+    names = programme.get("name") or {}
+    if isinstance(names, dict):
+        return {normalize_programme_title(str(value)) for value in names.values() if value}
+    if names:
+        return {normalize_programme_title(str(names))}
+    return set()
+
+
+def programme_duration_check(tipo_corso: Any) -> Callable[[Any], bool] | None:
+    tipo = normalize_text(tipo_corso)
+    if tipo == "l":
+        return lambda duration: duration == 3
+    if tipo == "lm":
+        return lambda duration: duration == 2
+    if tipo == "lmcu":
+        return lambda duration: isinstance(duration, int) and duration >= 4
+    return None
+
+
+def warn_unsupported_tipo(row_number: int, row: dict[str, str]) -> None:
+    if programme_duration_check(row.get("Tipo Corso")) is None:
+        warnings.warn(
+            f"row {row_number}: skipping unsupported Tipo Corso={row.get('Tipo Corso')!r}",
+            RuntimeWarning,
+            stacklevel=2,
+        )
+
+
+def role_matches(expected_roles: Iterable[str], actual_roles: Iterable[Any]) -> bool:
+    expected_normalized = {normalize_text(role) for role in expected_roles}
+    actual_normalized = {normalize_text(role) for role in actual_roles}
+
+    if expected_normalized & actual_normalized:
+        return True
+
+    for expected_role in expected_normalized:
+        expected_rank = ROLE_PROGRESSION_RANK.get(expected_role)
+        if expected_rank is None:
+            continue
+        for actual_role in actual_normalized:
+            actual_rank = ROLE_PROGRESSION_RANK.get(actual_role)
+            if actual_rank is not None and actual_rank >= expected_rank:
+                return True
+    return False
+
+
+def academic_year_start(value: Any) -> str:
+    text = clean(value)
+    return text.split("/", 1)[0] if "/" in text else text
+
+
+PD25_HEADER_MARKER = "Dipartimento di riferimento"
+PD25_ENCODINGS = ("utf-8-sig", "cp1252")
+
+
+def _read_lines_any_encoding(path: pathlib.Path) -> list[str]:
+    last_error: UnicodeDecodeError | None = None
+    for encoding in PD25_ENCODINGS:
+        try:
+            with path.open(encoding=encoding, newline="") as file:
+                return file.readlines()
+        except UnicodeDecodeError as error:
+            last_error = error
+    raise ValueError(f"Could not decode {path} with any of {PD25_ENCODINGS}") from last_error
+
+
+def read_pd25_rows(path: pathlib.Path = CSV_PATH) -> list[tuple[int, dict[str, str]]]:
+    """Reads a pd25-style CSV export, tolerating export variations: an
+    optional metadata preamble before the real header row, and either UTF-8
+    or CP1252/Latin-1 encoding (exports from Excel have alternated between
+    the two)."""
+    lines = _read_lines_any_encoding(path)
+    header_index = next((i for i, line in enumerate(lines) if line.startswith(PD25_HEADER_MARKER)), None)
+    if header_index is None:
+        raise ValueError(f"Could not find a header row starting with {PD25_HEADER_MARKER!r} in {path}")
+
+    data_lines = lines[header_index:]
+    return list(enumerate(csv.DictReader(data_lines), start=header_index + 2))
+
+
+def read_pd25_header(path: pathlib.Path = CSV_PATH) -> list[str]:
+    """Returns the ordered column names of a pd25-style CSV export."""
+    lines = _read_lines_any_encoding(path)
+    header_line = next((line for line in lines if line.startswith(PD25_HEADER_MARKER)), None)
+    if header_line is None:
+        raise ValueError(f"Could not find a header row starting with {PD25_HEADER_MARKER!r} in {path}")
+    return next(csv.reader([header_line]))
+
+
+def iter_teaching_files() -> list[pathlib.Path]:
+    return sorted(COURSES_DIR.glob("*/*/teaching-*.yml"))
+
+
+def teaching_key(payload: dict[str, Any]) -> tuple[str, str, str]:
+    teacher = payload.get("teacher") or {}
+    course_title = payload.get("course_title") or {}
+    return (
+        str(payload.get("year") or ""),
+        normalize_id(course_title.get("id")),
+        normalize_id(teacher.get("id")),
+    )
+
+
+def row_key(row: dict[str, str]) -> tuple[str, str, str]:
+    return (
+        academic_year_start(row.get("A.A.")),
+        normalize_id(row.get("cod Materia")),
+        normalize_id(row.get("matricola docente")),
+    )
+
+
+def row_integrato_key(row: dict[str, str]) -> tuple[str, str, str]:
+    """Same as row_key, but keyed on cod_integrato (the actual scraped module
+    code for "corso integrato" container rows) instead of cod Materia."""
+    return (
+        academic_year_start(row.get("A.A.")),
+        normalize_id(row.get("cod_integrato")),
+        normalize_id(row.get("matricola docente")),
+    )
+
+
+def load_teachings_by_key() -> dict[tuple[str, str, str], list[tuple[pathlib.Path, dict[str, Any]]]]:
+    teachings_by_key: dict[tuple[str, str, str], list[tuple[pathlib.Path, dict[str, Any]]]] = {}
+    for path in iter_teaching_files():
+        payload = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+        if isinstance(payload, dict):
+            teachings_by_key.setdefault(teaching_key(payload), []).append((path, payload))
+    return teachings_by_key
+
+
+def normalized_programme_department(row: dict[str, str]) -> str | None:
+    value = row.get("Dipartimento di riferimento")
+    if is_placeholder(value):
+        return None
+    return classify_dept(clean(value))
+
+
+def normalized_teacher_affiliation(row: dict[str, str]) -> str | None:
+    value = row.get("acronimo DIP")
+    if is_placeholder(value):
+        return None
+    return classify_dept(clean(value))
+
+
+def candidate_failures(
+    *,
+    row: dict[str, str],
+    row_number: int,
+    path: pathlib.Path,
+    payload: dict[str, Any],
+) -> list[str]:
+    failures: list[str] = []
+    teacher = payload.get("teacher") or {}
+    teacher_ssd = teacher.get("ssd") or {}
+    course_title = payload.get("course_title") or {}
+    programmes = [programme for programme in payload.get("programmes") or [] if isinstance(programme, dict)]
+
+    expected_department = normalized_programme_department(row)
+    if expected_department is None and not is_placeholder(row.get("Dipartimento di riferimento")):
+        failures.append(f"unrecognized Dipartimento di riferimento={row.get('Dipartimento di riferimento')!r}")
+    elif expected_department and not any(normalize_text(programme.get("department")) == expected_department for programme in programmes):
+        failures.append(f"no programme department={expected_department!r}")
+
+    duration_check = programme_duration_check(row.get("Tipo Corso"))
+    if duration_check is not None and not any(duration_check(programme.get("duration")) for programme in programmes):
+        failures.append(f"no programme duration matching Tipo Corso={row.get('Tipo Corso')!r}")
+
+    expected_programme = normalize_programme_title(clean(row.get("Corso di Studio")))
+    if expected_programme and not any(expected_programme in programme_names(programme) for programme in programmes):
+        failures.append(f"no programme named {row.get('Corso di Studio')!r}")
+
+    if not is_placeholder(row.get("sede didattica")) and normalize_city(row.get("sede didattica")) != normalize_city(payload.get("campus")):
+        failures.append(f"campus {payload.get('campus')!r} != sede didattica {row.get('sede didattica')!r}")
+
+    if normalize_id(row.get("cod Materia")) != normalize_id(course_title.get("id")):
+        failures.append(f"course_title.id {course_title.get('id')!r} != cod Materia {row.get('cod Materia')!r}")
+
+    if not course_name_matches(row.get("Materia reale"), payload):
+        failures.append(f"course_title.name {course_title.get('name')!r} != Materia reale {row.get('Materia reale')!r}")
+
+    if not ssd_matches(row.get("SSD materia"), payload.get("ssd")):
+        failures.append(f"ssd {payload.get('ssd')!r} != SSD materia {row.get('SSD materia')!r}")
+
+    if normalize_id(row.get("matricola docente")) != normalize_id(teacher.get("id")):
+        failures.append(f"teacher.id {teacher.get('id')!r} != matricola docente {row.get('matricola docente')!r}")
+
+    teacher_name = normalize_text(teacher.get("name"))
+    for column in ("cognome docente", "nome docente"):
+        expected_name_part = normalize_text(row.get(column))
+        if expected_name_part and not is_placeholder(expected_name_part) and expected_name_part not in teacher_name:
+            failures.append(f"teacher.name {teacher.get('name')!r} does not contain {column}={row.get(column)!r}")
+
+    if not ssd_matches(row.get("SSD docente"), teacher_ssd.get("name")):
+        failures.append(f"teacher.ssd.name {teacher_ssd.get('name')!r} != SSD docente {row.get('SSD docente')!r}")
+
+    if not is_placeholder(row.get("Ruolo docente")):
+        expected_roles = classify_role(clean(row.get("Ruolo docente")))
+        if not expected_roles:
+            failures.append(f"unrecognized Ruolo docente={row.get('Ruolo docente')!r}")
+        elif not role_matches(expected_roles, teacher.get("role") or []):
+            failures.append(f"teacher.role {teacher.get('role')!r} does not match Ruolo docente={row.get('Ruolo docente')!r}")
+
+    expected_affiliation = normalized_teacher_affiliation(row)
+    if expected_affiliation is None and not is_placeholder(row.get("acronimo DIP")):
+        failures.append(f"unrecognized acronimo DIP={row.get('acronimo DIP')!r}")
+    elif expected_affiliation and normalize_text(expected_affiliation) != normalize_text(teacher.get("affiliation")):
+        failures.append(f"teacher.affiliation {teacher.get('affiliation')!r} != acronimo DIP {row.get('acronimo DIP')!r}")
+
+    if failures:
+        relative_path = path.relative_to(ROOT_DIR)
+        return [f"{relative_path}: {failure}" for failure in failures]
+    return []
+
+
+def format_row_context(row_number: int, row: dict[str, str]) -> str:
+    return (
+        f"row={row_number} "
+        f"year={academic_year_start(row.get('A.A.'))!r} "
+        f"cod Materia={row.get('cod Materia')!r} "
+        f"matricola docente={row.get('matricola docente')!r} "
+        f"Materia reale={row.get('Materia reale')!r}"
+    )
