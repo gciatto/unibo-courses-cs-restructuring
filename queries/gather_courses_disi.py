@@ -93,9 +93,6 @@ def main():
                 "programmes": programmes,
             }
 
-            # Each source file is a distinct catalogue record. Similar syllabi
-            # can legitimately belong to different course IDs, programmes, or
-            # credit values, so similarity must not be used for deduplication.
             courses.append(course)
 
         person = {

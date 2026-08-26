@@ -2,7 +2,7 @@
 Loads contacts from data/contacts.csv on the local file system, filters out
 those from "Dipartimento di Informatica - Scienza e Ingegneria", then checks
 if each contact has a folder under data/courses/<email_name>/ and prints the
-courses found therein.
+courses found therein that are not taught by at least one member of DISI.
 """
 
 import csv
