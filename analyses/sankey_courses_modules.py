@@ -1,36 +1,15 @@
+#!/usr/bin/env python3
+import argparse
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from matplotlib.path import Path
+from matplotlib.path import Path as MplPath
 from matplotlib.patches import PathPatch, Rectangle
 from reportlab.pdfgen import canvas
 from reportlab.lib.utils import ImageReader
 from reportlab.lib.pagesizes import landscape, A3
-
-# NaN = no connection; 0 = a real connection shown with a minimal visible width.
-data = {
-    'Python 1': [3,3,3,3,3,3,3,3,3],
-    'Python 2': [np.nan,np.nan,np.nan,2,np.nan,2,np.nan,np.nan,2],
-    'Algorithms': [np.nan,np.nan,np.nan,np.nan,np.nan,2,2,2,2],
-    'Statistics intro': [np.nan,np.nan,np.nan,np.nan,2,2,np.nan,np.nan,np.nan],
-    'CS basics': [np.nan,np.nan,np.nan,1,1,1,1,1,1],
-    'Case studies': [np.nan,np.nan,np.nan,0,0,0,np.nan,np.nan,np.nan],
-    'Machine Learning Intro': [2,2,np.nan,np.nan,np.nan,2,np.nan,np.nan,np.nan],
-    'Deep Learning': [5,5,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan],
-    'Bioinformatics': [np.nan,np.nan,3,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan],
-}
-courses = [
-    'Systems and Algorithms for Data Science',
-    'Machine Learning Systems For Data Science',
-    'Computational Methods for Bioinformatics',
-    'Computer Programming',
-    "INTRODUZIONE ALL'ANALISI DEI DATI",
-    'Programming',
-    'INFORMATICA',
-    'Information Technology',
-    'Computer Science',
-]
-df = pd.DataFrame(data, index=courses)
 
 
 def ribbon_path(x0, y0a, y0b, x1, y1a, y1b):
@@ -38,157 +17,289 @@ def ribbon_path(x0, y0a, y0b, x1, y1a, y1b):
     dx = x1 - x0
     verts = [
         (x0, y0a),
-        (x0 + 0.42*dx, y0a), (x1 - 0.42*dx, y1a), (x1, y1a),
+        (x0 + 0.42 * dx, y0a), (x1 - 0.42 * dx, y1a), (x1, y1a),
         (x1, y1b),
-        (x1 - 0.42*dx, y1b), (x0 + 0.42*dx, y0b), (x0, y0b),
+        (x1 - 0.42 * dx, y1b), (x0 + 0.42 * dx, y0b), (x0, y0b),
         (x0, y0a),
     ]
-    codes = [Path.MOVETO,
-             Path.CURVE4, Path.CURVE4, Path.CURVE4,
-             Path.LINETO,
-             Path.CURVE4, Path.CURVE4, Path.CURVE4,
-             Path.CLOSEPOLY]
-    return Path(verts, codes)
+    codes = [
+        MplPath.MOVETO,
+        MplPath.CURVE4, MplPath.CURVE4, MplPath.CURVE4,
+        MplPath.LINETO,
+        MplPath.CURVE4, MplPath.CURVE4, MplPath.CURVE4,
+        MplPath.CLOSEPOLY,
+    ]
+    return MplPath(verts, codes)
 
 
-def sankey_courses_modules(df, pdf_filename='/mnt/data/sankey_courses_modules_v6.pdf',
-                           png_filename='/mnt/data/sankey_courses_modules_v6.png'):
+def read_course_module_csv(csv_filename):
+    """Read a CSV whose first column contains course names and remaining columns are modules.
+
+    Empty cells become NaN (no connection). A literal 0 remains 0 (visible thin connection).
+    """
+    df = pd.read_csv(csv_filename, index_col=0)
+
+    if df.empty:
+        raise ValueError("The CSV contains no course/module data.")
+
+    # Clean accidental whitespace in labels while preserving course/module wording.
+    df.index = df.index.astype(str).str.strip()
+    df.columns = df.columns.astype(str).str.strip()
+
+    # Force all cells to numeric. Empty cells remain NaN.
+    df = df.apply(pd.to_numeric, errors="coerce")
+
+    if df.index.has_duplicates:
+        raise ValueError("Course names in the first column must be unique.")
+    if df.columns.has_duplicates:
+        raise ValueError("Module names in the header row must be unique.")
+
+    return df
+
+
+def sankey_courses_modules(df, pdf_filename, zero_width=0.16, figsize=None):
     courses = list(df.index)
     modules = list(df.columns)
 
-    # Every module has one intrinsic width: its non-missing CFU value.
-    # This dataset has a constant value within each module. 0 gets a tiny visible width.
-    zero_width = 0.16
+    # Each module is assumed to have one CFU value across all courses to which it connects.
+    # This matches the intended representation: every flow for a given module has the same width.
     module_value = {}
-    for m in modules:
-        vals = df[m].dropna().unique()
-        positive = [float(v) for v in vals if float(v) > 0]
-        module_value[m] = positive[0] if positive else 0.0
+    for module in modules:
+        vals = sorted({float(v) for v in df[module].dropna().tolist()})
+        positive = sorted({v for v in vals if v > 0})
+
+        if len(positive) > 1:
+            raise ValueError(
+                f"Module '{module}' contains different positive CFU values {positive}. "
+                "This Sankey expects each module to have one constant CFU width."
+            )
+
+        module_value[module] = positive[0] if positive else 0.0
 
     def visual_value(v):
+        """Width used for drawing. A semantic 0 gets a tiny visible width."""
         return zero_width if float(v) == 0 else float(v)
 
-    # Course node width = additive sum of all connected module widths.
-    course_total = {
-        c: sum(visual_value(df.loc[c, m]) for m in modules if not pd.isna(df.loc[c, m]))
-        for c in courses
+    # Course geometry is additive: stack every connected module width.
+    course_visual_total = {
+        course: sum(
+            visual_value(df.loc[course, module])
+            for module in modules
+            if not pd.isna(df.loc[course, module])
+        )
+        for course in courses
     }
 
-    # Geometry in data coordinates. Heights are proportional to CFU.
-    scale = 0.0062
-    gap_course = 0.030
-    gap_module = 0.045
-    xL, xR = 0.23, 0.77
-    node_w = 0.014
+    # Fit the complete Sankey inside a fixed vertical plotting region.
+    # The old version used a fixed scale/gap, so sufficiently many courses
+    # pushed the bottom ribbons below y=0 and Matplotlib clipped them.
+    y_top = 0.925
+    y_bottom = 0.095
+    available_height = y_top - y_bottom
 
-    # Center the two node columns independently.
-    left_heights = [course_total[c] * scale for c in courses]
+    # Keep some vertical breathing room, but shrink gaps automatically as
+    # the number of nodes grows.
+    gap_fraction = 0.34
+    gap_course = (available_height * gap_fraction / max(1, len(courses) - 1)) if len(courses) > 1 else 0.0
+    gap_module = (available_height * gap_fraction / max(1, len(modules) - 1)) if len(modules) > 1 else 0.0
+    gap_course = min(0.030, gap_course)
+    gap_module = min(0.045, gap_module)
+
+    course_units = sum(course_visual_total.values())
+    module_units = sum(visual_value(module_value[m]) for m in modules)
+
+    course_room = available_height - gap_course * max(0, len(courses) - 1)
+    module_room = available_height - gap_module * max(0, len(modules) - 1)
+
+    # One common scale must be used on both sides so that a module ribbon
+    # has the same thickness at the course and module ends.
+    scale_candidates = [0.0062]
+    if course_units > 0:
+        scale_candidates.append(course_room / course_units)
+    if module_units > 0:
+        scale_candidates.append(module_room / module_units)
+    scale = min(scale_candidates)
+
+    x_left, x_right = 0.23, 0.77
+    node_width = 0.014
+
+    left_heights = [course_visual_total[c] * scale for c in courses]
     right_heights = [visual_value(module_value[m]) * scale for m in modules]
 
     def positions(heights, gap):
-        total = sum(heights) + gap * (len(heights)-1)
-        top = 0.91 + total/2
-        # rescale/shift if necessary
-        if top > 0.95:
-            top = 0.95
+        total = sum(heights) + gap * max(0, len(heights) - 1)
+        # Center the stack within the allowed region.
+        top = y_bottom + (available_height + total) / 2
         out = []
         y = top
         for h in heights:
-            out.append((y-h, y))
+            out.append((y - h, y))
             y -= h + gap
         return out
 
     left_pos = positions(left_heights, gap_course)
     right_pos = positions(right_heights, gap_module)
 
-    # Distinct module colors from a qualitative palette.
-    cmap = plt.get_cmap('tab10')
-    colors = {m: cmap(i % 10) for i, m in enumerate(modules)}
+    cmap = plt.get_cmap("tab10")
+    colors = {module: cmap(i % 10) for i, module in enumerate(modules)}
 
-    fig, ax = plt.subplots(figsize=(13, 7.5))
+    if figsize is None:
+        # A little extra height for larger course lists keeps text readable.
+        figsize = (13, max(7.5, 5.0 + 0.20 * len(courses)))
+    fig, ax = plt.subplots(figsize=figsize)
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
-    ax.axis('off')
+    ax.axis("off")
 
-    # Draw course nodes first. Their heights equal the SUM of connected module widths.
-    for i, c in enumerate(courses):
+    # Course boxes: visual height is additive, but labels are semantic CFU from the table.
+    for i, course in enumerate(courses):
         y0, y1 = left_pos[i]
-        ax.add_patch(Rectangle((xL-node_w, y0), node_w, y1-y0,
-                               facecolor='white', edgecolor='black', linewidth=0.9, zorder=4))
-        semantic_course_cfu = sum(float(df.loc[c, m]) for m in modules if not pd.isna(df.loc[c, m]))
-        ax.text(xL-node_w/2, (y0+y1)/2, f'{semantic_course_cfu:g}',
-                ha='center', va='center', fontsize=7.5, fontweight='bold', zorder=5)
-        ax.text(xL-node_w-0.012, (y0+y1)/2, c, ha='right', va='center', fontsize=9)
+        ax.add_patch(
+            Rectangle(
+                (x_left - node_width, y0), node_width, y1 - y0,
+                facecolor="white", edgecolor="black", linewidth=0.9, zorder=4,
+            )
+        )
+        semantic_course_cfu = df.loc[course].sum(skipna=True)
+        ax.text(
+            x_left - node_width / 2, (y0 + y1) / 2, f"{semantic_course_cfu:g}",
+            ha="center", va="center", fontsize=7.5, fontweight="bold", zorder=5,
+        )
+        ax.text(
+            x_left - node_width - 0.012, (y0 + y1) / 2, course,
+            ha="right", va="center", fontsize=9,
+        )
 
-    # Module nodes: node height equals the width of every flow belonging to that module.
-    for j, m in enumerate(modules):
+    # Module boxes: box height equals the width of every flow belonging to that module.
+    for j, module in enumerate(modules):
         y0, y1 = right_pos[j]
-        ax.add_patch(Rectangle((xR, y0), node_w, y1-y0,
-                               facecolor=colors[m], edgecolor='black', linewidth=0.7, zorder=4))
-        ax.text(xR+node_w/2, (y0+y1)/2, f'{module_value[m]:g}',
-                ha='center', va='center', fontsize=7.5, fontweight='bold', zorder=5)
-        ax.text(xR+node_w+0.012, (y0+y1)/2, m, ha='left', va='center', fontsize=9)
+        ax.add_patch(
+            Rectangle(
+                (x_right, y0), node_width, y1 - y0,
+                facecolor=colors[module], edgecolor="black", linewidth=0.7, zorder=4,
+            )
+        )
+        ax.text(
+            x_right + node_width / 2, (y0 + y1) / 2, f"{module_value[module]:g}",
+            ha="center", va="center", fontsize=7.5, fontweight="bold", zorder=5,
+        )
+        ax.text(
+            x_right + node_width + 0.012, (y0 + y1) / 2, module,
+            ha="left", va="center", fontsize=9,
+        )
 
-    # Stack ribbons at each COURSE, so they are additive rather than overlapping.
-    # At each MODULE, all ribbons use the same full module interval, because each
-    # connection for that module has the same CFU width in this dataset.
-    course_cursor = {c: left_pos[i][0] for i, c in enumerate(courses)}
+    # Stack ribbons at each course. At each module, all ribbons share the module interval.
+    course_cursor = {course: left_pos[i][0] for i, course in enumerate(courses)}
 
-    for j, m in enumerate(modules):
-        my0, my1 = right_pos[j]
-        for c in courses:
-            v = df.loc[c, m]
-            if pd.isna(v):
+    for j, module in enumerate(modules):
+        module_y0, module_y1 = right_pos[j]
+        for course in courses:
+            value = df.loc[course, module]
+            if pd.isna(value):
                 continue
-            h = visual_value(v) * scale
-            cy0 = course_cursor[c]
-            cy1 = cy0 + h
-            course_cursor[c] = cy1
 
-            path = ribbon_path(xL, cy0, cy1, xR, my0, my1)
-            ax.add_patch(PathPatch(path,
-                                   facecolor=colors[m], edgecolor=colors[m],
-                                   linewidth=0.25, alpha=0.62, zorder=2))
+            h = visual_value(value) * scale
+            course_y0 = course_cursor[course]
+            course_y1 = course_y0 + h
+            course_cursor[course] = course_y1
 
-    ax.text(xL-node_w, 0.985, 'COURSES', ha='right', va='top', fontsize=12, fontweight='bold')
-    ax.text(xR, 0.985, 'MODULES', ha='left', va='top', fontsize=12, fontweight='bold')
+            path = ribbon_path(
+                x_left, course_y0, course_y1,
+                x_right, module_y0, module_y1,
+            )
+            ax.add_patch(
+                PathPatch(
+                    path,
+                    facecolor=colors[module], edgecolor=colors[module],
+                    linewidth=0.25, alpha=0.62, zorder=2,
+                )
+            )
 
-    # Totals are computed from the semantic node widths in CFU.
-    # The tiny visual width used to display 0-CFU links is deliberately excluded.
-    total_course_cfu = sum(
-        float(v) for v in df.to_numpy().ravel() if not pd.isna(v)
+    ax.text(
+        x_left - node_width, 0.985, "COURSES",
+        ha="right", va="top", fontsize=12, fontweight="bold",
     )
+    ax.text(
+        x_right, 0.985, "MODULES",
+        ha="left", va="top", fontsize=12, fontweight="bold",
+    )
+
+    # Semantic totals are computed directly from the CSV values, never from visual widths.
+    total_course_cfu = float(np.nansum(df.to_numpy(dtype=float)))
     total_module_cfu = sum(float(module_value[m]) for m in modules)
 
     def fmt_cfu(x):
-        return str(int(x)) if float(x).is_integer() else f'{x:g}'
+        return str(int(x)) if float(x).is_integer() else f"{x:g}"
 
-    left_bottom = min(y0 for y0, y1 in left_pos)
-    right_bottom = min(y0 for y0, y1 in right_pos)
-    ax.text(xL-node_w, left_bottom-0.018, f'Total CFU {fmt_cfu(total_course_cfu)}',
-            ha='right', va='top', fontsize=11, fontweight='bold')
-    ax.text(xR, right_bottom-0.018, f'Total CFU {fmt_cfu(total_module_cfu)}',
-            ha='left', va='top', fontsize=11, fontweight='bold')
-    ax.text(0.5, 0.018,
-            'Module color is carried by its flows. Module/flow width is proportional to CFU; '
-            'course width is the additive sum of connected module widths. 0 CFU is a thin ribbon; missing = no ribbon.',
-            ha='center', va='bottom', fontsize=8)
+    left_bottom = min(y0 for y0, _ in left_pos)
+    right_bottom = min(y0 for y0, _ in right_pos)
+    ax.text(
+        x_left - node_width, left_bottom - 0.018,
+        f"Total CFU {fmt_cfu(total_course_cfu)}",
+        ha="right", va="top", fontsize=11, fontweight="bold",
+    )
+    ax.text(
+        x_right, right_bottom - 0.018,
+        f"Total CFU {fmt_cfu(total_module_cfu)}",
+        ha="left", va="top", fontsize=11, fontweight="bold",
+    )
 
-    fig.savefig(png_filename, dpi=240, bbox_inches='tight', pad_inches=0.15)
+    #ax.text(
+    #    0.5, 0.018,
+    #    "Module color is carried by its flows. Module/flow width is proportional to CFU; "
+    #    "course width is the additive sum of connected module widths. "
+    #    "0 CFU is a thin ribbon; missing = no ribbon.",
+    #    ha="center", va="bottom", fontsize=8,
+    #)
+
+    # Render to a temporary PNG, then place it on a single landscape A3 PDF page.
+    pdf_path = Path(pdf_filename)
+    png_path = pdf_path.with_name(pdf_path.stem + "_tmp.png")
+    fig.savefig(png_path, dpi=240, bbox_inches="tight", pad_inches=0.15)
     plt.close(fig)
 
-    # Put the verified chart image on a single landscape A3 PDF page.
     page_w, page_h = landscape(A3)
-    c = canvas.Canvas(pdf_filename, pagesize=(page_w, page_h))
-    img = ImageReader(png_filename)
-    iw, ih = img.getSize()
+    pdf = canvas.Canvas(str(pdf_path), pagesize=(page_w, page_h))
+    img = ImageReader(str(png_path))
+    img_w, img_h = img.getSize()
     margin = 18
-    ratio = min((page_w-2*margin)/iw, (page_h-2*margin)/ih)
-    w, h = iw*ratio, ih*ratio
-    c.drawImage(img, (page_w-w)/2, (page_h-h)/2, width=w, height=h, mask='auto')
-    c.showPage()
-    c.save()
+    ratio = min((page_w - 2 * margin) / img_w, (page_h - 2 * margin) / img_h)
+    draw_w, draw_h = img_w * ratio, img_h * ratio
+    pdf.drawImage(
+        img,
+        (page_w - draw_w) / 2,
+        (page_h - draw_h) / 2,
+        width=draw_w,
+        height=draw_h,
+        mask="auto",
+    )
+    pdf.showPage()
+    pdf.save()
+
+    png_path.unlink(missing_ok=True)
 
 
-if __name__ == '__main__':
-    sankey_courses_modules(df)
+def main():
+    parser = argparse.ArgumentParser(
+        description=(
+            "Create a course-to-module Sankey PDF from a CSV file. "
+            "The first column must contain course names; remaining columns are modules."
+        )
+    )
+    parser.add_argument("csv_file", help="Input CSV file")
+    args = parser.parse_args()
+
+    csv_path = Path(args.csv_file).expanduser().resolve()
+    if not csv_path.is_file():
+        parser.error(f"Input file not found: {csv_path}")
+    if csv_path.suffix.lower() != ".csv":
+        parser.error("Input file must have a .csv extension")
+
+    df = read_course_module_csv(csv_path)
+    pdf_path = csv_path.with_suffix(".pdf")
+    sankey_courses_modules(df, pdf_path)
+    print(f"Saved Sankey PDF to: {pdf_path}")
+
+
+if __name__ == "__main__":
+    main()
