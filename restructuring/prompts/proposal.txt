@@ -1,5 +1,5 @@
 The syllabus-grounded topic analysis is complete.
-Propose a rational restructuring of all courses in this cluster as a hierarchy
+Propose a rational restructuring of all courses in this corpus as a hierarchy
 of new courses.
 
 Factor reusable prerequisite knowledge into general courses where useful. You
@@ -7,10 +7,9 @@ may group or abstract source topics, and may introduce a new topic only to fill
 an explicit curricular gap. An invented topic has an empty source_topic_keys
 array; otherwise source_topic_keys records its provenance in the ontology.
 
-<cluster_metadata>
-cluster_id: $cluster_id
-cluster_name: $cluster_name
-</cluster_metadata>
+<analysis_metadata>
+$analysis_metadata
+</analysis_metadata>
 
 <source_topics>
 $current_topics

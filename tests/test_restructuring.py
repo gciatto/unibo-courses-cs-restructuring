@@ -12,11 +12,12 @@ from unittest.mock import patch
 import yaml
 from pydantic import ValidationError
 
-from restructuring.cli import build_parser
+from restructuring.cli import _validate_args, build_parser
 from restructuring.io import (
     DEFAULT_SYLLABUS_SECTION_KEYS,
     PROMPT_VERSION,
     conversation_cache_key,
+    load_global_corpus,
     load_clusters,
     select_clusters,
     validate_restructuring_proposal,
@@ -42,6 +43,7 @@ from restructuring.workflow import (
     ClusterTopicState,
     apply_topic_response,
     call_with_backoff,
+    generate_cluster_proposal,
     process_cluster_topics,
     run_restructuring,
 )
@@ -353,7 +355,26 @@ class TestInputAndCache(unittest.TestCase):
         )
         self.assertEqual(metadata["topic_conversation_mode"], "stateless")
         self.assertEqual(metadata["prompt_version"], PROMPT_VERSION)
-        self.assertEqual(PROMPT_VERSION, 5)
+        self.assertEqual(PROMPT_VERSION, 6)
+
+    def test_global_corpus_deduplicates_and_rejects_conflicts(self):
+        shared = course("A")
+        global_input = load_global_corpus([
+            cluster(2, "Second", course("B"), shared),
+            cluster(1, "First", CourseInput(**{**shared.__dict__, "path": "elsewhere.yml"})),
+        ])
+        self.assertEqual([item.course_id for item in global_input.courses], ["A", "B"])
+        self.assertEqual(global_input.source_clusters["A"], ((1, "First"), (2, "Second")))
+        with self.assertRaisesRegex(ValueError, "Conflicting course data"):
+            load_global_corpus([cluster(1, "One", course("A")), cluster(2, "Two", course("A", "different"))])
+
+    def test_global_cache_identity_is_distinct(self):
+        item = cluster(1, "One", course("A"))
+        config = ModelConfig(endpoint="https://example.test/v1", model="model")
+        cluster_key, _ = conversation_cache_key(item, config)
+        global_key, metadata = conversation_cache_key(load_global_corpus([item]), config)
+        self.assertNotEqual(cluster_key, global_key)
+        self.assertEqual(metadata["analysis"], {"mode": "all-courses"})
 
 
 class TestIncrementalTopicState(unittest.TestCase):
@@ -568,8 +589,50 @@ class TestWorkflow(unittest.TestCase):
                 )
                 second_prompt = client.completions.calls[1]["messages"][-1]["content"]
                 self.assertIn('"alpha": "Alpha from evidence."', second_prompt)
-                self.assertIn("# Misleading title B", second_prompt)
+                self.assertNotIn("# Misleading title B", second_prompt)
                 self.assertIn("<syllabus_markdown>", second_prompt)
+                self.assertIn('<prior_course_memberships>\n{"A": ["alpha"]}', second_prompt)
+
+    def test_global_mode_writes_one_ontology_and_proposal(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = pathlib.Path(tmp_dir)
+            first_cluster = cluster(2, "Two", course("B"))
+            second_cluster = cluster(1, "One", course("A"))
+            paths = []
+            for item in (first_cluster, second_cluster):
+                for current in item.courses:
+                    path = root / f"{item.cluster_id}-{current.course_id}.yml"
+                    path.write_text(yaml.safe_dump({"course_title": {"id": current.course_id, "name": current.title}, "syllabus": {"en": {"contents": {"Course contents": current.course_contents, "Learning outcomes": current.learning_outcomes}}}}), encoding="utf-8")
+                    paths.append((item, current, path))
+            manifest = root / "clusters.yml"
+            manifest.write_text(yaml.safe_dump({item.name: {"index": item.cluster_id, "courses": [{"id": current.course_id, "path": str(path)} for source, current, path in paths if source == item]} for item in (first_cluster, second_cluster)}), encoding="utf-8")
+            refined = topic_response(["foundations"], remove=["alpha"], upsert=[Topic(key="foundations", description="Refined.")], updates=[CourseTopicMembership(course_id="A", topic_keys=["foundations"])])
+            proposal = valid_proposal("A", "B")
+            proposal.proposed_topics[0].source_topic_keys = ["foundations"]
+            output = run_restructuring(manifest, self.config, self.retry, all_courses=True, client=FakeClient([self.first, refined, proposal]), cache_dir=root / "cache", output_root=root / "output", now=datetime(2026, 7, 29, 12, 34))
+            self.assertTrue((output / "topics-global.yml").exists())
+            self.assertTrue((output / "topics-of-course-A.yml").exists())
+            self.assertTrue((output / "restructure-proposal-global.yml").exists())
+            self.assertEqual(yaml.safe_load((output / "topics-of-course-A.yml").read_text())["topics"], {"foundations": "Refined."})
+
+    def test_global_proposal_failure_is_nonfatal_and_cli_rejects_ambiguous_options(self):
+        args = build_parser().parse_args(["clusters.yml", "--all-courses", "--cluster-id", "1"])
+        with self.assertRaisesRegex(ValueError, "cannot be combined"):
+            _validate_args(args)
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = pathlib.Path(tmp_dir)
+            corpus = load_global_corpus([self.cluster])
+            conversation = process_cluster_topics(
+                corpus, FakeClient([self.first, self.second]), self.config,
+                self.retry, root / "cache", root / "output",
+            )
+            self.assertFalse(generate_cluster_proposal(
+                corpus, conversation, FakeClient([RuntimeError("unavailable")]),
+                self.config, self.retry, root / "output",
+                topic_conversation_mode="stateless",
+            ))
+            self.assertTrue((root / "output" / "topics-global.yml").exists())
+            self.assertFalse((root / "output" / "restructure-proposal-global.yml").exists())
 
     def test_incremental_artifacts_are_rebuilt_from_complete_cache(self):
         with tempfile.TemporaryDirectory() as tmp_dir:

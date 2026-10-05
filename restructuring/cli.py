@@ -54,6 +54,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--cluster-id", type=int, action="append", default=[])
     parser.add_argument("--cluster-name-regex", action="append", default=[])
+    parser.add_argument("--all-courses", action="store_true")
     parser.add_argument(
         "--syllabus-sections",
         nargs="+",
@@ -70,8 +71,8 @@ def build_parser() -> argparse.ArgumentParser:
         choices=TOPIC_CONVERSATION_MODES,
         default="stateless",
         help=(
-            "Context retained across topic-extraction calls: 'stateless' sends only "
-            "the current ontology and syllabus (default), while 'full' also sends "
+            "Context retained across topic-extraction calls: 'stateless' sends the "
+            "current ontology, prior memberships, and syllabus (default), while 'full' also sends "
             "all preceding course turns."
         ),
     )
@@ -105,6 +106,10 @@ def _validate_args(args: argparse.Namespace) -> None:
         raise ValueError("--initial-backoff must be >= 0")
     if args.max_backoff < 0:
         raise ValueError("--max-backoff must be >= 0")
+    if args.all_courses and (args.cluster_id or args.cluster_name_regex):
+        raise ValueError("--all-courses cannot be combined with cluster selectors")
+    if args.all_courses and args.reuse_topics_from:
+        raise ValueError("--all-courses cannot be combined with --reuse-topics-from")
 
 
 def main() -> None:
@@ -136,6 +141,7 @@ def main() -> None:
             cluster_name_regexes=tuple(args.cluster_name_regex),
             refresh_cache=args.refresh_cache,
             reuse_topic_dirs=tuple(args.reuse_topics_from),
+            all_courses=args.all_courses,
             request_timeout=args.request_timeout,
         )
     except (RuntimeError, ValueError) as error:

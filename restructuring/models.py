@@ -199,6 +199,12 @@ class ClusterInput:
 
 
 @dataclass(frozen=True)
+class GlobalInput:
+    courses: tuple[CourseInput, ...]
+    source_clusters: dict[str, tuple[tuple[int, str], ...]]
+
+
+@dataclass(frozen=True)
 class ModelConfig:
     endpoint: str
     model: str

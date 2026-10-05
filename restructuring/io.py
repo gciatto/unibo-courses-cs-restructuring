@@ -13,6 +13,7 @@ from clustering.sections import normalize_label, normalize_text
 from restructuring.models import (
     ClusterInput,
     CourseInput,
+    GlobalInput,
     ModelConfig,
     RestructuringProposal,
     TOPIC_KEY_PATTERN,
@@ -20,7 +21,7 @@ from restructuring.models import (
 
 
 REPOSITORY_ROOT = pathlib.Path(__file__).resolve().parent.parent
-PROMPT_VERSION = 5
+PROMPT_VERSION = 6
 DEFAULT_SYLLABUS_SECTION_KEYS = ("title", "outcomes", "contents")
 
 SYLLABUS_SECTION_ALIASES: dict[str, tuple[str, ...]] = {
@@ -235,8 +236,41 @@ def select_clusters(
     return selected
 
 
+def load_global_corpus(clusters: Iterable[ClusterInput]) -> GlobalInput:
+    courses: dict[str, CourseInput] = {}
+    sources: dict[str, list[tuple[int, str]]] = {}
+    for cluster in clusters:
+        for course in cluster.courses:
+            previous = courses.setdefault(course.course_id, course)
+            if (
+                previous.course_id,
+                previous.title,
+                previous.course_contents,
+                previous.course_contents_language,
+                previous.learning_outcomes,
+                previous.learning_outcomes_language,
+                previous.syllabus_sections,
+            ) != (
+                course.course_id,
+                course.title,
+                course.course_contents,
+                course.course_contents_language,
+                course.learning_outcomes,
+                course.learning_outcomes_language,
+                course.syllabus_sections,
+            ):
+                raise ValueError(
+                    f"Conflicting course data for duplicate course ID {course.course_id!r}"
+                )
+            sources.setdefault(course.course_id, []).append((cluster.cluster_id, cluster.name))
+    return GlobalInput(
+        courses=tuple(sorted(courses.values(), key=lambda item: (item.course_id.casefold(), item.course_id))),
+        source_clusters={key: tuple(sorted(set(value))) for key, value in sources.items()},
+    )
+
+
 def conversation_cache_key(
-    cluster: ClusterInput,
+    cluster: ClusterInput | GlobalInput,
     config: ModelConfig,
     *,
     syllabus_section_keys: Iterable[str] | None = None,
@@ -249,7 +283,27 @@ def conversation_cache_key(
         "topic_conversation_mode": topic_conversation_mode,
         "endpoint": config.endpoint,
         "model_parameters": config.cache_parameters(),
-        "cluster": {"id": cluster.cluster_id, "name": cluster.name},
+        **(
+            {"cluster": {"id": cluster.cluster_id, "name": cluster.name}}
+            if isinstance(cluster, ClusterInput)
+            else {
+                "analysis": {"mode": "all-courses"},
+                "course_fingerprints": {
+                    course.course_id: hashlib.sha256(
+                        json.dumps(
+                            {
+                                "title": course.title,
+                                "syllabus_sections": course.syllabus_sections,
+                                "source_clusters": cluster.source_clusters[course.course_id],
+                            },
+                            ensure_ascii=False,
+                            sort_keys=True,
+                        ).encode("utf-8")
+                    ).hexdigest()
+                    for course in cluster.courses
+                },
+            }
+        ),
         "course_ids": sorted(course.course_id for course in cluster.courses),
     }
     serialized = json.dumps(metadata, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
@@ -298,7 +352,7 @@ def write_cache(
 
 
 def validate_restructuring_proposal(
-    cluster: ClusterInput,
+    cluster: ClusterInput | GlobalInput,
     source_topics: dict[str, str],
     source_memberships: dict[str, list[str]],
     proposal: RestructuringProposal,
@@ -339,7 +393,7 @@ def validate_restructuring_proposal(
     mapped_ids = {item.course_id for item in proposal.source_course_mappings}
     if mapped_ids != source_course_ids:
         raise ValueError(
-            "source course mappings must cover exactly the cluster courses; "
+            "source course mappings must cover exactly the source courses; "
             f"missing={sorted(source_course_ids - mapped_ids)}, "
             f"unknown={sorted(mapped_ids - source_course_ids)}"
         )
@@ -415,7 +469,7 @@ def write_cluster_topics(
 
 def write_course_topics(
     output_dir: pathlib.Path,
-    cluster: ClusterInput,
+    cluster: ClusterInput | GlobalInput,
     course: CourseInput,
     topics: dict[str, str],
     topic_keys: Iterable[str],
@@ -425,7 +479,17 @@ def write_course_topics(
         for key in sorted(set(topic_keys))
     }
     course_payload = {
-        "cluster": {"id": cluster.cluster_id, "name": cluster.name},
+        **(
+            {"cluster": {"id": cluster.cluster_id, "name": cluster.name}}
+            if isinstance(cluster, ClusterInput)
+            else {
+                "analysis": {"mode": "all-courses"},
+                "source_clusters": [
+                    {"id": cluster_id, "name": name}
+                    for cluster_id, name in cluster.source_clusters[course.course_id]
+                ],
+            }
+        ),
         "course": {"id": course.course_id, "name": course.title},
         "topics": course_topics,
     }
@@ -434,6 +498,20 @@ def write_course_topics(
         path,
         yaml.safe_dump(course_payload, sort_keys=False, allow_unicode=True),
     )
+    return path
+
+
+def write_global_topics(
+    output_dir: pathlib.Path,
+    global_input: GlobalInput,
+    topics: dict[str, str],
+) -> pathlib.Path:
+    path = output_dir / "topics-global.yml"
+    _atomic_write_text(path, yaml.safe_dump({
+        "analysis": {"mode": "all-courses"},
+        "course_ids": [course.course_id for course in global_input.courses],
+        "topics": {key: topics[key].strip() for key in sorted(topics)},
+    }, sort_keys=False, allow_unicode=True))
     return path
 
 
@@ -480,7 +558,7 @@ def _mermaid_label(value: str) -> str:
     return html.escape(value.strip(), quote=True).replace("\n", " ")
 
 
-def render_mermaid(cluster: ClusterInput, proposal: RestructuringProposal) -> str:
+def render_mermaid(cluster: ClusterInput | GlobalInput, proposal: RestructuringProposal) -> str:
     course_aliases = {
         item.key: f"P{index}"
         for index, item in enumerate(proposal.proposed_courses)
@@ -490,8 +568,10 @@ def render_mermaid(cluster: ClusterInput, proposal: RestructuringProposal) -> st
         for index, course in enumerate(cluster.courses)
     }
     lines = [
-        f"%% Restructuring proposal for cluster {cluster.cluster_id}: "
-        f"{_mermaid_label(cluster.name)}",
+        (
+            f"%% Restructuring proposal for cluster {cluster.cluster_id}: {_mermaid_label(cluster.name)}"
+            if isinstance(cluster, ClusterInput) else "%% Restructuring proposal for all courses"
+        ),
         "flowchart LR",
         '  subgraph proposed["Proposed curriculum"]',
     ]
@@ -526,16 +606,16 @@ def render_mermaid(cluster: ClusterInput, proposal: RestructuringProposal) -> st
 
 def write_restructuring_proposal(
     output_dir: pathlib.Path,
-    cluster: ClusterInput,
+    cluster: ClusterInput | GlobalInput,
     source_topics: dict[str, str],
     source_memberships: dict[str, list[str]],
     proposal: RestructuringProposal,
 ) -> tuple[pathlib.Path, pathlib.Path]:
-    stem = f"restructure-proposal-for-cluster-{cluster.cluster_id}"
+    stem = f"restructure-proposal-for-cluster-{cluster.cluster_id}" if isinstance(cluster, ClusterInput) else "restructure-proposal-global"
     yaml_path = output_dir / f"{stem}.yml"
     mermaid_path = output_dir / f"{stem}.mmd"
     payload = {
-        "cluster": {"id": cluster.cluster_id, "name": cluster.name},
+        **({"cluster": {"id": cluster.cluster_id, "name": cluster.name}} if isinstance(cluster, ClusterInput) else {"analysis": {"mode": "all-courses"}}),
         "source_topics": {key: source_topics[key] for key in sorted(source_topics)},
         "source_course_topic_assignments": {
             course_id: sorted(source_memberships[course_id])

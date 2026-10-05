@@ -1,14 +1,20 @@
-Analyze the next course in this cluster.
+Analyze the next course in this corpus.
 
 <metadata_not_evidence>
 course_id: $course_id
 course_title: $course_title
 </metadata_not_evidence>
 
-These are all the topics devised so far in the current cluster.
+These are all the topics devised so far in the current corpus.
 <current_topics>
 $current_topics
 </current_topics>
+
+These are complete topic assignments for earlier courses. They are metadata for
+ontology maintenance only, not topic evidence.
+<prior_course_memberships>
+$prior_memberships
+</prior_course_memberships>
 
 This is the description of the current course.
 <syllabus_markdown>

@@ -19,6 +19,7 @@ from restructuring.io import (
     conversation_cache_key,
     load_cache,
     load_clusters,
+    load_global_corpus,
     load_topic_artifacts,
     normalize_syllabus_section_keys,
     select_clusters,
@@ -26,11 +27,13 @@ from restructuring.io import (
     write_cache,
     write_cluster_topics,
     write_course_topics,
+    write_global_topics,
     write_restructuring_proposal,
 )
 from restructuring.models import (
     ClusterInput,
     CourseInput,
+    GlobalInput,
     CourseTopicsResponse,
     ModelConfig,
     RestructuringProposal,
@@ -77,26 +80,40 @@ class ClusterConversation:
     cache_writes_enabled: bool = True
 
 
+def _corpus_label(corpus: ClusterInput | GlobalInput) -> tuple[str | int, str]:
+    return (
+        (corpus.cluster_id, corpus.name)
+        if isinstance(corpus, ClusterInput) else ("global", "all-courses")
+    )
+
+
 def course_syllabus_markdown(course: CourseInput) -> str:
-    lines = [f"# {course.title}" if course.title else f"# {course.course_id}"]
+    lines: list[str] = []
     for heading, text in course.syllabus_sections:
         lines.extend(["", f"## {heading}", "", text])
     return "\n".join(lines).strip()
 
 
-def course_prompt(course: CourseInput, current_topics: dict[str, str]) -> str:
+def course_prompt(
+    course: CourseInput,
+    current_topics: dict[str, str],
+    prior_memberships: dict[str, list[str]],
+) -> str:
     return COURSE_PROMPT.substitute(
         course_id=course.course_id,
         course_title=course.title,
         current_topics=json.dumps(
             current_topics, ensure_ascii=False, sort_keys=True
         ),
+        prior_memberships=json.dumps(
+            prior_memberships, ensure_ascii=False, sort_keys=True
+        ),
         syllabus_markdown=course_syllabus_markdown(course),
     )
 
 
 def proposal_prompt(
-    cluster: ClusterInput,
+    cluster: ClusterInput | GlobalInput,
     topics: dict[str, str],
     memberships: dict[str, list[str]],
 ) -> str:
@@ -105,8 +122,12 @@ def proposal_prompt(
         for course in cluster.courses
     ]
     return PROPOSAL_PROMPT.substitute(
-        cluster_id=cluster.cluster_id,
-        cluster_name=cluster.name,
+        analysis_metadata=json.dumps(
+            {"mode": "cluster", "cluster_id": cluster.cluster_id, "cluster_name": cluster.name}
+            if isinstance(cluster, ClusterInput) else {"mode": "all-courses"},
+            ensure_ascii=False,
+            sort_keys=True,
+        ),
         current_topics=json.dumps(
             topics, ensure_ascii=False, sort_keys=True
         ),
@@ -256,7 +277,7 @@ def _cached_response(
 
 
 def apply_topic_response(
-    cluster: ClusterInput,
+    cluster: ClusterInput | GlobalInput,
     course_index: int,
     state: ClusterTopicState,
     response: CourseTopicsResponse,
@@ -342,16 +363,20 @@ def apply_topic_response(
 
 def _write_incremental_artifacts(
     output_dir: pathlib.Path,
-    cluster: ClusterInput,
+    cluster: ClusterInput | GlobalInput,
     state: ClusterTopicState,
     rewritten_course_ids: set[str],
     changed_descriptions: set[str],
 ) -> None:
-    cluster_path = write_cluster_topics(output_dir, cluster, state.topics)
+    cluster_path = (
+        write_cluster_topics(output_dir, cluster, state.topics)
+        if isinstance(cluster, ClusterInput)
+        else write_global_topics(output_dir, cluster, state.topics)
+    )
     LOGGER.info(
         "Cluster %s (%s): wrote canonical topic dictionary path=%s topics=%d",
-        cluster.cluster_id,
-        cluster.name,
+        getattr(cluster, "cluster_id", "global"),
+        getattr(cluster, "name", "all-courses"),
         cluster_path,
         len(state.topics),
     )
@@ -372,8 +397,8 @@ def _write_incremental_artifacts(
         LOGGER.info(
             "Cluster %s (%s): wrote course topic assignment path=%s course=%s "
             "assigned_topics=%d reason=%s",
-            cluster.cluster_id,
-            cluster.name,
+            getattr(cluster, "cluster_id", "global"),
+            getattr(cluster, "name", "all-courses"),
             path,
             course_id,
             len(state.memberships[course_id]),
@@ -382,7 +407,7 @@ def _write_incremental_artifacts(
 
 
 def process_cluster_topics(
-    cluster: ClusterInput,
+    cluster: ClusterInput | GlobalInput,
     client: Any,
     config: ModelConfig,
     retry: RetryConfig,
@@ -401,6 +426,8 @@ def process_cluster_topics(
             f"Unknown topic conversation mode {topic_conversation_mode!r}; "
             f"expected one of {TOPIC_CONVERSATION_MODES}"
         )
+    if isinstance(cluster, GlobalInput) and reuse_topic_dirs:
+        raise ValueError("--all-courses cannot be combined with --reuse-topics-from")
     normalized_section_keys = normalize_syllabus_section_keys(syllabus_section_keys)
     cache_key, metadata = conversation_cache_key(
         cluster,
@@ -414,16 +441,16 @@ def process_cluster_topics(
     if refresh_cache:
         LOGGER.info(
             "Cluster %s (%s): cache refresh requested; ignoring path=%s key=%s",
-            cluster.cluster_id,
-            cluster.name,
+            getattr(cluster, "cluster_id", "global"),
+            getattr(cluster, "name", "all-courses"),
             cache_path,
             cache_key,
         )
     elif cached and cached[0] == system_message:
         LOGGER.info(
             "Cluster %s (%s): loaded cache path=%s key=%s messages=%d",
-            cluster.cluster_id,
-            cluster.name,
+            getattr(cluster, "cluster_id", "global"),
+            getattr(cluster, "name", "all-courses"),
             cache_path,
             cache_key,
             len(cached),
@@ -433,8 +460,8 @@ def process_cluster_topics(
             LOGGER.warning(
                 "Cluster %s (%s): cache system prompt mismatch; discarding "
                 "messages=%d path=%s key=%s",
-                cluster.cluster_id,
-                cluster.name,
+                getattr(cluster, "cluster_id", "global"),
+                getattr(cluster, "name", "all-courses"),
                 len(cached),
                 cache_path,
                 cache_key,
@@ -442,8 +469,8 @@ def process_cluster_topics(
         else:
             LOGGER.info(
                 "Cluster %s (%s): cache miss path=%s key=%s",
-                cluster.cluster_id,
-                cluster.name,
+                getattr(cluster, "cluster_id", "global"),
+                getattr(cluster, "name", "all-courses"),
                 cache_path,
                 cache_key,
             )
@@ -467,8 +494,7 @@ def process_cluster_topics(
         LOGGER.info(
             "Cluster %s (%s): reused complete topic artifacts from %s; "
             "skipping %d topic-extraction request(s)",
-            cluster.cluster_id,
-            cluster.name,
+            *_corpus_label(cluster),
             directory,
             len(cluster.courses),
         )
@@ -482,18 +508,21 @@ def process_cluster_topics(
             cache_metadata=metadata,
             cache_writes_enabled=False,
         )
-    initial_cluster_path = write_cluster_topics(output_dir, cluster, state.topics)
+    initial_cluster_path = (
+        write_cluster_topics(output_dir, cluster, state.topics)
+        if isinstance(cluster, ClusterInput)
+        else write_global_topics(output_dir, cluster, state.topics)
+    )
     LOGGER.info(
         "Cluster %s (%s): initialized incremental topic artifact before course "
         "analysis path=%s topics=0",
-        cluster.cluster_id,
-        cluster.name,
+        *_corpus_label(cluster),
         initial_cluster_path,
     )
     total_courses = len(cluster.courses)
     for course_index, course in enumerate(cluster.courses):
         ordinal = course_index + 1
-        user_message = {"role": "user", "content": course_prompt(course, state.topics)}
+        user_message = {"role": "user", "content": course_prompt(course, state.topics, state.memberships)}
         parsed, next_cursor = _cached_response(
             cached, cursor, user_message, CourseTopicsResponse
         )
@@ -509,8 +538,7 @@ def process_cluster_topics(
                 LOGGER.warning(
                     "Cluster %s (%s), course %s (%d/%d): cached response is "
                     "invalid for reconstructed state and stale suffix will be replaced: %s",
-                    cluster.cluster_id,
-                    cluster.name,
+                    *_corpus_label(cluster),
                     course.course_id,
                     ordinal,
                     total_courses,
@@ -522,8 +550,7 @@ def process_cluster_topics(
                 LOGGER.info(
                     "Cluster %s (%s), course %s (%d/%d): truncating stale cache "
                     "suffix at message=%d discarded_messages=%d",
-                    cluster.cluster_id,
-                    cluster.name,
+                    *_corpus_label(cluster),
                     course.course_id,
                     ordinal,
                     total_courses,
@@ -537,7 +564,7 @@ def process_cluster_topics(
                 else [system_message, user_message]
             )
             operation_name = (
-                f"cluster={cluster.cluster_id} course={course.course_id} "
+                f"corpus={_corpus_label(cluster)[0]} course={course.course_id} "
                 f"topic-extraction {ordinal}/{total_courses}"
             )
             parsed = call_structured(
@@ -568,8 +595,7 @@ def process_cluster_topics(
                 "Cluster %s (%s), course %s (%d/%d): accepted model response "
                 "diffs=%d covered_topics=%d resulting_topics=%d "
                 "rewritten_courses=%d cache_messages=%d",
-                cluster.cluster_id,
-                cluster.name,
+                *_corpus_label(cluster),
                 course.course_id,
                 ordinal,
                 total_courses,
@@ -583,8 +609,7 @@ def process_cluster_topics(
             LOGGER.info(
                 "Cluster %s (%s), course %s (%d/%d): cache hit at messages=%d-%d "
                 "diffs=%d covered_topics=%d",
-                cluster.cluster_id,
-                cluster.name,
+                *_corpus_label(cluster),
                 course.course_id,
                 ordinal,
                 total_courses,
@@ -608,12 +633,11 @@ def process_cluster_topics(
     LOGGER.info(
         "Cluster %s (%s): topic phase complete courses=%d topics=%d "
         "course_artifacts=%d cluster_artifact=%s",
-        cluster.cluster_id,
-        cluster.name,
+        *_corpus_label(cluster),
         total_courses,
         len(state.topics),
         len(state.memberships),
-        output_dir / f"topics-of-cluster-{cluster.cluster_id}.yml",
+        output_dir / (f"topics-of-cluster-{cluster.cluster_id}.yml" if isinstance(cluster, ClusterInput) else "topics-global.yml"),
     )
     return ClusterConversation(
         state=state,
@@ -648,7 +672,7 @@ def create_openai_client(config: ModelConfig, request_timeout: float) -> Any:
 
 
 def generate_cluster_proposal(
-    cluster: ClusterInput,
+    cluster: ClusterInput | GlobalInput,
     conversation: ClusterConversation,
     client: Any,
     config: ModelConfig,
@@ -690,8 +714,7 @@ def generate_cluster_proposal(
         except ValueError as error:
             LOGGER.warning(
                 "Cluster %s (%s): cached proposal is invalid; regenerating: %s",
-                cluster.cluster_id,
-                cluster.name,
+                *_corpus_label(cluster),
                 error,
             )
             parsed = None
@@ -705,7 +728,7 @@ def generate_cluster_proposal(
                 RestructuringProposal,
                 config,
                 retry,
-                operation_name=f"cluster={cluster.cluster_id} restructuring-proposal",
+                operation_name=f"corpus={_corpus_label(cluster)[0]} restructuring-proposal",
                 validator=lambda proposal: validate_restructuring_proposal(
                     cluster,
                     conversation.state.topics,
@@ -719,8 +742,7 @@ def generate_cluster_proposal(
             LOGGER.error(
                 "Cluster %s (%s): restructuring proposal generation failed; "
                 "topic YAML remains definitive; error=%s: %s",
-                cluster.cluster_id,
-                cluster.name,
+                *_corpus_label(cluster),
                 error.__class__.__name__,
                 error,
             )
@@ -749,8 +771,7 @@ def generate_cluster_proposal(
     )
     LOGGER.info(
         "Cluster %s (%s): wrote validated restructuring proposal yaml=%s mermaid=%s",
-        cluster.cluster_id,
-        cluster.name,
+        *_corpus_label(cluster),
         yaml_path,
         mermaid_path,
     )
@@ -782,6 +803,7 @@ def run_restructuring(
     cluster_name_regexes: tuple[str, ...] = (),
     refresh_cache: bool = False,
     reuse_topic_dirs: tuple[pathlib.Path, ...] = (),
+    all_courses: bool = False,
     request_timeout: float = 120.0,
     cache_dir: pathlib.Path | None = None,
     output_root: pathlib.Path | None = None,
@@ -796,11 +818,16 @@ def run_restructuring(
             f"expected one of {TOPIC_CONVERSATION_MODES}"
         )
     normalized_section_keys = normalize_syllabus_section_keys(syllabus_section_keys)
-    clusters = select_clusters(
-        load_clusters(input_path, normalized_section_keys),
-        cluster_ids,
-        cluster_name_regexes,
+    loaded_clusters = load_clusters(input_path, normalized_section_keys)
+    clusters: list[ClusterInput | GlobalInput] = (
+        [load_global_corpus(loaded_clusters)] if all_courses else select_clusters(
+            loaded_clusters, cluster_ids, cluster_name_regexes
+        )
     )
+    if all_courses and (cluster_ids or cluster_name_regexes):
+        raise ValueError("--all-courses cannot be combined with cluster selectors")
+    if all_courses and reuse_topic_dirs:
+        raise ValueError("--all-courses cannot be combined with --reuse-topics-from")
     missing_reuse_dirs = [path for path in reuse_topic_dirs if not path.is_dir()]
     if missing_reuse_dirs:
         raise ValueError(f"Topic reuse directories do not exist: {missing_reuse_dirs}")
@@ -840,8 +867,7 @@ def run_restructuring(
             "Starting cluster %d/%d id=%s name=%s courses=%d",
             cluster_index,
             len(clusters),
-            cluster.cluster_id,
-            cluster.name,
+            *_corpus_label(cluster),
             len(cluster.courses),
         )
         conversation = process_cluster_topics(
@@ -861,8 +887,7 @@ def run_restructuring(
         LOGGER.info(
             "Cluster %s (%s): all definitive topic YAML artifacts are complete; "
             "starting isolated restructuring proposal phase",
-            cluster.cluster_id,
-            cluster.name,
+            *_corpus_label(cluster),
         )
         if generate_cluster_proposal(
             cluster,
