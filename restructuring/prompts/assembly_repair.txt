@@ -1,0 +1,9 @@
+Your courses above are kept, but these modules are not used by any course yet:
+<unused_modules>
+$unused_modules
+</unused_modules>
+
+Return only additional proposed_courses, with keys different from the courses
+above, that use these modules, following the same course design heuristics.
+prerequisites may connect new courses to each other or to the courses above.
+Do not repeat the courses above.

@@ -595,6 +595,7 @@ class TestWorkflow(unittest.TestCase):
                 "design_system.txt",
                 "modules.txt",
                 "assembly.txt",
+                "assembly_repair.txt",
             },
         )
         self.assertNotIn("PlantUML", SYSTEM_PROMPT)
@@ -727,22 +728,20 @@ class TestWorkflow(unittest.TestCase):
         )
         partition = module_partition(("alpha_module", ["alpha"]), ("beta_module", ["beta"]))
         unused_module = course_assembly(("alpha_course", ["alpha_module"]))
-        valid = course_assembly(
-            ("alpha_course", ["alpha_module"]),
-            ("beta_course", ["beta_module"]),
-        )
+        # A repair reply repeating an accepted course is rejected and retried.
+        duplicate = course_assembly(("alpha_course", ["beta_module"]))
+        repair = course_assembly(("beta_course", ["beta_module"]))
         with tempfile.TemporaryDirectory() as tmp_dir:
             root = pathlib.Path(tmp_dir)
-            client = FakeClient([partition, unused_module, valid])
+            client = FakeClient([partition, unused_module, duplicate, repair])
             self.assertTrue(generate_global_proposal(
                 corpus, state, client, self.config,
                 RetryConfig(max_retries=1, initial_backoff=0),
                 root / "cache", root / "first",
             ))
-            self.assertIn(
-                "unused proposed topic keys",
-                client.completions.calls[-1]["messages"][-1]["content"],
-            )
+            repair_messages = client.completions.calls[-1]["messages"]
+            self.assertIn('["beta_module"]', repair_messages[-3]["content"])
+            self.assertIn("must be unique", repair_messages[-1]["content"])
             payload = yaml.safe_load(
                 (root / "first" / "restructure-proposal-global.yml").read_text()
             )

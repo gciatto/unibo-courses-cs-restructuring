@@ -184,7 +184,10 @@ Relevant tests are `tests/test_download_course_headers.py`,
   topics into co-teaching communities (Louvain, at most 60 per batch), one
   `TopicPartition` request per batch groups them into modules
   (`modules-global.yml`), and one `CourseAssembly` request builds new courses
-  from module keys. Each request is cached independently by its exact messages.
+  from module keys. Assembly is incremental: accepted courses are kept and
+  follow-up `assembly_repair` rounds ask only for courses using leftover
+  modules (each round has its own retry budget; a round without progress
+  fails). Each request is cached independently by its exact messages.
 - Proposed courses carry `ects` in {3, 6, 9, 12}; validation rejects a course
   with more topics/modules than ECTS (each assumed >= 1 ECTS), and the prompts
   ask for fundamentals/advanced, abstraction-level, and minimal-background

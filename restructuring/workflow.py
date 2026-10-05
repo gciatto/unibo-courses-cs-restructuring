@@ -66,6 +66,7 @@ PROPOSAL_PROMPT = string.Template(_load_prompt("proposal.txt"))
 DESIGN_SYSTEM_PROMPT = _load_prompt("design_system.txt")
 MODULES_PROMPT = string.Template(_load_prompt("modules.txt"))
 ASSEMBLY_PROMPT = string.Template(_load_prompt("assembly.txt"))
+ASSEMBLY_REPAIR_PROMPT = string.Template(_load_prompt("assembly_repair.txt"))
 MODULE_BATCH_SIZE = 60
 PROMPT_SYLLABUS_SECTION_KEYS = DEFAULT_SYLLABUS_SECTION_KEYS
 TOPIC_CONVERSATION_MODES = ("stateless", "full")
@@ -1094,20 +1095,55 @@ def generate_global_proposal(
                 prerequisites=assembly.prerequisites,
             )
 
+        def merge(base: CourseAssembly, extra: CourseAssembly) -> CourseAssembly:
+            return CourseAssembly(
+                proposed_courses=base.proposed_courses + extra.proposed_courses,
+                prerequisites=base.prerequisites + extra.prerequisites,
+            )
+
+        def partial(assembly: CourseAssembly) -> None:
+            validate_restructuring_proposal(
+                corpus, topics, memberships, combine(assembly),
+                require_all_topics_used=False,
+            )
+
+        # Large corpora rarely fit one reply: keep accepted courses and ask
+        # only for the leftover modules, each round with its own retry budget.
+        messages = [system_message, {"role": "user", "content": assembly_prompt(corpus, memberships, modules)}]
         assembly = cached_structured_call(
-            client,
-            [system_message, {"role": "user", "content": assembly_prompt(corpus, memberships, modules)}],
-            CourseAssembly,
-            config,
-            retry,
-            cache_dir,
+            client, messages, CourseAssembly, config, retry, cache_dir,
             operation_name="corpus=global course-assembly",
-            validator=lambda response: validate_restructuring_proposal(
-                corpus, topics, memberships, combine(response)
-            ),
+            validator=partial,
             **call_options,
         )
+        module_keys = [module.key for module in modules]
+        for round_index in itertools.count(1):
+            used = {key for course in assembly.proposed_courses for key in course.topic_keys}
+            unused = [key for key in module_keys if key not in used]
+            if not unused:
+                break
+            LOGGER.info(
+                "Global corpus: course assembly leaves %d unused module(s); repair round %d",
+                len(unused), round_index,
+            )
+            messages = messages + [
+                {"role": "assistant", "content": assembly.model_dump_json()},
+                {"role": "user", "content": ASSEMBLY_REPAIR_PROMPT.substitute(
+                    unused_modules=json.dumps(unused, ensure_ascii=False),
+                )},
+            ]
+            base = assembly
+            extra = cached_structured_call(
+                client, messages, CourseAssembly, config, retry, cache_dir,
+                operation_name=f"corpus=global course-assembly repair {round_index}",
+                validator=lambda response, current=base: partial(merge(current, response)),
+                **call_options,
+            )
+            assembly = merge(base, extra)
+            if not {key for course in extra.proposed_courses for key in course.topic_keys} & set(unused):
+                raise ValueError(f"course assembly repair made no progress on modules: {unused}")
         proposal = combine(assembly)
+        validate_restructuring_proposal(corpus, topics, memberships, proposal)
     except Exception as error:
         LOGGER.error(
             "Global corpus: restructuring proposal generation failed; "

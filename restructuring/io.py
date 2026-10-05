@@ -416,6 +416,8 @@ def validate_restructuring_proposal(
     source_topics: dict[str, str],
     source_memberships: dict[str, list[str]],
     proposal: RestructuringProposal,
+    *,
+    require_all_topics_used: bool = True,
 ) -> None:
     proposed_topic_keys = {item.key for item in proposal.proposed_topics}
     proposed_course_keys = {item.key for item in proposal.proposed_courses}
@@ -446,7 +448,7 @@ def validate_restructuring_proposal(
         key for course in proposal.proposed_courses for key in course.topic_keys
     }
     unused_proposed_topics = sorted(proposed_topic_keys - used_proposed_topics)
-    if unused_proposed_topics:
+    if unused_proposed_topics and require_all_topics_used:
         raise ValueError(f"unused proposed topic keys: {unused_proposed_topics}")
 
     # ponytail: each proposed topic/module is assumed worth >= 1 ECTS; size
