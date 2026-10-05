@@ -208,6 +208,7 @@ class CourseInput:
     learning_outcomes: str
     learning_outcomes_language: str | None
     syllabus_sections: tuple[tuple[str, str], ...] = ()
+    credits: float | None = None
 
 
 @dataclass(frozen=True)

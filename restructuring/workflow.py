@@ -22,6 +22,7 @@ from restructuring.io import (
     PROMPT_VERSION,
     REPOSITORY_ROOT,
     conversation_cache_key,
+    estimate_topic_weights,
     load_cache,
     load_clusters,
     load_global_corpus,
@@ -398,9 +399,9 @@ def _write_incremental_artifacts(
     changed_descriptions: set[str],
 ) -> None:
     cluster_path = (
-        write_cluster_topics(output_dir, cluster, state.topics)
+        write_cluster_topics(output_dir, cluster, state.topics, state.memberships)
         if isinstance(cluster, ClusterInput)
-        else write_global_topics(output_dir, cluster, state.topics)
+        else write_global_topics(output_dir, cluster, state.topics, state.memberships)
     )
     LOGGER.info(
         "Cluster %s (%s): wrote canonical topic dictionary path=%s topics=%d",
@@ -540,9 +541,9 @@ def process_cluster_topics(
             cache_writes_enabled=False,
         )
     initial_cluster_path = (
-        write_cluster_topics(output_dir, cluster, state.topics)
+        write_cluster_topics(output_dir, cluster, state.topics, state.memberships)
         if isinstance(cluster, ClusterInput)
-        else write_global_topics(output_dir, cluster, state.topics)
+        else write_global_topics(output_dir, cluster, state.topics, state.memberships)
     )
     LOGGER.info(
         "Cluster %s (%s): initialized incremental topic artifact before course "
@@ -1081,7 +1082,9 @@ def generate_global_proposal(
             )
             modules.extend(partition.proposed_topics)
         modules = _unique_module_keys(modules)
-        modules_path = write_global_modules(output_dir, topics, modules)
+        modules_path = write_global_modules(
+            output_dir, topics, modules, estimate_topic_weights(corpus.courses, memberships)
+        )
         LOGGER.info("Global corpus: wrote modules path=%s modules=%d", modules_path, len(modules))
 
         def combine(assembly: CourseAssembly) -> RestructuringProposal:
@@ -1150,6 +1153,7 @@ def run_restructuring(
     refresh_cache: bool = False,
     reuse_topic_dirs: tuple[pathlib.Path, ...] = (),
     all_courses: bool = False,
+    skip_proposals: bool = False,
     request_timeout: float = 120.0,
     cache_dir: pathlib.Path | None = None,
     output_root: pathlib.Path | None = None,
@@ -1228,6 +1232,12 @@ def run_restructuring(
             sleep=sleep,
             random_uniform=random_uniform,
         )
+        if skip_proposals:
+            LOGGER.info(
+                "Cluster %s (%s): topic YAML complete; skipping proposal phase",
+                *_corpus_label(cluster),
+            )
+            continue
         LOGGER.info(
             "Cluster %s (%s): all definitive topic YAML artifacts are complete; "
             "starting isolated restructuring proposal phase",

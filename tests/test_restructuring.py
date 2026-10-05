@@ -18,6 +18,7 @@ from restructuring.io import (
     PROMPT_VERSION,
     conversation_cache_key,
     derive_source_course_mappings,
+    estimate_topic_weights,
     load_global_corpus,
     load_clusters,
     select_clusters,
@@ -393,6 +394,24 @@ class TestInputAndCache(unittest.TestCase):
         global_key, metadata = conversation_cache_key(load_global_corpus([item]), config)
         self.assertNotEqual(cluster_key, global_key)
         self.assertEqual(metadata["analysis"], {"mode": "all-courses"})
+
+
+class TestTopicWeights(unittest.TestCase):
+    def test_topic_weight_is_median_of_even_credit_shares(self):
+        courses = [
+            CourseInput(**{**course(course_id).__dict__, "credits": credits})
+            for course_id, credits in (("A", 6.0), ("B", 12.0), ("C", 3.0), ("D", None))
+        ]
+        weights = estimate_topic_weights(courses, {
+            "A": ["alpha", "beta"],      # 3 each
+            "B": ["alpha"],              # 12
+            "C": ["alpha", "gamma", "delta"],  # 1 each
+            "D": ["omega"],              # no credits: ignored
+        })
+        self.assertEqual(weights["alpha"]["ects"], 3.0)
+        self.assertEqual(weights["alpha"]["per_course"], {"A": 3.0, "B": 12.0, "C": 1.0})
+        self.assertEqual(weights["beta"]["ects"], 3.0)
+        self.assertNotIn("omega", weights)
 
 
 class TestIncrementalTopicState(unittest.TestCase):

@@ -78,6 +78,11 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--refresh-cache", action="store_true")
     parser.add_argument(
+        "--skip-proposals",
+        action="store_true",
+        help="Write topic YAML (with credit weights) only; make no proposal requests",
+    )
+    parser.add_argument(
         "--reuse-topics-from",
         type=pathlib.Path,
         action="append",
@@ -140,6 +145,7 @@ def main() -> None:
             refresh_cache=args.refresh_cache,
             reuse_topic_dirs=tuple(args.reuse_topics_from),
             all_courses=args.all_courses,
+            skip_proposals=args.skip_proposals,
             request_timeout=args.request_timeout,
         )
     except (RuntimeError, ValueError) as error:

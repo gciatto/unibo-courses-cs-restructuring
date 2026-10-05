@@ -189,6 +189,12 @@ Relevant tests are `tests/test_download_course_headers.py`,
   with more topics/modules than ECTS (each assumed >= 1 ECTS), and the prompts
   ask for fundamentals/advanced, abstraction-level, and minimal-background
   splits.
+- Topic credit weights are local, not model output: each source course spreads
+  its `credits` evenly over its topics, and a topic's `ects` is the median of
+  those shares. `topics-of-cluster-*.yml` / `topics-global.yml` carry
+  `topic_weights` and a `course_credit_check` (estimate vs real credits);
+  modules and proposed courses carry summed `estimated_ects`.
+  `--skip-proposals` refreshes topic YAML without proposal requests.
 - A rejected structured reply is sent back with the validation error on retry.
 - Live runs require `OPENAI_API_KEY`; endpoint/model may come from
   `OPENAI_BASE_URL` and `OPENAI_MODEL`.

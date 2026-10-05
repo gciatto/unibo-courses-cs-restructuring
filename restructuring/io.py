@@ -5,6 +5,7 @@ import html
 import json
 import pathlib
 import re
+import statistics
 from typing import Any, Iterable
 
 import yaml
@@ -148,6 +149,62 @@ def _resolve_course_path(raw_path: Any, input_path: pathlib.Path) -> pathlib.Pat
     raise ValueError(f"Course file does not exist: {path}")
 
 
+def _course_credits(payload: dict[str, Any]) -> float | None:
+    # ponytail: merged courses listing several credit values (e.g. [12, 9])
+    # take the largest; split such courses upstream if that skews weights.
+    values = [
+        value for value in payload.get("credits") or []
+        if isinstance(value, (int, float)) and value > 0
+    ]
+    return float(max(values)) if values else None
+
+
+def estimate_topic_weights(
+    courses: Iterable[CourseInput],
+    memberships: dict[str, list[str]],
+) -> dict[str, dict[str, Any]]:
+    """Each course spreads its credits evenly over its topics; a topic's
+    estimate is the median of its shares across the courses teaching it."""
+    shares: dict[str, dict[str, float]] = {}
+    for course in courses:
+        keys = memberships.get(course.course_id) or []
+        if course.credits is None or not keys:
+            continue
+        for key in keys:
+            shares.setdefault(key, {})[course.course_id] = round(course.credits / len(keys), 3)
+    return {
+        key: {
+            "ects": round(statistics.median(shares[key].values()), 3),
+            "per_course": shares[key],
+        }
+        for key in sorted(shares)
+    }
+
+
+def _weights_payload(
+    courses: Iterable[CourseInput],
+    memberships: dict[str, list[str]],
+) -> dict[str, Any]:
+    courses = [course for course in courses if course.course_id in memberships]
+    weights = estimate_topic_weights(courses, memberships)
+    return {
+        "topic_weights": weights,
+        # Sum of a course's topic estimates against its real credits: how far
+        # the median estimates are from reproducing the source catalogue.
+        "course_credit_check": {
+            course.course_id: {
+                "credits": course.credits,
+                "estimated_ects": round(sum(
+                    weights[key]["ects"] for key in memberships[course.course_id]
+                    if key in weights
+                ), 3),
+            }
+            for course in courses
+            if course.credits is not None
+        },
+    }
+
+
 def load_clusters(
     input_path: pathlib.Path,
     syllabus_section_keys: Iterable[str] | None = None,
@@ -202,6 +259,7 @@ def load_clusters(
                     learning_outcomes=outcomes_text[1] if outcomes_text is not None else "",
                     learning_outcomes_language=_section_language(course_payload, SYLLABUS_SECTION_ALIASES["outcomes"]),
                     syllabus_sections=syllabus_sections,
+                    credits=_course_credits(course_payload),
                 )
             )
         courses.sort(key=lambda course: (course.course_id.casefold(), course.course_id))
@@ -505,6 +563,7 @@ def write_cluster_topics(
     output_dir: pathlib.Path,
     cluster: ClusterInput,
     topics: dict[str, str],
+    memberships: dict[str, list[str]],
 ) -> pathlib.Path:
     sorted_topics = {
         key: topics[key].strip()
@@ -513,6 +572,7 @@ def write_cluster_topics(
     cluster_payload = {
         "cluster": {"id": cluster.cluster_id, "name": cluster.name},
         "topics": sorted_topics,
+        **_weights_payload(cluster.courses, memberships),
     }
     cluster_path = output_dir / f"topics-of-cluster-{cluster.cluster_id}.yml"
     _atomic_write_text(
@@ -560,12 +620,14 @@ def write_global_topics(
     output_dir: pathlib.Path,
     global_input: GlobalInput,
     topics: dict[str, str],
+    memberships: dict[str, list[str]],
 ) -> pathlib.Path:
     path = output_dir / "topics-global.yml"
     _atomic_write_text(path, yaml.safe_dump({
         "analysis": {"mode": "all-courses"},
         "course_ids": [course.course_id for course in global_input.courses],
         "topics": {key: topics[key].strip() for key in sorted(topics)},
+        **_weights_payload(global_input.courses, memberships),
     }, sort_keys=False, allow_unicode=True))
     return path
 
@@ -716,6 +778,7 @@ def write_restructuring_proposal(
     mermaid_path = output_dir / f"{stem}.mmd"
     mappings = derive_source_course_mappings(cluster, source_memberships, proposal)
     provenance = _proposed_course_provenance(proposal)
+    weights = estimate_topic_weights(cluster.courses, source_memberships)
     mapped_payload = []
     for mapping in mappings:
         own = set(source_memberships[mapping.course_id])
@@ -734,6 +797,12 @@ def write_restructuring_proposal(
         },
         **proposal.model_dump(),
         "source_course_mappings": mapped_payload,
+        "proposed_course_estimated_ects": {
+            item.key: round(sum(
+                weights[key]["ects"] for key in provenance[item.key] if key in weights
+            ), 3)
+            for item in proposal.proposed_courses
+        },
         "proposed_course_reuse": {
             item.key: sum(item.key in mapping.proposed_course_keys for mapping in mappings)
             for item in proposal.proposed_courses
@@ -755,6 +824,7 @@ def write_global_modules(
     output_dir: pathlib.Path,
     source_topics: dict[str, str],
     modules: Iterable[ProposedTopic],
+    weights: dict[str, dict[str, Any]],
 ) -> pathlib.Path:
     """Persist the module layer so a failed course-assembly call keeps it."""
     path = output_dir / "modules-global.yml"
@@ -764,6 +834,9 @@ def write_global_modules(
             {
                 "key": module.key,
                 "description": module.description,
+                "estimated_ects": round(sum(
+                    weights[key]["ects"] for key in module.source_topic_keys if key in weights
+                ), 3),
                 "source_topics": {key: source_topics[key] for key in module.source_topic_keys},
             }
             for module in modules
