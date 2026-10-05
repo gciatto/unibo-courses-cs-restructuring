@@ -914,6 +914,9 @@ class TestWorkflow(unittest.TestCase):
             mermaid = proposal_path.with_suffix(".mmd").read_text(encoding="utf-8")
             self.assertIn("Foundations<br/>6 ECTS", mermaid)
             self.assertNotIn("-.->", mermaid)
+            topics = (output_dir / "restructure-proposal-for-cluster-5-topics.mmd").read_text(encoding="utf-8")
+            self.assertIn("Foundations<br/>6 ECTS<br/>", topics)
+            self.assertNotIn("-.->", topics)
             mapping = (output_dir / "restructure-proposal-for-cluster-5-mapping.mmd").read_text(encoding="utf-8")
             # Both source courses map to the same new course: one grouped node.
             self.assertEqual(mapping.count("-.->"), 1)
@@ -1197,7 +1200,7 @@ class TestRepositoryRestructuringInput(unittest.TestCase):
             )
             self.assertEqual(
                 len(list(output.glob("restructure-proposal-*.mmd"))),
-                60,
+                90,
             )
         self.assertEqual(completions.calls, 293 + 30)
 

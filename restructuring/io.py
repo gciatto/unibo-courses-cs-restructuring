@@ -725,9 +725,11 @@ def render_mermaid(
     cluster: ClusterInput | GlobalInput,
     proposal: RestructuringProposal,
     mappings: Iterable[SourceCourseMapping] | None = None,
+    show_topics: bool = False,
 ) -> str:
-    """Proposed courses with prerequisites, or, given mappings, the
-    correspondence from current courses (grouped by identical targets)."""
+    """Proposed courses with prerequisites (optionally listing their topic
+    keys), or, given mappings, the correspondence from current courses
+    (grouped by identical targets)."""
     course_aliases = {
         item.key: f"P{index}"
         for index, item in enumerate(proposal.proposed_courses)
@@ -739,6 +741,8 @@ def render_mermaid(
     lines = [header, "flowchart TB" if mappings is None else "flowchart LR"]
     for item in proposal.proposed_courses:
         label = f"{_mermaid_label(item.title)}<br/>{item.ects} ECTS"
+        if show_topics:
+            label += "<br/>" + "<br/>".join(_mermaid_label(key) for key in item.topic_keys)
         lines.append(f'  {course_aliases[item.key]}["{label}"]:::proposed')
     if mappings is None:
         for edge in proposal.prerequisites:
@@ -815,6 +819,10 @@ def write_restructuring_proposal(
         yaml.safe_dump(payload, sort_keys=False, allow_unicode=True),
     )
     _atomic_write_text(mermaid_path, render_mermaid(cluster, proposal))
+    _atomic_write_text(
+        output_dir / f"{stem}-topics.mmd",
+        render_mermaid(cluster, proposal, show_topics=True),
+    )
     _atomic_write_text(
         output_dir / f"{stem}-mapping.mmd",
         render_mermaid(cluster, proposal, mappings),
