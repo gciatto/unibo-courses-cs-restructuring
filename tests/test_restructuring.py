@@ -17,6 +17,7 @@ from restructuring.io import (
     DEFAULT_SYLLABUS_SECTION_KEYS,
     PROMPT_VERSION,
     conversation_cache_key,
+    derive_source_course_mappings,
     load_global_corpus,
     load_clusters,
     select_clusters,
@@ -24,6 +25,7 @@ from restructuring.io import (
 )
 from restructuring.models import (
     ClusterInput,
+    CourseAssembly,
     CoursePrerequisite,
     CourseInput,
     CourseTopicMembership,
@@ -33,9 +35,9 @@ from restructuring.models import (
     ProposedTopic,
     RestructuringProposal,
     RetryConfig,
-    SourceCourseMapping,
     Topic,
     TopicDiff,
+    TopicPartition,
 )
 from restructuring.workflow import (
     PROMPTS_DIR,
@@ -44,8 +46,11 @@ from restructuring.workflow import (
     apply_topic_response,
     call_with_backoff,
     generate_cluster_proposal,
+    generate_global_proposal,
     process_cluster_topics,
     run_restructuring,
+    topic_batches,
+    validate_topic_partition,
 )
 
 
@@ -88,7 +93,7 @@ def topic_response(
     return CourseTopicsResponse(covered_topic_keys=covered, topic_diffs=diffs)
 
 
-def valid_proposal(*course_ids: str) -> RestructuringProposal:
+def valid_proposal() -> RestructuringProposal:
     return RestructuringProposal(
         proposed_topics=[
             ProposedTopic(
@@ -105,13 +110,25 @@ def valid_proposal(*course_ids: str) -> RestructuringProposal:
             )
         ],
         prerequisites=[],
-        source_course_mappings=[
-            SourceCourseMapping(
-                course_id=course_id,
-                proposed_course_keys=["foundations_course"],
-            )
-            for course_id in course_ids
+    )
+
+
+def module_partition(*groups: tuple[str, list[str]]) -> TopicPartition:
+    return TopicPartition(
+        proposed_topics=[
+            ProposedTopic(key=key, description=f"Module {key}.", source_topic_keys=keys)
+            for key, keys in groups
+        ]
+    )
+
+
+def course_assembly(*courses: tuple[str, list[str]]) -> CourseAssembly:
+    return CourseAssembly(
+        proposed_courses=[
+            ProposedCourse(key=key, title=key.title(), topic_keys=keys)
+            for key, keys in courses
         ],
+        prerequisites=[],
     )
 
 
@@ -555,11 +572,14 @@ class TestWorkflow(unittest.TestCase):
                 "system.txt",
                 "course.txt",
                 "proposal.txt",
+                "design_system.txt",
+                "modules.txt",
+                "assembly.txt",
             },
         )
         self.assertNotIn("PlantUML", SYSTEM_PROMPT)
-        self.assertIn(
-            "source_course_mappings contains every source course exactly once",
+        self.assertNotIn(
+            "source_course_mappings",
             (PROMPTS_DIR / "proposal.txt").read_text(encoding="utf-8"),
         )
 
@@ -607,10 +627,22 @@ class TestWorkflow(unittest.TestCase):
             manifest = root / "clusters.yml"
             manifest.write_text(yaml.safe_dump({item.name: {"index": item.cluster_id, "courses": [{"id": current.course_id, "path": str(path)} for source, current, path in paths if source == item]} for item in (first_cluster, second_cluster)}), encoding="utf-8")
             refined = topic_response(["foundations"], remove=["alpha"], upsert=[Topic(key="foundations", description="Refined.")], updates=[CourseTopicMembership(course_id="A", topic_keys=["foundations"])])
-            proposal = valid_proposal("A", "B")
-            proposal.proposed_topics[0].source_topic_keys = ["foundations"]
-            output = run_restructuring(manifest, self.config, self.retry, all_courses=True, client=FakeClient([self.first, refined, proposal]), cache_dir=root / "cache", output_root=root / "output", now=datetime(2026, 7, 29, 12, 34))
+            responses = [
+                module_partition(("foundations_module", ["foundations"])),
+                course_assembly(("foundations_course", ["foundations_module"])),
+            ]
+            output = run_restructuring(manifest, self.config, self.retry, all_courses=True, client=FakeClient([self.first, refined, *responses]), cache_dir=root / "cache", output_root=root / "output", now=datetime(2026, 7, 29, 12, 34))
             self.assertTrue((output / "topics-global.yml").exists())
+            self.assertTrue((output / "modules-global.yml").exists())
+            payload = yaml.safe_load((output / "restructure-proposal-global.yml").read_text())
+            self.assertEqual(
+                payload["source_course_mappings"],
+                [
+                    {"course_id": course_id, "proposed_course_keys": ["foundations_course"], "overshoot": 0.0}
+                    for course_id in ("A", "B")
+                ],
+            )
+            self.assertEqual(payload["proposed_course_reuse"], {"foundations_course": 2})
             self.assertTrue((output / "topics-of-course-A.yml").exists())
             self.assertTrue((output / "restructure-proposal-global.yml").exists())
             self.assertEqual(yaml.safe_load((output / "topics-of-course-A.yml").read_text())["topics"], {"foundations": "Refined."})
@@ -626,10 +658,9 @@ class TestWorkflow(unittest.TestCase):
                 corpus, FakeClient([self.first, self.second]), self.config,
                 self.retry, root / "cache", root / "output",
             )
-            self.assertFalse(generate_cluster_proposal(
-                corpus, conversation, FakeClient([RuntimeError("unavailable")]),
-                self.config, self.retry, root / "output",
-                topic_conversation_mode="stateless",
+            self.assertFalse(generate_global_proposal(
+                corpus, conversation.state, FakeClient([RuntimeError("unavailable")]),
+                self.config, self.retry, root / "cache", root / "output",
             ))
             self.assertTrue((root / "output" / "topics-global.yml").exists())
             self.assertFalse((root / "output" / "restructure-proposal-global.yml").exists())
@@ -643,7 +674,10 @@ class TestWorkflow(unittest.TestCase):
                 FakeClient([self.first, self.second]), self.config, self.retry,
                 root / "source-cache", source,
             )
-            client = FakeClient([valid_proposal("A", "B")])
+            client = FakeClient([
+                module_partition(("alpha_module", ["alpha"]), ("beta_module", ["beta"])),
+                course_assembly(("alpha_course", ["alpha_module"]), ("beta_course", ["beta_module"])),
+            ])
             output = run_restructuring(
                 write_cluster_input(root, self.cluster),
                 ModelConfig(
@@ -659,9 +693,109 @@ class TestWorkflow(unittest.TestCase):
                 reuse_topic_dirs=(source,),
                 now=datetime(2026, 7, 29, 12, 34),
             )
-            self.assertEqual(len(client.completions.calls), 1)
-            self.assertIs(client.completions.calls[0]["response_format"], RestructuringProposal)
+            self.assertEqual(
+                [call["response_format"] for call in client.completions.calls],
+                [TopicPartition, CourseAssembly],
+            )
             self.assertTrue((output / "restructure-proposal-global.yml").exists())
+
+    def test_global_proposal_replays_cache_and_repairs_invalid_assembly(self):
+        corpus = load_global_corpus([self.cluster])
+        state = ClusterTopicState(
+            topics={"alpha": "Alpha.", "beta": "Beta."},
+            memberships={"A": ["alpha"], "B": ["beta"]},
+        )
+        partition = module_partition(("alpha_module", ["alpha"]), ("beta_module", ["beta"]))
+        unused_module = course_assembly(("alpha_course", ["alpha_module"]))
+        valid = course_assembly(
+            ("alpha_course", ["alpha_module"]),
+            ("beta_course", ["beta_module"]),
+        )
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = pathlib.Path(tmp_dir)
+            client = FakeClient([partition, unused_module, valid])
+            self.assertTrue(generate_global_proposal(
+                corpus, state, client, self.config,
+                RetryConfig(max_retries=1, initial_backoff=0),
+                root / "cache", root / "first",
+            ))
+            self.assertIn(
+                "unused proposed topic keys",
+                client.completions.calls[-1]["messages"][-1]["content"],
+            )
+            payload = yaml.safe_load(
+                (root / "first" / "restructure-proposal-global.yml").read_text()
+            )
+            self.assertEqual(
+                [item["proposed_course_keys"] for item in payload["source_course_mappings"]],
+                [["alpha_course"], ["beta_course"]],
+            )
+            no_calls = FakeClient([])
+            self.assertTrue(generate_global_proposal(
+                corpus, state, no_calls, self.config, self.retry,
+                root / "cache", root / "second",
+            ))
+            self.assertEqual(no_calls.completions.calls, [])
+            self.assertEqual(
+                (root / "first" / "restructure-proposal-global.yml").read_text(),
+                (root / "second" / "restructure-proposal-global.yml").read_text(),
+            )
+
+    def test_topic_batches_partition_assigned_topics_by_co_teaching(self):
+        memberships = {
+            f"course{index}": [f"{group}_{item}" for item in range(4)]
+            for index, group in enumerate(["red", "red", "blue", "blue", "green"])
+        }
+        batches = topic_batches(memberships, max_size=4)
+        self.assertEqual(
+            sorted(map(tuple, batches)),
+            sorted(
+                tuple(f"{group}_{item}" for item in range(4))
+                for group in ("blue", "green", "red")
+            ),
+        )
+        packed = topic_batches(memberships, max_size=8)
+        self.assertEqual(sorted(key for batch in packed for key in batch), sorted({
+            key for keys in memberships.values() for key in keys
+        }))
+        self.assertTrue(all(len(batch) <= 8 for batch in packed))
+        self.assertEqual(packed, topic_batches(memberships, max_size=8))
+
+    def test_topic_partition_must_cover_batch_exactly_once(self):
+        validate_topic_partition(["a", "b"], module_partition(("m", ["a", "b"])))
+        with self.assertRaisesRegex(ValueError, "several modules"):
+            validate_topic_partition(
+                ["a", "b"], module_partition(("m", ["a", "b"]), ("n", ["a"]))
+            )
+        with self.assertRaisesRegex(ValueError, "missing=\\['b'\\], unknown=\\['c'\\]"):
+            validate_topic_partition(["a", "b"], module_partition(("m", ["a", "c"])))
+
+    def test_source_mappings_prefer_full_cover_with_least_unrelated_content(self):
+        proposal = RestructuringProposal(
+            proposed_topics=[
+                ProposedTopic(key=key, description=key, source_topic_keys=sources)
+                for key, sources in (
+                    ("core", ["alpha"]),
+                    ("broad", ["alpha", "beta", "gamma"]),
+                    ("narrow", ["beta"]),
+                )
+            ],
+            proposed_courses=[
+                ProposedCourse(key="broad_course", title="Broad", topic_keys=["broad"]),
+                ProposedCourse(key="core_course", title="Core", topic_keys=["core"]),
+                ProposedCourse(key="narrow_course", title="Narrow", topic_keys=["narrow"]),
+            ],
+            prerequisites=[],
+        )
+        mappings = derive_source_course_mappings(
+            self.cluster,
+            {"A": ["alpha", "beta"], "B": ["beta"]},
+            proposal,
+        )
+        self.assertEqual(
+            [(item.course_id, item.proposed_course_keys) for item in mappings],
+            [("A", ["broad_course"]), ("B", ["narrow_course"])],
+        )
 
     def test_incremental_artifacts_are_rebuilt_from_complete_cache(self):
         with tempfile.TemporaryDirectory() as tmp_dir:
@@ -743,7 +877,7 @@ class TestWorkflow(unittest.TestCase):
                     [
                         self.first,
                         self.second,
-                        valid_proposal("A", "B"),
+                        valid_proposal(),
                     ],
                     on_parse=check_before_proposal,
                 ),
@@ -775,7 +909,7 @@ class TestWorkflow(unittest.TestCase):
                 root / "source-cache",
                 source,
             )
-            client = FakeClient([valid_proposal("A", "B")])
+            client = FakeClient([valid_proposal()])
             output = run_restructuring(
                 write_cluster_input(root, self.cluster),
                 self.config,
@@ -797,17 +931,19 @@ class TestWorkflow(unittest.TestCase):
             )
             self.assertEqual(list((root / "new-cache").glob("*.yml")), [])
 
-    def test_invalid_proposal_is_retried_before_writing(self):
-        invalid = valid_proposal("A")
+    def test_invalid_proposal_is_retried_with_feedback_before_writing(self):
+        invalid = valid_proposal()
+        invalid.proposed_topics[0].source_topic_keys = ["alpha"]
         with tempfile.TemporaryDirectory() as tmp_dir:
             root = pathlib.Path(tmp_dir)
+            client = FakeClient(
+                [self.first, self.second, invalid, valid_proposal()]
+            )
             output_dir = run_restructuring(
                 write_cluster_input(root, self.cluster),
                 self.config,
                 RetryConfig(max_retries=1, initial_backoff=0),
-                client=FakeClient(
-                    [self.first, self.second, invalid, valid_proposal("A", "B")]
-                ),
+                client=client,
                 cache_dir=root / "cache",
                 output_root=root / "output",
                 now=datetime(2026, 7, 29, 12, 34),
@@ -819,6 +955,10 @@ class TestWorkflow(unittest.TestCase):
                 {item["course_id"] for item in payload["source_course_mappings"]},
                 {"A", "B"},
             )
+            retried = client.completions.calls[-1]["messages"]
+            self.assertEqual(retried[-2]["content"], invalid.model_dump_json())
+            self.assertIn("rejected", retried[-1]["content"])
+            self.assertIn("beta", retried[-1]["content"])
 
     def test_proposal_llm_failure_is_nonfatal_after_topic_artifacts(self):
         with tempfile.TemporaryDirectory() as tmp_dir:
@@ -872,13 +1012,6 @@ class TestWorkflow(unittest.TestCase):
                     dependent_course_key="one",
                 ),
             ],
-            source_course_mappings=[
-                SourceCourseMapping(
-                    course_id=course_id,
-                    proposed_course_keys=["one"],
-                )
-                for course_id in ("A", "B")
-            ],
         )
         with self.assertRaisesRegex(ValueError, "acyclic"):
             validate_restructuring_proposal(
@@ -888,9 +1021,9 @@ class TestWorkflow(unittest.TestCase):
                 proposal,
             )
 
-        incomplete = valid_proposal("A", "B")
+        incomplete = valid_proposal()
         incomplete.proposed_topics[0].source_topic_keys = ["alpha"]
-        with self.assertRaisesRegex(ValueError, "loses topic coverage.*beta"):
+        with self.assertRaisesRegex(ValueError, "missing from proposed topic provenance.*beta"):
             validate_restructuring_proposal(
                 self.cluster,
                 {"alpha": "Alpha", "beta": "Beta"},
@@ -968,13 +1101,6 @@ class TestRepositoryRestructuringInput(unittest.TestCase):
                         ),
                     )
                 else:
-                    labels_match = re.search(
-                        r"<source_courses>\s*(.*?)\s*</source_courses>",
-                        prompt,
-                        re.DOTALL,
-                    )
-                    assert labels_match is not None
-                    labels = json.loads(labels_match.group(1))
                     response = RestructuringProposal(
                         proposed_topics=[
                             ProposedTopic(
@@ -991,13 +1117,6 @@ class TestRepositoryRestructuringInput(unittest.TestCase):
                             )
                         ],
                         prerequisites=[],
-                        source_course_mappings=[
-                            SourceCourseMapping(
-                                course_id=item["id"],
-                                proposed_course_keys=["proposed_course"],
-                            )
-                            for item in labels
-                        ],
                     )
                 message = SimpleNamespace(
                     parsed=response,

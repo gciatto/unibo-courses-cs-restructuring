@@ -1,12 +1,16 @@
 from __future__ import annotations
 
+import hashlib
+import itertools
 import json
 import logging
+import math
 import os
 import pathlib
 import random
 import string
 import time
+from collections import Counter
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Any, Callable, TypeVar
@@ -15,6 +19,7 @@ from pydantic import BaseModel, ValidationError
 
 from restructuring.io import (
     DEFAULT_SYLLABUS_SECTION_KEYS,
+    PROMPT_VERSION,
     REPOSITORY_ROOT,
     conversation_cache_key,
     load_cache,
@@ -28,17 +33,21 @@ from restructuring.io import (
     write_cache,
     write_cluster_topics,
     write_course_topics,
+    write_global_modules,
     write_global_topics,
     write_restructuring_proposal,
 )
 from restructuring.models import (
     ClusterInput,
+    CourseAssembly,
     CourseInput,
     GlobalInput,
     CourseTopicsResponse,
     ModelConfig,
+    ProposedTopic,
     RestructuringProposal,
     RetryConfig,
+    TopicPartition,
 )
 
 LOGGER = logging.getLogger(__name__)
@@ -53,6 +62,10 @@ def _load_prompt(name: str) -> str:
 SYSTEM_PROMPT = _load_prompt("system.txt")
 COURSE_PROMPT = string.Template(_load_prompt("course.txt"))
 PROPOSAL_PROMPT = string.Template(_load_prompt("proposal.txt"))
+DESIGN_SYSTEM_PROMPT = _load_prompt("design_system.txt")
+MODULES_PROMPT = string.Template(_load_prompt("modules.txt"))
+ASSEMBLY_PROMPT = string.Template(_load_prompt("assembly.txt"))
+MODULE_BATCH_SIZE = 60
 PROMPT_SYLLABUS_SECTION_KEYS = DEFAULT_SYLLABUS_SECTION_KEYS
 TOPIC_CONVERSATION_MODES = ("stateless", "full")
 
@@ -207,10 +220,29 @@ def call_structured(
     sleep: Callable[[float], None] = time.sleep,
     random_uniform: Callable[[float, float], float] = random.uniform,
 ) -> T:
+    # A rejected reply and the reason are appended to the next attempt so the
+    # model can repair it; only the latest rejection is kept.
+    feedback: list[dict[str, str]] = []
+
+    def validated(message: Any) -> T:
+        parsed = getattr(message, "parsed", None)
+        content = getattr(message, "content", None)
+        if parsed is None:
+            if not isinstance(content, str):
+                raise ResponseValidationError(
+                    "Model returned neither parsed output nor text"
+                )
+            parsed = response_model.model_validate_json(content)
+        if not isinstance(parsed, response_model):
+            parsed = response_model.model_validate(parsed)
+        if validator is not None:
+            validator(parsed)
+        return parsed
+
     def operation() -> T:
         arguments: dict[str, Any] = {
             "model": config.model,
-            "messages": messages,
+            "messages": messages + feedback,
             "response_format": response_model,
             "max_completion_tokens": config.max_completion_tokens,
         }
@@ -221,25 +253,21 @@ def call_structured(
         refusal = getattr(message, "refusal", None)
         if refusal:
             raise RuntimeError(f"Model refused the request: {refusal}")
-        parsed = getattr(message, "parsed", None)
-        if parsed is None:
+        try:
+            return validated(message)
+        except ValueError as error:  # includes pydantic.ValidationError
             content = getattr(message, "content", None)
-            if not isinstance(content, str):
-                raise ResponseValidationError(
-                    "Model returned neither parsed output nor text"
-                )
-            try:
-                parsed = response_model.model_validate_json(content)
-            except ValidationError as error:
-                raise ResponseValidationError(str(error)) from error
-        if not isinstance(parsed, response_model):
-            parsed = response_model.model_validate(parsed)
-        if validator is not None:
-            try:
-                validator(parsed)
-            except ValueError as error:
-                raise ResponseValidationError(str(error)) from error
-        return parsed
+            feedback[:] = (
+                [{"role": "assistant", "content": content}]
+                if isinstance(content, str) and content else []
+            ) + [{
+                "role": "user",
+                "content": (
+                    f"Your previous reply was rejected: {error}\n"
+                    "Return a corrected, complete reply."
+                ),
+            }]
+            raise ResponseValidationError(str(error)) from error
 
     LOGGER.info(
         "%s: submitting %d message(s) to model=%s endpoint=%s "
@@ -781,6 +809,321 @@ def generate_cluster_proposal(
     return True
 
 
+def topic_batches(
+    memberships: dict[str, list[str]],
+    max_size: int = MODULE_BATCH_SIZE,
+    seed: int = 0,
+) -> list[list[str]]:
+    """Split assigned topics into co-teaching communities packed into batches.
+
+    Topics are linked by how often they are assigned to the same courses
+    (cosine-normalized so ubiquitous topics do not absorb everything).
+    Louvain communities larger than ``max_size`` are split recursively; small
+    communities are then packed together so each batch is one model request.
+    """
+    import networkx as nx
+
+    counts = Counter(key for keys in memberships.values() for key in set(keys))
+    pairs = Counter(
+        pair
+        for keys in memberships.values()
+        for pair in itertools.combinations(sorted(set(keys)), 2)
+    )
+    graph = nx.Graph()
+    graph.add_nodes_from(sorted(counts))
+    graph.add_weighted_edges_from(
+        (first, second, shared / math.sqrt(counts[first] * counts[second]))
+        for (first, second), shared in sorted(pairs.items())
+    )
+    communities: list[list[str]] = []
+    pending = [set(graph)]
+    while pending:
+        nodes = pending.pop()
+        if len(nodes) <= max_size:
+            communities.append(sorted(nodes))
+            continue
+        parts = nx.community.louvain_communities(graph.subgraph(nodes), seed=seed)
+        if len(parts) > 1:
+            pending.extend(parts)
+            continue
+        # ponytail: alphabetical chunks for an unsplittable community; never
+        # observed on real data, raise max_size if it ever shows up.
+        ordered = sorted(nodes)
+        communities.extend(
+            ordered[start:start + max_size]
+            for start in range(0, len(ordered), max_size)
+        )
+    batches: list[list[str]] = []
+    for community in sorted(communities, key=lambda item: (-len(item), item)):
+        target = next(
+            (batch for batch in batches if len(batch) + len(community) <= max_size),
+            None,
+        )
+        if target is None:
+            batches.append(list(community))
+        else:
+            target.extend(community)
+    return [sorted(batch) for batch in batches]
+
+
+def validate_topic_partition(batch: list[str], partition: TopicPartition) -> None:
+    grouped = [
+        key for module in partition.proposed_topics for key in module.source_topic_keys
+    ]
+    duplicated = sorted(key for key, count in Counter(grouped).items() if count > 1)
+    if duplicated:
+        raise ValueError(f"source topics grouped into several modules: {duplicated}")
+    missing = sorted(set(batch) - set(grouped))
+    unknown = sorted(set(grouped) - set(batch))
+    if missing or unknown:
+        raise ValueError(
+            "modules must group exactly the batch topics; "
+            f"missing={missing}, unknown={unknown}"
+        )
+
+
+def modules_prompt(
+    corpus: GlobalInput,
+    batch: list[str],
+    topics: dict[str, str],
+    memberships: dict[str, list[str]],
+) -> str:
+    in_batch = set(batch)
+    usage = {
+        course.course_id: {
+            "title": course.title,
+            "topics": sorted(set(memberships[course.course_id]) & in_batch),
+        }
+        for course in corpus.courses
+        if set(memberships[course.course_id]) & in_batch
+    }
+    counts = Counter(key for keys in memberships.values() for key in set(keys))
+    return MODULES_PROMPT.substitute(
+        batch_topics=json.dumps(
+            {
+                key: {"description": topics[key], "source_courses": counts[key]}
+                for key in batch
+            },
+            ensure_ascii=False,
+            sort_keys=True,
+        ),
+        course_usage=json.dumps(usage, ensure_ascii=False, sort_keys=True),
+    )
+
+
+def _source_course_modules(
+    corpus: GlobalInput,
+    memberships: dict[str, list[str]],
+    modules: list[ProposedTopic],
+) -> dict[str, list[str]]:
+    module_of = {
+        key: module.key for module in modules for key in module.source_topic_keys
+    }
+    return {
+        course.course_id: sorted({module_of[key] for key in memberships[course.course_id]})
+        for course in corpus.courses
+    }
+
+
+def assembly_prompt(
+    corpus: GlobalInput,
+    memberships: dict[str, list[str]],
+    modules: list[ProposedTopic],
+) -> str:
+    course_modules = _source_course_modules(corpus, memberships, modules)
+    usage = Counter(key for keys in course_modules.values() for key in keys)
+    return ASSEMBLY_PROMPT.substitute(
+        modules=json.dumps(
+            {
+                module.key: {
+                    "description": module.description,
+                    "source_courses": usage[module.key],
+                }
+                for module in modules
+            },
+            ensure_ascii=False,
+            sort_keys=True,
+        ),
+        source_courses=json.dumps(
+            {
+                course.course_id: {
+                    "title": course.title,
+                    "modules": course_modules[course.course_id],
+                }
+                for course in corpus.courses
+            },
+            ensure_ascii=False,
+            sort_keys=True,
+        ),
+    )
+
+
+def cached_structured_call(
+    client: Any,
+    messages: list[dict[str, str]],
+    response_model: type[T],
+    config: ModelConfig,
+    retry: RetryConfig,
+    cache_dir: pathlib.Path,
+    *,
+    operation_name: str,
+    validator: Callable[[T], None] | None = None,
+    refresh_cache: bool = False,
+    sleep: Callable[[float], None] = time.sleep,
+    random_uniform: Callable[[float, float], float] = random.uniform,
+) -> T:
+    """One independent request, cached by its exact messages and model settings."""
+    metadata = {
+        "prompt_version": PROMPT_VERSION,
+        "endpoint": config.endpoint,
+        "model_parameters": config.cache_parameters(),
+        "response_model": response_model.__name__,
+    }
+    cache_key = hashlib.sha256(
+        json.dumps(
+            {"metadata": metadata, "messages": messages},
+            ensure_ascii=False,
+            sort_keys=True,
+        ).encode("utf-8")
+    ).hexdigest()
+    cache_path = cache_dir / f"{cache_key}.yml"
+    cached = [] if refresh_cache else load_cache(cache_path, metadata)
+    if cached and cached[-1]["role"] == "assistant" and cached[:-1] == messages:
+        try:
+            parsed = response_model.model_validate_json(cached[-1]["content"])
+            if validator is not None:
+                validator(parsed)
+        except ValueError as error:
+            LOGGER.warning("%s: cached reply is invalid; regenerating: %s", operation_name, error)
+        else:
+            LOGGER.info("%s: cache hit path=%s", operation_name, cache_path)
+            return parsed
+    parsed = call_structured(
+        client,
+        messages,
+        response_model,
+        config,
+        retry,
+        operation_name=operation_name,
+        validator=validator,
+        sleep=sleep,
+        random_uniform=random_uniform,
+    )
+    write_cache(
+        cache_path,
+        cache_key,
+        metadata,
+        messages + [{"role": "assistant", "content": parsed.model_dump_json()}],
+    )
+    return parsed
+
+
+def _unique_module_keys(modules: list[ProposedTopic]) -> list[ProposedTopic]:
+    seen: set[str] = set()
+    unique: list[ProposedTopic] = []
+    for module in modules:
+        key = module.key
+        suffix = 2
+        while key in seen:
+            key = f"{module.key}_{suffix}"
+            suffix += 1
+        seen.add(key)
+        unique.append(module.model_copy(update={"key": key}))
+    return unique
+
+
+def generate_global_proposal(
+    corpus: GlobalInput,
+    state: ClusterTopicState,
+    client: Any,
+    config: ModelConfig,
+    retry: RetryConfig,
+    cache_dir: pathlib.Path,
+    output_dir: pathlib.Path,
+    *,
+    refresh_cache: bool = False,
+    sleep: Callable[[float], None] = time.sleep,
+    random_uniform: Callable[[float, float], float] = random.uniform,
+) -> bool:
+    """Restructure all courses as topics -> modules -> new courses.
+
+    Modules are designed per co-teaching batch of topics, so no request sees
+    the whole ontology. Courses are then assembled from module keys only, and
+    source-course mappings are derived locally, so coverage holds by
+    construction instead of depending on one huge model reply.
+    """
+    system_message = {"role": "system", "content": DESIGN_SYSTEM_PROMPT}
+    topics, memberships = state.topics, state.memberships
+    call_options = {
+        "refresh_cache": refresh_cache,
+        "sleep": sleep,
+        "random_uniform": random_uniform,
+    }
+    try:
+        batches = topic_batches(memberships)
+        LOGGER.info(
+            "Global corpus: grouping %d assigned topics into modules in %d batch(es)",
+            sum(map(len, batches)),
+            len(batches),
+        )
+        modules: list[ProposedTopic] = []
+        for index, batch in enumerate(batches, start=1):
+            partition = cached_structured_call(
+                client,
+                [system_message, {"role": "user", "content": modules_prompt(corpus, batch, topics, memberships)}],
+                TopicPartition,
+                config,
+                retry,
+                cache_dir,
+                operation_name=f"corpus=global module-design {index}/{len(batches)}",
+                validator=lambda response, current=batch: validate_topic_partition(current, response),
+                **call_options,
+            )
+            modules.extend(partition.proposed_topics)
+        modules = _unique_module_keys(modules)
+        modules_path = write_global_modules(output_dir, topics, modules)
+        LOGGER.info("Global corpus: wrote modules path=%s modules=%d", modules_path, len(modules))
+
+        def combine(assembly: CourseAssembly) -> RestructuringProposal:
+            return RestructuringProposal(
+                proposed_topics=modules,
+                proposed_courses=assembly.proposed_courses,
+                prerequisites=assembly.prerequisites,
+            )
+
+        assembly = cached_structured_call(
+            client,
+            [system_message, {"role": "user", "content": assembly_prompt(corpus, memberships, modules)}],
+            CourseAssembly,
+            config,
+            retry,
+            cache_dir,
+            operation_name="corpus=global course-assembly",
+            validator=lambda response: validate_restructuring_proposal(
+                corpus, topics, memberships, combine(response)
+            ),
+            **call_options,
+        )
+        proposal = combine(assembly)
+    except Exception as error:
+        LOGGER.error(
+            "Global corpus: restructuring proposal generation failed; "
+            "topic YAML remains definitive; error=%s: %s",
+            error.__class__.__name__,
+            error,
+        )
+        return False
+    yaml_path, mermaid_path = write_restructuring_proposal(
+        output_dir, corpus, topics, memberships, proposal
+    )
+    LOGGER.info(
+        "Global corpus: wrote validated restructuring proposal yaml=%s mermaid=%s",
+        yaml_path,
+        mermaid_path,
+    )
+    return True
+
+
 def create_attempt_directory(
     output_root: pathlib.Path,
     now: datetime | None = None,
@@ -890,17 +1233,33 @@ def run_restructuring(
             "starting isolated restructuring proposal phase",
             *_corpus_label(cluster),
         )
-        if generate_cluster_proposal(
-            cluster,
-            conversation,
-            resolved_client,
-            config,
-            retry,
-            output_dir,
-            topic_conversation_mode=topic_conversation_mode,
-            sleep=sleep,
-            random_uniform=random_uniform,
-        ):
+        succeeded = (
+            generate_global_proposal(
+                cluster,
+                conversation.state,
+                resolved_client,
+                config,
+                retry,
+                resolved_cache_dir,
+                output_dir,
+                refresh_cache=refresh_cache,
+                sleep=sleep,
+                random_uniform=random_uniform,
+            )
+            if isinstance(cluster, GlobalInput)
+            else generate_cluster_proposal(
+                cluster,
+                conversation,
+                resolved_client,
+                config,
+                retry,
+                output_dir,
+                topic_conversation_mode=topic_conversation_mode,
+                sleep=sleep,
+                random_uniform=random_uniform,
+            )
+        )
+        if succeeded:
             proposal_successes += 1
         else:
             proposal_failures += 1

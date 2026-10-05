@@ -1,0 +1,27 @@
+The source topics of all courses have been grouped into the modules below.
+Propose a rational restructuring of all source courses as a hierarchy of new
+courses built from these modules.
+
+Factor shared prerequisite knowledge into general courses reused across degree
+programmes where useful, and keep specialist modules in specialist courses.
+Prefer new courses that let each source course be replaced by few new courses
+with little unrelated content.
+
+<modules>
+$modules
+</modules>
+
+Each module is listed with the number of source courses using it.
+
+These are the source courses expressed as the modules covering their topics.
+<source_courses>
+$source_courses
+</source_courses>
+
+Requirements:
+- proposed_courses assigns one or more module keys (in topic_keys) to each new
+  course; every module is used by at least one new course.
+- prerequisites uses prerequisite_course_key -> dependent_course_key semantics
+  and must form an acyclic graph.
+- Source courses are mapped to new courses automatically from the modules, so
+  do not list mappings.

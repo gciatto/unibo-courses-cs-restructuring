@@ -139,7 +139,8 @@ Relevant tests are `tests/test_download_course_headers.py`,
   restructuring proposal and renders Mermaid locally. API retries use
   exponential backoff with jitter.
 - `prompts/*.txt`: system, per-course topic extraction, and restructuring
-  proposal prompts. Prompts are loaded at module import time.
+  proposal prompts, plus `design_system`, `modules`, and `assembly` prompts for
+  the all-courses proposal. Prompts are loaded at module import time.
 
 ### Restructuring contracts
 
@@ -169,6 +170,17 @@ Relevant tests are `tests/test_download_course_headers.py`,
   proposal generation writes a validated `restructure-proposal-*.yml` plus a
   deterministic `.mmd` Mermaid view; proposal failures are logged and do not
   fail the overall run.
+- The model never lists source-course mappings. It must only ensure every
+  assigned source topic appears in some proposed topic's provenance;
+  `derive_source_course_mappings` then maps each source course by greedy set
+  cover, and the proposal YAML reports per-course `overshoot` and per-new-course
+  `proposed_course_reuse`.
+- `--all-courses` proposals are decomposed: `topic_batches` splits assigned
+  topics into co-teaching communities (Louvain, at most 60 per batch), one
+  `TopicPartition` request per batch groups them into modules
+  (`modules-global.yml`), and one `CourseAssembly` request builds new courses
+  from module keys. Each request is cached independently by its exact messages.
+- A rejected structured reply is sent back with the validation error on retry.
 - Live runs require `OPENAI_API_KEY`; endpoint/model may come from
   `OPENAI_BASE_URL` and `OPENAI_MODEL`.
 

@@ -28,8 +28,8 @@ Requirements:
 - proposed_courses assigns one or more proposed topic keys to each new course.
 - prerequisites uses prerequisite_course_key -> dependent_course_key semantics
   and must form an acyclic graph.
-- source_course_mappings contains every source course exactly once and maps it
-  to one or more proposed courses that subsume its contents.
-- For each source course, the provenance of topics in its mapped proposed
-  courses must cover every topic in that source course's assignment.
+- Every source topic assigned to a source course must appear in the
+  source_topic_keys of at least one proposed topic. Source courses are then
+  mapped to proposed courses automatically from this provenance, so no source
+  course loses coverage.
 - Keys are lowercase snake_case and all references must resolve.

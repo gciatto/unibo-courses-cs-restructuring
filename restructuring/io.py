@@ -15,7 +15,9 @@ from restructuring.models import (
     CourseInput,
     GlobalInput,
     ModelConfig,
+    ProposedTopic,
     RestructuringProposal,
+    SourceCourseMapping,
     TOPIC_KEY_PATTERN,
 )
 
@@ -359,7 +361,6 @@ def validate_restructuring_proposal(
 ) -> None:
     proposed_topic_keys = {item.key for item in proposal.proposed_topics}
     proposed_course_keys = {item.key for item in proposal.proposed_courses}
-    source_course_ids = {course.course_id for course in cluster.courses}
 
     unknown_source_topics = sorted(
         {
@@ -390,19 +391,7 @@ def validate_restructuring_proposal(
     if unused_proposed_topics:
         raise ValueError(f"unused proposed topic keys: {unused_proposed_topics}")
 
-    mapped_ids = {item.course_id for item in proposal.source_course_mappings}
-    if mapped_ids != source_course_ids:
-        raise ValueError(
-            "source course mappings must cover exactly the source courses; "
-            f"missing={sorted(source_course_ids - mapped_ids)}, "
-            f"unknown={sorted(mapped_ids - source_course_ids)}"
-        )
-
     referenced_courses = {
-        key
-        for item in proposal.source_course_mappings
-        for key in item.proposed_course_keys
-    } | {
         key
         for edge in proposal.prerequisites
         for key in (edge.prerequisite_course_key, edge.dependent_course_key)
@@ -411,22 +400,25 @@ def validate_restructuring_proposal(
     if unknown_courses:
         raise ValueError(f"unknown proposed course keys: {unknown_courses}")
 
-    proposed_topics = {item.key: item for item in proposal.proposed_topics}
-    proposed_courses = {item.key: item for item in proposal.proposed_courses}
-    for mapping in proposal.source_course_mappings:
-        covered_source_topics = {
-            source_topic_key
-            for proposed_course_key in mapping.proposed_course_keys
-            for proposed_topic_key in proposed_courses[proposed_course_key].topic_keys
-            for source_topic_key in proposed_topics[proposed_topic_key].source_topic_keys
+    # Every proposed topic is used by some course (checked above), so covering
+    # each assigned source topic by provenance lets every source course be
+    # mapped locally without loss; see derive_source_course_mappings.
+    provenance = {
+        key for topic in proposal.proposed_topics for key in topic.source_topic_keys
+    }
+    uncovered = sorted(
+        {
+            key
+            for course in cluster.courses
+            for key in source_memberships[course.course_id]
         }
-        missing = sorted(
-            set(source_memberships[mapping.course_id]) - covered_source_topics
+        - provenance
+    )
+    if uncovered:
+        raise ValueError(
+            "assigned source topics missing from proposed topic provenance: "
+            f"{uncovered}"
         )
-        if missing:
-            raise ValueError(
-                f"source course {mapping.course_id} loses topic coverage: {missing}"
-            )
 
     successors: dict[str, set[str]] = {key: set() for key in proposed_course_keys}
     indegree = {key: 0 for key in proposed_course_keys}
@@ -444,6 +436,56 @@ def validate_restructuring_proposal(
                 pending.append(dependent)
     if visited != len(proposed_course_keys):
         raise ValueError("course prerequisites must be acyclic")
+
+
+def _proposed_course_provenance(proposal: RestructuringProposal) -> dict[str, set[str]]:
+    topics = {
+        item.key: set(item.source_topic_keys) for item in proposal.proposed_topics
+    }
+    return {
+        item.key: set().union(*(topics[key] for key in item.topic_keys))
+        for item in proposal.proposed_courses
+    }
+
+
+def derive_source_course_mappings(
+    cluster: ClusterInput | GlobalInput,
+    source_memberships: dict[str, list[str]],
+    proposal: RestructuringProposal,
+) -> list[SourceCourseMapping]:
+    """Map each source course onto proposed courses by greedy topic set cover.
+
+    Each step picks the proposed course covering most still-uncovered source
+    topics, preferring the least unrelated content, then the smallest key.
+    """
+    # ponytail: greedy set cover is within ln(n) of optimal; exact ILP if
+    # fragmentation numbers ever look suspicious.
+    provenance = _proposed_course_provenance(proposal)
+    mappings: list[SourceCourseMapping] = []
+    for course in cluster.courses:
+        own = set(source_memberships[course.course_id])
+        remaining = set(own)
+        chosen: list[str] = []
+        while remaining:
+            best = min(
+                provenance,
+                key=lambda key: (
+                    -len(provenance[key] & remaining),
+                    len(provenance[key] - own),
+                    key,
+                ),
+            )
+            if not provenance[best] & remaining:
+                raise ValueError(
+                    f"source course {course.course_id} loses topic coverage: "
+                    f"{sorted(remaining)}"
+                )
+            chosen.append(best)
+            remaining -= provenance[best]
+        mappings.append(
+            SourceCourseMapping(course_id=course.course_id, proposed_course_keys=chosen)
+        )
+    return mappings
 
 
 def write_cluster_topics(
@@ -602,7 +644,11 @@ def _mermaid_label(value: str) -> str:
     return html.escape(value.strip(), quote=True).replace("\n", " ")
 
 
-def render_mermaid(cluster: ClusterInput | GlobalInput, proposal: RestructuringProposal) -> str:
+def render_mermaid(
+    cluster: ClusterInput | GlobalInput,
+    proposal: RestructuringProposal,
+    mappings: Iterable[SourceCourseMapping],
+) -> str:
     course_aliases = {
         item.key: f"P{index}"
         for index, item in enumerate(proposal.proposed_courses)
@@ -633,7 +679,7 @@ def render_mermaid(cluster: ClusterInput | GlobalInput, proposal: RestructuringP
             f"  {course_aliases[edge.prerequisite_course_key]} --> "
             f"{course_aliases[edge.dependent_course_key]}"
         )
-    for mapping in proposal.source_course_mappings:
+    for mapping in mappings:
         for proposed_key in mapping.proposed_course_keys:
             lines.append(
                 f"  {source_aliases[mapping.course_id]} -.-> "
@@ -658,6 +704,17 @@ def write_restructuring_proposal(
     stem = f"restructure-proposal-for-cluster-{cluster.cluster_id}" if isinstance(cluster, ClusterInput) else "restructure-proposal-global"
     yaml_path = output_dir / f"{stem}.yml"
     mermaid_path = output_dir / f"{stem}.mmd"
+    mappings = derive_source_course_mappings(cluster, source_memberships, proposal)
+    provenance = _proposed_course_provenance(proposal)
+    mapped_payload = []
+    for mapping in mappings:
+        own = set(source_memberships[mapping.course_id])
+        covered = set().union(*(provenance[key] for key in mapping.proposed_course_keys))
+        mapped_payload.append({
+            **mapping.model_dump(),
+            # Share of source topics in the mapped courses the old course did not teach.
+            "overshoot": round(len(covered - own) / len(covered), 3) if covered else 0.0,
+        })
     payload = {
         **({"cluster": {"id": cluster.cluster_id, "name": cluster.name}} if isinstance(cluster, ClusterInput) else {"analysis": {"mode": "all-courses"}}),
         "source_topics": {key: source_topics[key] for key in sorted(source_topics)},
@@ -666,10 +723,36 @@ def write_restructuring_proposal(
             for course_id in sorted(source_memberships)
         },
         **proposal.model_dump(),
+        "source_course_mappings": mapped_payload,
+        "proposed_course_reuse": {
+            item.key: sum(item.key in mapping.proposed_course_keys for mapping in mappings)
+            for item in proposal.proposed_courses
+        },
     }
     _atomic_write_text(
         yaml_path,
         yaml.safe_dump(payload, sort_keys=False, allow_unicode=True),
     )
-    _atomic_write_text(mermaid_path, render_mermaid(cluster, proposal))
+    _atomic_write_text(mermaid_path, render_mermaid(cluster, proposal, mappings))
     return yaml_path, mermaid_path
+
+
+def write_global_modules(
+    output_dir: pathlib.Path,
+    source_topics: dict[str, str],
+    modules: Iterable[ProposedTopic],
+) -> pathlib.Path:
+    """Persist the module layer so a failed course-assembly call keeps it."""
+    path = output_dir / "modules-global.yml"
+    _atomic_write_text(path, yaml.safe_dump({
+        "analysis": {"mode": "all-courses"},
+        "modules": [
+            {
+                "key": module.key,
+                "description": module.description,
+                "source_topics": {key: source_topics[key] for key in module.source_topic_keys},
+            }
+            for module in modules
+        ],
+    }, sort_keys=False, allow_unicode=True))
+    return path

@@ -140,16 +140,36 @@ class CoursePrerequisite(BaseModel):
 
 
 class SourceCourseMapping(BaseModel):
+    """Derived locally from topic provenance; never requested from the model."""
+
     model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
 
     course_id: str = Field(min_length=1)
-    proposed_course_keys: list[str] = Field(min_length=1)
+    proposed_course_keys: list[str]
+
+
+class TopicPartition(BaseModel):
+    """Groups one batch of source topics into proposed topics (modules)."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    proposed_topics: list[ProposedTopic] = Field(min_length=1)
 
     @model_validator(mode="after")
-    def validate_proposed_course_keys(self) -> "SourceCourseMapping":
-        if len(self.proposed_course_keys) != len(set(self.proposed_course_keys)):
-            raise ValueError("proposed_course_keys must be unique")
+    def validate_unique_keys(self) -> "TopicPartition":
+        keys = [item.key for item in self.proposed_topics]
+        if len(keys) != len(set(keys)):
+            raise ValueError("proposed topic entries must be unique")
         return self
+
+
+class CourseAssembly(BaseModel):
+    """Assembles already-defined proposed topics (modules) into new courses."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    proposed_courses: list[ProposedCourse] = Field(min_length=1)
+    prerequisites: list[CoursePrerequisite]
 
 
 class RestructuringProposal(BaseModel):
@@ -158,14 +178,12 @@ class RestructuringProposal(BaseModel):
     proposed_topics: list[ProposedTopic] = Field(min_length=1)
     proposed_courses: list[ProposedCourse] = Field(min_length=1)
     prerequisites: list[CoursePrerequisite]
-    source_course_mappings: list[SourceCourseMapping] = Field(min_length=1)
 
     @model_validator(mode="after")
     def validate_unique_keys(self) -> "RestructuringProposal":
         for label, values in (
             ("proposed topic", [item.key for item in self.proposed_topics]),
             ("proposed course", [item.key for item in self.proposed_courses]),
-            ("source course", [item.course_id for item in self.source_course_mappings]),
             (
                 "prerequisite",
                 [
