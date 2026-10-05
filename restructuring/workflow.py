@@ -20,6 +20,7 @@ from restructuring.io import (
     load_cache,
     load_clusters,
     load_global_corpus,
+    load_global_topic_artifacts,
     load_topic_artifacts,
     normalize_syllabus_section_keys,
     select_clusters,
@@ -426,8 +427,6 @@ def process_cluster_topics(
             f"Unknown topic conversation mode {topic_conversation_mode!r}; "
             f"expected one of {TOPIC_CONVERSATION_MODES}"
         )
-    if isinstance(cluster, GlobalInput) and reuse_topic_dirs:
-        raise ValueError("--all-courses cannot be combined with --reuse-topics-from")
     normalized_section_keys = normalize_syllabus_section_keys(syllabus_section_keys)
     cache_key, metadata = conversation_cache_key(
         cluster,
@@ -480,7 +479,11 @@ def process_cluster_topics(
     cursor = 1
     state = ClusterTopicState(topics={}, memberships={})
     for directory in reuse_topic_dirs:
-        reused = load_topic_artifacts(directory, cluster)
+        reused = (
+            load_global_topic_artifacts(directory, cluster)
+            if isinstance(cluster, GlobalInput)
+            else load_topic_artifacts(directory, cluster)
+        )
         if reused is None:
             continue
         state = ClusterTopicState(*reused)
@@ -826,8 +829,6 @@ def run_restructuring(
     )
     if all_courses and (cluster_ids or cluster_name_regexes):
         raise ValueError("--all-courses cannot be combined with cluster selectors")
-    if all_courses and reuse_topic_dirs:
-        raise ValueError("--all-courses cannot be combined with --reuse-topics-from")
     missing_reuse_dirs = [path for path in reuse_topic_dirs if not path.is_dir()]
     if missing_reuse_dirs:
         raise ValueError(f"Topic reuse directories do not exist: {missing_reuse_dirs}")

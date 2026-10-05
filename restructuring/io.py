@@ -554,6 +554,50 @@ def load_topic_artifacts(
     return dict(topics), memberships
 
 
+def load_global_topic_artifacts(
+    directory: pathlib.Path,
+    global_input: GlobalInput,
+) -> tuple[dict[str, str], dict[str, list[str]]] | None:
+    topics_path = directory / "topics-global.yml"
+    if not topics_path.exists():
+        return None
+    payload = load_yaml_mapping(topics_path, "Global topic YAML")
+    if payload.get("analysis") != {"mode": "all-courses"} or payload.get("course_ids") != [
+        course.course_id for course in global_input.courses
+    ]:
+        raise ValueError(f"Global topic metadata mismatch in {topics_path}")
+    topics = payload.get("topics")
+    if not isinstance(topics, dict) or any(
+        not isinstance(key, str)
+        or re.fullmatch(TOPIC_KEY_PATTERN, key) is None
+        or not isinstance(value, str)
+        for key, value in topics.items()
+    ):
+        raise ValueError(f"Invalid topic dictionary in {topics_path}")
+    memberships: dict[str, list[str]] = {}
+    for course in global_input.courses:
+        course_path = directory / f"topics-of-course-{course.course_id}.yml"
+        payload = load_yaml_mapping(course_path, "Course topic YAML")
+        expected_sources = [
+            {"id": cluster_id, "name": name}
+            for cluster_id, name in global_input.source_clusters[course.course_id]
+        ]
+        if (
+            payload.get("analysis") != {"mode": "all-courses"}
+            or payload.get("source_clusters") != expected_sources
+            or payload.get("course") != {"id": course.course_id, "name": course.title}
+        ):
+            raise ValueError(f"Course metadata mismatch in {course_path}")
+        course_topics = payload.get("topics")
+        if not isinstance(course_topics, dict) or any(
+            key not in topics or description != topics[key]
+            for key, description in course_topics.items()
+        ):
+            raise ValueError(f"Invalid topic assignment in {course_path}")
+        memberships[course.course_id] = list(course_topics)
+    return dict(topics), memberships
+
+
 def _mermaid_label(value: str) -> str:
     return html.escape(value.strip(), quote=True).replace("\n", " ")
 

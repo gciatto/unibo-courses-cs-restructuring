@@ -108,8 +108,6 @@ def _validate_args(args: argparse.Namespace) -> None:
         raise ValueError("--max-backoff must be >= 0")
     if args.all_courses and (args.cluster_id or args.cluster_name_regex):
         raise ValueError("--all-courses cannot be combined with cluster selectors")
-    if args.all_courses and args.reuse_topics_from:
-        raise ValueError("--all-courses cannot be combined with --reuse-topics-from")
 
 
 def main() -> None:

@@ -615,7 +615,7 @@ class TestWorkflow(unittest.TestCase):
             self.assertTrue((output / "restructure-proposal-global.yml").exists())
             self.assertEqual(yaml.safe_load((output / "topics-of-course-A.yml").read_text())["topics"], {"foundations": "Refined."})
 
-    def test_global_proposal_failure_is_nonfatal_and_cli_rejects_ambiguous_options(self):
+    def test_global_proposal_failure_is_nonfatal_and_cli_rejects_selectors(self):
         args = build_parser().parse_args(["clusters.yml", "--all-courses", "--cluster-id", "1"])
         with self.assertRaisesRegex(ValueError, "cannot be combined"):
             _validate_args(args)
@@ -633,6 +633,35 @@ class TestWorkflow(unittest.TestCase):
             ))
             self.assertTrue((root / "output" / "topics-global.yml").exists())
             self.assertFalse((root / "output" / "restructure-proposal-global.yml").exists())
+
+    def test_global_topics_can_be_reused_for_a_larger_proposal_budget(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = pathlib.Path(tmp_dir)
+            source = root / "source"
+            process_cluster_topics(
+                load_global_corpus([self.cluster]),
+                FakeClient([self.first, self.second]), self.config, self.retry,
+                root / "source-cache", source,
+            )
+            client = FakeClient([valid_proposal("A", "B")])
+            output = run_restructuring(
+                write_cluster_input(root, self.cluster),
+                ModelConfig(
+                    endpoint=self.config.endpoint,
+                    model=self.config.model,
+                    max_completion_tokens=32768,
+                ),
+                self.retry,
+                all_courses=True,
+                client=client,
+                cache_dir=root / "new-cache",
+                output_root=root / "output",
+                reuse_topic_dirs=(source,),
+                now=datetime(2026, 7, 29, 12, 34),
+            )
+            self.assertEqual(len(client.completions.calls), 1)
+            self.assertIs(client.completions.calls[0]["response_format"], RestructuringProposal)
+            self.assertTrue((output / "restructure-proposal-global.yml").exists())
 
     def test_incremental_artifacts_are_rebuilt_from_complete_cache(self):
         with tempfile.TemporaryDirectory() as tmp_dir:
