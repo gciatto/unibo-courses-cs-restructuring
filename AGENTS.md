@@ -60,6 +60,9 @@ truth and the decks as domain/rationale documentation.
 - Use Conventional Commits for commit messages, with a meaningful scope when
   applicable (for example, `feat(restructuring): ...`). Mark breaking changes
   with `!` and a `BREAKING CHANGE:` footer.
+- Node is used only to render Mermaid diagrams: after `npm install`,
+  `npm run mmd -- path/to/a.mmd [...]` writes `a.svg` next to each input,
+  using `mermaid-config.json` (raised edge/text limits for global proposals).
 - Tests use `unittest`, not pytest:
   `.venv/bin/python -m unittest discover -s tests -p 'test_*.py'`.
 - Treat course IDs, teaching IDs, and programme codes as opaque strings. Leading

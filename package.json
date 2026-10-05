@@ -1,0 +1,14 @@
+{
+  "name": "unibo-courses-cs-restructuring",
+  "private": true,
+  "description": "Node tooling for rendering restructuring Mermaid diagrams",
+  "scripts": {
+    "mmd": "sh -c 'for f; do mmdc -c mermaid-config.json -i \"$f\" -o \"${f%.mmd}.svg\" || exit 1; done' --"
+  },
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^12.0.0"
+  },
+  "allowScripts": {
+    "puppeteer@25.12.0": true
+  }
+}
