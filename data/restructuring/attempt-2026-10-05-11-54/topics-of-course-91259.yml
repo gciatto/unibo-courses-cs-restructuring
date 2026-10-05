@@ -1,0 +1,48 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 2
+  name: Big Data Cloud (2)
+course:
+  id: '91259'
+  name: Architecture and Platforms for Artificial Intelligence
+topics:
+  cloud_ml_platforms: Cloud-provider platforms specifically supporting machine-learning
+    and deep-learning applications.
+  convolutional_neural_networks: Convolutional neural networks (CNNs) as a deep-learning
+    architecture.
+  gpu_programming: Programming for general-purpose GPU computation.
+  heterogeneous_ml_architectures: Heterogeneous computing architectures for accelerating
+    and deploying machine-learning workloads, including embedded machine learning.
+  hpc_architectures: High-performance computing architectures, including Flynn taxonomy,
+    shared-memory and distributed-memory architectures, and GPGPU architectures.
+  instruction_set_architecture: Instruction Set Architecture and its role in processor
+    operation.
+  machine_learning: Fundamental machine-learning technologies and algorithms for developing
+    intelligent applications.
+  memory_hierarchy: Memory-hierarchy goals, reference models, performance parameters,
+    address mapping, write and replacement policies, and the organization of main
+    memory and caches in Intel IA32 systems.
+  ml_algorithmic_optimization: Algorithmic optimization techniques for machine-learning
+    workloads, including Strassen multiplication, Winograd methods, and FFT-based
+    approaches.
+  ml_computational_kernels: Computational kernels underlying machine-learning workloads,
+    including dot products and matrix multiplication.
+  ml_workload_characterization: Computational characterization and analysis of machine-learning
+    workloads, including inference versus training.
+  model_compression_quantization: Model-compression and efficiency techniques for
+    machine-learning and deep-learning models, including quantization, sparsity, depthwise
+    convolutions, inverse bottlenecks, and optimized attention.
+  model_distillation: Model distillation for producing efficient neural-network models.
+  neural_architecture_search: Neural Architecture Search for identifying or designing
+    efficient neural-network architectures.
+  neural_networks_deep_learning: Neural networks and deep-learning techniques, including
+    their use in machine-learning applications.
+  parallel_architectures: Parallel computer architectures, as introduced in the course
+    alongside computer architecture and digital logic.
+  parallel_programming_patterns: Parallel programming patterns including embarrassingly
+    parallel, stencil, work farm, scan, and reduce patterns.
+  recurrent_neural_networks: Recurrent neural networks (RNNs) as a neural-network
+    architecture for machine learning.
+  risc_cisc_architectures: RISC and CISC architectural approaches.
+  shared_memory_programming: Programming shared-memory architectures using C and OpenMP.

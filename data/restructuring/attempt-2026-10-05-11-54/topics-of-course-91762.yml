@@ -1,0 +1,29 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 21
+  name: Artificial Intelligence Fundamentals (21)
+course:
+  id: '91762'
+  name: Combinatorial Decision Making and Optimization
+topics:
+  boolean_satisfiability: The Boolean satisfiability problem and SAT encodings for
+    combinatorial decision-making and optimization.
+  combinatorial_optimization: Modeling and solving complex combinatorial decision-making
+    and optimization problems using constraint programming, SAT, SMT, linear programming,
+    and integer linear programming approaches.
+  constraint_programming: Constraint programming techniques for solving optimization
+    and constraint problems, including global constraints and search strategies.
+  constraint_propagation: Local consistency notions and constraint-propagation techniques
+    for reducing search in constraint-programming models.
+  integer_linear_programming: Integer linear programming and its extensions and hybrid
+    methods for combinatorial optimization.
+  linear_programming: Linear programming fundamentals, including the simplex algorithm
+    and duality.
+  sat_solving: SAT-solving techniques including resolution, unit propagation, the
+    DPLL algorithm, conflict-driven clause learning, branching heuristics, randomization,
+    and search restarts.
+  satisfiability_modulo_theories: Satisfiability Modulo Theories (SMT), including
+    eager and lazy encodings, the DPLL(T) algorithm, theory solvers, and combinations
+    of theories.
+  search_algorithms: Search algorithms for solving problems.

@@ -1,0 +1,42 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 28
+  name: Systems Real-Time Real (28)
+course:
+  id: '85728'
+  name: Real Time OS M
+topics:
+  concurrent_computing: The concurrent programming paradigm.
+  cpu_scheduling: CPU scheduling in operating systems.
+  embedded_systems: Embedded-system hardware and software, including microcontrollers,
+    systems-on-chip, sensors, actuators, electronics, and programming models such
+    as super-loops, tasks, and real-time operating-system-based architectures.
+  interprocess_communication: Operating-system mechanisms for communication among
+    processes.
+  interrupt_handling: Hardware, software, and exception interrupts, including programmable
+    interrupt controllers and vectored interrupts.
+  io_management: Operating-system management of input and output operations.
+  memory_allocation: Memory allocation and direct memory management.
+  operating_systems: Operating-system structure and main functions.
+  process_synchronization: Concurrent-process problems and synchronization issues,
+    including deadlock, starvation, and busy waiting.
+  programming_in_c: Introduction to programming and software development using the
+    C language.
+  real_time_operating_systems: Architecture, functionality, programming, and use of
+    modern real-time operating systems, including FreeRTOS, NuttX, and Zephyr.
+  real_time_scheduling: Clock-driven and priority-driven scheduling approaches for
+    real-time systems, including RM, DM, EDF, and LSTF algorithms and server-based
+    strategies for soft real-time aperiodic tasks.
+  real_time_systems: Introduction to real-time systems, including their distinguishing
+    features and typical application domains, with emphasis on design issues, implementation
+    strategies, support environments, and performance evaluation.
+  real_time_task_models: Hard and soft real-time tasks and temporal reference models
+    for periodic, sporadic, and aperiodic tasks.
+  shared_memory_architectures: Shared-memory multiprocessor organization, including
+    Uniform Memory Access (UMA) and an introduction to Non-Uniform Memory Access (NUMA)
+    multicore architectures.
+  system_programming: System programming practices using UNIX tools and C or Java
+    environments, with attention to resource usage, correctness, protocols, and user
+    interfaces.
+  virtual_memory: Virtual memory management in operating systems.

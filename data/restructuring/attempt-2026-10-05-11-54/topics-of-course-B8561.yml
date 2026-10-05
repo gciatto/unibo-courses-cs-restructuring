@@ -1,0 +1,30 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 27
+  name: Architectures Computer Architetture (27)
+course:
+  id: B8561
+  name: ARCHITETTURE DEI CALCOLATORI M
+topics:
+  architecture_power_performance: Analysis of how computer architecture affects processor
+    and system power consumption and performance.
+  bus_dma_io_architecture: System-level architecture topics including interleaved
+    memory access, bus hierarchies and protocols, and multimaster systems with DMA-based
+    I/O.
+  cache_coherence: Memory-coherence mechanisms for shared-memory multiprocessor architectures,
+    including the MESI protocol.
+  cpu_pipelining: Pipelined CPU organization, including datapaths, performance metrics,
+    dependencies, hazards, stalls, forwarding, control hazards, and branch prediction.
+  hardware_virtualization: Virtualisation support in processor and multicore architectures,
+    including logical processors and simultaneous multithreading contexts.
+  instruction_set_architecture: Instruction Set Architecture and its role in processor
+    operation.
+  memory_hierarchy: Memory-hierarchy goals, reference models, performance parameters,
+    address mapping, write and replacement policies, and the organization of main
+    memory and caches in Intel IA32 systems.
+  processor_protection_task_management: Instruction-set and processor mechanisms for
+    multitasking protected systems, including protection and task management.
+  shared_memory_architectures: Shared-memory multiprocessor organization, including
+    Uniform Memory Access (UMA) and an introduction to Non-Uniform Memory Access (NUMA)
+    multicore architectures.

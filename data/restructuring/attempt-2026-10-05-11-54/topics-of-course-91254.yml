@@ -1,0 +1,46 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 22
+  name: Computer Vision Image (22)
+course:
+  id: '91254'
+  name: Image Processing and Computer Vision
+topics:
+  camera_calibration: Camera calibration using intrinsic and extrinsic parameters,
+    lens-distortion models, planar targets, homography estimation, image rectification,
+    and stereo calibration.
+  convolutional_neural_networks: Convolutional neural networks (CNNs) as a deep-learning
+    architecture.
+  data_augmentation: Data-augmentation techniques for training image-classification
+    and computer-vision models, including augmentations such as FixRes, cutout, mix-up,
+    and cut-mix.
+  digital_image_processing: Basic concepts, algorithms, tools, and systems for processing
+    and analyzing digital images.
+  edge_detection: Image edge detection using image gradients, non-maximum suppression,
+    the Laplacian of Gaussian, and the Canny edge detector.
+  image_classification: Image classification using linear classifiers and fully connected
+    neural networks.
+  image_convolution: Convolution as a basic tool for processing and analyzing images.
+  image_filtering: Digital-image filtering using mean, Gaussian, median, bilateral,
+    and non-local-means filters.
+  image_formation_acquisition: Image formation and acquisition using pinhole cameras,
+    perspective projection, lenses, field of view, depth of field, and image sensors.
+  image_representation: Image representations based on Bag of Visual Words, representation
+    learning, convolutional layers, pooling, and batch normalization.
+  image_sampling_quantization: Basic image sensing, sampling, and quantization.
+  image_segmentation: Techniques for segmenting objects or regions from images.
+  instance_detection: Instance detection using pattern matching with SSD, SAD, NCC,
+    and ZNCC, as well as shape-based matching and similarity estimation.
+  local_image_features: Image gradients, smooth derivatives such as Sobel, Canny edge
+    detection, keypoint detectors, descriptors, Harris corners, and scale-invariant
+    SIFT features.
+  machine_learning: Fundamental machine-learning technologies and algorithms for developing
+    intelligent applications.
+  neural_network_training: Training of neural networks using backpropagation.
+  optimization_algorithms: Optimization algorithms for training and optimizing deep-learning
+    approaches.
+  regularization: Regularization and training techniques for computer-vision neural
+    networks, including model capacity, learning-rate scheduling, weight decay, label
+    smoothing, and dropout.
+  transfer_learning: Transfer learning for deep-learning-based computer vision.

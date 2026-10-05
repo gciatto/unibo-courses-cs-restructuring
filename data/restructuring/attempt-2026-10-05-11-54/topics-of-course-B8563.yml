@@ -1,0 +1,26 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 27
+  name: Architectures Computer Architetture (27)
+course:
+  id: B8563
+  name: SISTEMI DI ELABORAZIONE ACCELERATA M
+topics:
+  concurrent_computing: The concurrent programming paradigm.
+  fpga_computing: Field-Programmable Gate Arrays (FPGAs) as an emerging technology
+    for accelerated and high-performance computing.
+  gpu_programming: Programming for general-purpose GPU computation.
+  heterogeneous_computing: Software development for heterogeneous platforms containing
+    multicore processors, co-processors, and hardware and software accelerators.
+  hpc_architectures: High-performance computing architectures, including Flynn taxonomy,
+    shared-memory and distributed-memory architectures, and GPGPU architectures.
+  memory_hierarchy: Memory-hierarchy goals, reference models, performance parameters,
+    address mapping, write and replacement policies, and the organization of main
+    memory and caches in Intel IA32 systems.
+  numeric_information_representation: Representation of numeric information in computers,
+    including two's complement and floating-point representations.
+  parallel_architectures: Parallel computer architectures, as introduced in the course
+    alongside computer architecture and digital logic.
+  parallel_computing: Parallel computing as an approach for processing Big Data.
+  simd_programming: SIMD programming using compiler intrinsics and compiler auto-vectorization.

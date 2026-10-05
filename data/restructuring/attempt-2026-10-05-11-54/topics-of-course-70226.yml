@@ -1,0 +1,36 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 15
+  name: Network Networks Programming (15)
+course:
+  id: '70226'
+  name: Network Programming
+topics:
+  application_layer_protocols: Application-layer network protocols and architectures,
+    including Web and HTTP, FTP, SMTP, POP3, IMAP, DNS, and peer-to-peer systems such
+    as BitTorrent.
+  client_server_model: Client/server interaction and the design of small client/server
+    applications.
+  computer_networks: Basic concepts of computer networks.
+  digital_certificates: Digital certificates used in cryptographic trust and authentication.
+  digital_signatures: Digital signatures as a cryptographic mechanism for authentication
+    and integrity.
+  distributed_naming: Resource naming in distributed systems, including DNS and advanced
+    name systems.
+  error_control_protocols: Channel reliability mechanisms, including error detection
+    and correction, common error-detection codes, and ARQ protocols.
+  http_web_protocols: Web communication protocols and identifiers, including HTTP,
+    URIs, WebSocket, HTTP/2, HTTP/3, and QUIC.
+  internet_applications: Prominent Internet applications and communication services,
+    including email, news, chat, and peer-to-peer file sharing.
+  internet_world_wide_web: The Internet and the World Wide Web.
+  network_sockets: Sockets and socket APIs for C on UNIX and Java as tools for client/server
+    communication.
+  protocol_analysis: Network-protocol analysis through traffic sniffing, traffic-trace
+    collection, debugging, and use of the Wireshark protocol analyzer.
+  tcp_ip_protocols: TCP/IP protocol-suite connections and common synchronous and asynchronous
+    applications such as remote terminals, file transfer, mail, and news.
+  transport_layer_protocols: Transport-layer services and mechanisms, including multiplexing
+    and demultiplexing, connectionless communication with UDP, reliable data transfer,
+    connection-oriented communication with TCP, and congestion control.

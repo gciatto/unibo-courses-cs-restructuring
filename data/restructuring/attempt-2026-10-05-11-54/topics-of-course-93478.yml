@@ -1,0 +1,38 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 22
+  name: Computer Vision Image (22)
+course:
+  id: '93478'
+  name: COMPUTER VISION
+topics:
+  attention_mechanisms: Attention mechanisms used in computer-vision models, including
+    their relationship to Transformer architectures.
+  camera_calibration: Camera calibration using intrinsic and extrinsic parameters,
+    lens-distortion models, planar targets, homography estimation, image rectification,
+    and stereo calibration.
+  convolutional_neural_networks: Convolutional neural networks (CNNs) as a deep-learning
+    architecture.
+  edge_detection: Image edge detection using image gradients, non-maximum suppression,
+    the Laplacian of Gaussian, and the Canny edge detector.
+  image_convolution: Convolution as a basic tool for processing and analyzing images.
+  image_filtering: Digital-image filtering using mean, Gaussian, median, bilateral,
+    and non-local-means filters.
+  image_formation_acquisition: Image formation and acquisition using pinhole cameras,
+    perspective projection, lenses, field of view, depth of field, and image sensors.
+  image_sampling_quantization: Basic image sensing, sampling, and quantization.
+  image_segmentation: Techniques for segmenting objects or regions from images.
+  image_video_captioning: Image and video captioning tasks addressed using computer-vision
+    and sequence-modeling techniques.
+  local_image_features: Image gradients, smooth derivatives such as Sobel, Canny edge
+    detection, keypoint detectors, descriptors, Harris corners, and scale-invariant
+    SIFT features.
+  metric_learning: Deep metric and representation learning for applications such as
+    face recognition and identification, including contrastive and triplet losses,
+    ArcFace, and NT-Xent loss.
+  object_detection: Techniques for detecting objects in images and videos.
+  recurrent_neural_networks: Recurrent neural networks (RNNs) as a neural-network
+    architecture for machine learning.
+  vision_transformers: Vision Transformer architectures for image classification and
+    other computer-vision tasks.

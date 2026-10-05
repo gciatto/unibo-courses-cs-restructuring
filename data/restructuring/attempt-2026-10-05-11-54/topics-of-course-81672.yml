@@ -1,0 +1,35 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 26
+  name: Programming Software Design (26)
+course:
+  id: '81672'
+  name: Emerging Programming Paradigms
+topics:
+  certified_programming: Programming approaches and case studies that provide certified
+    correctness guarantees, including certified computations over numbers, lists,
+    and sized vectors.
+  concurrent_computing: The concurrent programming paradigm.
+  dependent_types: Dependent types and their use in certified programming, including
+    sized vectors.
+  effectful_programming: Compositional approaches to programming with side effects,
+    including effects related to partial computation, state, and input/output.
+  functional_programming: The functional programming paradigm, including functional
+    parameters, closures, and Scala.
+  monad_transformers: Monad transformations for composing and structuring computational
+    effects.
+  monadic_programming: Origins and classical uses of monads for partial computations,
+    state, and input/output.
+  object_oriented_programming: Fundamental concepts and features of object-oriented
+    programming.
+  parametric_types: Parametric types and their relationship to type-based programming
+    and correctness guarantees.
+  programming_languages: Introduction to programming languages, including what languages
+    are and the role of visual languages.
+  software_testing: Testing activities for software systems.
+  software_transactional_memory: Concurrent programming using Software Transactional
+    Memory as a case study.
+  type_checking: Types and type-checking mechanisms in programming languages.
+  type_classes_traits: Traits in Go and Rust and type classes in Haskell as mechanisms
+    for expressing reusable, composable type-based abstractions.

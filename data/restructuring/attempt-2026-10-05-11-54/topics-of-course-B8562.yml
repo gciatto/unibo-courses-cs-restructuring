@@ -1,0 +1,46 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 27
+  name: Architectures Computer Architetture (27)
+course:
+  id: B8562
+  name: SISTEMI CONCORRENTI E PARALLELI M
+topics:
+  concurrent_computing: The concurrent programming paradigm.
+  concurrent_language_programming: Programming concurrent applications using shared-memory
+    and message-passing languages and libraries, including C with pthreads, Google
+    Go, and Ada.
+  distributed_algorithms: Algorithms designed for distributed systems.
+  distributed_memory_programming: Programming distributed-memory architectures using
+    C and MPI.
+  hardware_multithreading: Hardware multithreading as an extension of the Von Neumann
+    model for concurrent and parallel computing systems.
+  hardware_virtualization: Virtualisation support in processor and multicore architectures,
+    including logical processors and simultaneous multithreading contexts.
+  hpc_architectures: High-performance computing architectures, including Flynn taxonomy,
+    shared-memory and distributed-memory architectures, and GPGPU architectures.
+  interprocess_communication: Operating-system mechanisms for communication among
+    processes.
+  memory_hierarchy: Memory-hierarchy goals, reference models, performance parameters,
+    address mapping, write and replacement policies, and the organization of main
+    memory and caches in Intel IA32 systems.
+  operating_systems: Operating-system structure and main functions.
+  parallel_architectures: Parallel computer architectures, as introduced in the course
+    alongside computer architecture and digital logic.
+  parallel_computation_models: Models of parallel computation used to design and analyze
+    parallel algorithms.
+  parallel_performance: Evaluation of parallel-application performance using speedup,
+    efficiency, strong and weak scalability, and Amdahl’s and Gustafson’s laws.
+  process_synchronization: Concurrent-process problems and synchronization issues,
+    including deadlock, starvation, and busy waiting.
+  processes_threads: Processes and threads in operating systems.
+  programming_in_c: Introduction to programming and software development using the
+    C language.
+  remote_procedure_call: Remote invocation mechanisms for distributed applications,
+    including Sun RPC and Java RMI.
+  shared_memory_architectures: Shared-memory multiprocessor organization, including
+    Uniform Memory Access (UMA) and an introduction to Non-Uniform Memory Access (NUMA)
+    multicore architectures.
+  shared_memory_programming: Programming shared-memory architectures using C and OpenMP.
+  virtual_machines: Virtual machines and their implementation.
