@@ -106,6 +106,7 @@ def valid_proposal() -> RestructuringProposal:
             ProposedCourse(
                 key="foundations_course",
                 title="Foundations",
+                ects=6,
                 topic_keys=["foundations"],
             )
         ],
@@ -125,7 +126,7 @@ def module_partition(*groups: tuple[str, list[str]]) -> TopicPartition:
 def course_assembly(*courses: tuple[str, list[str]]) -> CourseAssembly:
     return CourseAssembly(
         proposed_courses=[
-            ProposedCourse(key=key, title=key.title(), topic_keys=keys)
+            ProposedCourse(key=key, title=key.title(), ects=6, topic_keys=keys)
             for key, keys in courses
         ],
         prerequisites=[],
@@ -781,9 +782,9 @@ class TestWorkflow(unittest.TestCase):
                 )
             ],
             proposed_courses=[
-                ProposedCourse(key="broad_course", title="Broad", topic_keys=["broad"]),
-                ProposedCourse(key="core_course", title="Core", topic_keys=["core"]),
-                ProposedCourse(key="narrow_course", title="Narrow", topic_keys=["narrow"]),
+                ProposedCourse(key="broad_course", title="Broad", ects=3, topic_keys=["broad"]),
+                ProposedCourse(key="core_course", title="Core", ects=3, topic_keys=["core"]),
+                ProposedCourse(key="narrow_course", title="Narrow", ects=3, topic_keys=["narrow"]),
             ],
             prerequisites=[],
         )
@@ -893,9 +894,12 @@ class TestWorkflow(unittest.TestCase):
                 "beta": "Beta from evidence.",
             })
             mermaid = proposal_path.with_suffix(".mmd").read_text(encoding="utf-8")
-            self.assertIn("flowchart LR", mermaid)
-            self.assertIn("Foundations", mermaid)
-            self.assertEqual(mermaid.count("-.->"), 2)
+            self.assertIn("Foundations<br/>6 ECTS", mermaid)
+            self.assertNotIn("-.->", mermaid)
+            mapping = (output_dir / "restructure-proposal-for-cluster-5-mapping.mmd").read_text(encoding="utf-8")
+            # Both source courses map to the same new course: one grouped node.
+            self.assertEqual(mapping.count("-.->"), 1)
+            self.assertEqual(mapping.count(":::source"), 1)
 
     def test_complete_topic_artifacts_can_be_reused_without_topic_calls(self):
         with tempfile.TemporaryDirectory() as tmp_dir:
@@ -999,8 +1003,8 @@ class TestWorkflow(unittest.TestCase):
                 )
             ],
             proposed_courses=[
-                ProposedCourse(key="one", title="One", topic_keys=["alpha"]),
-                ProposedCourse(key="two", title="Two", topic_keys=["alpha"]),
+                ProposedCourse(key="one", title="One", ects=3, topic_keys=["alpha"]),
+                ProposedCourse(key="two", title="Two", ects=3, topic_keys=["alpha"]),
             ],
             prerequisites=[
                 CoursePrerequisite(
@@ -1029,6 +1033,21 @@ class TestWorkflow(unittest.TestCase):
                 {"alpha": "Alpha", "beta": "Beta"},
                 {"A": ["alpha"], "B": ["beta"]},
                 incomplete,
+            )
+
+        fat = valid_proposal()
+        fat.proposed_courses[0].ects = 3
+        fat.proposed_courses[0].topic_keys = ["foundations", "a", "b", "c"]
+        fat.proposed_topics.extend(
+            ProposedTopic(key=key, description=key, source_topic_keys=[])
+            for key in ("a", "b", "c")
+        )
+        with self.assertRaisesRegex(ValueError, "more topics than ECTS.*foundations_course"):
+            validate_restructuring_proposal(
+                self.cluster,
+                {"alpha": "Alpha", "beta": "Beta"},
+                {"A": ["alpha"], "B": ["beta"]},
+                fat,
             )
 
     def test_generic_retry_skips_permanent_errors(self):
@@ -1113,6 +1132,7 @@ class TestRepositoryRestructuringInput(unittest.TestCase):
                             ProposedCourse(
                                 key="proposed_course",
                                 title="Proposed course",
+                                ects=3,
                                 topic_keys=["cluster_topic"],
                             )
                         ],
@@ -1159,7 +1179,7 @@ class TestRepositoryRestructuringInput(unittest.TestCase):
             )
             self.assertEqual(
                 len(list(output.glob("restructure-proposal-*.mmd"))),
-                30,
+                60,
             )
         self.assertEqual(completions.calls, 293 + 30)
 

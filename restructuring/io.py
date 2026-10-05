@@ -391,6 +391,19 @@ def validate_restructuring_proposal(
     if unused_proposed_topics:
         raise ValueError(f"unused proposed topic keys: {unused_proposed_topics}")
 
+    # ponytail: each proposed topic/module is assumed worth >= 1 ECTS; size
+    # modules explicitly if this bound proves too loose.
+    fat = sorted(
+        f"{course.key} ({len(course.topic_keys)} topics, {course.ects} ECTS)"
+        for course in proposal.proposed_courses
+        if len(course.topic_keys) > course.ects
+    )
+    if fat:
+        raise ValueError(
+            "courses have more topics than ECTS; split them (e.g. fundamentals "
+            f"vs advanced, or by abstraction level): {fat}"
+        )
+
     referenced_courses = {
         key
         for edge in proposal.prerequisites
@@ -647,44 +660,41 @@ def _mermaid_label(value: str) -> str:
 def render_mermaid(
     cluster: ClusterInput | GlobalInput,
     proposal: RestructuringProposal,
-    mappings: Iterable[SourceCourseMapping],
+    mappings: Iterable[SourceCourseMapping] | None = None,
 ) -> str:
+    """Proposed courses with prerequisites, or, given mappings, the
+    correspondence from current courses (grouped by identical targets)."""
     course_aliases = {
         item.key: f"P{index}"
         for index, item in enumerate(proposal.proposed_courses)
     }
-    source_aliases = {
-        course.course_id: f"S{index}"
-        for index, course in enumerate(cluster.courses)
-    }
-    lines = [
-        (
-            f"%% Restructuring proposal for cluster {cluster.cluster_id}: {_mermaid_label(cluster.name)}"
-            if isinstance(cluster, ClusterInput) else "%% Restructuring proposal for all courses"
-        ),
-        "flowchart LR",
-        '  subgraph proposed["Proposed curriculum"]',
-    ]
+    header = (
+        f"%% Restructuring proposal for cluster {cluster.cluster_id}: {_mermaid_label(cluster.name)}"
+        if isinstance(cluster, ClusterInput) else "%% Restructuring proposal for all courses"
+    )
+    lines = [header, "flowchart TB" if mappings is None else "flowchart LR"]
     for item in proposal.proposed_courses:
-        topics = "<br/>".join(_mermaid_label(key) for key in item.topic_keys)
-        label = f"{_mermaid_label(item.title)}<br/>{topics}"
-        lines.append(f'    {course_aliases[item.key]}["{label}"]:::proposed')
-    lines.extend(['  end', '  subgraph current["Current courses"]'])
-    for course in cluster.courses:
-        label = _mermaid_label(f"{course.course_id} — {course.title}")
-        lines.append(f'    {source_aliases[course.course_id]}["{label}"]:::source')
-    lines.append("  end")
-    for edge in proposal.prerequisites:
-        lines.append(
-            f"  {course_aliases[edge.prerequisite_course_key]} --> "
-            f"{course_aliases[edge.dependent_course_key]}"
-        )
-    for mapping in mappings:
-        for proposed_key in mapping.proposed_course_keys:
+        label = f"{_mermaid_label(item.title)}<br/>{item.ects} ECTS"
+        lines.append(f'  {course_aliases[item.key]}["{label}"]:::proposed')
+    if mappings is None:
+        for edge in proposal.prerequisites:
             lines.append(
-                f"  {source_aliases[mapping.course_id]} -.-> "
-                f"{course_aliases[proposed_key]}"
+                f"  {course_aliases[edge.prerequisite_course_key]} --> "
+                f"{course_aliases[edge.dependent_course_key]}"
             )
+    else:
+        titles = {course.course_id: course.title for course in cluster.courses}
+        groups: dict[tuple[str, ...], dict[str, list[str]]] = {}
+        for mapping in mappings:
+            by_title = groups.setdefault(tuple(sorted(mapping.proposed_course_keys)), {})
+            by_title.setdefault(titles[mapping.course_id], []).append(mapping.course_id)
+        for index, (targets, by_title) in enumerate(groups.items()):
+            label = "<br/>".join(
+                _mermaid_label(f"{title} ({', '.join(ids)})")
+                for title, ids in by_title.items()
+            )
+            lines.append(f'  S{index}["{label}"]:::source')
+            lines.extend(f"  S{index} -.-> {course_aliases[key]}" for key in targets)
     lines.extend(
         [
             "  classDef proposed fill:#e8f1fb,stroke:#24527a,color:#111",
@@ -733,7 +743,11 @@ def write_restructuring_proposal(
         yaml_path,
         yaml.safe_dump(payload, sort_keys=False, allow_unicode=True),
     )
-    _atomic_write_text(mermaid_path, render_mermaid(cluster, proposal, mappings))
+    _atomic_write_text(mermaid_path, render_mermaid(cluster, proposal))
+    _atomic_write_text(
+        output_dir / f"{stem}-mapping.mmd",
+        render_mermaid(cluster, proposal, mappings),
+    )
     return yaml_path, mermaid_path
 
 

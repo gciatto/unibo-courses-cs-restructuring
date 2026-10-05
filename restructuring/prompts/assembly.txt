@@ -18,6 +18,23 @@ These are the source courses expressed as the modules covering their topics.
 $source_courses
 </source_courses>
 
+Course design heuristics:
+- Size each new course at 3, 6, 9, or 12 ECTS (the ects field). Each module
+  is worth at least 1 ECTS, so a course may hold at most as
+  many topic_keys as its ECTS. Prefer 6 ECTS; use 12 only for genuinely broad
+  courses.
+- Split fat courses, e.g. into a fundamentals course and an advanced course
+  that depends on it.
+- Split by abstraction level: a generic foundations course (e.g. computation
+  and programming fundamentals) plus separate language- or technology-specific
+  courses (e.g. C programming, Java programming) that depend on it.
+- Split out minimal background for dependent courses: when a course needs
+  only the basics of a subject (e.g. a practical statistics course needing
+  basic Python but not object orientation or functional programming), make
+  those basics a small course of their own rather than requiring the full one.
+- The same module may appear in several new courses only when unavoidable;
+  prefer prerequisites over duplication.
+
 Requirements:
 - proposed_courses assigns one or more module keys (in topic_keys) to each new
   course; every module is used by at least one new course.

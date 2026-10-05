@@ -170,8 +170,10 @@ Relevant tests are `tests/test_download_course_headers.py`,
   and copied into the new attempt; only proposal generation is rerun.
 - `topics-of-cluster-*.yml` and `topics-of-course-*.yml` are written
   incrementally and remain definitive if proposal generation fails. Successful
-  proposal generation writes a validated `restructure-proposal-*.yml` plus a
-  deterministic `.mmd` Mermaid view; proposal failures are logged and do not
+  proposal generation writes a validated `restructure-proposal-*.yml` plus
+  two deterministic Mermaid views: `.mmd` (new courses with ECTS and
+  prerequisites only) and `-mapping.mmd` (current courses, grouped by identical
+  targets, pointing at new courses); proposal failures are logged and do not
   fail the overall run.
 - The model never lists source-course mappings. It must only ensure every
   assigned source topic appears in some proposed topic's provenance;
@@ -183,6 +185,10 @@ Relevant tests are `tests/test_download_course_headers.py`,
   `TopicPartition` request per batch groups them into modules
   (`modules-global.yml`), and one `CourseAssembly` request builds new courses
   from module keys. Each request is cached independently by its exact messages.
+- Proposed courses carry `ects` in {3, 6, 9, 12}; validation rejects a course
+  with more topics/modules than ECTS (each assumed >= 1 ECTS), and the prompts
+  ask for fundamentals/advanced, abstraction-level, and minimal-background
+  splits.
 - A rejected structured reply is sent back with the validation error on retry.
 - Live runs require `OPENAI_API_KEY`; endpoint/model may come from
   `OPENAI_BASE_URL` and `OPENAI_MODEL`.

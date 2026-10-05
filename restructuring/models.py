@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
-from typing import Any
+from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
@@ -117,6 +117,7 @@ class ProposedCourse(BaseModel):
 
     key: str = Field(pattern=TOPIC_KEY_PATTERN)
     title: str = Field(min_length=1)
+    ects: Literal[3, 6, 9, 12]
     topic_keys: list[str] = Field(min_length=1)
 
     @model_validator(mode="after")
