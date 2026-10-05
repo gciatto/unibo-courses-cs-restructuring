@@ -1,0 +1,1171 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  subgraph proposed["Proposed curriculum"]
+    P0["Computing, Programming and Algorithms<br/>programming_foundations<br/>imperative_programming_and_functions<br/>programming_in_java<br/>python_programming_fundamentals<br/>c_programming_and_memory<br/>cpp_programming<br/>object_oriented_programming<br/>functional_and_scala_programming<br/>java_application_development<br/>csharp_and_dotnet_programming<br/>kotlin_and_multiplatform_programming<br/>matlab_octave_programming<br/>r_programming_and_data_tools<br/>programming_environments_and_tools<br/>program_organization_and_libraries<br/>program_input_output_and_files<br/>string_processing<br/>string_matching_and_suffix_structures<br/>exception_handling<br/>program_debugging<br/>abstract_data_types_and_structures<br/>arrays_and_matrices<br/>algorithmic_foundations_and_cost<br/>recursion_and_divide_conquer<br/>dynamic_and_greedy_design<br/>sorting_selection_and_priority_structures<br/>hashing_and_disjoint_sets<br/>graph_algorithms<br/>algorithmic_search_and_optimization<br/>computational_complexity<br/>computability_and_turing_machines<br/>computational_learning_theory<br/>programming_language_evolution<br/>programming_language_types_and_abstractions<br/>programming_language_front_end<br/>formal_and_natural_language_syntax<br/>language_semantics_and_runtime<br/>compiler_code_transformation<br/>static_program_analysis<br/>formal_logic_foundations<br/>logic_programming<br/>logic_programming_methods<br/>certified_and_dependent_programming<br/>compositional_effectful_programming<br/>software_transactional_memory"]:::proposed
+    P1["Computer Architecture and Operating Systems<br/>computer_architecture_foundations<br/>computer_information_representation<br/>digital_representation_and_logic<br/>cpu_and_instruction_architecture<br/>memory_io_and_microprocessor_systems<br/>computer_memory_io_architecture<br/>processor_concurrency_virtualization<br/>parallel_computer_architectures<br/>parallel_models_algorithms_performance<br/>accelerated_computing_programming<br/>computing_and_microprocessor_history<br/>semiconductor_manufacturing<br/>programmable_logic_design<br/>operating_systems_foundations<br/>operating_systems_resource_management<br/>software_system_levels<br/>system_administration_operations<br/>interprocess_communication<br/>real_time_operating_systems<br/>real_time_systems_and_task_models<br/>real_time_scheduling_and_schedulability<br/>real_time_resource_access<br/>virtual_systems_and_networking<br/>virtualization_and_containerization<br/>embedded_and_heterogeneous_systems_software<br/>embedded_systems_hardware_and_control<br/>embedded_device_communication<br/>sensor_measurement_and_signal_acquisition<br/>physical_computing_security"]:::proposed
+    P2["Software Engineering, Architecture and Delivery<br/>software_engineering_and_lifecycle<br/>requirements_and_prototyping<br/>object_oriented_software_design<br/>uml_software_modeling<br/>software_architecture<br/>software_architecture_foundations<br/>component_oriented_programming<br/>model_driven_and_domain_engineering<br/>agile_software_development<br/>project_management<br/>collaborative_development_and_versioning<br/>software_build_integration_and_delivery<br/>software_testing_and_quality<br/>behavior_specification_and_software_testing<br/>software_maintenance_and_performance<br/>software_development_models_and_quality<br/>software_licensing<br/>service_architecture_and_deployment<br/>service_integration_technologies<br/>distributed_component_communication<br/>distributed_middleware_and_remote_invocation<br/>distributed_data_serialization<br/>distributed_messaging_middleware<br/>enterprise_application_platforms<br/>enterprise_messaging_and_integration<br/>event_driven_computing<br/>web_api_design<br/>web_architectures_and_application_types<br/>web_server_development<br/>web_client_development<br/>web_content_formats_and_markup<br/>xml_information_processing<br/>json_data_representation<br/>server_side_application_development<br/>javascript_programming<br/>python_project_packaging<br/>web_page_processing<br/>ai_assisted_software_development"]:::proposed
+    P3["Networks, Distributed and Cloud Systems<br/>networking_basics_and_topologies<br/>physical_and_link_networking<br/>network_architecture_and_routing<br/>network_addressing_forwarding_and_naming<br/>transport_and_tcp_ip<br/>network_application_protocols<br/>network_programming<br/>network_configuration_and_management_protocols<br/>network_protocol_analysis<br/>network_performance_and_qos<br/>network_multicast<br/>network_proxying_and_relays<br/>network_communications_security<br/>wireless_communication_systems<br/>wireless_and_mobile_networking<br/>mobile_ad_hoc_networks<br/>distributed_systems_foundations<br/>concurrent_distributed_programming<br/>concurrent_parallel_programming<br/>concurrent_programming_and_synchronization<br/>concurrent_behavioral_models<br/>formal_model_checking_and_concurrency_models<br/>process_algebra<br/>distributed_communication_services<br/>distributed_consistency_and_reliability<br/>distributed_system_resource_management<br/>cloud_computing_foundations<br/>cloud_infrastructure_services_and_costs<br/>cloud_migration_and_resource_federation<br/>distributed_file_systems<br/>big_data_cluster_and_stream_platforms<br/>big_data_parallel_processing<br/>big_data_processing_platforms<br/>scalable_reliable_digital_services<br/>edge_fog_and_service_migration<br/>software_defined_networking<br/>programmable_networking<br/>virtualized_and_open_networking<br/>telecommunication_session_management<br/>voip_telephony<br/>centralized_system_monitoring<br/>automated_system_configuration<br/>heterogeneous_system_integration<br/>network_research_design<br/>network_analysis_concepts<br/>network_data_and_visualization"]:::proposed
+    P4["Databases, Data Management and Information Systems<br/>database_fundamentals_and_models<br/>relational_database_design<br/>database_query_languages<br/>database_system_internals<br/>database_resource_and_query_optimization<br/>relational_database_administration<br/>active_database_programming<br/>database_applications_and_integration<br/>data_warehousing_and_querying<br/>nosql_databases<br/>nosql_data_modeling_and_sharding<br/>graph_database_management<br/>data_lake_architectures<br/>business_process_and_workflow_modeling<br/>hub_and_spoke_system_organization<br/>information_systems_analysis<br/>information_system_projects<br/>enterprise_data_strategy_and_governance<br/>information_retrieval<br/>advanced_query_processing<br/>data_compression_and_information_theory<br/>information_and_entropy<br/>information_representation<br/>digital_data_and_intelligence<br/>multimedia_data_management<br/>multimedia_information<br/>distributed_trust<br/>blockchain_and_distributed_ledger_technologies<br/>blockchain_and_cryptocurrency_systems<br/>digital_document_authoring<br/>electronic_document_management<br/>foundational_computing_and_productivity<br/>spreadsheet_data_workflows<br/>online_collaboration_and_storage<br/>scholarly_information_search<br/>open_research_data_and_infrastructure<br/>open_science_principles_and_practices"]:::proposed
+    P5["Data Science, Machine Learning and Artificial Intelligence<br/>data_science_computing<br/>data_analytics_and_pipelines<br/>data_collection_and_analysis<br/>data_mining_foundations<br/>data_mining_process_preparation<br/>data_similarity_outlier_analysis<br/>association_rule_mining<br/>analytics_and_variable_analysis<br/>statistical_data_analysis<br/>statistical_methods_and_study_design<br/>probability_distributions<br/>multivariate_data_analysis<br/>data_visualization<br/>scientific_and_numerical_computing<br/>linear_algebra_for_computation<br/>machine_learning_foundations<br/>machine_learning_methods<br/>machine_learning_predictive_models<br/>probabilistic_machine_learning<br/>model_evaluation_validation<br/>graph_machine_learning<br/>neural_networks_and_deep_learning<br/>deep_learning_foundations<br/>generative_and_interpretable_deep_models<br/>efficient_neural_model_design<br/>recurrent_models_and_visual_captioning<br/>reinforcement_learning<br/>machine_learning_algorithmic_acceleration<br/>machine_learning_workloads_kernels<br/>ml_platforms_heterogeneous_architectures<br/>ai_problem_solving_methods<br/>algorithmic_search_and_optimization<br/>constraint_programming<br/>mathematical_combinatorial_optimization<br/>sat_and_smt_solving<br/>formal_and_probabilistic_reasoning<br/>modal_and_temporal_reasoning<br/>stochastic_and_decision_process_models<br/>knowledge_representation_fundamentals<br/>logic_programming<br/>intelligent_and_cognitive_systems<br/>intelligent_and_multi_agent_systems<br/>multi_agent_systems<br/>multi_agent_learning_and_coordination<br/>aggregate_and_self_organizing_systems<br/>adaptive_autonomous_and_bio_inspired_systems<br/>autonomous_systems<br/>explainable_ai<br/>neurosymbolic_ai<br/>ai_philosophy_ethics_and_safety<br/>human_machine_collaboration<br/>cognitive_science_and_cognition<br/>conversational_intelligent_systems<br/>computational_biology_search<br/>bioinformatics_data_and_analysis<br/>biological_sequence_algorithms<br/>epidemic_control"]:::proposed
+    P6["Language, Knowledge and Semantic Technologies<br/>nlp_foundations_and_tools<br/>nlp_prediction_and_labeling_tasks<br/>natural_language_topic_modeling<br/>text_preparation_and_corpora<br/>text_representation_and_semantic_spaces<br/>text_mining_applications<br/>statistical_language_models<br/>formal_and_natural_language_syntax<br/>lexical_and_sentence_semantics<br/>corpus_lexical_analysis<br/>treebanks_and_computational_morphology<br/>speech_and_phonetic_processing<br/>knowledge_extraction_methods<br/>knowledge_graph_engineering<br/>ontology_engineering<br/>semantic_web_and_linked_data<br/>semantic_web_representation_and_querying<br/>language_model_foundations<br/>language_model_applications_adaptation<br/>preference_optimization_for_agentic_ai<br/>semiotics_and_multimodal_meaning<br/>cat_translation_workflows<br/>machine_translation_ai_workflows<br/>interpreting_documentation<br/>specialized_terminology_research<br/>terminology_management<br/>live_subtitling<br/>localization_production_and_quality<br/>software_and_digital_content_localization"]:::proposed
+    P7["Cybersecurity, Privacy and Digital Forensics<br/>information_technology_security<br/>digital_security_and_privacy<br/>access_control<br/>authentication_and_federation<br/>identity_management_platforms_and_protocols<br/>cryptography_and_trust<br/>cryptographic_security_foundations<br/>cryptographic_protocol_models_and_verification<br/>modular_arithmetic_for_cryptography<br/>cyber_threats_and_attack_methods<br/>application_and_system_hardening<br/>offensive_security_and_reverse_engineering<br/>security_risk_and_governance<br/>cybersecurity_governance_and_defense<br/>cybersecurity_risks_and_social_contexts<br/>modern_cyber_defense<br/>security_monitoring_and_response<br/>basic_cybersecurity_practices<br/>network_communications_security<br/>physical_computing_security<br/>digital_evidence_obstruction<br/>digital_forensics_investigation_and_evidence_handling<br/>digital_forensics_analysis_and_professional_practice<br/>specialized_digital_forensics<br/>tor_and_dark_web<br/>digital_rights_and_intellectual_property<br/>digital_transactions_and_trust<br/>email_and_digital_signatures<br/>quantum_algorithms_protocols_and_error_correction<br/>quantum_circuits_and_programming<br/>quantum_computing_mathematical_foundations"]:::proposed
+    P8["Computer Vision, Graphics and Immersive Media<br/>digital_graphics_foundations<br/>digital_image_foundations<br/>digital_image_fundamentals<br/>binary_image_analysis<br/>segmentation_and_shape_detection<br/>camera_and_stereo_geometry<br/>local_features_and_matching<br/>visual_detection_recognition_and_tracking<br/>computer_vision<br/>learned_visual_representations_and_classification<br/>learned_visual_geometry_and_similarity<br/>computer_vision_multimodal_models<br/>python_graphics_and_animation<br/>virtual_reality_graphics_and_content<br/>augmented_and_mixed_reality_foundations<br/>immersive_technology_foundations<br/>immersive_environment_systems_and_interaction<br/>multimedia_visualization<br/>multimedia_retrieval<br/>multimedia_semantic_annotation<br/>multimedia_recommender_systems<br/>multimedia_information<br/>multimedia_data_management<br/>digital_content_and_web_publishing<br/>document_digitization_and_quality<br/>heritage_3d_acquisition<br/>heritage_3d_reconstruction_and_fabrication<br/>cultural_heritage_digital_communication<br/>geographic_information_systems<br/>landscape_digital_representation<br/>spatial_and_positioning_systems<br/>spatial_data_privacy<br/>digital_fabrication_and_machine_control"]:::proposed
+    P9["Human–Computer Interaction, UX and Mobile Systems<br/>hci_foundations<br/>user_interface_design<br/>interaction_and_experience_design<br/>advanced_interaction_paradigms<br/>usability_design_and_evaluation<br/>user_research_and_usability_testing<br/>design_and_service_conception<br/>mobile_device_capabilities<br/>mobile_platform_development<br/>mobile_user_interfaces<br/>mobile_networking_and_synchronization<br/>mobile_systems_middleware<br/>internet_and_web_foundations<br/>internet_communication_and_social_networks<br/>internet_of_things<br/>iot_application_platforms_and_smart_spaces<br/>iot_network_routing<br/>iot_time_series_data_management<br/>iot_web_connectivity<br/>context_aware_and_ubiquitous_systems<br/>connected_autonomous_vehicular_systems<br/>cyber_physical_systems<br/>cyber_physical_system_communication<br/>industrial_digitalization_and_iot<br/>industrial_system_integration_protocols<br/>industrial_modeling_and_planning<br/>industrial_simulation_methods<br/>real_time_operating_systems<br/>robotics_foundations_and_control<br/>robotics_autonomous_systems<br/>adaptive_robot_behavior<br/>swarm_intelligence_and_robotics<br/>advanced_simulation_approaches<br/>simulation_models_and_methods<br/>simulation_study_engineering<br/>stochastic_simulation_inputs<br/>aggregate_and_self_organizing_systems"]:::proposed
+    P10["Business, Digital Transformation and Domain Applications<br/>business_intelligence_and_analytics<br/>business_ai_and_decision_support<br/>operational_and_maintenance_analytics<br/>decision_quality_monitoring<br/>digital_transformation<br/>digital_transformation_innovation_practice<br/>digital_decision_and_social_implications<br/>digital_media_economics_and_markets<br/>digital_media_transformation<br/>digital_media_value_chains<br/>ecommerce_platforms<br/>immersive_fashion_ecommerce<br/>financial_data_access<br/>project_management<br/>information_system_projects<br/>digital_health_overview<br/>biomedical_signal_processing<br/>health_ai_and_medical_imaging<br/>health_data_security_and_privacy<br/>clinical_studies_ethics<br/>medical_devices<br/>medical_digital_modeling_and_fabrication<br/>personal_health_systems<br/>healthcare_classification_and_indicators<br/>healthcare_digital_information_systems<br/>healthcare_information_and_archiving<br/>healthcare_systems_and_efficiency<br/>healthcare_workflow_operations<br/>computing_education<br/>government_portals_and_services<br/>open_science_principles_and_practices<br/>digital_humanities_and_heritage_data<br/>systematic_literature_review<br/>foundational_computing_and_productivity<br/>computer_information_representation<br/>information_representation<br/>information_and_entropy"]:::proposed
+  end
+  subgraph current["Current courses"]
+    S0["00819 — Programming"]:::source
+    S1["00819-A — Programming"]:::source
+    S2["00819-B — Programming"]:::source
+    S3["03716 — Digital Design Principles and Computer Architecture"]:::source
+    S4["04138 — Programming Languages"]:::source
+    S5["07276 — Computer Science"]:::source
+    S6["07276-A — Computer Science"]:::source
+    S7["07276-B — Computer Science"]:::source
+    S8["07276-C — Computer Science"]:::source
+    S9["08574 — Operating Systems"]:::source
+    S10["08574-A — Operating Systems"]:::source
+    S11["08574-B — Operating Systems"]:::source
+    S12["09032 — Software Engineering"]:::source
+    S13["09679 — Data Base Sistems"]:::source
+    S14["09730 — Principles of Informatics"]:::source
+    S15["09730-A — Principles of Informatics"]:::source
+    S16["10906 — Databases"]:::source
+    S17["10906-A — Databases"]:::source
+    S18["11925 — Computer Architecture"]:::source
+    S19["11929 — Algorithms and Data Structures"]:::source
+    S20["11929-A — Algorithms and Data Structures"]:::source
+    S21["11929-B — Algorithm and Data Structures"]:::source
+    S22["11933 — Theoretical Computer Science"]:::source
+    S23["14015 — Cryptography"]:::source
+    S24["15305 — Foundations of Informatics A"]:::source
+    S25["15920 — Computer Lab"]:::source
+    S26["16692 — Laboratory of Informatics"]:::source
+    S27["16870 — Programming Laboratory"]:::source
+    S28["17628 — Concurrent and Distributed Programming"]:::source
+    S29["17634 — Computer Vision"]:::source
+    S30["20741 — Information Processing Systems"]:::source
+    S31["27311 — Humanistic IT"]:::source
+    S32["27311-A — Humanistic IT"]:::source
+    S33["28004 — Foundations of Informatics T-1"]:::source
+    S34["28011 — Logic Design T"]:::source
+    S35["28011-A — Logic Design T"]:::source
+    S36["28012 — Electronic Calculators T"]:::source
+    S37["28012-A — Electronic Calculators T"]:::source
+    S38["28020 — Operating Systems T"]:::source
+    S39["28021 — Software Engineering T"]:::source
+    S40["28024 — Computer Networks T"]:::source
+    S41["28027 — Information Systems T"]:::source
+    S42["28040 — Information Technology"]:::source
+    S43["28106 — Computer Science for Environmental Sciences"]:::source
+    S44["28623 — Foundations of Informatics and Laboratory"]:::source
+    S45["28652 — IT Systems T-1"]:::source
+    S46["28659 — Web Technologies T"]:::source
+    S47["28796 — Elements of Databases"]:::source
+    S48["29227 — Foundations of Informatics T"]:::source
+    S49["29227-A — Foundations of Informatics T"]:::source
+    S50["29227-B — Foundations of Informatics T"]:::source
+    S51["30376 — Business Intelligence"]:::source
+    S52["37085 — Principles, Models and Applications for Distributed Systems M"]:::source
+    S53["37262 — Computer Programming"]:::source
+    S54["37635 — Data Structure and Algorithms"]:::source
+    S55["37760 — Systems Simulation"]:::source
+    S56["37925 — Virtual System Design"]:::source
+    S57["39176 — Basic and Laboratory Informatics"]:::source
+    S58["40720 — Data Mining"]:::source
+    S59["41169 — Theoretical Computer Science"]:::source
+    S60["41588 — INTRODUZIONE ALL&#x27;ANALISI DEI DATI"]:::source
+    S61["41731 — Web-related Technologies"]:::source
+    S62["41731-A — Web-related Technologies"]:::source
+    S63["42500 — Semantic Web"]:::source
+    S64["47240 — Web Systems Engineering"]:::source
+    S65["48693 — Computer Science for Cultural Heritage"]:::source
+    S66["48693-A — Computer Science for Cultural Heritage"]:::source
+    S67["57828 — Informatics"]:::source
+    S68["58348 — Lab-based Course on Operating Systems"]:::source
+    S69["58423 — Internet Architecture"]:::source
+    S70["58437 — Parallel Calculus"]:::source
+    S71["60348 — Informatics"]:::source
+    S72["65094 — ADVANCED PROGRAMMING"]:::source
+    S73["66857 — Logic for Computer Science"]:::source
+    S74["66858 — Software Engineering"]:::source
+    S75["66860 — Mobile Applications Laboratory"]:::source
+    S76["66870 — Concurrent Models and Systems"]:::source
+    S77["69259 — Computer Science"]:::source
+    S78["69430 — COMPUTER ARCHITECTURES M"]:::source
+    S79["69661 — Image Processing And Computer Vision M"]:::source
+    S80["69731 — Computer Architecture"]:::source
+    S81["69867 — Web Services and Applications"]:::source
+    S82["70155 — Data Bases"]:::source
+    S83["70210 — Lab-based Course on Computer Graphics"]:::source
+    S84["70219 — Object-Oriented Programming"]:::source
+    S85["70226 — Network Programming"]:::source
+    S86["72671 — Complements of Programming Languages"]:::source
+    S87["72778 — High-Performance Computing"]:::source
+    S88["72787 — Mobile Application Programming"]:::source
+    S89["72796 — Data Intensive Applications"]:::source
+    S90["72938 — Foundations Of Artificial Intelligence T"]:::source
+    S91["72939 — Software Systems Engineering M"]:::source
+    S92["72940 — Computational Models And Languages M"]:::source
+    S93["72942 — Information Security M"]:::source
+    S94["72945 — Real-Time Systems M"]:::source
+    S95["73025 — Distributed Systems M"]:::source
+    S96["73149 — Logic for Informatics"]:::source
+    S97["73273 — Informatic Tecnologies for Fashion"]:::source
+    S98["73302 — Computer Vision And Image Processing M"]:::source
+    S99["73435 — Project Management"]:::source
+    S100["75198 — Health Information Processing Systems"]:::source
+    S101["75835 — Web Technologies"]:::source
+    S102["75969 — Basic Informatics"]:::source
+    S103["76011 — Multimedia Technologies in Archaelogy"]:::source
+    S104["77780 — Embedded Systems Programming and Internet of Things"]:::source
+    S105["77933 — Multimedia Data Management M"]:::source
+    S106["78096 — Multimedia Data Management M"]:::source
+    S107["78510 — Informatics"]:::source
+    S108["78778 — Intelligent Systems M"]:::source
+    S109["78779 — Mobile Systems M"]:::source
+    S110["78810 — Real Time Systems for Automation M"]:::source
+    S111["79194 — Databases"]:::source
+    S112["81609 — Languages, Compilers and Computational Models"]:::source
+    S113["81610 — Machine Learning"]:::source
+    S114["81612 — Programming and Development paradigms"]:::source
+    S115["81672 — Emerging Programming Paradigms"]:::source
+    S116["81676 — Digital Forensic"]:::source
+    S117["81678 — Laboratory of Making"]:::source
+    S118["81683 — Internet of Things"]:::source
+    S119["81917 — Interaction Multimedia Services"]:::source
+    S120["81932 — Big Data"]:::source
+    S121["81934 — HUMAN COMPUTER INTERACTION"]:::source
+    S122["81940 — Artificial Intelligence"]:::source
+    S123["81942 — Scalable and Cloud Programming"]:::source
+    S124["82202 — Informatic"]:::source
+    S125["82202-A — Informatic"]:::source
+    S126["84339 — Advanced Database Systems"]:::source
+    S127["84401 — Context-Aware Systems"]:::source
+    S128["84530 — Database and Big Data Technologies M"]:::source
+    S129["84531 — Infrastructures For Cloud Computing and Big Data M"]:::source
+    S130["85189 — Systems and Algorithms for Data Science"]:::source
+    S131["85285 — Programming"]:::source
+    S132["85301 — Algorithms and Data Structures in Biology"]:::source
+    S133["85445 — Information Modelling and Web Technologies"]:::source
+    S134["85446 — Knowledge Representation and Extraction"]:::source
+    S135["85573 — Usability and User Experience"]:::source
+    S136["85728 — Real Time OS M"]:::source
+    S137["87469 — Decision Making with Constraint Programming"]:::source
+    S138["87474 — Distributed Systems"]:::source
+    S139["87898 — Methods and Technologies for Interpreting"]:::source
+    S140["87901 — Methods and Advanced Technologies for Interpreting"]:::source
+    S141["88016 — Statistics"]:::source
+    S142["88145 — Fundamentals of Computer Programming P1"]:::source
+    S143["88146 — Fundamentals of Computer Programming P2"]:::source
+    S144["88155 — Industrial Informatics P"]:::source
+    S145["88202 — Machine Learning"]:::source
+    S146["88324 — System Administration T"]:::source
+    S147["88325 — Computer and Network Security Lab T"]:::source
+    S148["88566 — Web Technology"]:::source
+    S149["89988 — Elements of Informatics"]:::source
+    S150["90074 — Smart Vehicular Systems"]:::source
+    S151["90106 — Software Engineering"]:::source
+    S152["90107 — BASI DI DATI"]:::source
+    S153["90147 — Artificial intelligence"]:::source
+    S154["90157 — Open Science"]:::source
+    S155["90477 — Machine Learning Systems For Data Science"]:::source
+    S156["90720 — Usability &amp; User Experience Design"]:::source
+    S157["90730 — Social Network Analysis"]:::source
+    S158["90748 — Blockchain and Cryptocurrencies"]:::source
+    S159["90749 — Computing Education"]:::source
+    S160["90864 — Elements of Computer Technologies for Fashion E-Commerce"]:::source
+    S161["91161 — Networks, Security And Data Bases"]:::source
+    S162["91248 — Fundamentals of Artificial Intelligence and Knowledge Representation"]:::source
+    S163["91250 — DEEP LEARNING"]:::source
+    S164["91250-A — Deep Learning"]:::source
+    S165["91250-B — Deep Learning"]:::source
+    S166["91254 — Image Processing and Computer Vision"]:::source
+    S167["91258 — Natural Language Processing"]:::source
+    S168["91258-A — Natural Language Processing"]:::source
+    S169["91258-B — Natural Language Processing"]:::source
+    S170["91259 — Architecture and Platforms for Artificial Intelligence"]:::source
+    S171["91261 — Artificial Intelligence in Industry"]:::source
+    S172["91264 — User Experience Design"]:::source
+    S173["91265 — Knowledge Engineering"]:::source
+    S174["91266 — Machine Learning for Computer Vision"]:::source
+    S175["91267 — Multi-Agent Systems"]:::source
+    S176["91269 — Multimedia Data Management"]:::source
+    S177["91411 — Intelligent Robotic Systems"]:::source
+    S178["91602 — Computer Architectures"]:::source
+    S179["91685 — History of Informatics and Computing Systems"]:::source
+    S180["91721 — Laboratory of Virtual Reality and Advanced Reality"]:::source
+    S181["91762 — Combinatorial Decision Making and Optimization"]:::source
+    S182["92858 — Autonomous and Adaptive Systems M"]:::source
+    S183["93034 — Foundations of Computer Science T"]:::source
+    S184["93034-A — Foundations of Computer Science T"]:::source
+    S185["93315 — Computer Networks"]:::source
+    S186["93319 — INTRODUZIONE ALL&#x27;APPRENDIMENTO AUTOMATICO"]:::source
+    S187["93333 — Programming Lab"]:::source
+    S188["93363 — Advanced Programming"]:::source
+    S189["93379 — Digital Culture"]:::source
+    S190["93466 — FONDAMENTI DI CYBERSECURITY"]:::source
+    S191["93467 — Cryptography"]:::source
+    S192["93468 — Distributed Software Systems"]:::source
+    S193["93469 — Human Data Science"]:::source
+    S194["93470 — Cybersecurity"]:::source
+    S195["93470-A — Cybersecurity"]:::source
+    S196["93478 — COMPUTER VISION"]:::source
+    S197["93653 — Iot And Big Data For Smart Agricultural Systems"]:::source
+    S198["93669 — Intelligent Systems Engineering"]:::source
+    S199["94442 — Design of Web Applications T"]:::source
+    S200["95602 — Programming and Computer Architectures"]:::source
+    S201["95604 — Operating Systems and Networks"]:::source
+    S202["95605 — Web and Mobile Systems"]:::source
+    S203["95611 — Database Systems"]:::source
+    S204["95627 — Software Engineering"]:::source
+    S205["95630 — Big Data and Cloud Platforms"]:::source
+    S206["95631 — Machine Learning and Data Mining"]:::source
+    S207["95631-A — Machine Learning and Data Mining"]:::source
+    S208["95632 — Laboratory on Digital Transformation Technologies"]:::source
+    S209["95638 — Operational Analytics"]:::source
+    S210["95639 — Industry 4.0"]:::source
+    S211["95644 — Computer Networks and Network Programming"]:::source
+    S212["95645 — Foundations of Web Systems"]:::source
+    S213["95646 — Virtualized Systems"]:::source
+    S214["95648 — Software Design and Development"]:::source
+    S215["95782 — Network Analysis"]:::source
+    S216["95965 — Artificial Intelligence and Machine Learning for Business"]:::source
+    S217["96007 — Foundations of Computer Architecture and Operating Systems"]:::source
+    S218["96142 — Business Intelligence and Big Data M"]:::source
+    S219["96143 — Methods and Models for Data Analytics M"]:::source
+    S220["96346 — INFORMATICA"]:::source
+    S221["96346-A — Informatics"]:::source
+    S222["96346-B — Computer Science"]:::source
+    S223["96642 — Virtualization and System Integration"]:::source
+    S224["96725 — IT and Game Localization"]:::source
+    S225["96793 — Information Systems and Database Management"]:::source
+    S226["96859 — Embedded Systems and Internet of Things"]:::source
+    S227["96994 — Smart Vehicular-Systems"]:::source
+    S228["96995 — Programmable Networking"]:::source
+    S229["97431 — Scalable and Reliable Services M"]:::source
+    S230["97466 — Digital represention of the Landscape Project"]:::source
+    S231["98618 — &quot;Document Digitization Techniques &quot;"]:::source
+    S232["98671 — Business Analytics"]:::source
+    S233["98735 — Python Coding and Data Science"]:::source
+    S234["98931 — Fundamentals of Artificial Intelligence"]:::source
+    S235["99195 — Cyber-Physical Systems Programming M"]:::source
+    S236["B0009 — Advanced Software Modelling and Design"]:::source
+    S237["B0010 — Software Architecture and Platforms"]:::source
+    S238["B0011 — Software Process Engineering"]:::source
+    S239["B0061 — Computer Methods for Digital Transformation"]:::source
+    S240["B0063 — Programming Laboratory"]:::source
+    S241["B0064 — Introduction to Data Science and Computational Thinking"]:::source
+    S242["B0069 — Artificial Intelligence for Digital Innovation"]:::source
+    S243["B0070 — METODOLOGIE E TECNICHE DI SIMULAZIONE"]:::source
+    S244["B0073 — ELABORAZIONE DI TESTI E GESTIONE DOCUMENTALE"]:::source
+    S245["B0074 — PIATTAFORME PER LA TRASFORMAZIONE DIGITALE"]:::source
+    S246["B0385 — Natural Language Processing"]:::source
+    S247["B0832 — Administration of Systems T"]:::source
+    S248["B0833 — Computer Security Laboratory T"]:::source
+    S249["B1459 — ARTIFICIAL INTELLIGENCE, BLOCKCHAIN E CRIPTOVALUTE NELLO SVILUPPO SOFTWARE"]:::source
+    S250["B1703 — Introduction to Programming"]:::source
+    S251["B1873 — Machine Learning for Humanities"]:::source
+    S252["B1874 — Project Management and Software Engineering for Cultural Heritage"]:::source
+    S253["B2125 — Machine Learning and Data Mining M"]:::source
+    S254["B2133 — Big Data Analytics and Text Mining"]:::source
+    S255["B2696 — Language, Technology, Research I: Computational Thinking"]:::source
+    S256["B3567 — INTRODUCTION TO QUANTUM COMPUTING"]:::source
+    S257["B4826 — Informatics for the Humanities"]:::source
+    S258["B4913 — ALGORITMI E STRUTTURE DATI"]:::source
+    S259["B4925 — IMMERSIVE TECHNOLOGIES FOR FASHION"]:::source
+    S260["B4940 — DATA SCIENCE FOR FASHION SYSTEM"]:::source
+    S261["B4948 — Cognitive Sematics for Artificial Intelligence"]:::source
+    S262["B5026 — Introduction to Computability and Complexity"]:::source
+    S263["B5059 — Interaction Media Design"]:::source
+    S264["B5079 — Digital Humanities and Data Management for Cultural Heritage"]:::source
+    S265["B5292 — Knowledge Engeneering for the Humanities"]:::source
+    S266["B5293 — Computer Studies and Humanities"]:::source
+    S267["B5474 — ARCHITETTURE SOFTWARE A MICROSERVIZI"]:::source
+    S268["B5665 — Real Time Systems and Programming for Automation M"]:::source
+    S269["B5674 — Management of Digital Media"]:::source
+    S270["B5722 — Embedded Sensors"]:::source
+    S271["B5727 — Introduction to Languages for Artificial Intelligence"]:::source
+    S272["B5780 — Computational Methods for Bioinformatics"]:::source
+    S273["B5782 — Algorithms and Data Structures for Computational Biology"]:::source
+    S274["B5793 — Cybersecurity M"]:::source
+    S275["B5796 — Scalable and Reliable Services M"]:::source
+    S276["B5812 — Cybersecurity Governance"]:::source
+    S277["B6082 — Technology-Assisted Interpreting I"]:::source
+    S278["B8018 — DIGITAL HEALTH M"]:::source
+    S279["B8019 — PROGRAMMING THE INTERNET OF THINGS M"]:::source
+    S280["B8105 — Computational Management of Data"]:::source
+    S281["B8159 — INFORMATICA"]:::source
+    S282["B8396 — Basic IT Skills"]:::source
+    S283["B8536 — Computer-Aided Human Translation: CAT, MT and AI"]:::source
+    S284["B8554 — SISTEMI SOFTWARE A OGGETTI T"]:::source
+    S285["B8561 — ARCHITETTURE DEI CALCOLATORI M"]:::source
+    S286["B8562 — SISTEMI CONCORRENTI E PARALLELI M"]:::source
+    S287["B8563 — SISTEMI DI ELABORAZIONE ACCELERATA M"]:::source
+    S288["B8603 — Machine Translation and Artificial Intelligence for Language Services"]:::source
+    S289["B8836 — Universal Semantics"]:::source
+    S290["B8905 — Foundations of Programming"]:::source
+    S291["B8929 — Computer Studies and Human Sciences"]:::source
+    S292["B9254 — Basic IT Skills"]:::source
+  end
+  P0 --> P1
+  P0 --> P2
+  P0 --> P4
+  P0 --> P5
+  P1 --> P3
+  P2 --> P3
+  P4 --> P5
+  P5 --> P6
+  P3 --> P7
+  P2 --> P9
+  P9 --> P8
+  P5 --> P10
+  S0 -.-> P0
+  S0 -.-> P1
+  S1 -.-> P0
+  S1 -.-> P1
+  S2 -.-> P0
+  S2 -.-> P1
+  S3 -.-> P1
+  S4 -.-> P0
+  S4 -.-> P1
+  S4 -.-> P2
+  S4 -.-> P3
+  S5 -.-> P4
+  S5 -.-> P7
+  S5 -.-> P1
+  S5 -.-> P9
+  S5 -.-> P3
+  S5 -.-> P0
+  S6 -.-> P0
+  S7 -.-> P1
+  S7 -.-> P10
+  S7 -.-> P0
+  S7 -.-> P7
+  S7 -.-> P9
+  S7 -.-> P5
+  S8 -.-> P4
+  S8 -.-> P1
+  S8 -.-> P10
+  S8 -.-> P9
+  S8 -.-> P3
+  S8 -.-> P5
+  S9 -.-> P1
+  S9 -.-> P3
+  S9 -.-> P7
+  S9 -.-> P0
+  S10 -.-> P1
+  S10 -.-> P3
+  S10 -.-> P0
+  S11 -.-> P1
+  S11 -.-> P0
+  S11 -.-> P3
+  S12 -.-> P2
+  S12 -.-> P9
+  S12 -.-> P0
+  S13 -.-> P4
+  S13 -.-> P7
+  S14 -.-> P0
+  S14 -.-> P1
+  S15 -.-> P0
+  S15 -.-> P1
+  S16 -.-> P4
+  S16 -.-> P2
+  S17 -.-> P4
+  S17 -.-> P2
+  S18 -.-> P1
+  S19 -.-> P0
+  S20 -.-> P0
+  S21 -.-> P0
+  S21 -.-> P5
+  S22 -.-> P0
+  S23 -.-> P7
+  S23 -.-> P4
+  S24 -.-> P0
+  S24 -.-> P1
+  S25 -.-> P4
+  S25 -.-> P10
+  S25 -.-> P0
+  S25 -.-> P5
+  S26 -.-> P0
+  S26 -.-> P5
+  S27 -.-> P0
+  S27 -.-> P2
+  S28 -.-> P3
+  S28 -.-> P2
+  S28 -.-> P1
+  S29 -.-> P8
+  S30 -.-> P10
+  S30 -.-> P4
+  S30 -.-> P1
+  S30 -.-> P3
+  S31 -.-> P2
+  S31 -.-> P9
+  S31 -.-> P8
+  S31 -.-> P4
+  S32 -.-> P0
+  S32 -.-> P2
+  S32 -.-> P10
+  S33 -.-> P0
+  S33 -.-> P1
+  S33 -.-> P2
+  S34 -.-> P1
+  S35 -.-> P1
+  S36 -.-> P1
+  S37 -.-> P1
+  S38 -.-> P1
+  S38 -.-> P3
+  S39 -.-> P2
+  S39 -.-> P4
+  S39 -.-> P0
+  S40 -.-> P3
+  S40 -.-> P1
+  S40 -.-> P2
+  S41 -.-> P4
+  S41 -.-> P2
+  S42 -.-> P0
+  S42 -.-> P1
+  S43 -.-> P4
+  S43 -.-> P9
+  S43 -.-> P2
+  S43 -.-> P1
+  S43 -.-> P3
+  S43 -.-> P0
+  S44 -.-> P0
+  S44 -.-> P1
+  S44 -.-> P3
+  S45 -.-> P4
+  S45 -.-> P2
+  S46 -.-> P2
+  S46 -.-> P3
+  S46 -.-> P9
+  S46 -.-> P8
+  S47 -.-> P4
+  S47 -.-> P5
+  S48 -.-> P0
+  S48 -.-> P1
+  S49 -.-> P0
+  S49 -.-> P1
+  S49 -.-> P5
+  S50 -.-> P0
+  S50 -.-> P1
+  S50 -.-> P5
+  S51 -.-> P4
+  S51 -.-> P10
+  S52 -.-> P3
+  S52 -.-> P1
+  S52 -.-> P2
+  S52 -.-> P0
+  S53 -.-> P0
+  S53 -.-> P4
+  S53 -.-> P6
+  S53 -.-> P10
+  S53 -.-> P1
+  S53 -.-> P3
+  S54 -.-> P0
+  S55 -.-> P9
+  S55 -.-> P8
+  S56 -.-> P1
+  S57 -.-> P4
+  S57 -.-> P10
+  S57 -.-> P9
+  S57 -.-> P7
+  S57 -.-> P3
+  S58 -.-> P5
+  S58 -.-> P6
+  S58 -.-> P2
+  S58 -.-> P4
+  S58 -.-> P8
+  S58 -.-> P0
+  S59 -.-> P0
+  S60 -.-> P5
+  S60 -.-> P0
+  S61 -.-> P2
+  S61 -.-> P9
+  S61 -.-> P3
+  S62 -.-> P2
+  S62 -.-> P9
+  S62 -.-> P3
+  S63 -.-> P6
+  S63 -.-> P4
+  S63 -.-> P5
+  S64 -.-> P2
+  S65 -.-> P8
+  S65 -.-> P6
+  S66 -.-> P10
+  S66 -.-> P4
+  S67 -.-> P4
+  S67 -.-> P1
+  S67 -.-> P3
+  S67 -.-> P7
+  S67 -.-> P9
+  S67 -.-> P0
+  S68 -.-> P3
+  S68 -.-> P1
+  S69 -.-> P3
+  S69 -.-> P9
+  S69 -.-> P7
+  S70 -.-> P1
+  S70 -.-> P3
+  S70 -.-> P0
+  S71 -.-> P0
+  S71 -.-> P1
+  S71 -.-> P9
+  S71 -.-> P2
+  S71 -.-> P4
+  S71 -.-> P7
+  S71 -.-> P3
+  S72 -.-> P0
+  S72 -.-> P5
+  S72 -.-> P1
+  S73 -.-> P0
+  S74 -.-> P2
+  S75 -.-> P9
+  S75 -.-> P2
+  S76 -.-> P3
+  S76 -.-> P0
+  S76 -.-> P5
+  S77 -.-> P8
+  S77 -.-> P2
+  S77 -.-> P4
+  S77 -.-> P1
+  S77 -.-> P3
+  S77 -.-> P0
+  S77 -.-> P5
+  S78 -.-> P1
+  S79 -.-> P8
+  S79 -.-> P5
+  S80 -.-> P1
+  S81 -.-> P2
+  S81 -.-> P3
+  S82 -.-> P4
+  S82 -.-> P5
+  S82 -.-> P2
+  S82 -.-> P3
+  S83 -.-> P8
+  S83 -.-> P4
+  S83 -.-> P1
+  S84 -.-> P0
+  S84 -.-> P2
+  S84 -.-> P9
+  S84 -.-> P3
+  S85 -.-> P3
+  S85 -.-> P7
+  S85 -.-> P9
+  S86 -.-> P0
+  S87 -.-> P1
+  S87 -.-> P3
+  S88 -.-> P9
+  S88 -.-> P2
+  S89 -.-> P5
+  S89 -.-> P0
+  S90 -.-> P5
+  S90 -.-> P6
+  S90 -.-> P0
+  S91 -.-> P2
+  S91 -.-> P3
+  S91 -.-> P9
+  S91 -.-> P0
+  S91 -.-> P1
+  S92 -.-> P0
+  S92 -.-> P2
+  S93 -.-> P7
+  S93 -.-> P4
+  S94 -.-> P1
+  S95 -.-> P2
+  S95 -.-> P3
+  S96 -.-> P0
+  S96 -.-> P5
+  S96 -.-> P4
+  S97 -.-> P8
+  S97 -.-> P4
+  S97 -.-> P2
+  S97 -.-> P7
+  S97 -.-> P10
+  S97 -.-> P9
+  S97 -.-> P3
+  S97 -.-> P0
+  S98 -.-> P8
+  S98 -.-> P5
+  S99 -.-> P2
+  S99 -.-> P4
+  S100 -.-> P10
+  S101 -.-> P2
+  S101 -.-> P9
+  S101 -.-> P3
+  S102 -.-> P3
+  S102 -.-> P0
+  S102 -.-> P2
+  S102 -.-> P10
+  S102 -.-> P9
+  S102 -.-> P1
+  S103 -.-> P8
+  S103 -.-> P2
+  S104 -.-> P9
+  S104 -.-> P1
+  S104 -.-> P2
+  S104 -.-> P3
+  S104 -.-> P8
+  S104 -.-> P0
+  S105 -.-> P4
+  S105 -.-> P8
+  S105 -.-> P5
+  S105 -.-> P9
+  S105 -.-> P6
+  S106 -.-> P8
+  S106 -.-> P4
+  S106 -.-> P9
+  S106 -.-> P6
+  S106 -.-> P5
+  S107 -.-> P7
+  S107 -.-> P1
+  S107 -.-> P4
+  S107 -.-> P9
+  S107 -.-> P3
+  S107 -.-> P0
+  S108 -.-> P5
+  S108 -.-> P9
+  S109 -.-> P3
+  S109 -.-> P2
+  S109 -.-> P9
+  S109 -.-> P8
+  S110 -.-> P1
+  S110 -.-> P3
+  S110 -.-> P0
+  S111 -.-> P4
+  S111 -.-> P5
+  S112 -.-> P0
+  S112 -.-> P3
+  S112 -.-> P5
+  S113 -.-> P5
+  S113 -.-> P6
+  S113 -.-> P8
+  S114 -.-> P2
+  S114 -.-> P0
+  S115 -.-> P0
+  S115 -.-> P2
+  S115 -.-> P3
+  S116 -.-> P7
+  S116 -.-> P1
+  S117 -.-> P1
+  S117 -.-> P8
+  S117 -.-> P3
+  S117 -.-> P10
+  S117 -.-> P9
+  S118 -.-> P9
+  S118 -.-> P3
+  S118 -.-> P5
+  S118 -.-> P1
+  S118 -.-> P0
+  S118 -.-> P6
+  S119 -.-> P7
+  S119 -.-> P9
+  S119 -.-> P0
+  S119 -.-> P2
+  S119 -.-> P5
+  S119 -.-> P1
+  S119 -.-> P3
+  S120 -.-> P3
+  S120 -.-> P4
+  S121 -.-> P9
+  S122 -.-> P5
+  S122 -.-> P6
+  S123 -.-> P3
+  S123 -.-> P0
+  S123 -.-> P1
+  S124 -.-> P4
+  S124 -.-> P10
+  S124 -.-> P1
+  S124 -.-> P3
+  S124 -.-> P9
+  S124 -.-> P5
+  S125 -.-> P4
+  S125 -.-> P10
+  S125 -.-> P9
+  S125 -.-> P3
+  S125 -.-> P5
+  S125 -.-> P7
+  S125 -.-> P1
+  S126 -.-> P4
+  S127 -.-> P9
+  S127 -.-> P8
+  S127 -.-> P3
+  S127 -.-> P1
+  S127 -.-> P5
+  S127 -.-> P2
+  S127 -.-> P4
+  S128 -.-> P4
+  S128 -.-> P3
+  S128 -.-> P8
+  S129 -.-> P3
+  S129 -.-> P2
+  S129 -.-> P4
+  S129 -.-> P1
+  S130 -.-> P5
+  S130 -.-> P0
+  S130 -.-> P6
+  S130 -.-> P8
+  S131 -.-> P0
+  S131 -.-> P5
+  S131 -.-> P2
+  S132 -.-> P0
+  S132 -.-> P5
+  S133 -.-> P2
+  S133 -.-> P3
+  S133 -.-> P4
+  S133 -.-> P0
+  S134 -.-> P6
+  S134 -.-> P5
+  S134 -.-> P2
+  S135 -.-> P9
+  S136 -.-> P1
+  S136 -.-> P3
+  S136 -.-> P0
+  S137 -.-> P5
+  S138 -.-> P3
+  S138 -.-> P2
+  S138 -.-> P4
+  S138 -.-> P5
+  S139 -.-> P6
+  S139 -.-> P4
+  S140 -.-> P6
+  S141 -.-> P5
+  S141 -.-> P4
+  S142 -.-> P0
+  S142 -.-> P1
+  S142 -.-> P5
+  S143 -.-> P1
+  S144 -.-> P1
+  S144 -.-> P3
+  S145 -.-> P5
+  S145 -.-> P6
+  S145 -.-> P8
+  S146 -.-> P1
+  S146 -.-> P3
+  S146 -.-> P7
+  S147 -.-> P7
+  S147 -.-> P10
+  S148 -.-> P2
+  S148 -.-> P6
+  S148 -.-> P3
+  S148 -.-> P9
+  S149 -.-> P0
+  S149 -.-> P5
+  S150 -.-> P9
+  S150 -.-> P3
+  S150 -.-> P5
+  S151 -.-> P2
+  S152 -.-> P4
+  S153 -.-> P5
+  S153 -.-> P9
+  S153 -.-> P6
+  S154 -.-> P4
+  S154 -.-> P9
+  S155 -.-> P5
+  S155 -.-> P6
+  S155 -.-> P0
+  S156 -.-> P9
+  S157 -.-> P3
+  S158 -.-> P4
+  S158 -.-> P7
+  S158 -.-> P3
+  S159 -.-> P10
+  S159 -.-> P0
+  S160 -.-> P9
+  S160 -.-> P10
+  S160 -.-> P2
+  S160 -.-> P7
+  S160 -.-> P3
+  S160 -.-> P5
+  S161 -.-> P4
+  S161 -.-> P7
+  S161 -.-> P3
+  S161 -.-> P9
+  S161 -.-> P1
+  S161 -.-> P0
+  S162 -.-> P5
+  S162 -.-> P6
+  S163 -.-> P5
+  S163 -.-> P8
+  S164 -.-> P5
+  S164 -.-> P8
+  S165 -.-> P5
+  S165 -.-> P6
+  S165 -.-> P8
+  S166 -.-> P8
+  S166 -.-> P5
+  S167 -.-> P6
+  S167 -.-> P5
+  S167 -.-> P8
+  S168 -.-> P6
+  S168 -.-> P5
+  S168 -.-> P4
+  S169 -.-> P6
+  S169 -.-> P5
+  S169 -.-> P4
+  S170 -.-> P5
+  S170 -.-> P1
+  S170 -.-> P8
+  S170 -.-> P3
+  S171 -.-> P9
+  S171 -.-> P5
+  S171 -.-> P8
+  S172 -.-> P9
+  S173 -.-> P6
+  S173 -.-> P5
+  S174 -.-> P8
+  S174 -.-> P5
+  S175 -.-> P5
+  S175 -.-> P3
+  S175 -.-> P10
+  S175 -.-> P9
+  S176 -.-> P8
+  S176 -.-> P4
+  S176 -.-> P9
+  S176 -.-> P5
+  S176 -.-> P6
+  S177 -.-> P9
+  S177 -.-> P5
+  S178 -.-> P1
+  S179 -.-> P1
+  S179 -.-> P0
+  S180 -.-> P8
+  S180 -.-> P9
+  S181 -.-> P5
+  S182 -.-> P5
+  S182 -.-> P6
+  S183 -.-> P0
+  S183 -.-> P1
+  S183 -.-> P4
+  S184 -.-> P0
+  S184 -.-> P1
+  S184 -.-> P5
+  S185 -.-> P3
+  S185 -.-> P7
+  S185 -.-> P1
+  S186 -.-> P5
+  S186 -.-> P8
+  S187 -.-> P0
+  S188 -.-> P0
+  S188 -.-> P4
+  S188 -.-> P8
+  S188 -.-> P5
+  S188 -.-> P2
+  S188 -.-> P1
+  S189 -.-> P5
+  S189 -.-> P4
+  S189 -.-> P10
+  S189 -.-> P6
+  S190 -.-> P7
+  S190 -.-> P3
+  S191 -.-> P7
+  S192 -.-> P3
+  S192 -.-> P2
+  S192 -.-> P4
+  S192 -.-> P5
+  S193 -.-> P5
+  S193 -.-> P10
+  S194 -.-> P7
+  S194 -.-> P5
+  S195 -.-> P7
+  S195 -.-> P5
+  S196 -.-> P8
+  S196 -.-> P5
+  S197 -.-> P3
+  S197 -.-> P5
+  S197 -.-> P9
+  S197 -.-> P1
+  S197 -.-> P4
+  S198 -.-> P5
+  S198 -.-> P6
+  S198 -.-> P9
+  S198 -.-> P10
+  S199 -.-> P2
+  S199 -.-> P4
+  S200 -.-> P1
+  S200 -.-> P0
+  S200 -.-> P5
+  S200 -.-> P2
+  S200 -.-> P4
+  S200 -.-> P3
+  S201 -.-> P3
+  S201 -.-> P1
+  S202 -.-> P9
+  S202 -.-> P2
+  S202 -.-> P3
+  S203 -.-> P4
+  S203 -.-> P2
+  S204 -.-> P2
+  S204 -.-> P0
+  S204 -.-> P3
+  S204 -.-> P5
+  S205 -.-> P3
+  S205 -.-> P4
+  S206 -.-> P5
+  S206 -.-> P4
+  S207 -.-> P5
+  S207 -.-> P6
+  S207 -.-> P4
+  S207 -.-> P8
+  S207 -.-> P0
+  S208 -.-> P10
+  S208 -.-> P7
+  S209 -.-> P5
+  S209 -.-> P10
+  S209 -.-> P0
+  S210 -.-> P9
+  S210 -.-> P8
+  S210 -.-> P10
+  S210 -.-> P3
+  S210 -.-> P5
+  S210 -.-> P4
+  S210 -.-> P1
+  S211 -.-> P3
+  S211 -.-> P7
+  S212 -.-> P2
+  S212 -.-> P9
+  S212 -.-> P8
+  S212 -.-> P3
+  S213 -.-> P3
+  S213 -.-> P1
+  S213 -.-> P2
+  S213 -.-> P7
+  S214 -.-> P0
+  S214 -.-> P2
+  S214 -.-> P3
+  S215 -.-> P3
+  S216 -.-> P5
+  S216 -.-> P10
+  S216 -.-> P9
+  S216 -.-> P8
+  S217 -.-> P1
+  S217 -.-> P3
+  S218 -.-> P4
+  S218 -.-> P3
+  S218 -.-> P10
+  S218 -.-> P5
+  S219 -.-> P5
+  S219 -.-> P10
+  S219 -.-> P4
+  S220 -.-> P0
+  S220 -.-> P1
+  S221 -.-> P7
+  S221 -.-> P4
+  S221 -.-> P10
+  S222 -.-> P1
+  S222 -.-> P10
+  S222 -.-> P0
+  S222 -.-> P7
+  S222 -.-> P8
+  S222 -.-> P5
+  S223 -.-> P3
+  S223 -.-> P1
+  S223 -.-> P7
+  S223 -.-> P2
+  S223 -.-> P9
+  S224 -.-> P6
+  S225 -.-> P4
+  S225 -.-> P5
+  S226 -.-> P9
+  S226 -.-> P1
+  S226 -.-> P2
+  S226 -.-> P8
+  S226 -.-> P3
+  S226 -.-> P0
+  S227 -.-> P9
+  S227 -.-> P5
+  S227 -.-> P3
+  S228 -.-> P3
+  S228 -.-> P1
+  S229 -.-> P3
+  S229 -.-> P2
+  S229 -.-> P4
+  S230 -.-> P8
+  S231 -.-> P8
+  S231 -.-> P4
+  S232 -.-> P5
+  S232 -.-> P4
+  S232 -.-> P10
+  S232 -.-> P0
+  S233 -.-> P0
+  S233 -.-> P5
+  S233 -.-> P3
+  S234 -.-> P5
+  S234 -.-> P6
+  S235 -.-> P1
+  S235 -.-> P9
+  S235 -.-> P0
+  S235 -.-> P2
+  S235 -.-> P5
+  S235 -.-> P7
+  S236 -.-> P2
+  S236 -.-> P5
+  S236 -.-> P3
+  S236 -.-> P0
+  S236 -.-> P9
+  S237 -.-> P2
+  S237 -.-> P9
+  S237 -.-> P5
+  S237 -.-> P3
+  S238 -.-> P2
+  S238 -.-> P0
+  S238 -.-> P1
+  S239 -.-> P2
+  S239 -.-> P10
+  S240 -.-> P0
+  S240 -.-> P5
+  S240 -.-> P2
+  S240 -.-> P4
+  S241 -.-> P0
+  S241 -.-> P2
+  S241 -.-> P6
+  S241 -.-> P10
+  S241 -.-> P1
+  S242 -.-> P5
+  S242 -.-> P6
+  S243 -.-> P6
+  S243 -.-> P5
+  S244 -.-> P2
+  S244 -.-> P6
+  S244 -.-> P4
+  S245 -.-> P2
+  S245 -.-> P5
+  S245 -.-> P4
+  S246 -.-> P6
+  S246 -.-> P5
+  S246 -.-> P8
+  S247 -.-> P1
+  S247 -.-> P3
+  S248 -.-> P7
+  S248 -.-> P10
+  S249 -.-> P2
+  S249 -.-> P5
+  S249 -.-> P4
+  S250 -.-> P0
+  S250 -.-> P5
+  S250 -.-> P2
+  S250 -.-> P1
+  S251 -.-> P5
+  S251 -.-> P6
+  S251 -.-> P8
+  S251 -.-> P0
+  S252 -.-> P2
+  S252 -.-> P7
+  S252 -.-> P9
+  S253 -.-> P5
+  S253 -.-> P4
+  S254 -.-> P6
+  S254 -.-> P5
+  S254 -.-> P3
+  S254 -.-> P8
+  S255 -.-> P0
+  S255 -.-> P6
+  S255 -.-> P5
+  S256 -.-> P7
+  S256 -.-> P0
+  S256 -.-> P5
+  S257 -.-> P4
+  S257 -.-> P0
+  S257 -.-> P3
+  S257 -.-> P2
+  S257 -.-> P9
+  S257 -.-> P1
+  S257 -.-> P5
+  S258 -.-> P0
+  S258 -.-> P5
+  S259 -.-> P8
+  S259 -.-> P10
+  S260 -.-> P5
+  S261 -.-> P6
+  S261 -.-> P5
+  S262 -.-> P0
+  S263 -.-> P8
+  S263 -.-> P9
+  S263 -.-> P5
+  S264 -.-> P10
+  S264 -.-> P4
+  S264 -.-> P6
+  S265 -.-> P6
+  S266 -.-> P6
+  S266 -.-> P2
+  S266 -.-> P9
+  S266 -.-> P1
+  S266 -.-> P5
+  S267 -.-> P2
+  S267 -.-> P4
+  S267 -.-> P1
+  S267 -.-> P3
+  S268 -.-> P1
+  S268 -.-> P3
+  S268 -.-> P0
+  S269 -.-> P10
+  S270 -.-> P1
+  S270 -.-> P5
+  S270 -.-> P4
+  S270 -.-> P3
+  S271 -.-> P0
+  S271 -.-> P5
+  S271 -.-> P3
+  S272 -.-> P0
+  S272 -.-> P5
+  S273 -.-> P0
+  S273 -.-> P5
+  S274 -.-> P7
+  S274 -.-> P5
+  S275 -.-> P3
+  S275 -.-> P2
+  S275 -.-> P4
+  S276 -.-> P7
+  S277 -.-> P6
+  S278 -.-> P10
+  S278 -.-> P5
+  S278 -.-> P9
+  S278 -.-> P8
+  S278 -.-> P0
+  S279 -.-> P9
+  S279 -.-> P2
+  S279 -.-> P5
+  S280 -.-> P0
+  S280 -.-> P4
+  S280 -.-> P5
+  S280 -.-> P2
+  S280 -.-> P6
+  S281 -.-> P0
+  S281 -.-> P1
+  S281 -.-> P3
+  S281 -.-> P4
+  S281 -.-> P2
+  S282 -.-> P4
+  S282 -.-> P6
+  S283 -.-> P6
+  S283 -.-> P2
+  S284 -.-> P0
+  S284 -.-> P2
+  S285 -.-> P1
+  S286 -.-> P1
+  S286 -.-> P3
+  S286 -.-> P2
+  S286 -.-> P0
+  S287 -.-> P1
+  S287 -.-> P3
+  S288 -.-> P6
+  S288 -.-> P5
+  S288 -.-> P2
+  S289 -.-> P6
+  S289 -.-> P5
+  S290 -.-> P0
+  S290 -.-> P8
+  S291 -.-> P6
+  S291 -.-> P2
+  S291 -.-> P9
+  S291 -.-> P1
+  S291 -.-> P5
+  S292 -.-> P4
+  S292 -.-> P7
+  S292 -.-> P1
+  S292 -.-> P5
+  S292 -.-> P10
+  S292 -.-> P9
+  S292 -.-> P3
+  classDef proposed fill:#e8f1fb,stroke:#24527a,color:#111
+  classDef source fill:#f3f3f3,stroke:#999,color:#555
