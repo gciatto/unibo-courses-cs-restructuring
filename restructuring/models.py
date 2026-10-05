@@ -98,10 +98,85 @@ class CourseTopicsResponse(BaseModel):
         return self
 
 
-class PlantUMLResponse(BaseModel):
+class ProposedTopic(BaseModel):
+    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
+
+    key: str = Field(pattern=TOPIC_KEY_PATTERN)
+    description: str = Field(min_length=1)
+    source_topic_keys: list[str]
+
+    @model_validator(mode="after")
+    def validate_source_topic_keys(self) -> "ProposedTopic":
+        if len(self.source_topic_keys) != len(set(self.source_topic_keys)):
+            raise ValueError("source_topic_keys must be unique")
+        return self
+
+
+class ProposedCourse(BaseModel):
+    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
+
+    key: str = Field(pattern=TOPIC_KEY_PATTERN)
+    title: str = Field(min_length=1)
+    topic_keys: list[str] = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def validate_topic_keys(self) -> "ProposedCourse":
+        if len(self.topic_keys) != len(set(self.topic_keys)):
+            raise ValueError("topic_keys must be unique")
+        return self
+
+
+class CoursePrerequisite(BaseModel):
+    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
+
+    prerequisite_course_key: str = Field(pattern=TOPIC_KEY_PATTERN)
+    dependent_course_key: str = Field(pattern=TOPIC_KEY_PATTERN)
+
+    @model_validator(mode="after")
+    def reject_self_reference(self) -> "CoursePrerequisite":
+        if self.prerequisite_course_key == self.dependent_course_key:
+            raise ValueError("a course cannot be its own prerequisite")
+        return self
+
+
+class SourceCourseMapping(BaseModel):
+    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
+
+    course_id: str = Field(min_length=1)
+    proposed_course_keys: list[str] = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def validate_proposed_course_keys(self) -> "SourceCourseMapping":
+        if len(self.proposed_course_keys) != len(set(self.proposed_course_keys)):
+            raise ValueError("proposed_course_keys must be unique")
+        return self
+
+
+class RestructuringProposal(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    plantuml: str = Field(min_length=1)
+    proposed_topics: list[ProposedTopic] = Field(min_length=1)
+    proposed_courses: list[ProposedCourse] = Field(min_length=1)
+    prerequisites: list[CoursePrerequisite]
+    source_course_mappings: list[SourceCourseMapping] = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def validate_unique_keys(self) -> "RestructuringProposal":
+        for label, values in (
+            ("proposed topic", [item.key for item in self.proposed_topics]),
+            ("proposed course", [item.key for item in self.proposed_courses]),
+            ("source course", [item.course_id for item in self.source_course_mappings]),
+            (
+                "prerequisite",
+                [
+                    (item.prerequisite_course_key, item.dependent_course_key)
+                    for item in self.prerequisites
+                ],
+            ),
+        ):
+            if len(values) != len(set(values)):
+                raise ValueError(f"{label} entries must be unique")
+        return self
 
 
 @dataclass(frozen=True)

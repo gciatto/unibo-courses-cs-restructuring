@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import html
 import json
 import pathlib
 import re
@@ -9,11 +10,17 @@ from typing import Any, Iterable
 import yaml
 
 from clustering.sections import normalize_label, normalize_text
-from restructuring.models import ClusterInput, CourseInput, ModelConfig
+from restructuring.models import (
+    ClusterInput,
+    CourseInput,
+    ModelConfig,
+    RestructuringProposal,
+    TOPIC_KEY_PATTERN,
+)
 
 
 REPOSITORY_ROOT = pathlib.Path(__file__).resolve().parent.parent
-PROMPT_VERSION = 4
+PROMPT_VERSION = 5
 DEFAULT_SYLLABUS_SECTION_KEYS = ("title", "outcomes", "contents")
 
 SYLLABUS_SECTION_ALIASES: dict[str, tuple[str, ...]] = {
@@ -290,32 +297,99 @@ def write_cache(
     _atomic_write_text(path, yaml.safe_dump(payload, sort_keys=False, allow_unicode=True))
 
 
-def validate_plantuml(cluster: ClusterInput, plantuml: str) -> None:
-    plantuml = plantuml.strip()
-    if not plantuml.startswith("@startuml") or not plantuml.endswith("@enduml"):
-        raise ValueError("PlantUML must start with @startuml and end with @enduml")
-    if "note " not in plantuml.casefold():
-        raise ValueError("PlantUML must contain note boxes with topic descriptions")
-    for course in cluster.courses:
-        declaration = re.search(
-            rf'class\s+"[^\n]*{re.escape(course.course_id)}[^\n]*"\s+as\s+'
-            rf"([A-Za-z_][A-Za-z0-9_]*)[^\n]*#",
-            plantuml,
-            re.IGNORECASE,
+def validate_restructuring_proposal(
+    cluster: ClusterInput,
+    source_topics: dict[str, str],
+    source_memberships: dict[str, list[str]],
+    proposal: RestructuringProposal,
+) -> None:
+    proposed_topic_keys = {item.key for item in proposal.proposed_topics}
+    proposed_course_keys = {item.key for item in proposal.proposed_courses}
+    source_course_ids = {course.course_id for course in cluster.courses}
+
+    unknown_source_topics = sorted(
+        {
+            key
+            for topic in proposal.proposed_topics
+            for key in topic.source_topic_keys
+            if key not in source_topics
+        }
+    )
+    if unknown_source_topics:
+        raise ValueError(f"unknown source topic keys: {unknown_source_topics}")
+
+    unknown_proposed_topics = sorted(
+        {
+            key
+            for course in proposal.proposed_courses
+            for key in course.topic_keys
+            if key not in proposed_topic_keys
+        }
+    )
+    if unknown_proposed_topics:
+        raise ValueError(f"unknown proposed topic keys: {unknown_proposed_topics}")
+
+    used_proposed_topics = {
+        key for course in proposal.proposed_courses for key in course.topic_keys
+    }
+    unused_proposed_topics = sorted(proposed_topic_keys - used_proposed_topics)
+    if unused_proposed_topics:
+        raise ValueError(f"unused proposed topic keys: {unused_proposed_topics}")
+
+    mapped_ids = {item.course_id for item in proposal.source_course_mappings}
+    if mapped_ids != source_course_ids:
+        raise ValueError(
+            "source course mappings must cover exactly the cluster courses; "
+            f"missing={sorted(source_course_ids - mapped_ids)}, "
+            f"unknown={sorted(mapped_ids - source_course_ids)}"
         )
-        if declaration is None:
-            raise ValueError(
-                f"PlantUML is missing a styled old-course class for {course.course_id}"
-            )
-        alias = declaration.group(1)
-        dashed_link = any(
-            alias in line and ".." in line
-            for line in plantuml.splitlines()
+
+    referenced_courses = {
+        key
+        for item in proposal.source_course_mappings
+        for key in item.proposed_course_keys
+    } | {
+        key
+        for edge in proposal.prerequisites
+        for key in (edge.prerequisite_course_key, edge.dependent_course_key)
+    }
+    unknown_courses = sorted(referenced_courses - proposed_course_keys)
+    if unknown_courses:
+        raise ValueError(f"unknown proposed course keys: {unknown_courses}")
+
+    proposed_topics = {item.key: item for item in proposal.proposed_topics}
+    proposed_courses = {item.key: item for item in proposal.proposed_courses}
+    for mapping in proposal.source_course_mappings:
+        covered_source_topics = {
+            source_topic_key
+            for proposed_course_key in mapping.proposed_course_keys
+            for proposed_topic_key in proposed_courses[proposed_course_key].topic_keys
+            for source_topic_key in proposed_topics[proposed_topic_key].source_topic_keys
+        }
+        missing = sorted(
+            set(source_memberships[mapping.course_id]) - covered_source_topics
         )
-        if not dashed_link:
+        if missing:
             raise ValueError(
-                f"PlantUML old course {course.course_id} has no dashed subsumption link"
+                f"source course {mapping.course_id} loses topic coverage: {missing}"
             )
+
+    successors: dict[str, set[str]] = {key: set() for key in proposed_course_keys}
+    indegree = {key: 0 for key in proposed_course_keys}
+    for edge in proposal.prerequisites:
+        successors[edge.prerequisite_course_key].add(edge.dependent_course_key)
+        indegree[edge.dependent_course_key] += 1
+    pending = [key for key, degree in indegree.items() if degree == 0]
+    visited = 0
+    while pending:
+        current = pending.pop()
+        visited += 1
+        for dependent in successors[current]:
+            indegree[dependent] -= 1
+            if indegree[dependent] == 0:
+                pending.append(dependent)
+    if visited != len(proposed_course_keys):
+        raise ValueError("course prerequisites must be acyclic")
 
 
 def write_cluster_topics(
@@ -363,11 +437,115 @@ def write_course_topics(
     return path
 
 
-def write_plantuml(
+def load_topic_artifacts(
+    directory: pathlib.Path,
+    cluster: ClusterInput,
+) -> tuple[dict[str, str], dict[str, list[str]]] | None:
+    cluster_path = directory / f"topics-of-cluster-{cluster.cluster_id}.yml"
+    if not cluster_path.exists():
+        return None
+    cluster_payload = load_yaml_mapping(cluster_path, "Cluster topic YAML")
+    expected_cluster = {"id": cluster.cluster_id, "name": cluster.name}
+    if cluster_payload.get("cluster") != expected_cluster:
+        raise ValueError(f"Cluster metadata mismatch in {cluster_path}")
+    topics = cluster_payload.get("topics")
+    if not isinstance(topics, dict) or any(
+        not isinstance(key, str)
+        or re.fullmatch(TOPIC_KEY_PATTERN, key) is None
+        or not isinstance(value, str)
+        for key, value in topics.items()
+    ):
+        raise ValueError(f"Invalid topic dictionary in {cluster_path}")
+
+    memberships: dict[str, list[str]] = {}
+    for course in cluster.courses:
+        course_path = directory / f"topics-of-course-{course.course_id}.yml"
+        payload = load_yaml_mapping(course_path, "Course topic YAML")
+        if payload.get("cluster") != expected_cluster or payload.get("course") != {
+            "id": course.course_id,
+            "name": course.title,
+        }:
+            raise ValueError(f"Course metadata mismatch in {course_path}")
+        course_topics = payload.get("topics")
+        if not isinstance(course_topics, dict) or any(
+            key not in topics or description != topics[key]
+            for key, description in course_topics.items()
+        ):
+            raise ValueError(f"Invalid topic assignment in {course_path}")
+        memberships[course.course_id] = list(course_topics)
+    return dict(topics), memberships
+
+
+def _mermaid_label(value: str) -> str:
+    return html.escape(value.strip(), quote=True).replace("\n", " ")
+
+
+def render_mermaid(cluster: ClusterInput, proposal: RestructuringProposal) -> str:
+    course_aliases = {
+        item.key: f"P{index}"
+        for index, item in enumerate(proposal.proposed_courses)
+    }
+    source_aliases = {
+        course.course_id: f"S{index}"
+        for index, course in enumerate(cluster.courses)
+    }
+    lines = [
+        f"%% Restructuring proposal for cluster {cluster.cluster_id}: "
+        f"{_mermaid_label(cluster.name)}",
+        "flowchart LR",
+        '  subgraph proposed["Proposed curriculum"]',
+    ]
+    for item in proposal.proposed_courses:
+        topics = "<br/>".join(_mermaid_label(key) for key in item.topic_keys)
+        label = f"{_mermaid_label(item.title)}<br/>{topics}"
+        lines.append(f'    {course_aliases[item.key]}["{label}"]:::proposed')
+    lines.extend(['  end', '  subgraph current["Current courses"]'])
+    for course in cluster.courses:
+        label = _mermaid_label(f"{course.course_id} — {course.title}")
+        lines.append(f'    {source_aliases[course.course_id]}["{label}"]:::source')
+    lines.append("  end")
+    for edge in proposal.prerequisites:
+        lines.append(
+            f"  {course_aliases[edge.prerequisite_course_key]} --> "
+            f"{course_aliases[edge.dependent_course_key]}"
+        )
+    for mapping in proposal.source_course_mappings:
+        for proposed_key in mapping.proposed_course_keys:
+            lines.append(
+                f"  {source_aliases[mapping.course_id]} -.-> "
+                f"{course_aliases[proposed_key]}"
+            )
+    lines.extend(
+        [
+            "  classDef proposed fill:#e8f1fb,stroke:#24527a,color:#111",
+            "  classDef source fill:#f3f3f3,stroke:#999,color:#555",
+        ]
+    )
+    return "\n".join(lines) + "\n"
+
+
+def write_restructuring_proposal(
     output_dir: pathlib.Path,
-    cluster_id: int,
-    plantuml: str,
-) -> pathlib.Path:
-    plantuml_path = output_dir / f"restructure-proposal-for-cluster-{cluster_id}.puml"
-    _atomic_write_text(plantuml_path, plantuml.strip() + "\n")
-    return plantuml_path
+    cluster: ClusterInput,
+    source_topics: dict[str, str],
+    source_memberships: dict[str, list[str]],
+    proposal: RestructuringProposal,
+) -> tuple[pathlib.Path, pathlib.Path]:
+    stem = f"restructure-proposal-for-cluster-{cluster.cluster_id}"
+    yaml_path = output_dir / f"{stem}.yml"
+    mermaid_path = output_dir / f"{stem}.mmd"
+    payload = {
+        "cluster": {"id": cluster.cluster_id, "name": cluster.name},
+        "source_topics": {key: source_topics[key] for key in sorted(source_topics)},
+        "source_course_topic_assignments": {
+            course_id: sorted(source_memberships[course_id])
+            for course_id in sorted(source_memberships)
+        },
+        **proposal.model_dump(),
+    }
+    _atomic_write_text(
+        yaml_path,
+        yaml.safe_dump(payload, sort_keys=False, allow_unicode=True),
+    )
+    _atomic_write_text(mermaid_path, render_mermaid(cluster, proposal))
+    return yaml_path, mermaid_path

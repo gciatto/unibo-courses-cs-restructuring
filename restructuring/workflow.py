@@ -19,20 +19,21 @@ from restructuring.io import (
     conversation_cache_key,
     load_cache,
     load_clusters,
+    load_topic_artifacts,
     normalize_syllabus_section_keys,
     select_clusters,
-    validate_plantuml,
+    validate_restructuring_proposal,
     write_cache,
     write_cluster_topics,
     write_course_topics,
-    write_plantuml,
+    write_restructuring_proposal,
 )
 from restructuring.models import (
     ClusterInput,
     CourseInput,
     CourseTopicsResponse,
     ModelConfig,
-    PlantUMLResponse,
+    RestructuringProposal,
     RetryConfig,
 )
 
@@ -47,8 +48,7 @@ def _load_prompt(name: str) -> str:
 
 SYSTEM_PROMPT = _load_prompt("system.txt")
 COURSE_PROMPT = string.Template(_load_prompt("course.txt"))
-PLANTUML_PROMPT = string.Template(_load_prompt("plantuml.txt"))
-PLANTUML_REPAIR_PROMPT = string.Template(_load_prompt("plantuml_repair.txt"))
+PROPOSAL_PROMPT = string.Template(_load_prompt("proposal.txt"))
 PROMPT_SYLLABUS_SECTION_KEYS = DEFAULT_SYLLABUS_SECTION_KEYS
 TOPIC_CONVERSATION_MODES = ("stateless", "full")
 
@@ -56,14 +56,6 @@ T = TypeVar("T", bound=BaseModel)
 
 
 class ResponseValidationError(ValueError):
-    pass
-
-
-class PlantUMLRenderError(RuntimeError):
-    pass
-
-
-class PlantUMLSyntaxError(ValueError):
     pass
 
 
@@ -82,6 +74,7 @@ class ClusterConversation:
     cache_path: pathlib.Path
     cache_key: str
     cache_metadata: dict[str, Any]
+    cache_writes_enabled: bool = True
 
 
 def course_syllabus_markdown(course: CourseInput) -> str:
@@ -102,7 +95,7 @@ def course_prompt(course: CourseInput, current_topics: dict[str, str]) -> str:
     )
 
 
-def plantuml_prompt(
+def proposal_prompt(
     cluster: ClusterInput,
     topics: dict[str, str],
     memberships: dict[str, list[str]],
@@ -111,7 +104,7 @@ def plantuml_prompt(
         {"id": course.course_id, "title": course.title}
         for course in cluster.courses
     ]
-    return PLANTUML_PROMPT.substitute(
+    return PROPOSAL_PROMPT.substitute(
         cluster_id=cluster.cluster_id,
         cluster_name=cluster.name,
         current_topics=json.dumps(
@@ -126,15 +119,8 @@ def plantuml_prompt(
     )
 
 
-def plantuml_repair_prompt(plantuml: str, error: Exception) -> str:
-    return PLANTUML_REPAIR_PROMPT.substitute(
-        validation_error=f"{error.__class__.__name__}: {error}",
-        previous_plantuml=plantuml,
-    )
-
-
 def _is_retryable(error: Exception) -> bool:
-    if isinstance(error, (ValidationError, ResponseValidationError, PlantUMLRenderError)):
+    if isinstance(error, (ValidationError, ResponseValidationError)):
         return True
     status_code = getattr(error, "status_code", None)
     if status_code in {408, 409, 429} or (
@@ -406,6 +392,7 @@ def process_cluster_topics(
     syllabus_section_keys: tuple[str, ...] = PROMPT_SYLLABUS_SECTION_KEYS,
     topic_conversation_mode: str = "stateless",
     refresh_cache: bool = False,
+    reuse_topic_dirs: tuple[pathlib.Path, ...] = (),
     sleep: Callable[[float], None] = time.sleep,
     random_uniform: Callable[[float, float], float] = random.uniform,
 ) -> ClusterConversation:
@@ -465,6 +452,36 @@ def process_cluster_topics(
     messages = [system_message]
     cursor = 1
     state = ClusterTopicState(topics={}, memberships={})
+    for directory in reuse_topic_dirs:
+        reused = load_topic_artifacts(directory, cluster)
+        if reused is None:
+            continue
+        state = ClusterTopicState(*reused)
+        _write_incremental_artifacts(
+            output_dir,
+            cluster,
+            state,
+            set(state.memberships),
+            set(),
+        )
+        LOGGER.info(
+            "Cluster %s (%s): reused complete topic artifacts from %s; "
+            "skipping %d topic-extraction request(s)",
+            cluster.cluster_id,
+            cluster.name,
+            directory,
+            len(cluster.courses),
+        )
+        return ClusterConversation(
+            state=state,
+            messages=messages,
+            cached_messages=[],
+            cursor=cursor,
+            cache_path=cache_path,
+            cache_key=cache_key,
+            cache_metadata=metadata,
+            cache_writes_enabled=False,
+        )
     initial_cluster_path = write_cluster_topics(output_dir, cluster, state.topics)
     LOGGER.info(
         "Cluster %s (%s): initialized incremental topic artifact before course "
@@ -630,77 +647,7 @@ def create_openai_client(config: ModelConfig, request_timeout: float) -> Any:
     )
 
 
-def create_plantuml_renderer() -> Any:
-    try:
-        from plantumlcli import RemotePlantuml
-    except ImportError as error:
-        raise RuntimeError(
-            "The 'plantumlcli' package is required; install requirements.txt"
-        ) from error
-    LOGGER.info(
-        "Creating remote PlantUML renderer using plantumlcli configuration "
-        "PLANTUML_HOST=%s",
-        os.environ.get("PLANTUML_HOST", "<plantumlcli default>"),
-    )
-    return RemotePlantuml.autoload()
-
-
-def render_plantuml_svg(
-    plantuml: str,
-    destination: pathlib.Path,
-    retry: RetryConfig,
-    *,
-    renderer: Any | None = None,
-    operation_name: str = "PlantUML remote SVG rendering",
-    sleep: Callable[[float], None] = time.sleep,
-    random_uniform: Callable[[float, float], float] = random.uniform,
-) -> None:
-    try:
-        resolved_renderer = renderer or create_plantuml_renderer()
-    except Exception as error:
-        raise PlantUMLRenderError(
-            f"Could not initialize the PlantUML renderer: {error}"
-        ) from error
-    destination.parent.mkdir(parents=True, exist_ok=True)
-    temporary = destination.with_name(f".{destination.stem}.tmp.svg")
-
-    def operation() -> None:
-        try:
-            temporary.unlink(missing_ok=True)
-            resolved_renderer.dump(str(temporary), "svg", plantuml)
-            svg = temporary.read_text(encoding="utf-8")
-        except Exception as error:
-            temporary.unlink(missing_ok=True)
-            raise PlantUMLRenderError(
-                f"PlantUML remote rendering failed: {error}"
-            ) from error
-        normalized = svg.casefold()
-        error_markers = ("syntax error", "error line", "[from string")
-        if "<svg" not in normalized or any(
-            marker in normalized for marker in error_markers
-        ):
-            temporary.unlink(missing_ok=True)
-            raise PlantUMLSyntaxError(
-                "PlantUML server returned an invalid or syntax-error SVG"
-            )
-        temporary.replace(destination)
-
-    call_with_backoff(
-        operation,
-        retry,
-        operation_name=operation_name,
-        sleep=sleep,
-        random_uniform=random_uniform,
-    )
-    LOGGER.info(
-        "%s succeeded path=%s bytes=%d",
-        operation_name,
-        destination,
-        destination.stat().st_size,
-    )
-
-
-def generate_cluster_plantuml(
+def generate_cluster_proposal(
     cluster: ClusterInput,
     conversation: ClusterConversation,
     client: Any,
@@ -709,202 +656,105 @@ def generate_cluster_plantuml(
     output_dir: pathlib.Path,
     *,
     topic_conversation_mode: str,
-    renderer: Any | None = None,
     sleep: Callable[[float], None] = time.sleep,
     random_uniform: Callable[[float, float], float] = random.uniform,
 ) -> bool:
-    initial_user = {
+    user_message = {
         "role": "user",
-        "content": plantuml_prompt(
+        "content": proposal_prompt(
             cluster,
             conversation.state.topics,
             conversation.state.memberships,
         ),
     }
-    plantuml_messages = (
+    request_messages = (
         list(conversation.messages)
         if topic_conversation_mode == "full"
         else [conversation.messages[0]]
     )
-    user_message = initial_user
     cursor = conversation.cursor
-    last_error: Exception | None = None
-
-    for generation_attempt in range(retry.max_retries + 1):
-        parsed, next_cursor = _cached_response(
-            conversation.cached_messages,
-            cursor,
-            user_message,
-            PlantUMLResponse,
-        )
-        if parsed is None:
-            if cursor < len(conversation.cached_messages):
-                LOGGER.info(
-                    "Cluster %s (%s): PlantUML cache mismatch at message=%d; "
-                    "discarding stale_messages=%d",
-                    cluster.cluster_id,
-                    cluster.name,
-                    cursor,
-                    len(conversation.cached_messages) - cursor,
-                )
-                conversation.cached_messages = conversation.cached_messages[:cursor]
-            try:
-                parsed = call_structured(
-                    client,
-                    plantuml_messages + [user_message],
-                    PlantUMLResponse,
-                    config,
-                    retry,
-                    operation_name=(
-                        f"cluster={cluster.cluster_id} PlantUML-generation "
-                        f"{generation_attempt + 1}/{retry.max_retries + 1}"
-                    ),
-                    sleep=sleep,
-                    random_uniform=random_uniform,
-                )
-            except Exception as error:
-                plantuml_path = (
-                    output_dir
-                    / f"restructure-proposal-for-cluster-{cluster.cluster_id}.puml"
-                )
-                LOGGER.error(
-                    "Cluster %s (%s): PlantUML LLM generation failed after "
-                    "configured request retries at generation_attempt=%d/%d; "
-                    "topic YAML remains definitive, existing_puml=%s, "
-                    "continuing without SVG; error=%s: %s",
-                    cluster.cluster_id,
-                    cluster.name,
-                    generation_attempt + 1,
-                    retry.max_retries + 1,
-                    plantuml_path if plantuml_path.exists() else "<none>",
-                    error.__class__.__name__,
-                    error,
-                )
-                return False
-            assistant_message = {
-                "role": "assistant",
-                "content": parsed.model_dump_json(),
-            }
-            conversation.messages.extend([user_message, assistant_message])
-            conversation.cached_messages = list(conversation.messages)
-            cursor = len(conversation.messages)
+    parsed, next_cursor = _cached_response(
+        conversation.cached_messages,
+        cursor,
+        user_message,
+        RestructuringProposal,
+    )
+    if parsed is not None:
+        try:
+            validate_restructuring_proposal(
+                cluster,
+                conversation.state.topics,
+                conversation.state.memberships,
+                parsed,
+            )
+        except ValueError as error:
+            LOGGER.warning(
+                "Cluster %s (%s): cached proposal is invalid; regenerating: %s",
+                cluster.cluster_id,
+                cluster.name,
+                error,
+            )
+            parsed = None
+    if parsed is None:
+        if cursor < len(conversation.cached_messages):
+            conversation.cached_messages = conversation.cached_messages[:cursor]
+        try:
+            parsed = call_structured(
+                client,
+                request_messages + [user_message],
+                RestructuringProposal,
+                config,
+                retry,
+                operation_name=f"cluster={cluster.cluster_id} restructuring-proposal",
+                validator=lambda proposal: validate_restructuring_proposal(
+                    cluster,
+                    conversation.state.topics,
+                    conversation.state.memberships,
+                    proposal,
+                ),
+                sleep=sleep,
+                random_uniform=random_uniform,
+            )
+        except Exception as error:
+            LOGGER.error(
+                "Cluster %s (%s): restructuring proposal generation failed; "
+                "topic YAML remains definitive; error=%s: %s",
+                cluster.cluster_id,
+                cluster.name,
+                error.__class__.__name__,
+                error,
+            )
+            return False
+        assistant_message = {"role": "assistant", "content": parsed.model_dump_json()}
+        conversation.messages.extend([user_message, assistant_message])
+        conversation.cached_messages = list(conversation.messages)
+        if conversation.cache_writes_enabled:
             write_cache(
                 conversation.cache_path,
                 conversation.cache_key,
                 conversation.cache_metadata,
                 conversation.messages,
             )
-            LOGGER.info(
-                "Cluster %s (%s): cached PlantUML generation attempt=%d "
-                "cache_path=%s cache_messages=%d",
-                cluster.cluster_id,
-                cluster.name,
-                generation_attempt + 1,
-                conversation.cache_path,
-                len(conversation.messages),
-            )
-        else:
-            LOGGER.info(
-                "Cluster %s (%s): reusing cached PlantUML generation attempt=%d "
-                "messages=%d-%d",
-                cluster.cluster_id,
-                cluster.name,
-                generation_attempt + 1,
-                cursor,
-                next_cursor - 1,
-            )
-            conversation.messages.extend(
-                [user_message, conversation.cached_messages[cursor + 1]]
-            )
-            cursor = next_cursor
+    else:
+        conversation.messages.extend(
+            [user_message, conversation.cached_messages[cursor + 1]]
+        )
 
-        plantuml_messages.extend(
-            [
-                user_message,
-                {"role": "assistant", "content": parsed.model_dump_json()},
-            ]
-        )
-        plantuml_path = write_plantuml(
-            output_dir, cluster.cluster_id, parsed.plantuml
-        )
-        LOGGER.info(
-            "Cluster %s (%s): wrote PlantUML before validation path=%s "
-            "generation_attempt=%d characters=%d",
-            cluster.cluster_id,
-            cluster.name,
-            plantuml_path,
-            generation_attempt + 1,
-            len(parsed.plantuml),
-        )
-        try:
-            validate_plantuml(cluster, parsed.plantuml)
-            LOGGER.info(
-                "Cluster %s (%s): local PlantUML validation succeeded "
-                "generation_attempt=%d",
-                cluster.cluster_id,
-                cluster.name,
-                generation_attempt + 1,
-            )
-            svg_path = plantuml_path.with_suffix(".svg")
-            render_plantuml_svg(
-                parsed.plantuml,
-                svg_path,
-                retry,
-                renderer=renderer,
-                operation_name=(
-                    f"cluster={cluster.cluster_id} PlantUML remote SVG rendering"
-                ),
-                sleep=sleep,
-                random_uniform=random_uniform,
-            )
-            return True
-        except PlantUMLRenderError as error:
-            LOGGER.error(
-                "Cluster %s (%s): remote PlantUML rendering exhausted network/server "
-                "retries; preserving puml=%s and omitting svg=%s; error=%s: %s",
-                cluster.cluster_id,
-                cluster.name,
-                plantuml_path,
-                plantuml_path.with_suffix(".svg"),
-                error.__class__.__name__,
-                error,
-            )
-            return False
-        except (ValueError, PlantUMLSyntaxError) as error:
-            last_error = error
-            LOGGER.warning(
-                "Cluster %s (%s): PlantUML validation failed generation_attempt=%d/%d "
-                "puml=%s error=%s: %s",
-                cluster.cluster_id,
-                cluster.name,
-                generation_attempt + 1,
-                retry.max_retries + 1,
-                plantuml_path,
-                error.__class__.__name__,
-                error,
-            )
-            if generation_attempt >= retry.max_retries:
-                break
-            user_message = {
-                "role": "user",
-                "content": plantuml_repair_prompt(parsed.plantuml, error),
-            }
-
-    plantuml_path = (
-        output_dir / f"restructure-proposal-for-cluster-{cluster.cluster_id}.puml"
+    yaml_path, mermaid_path = write_restructuring_proposal(
+        output_dir,
+        cluster,
+        conversation.state.topics,
+        conversation.state.memberships,
+        parsed,
     )
-    LOGGER.error(
-        "Cluster %s (%s): PlantUML generation failed after %d attempt(s); "
-        "preserving last puml=%s, omitting svg=%s, and continuing; final_error=%s: %s",
+    LOGGER.info(
+        "Cluster %s (%s): wrote validated restructuring proposal yaml=%s mermaid=%s",
         cluster.cluster_id,
         cluster.name,
-        retry.max_retries + 1,
-        plantuml_path,
-        plantuml_path.with_suffix(".svg"),
-        last_error.__class__.__name__ if last_error else "unknown",
-        last_error or "unknown validation failure",
+        yaml_path,
+        mermaid_path,
     )
-    return False
+    return True
 
 
 def create_attempt_directory(
@@ -931,11 +781,11 @@ def run_restructuring(
     cluster_ids: tuple[int, ...] = (),
     cluster_name_regexes: tuple[str, ...] = (),
     refresh_cache: bool = False,
+    reuse_topic_dirs: tuple[pathlib.Path, ...] = (),
     request_timeout: float = 120.0,
     cache_dir: pathlib.Path | None = None,
     output_root: pathlib.Path | None = None,
     client: Any | None = None,
-    plantuml_renderer: Any | None = None,
     now: datetime | None = None,
     sleep: Callable[[float], None] = time.sleep,
     random_uniform: Callable[[float, float], float] = random.uniform,
@@ -951,6 +801,9 @@ def run_restructuring(
         cluster_ids,
         cluster_name_regexes,
     )
+    missing_reuse_dirs = [path for path in reuse_topic_dirs if not path.is_dir()]
+    if missing_reuse_dirs:
+        raise ValueError(f"Topic reuse directories do not exist: {missing_reuse_dirs}")
     output_dir = create_attempt_directory(
         output_root or REPOSITORY_ROOT / "data" / "restructuring",
         now,
@@ -980,8 +833,8 @@ def run_restructuring(
         retry.max_backoff,
     )
 
-    svg_successes = 0
-    plantuml_failures = 0
+    proposal_successes = 0
+    proposal_failures = 0
     for cluster_index, cluster in enumerate(clusters, start=1):
         LOGGER.info(
             "Starting cluster %d/%d id=%s name=%s courses=%d",
@@ -1001,16 +854,17 @@ def run_restructuring(
             syllabus_section_keys=normalized_section_keys,
             topic_conversation_mode=topic_conversation_mode,
             refresh_cache=refresh_cache,
+            reuse_topic_dirs=reuse_topic_dirs,
             sleep=sleep,
             random_uniform=random_uniform,
         )
         LOGGER.info(
             "Cluster %s (%s): all definitive topic YAML artifacts are complete; "
-            "starting isolated PlantUML phase",
+            "starting isolated restructuring proposal phase",
             cluster.cluster_id,
             cluster.name,
         )
-        if generate_cluster_plantuml(
+        if generate_cluster_proposal(
             cluster,
             conversation,
             resolved_client,
@@ -1018,22 +872,21 @@ def run_restructuring(
             retry,
             output_dir,
             topic_conversation_mode=topic_conversation_mode,
-            renderer=plantuml_renderer,
             sleep=sleep,
             random_uniform=random_uniform,
         ):
-            svg_successes += 1
+            proposal_successes += 1
         else:
-            plantuml_failures += 1
+            proposal_failures += 1
 
     LOGGER.info(
         "Restructuring run complete output=%s clusters_with_definitive_topics=%d "
-        "courses_with_definitive_topics=%d svg_successes=%d plantuml_failures=%d "
+        "courses_with_definitive_topics=%d proposal_successes=%d proposal_failures=%d "
         "exit_status=success",
         output_dir,
         len(clusters),
         total_courses,
-        svg_successes,
-        plantuml_failures,
+        proposal_successes,
+        proposal_failures,
     )
     return output_dir

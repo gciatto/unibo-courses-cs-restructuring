@@ -57,6 +57,9 @@ truth and the decks as domain/rationale documentation.
   root with `.venv/bin/python -m ...` so absolute package imports resolve.
 - Dependencies are pinned loosely in `requirements.txt`; the local environment
   is `.venv` when present.
+- Use Conventional Commits for commit messages, with a meaningful scope when
+  applicable (for example, `feat(restructuring): ...`). Mark breaking changes
+  with `!` and a `BREAKING CHANGE:` footer.
 - Tests use `unittest`, not pytest:
   `.venv/bin/python -m unittest discover -s tests -p 'test_*.py'`.
 - Treat course IDs, teaching IDs, and programme codes as opaque strings. Leading
@@ -67,8 +70,8 @@ truth and the decks as domain/rationale documentation.
 - Most files under `data/` are generated or research-run artifacts, but many are
   tracked. Do not bulk-regenerate, rewrite, or delete them unless the task asks
   for it.
-- Scraper commands make live UniBo requests. Restructuring makes OpenAI and
-  remote PlantUML requests. Prefer parser/unit tests for routine verification.
+- Scraper commands make live UniBo requests. Restructuring makes OpenAI
+  requests. Prefer parser/unit tests for routine verification.
 
 ## `scraping/`
 
@@ -124,16 +127,19 @@ Relevant tests are `tests/test_download_course_headers.py`,
   selects clusters, model/retry settings, syllabus sections, cache refresh, and
   stateless/full topic conversation mode.
 - `models.py`: strict Pydantic response contracts for topics, topic diffs,
-  memberships, and PlantUML, plus immutable workflow configuration/input types.
+  memberships, and restructuring proposals, plus immutable workflow
+  configuration/input types.
 - `io.py`: loads cluster manifests and referenced course YAML, prefers English
   then Italian for requested syllabus sections, selects clusters, owns the LLM
-  cache format, validates PlantUML structure, and atomically writes artifacts.
+  cache format, validates restructuring proposals, and atomically writes YAML
+  and Mermaid artifacts.
 - `workflow.py`: processes courses in stable course-ID order, incrementally
   evolves the cluster topic ontology, validates every model diff, rewrites any
-  affected course-topic files, then separately asks for and renders a PlantUML
-  restructuring proposal. API retries use exponential backoff with jitter.
-- `prompts/*.txt`: system, per-course topic extraction, PlantUML generation, and
-  PlantUML repair prompts. Prompts are loaded at module import time.
+  affected course-topic files, then separately asks for a structured
+  restructuring proposal and renders Mermaid locally. API retries use
+  exponential backoff with jitter.
+- `prompts/*.txt`: system, per-course topic extraction, and restructuring
+  proposal prompts. Prompts are loaded at module import time.
 
 ### Restructuring contracts
 
@@ -155,17 +161,21 @@ Relevant tests are `tests/test_download_course_headers.py`,
   change and old conversations should be invalidated deliberately.
 - Every run creates `data/restructuring/attempt-YYYY-MM-DD-HH-MM/`; a second run
   in the same minute collides rather than reusing the directory.
+- `--reuse-topics-from ATTEMPT_DIR` may be repeated to reuse complete topic YAML
+  for matching clusters from earlier attempts. Reused artifacts are validated
+  and copied into the new attempt; only proposal generation is rerun.
 - `topics-of-cluster-*.yml` and `topics-of-course-*.yml` are written
-  incrementally and are the definitive output. PlantUML generation/rendering is
-  isolated: failures preserve topic YAML (and the last `.puml` when available),
-  omit `.svg`, log the failure, and do not fail the overall run.
+  incrementally and remain definitive if proposal generation fails. Successful
+  proposal generation writes a validated `restructure-proposal-*.yml` plus a
+  deterministic `.mmd` Mermaid view; proposal failures are logged and do not
+  fail the overall run.
 - Live runs require `OPENAI_API_KEY`; endpoint/model may come from
-  `OPENAI_BASE_URL` and `OPENAI_MODEL`. PlantUML rendering uses the
-  `plantumlcli` configuration, including `PLANTUML_HOST` when set.
+  `OPENAI_BASE_URL` and `OPENAI_MODEL`.
 
-The principal test is `tests/test_restructuring.py`; it uses fake clients and
-renderers to cover input loading, cache replay/truncation, topic-state updates,
-retries, incremental artifacts, and non-fatal PlantUML failures.
+The principal test is `tests/test_restructuring.py`; it uses fake clients to
+cover input loading, cache replay/truncation, topic-state updates, retries,
+incremental artifacts, proposal validation, Mermaid output, and non-fatal
+proposal failures.
 
 ## Safe change routing
 
@@ -174,7 +184,7 @@ retries, incremental artifacts, and non-fatal PlantUML failures.
 - Changes to teaching YAML shape must be checked in both
   `download_teachings.py` and `merge_teachings.py`, then against clustering and
   restructuring consumers.
-- Changes to topic/PlantUML response schemas must stay aligned across
+- Changes to topic/proposal response schemas must stay aligned across
   `models.py`, prompt files, workflow validation, cache versioning, and
   `tests/test_restructuring.py`.
 - Preserve atomic writes for caches and restructuring artifacts: partial results

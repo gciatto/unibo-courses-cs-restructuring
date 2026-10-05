@@ -19,15 +19,20 @@ from restructuring.io import (
     conversation_cache_key,
     load_clusters,
     select_clusters,
+    validate_restructuring_proposal,
 )
 from restructuring.models import (
     ClusterInput,
+    CoursePrerequisite,
     CourseInput,
     CourseTopicMembership,
     CourseTopicsResponse,
     ModelConfig,
-    PlantUMLResponse,
+    ProposedCourse,
+    ProposedTopic,
+    RestructuringProposal,
     RetryConfig,
+    SourceCourseMapping,
     Topic,
     TopicDiff,
 )
@@ -35,11 +40,9 @@ from restructuring.workflow import (
     PROMPTS_DIR,
     SYSTEM_PROMPT,
     ClusterTopicState,
-    PlantUMLRenderError,
     apply_topic_response,
     call_with_backoff,
     process_cluster_topics,
-    render_plantuml_svg,
     run_restructuring,
 )
 
@@ -83,25 +86,31 @@ def topic_response(
     return CourseTopicsResponse(covered_topic_keys=covered, topic_diffs=diffs)
 
 
-def valid_plantuml(*course_ids: str) -> str:
-    old_classes = "\n".join(
-        f'class "{course_id} - Old {course_id}" as OLD_{course_id} #Transparent'
-        for course_id in course_ids
+def valid_proposal(*course_ids: str) -> RestructuringProposal:
+    return RestructuringProposal(
+        proposed_topics=[
+            ProposedTopic(
+                key="foundations",
+                description="Combined foundations.",
+                source_topic_keys=["alpha", "beta"],
+            )
+        ],
+        proposed_courses=[
+            ProposedCourse(
+                key="foundations_course",
+                title="Foundations",
+                topic_keys=["foundations"],
+            )
+        ],
+        prerequisites=[],
+        source_course_mappings=[
+            SourceCourseMapping(
+                course_id=course_id,
+                proposed_course_keys=["foundations_course"],
+            )
+            for course_id in course_ids
+        ],
     )
-    links = "\n".join(
-        f"OLD_{course_id} ..> Foundations : subsumed by"
-        for course_id in course_ids
-    )
-    return f"""@startuml
-{old_classes}
-class Foundations {{
-  alpha
-}}
-note right of Foundations
-alpha: Alpha supported by the syllabi.
-end note
-{links}
-@enduml"""
 
 
 class FakeCompletions:
@@ -131,19 +140,6 @@ class FakeClient:
     def __init__(self, responses: list[object], on_parse=None):
         self.completions = FakeCompletions(responses, on_parse)
         self.chat = SimpleNamespace(completions=self.completions)
-
-
-class FakePlantUMLRenderer:
-    def __init__(self, failures: int = 0, svg: str = "<svg></svg>"):
-        self.failures = failures
-        self.svg = svg
-        self.calls: list[tuple[str, str, str]] = []
-
-    def dump(self, path: str, output_format: str, code: str) -> None:
-        self.calls.append((path, output_format, code))
-        if len(self.calls) <= self.failures:
-            raise TimeoutError("temporary renderer timeout")
-        pathlib.Path(path).write_text(self.svg, encoding="utf-8")
 
 
 def write_cluster_input(root: pathlib.Path, item: ClusterInput) -> pathlib.Path:
@@ -251,6 +247,20 @@ class TestRestructuringCli(unittest.TestCase):
         self.assertEqual(overridden.endpoint, "https://cli.test/v1")
         self.assertEqual(overridden.topic_conversation_mode, "full")
 
+        resumed = build_parser().parse_args(
+            [
+                "clusters.yml",
+                "--reuse-topics-from",
+                "attempt-one",
+                "--reuse-topics-from",
+                "attempt-two",
+            ]
+        )
+        self.assertEqual(
+            resumed.reuse_topics_from,
+            [pathlib.Path("attempt-one"), pathlib.Path("attempt-two")],
+        )
+
     def test_syllabus_sections_can_be_selected(self):
         parsed = build_parser().parse_args(
             [
@@ -343,7 +353,7 @@ class TestInputAndCache(unittest.TestCase):
         )
         self.assertEqual(metadata["topic_conversation_mode"], "stateless")
         self.assertEqual(metadata["prompt_version"], PROMPT_VERSION)
-        self.assertEqual(PROMPT_VERSION, 4)
+        self.assertEqual(PROMPT_VERSION, 5)
 
 
 class TestIncrementalTopicState(unittest.TestCase):
@@ -517,20 +527,19 @@ class TestWorkflow(unittest.TestCase):
             upsert=[Topic(key="beta", description="Beta from evidence.")],
         )
 
-    def test_prompts_separate_topic_and_plantuml_instructions(self):
+    def test_prompts_separate_topic_and_proposal_instructions(self):
         self.assertEqual(
             {path.name for path in PROMPTS_DIR.glob("*.txt")},
             {
                 "system.txt",
                 "course.txt",
-                "plantuml.txt",
-                "plantuml_repair.txt",
+                "proposal.txt",
             },
         )
         self.assertNotIn("PlantUML", SYSTEM_PROMPT)
         self.assertIn(
-            "Return complete PlantUML",
-            (PROMPTS_DIR / "plantuml.txt").read_text(encoding="utf-8"),
+            "source_course_mappings contains every source course exactly once",
+            (PROMPTS_DIR / "proposal.txt").read_text(encoding="utf-8"),
         )
 
     def test_stateless_and_full_modes_control_request_history(self):
@@ -615,14 +624,14 @@ class TestWorkflow(unittest.TestCase):
             self.assertTrue((second_output / "topics-of-course-A.yml").exists())
             self.assertTrue((second_output / "topics-of-course-B.yml").exists())
 
-    def test_topics_exist_before_plantuml_and_success_writes_svg(self):
+    def test_topics_exist_before_proposal_and_writes_yaml_and_mermaid(self):
         with tempfile.TemporaryDirectory() as tmp_dir:
             root = pathlib.Path(tmp_dir)
             input_path = write_cluster_input(root, self.cluster)
             output_root = root / "output"
 
-            def check_before_plantuml(arguments):
-                if arguments["response_format"] is PlantUMLResponse:
+            def check_before_proposal(arguments):
+                if arguments["response_format"] is RestructuringProposal:
                     attempt = output_root / "attempt-2026-07-29-12-34"
                     self.assertTrue(
                         (attempt / "topics-of-cluster-5.yml").exists()
@@ -642,58 +651,84 @@ class TestWorkflow(unittest.TestCase):
                     [
                         self.first,
                         self.second,
-                        PlantUMLResponse(
-                            plantuml=valid_plantuml("A", "B")
-                        ),
+                        valid_proposal("A", "B"),
                     ],
-                    on_parse=check_before_plantuml,
+                    on_parse=check_before_proposal,
                 ),
                 cache_dir=root / "cache",
                 output_root=output_root,
                 now=datetime(2026, 7, 29, 12, 34),
-                plantuml_renderer=FakePlantUMLRenderer(),
             )
-            puml = output_dir / "restructure-proposal-for-cluster-5.puml"
-            self.assertTrue(puml.read_text().startswith("@startuml"))
-            self.assertEqual(
-                puml.with_suffix(".svg").read_text(encoding="utf-8"),
-                "<svg></svg>",
-            )
+            proposal_path = output_dir / "restructure-proposal-for-cluster-5.yml"
+            proposal = yaml.safe_load(proposal_path.read_text(encoding="utf-8"))
+            self.assertEqual(proposal["cluster"]["id"], 5)
+            self.assertEqual(proposal["source_topics"], {
+                "alpha": "Alpha from evidence.",
+                "beta": "Beta from evidence.",
+            })
+            mermaid = proposal_path.with_suffix(".mmd").read_text(encoding="utf-8")
+            self.assertIn("flowchart LR", mermaid)
+            self.assertIn("Foundations", mermaid)
+            self.assertEqual(mermaid.count("-.->"), 2)
 
-    def test_syntax_failure_regenerates_and_overwrites_puml(self):
+    def test_complete_topic_artifacts_can_be_reused_without_topic_calls(self):
         with tempfile.TemporaryDirectory() as tmp_dir:
             root = pathlib.Path(tmp_dir)
-            input_path = write_cluster_input(root, self.cluster)
-            repaired = valid_plantuml("A", "B")
+            source = root / "source"
+            process_cluster_topics(
+                self.cluster,
+                FakeClient([self.first, self.second]),
+                self.config,
+                self.retry,
+                root / "source-cache",
+                source,
+            )
+            client = FakeClient([valid_proposal("A", "B")])
+            output = run_restructuring(
+                write_cluster_input(root, self.cluster),
+                self.config,
+                self.retry,
+                client=client,
+                cache_dir=root / "new-cache",
+                output_root=root / "output",
+                reuse_topic_dirs=(source,),
+                now=datetime(2026, 7, 29, 12, 34),
+            )
+            self.assertEqual(len(client.completions.calls), 1)
+            self.assertIs(
+                client.completions.calls[0]["response_format"],
+                RestructuringProposal,
+            )
+            self.assertEqual(
+                (source / "topics-of-cluster-5.yml").read_text(),
+                (output / "topics-of-cluster-5.yml").read_text(),
+            )
+            self.assertEqual(list((root / "new-cache").glob("*.yml")), [])
+
+    def test_invalid_proposal_is_retried_before_writing(self):
+        invalid = valid_proposal("A")
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = pathlib.Path(tmp_dir)
             output_dir = run_restructuring(
-                input_path,
+                write_cluster_input(root, self.cluster),
                 self.config,
                 RetryConfig(max_retries=1, initial_backoff=0),
                 client=FakeClient(
-                    [
-                        self.first,
-                        self.second,
-                        PlantUMLResponse(
-                            plantuml="@startuml\nclass Broken\n@enduml"
-                        ),
-                        PlantUMLResponse(plantuml=repaired),
-                    ]
+                    [self.first, self.second, invalid, valid_proposal("A", "B")]
                 ),
                 cache_dir=root / "cache",
                 output_root=root / "output",
                 now=datetime(2026, 7, 29, 12, 34),
-                plantuml_renderer=FakePlantUMLRenderer(),
             )
-            puml = output_dir / "restructure-proposal-for-cluster-5.puml"
-            self.assertEqual(puml.read_text().strip(), repaired)
-            self.assertTrue(puml.with_suffix(".svg").exists())
+            payload = yaml.safe_load(
+                (output_dir / "restructure-proposal-for-cluster-5.yml").read_text()
+            )
+            self.assertEqual(
+                {item["course_id"] for item in payload["source_course_mappings"]},
+                {"A", "B"},
+            )
 
-    def test_render_failure_is_nonfatal_and_preserves_puml(self):
-        class FailingRenderer(FakePlantUMLRenderer):
-            def dump(self, path: str, output_format: str, code: str) -> None:
-                self.calls.append((path, output_format, code))
-                raise TimeoutError("remote service unavailable")
-
+    def test_proposal_llm_failure_is_nonfatal_after_topic_artifacts(self):
         with tempfile.TemporaryDirectory() as tmp_dir:
             root = pathlib.Path(tmp_dir)
             input_path = write_cluster_input(root, self.cluster)
@@ -705,40 +740,12 @@ class TestWorkflow(unittest.TestCase):
                     [
                         self.first,
                         self.second,
-                        PlantUMLResponse(
-                            plantuml=valid_plantuml("A", "B")
-                        ),
+                        RuntimeError("proposal model unavailable"),
                     ]
                 ),
                 cache_dir=root / "cache",
                 output_root=root / "output",
                 now=datetime(2026, 7, 29, 12, 34),
-                plantuml_renderer=FailingRenderer(),
-            )
-            puml = output_dir / "restructure-proposal-for-cluster-5.puml"
-            self.assertTrue(puml.exists())
-            self.assertFalse(puml.with_suffix(".svg").exists())
-            self.assertTrue((output_dir / "topics-of-cluster-5.yml").exists())
-
-    def test_plantuml_llm_failure_is_nonfatal_after_topic_artifacts(self):
-        with tempfile.TemporaryDirectory() as tmp_dir:
-            root = pathlib.Path(tmp_dir)
-            input_path = write_cluster_input(root, self.cluster)
-            output_dir = run_restructuring(
-                input_path,
-                self.config,
-                self.retry,
-                client=FakeClient(
-                    [
-                        self.first,
-                        self.second,
-                        RuntimeError("diagram model unavailable"),
-                    ]
-                ),
-                cache_dir=root / "cache",
-                output_root=root / "output",
-                now=datetime(2026, 7, 29, 12, 34),
-                plantuml_renderer=FakePlantUMLRenderer(),
             )
             self.assertTrue((output_dir / "topics-of-cluster-5.yml").exists())
             self.assertTrue((output_dir / "topics-of-course-A.yml").exists())
@@ -746,35 +753,58 @@ class TestWorkflow(unittest.TestCase):
             self.assertFalse(
                 (
                     output_dir
-                    / "restructure-proposal-for-cluster-5.puml"
+                    / "restructure-proposal-for-cluster-5.yml"
                 ).exists()
             )
 
-    def test_plantuml_rendering_retries_network_but_not_syntax(self):
-        with tempfile.TemporaryDirectory() as tmp_dir:
-            destination = pathlib.Path(tmp_dir) / "proposal.svg"
-            renderer = FakePlantUMLRenderer(failures=2)
-            sleeps: list[float] = []
-            render_plantuml_svg(
-                "@startuml\nclass A\n@enduml",
-                destination,
-                RetryConfig(max_retries=2, initial_backoff=1),
-                renderer=renderer,
-                sleep=sleeps.append,
-                random_uniform=lambda _minimum, maximum: maximum,
-            )
-            self.assertEqual(len(renderer.calls), 3)
-            self.assertEqual(sleeps, [1, 2])
-            with self.assertRaisesRegex(ValueError, "syntax-error SVG"):
-                render_plantuml_svg(
-                    "@startuml\nbad\n@enduml",
-                    destination,
-                    RetryConfig(max_retries=3),
-                    renderer=FakePlantUMLRenderer(
-                        svg="<svg><text>Syntax Error?</text></svg>"
-                    ),
-                    sleep=lambda _: self.fail("syntax must not be retried"),
+    def test_proposal_validation_rejects_cycles(self):
+        proposal = RestructuringProposal(
+            proposed_topics=[
+                ProposedTopic(
+                    key="alpha",
+                    description="Alpha",
+                    source_topic_keys=["alpha"],
                 )
+            ],
+            proposed_courses=[
+                ProposedCourse(key="one", title="One", topic_keys=["alpha"]),
+                ProposedCourse(key="two", title="Two", topic_keys=["alpha"]),
+            ],
+            prerequisites=[
+                CoursePrerequisite(
+                    prerequisite_course_key="one",
+                    dependent_course_key="two",
+                ),
+                CoursePrerequisite(
+                    prerequisite_course_key="two",
+                    dependent_course_key="one",
+                ),
+            ],
+            source_course_mappings=[
+                SourceCourseMapping(
+                    course_id=course_id,
+                    proposed_course_keys=["one"],
+                )
+                for course_id in ("A", "B")
+            ],
+        )
+        with self.assertRaisesRegex(ValueError, "acyclic"):
+            validate_restructuring_proposal(
+                self.cluster,
+                {"alpha": "Alpha"},
+                {"A": ["alpha"], "B": ["alpha"]},
+                proposal,
+            )
+
+        incomplete = valid_proposal("A", "B")
+        incomplete.proposed_topics[0].source_topic_keys = ["alpha"]
+        with self.assertRaisesRegex(ValueError, "loses topic coverage.*beta"):
+            validate_restructuring_proposal(
+                self.cluster,
+                {"alpha": "Alpha", "beta": "Beta"},
+                {"A": ["alpha"], "B": ["beta"]},
+                incomplete,
+            )
 
     def test_generic_retry_skips_permanent_errors(self):
         class RateLimitError(Exception):
@@ -847,32 +877,35 @@ class TestRepositoryRestructuringInput(unittest.TestCase):
                     )
                 else:
                     labels_match = re.search(
-                        r"<old_course_labels>\s*(.*?)\s*</old_course_labels>",
+                        r"<source_courses>\s*(.*?)\s*</source_courses>",
                         prompt,
                         re.DOTALL,
                     )
                     assert labels_match is not None
                     labels = json.loads(labels_match.group(1))
-                    declarations = "\n".join(
-                        f'class "{item["id"]} - {item["title"].replace(chr(34), chr(39))}" '
-                        f"as OLD_{index} #Transparent"
-                        for index, item in enumerate(labels)
-                    )
-                    links = "\n".join(
-                        f"OLD_{index} ..> Proposed : subsumed by"
-                        for index in range(len(labels))
-                    )
-                    response = PlantUMLResponse(
-                        plantuml=f"""@startuml
-{declarations}
-class Proposed {{
-  cluster_topic
-}}
-note right of Proposed
-cluster_topic: Deterministic syllabus topic.
-end note
-{links}
-@enduml"""
+                    response = RestructuringProposal(
+                        proposed_topics=[
+                            ProposedTopic(
+                                key="cluster_topic",
+                                description="Deterministic syllabus topic.",
+                                source_topic_keys=["cluster_topic"],
+                            )
+                        ],
+                        proposed_courses=[
+                            ProposedCourse(
+                                key="proposed_course",
+                                title="Proposed course",
+                                topic_keys=["cluster_topic"],
+                            )
+                        ],
+                        prerequisites=[],
+                        source_course_mappings=[
+                            SourceCourseMapping(
+                                course_id=item["id"],
+                                proposed_course_keys=["proposed_course"],
+                            )
+                            for item in labels
+                        ],
                     )
                 message = SimpleNamespace(
                     parsed=response,
@@ -897,7 +930,6 @@ end note
                 ),
                 RetryConfig(max_retries=0),
                 client=fake_client,
-                plantuml_renderer=FakePlantUMLRenderer(),
                 cache_dir=root / "cache",
                 output_root=root / "output",
                 now=datetime(2026, 7, 29, 16, 45),
@@ -911,11 +943,11 @@ end note
                 293,
             )
             self.assertEqual(
-                len(list(output.glob("restructure-proposal-*.puml"))),
+                len(list(output.glob("restructure-proposal-*.yml"))),
                 30,
             )
             self.assertEqual(
-                len(list(output.glob("restructure-proposal-*.svg"))),
+                len(list(output.glob("restructure-proposal-*.mmd"))),
                 30,
             )
         self.assertEqual(completions.calls, 293 + 30)

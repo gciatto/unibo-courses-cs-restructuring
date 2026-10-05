@@ -1,0 +1,36 @@
+The syllabus-grounded topic analysis is complete.
+Propose a rational restructuring of all courses in this cluster as a hierarchy
+of new courses.
+
+Factor reusable prerequisite knowledge into general courses where useful. You
+may group or abstract source topics, and may introduce a new topic only to fill
+an explicit curricular gap. An invented topic has an empty source_topic_keys
+array; otherwise source_topic_keys records its provenance in the ontology.
+
+<cluster_metadata>
+cluster_id: $cluster_id
+cluster_name: $cluster_name
+</cluster_metadata>
+
+<source_topics>
+$current_topics
+</source_topics>
+
+<source_topic_assignments>
+$course_memberships
+</source_topic_assignments>
+
+<source_courses>
+$old_courses
+</source_courses>
+
+Requirements:
+- proposed_topics contains exactly the topics used by proposed courses.
+- proposed_courses assigns one or more proposed topic keys to each new course.
+- prerequisites uses prerequisite_course_key -> dependent_course_key semantics
+  and must form an acyclic graph.
+- source_course_mappings contains every source course exactly once and maps it
+  to one or more proposed courses that subsume its contents.
+- For each source course, the provenance of topics in its mapped proposed
+  courses must cover every topic in that source course's assignment.
+- Keys are lowercase snake_case and all references must resolve.

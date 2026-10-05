@@ -76,6 +76,17 @@ def build_parser() -> argparse.ArgumentParser:
         ),
     )
     parser.add_argument("--refresh-cache", action="store_true")
+    parser.add_argument(
+        "--reuse-topics-from",
+        type=pathlib.Path,
+        action="append",
+        default=[],
+        metavar="ATTEMPT_DIR",
+        help=(
+            "Reuse complete, matching topic YAML from an earlier attempt and "
+            "generate only the new restructuring proposal; repeat for multiple attempts"
+        ),
+    )
     return parser
 
 
@@ -124,6 +135,7 @@ def main() -> None:
             cluster_ids=tuple(args.cluster_id),
             cluster_name_regexes=tuple(args.cluster_name_regex),
             refresh_cache=args.refresh_cache,
+            reuse_topic_dirs=tuple(args.reuse_topics_from),
             request_timeout=args.request_timeout,
         )
     except (RuntimeError, ValueError) as error:
