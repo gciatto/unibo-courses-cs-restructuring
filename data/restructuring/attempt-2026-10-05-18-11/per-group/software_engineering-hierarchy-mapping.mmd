@@ -1,0 +1,34 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Software Engineering Foundations<br/>12 ECTS"]:::proposed
+  P1["DevOps and Service Engineering<br/>12 ECTS"]:::proposed
+  P2["Software Platform Development<br/>6 ECTS"]:::proposed
+  P3["Enterprise Application Platforms<br/>6 ECTS"]:::proposed
+  S0["Software Engineering (09032)<br/>Databases (10906, 10906-A)<br/>Programming Laboratory (16870, B0063)<br/>Humanistic IT (27311-A)<br/>Foundations of Informatics T-1 (28004)<br/>Information Systems T (28027)<br/>IT Systems T-1 (28652)<br/>Web Technologies T (28659)<br/>Data Mining (40720)<br/>Informatics (60348)<br/>Mobile Applications Laboratory (66860)<br/>Data Bases (70155)<br/>Object-Oriented Programming (70219)<br/>Project Management (73435)<br/>Emerging Programming Paradigms (81672)<br/>Context-Aware Systems (84401)<br/>Programming (85285)<br/>Knowledge Representation and Extraction (85446)<br/>Distributed Systems (87474)<br/>Elements of Computer Technologies for Fashion E-Commerce (90864)<br/>Advanced Programming (93363)<br/>Distributed Software Systems (93468)<br/>Web and Mobile Systems (95605)<br/>Database Systems (95611)<br/>Cyber-Physical Systems Programming M (99195)<br/>Computer Methods for Digital Transformation (B0061)<br/>Introduction to Data Science and Computational Thinking (B0064)<br/>Project Management and Software Engineering for Cultural Heritage (B1874)<br/>PROGRAMMING THE INTERNET OF THINGS M (B8019)<br/>Computer-Aided Human Translation: CAT, MT and AI (B8536)<br/>Machine Translation and Artificial Intelligence for Language Services (B8603)"]:::source
+  S0 -.-> P0
+  S1["Software Engineering T (28021)<br/>PIATTAFORME PER LA TRASFORMAZIONE DIGITALE (B0074)<br/>ARTIFICIAL INTELLIGENCE, BLOCKCHAIN E CRIPTOVALUTE NELLO SVILUPPO SOFTWARE (B1459)"]:::source
+  S1 -.-> P0
+  S1 -.-> P2
+  S2["Software Engineering (66858, 90106, 95627)<br/>Programming and Development paradigms (81612)<br/>Software Design and Development (95648)<br/>Scalable and Reliable Services M (97431, B5796)<br/>Software Architecture and Platforms (B0010)<br/>ARCHITETTURE SOFTWARE A MICROSERVIZI (B5474)"]:::source
+  S2 -.-> P1
+  S2 -.-> P0
+  S3["Software Systems Engineering M (72939)<br/>Advanced Software Modelling and Design (B0009)<br/>Software Process Engineering (B0011)"]:::source
+  S3 -.-> P1
+  S3 -.-> P0
+  S3 -.-> P2
+  S4["Computational Models And Languages M (72940)<br/>SISTEMI SOFTWARE A OGGETTI T (B8554)"]:::source
+  S4 -.-> P2
+  S5["Distributed Systems M (73025)"]:::source
+  S5 -.-> P1
+  S5 -.-> P3
+  S5 -.-> P0
+  S6["Design of Web Applications T (94442)"]:::source
+  S6 -.-> P3
+  S6 -.-> P0
+  S7["Virtualized Systems (95646)<br/>Computational Management of Data (B8105)"]:::source
+  S7 -.-> P1
+  S8["Virtualization and System Integration (96642)"]:::source
+  S8 -.-> P1
+  S8 -.-> P3
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

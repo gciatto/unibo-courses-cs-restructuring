@@ -1,0 +1,35 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Web Development<br/>12 ECTS"]:::proposed
+  P1["Mobile, Embedded and Internet of Things Systems<br/>12 ECTS"]:::proposed
+  P2["Context-Aware and Location-Based Systems<br/>9 ECTS"]:::proposed
+  P3["Mobile Application Engineering<br/>6 ECTS"]:::proposed
+  S0["Computer Science (07276, 07276-B, 07276-C, 69259)<br/>Humanistic IT (27311)<br/>Computer Science for Environmental Sciences (28106)<br/>Web Technologies T (28659)<br/>Basic and Laboratory Informatics (39176)<br/>Web-related Technologies (41731, 41731-A)<br/>Informatics (57828, 60348, 78510)<br/>Internet Architecture (58423)<br/>Web Services and Applications (69867)<br/>Data Bases (70155)<br/>Network Programming (70226)<br/>Computational Models And Languages M (72940)<br/>Informatic Tecnologies for Fashion (73273)<br/>Web Technologies (75835)<br/>Basic Informatics (75969)<br/>Interaction Multimedia Services (81917)<br/>Informatic (82202, 82202-A)<br/>Information Modelling and Web Technologies (85445)<br/>Distributed Systems (87474)<br/>Web Technology (88566)<br/>Open Science (90157)<br/>Elements of Computer Technologies for Fashion E-Commerce (90864)<br/>Distributed Software Systems (93468)<br/>Design of Web Applications T (94442)<br/>Software Engineering (95627)<br/>Foundations of Web Systems (95645)<br/>ELABORAZIONE DI TESTI E GESTIONE DOCUMENTALE (B0073)<br/>Informatics for the Humanities (B4826)<br/>Computer Studies and Humanities (B5293)<br/>ARCHITETTURE SOFTWARE A MICROSERVIZI (B5474)<br/>Computer Studies and Human Sciences (B8929)"]:::source
+  S0 -.-> P0
+  S1["Web Systems Engineering (47240)"]:::source
+  S1 -.-> P1
+  S1 -.-> P0
+  S2["Mobile Applications Laboratory (66860)<br/>Mobile Application Programming (72787)"]:::source
+  S2 -.-> P1
+  S2 -.-> P3
+  S3["Software Systems Engineering M (72939)<br/>Embedded Systems Programming and Internet of Things (77780)<br/>Laboratory of Making (81678)<br/>Real Time OS M (85728)<br/>Embedded Systems and Internet of Things (96859)<br/>Cyber-Physical Systems Programming M (99195)<br/>Advanced Software Modelling and Design (B0009)<br/>Embedded Sensors (B5722)<br/>PROGRAMMING THE INTERNET OF THINGS M (B8019)"]:::source
+  S3 -.-> P1
+  S4["Mobile Systems M (78779)"]:::source
+  S4 -.-> P2
+  S4 -.-> P1
+  S4 -.-> P3
+  S5["Internet of Things (81683)<br/>Iot And Big Data For Smart Agricultural Systems (93653)<br/>Industry 4.0 (95639)<br/>DIGITAL HEALTH M (B8018)"]:::source
+  S5 -.-> P2
+  S5 -.-> P1
+  S6["Context-Aware Systems (84401)<br/>Computer Networks (93315)"]:::source
+  S6 -.-> P2
+  S7["Web and Mobile Systems (95605)"]:::source
+  S7 -.-> P1
+  S7 -.-> P3
+  S7 -.-> P0
+  S8["Software Architecture and Platforms (B0010)"]:::source
+  S8 -.-> P2
+  S8 -.-> P1
+  S8 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

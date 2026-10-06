@@ -1,0 +1,22 @@
+%% Restructuring proposal for all courses
+flowchart TB
+  P0["Statistics and Data Analysis<br/>12 ECTS<br/>statistical_data_analysis<br/>statistical_study_methods<br/>probability_distributions<br/>data_visualization<br/>multivariate_analysis_and_dimensionality_reduction<br/>similarity_and_dissimilarity<br/>time_series_analysis<br/>python_descriptive_analytics<br/>r_programming_fundamentals<br/>r_graphics_packages_and_randomness<br/>analytics_types<br/>variable_importance_analysis"]:::proposed
+  P1["Machine Learning Foundations<br/>12 ECTS<br/>machine_learning_foundations<br/>supervised_unsupervised_learning<br/>classification_methods<br/>predictive_regression_analytics<br/>ensemble_learning<br/>probabilistic_machine_learning_models<br/>model_evaluation_and_validation<br/>model_selection_and_validation<br/>data_mining_overview<br/>data_mining_pattern_discovery<br/>data_mining_project_workflow<br/>data_science_foundations"]:::proposed
+  P2["Deep Learning<br/>12 ECTS<br/>deep_learning<br/>feedforward_neural_networks<br/>convolutional_neural_networks<br/>recurrent_neural_networks<br/>generative_and_autoencoding_models<br/>reinforcement_learning<br/>neural_network_training_optimization<br/>neural_network_robustness_interpretation<br/>model_compression_and_efficiency<br/>calculus_for_deep_learning<br/>linear_algebra_for_computation<br/>computational_learning_theory"]:::proposed
+  P3["Natural Language Processing<br/>12 ECTS<br/>natural_language_processing_foundations<br/>text_preprocessing_and_nlp_tools<br/>text_vector_representations<br/>corpus_analysis<br/>n_gram_language_models<br/>supervised_text_classification<br/>topic_modeling<br/>natural_language_syntax_and_parsing<br/>lexical_and_logical_semantics<br/>computational_linguistics<br/>computational_morphology<br/>speech_processing"]:::proposed
+  P4["Computer Vision and Image Processing<br/>12 ECTS<br/>digital_image_fundamentals<br/>image_color_models<br/>image_filtering_and_edges<br/>binary_image_analysis<br/>camera_geometry_and_stereo<br/>local_features_and_shape_matching<br/>object_detection_recognition_tracking<br/>vision_classification_training<br/>visual_representations_metric_transformers<br/>vision_attention_and_multimodal_models<br/>monocular_depth_estimation<br/>image_video_captioning"]:::proposed
+  P5["Speech and Advanced Natural Language Processing<br/>6 ECTS<br/>computational_phonetics<br/>nlp_semantic_tasks<br/>probability_for_nlp<br/>speech_recognition"]:::proposed
+  P6["Multimedia Retrieval, Annotation and Recommendation<br/>9 ECTS<br/>computer_vision<br/>graph_machine_learning<br/>multimedia_retrieval_and_feedback<br/>multimedia_semantic_annotation<br/>multimedia_visualization<br/>recommender_systems_and_fairness"]:::proposed
+  P7["Industrial Analytics and Mathematical Modeling<br/>6 ECTS<br/>mathematical_modeling_for_industry<br/>industrial_anomaly_and_maintenance_analytics<br/>operational_and_maintenance_analytics"]:::proposed
+  legend["Topic colour: first scope, in this order, among the<br/>current courses teaching it (by teachers' and programmes' department)<br/>service: some DISI teacher, no DISI degree programme<br/>external: no DISI teacher, no DISI degree programme<br/>borrow: no DISI teacher, some DISI degree programme<br/>weak_internal: some (not all) DISI teachers and DISI degree programmes<br/>internal: only DISI teachers and DISI degree programmes"]:::source
+  P0 --> P1
+  P1 --> P2
+  P1 --> P3
+  P1 --> P4
+  P3 --> P5
+  P4 --> P6
+  P1 --> P6
+  P0 --> P7
+  P1 --> P7
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

@@ -1,0 +1,14 @@
+%% Restructuring proposal for all courses
+flowchart TB
+  P0["Logic and Formal Reasoning<br/>9 ECTS<br/>propositional_and_syllogistic_logic<br/>first_order_logic<br/>set_theory_and_structural_reasoning<br/>formal_logic_motivation<br/>mathematical_logic_reasoning<br/>modal_and_action_logic<br/>temporal_logic<br/>event_calculus<br/>knowledge_representation_foundations"]:::proposed
+  P1["Artificial Intelligence Foundations<br/>12 ECTS<br/>artificial_intelligence_foundations<br/>ai_problem_solving_and_search<br/>ai_planning_and_scheduling<br/>constraint_satisfaction<br/>constraint_programming_and_propagation<br/>intelligent_agents<br/>knowledge_based_and_rule_reasoning<br/>probabilistic_reasoning_with_bayesian_networks<br/>automated_decision_system_architectures<br/>intelligent_systems_foundations<br/>ai_epistemology_and_ethics<br/>robotics_foundations"]:::proposed
+  P2["Optimization and Decision Making<br/>12 ECTS<br/>combinatorial_optimization_methods<br/>linear_and_integer_linear_programming<br/>boolean_satisfiability_and_sat_solving<br/>satisfiability_modulo_theories<br/>constraint_based_scheduling<br/>algorithm_configuration<br/>stochastic_decision_models<br/>business_decision_modeling<br/>decision_quality_monitoring<br/>industrial_production_and_resource_planning<br/>power_network_management<br/>epidemic_control"]:::proposed
+  P3["Cognitive Robotics and Autonomous Systems<br/>12 ECTS<br/>cognitive_science<br/>semiotic_semantic_frameworks<br/>multimodal_cognitive_interpretation<br/>cognitive_architectures<br/>intelligent_systems_engineering<br/>autonomous_adaptive_systems<br/>robot_behavior_and_adaptation<br/>robot_control_design_navigation_and_evaluation<br/>swarm_intelligence_and_robotics<br/>multi_agent_learning_and_game_theory<br/>robotics_autonomous_systems"]:::proposed
+  P4["Software Model Verification<br/>3 ECTS<br/>model_checking<br/>advanced_model_checking"]:::proposed
+  legend["Topic colour: first scope, in this order, among the<br/>current courses teaching it (by teachers' and programmes' department)<br/>service: some DISI teacher, no DISI degree programme<br/>external: no DISI teacher, no DISI degree programme<br/>borrow: no DISI teacher, some DISI degree programme<br/>weak_internal: some (not all) DISI teachers and DISI degree programmes<br/>internal: only DISI teachers and DISI degree programmes"]:::source
+  P0 --> P1
+  P1 --> P2
+  P1 --> P3
+  P0 --> P4
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

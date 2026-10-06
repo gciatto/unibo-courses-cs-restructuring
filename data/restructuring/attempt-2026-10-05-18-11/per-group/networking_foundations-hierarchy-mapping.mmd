@@ -1,0 +1,24 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Computer Networking Foundations<br/>12 ECTS"]:::proposed
+  P1["Networked Systems and Programming<br/>12 ECTS"]:::proposed
+  P2["Social Network Analysis<br/>6 ECTS"]:::proposed
+  P3["Internet Communication Services<br/>3 ECTS"]:::proposed
+  S0["Computer Science (07276)<br/>Informatics (60348, 78510)<br/>Laboratory of Making (81678)<br/>Informatic (82202-A)<br/>Networks, Security And Data Bases (91161)<br/>Basic IT Skills (B9254)"]:::source
+  S0 -.-> P3
+  S0 -.-> P0
+  S1["Computer Science (07276-C, 69259)<br/>Information Processing Systems (20741)<br/>Computer Science for Environmental Sciences (28106)<br/>Foundations of Informatics and Laboratory (28623)<br/>Computer Programming (37262)<br/>Basic and Laboratory Informatics (39176)<br/>Web-related Technologies (41731, 41731-A)<br/>Informatic Tecnologies for Fashion (73273)<br/>Web Technologies (75835)<br/>Internet of Things (81683)<br/>Informatic (82202)<br/>Information Modelling and Web Technologies (85445)<br/>Web Technology (88566)<br/>Smart Vehicular Systems (90074)<br/>FONDAMENTI DI CYBERSECURITY (93466)<br/>Iot And Big Data For Smart Agricultural Systems (93653)<br/>Operating Systems and Networks (95604)<br/>Web and Mobile Systems (95605)<br/>Software Engineering (95627)<br/>Foundations of Web Systems (95645)<br/>Virtualized Systems (95646)<br/>Informatics for the Humanities (B4826)<br/>Embedded Sensors (B5722)"]:::source
+  S1 -.-> P0
+  S2["Operating Systems (08574)<br/>Concurrent and Distributed Programming (17628)<br/>Lab-based Course on Operating Systems (58348)<br/>Web Services and Applications (69867)<br/>Distributed Systems M (73025)<br/>Interaction Multimedia Services (81917)<br/>Scalable and Cloud Programming (81942)<br/>Infrastructures For Cloud Computing and Big Data M (84531)<br/>Distributed Systems (87474)<br/>Multi-Agent Systems (91267)<br/>Distributed Software Systems (93468)<br/>Scalable and Reliable Services M (97431, B5796)<br/>Administration of Systems T (B0832)<br/>ARCHITETTURE SOFTWARE A MICROSERVIZI (B5474)<br/>Computational Management of Data (B8105)<br/>SISTEMI CONCORRENTI E PARALLELI M (B8562)"]:::source
+  S2 -.-> P1
+  S3["Computer Networks T (28024)<br/>Web Technologies T (28659)<br/>Principles, Models and Applications for Distributed Systems M (37085)<br/>Informatics (57828)<br/>Software Systems Engineering M (72939)<br/>Basic Informatics (75969)<br/>Embedded Systems Programming and Internet of Things (77780)<br/>Mobile Systems M (78779)<br/>System Administration T (88324)<br/>Computer Networks (93315)<br/>Computer Networks and Network Programming (95644)<br/>Virtualization and System Integration (96642)<br/>Embedded Systems and Internet of Things (96859)<br/>INFORMATICA (B8159)"]:::source
+  S3 -.-> P1
+  S3 -.-> P0
+  S4["Internet Architecture (58423)<br/>Network Programming (70226)"]:::source
+  S4 -.-> P3
+  S4 -.-> P1
+  S4 -.-> P0
+  S5["Social Network Analysis (90730)<br/>Network Analysis (95782)"]:::source
+  S5 -.-> P2
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

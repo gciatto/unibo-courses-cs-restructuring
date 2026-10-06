@@ -1,0 +1,48 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Operating Systems<br/>12 ECTS"]:::proposed
+  P1["Concurrent and Parallel Computing<br/>12 ECTS"]:::proposed
+  P2["Distributed Systems<br/>12 ECTS"]:::proposed
+  P3["Cloud and Virtualized Systems<br/>12 ECTS"]:::proposed
+  P4["Autonomous Vehicular Systems<br/>3 ECTS"]:::proposed
+  S0["Programming (00819, 00819-A, 00819-B)<br/>Computer Science (07276, 07276-B, 07276-C, 96346-B)<br/>Information Processing Systems (20741)<br/>Foundations of Informatics T-1 (28004)<br/>Foundations of Informatics and Laboratory (28623)<br/>Foundations of Informatics T (29227, 29227-A, 29227-B)<br/>Computer Programming (37262)<br/>Informatics (57828, 60348, 78510)<br/>ADVANCED PROGRAMMING (65094)<br/>COMPUTER ARCHITECTURES M (69430)<br/>Lab-based Course on Computer Graphics (70210)<br/>Digital Forensic (81676)<br/>Fundamentals of Computer Programming P1 (88145)<br/>History of Informatics and Computing Systems (91685)<br/>Foundations of Computer Science T (93034, 93034-A)<br/>Computer Networks (93315)<br/>Advanced Programming (93363)<br/>Operating Systems and Networks (95604)<br/>INFORMATICA (B8159)<br/>Basic IT Skills (B9254)"]:::source
+  S0 -.-> P0
+  S1["Programming Languages (04138)<br/>Operating Systems (08574)<br/>Concurrent and Distributed Programming (17628)"]:::source
+  S1 -.-> P1
+  S1 -.-> P2
+  S1 -.-> P0
+  S2["Operating Systems (08574-A)"]:::source
+  S2 -.-> P3
+  S2 -.-> P1
+  S2 -.-> P0
+  S3["Operating Systems (08574-B)<br/>Operating Systems T (28020)<br/>Lab-based Course on Operating Systems (58348)<br/>Real Time Systems for Automation M (78810)<br/>Languages, Compilers and Computational Models (81609)<br/>Real Time OS M (85728)<br/>Industrial Informatics P (88155)<br/>Foundations of Computer Architecture and Operating Systems (96007)<br/>Real Time Systems and Programming for Automation M (B5665)<br/>SISTEMI CONCORRENTI E PARALLELI M (B8562)"]:::source
+  S3 -.-> P1
+  S3 -.-> P0
+  S4["Computer Networks T (28024)<br/>Cyber-Physical Systems Programming M (99195)"]:::source
+  S4 -.-> P2
+  S4 -.-> P0
+  S5["Web Technologies T (28659)<br/>Parallel Calculus (58437)<br/>Computer Architecture (69731)<br/>Object-Oriented Programming (70219)<br/>High-Performance Computing (72778)<br/>Emerging Programming Paradigms (81672)<br/>Architecture and Platforms for Artificial Intelligence (91259)<br/>Programming and Computer Architectures (95602)<br/>Software Design and Development (95648)<br/>Introduction to Languages for Artificial Intelligence (B5727)<br/>SISTEMI DI ELABORAZIONE ACCELERATA M (B8563)"]:::source
+  S5 -.-> P1
+  S6["Principles, Models and Applications for Distributed Systems M (37085)<br/>System Administration T (88324)<br/>Virtualized Systems (95646)<br/>Virtualization and System Integration (96642)<br/>Administration of Systems T (B0832)"]:::source
+  S6 -.-> P3
+  S6 -.-> P2
+  S6 -.-> P0
+  S7["Virtual System Design (37925)<br/>Programmable Networking (96995)<br/>Software Process Engineering (B0011)"]:::source
+  S7 -.-> P3
+  S8["Concurrent Models and Systems (66870)<br/>Distributed Systems M (73025)<br/>Scalable and Cloud Programming (81942)<br/>Distributed Systems (87474)<br/>Distributed Software Systems (93468)<br/>Embedded Systems and Internet of Things (96859)<br/>Advanced Software Modelling and Design (B0009)"]:::source
+  S8 -.-> P1
+  S8 -.-> P2
+  S9["Web Services and Applications (69867)<br/>Embedded Systems Programming and Internet of Things (77780)<br/>Mobile Systems M (78779)<br/>Blockchain and Cryptocurrencies (90748)<br/>Multi-Agent Systems (91267)<br/>Software Engineering (95627)<br/>Software Architecture and Platforms (B0010)<br/>PROGRAMMING THE INTERNET OF THINGS M (B8019)<br/>SISTEMI SOFTWARE A OGGETTI T (B8554)"]:::source
+  S9 -.-> P2
+  S10["Software Systems Engineering M (72939)<br/>Interaction Multimedia Services (81917)<br/>Context-Aware Systems (84401)<br/>Big Data and Cloud Platforms (95630)<br/>Scalable and Reliable Services M (97431, B5796)<br/>ARCHITETTURE SOFTWARE A MICROSERVIZI (B5474)"]:::source
+  S10 -.-> P3
+  S10 -.-> P2
+  S11["Infrastructures For Cloud Computing and Big Data M (84531)"]:::source
+  S11 -.-> P3
+  S11 -.-> P1
+  S11 -.-> P2
+  S12["Smart Vehicular Systems (90074)<br/>Smart Vehicular-Systems (96994)"]:::source
+  S12 -.-> P2
+  S12 -.-> P4
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

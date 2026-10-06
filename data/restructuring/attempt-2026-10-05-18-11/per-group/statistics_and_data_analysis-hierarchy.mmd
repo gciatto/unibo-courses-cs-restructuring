@@ -1,0 +1,21 @@
+%% Restructuring proposal for all courses
+flowchart TB
+  P0["Statistics and Data Analysis<br/>12 ECTS"]:::proposed
+  P1["Machine Learning Foundations<br/>12 ECTS"]:::proposed
+  P2["Deep Learning<br/>12 ECTS"]:::proposed
+  P3["Natural Language Processing<br/>12 ECTS"]:::proposed
+  P4["Computer Vision and Image Processing<br/>12 ECTS"]:::proposed
+  P5["Speech and Advanced Natural Language Processing<br/>6 ECTS"]:::proposed
+  P6["Multimedia Retrieval, Annotation and Recommendation<br/>9 ECTS"]:::proposed
+  P7["Industrial Analytics and Mathematical Modeling<br/>6 ECTS"]:::proposed
+  P0 --> P1
+  P1 --> P2
+  P1 --> P3
+  P1 --> P4
+  P3 --> P5
+  P4 --> P6
+  P1 --> P6
+  P0 --> P7
+  P1 --> P7
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

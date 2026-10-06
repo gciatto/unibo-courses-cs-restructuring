@@ -1,0 +1,42 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Cybersecurity Foundations<br/>12 ECTS"]:::proposed
+  P1["Advanced Cybersecurity and Digital Forensics<br/>12 ECTS"]:::proposed
+  P2["Blockchain, Cryptography and Distributed Trust<br/>9 ECTS"]:::proposed
+  P3["Advanced Digital Forensics Practice<br/>9 ECTS"]:::proposed
+  P4["Information and Cryptographic Mathematics<br/>6 ECTS"]:::proposed
+  P5["Cybersecurity Governance and Dark-Web Risks<br/>3 ECTS"]:::proposed
+  S0["Operating Systems (08574)<br/>Network Programming (70226)<br/>Informatics (78510, 96346-A)<br/>Interaction Multimedia Services (81917)<br/>System Administration T (88324)<br/>Computer Networks and Network Programming (95644)<br/>Virtualized Systems (95646)<br/>Virtualization and System Integration (96642)<br/>Cyber-Physical Systems Programming M (99195)<br/>DIGITAL HEALTH M (B8018)<br/>Basic IT Skills (B9254)"]:::source
+  S0 -.-> P0
+  S1["Data Base Sistems (09679)<br/>Operating Systems and Networks (95604)<br/>Laboratory on Digital Transformation Technologies (95632)<br/>Project Management and Software Engineering for Cultural Heritage (B1874)"]:::source
+  S1 -.-> P1
+  S2["Cryptography (14015)"]:::source
+  S2 -.-> P2
+  S2 -.-> P4
+  S2 -.-> P0
+  S3["Lab-based Course on Computer Graphics (70210)<br/>Logic for Informatics (73149)<br/>Embedded Sensors (B5722)"]:::source
+  S3 -.-> P4
+  S4["Information Security M (72942)<br/>Blockchain and Cryptocurrencies (90748)<br/>Cryptography (93467)"]:::source
+  S4 -.-> P2
+  S4 -.-> P0
+  S5["Digital Forensic (81676)"]:::source
+  S5 -.-> P1
+  S5 -.-> P3
+  S6["Distributed Systems (87474)<br/>Distributed Software Systems (93468)<br/>PIATTAFORME PER LA TRASFORMAZIONE DIGITALE (B0074)<br/>ARTIFICIAL INTELLIGENCE, BLOCKCHAIN E CRIPTOVALUTE NELLO SVILUPPO SOFTWARE (B1459)"]:::source
+  S6 -.-> P2
+  S7["Computer and Network Security Lab T (88325)<br/>Computer Networks (93315)<br/>Cybersecurity (93470-A)<br/>Computer Security Laboratory T (B0833)<br/>Cybersecurity M (B5793)"]:::source
+  S7 -.-> P1
+  S7 -.-> P0
+  S8["Networks, Security And Data Bases (91161)"]:::source
+  S8 -.-> P4
+  S8 -.-> P0
+  S9["FONDAMENTI DI CYBERSECURITY (93466)<br/>Cybersecurity Governance (B5812)"]:::source
+  S9 -.-> P1
+  S9 -.-> P5
+  S9 -.-> P0
+  S10["Cybersecurity (93470)"]:::source
+  S10 -.-> P1
+  S10 -.-> P3
+  S10 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

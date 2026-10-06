@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Real-Time and Cyber-Physical Systems<br/>12 ECTS"]:::proposed
+  P1["Embedded Intelligent Devices<br/>6 ECTS"]:::proposed
+  S0["Real-Time Systems M (72945)<br/>Embedded Systems Programming and Internet of Things (77780)<br/>Real Time Systems for Automation M (78810)<br/>Real Time OS M (85728)<br/>Iot And Big Data For Smart Agricultural Systems (93653)<br/>Industry 4.0 (95639)<br/>Virtualization and System Integration (96642)<br/>Advanced Software Modelling and Design (B0009)<br/>Software Architecture and Platforms (B0010)<br/>Real Time Systems and Programming for Automation M (B5665)<br/>Embedded Sensors (B5722)"]:::source
+  S0 -.-> P0
+  S1["Laboratory of Making (81678)<br/>Embedded Systems and Internet of Things (96859)<br/>Cyber-Physical Systems Programming M (99195)"]:::source
+  S1 -.-> P1
+  S1 -.-> P0
+  S2["Internet of Things (81683)<br/>Intelligent Systems Engineering (93669)<br/>PROGRAMMING THE INTERNET OF THINGS M (B8019)"]:::source
+  S2 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

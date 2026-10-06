@@ -1,0 +1,25 @@
+%% Restructuring proposal for all courses
+flowchart TB
+  P0["Computing and Digital Information Foundations<br/>6 ECTS<br/>computer_system_fundamentals<br/>digital_information_representation<br/>digital_information_and_software_levels<br/>binary_number_representation<br/>computing_history<br/>programming_language_evolution"]:::proposed
+  P1["Programming Concepts<br/>6 ECTS<br/>programming_concepts_introduction<br/>imperative_programming_constructs<br/>functions_and_recursion<br/>program_input_output_and_files<br/>string_processing<br/>development_environment"]:::proposed
+  P2["Programming Data Structures<br/>6 ECTS<br/>fundamental_data_structures<br/>abstract_data_types<br/>memory_organization_and_pointers<br/>program_organization_and_libraries<br/>debugging<br/>exception_handling"]:::proposed
+  P3["Python Programming<br/>6 ECTS<br/>python_programming_core<br/>scripting_languages<br/>python_regular_expressions<br/>notebook_computing<br/>python_project_packaging<br/>python_web_page_processing"]:::proposed
+  P4["C and C++ Programming<br/>6 ECTS<br/>c_programming<br/>cpp_programming_features<br/>memory_organization_and_pointers<br/>program_input_output_and_files<br/>program_organization_and_libraries<br/>string_processing"]:::proposed
+  P5["Object-Oriented Programming<br/>6 ECTS<br/>object_oriented_programming<br/>object_oriented_design_principles<br/>java_data_structure_programming<br/>java_application_features<br/>software_design_patterns<br/>component_oriented_programming"]:::proposed
+  P6["Algorithms, Data Structures and Complexity<br/>12 ECTS<br/>algorithm_design_analysis<br/>algorithm_cost_analysis<br/>computational_complexity_theory<br/>computability_models_and_limits<br/>sorting_selection_priority_structures<br/>hashing_disjoint_set_structures<br/>graph_algorithms<br/>recursive_divide_conquer_algorithms<br/>dynamic_programming<br/>greedy_algorithms<br/>exact_search_techniques<br/>heuristic_approximation_search"]:::proposed
+  P7["Scientific and Numerical Programming<br/>9 ECTS<br/>scientific_computing<br/>numerical_analysis_and_errors<br/>numerical_modeling<br/>matlab_octave_programming<br/>python_data_science_tools<br/>open_source_and_linux_tools<br/>python_turtle_graphics"]:::proposed
+  P8["Bioinformatics Search and String Algorithms<br/>3 ECTS<br/>string_processing_structures_algorithms<br/>biological_search_tasks"]:::proposed
+  P9["System Programming<br/>3 ECTS<br/>system_programming"]:::proposed
+  legend["Topic colour: first scope, in this order, among the<br/>current courses teaching it (by teachers' and programmes' department)<br/>service: some DISI teacher, no DISI degree programme<br/>external: no DISI teacher, no DISI degree programme<br/>borrow: no DISI teacher, some DISI degree programme<br/>weak_internal: some (not all) DISI teachers and DISI degree programmes<br/>internal: only DISI teachers and DISI degree programmes"]:::source
+  P0 --> P1
+  P1 --> P2
+  P2 --> P3
+  P2 --> P4
+  P2 --> P5
+  P2 --> P6
+  P1 --> P7
+  P3 --> P7
+  P6 --> P8
+  P4 --> P9
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

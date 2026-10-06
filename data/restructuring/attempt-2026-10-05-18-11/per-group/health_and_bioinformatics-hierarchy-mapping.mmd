@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Digital Health and Bioinformatics<br/>12 ECTS"]:::proposed
+  P1["Digital Health Systems and Ethics<br/>9 ECTS"]:::proposed
+  S0["Computer Science (07276-C, 96346-B)<br/>Computer Lab (15920)<br/>Multi-Agent Systems (91267)<br/>Intelligent Systems Engineering (93669)"]:::source
+  S0 -.-> P1
+  S1["Information Processing Systems (20741)<br/>Basic and Laboratory Informatics (39176)<br/>INTRODUZIONE ALL&#x27;ANALISI DEI DATI (41588)<br/>Health Information Processing Systems (75198)<br/>Informatic (82202, 82202-A)<br/>Computational Methods for Bioinformatics (B5780)<br/>Algorithms and Data Structures for Computational Biology (B5782)<br/>Basic IT Skills (B9254)"]:::source
+  S1 -.-> P0
+  S2["DIGITAL HEALTH M (B8018)"]:::source
+  S2 -.-> P1
+  S2 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

@@ -1,0 +1,24 @@
+%% Restructuring proposal for all courses
+flowchart TB
+  P0["Computing and Digital Information Foundations<br/>6 ECTS"]:::proposed
+  P1["Programming Concepts<br/>6 ECTS"]:::proposed
+  P2["Programming Data Structures<br/>6 ECTS"]:::proposed
+  P3["Python Programming<br/>6 ECTS"]:::proposed
+  P4["C and C++ Programming<br/>6 ECTS"]:::proposed
+  P5["Object-Oriented Programming<br/>6 ECTS"]:::proposed
+  P6["Algorithms, Data Structures and Complexity<br/>12 ECTS"]:::proposed
+  P7["Scientific and Numerical Programming<br/>9 ECTS"]:::proposed
+  P8["Bioinformatics Search and String Algorithms<br/>3 ECTS"]:::proposed
+  P9["System Programming<br/>3 ECTS"]:::proposed
+  P0 --> P1
+  P1 --> P2
+  P2 --> P3
+  P2 --> P4
+  P2 --> P5
+  P2 --> P6
+  P1 --> P7
+  P3 --> P7
+  P6 --> P8
+  P4 --> P9
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

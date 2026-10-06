@@ -1,0 +1,44 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Database Foundations<br/>12 ECTS"]:::proposed
+  P1["Advanced Data Management<br/>12 ECTS"]:::proposed
+  P2["Big Data Processing Platforms<br/>9 ECTS"]:::proposed
+  P3["Business Intelligence and Analytics<br/>6 ECTS"]:::proposed
+  S0["Computer Science (07276-C, 69259)<br/>Computer Lab (15920)<br/>Information Systems T (28027)<br/>Computer Science for Environmental Sciences (28106)<br/>IT Systems T-1 (28652)<br/>Basic and Laboratory Informatics (39176)<br/>Informatics (57828)<br/>Informatic (82202-A)<br/>BASI DI DATI (90107)<br/>Networks, Security And Data Bases (91161)<br/>Design of Web Applications T (94442)<br/>INFORMATICA (B8159)"]:::source
+  S0 -.-> P0
+  S1["Databases (10906, 10906-A, 79194)<br/>Elements of Databases (28796)<br/>Multimedia Data Management M (77933)<br/>Advanced Database Systems (84339)<br/>Database Systems (95611)<br/>Information Systems and Database Management (96793)<br/>Computational Management of Data (B8105)"]:::source
+  S1 -.-> P1
+  S1 -.-> P0
+  S2["Concurrent and Distributed Programming (17628)<br/>INTRODUZIONE ALL&#x27;ANALISI DEI DATI (41588)<br/>Distributed Systems M (73025)<br/>Internet of Things (81683)<br/>Scalable and Cloud Programming (81942)<br/>Programming and Computer Architectures (95602)<br/>Software Engineering (95627)<br/>Industry 4.0 (95639)<br/>Python Coding and Data Science (98735)<br/>Software Architecture and Platforms (B0010)<br/>Big Data Analytics and Text Mining (B2133)"]:::source
+  S2 -.-> P2
+  S3["Business Intelligence (30376)"]:::source
+  S3 -.-> P1
+  S3 -.-> P3
+  S4["Computer Programming (37262)<br/>Artificial Intelligence and Machine Learning for Business (95965)<br/>PIATTAFORME PER LA TRASFORMAZIONE DIGITALE (B0074)<br/>ARTIFICIAL INTELLIGENCE, BLOCKCHAIN E CRIPTOVALUTE NELLO SVILUPPO SOFTWARE (B1459)"]:::source
+  S4 -.-> P3
+  S5["Data Bases (70155)<br/>Big Data (81932)<br/>Database and Big Data Technologies M (84530)"]:::source
+  S5 -.-> P1
+  S5 -.-> P2
+  S5 -.-> P0
+  S6["Informatic Tecnologies for Fashion (73273)<br/>Multimedia Technologies in Archaelogy (76011)<br/>Multimedia Data Management M (78096)<br/>Context-Aware Systems (84401)<br/>Multimedia Data Management (91269)<br/>Advanced Programming (93363)<br/>Machine Learning and Data Mining (95631, 95631-A)<br/>Programming Laboratory (B0063)<br/>Machine Learning and Data Mining M (B2125)<br/>Interaction Media Design (B5059)"]:::source
+  S6 -.-> P1
+  S7["Informatic (82202)"]:::source
+  S7 -.-> P2
+  S7 -.-> P0
+  S8["Infrastructures For Cloud Computing and Big Data M (84531)<br/>Big Data and Cloud Platforms (95630)"]:::source
+  S8 -.-> P1
+  S8 -.-> P2
+  S9["Iot And Big Data For Smart Agricultural Systems (93653)"]:::source
+  S9 -.-> P2
+  S9 -.-> P3
+  S10["Business Intelligence and Big Data M (96142)<br/>Methods and Models for Data Analytics M (96143)"]:::source
+  S10 -.-> P1
+  S10 -.-> P2
+  S10 -.-> P3
+  S11["Business Analytics (98671)"]:::source
+  S11 -.-> P1
+  S11 -.-> P2
+  S11 -.-> P3
+  S11 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999
