@@ -1,0 +1,11 @@
+%% Restructuring proposal for all courses
+flowchart TB
+  P0["Functional Programming<br/>3 ECTS"]:::proposed
+  P1["Logic Programming Foundations<br/>2 ECTS"]:::proposed
+  P2["Advanced Logic Programming<br/>2 ECTS"]:::proposed
+  P3["Prolog and Java Integration<br/>1 ECTS"]:::proposed
+  P0 --> P3
+  P2 --> P3
+  P1 --> P2
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

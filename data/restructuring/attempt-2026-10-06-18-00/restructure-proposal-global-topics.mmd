@@ -1,0 +1,791 @@
+%% Restructuring proposal for all courses
+flowchart TB
+  P0["Computational Thinking<br/>3 ECTS<br/>computational_problem_solving<br/>computational_abstraction<br/>pattern_recognition_computational_thinking"]:::proposed
+  P1["Programming Basics<br/>3 ECTS<br/>algorithmic_foundations_and_notation<br/>information_representation_and_data_types<br/>introductory_programming_constructs"]:::proposed
+  P2["Imperative Programming Foundations: Introduction<br/>3 ECTS<br/>programming_language_concepts<br/>imperative_algorithmic_problem_solving<br/>debugging_and_assertions"]:::proposed
+  P3["Imperative Programming Foundations: Program Structure<br/>3 ECTS<br/>procedures_and_parameter_passing<br/>recursion<br/>modular_programming"]:::proposed
+  P4["C Programming Foundations<br/>3 ECTS<br/>c_language_basics<br/>c_arrays_and_strings<br/>c_functions_and_program_composition"]:::proposed
+  P5["C Programming Memory and Input/Output<br/>3 ECTS<br/>c_input_output_and_files<br/>c_memory_and_pointers<br/>c_compilation_and_linking"]:::proposed
+  P6["C Programming Data Structures<br/>2 ECTS<br/>c_structured_data<br/>c_linear_data_structures"]:::proposed
+  P7["C++ Programming Fundamentals and Object-Oriented Data Types<br/>3 ECTS<br/>cpp_programming_fundamentals<br/>cpp_programming_fundamentals_2<br/>cpp_object_oriented_data_types"]:::proposed
+  P8["C++ Memory, Pointers, and Program Building<br/>2 ECTS<br/>cpp_memory_and_pointers<br/>cpp_program_build_process"]:::proposed
+  P9["C++ Advanced Abstraction and Dynamic Data Structures<br/>2 ECTS<br/>cpp_classes_and_advanced_abstraction<br/>cpp_dynamic_data_structures"]:::proposed
+  P10["Python Programming Foundations<br/>3 ECTS<br/>python_environment_setup<br/>python_programming_foundations<br/>python_programming_basics_and_environment"]:::proposed
+  P11["Python Program Structure<br/>3 ECTS<br/>python_control_flow_and_collections<br/>python_functions_and_files<br/>python_object_model"]:::proposed
+  P12["Python Program Execution and Modules<br/>2 ECTS<br/>python_program_execution<br/>python_modules_and_packages"]:::proposed
+  P13["Python Array Computing Foundations<br/>3 ECTS<br/>jupyter_notebook_computing<br/>numpy_arrays<br/>python_array_computing"]:::proposed
+  P14["Python Tabular Data Processing<br/>2 ECTS<br/>python_tabular_data_handling<br/>pandas_tabular_data_processing"]:::proposed
+  P15["Python Scientific Computing<br/>3 ECTS<br/>python_scientific_computing_modules<br/>python_numerical_methods<br/>python_data_analysis_library_ecosystem"]:::proposed
+  P16["Object-Oriented Programming Foundations<br/>2 ECTS<br/>classes_in_programming<br/>object_oriented_programming_foundations"]:::proposed
+  P17["Object-Oriented Programming Mechanisms<br/>2 ECTS<br/>object_oriented_extension_mechanisms<br/>object_oriented_language_mechanisms"]:::proposed
+  P18["Object-Oriented Programming Design<br/>3 ECTS<br/>object_oriented_design_principles<br/>object_oriented_analysis_and_design<br/>software_design_patterns"]:::proposed
+  P19["Java Programming Foundations<br/>3 ECTS<br/>java_programming_foundations<br/>java_object_oriented_programming<br/>exceptions"]:::proposed
+  P20["Java Program Development<br/>3 ECTS<br/>java_data_structures<br/>java_input_output_and_serialization<br/>java_graphical_interfaces_and_events"]:::proposed
+  P21["Java Advanced Constructs<br/>2 ECTS<br/>java_advanced_language_constructs<br/>java_functional_features"]:::proposed
+  P22["Functional Programming<br/>3 ECTS<br/>functional_programming<br/>functional_programming_scala<br/>monadic_effect_programming"]:::proposed
+  P23["Logic Programming Foundations<br/>2 ECTS<br/>logical_programming_foundations<br/>prolog_programming_and_metaprogramming"]:::proposed
+  P24["Advanced Logic Programming<br/>2 ECTS<br/>prolog_grammars<br/>constraint_logic_programming"]:::proposed
+  P25["Type-Safe Programming Abstractions<br/>3 ECTS<br/>generic_type_safe_programming<br/>haskell_type_classes<br/>go_rust_traits"]:::proposed
+  P26["Certified and Compositional Programming<br/>3 ECTS<br/>advanced_monadic_composition<br/>dependent_types_and_certified_programming<br/>property_based_testing"]:::proposed
+  P27["Object Models and Concurrent Programming<br/>2 ECTS<br/>classless_object_models_and_object_oriented_limits<br/>software_transactional_memory"]:::proposed
+  P28["Data Structures Foundations<br/>3 ECTS<br/>abstract_data_types<br/>fundamental_data_structures<br/>fundamental_data_structures_2"]:::proposed
+  P29["Linear and Dictionary Data Structures<br/>2 ECTS<br/>linear_data_structures<br/>dictionary_and_hash_structures"]:::proposed
+  P30["Tree and Heap Data Structures<br/>3 ECTS<br/>binary_tree_data_structures<br/>tree_search_structures<br/>heap_priority_queue_structures"]:::proposed
+  P31["Disjoint Sets and Graph Structures<br/>2 ECTS<br/>disjoint_set_structures<br/>graph_representation_and_search"]:::proposed
+  P32["Algorithm Design Foundations and Cost Analysis<br/>3 ECTS<br/>algorithm_design<br/>algorithm_cost_analysis<br/>algorithm_design_strategies"]:::proposed
+  P33["Array, Searching, and Sorting Algorithms<br/>3 ECTS<br/>array_algorithms<br/>searching_and_sorting<br/>sorting_algorithms_and_lower_bounds"]:::proposed
+  P34["Algorithm Design Techniques and Dynamic Programming<br/>2 ECTS<br/>algorithm_design_techniques<br/>dynamic_programming_distance_algorithms"]:::proposed
+  P35["Graph Optimization and Combinatorial Methods<br/>2 ECTS<br/>graph_optimization_algorithms<br/>combinatorial_search_and_approximation"]:::proposed
+  P36["Computability Foundations<br/>3 ECTS<br/>computability_and_turing_machines<br/>undecidable_problems<br/>computational_evaluation_models"]:::proposed
+  P37["Complexity Foundations<br/>2 ECTS<br/>computational_complexity<br/>polynomial_time_computability"]:::proposed
+  P38["Advanced Complexity<br/>2 ECTS<br/>p_np_and_np_completeness<br/>advanced_complexity_classes"]:::proposed
+  P39["Logic Foundations<br/>3 ECTS<br/>propositional_logic_and_paradoxes<br/>first_order_logic<br/>classical_formal_logic"]:::proposed
+  P40["Formal Structures<br/>2 ECTS<br/>set_theory<br/>structural_reasoning_and_definition"]:::proposed
+  P41["Inference and Automated Reasoning<br/>3 ECTS<br/>mathematical_logic_inference<br/>automated_reasoning_foundations<br/>deductive_reasoning"]:::proposed
+  P42["Modal and Action Logics<br/>2 ECTS<br/>modal_and_epistemic_logic<br/>action_and_event_logics"]:::proposed
+  P43["Formal Language Foundations<br/>3 ECTS<br/>formal_languages_and_automata<br/>regular_languages_and_classification<br/>context_free_grammars"]:::proposed
+  P44["Programming Language Lexing and Parsing<br/>3 ECTS<br/>programming_language_syntax<br/>programming_language_lexing_parsing<br/>deterministic_parsing"]:::proposed
+  P45["Programming Language Semantics<br/>3 ECTS<br/>programming_language_syntax_semantics<br/>programming_language_semantics<br/>programming_language_semantics_2"]:::proposed
+  P46["Programming Language Runtime Implementation<br/>3 ECTS<br/>programming_language_runtime_environments<br/>programming_language_runtime_and_scoping<br/>abstract_machine_models"]:::proposed
+  P47["Compiler Foundations<br/>3 ECTS<br/>language_implementation_mechanisms<br/>programming_language_implementation_tools<br/>compiler_code_generation"]:::proposed
+  P48["Language Tooling and Generation<br/>2 ECTS<br/>programming_language_tooling_implementation<br/>domain_specific_languages_and_code_generation"]:::proposed
+  P49["Program Analysis and Virtual Machines<br/>2 ECTS<br/>static_program_analysis<br/>virtual_machines"]:::proposed
+  P50["Computing and Information Foundations<br/>3 ECTS<br/>computer_and_information_systems_foundations<br/>information_representation<br/>computer_history"]:::proposed
+  P51["Binary and Numeric Representation<br/>3 ECTS<br/>digital_binary_encoding<br/>digital_binary_numbers_and_arithmetic<br/>numeric_representation"]:::proposed
+  P52["Computer Architecture and Execution<br/>4 ECTS<br/>computer_architecture_foundations<br/>machine_languages_and_execution<br/>computer_instruction_fetch_cycle<br/>computer_hardware_components_and_production"]:::proposed
+  P53["Boolean and Combinational Logic<br/>3 ECTS<br/>boolean_logic_foundations<br/>combinational_logic_design<br/>digital_combinational_logic"]:::proposed
+  P54["Synchronous Sequential Logic<br/>3 ECTS<br/>sequential_logic_and_state_machines<br/>synchronous_sequential_logic<br/>digital_sequential_logic"]:::proposed
+  P55["Asynchronous Logic and Implementation Technologies<br/>2 ECTS<br/>asynchronous_sequential_logic<br/>digital_logic_implementation_technologies"]:::proposed
+  P56["Digital System Components and Design Flow<br/>2 ECTS<br/>digital_system_components<br/>verilog_digital_design_flow"]:::proposed
+  P57["Processor Architecture Foundations<br/>3 ECTS<br/>instruction_set_architecture<br/>instruction_set_and_processor_datapath<br/>high_level_to_assembly_mapping"]:::proposed
+  P58["Processor System Interfacing<br/>3 ECTS<br/>memory_and_io_system_interfacing<br/>system_buses_and_dma_io<br/>interrupt_systems"]:::proposed
+  P59["Processor Pipelining and Performance Measurement<br/>3 ECTS<br/>cpu_pipelining_and_control_hazards<br/>pipelining_and_hazards<br/>computer_performance"]:::proposed
+  P60["Advanced Processor Architecture and Design<br/>3 ECTS<br/>advanced_instruction_parallelism<br/>architecture_performance<br/>processor_architecture_design"]:::proposed
+  P61["Memory Systems<br/>3 ECTS<br/>memory_hierarchy_and_cache_organization<br/>intel_ia32_caches<br/>virtual_memory_management"]:::proposed
+  P62["IA32 Protection and Virtualization<br/>2 ECTS<br/>intel_ia32_protection_and_addressing<br/>processor_multithreading_and_virtualization"]:::proposed
+  P63["Parallel Systems<br/>2 ECTS<br/>shared_memory_multiprocessors<br/>parallel_computer_architectures"]:::proposed
+  P64["Reconfigurable and Fixed-Point Computing<br/>1 ECTS<br/>reconfigurable_and_fixed_point_computing"]:::proposed
+  P65["Operating Systems Foundations<br/>3 ECTS<br/>operating_system_foundations<br/>operating_systems_and_software_overview<br/>operating_system_kernel_and_shell"]:::proposed
+  P66["Operating Systems Processes and Interfaces<br/>3 ECTS<br/>processes_threads_and_cpu_scheduling<br/>system_calls<br/>interprocess_communication"]:::proposed
+  P67["Operating Systems Resource Management<br/>3 ECTS<br/>operating_system_memory_management<br/>operating_system_io_management<br/>operating_system_files_and_storage"]:::proposed
+  P68["Operating Systems Security and Scripting<br/>2 ECTS<br/>operating_system_protection_security<br/>shell_scripting"]:::proposed
+  P69["Concurrency Foundations<br/>3 ECTS<br/>concurrent_programming<br/>message_passing_models<br/>shared_memory_synchronization_and_liveness"]:::proposed
+  P70["Concurrent Programming Models<br/>3 ECTS<br/>shared_memory_concurrent_programming<br/>channel_based_concurrency<br/>actor_based_concurrency"]:::proposed
+  P71["Asynchronous and Reactive Programming<br/>3 ECTS<br/>java_task_concurrency<br/>asynchronous_control_flows<br/>reactive_programming"]:::proposed
+  P72["Parallel Computation<br/>3 ECTS<br/>parallel_computation_foundations<br/>parallel_performance_and_scalability<br/>simd_vector_programming"]:::proposed
+  P73["Parallel HPC Programming and Workload Management<br/>2 ECTS<br/>distributed_and_hybrid_parallel_programming<br/>hpc_workload_management"]:::proposed
+  P74["GPU Programming<br/>2 ECTS<br/>gpu_programming_foundations<br/>cuda_gpu_programming"]:::proposed
+  P75["Machine-Learning Workloads and Acceleration<br/>3 ECTS<br/>ml_workload_computation_and_parallelization<br/>ml_processor_isa_acceleration<br/>reconfigurable_and_fixed_point_computing"]:::proposed
+  P76["Networking Concepts and Layering<br/>3 ECTS<br/>computer_network_fundamentals<br/>network_protocols_introduction<br/>network_layered_architecture"]:::proposed
+  P77["Network Access and Architecture<br/>3 ECTS<br/>network_layered_architecture_2<br/>physical_and_radio_transmission<br/>link_layer_networking"]:::proposed
+  P78["IP Networks and Addressing<br/>3 ECTS<br/>network_address_resolution<br/>internet_network_operations<br/>ip_addressing_and_network_design"]:::proposed
+  P79["Internetworking and Transport<br/>3 ECTS<br/>internetworking<br/>transport_layer_protocols<br/>reliable_network_communication"]:::proposed
+  P80["Internet Application Foundations<br/>4 ECTS<br/>internet_and_web_basics<br/>internet_applications<br/>internet_application_protocols<br/>domain_name_systems"]:::proposed
+  P81["Client-Server Programming<br/>3 ECTS<br/>client_server_tcp_ip_applications<br/>network_socket_programming"]:::proposed
+  P82["Network Service Architectures<br/>3 ECTS<br/>network_service_models_and_applications<br/>peer_to_peer_file_sharing<br/>group_communication"]:::proposed
+  P83["Network Quality of Service<br/>3 ECTS<br/>transport_and_network_qos"]:::proposed
+  P84["Wireless Networking Foundations and Radio Engineering<br/>2 ECTS<br/>wireless_networking_foundations<br/>wireless_radio_engineering"]:::proposed
+  P85["Wireless LAN, Bluetooth, and Access Technologies<br/>3 ECTS<br/>ieee_80211_wireless_networking<br/>bluetooth_networking<br/>wireless_access_and_zigbee"]:::proposed
+  P86["Cellular Mobility and Mobile IP<br/>2 ECTS<br/>cellular_mobility_management<br/>mobile_ip_networking"]:::proposed
+  P87["Mobile Ad Hoc Networks and Mobile Execution<br/>3 ECTS<br/>mobile_ad_hoc_network_routing<br/>mobile_positioning_and_pervasive_features<br/>wireless_mobile_execution"]:::proposed
+  P88["Network Operations Foundations<br/>4 ECTS<br/>network_switching_and_virtual_networks<br/>linux_network_administration<br/>network_monitoring_and_troubleshooting<br/>network_protocol_analysis"]:::proposed
+  P89["Virtualized Network Management<br/>3 ECTS<br/>netconf_network_management<br/>network_function_virtualization<br/>network_virtualization_linux"]:::proposed
+  P90["Programmable Networking<br/>3 ECTS<br/>software_defined_networking_concepts<br/>openflow_programmable_networking<br/>p4_data_plane_programming"]:::proposed
+  P91["Distributed Systems Foundations<br/>3 ECTS<br/>distributed_systems_fundamentals<br/>distributed_communication<br/>distributed_architectures"]:::proposed
+  P92["Distributed Systems Programming Models<br/>3 ECTS<br/>distributed_coordination_models<br/>distributed_data_serialization<br/>remote_procedure_call"]:::proposed
+  P93["Distributed Systems Coordination Algorithms<br/>3 ECTS<br/>distributed_algorithms<br/>distributed_ordering_and_consensus<br/>distributed_consistency_and_replication"]:::proposed
+  P94["Distributed Systems Services and Dependability<br/>3 ECTS<br/>distributed_dependability_and_qos<br/>distributed_file_systems<br/>distributed_systems_resources_and_naming"]:::proposed
+  P95["Virtual Systems Foundations<br/>3 ECTS<br/>virtuality_foundations<br/>virtual_system_components<br/>block_storage"]:::proposed
+  P96["Cloud Computing Foundations<br/>3 ECTS<br/>cloud_computing<br/>cloud_service_models<br/>cloud_infrastructure_architecture"]:::proposed
+  P97["Container Virtualization and Service Orchestration<br/>3 ECTS<br/>container_virtualization<br/>docker_api<br/>cloud_service_orchestration"]:::proposed
+  P98["Cloud Service Deployment and Configuration<br/>3 ECTS<br/>cloud_service_deployment_and_migration<br/>infrastructure_configuration_automation<br/>centralized_configuration_management"]:::proposed
+  P99["Database Concepts and Conceptual Modelling<br/>3 ECTS<br/>database_concepts<br/>database_management_systems<br/>conceptual_information_system_modelling"]:::proposed
+  P100["Relational Modelling and Query Languages<br/>3 ECTS<br/>relational_model_and_schema_design<br/>relational_database_keys<br/>formal_relational_query_languages"]:::proposed
+  P101["Relational DBMS and SQL<br/>3 ECTS<br/>relational_dbms_architecture_and_functionality<br/>sql_data_definition_and_queries<br/>sql_access_control"]:::proposed
+  P102["Transactions, Storage and Query Performance<br/>3 ECTS<br/>database_transaction_management<br/>physical_database_storage_and_access_methods<br/>relational_query_processing_and_performance"]:::proposed
+  P103["NoSQL Data Models<br/>3 ECTS<br/>data_models_and_sql_limits<br/>nosql_data_models_and_architectures<br/>nosql_data_models"]:::proposed
+  P104["NoSQL Design and Querying<br/>3 ECTS<br/>nosql_data_design_and_architecture<br/>nosql_querying<br/>mongodb_laboratory"]:::proposed
+  P105["Relational Database Systems<br/>4 ECTS<br/>active_relational_databases<br/>relational_database_administration<br/>database_application_access_modalities<br/>database_data_exchange"]:::proposed
+  P106["Enterprise Data Management<br/>3 ECTS<br/>enterprise_systems_and_categories<br/>enterprise_data_integration_and_master_data<br/>enterprise_data_governance_and_strategy"]:::proposed
+  P107["Data Warehouse Design<br/>2 ECTS<br/>data_warehouse_and_olap<br/>data_warehouse_design_and_etl"]:::proposed
+  P108["Business Intelligence Reporting<br/>3 ECTS<br/>business_intelligence_foundations<br/>business_intelligence_report_development<br/>business_intelligence_tool_reporting"]:::proposed
+  P109["Advanced Query Processing<br/>2 ECTS<br/>ranked_and_skyline_query_processing<br/>spatial_data_indexing"]:::proposed
+  P110["Web Basics<br/>4 ECTS<br/>web_foundations_http_uris<br/>web_browser_server_foundations<br/>web_applications_basics<br/>web_evolution"]:::proposed
+  P111["Web Content and Standards<br/>3 ECTS<br/>web_markup_styling_and_content_types<br/>web_character_encodings<br/>web_standards_and_standardization"]:::proposed
+  P112["Web Data and Architectures<br/>3 ECTS<br/>json_data_representation<br/>xml_document_processing<br/>web_architectures_and_stacks"]:::proposed
+  P113["JavaScript Foundations for Web Programming<br/>3 ECTS<br/>javascript_programming<br/>javascript_prototype_object_models<br/>client_side_web_programming"]:::proposed
+  P114["Client-Side Web Frameworks<br/>3 ECTS<br/>client_side_web_frameworks<br/>single_page_react_apps<br/>web_development_tooling_and_language_extensions"]:::proposed
+  P115["Node.js and Full-Stack JavaScript<br/>3 ECTS<br/>nodejs_server_side_web_development<br/>nodejs_asynchronous_web_servers<br/>full_stack_javascript"]:::proposed
+  P116["Server-Side Web Development Languages<br/>3 ECTS<br/>php_web_application_development<br/>python_server_side_web_development<br/>java_server_side_web_programming"]:::proposed
+  P117["Web Application Architecture Foundations<br/>3 ECTS<br/>web_application_architecture_and_state<br/>web_application_architectural_patterns<br/>web_application_modeling"]:::proposed
+  P118["Web Service API Development<br/>3 ECTS<br/>rest_web_apis<br/>web_services_and_api_documentation<br/>asynchronous_web_workflows"]:::proposed
+  P119["Web Protocols and Platform Infrastructure<br/>2 ECTS<br/>modern_web_protocols<br/>ecommerce_platform_infrastructure"]:::proposed
+  P120["Spring Application Development<br/>2 ECTS<br/>spring_container_programming<br/>spring_boot_application_development"]:::proposed
+  P121["Requirements, Domain Modeling, and Software Lifecycle<br/>3 ECTS<br/>requirements_analysis<br/>domain_modeling<br/>software_lifecycle_activities"]:::proposed
+  P122["Software Development Methodologies and Agile Practice<br/>3 ECTS<br/>software_development_methodologies<br/>agile_software_development<br/>agile_scrum"]:::proposed
+  P123["Software Architecture and Frameworks<br/>3 ECTS<br/>software_architecture_foundations<br/>software_architecture_styles<br/>software_frameworks"]:::proposed
+  P124["Software Quality, Testing, and Version Control<br/>3 ECTS<br/>software_quality_assurance<br/>software_testing_fundamentals<br/>version_control_fundamentals"]:::proposed
+  P125["Version Control and Code Quality<br/>3 ECTS<br/>distributed_version_control<br/>clean_code_and_refactoring"]:::proposed
+  P126["Software Testing Practices<br/>3 ECTS<br/>unit_testing_and_test_driven_development<br/>integration_and_acceptance_testing<br/>behavior_driven_development"]:::proposed
+  P127["Build and Continuous Integration<br/>2 ECTS<br/>build_continuous_integration_and_devops<br/>software_quality_and_release_automation"]:::proposed
+  P128["Versioning and Release Conventions<br/>1 ECTS<br/>software_versioning_and_release_conventions"]:::proposed
+  P129["Secure Service Lifecycle<br/>2 ECTS<br/>secure_service_delivery_practices<br/>service_lifecycle"]:::proposed
+  P130["Architecture Design<br/>3 ECTS<br/>advanced_architectural_patterns<br/>domain_driven_design<br/>hexagonal_software_architecture"]:::proposed
+  P131["Service Architectures<br/>3 ECTS<br/>microservice_architectures<br/>service_oriented_computing<br/>service_protocols"]:::proposed
+  P132["Event and Messaging Architectures<br/>3 ECTS<br/>event_driven_architectures<br/>event_publish_subscribe_systems<br/>message_oriented_middleware"]:::proposed
+  P133["Service Integration and Architecture Evolution<br/>3 ECTS<br/>service_choreographies<br/>enterprise_messaging_integration<br/>architecture_evolution_and_documentation"]:::proposed
+  P134["HCI Foundations and Interaction Concept Design<br/>3 ECTS<br/>human_centered_interaction_foundations<br/>interaction_models_and_mental_models<br/>interaction_concept_design"]:::proposed
+  P135["User Research and Usability Design<br/>3 ECTS<br/>user_research_and_design_context<br/>user_research_and_experience_mapping<br/>usability_design_and_evaluation"]:::proposed
+  P136["Interaction Paradigms, Prototyping, and Evaluation<br/>3 ECTS<br/>interaction_paradigms<br/>interactive_prototyping<br/>interaction_evaluation_methods"]:::proposed
+  P137["Web, Mobile, and Complex-System UX<br/>3 ECTS<br/>web_and_mobile_usability<br/>human_computer_interaction_for_web<br/>ux_for_complex_systems"]:::proposed
+  P138["Mobile Application Development: Foundations and Design<br/>3 ECTS<br/>mobile_technology_foundations<br/>mobile_operating_systems<br/>mobile_application_design"]:::proposed
+  P139["Mobile Application Development: Android Foundations<br/>3 ECTS<br/>android_development_setup<br/>android_application_foundations<br/>mobile_application_architecture_patterns"]:::proposed
+  P140["Mobile Application Development: Android User Interfaces<br/>3 ECTS<br/>android_classic_ui<br/>android_compose_ui<br/>android_screen_navigation"]:::proposed
+  P141["Mobile Application Development: Android Data and Execution<br/>3 ECTS<br/>android_data_management<br/>android_background_execution<br/>mobile_application_debugging"]:::proposed
+  P142["iOS Development Foundations<br/>2 ECTS<br/>ios_development_setup_and_swift<br/>ios_platform_architecture"]:::proposed
+  P143["iOS User Interface Development<br/>2 ECTS<br/>ios_uikit_interaction<br/>ios_swiftui"]:::proposed
+  P144["iOS Application Services<br/>3 ECTS<br/>ios_data_management<br/>ios_multitasking_and_application_development<br/>mobile_networking_services"]:::proposed
+  P145["Cross-Platform Mobile Development<br/>3 ECTS<br/>cross_platform_and_hybrid_mobile_development<br/>kotlin_programming<br/>kotlin_multiplatform_development"]:::proposed
+  P146["Personal and Cybersecurity Basics<br/>3 ECTS<br/>basic_it_security_and_malware<br/>personal_and_internet_security<br/>cybersecurity_concepts_and_postures"]:::proposed
+  P147["Cryptographic Principles<br/>3 ECTS<br/>cryptographic_security_goals<br/>cryptography_theoretical_foundations<br/>modular_arithmetic_for_cryptography"]:::proposed
+  P148["Symmetric Cryptographic Mechanisms<br/>3 ECTS<br/>symmetric_cryptography<br/>cryptographic_hash_functions<br/>cryptographic_randomness"]:::proposed
+  P149["Public-Key Cryptography and Trust<br/>3 ECTS<br/>public_key_cryptography_and_signatures<br/>cryptographic_key_management_and_trust<br/>cryptographic_protocols_and_pgp"]:::proposed
+  P150["Cybersecurity Operations: Security Controls<br/>3 ECTS<br/>authentication_and_authorization<br/>network_security_mechanisms<br/>system_data_and_physical_protection"]:::proposed
+  P151["Cybersecurity Operations: Defensive Architecture<br/>3 ECTS<br/>application_security<br/>network_security_protection<br/>modern_cybersecurity_strategies"]:::proposed
+  P152["Cybersecurity Operations: Security Assessment<br/>3 ECTS<br/>attack_lifecycle_and_security_testing<br/>vulnerability_assessment_and_exploitation<br/>system_and_application_exploitation"]:::proposed
+  P153["Cybersecurity Operations: Governance and Incident Response<br/>3 ECTS<br/>cybersecurity_governance_risk_and_assurance<br/>threat_intelligence_and_incident_operations<br/>incident_and_crisis_management"]:::proposed
+  P154["Statistical Foundations<br/>3 ECTS<br/>descriptive_statistics<br/>descriptive_statistics_2<br/>inferential_statistics_and_probability"]:::proposed
+  P155["Study Design, Sampling, and Simulation<br/>3 ECTS<br/>statistical_sampling_and_data_interpretation<br/>study_design_and_measurement_quality<br/>probability_and_stochastic_simulation"]:::proposed
+  P156["Data Preparation and Mining Methods<br/>3 ECTS<br/>data_quality_preprocessing_outliers<br/>similarity_and_dissimilarity<br/>data_analytics_methods_and_types"]:::proposed
+  P157["Data Pipelines, Models, and Communication<br/>3 ECTS<br/>data_analysis_pipeline_and_models<br/>data_visualization<br/>data_storytelling"]:::proposed
+  P158["Machine Learning Modeling Foundations<br/>3 ECTS<br/>machine_learning_foundations<br/>machine_learning_modeling_foundations<br/>model_evaluation_and_selection"]:::proposed
+  P159["Supervised Learning Models<br/>3 ECTS<br/>classification_foundations<br/>regression_models<br/>probabilistic_and_linear_classification"]:::proposed
+  P160["Advanced Classification Methods<br/>3 ECTS<br/>distance_and_margin_classification<br/>tree_based_classification<br/>ensemble_learning_methods"]:::proposed
+  P161["Clustering and Dimensionality Reduction<br/>3 ECTS<br/>core_clustering_methods<br/>advanced_clustering_methods<br/>principal_component_analysis"]:::proposed
+  P162["Introduction to Deep Learning<br/>3 ECTS<br/>neural_networks<br/>neural_network_basics<br/>neural_networks_and_deep_learning"]:::proposed
+  P163["Deep Learning Training Foundations<br/>3 ECTS<br/>deep_learning_mathematical_foundations<br/>deep_learning_differentiation_and_optimization<br/>deep_learning_regularization_and_augmentation"]:::proposed
+  P164["Deep Learning for Computer Vision<br/>3 ECTS<br/>convolutional_network_components<br/>convolutional_network_architectures<br/>deep_learning_interpretability_and_robustness"]:::proposed
+  P165["Deep Learning Sequence Models<br/>3 ECTS<br/>recurrent_neural_networks<br/>lstm_recurrent_networks<br/>transformer_architectures"]:::proposed
+  P166["Natural Language Processing Foundations<br/>3 ECTS<br/>nlp_fundamentals<br/>computational_linguistics_foundations<br/>text_tokenization"]:::proposed
+  P167["Natural Language Processing Representations<br/>3 ECTS<br/>text_representation_language_models<br/>word_embeddings<br/>contextual_word_embeddings"]:::proposed
+  P168["Natural Language Processing Text Models<br/>3 ECTS<br/>statistical_language_models<br/>text_classification<br/>text_retrieval"]:::proposed
+  P169["Natural Language Processing Text Mining<br/>3 ECTS<br/>opinion_mining<br/>topic_modeling<br/>nlp_implementation_tools"]:::proposed
+  P170["Language Model Prompting and Generation<br/>3 ECTS<br/>large_language_models<br/>llm_generation_prompting<br/>prompting_language_models"]:::proposed
+  P171["Large Language Model Development and Agents<br/>4 ECTS<br/>llm_training_adaptation<br/>llm_scaling_moe_architectures<br/>llm_actions_agents<br/>retrieval_augmented_generation"]:::proposed
+  P172["Generative Neural Models<br/>3 ECTS<br/>generative_ai_models<br/>generative_neural_models<br/>diffusion_modeling"]:::proposed
+  P173["Computer Vision Image Foundations<br/>3 ECTS<br/>computer_vision_foundations<br/>image_acquisition_and_sampling<br/>color_models_for_image_processing"]:::proposed
+  P174["Computer Vision Image Processing<br/>3 ECTS<br/>image_filtering_and_edges<br/>image_thresholding_morphology_topology<br/>hough_shape_detection"]:::proposed
+  P175["Computer Vision Geometry and Features<br/>3 ECTS<br/>camera_geometry_and_calibration<br/>local_features_and_matching<br/>bag_of_visual_words"]:::proposed
+  P176["Computer Vision Recognition and Depth<br/>3 ECTS<br/>image_classification_and_transfer<br/>object_recognition_detection_tracking<br/>stereo_and_monocular_depth"]:::proposed
+  P177["Deep Computer Vision Foundations<br/>3 ECTS<br/>neural_image_transformation<br/>visual_representation_and_metric_learning<br/>vision_attention_and_transformers"]:::proposed
+  P178["Deep Computer Vision Scene Understanding<br/>2 ECTS<br/>deep_object_detection<br/>deep_image_segmentation"]:::proposed
+  P179["Deep Computer Vision and Language<br/>2 ECTS<br/>vision_language_models<br/>vision_language_captioning"]:::proposed
+  P180["Efficient Deep Computer Vision Models<br/>2 ECTS<br/>efficient_neural_model_design<br/>efficient_transformer_deployment"]:::proposed
+  P181["Graph Machine Learning<br/>1 ECTS<br/>graph_machine_learning"]:::proposed
+  P182["Artificial Intelligence Problem Solving Foundations<br/>3 ECTS<br/>ai_foundations<br/>ai_problem_formulation<br/>ai_problem_solving"]:::proposed
+  P183["Artificial Intelligence Search and Constraints<br/>3 ECTS<br/>ai_search_fundamentals<br/>adversarial_search<br/>constraint_satisfaction_methods"]:::proposed
+  P184["Knowledge Representation for Artificial Intelligence<br/>2 ECTS<br/>knowledge_representation_foundations<br/>ai_knowledge_representation"]:::proposed
+  P185["Intelligent Agents and Planning<br/>2 ECTS<br/>intelligent_systems_and_agents<br/>ai_planning_fundamentals"]:::proposed
+  P186["Artificial Intelligence Ethics and Safety<br/>2 ECTS<br/>ai_epistemology_and_ethics<br/>ai_safety_and_alignment"]:::proposed
+  P187["Semantic Web and Knowledge Graph Foundations<br/>3 ECTS<br/>semantic_web_and_web_of_data<br/>rdf_web_metadata<br/>knowledge_graph_foundations_and_linked_data"]:::proposed
+  P188["Ontology Modeling and Description Logics<br/>3 ECTS<br/>description_logics<br/>owl_ontology_modeling<br/>ontology_engineering_methods"]:::proposed
+  P189["Knowledge Graph Querying, Inference, and Search<br/>3 ECTS<br/>sparql_knowledge_graph_querying<br/>logical_inference_over_semantic_representations<br/>semantic_search"]:::proposed
+  P190["Knowledge Graph Development and Enrichment<br/>3 ECTS<br/>knowledge_extraction_methods<br/>knowledge_graph_development_and_analytics<br/>knowledge_graph_integration_and_completion"]:::proposed
+  P191["Agent Systems<br/>3 ECTS<br/>autonomous_agent_systems<br/>multi_agent_systems<br/>agent_frameworks"]:::proposed
+  P192["Agent Programming and Coordination<br/>2 ECTS<br/>intentional_agent_programming<br/>multi_agent_artifacts_and_coordination"]:::proposed
+  P193["Reinforcement Learning Foundations<br/>2 ECTS<br/>reinforcement_learning_foundations<br/>reinforcement_learning_methods"]:::proposed
+  P194["Advanced Reinforcement Learning<br/>2 ECTS<br/>advanced_reinforcement_learning_methods<br/>deep_reinforcement_learning"]:::proposed
+  P195["Autonomous Mobile Robotics<br/>3 ECTS<br/>robotics_ai_foundations<br/>robot_path_planning_and_navigation<br/>autonomous_mobile_robot_applications"]:::proposed
+  P196["Constraint Programming Foundations<br/>3 ECTS<br/>constraint_programming_foundations<br/>constraint_propagation_and_global_constraints<br/>minizinc_constraint_modeling"]:::proposed
+  P197["Constraint Programming Search and Scheduling<br/>2 ECTS<br/>constraint_programming_search<br/>constraint_optimization_and_scheduling"]:::proposed
+  P198["SAT and Satisfiability Modulo Theories<br/>3 ECTS<br/>sat_foundations_and_encodings<br/>conflict_driven_sat_solving<br/>satisfiability_modulo_theories"]:::proposed
+  P199["Optimization Modeling and Methods<br/>4 ECTS<br/>linear_and_integer_programming<br/>combinatorial_optimization_modeling<br/>search_optimization_methods<br/>swarm_optimization"]:::proposed
+  P200["Big Data Foundations and Data Platform Architectures<br/>3 ECTS<br/>big_data_foundations<br/>big_data_management<br/>big_data_data_platform_architectures"]:::proposed
+  P201["Hadoop and MapReduce Processing<br/>3 ECTS<br/>big_data_cluster_architectures<br/>hadoop_big_data_processing<br/>mapreduce_programming"]:::proposed
+  P202["Spark and Online Big Data Processing<br/>3 ECTS<br/>spark_big_data_processing<br/>spark_data_processing_machine_learning<br/>online_stream_processing"]:::proposed
+  P203["Big Data Storage, Cloud, and Mining Infrastructure<br/>3 ECTS<br/>big_data_storage_and_streaming_algorithms<br/>cloud_big_data_deployment<br/>data_mining_infrastructure"]:::proposed
+  P204["Data Mining Foundations<br/>3 ECTS<br/>data_mining_overview_and_process<br/>data_mining_data_understanding<br/>feature_engineering_extraction"]:::proposed
+  P205["Data Mining Methods and Tools<br/>3 ECTS<br/>association_rule_mining<br/>weka_data_mining_practice<br/>business_data_and_machine_learning_tools"]:::proposed
+  P206["Graph Analytics and Machine Learning<br/>3 ECTS<br/>graph_machine_learning<br/>graph_based_data_analysis<br/>algorithm_selection_configuration"]:::proposed
+  P207["Operational Analytics and Time-Series Forecasting<br/>3 ECTS<br/>operational_planning_and_performance<br/>time_series_analysis<br/>statistical_time_series_forecasting"]:::proposed
+  P208["Embedded Systems Foundations and Firmware<br/>3 ECTS<br/>embedded_systems_foundations<br/>embedded_execution_models<br/>embedded_firmware_foundations"]:::proposed
+  P209["IoT Foundations, Devices, and Sensing<br/>3 ECTS<br/>iot_system_foundations<br/>iot_devices_and_platform_environments<br/>iot_sensing_and_smart_sensors"]:::proposed
+  P210["Embedded IoT Applications and Interfaces<br/>3 ECTS<br/>embedded_iot_application_development<br/>embedded_device_drivers<br/>embedded_sensor_connectivity"]:::proposed
+  P211["IoT Networks and the Web of Things<br/>3 ECTS<br/>embedded_system_networks<br/>iot_communication_protocols_and_routing<br/>web_of_things_foundations"]:::proposed
+  P212["Real-Time Scheduling Foundations<br/>3 ECTS<br/>realtime_systems_foundations<br/>realtime_task_models<br/>hard_realtime_scheduling"]:::proposed
+  P213["Advanced Real-Time Scheduling and RTOS Concepts<br/>3 ECTS<br/>aperiodic_realtime_scheduling<br/>realtime_resource_access_protocols<br/>rtos_architecture_and_scheduling"]:::proposed
+  P214["RTOS Platform Programming<br/>3 ECTS<br/>real_time_os_platforms<br/>rtos_memory_communication_and_timing<br/>esp32_freertos_programming"]:::proposed
+  P215["Cyber-Physical IoT and Security<br/>3 ECTS<br/>esp32_idf_iot_programming<br/>cps_firmware_security<br/>cps_middleware_and_communication"]:::proposed
+  P216["Health Informatics Data and Research Governance<br/>3 ECTS<br/>health_informatics_and_telemedicine<br/>healthcare_data_management<br/>digital_health_research_governance"]:::proposed
+  P217["Clinical Information, Records and Archiving<br/>3 ECTS<br/>clinical_information_system_architecture<br/>electronic_health_records_and_networks<br/>medical_document_and_data_archiving"]:::proposed
+  P218["Medical Devices and Connected Health Systems<br/>3 ECTS<br/>medical_devices<br/>medical_device_and_software_regulation<br/>connected_personal_health_systems"]:::proposed
+  P219["Digital Health Interventions and Outcomes<br/>3 ECTS<br/>digital_health_foundations_and_future_context<br/>digital_health_interventions_and_engagement<br/>digital_health_effectiveness_and_outcomes"]:::proposed
+  P220["Digital Humanities Data and Resource Design<br/>3 ECTS<br/>digital_humanities_data_projects<br/>humanities_data_lifecycle_and_databases<br/>digital_cultural_heritage_resource_design"]:::proposed
+  P221["Text and Document Digitization<br/>3 ECTS<br/>humanities_text_digitization<br/>digitization_guidelines_and_specifications<br/>document_image_acquisition_and_processing"]:::proposed
+  P222["Three-Dimensional Capture and Reconstruction<br/>3 ECTS<br/>archaeological_digital_surveying_and_capture<br/>point_cloud_to_3d_models<br/>virtual_archaeological_reconstruction_and_restoration"]:::proposed
+  P223["Digital Cultural-Heritage Communication<br/>3 ECTS<br/>digital_images_for_cultural_heritage<br/>cultural_heritage_digital_communication<br/>cultural_heritage_digital_media"]:::proposed
+  P224["Digital Graphics and Layout<br/>3 ECTS<br/>digital_graphics_and_image_formats<br/>raster_graphics<br/>vector_graphics_and_layout"]:::proposed
+  P225["Digital Photography and Image-Based Modeling<br/>2 ECTS<br/>digital_photography<br/>image_based_modeling"]:::proposed
+  P226["Multimedia Content Representation and Exploration<br/>2 ECTS<br/>multimedia_content_representation_and_management<br/>multimedia_exploration_and_visualization"]:::proposed
+  P227["Multimedia Retrieval and Semantic Annotation<br/>2 ECTS<br/>multimedia_retrieval<br/>multimedia_semantic_annotation"]:::proposed
+  P228["XR Foundations, Platforms and Content Design<br/>3 ECTS<br/>xr_foundations<br/>xr_graphics_and_runtime_platforms<br/>xr_interaction_and_content_design"]:::proposed
+  P229["Digital Strategy and Innovation<br/>3 ECTS<br/>information_systems_strategy_and_architecture<br/>digital_business_discovery_and_design<br/>digital_innovation_business_justification"]:::proposed
+  P230["Information-System Initiative Evaluation<br/>3 ECTS<br/>feasibility_studies<br/>information_system_cost_benefit_analysis<br/>risk_analysis"]:::proposed
+  P231["Business Process Transformation<br/>2 ECTS<br/>business_process_modeling_bpmn<br/>business_process_reengineering"]:::proposed
+  P232["Project Planning Foundations<br/>2 ECTS<br/>project_management_foundations<br/>project_scope_and_quality_management"]:::proposed
+  P233["Project Risk and Control<br/>2 ECTS<br/>project_risk_management<br/>project_schedule_cost_and_resource_management"]:::proposed
+  P234["Digital Document Foundations<br/>3 ECTS<br/>productivity_software_overview<br/>word_processing_and_document_archiving<br/>file_formats"]:::proposed
+  P235["Spreadsheet and Command-Line Tools<br/>3 ECTS<br/>spreadsheet_fundamentals<br/>spreadsheet_data_reporting<br/>command_line_environment"]:::proposed
+  P236["Digital Communication and Research<br/>3 ECTS<br/>presentation_creation_formatting<br/>digital_collaboration_and_email<br/>web_search_engines"]:::proposed
+  P237["Scholarly Document Authoring<br/>3 ECTS<br/>bibliography_management<br/>latex_document_authoring<br/>latex_and_overleaf_authoring"]:::proposed
+  P238["Reliable Service Design<br/>3 ECTS<br/>availability_and_scalability_foundations<br/>scalable_reliable_service_architecture<br/>service_outage_analysis"]:::proposed
+  P239["Service Monitoring and Performance<br/>2 ECTS<br/>operational_monitoring<br/>service_performance_evaluation"]:::proposed
+  P240["Linux Operations Administration<br/>2 ECTS<br/>linux_operations_automation<br/>unix_accounts_and_permissions"]:::proposed
+  P241["Service Operations Management<br/>3 ECTS<br/>service_maturity_assessment<br/>service_change_management<br/>service_organization_and_complexity"]:::proposed
+  P242["Windows and Linux Systems Foundations<br/>3 ECTS<br/>linux_kernel_case_study<br/>windows_file_management<br/>windows_linux_integration"]:::proposed
+  P243["Identity Services and Single Sign-On<br/>3 ECTS<br/>identity_management_foundations<br/>directory_and_sso_authentication<br/>federated_authentication_and_single_sign_on"]:::proposed
+  P244["Secure Remote Connectivity<br/>2 ECTS<br/>network_traversal_and_proxying<br/>secure_network_and_remote_protocols"]:::proposed
+  P245["Enterprise Application Platforms<br/>3 ECTS<br/>enterprise_java_component_services<br/>enterprise_persistence_access<br/>enterprise_application_server_operations"]:::proposed
+  P246["Cloud Function Platforms<br/>2 ECTS<br/>function_as_a_service<br/>cloud_solution_selection_and_costing"]:::proposed
+  P247["Distributed Service and Session Integration<br/>3 ECTS<br/>industrial_software_communication<br/>service_discovery<br/>sip_and_ims_session_management"]:::proposed
+  P248["UML Foundations and Textual Diagram Generation<br/>3 ECTS<br/>uml_software_modeling<br/>uml_requirements_and_structural_modeling<br/>textual_uml_generation"]:::proposed
+  P249["UML Behaviour and Architecture Modelling<br/>2 ECTS<br/>uml_behavior_and_interaction_modeling<br/>uml_architecture_modeling"]:::proposed
+  P250["Software Distribution, Licensing, and Performance<br/>3 ECTS<br/>software_licensing<br/>python_dependency_and_package_distribution<br/>software_performance_engineering"]:::proposed
+  P251["Mobile Systems Architecture<br/>2 ECTS<br/>mobile_middleware_architecture<br/>web_mobile_system_architectures"]:::proposed
+  P252["Mobile Communication and Data Services<br/>2 ECTS<br/>mobile_messaging<br/>mobile_data_synchronization"]:::proposed
+  P253["Mobile Application Development and Multimedia<br/>3 ECTS<br/>web_mobile_development_tools<br/>android_camera_integration<br/>mobile_multimedia_management"]:::proposed
+  P254["Mobile Embedded Systems and Robotics<br/>2 ECTS<br/>mobile_embedded_system_integration<br/>differential_drive_robot_applications"]:::proposed
+  P255["Open RAN Architectures<br/>1 ECTS<br/>open_ran_architectures"]:::proposed
+  P256["Concurrent System Verification Foundations<br/>3 ECTS<br/>concurrent_system_visual_models<br/>concurrent_system_models_and_temporal_logic<br/>ccs_and_structural_operational_semantics"]:::proposed
+  P257["Concurrency Theory<br/>3 ECTS<br/>process_algebraic_concurrency<br/>concurrency_behavioral_equivalences<br/>concurrency_modal_logics"]:::proposed
+  P258["Concurrent Properties and Distributed Computability<br/>2 ECTS<br/>temporal_properties_and_model_checking<br/>distributed_computability_and_impossibility"]:::proposed
+  P259["Applied Data Science Foundations<br/>3 ECTS<br/>data_science_concepts_and_data_types<br/>data_science_workflow<br/>data_science_development_tools"]:::proposed
+  P260["Applied Data Science Learning Foundations<br/>3 ECTS<br/>foundational_supervised_models<br/>learning_theory<br/>computational_learning_theory"]:::proposed
+  P261["Applied Data Science Machine Learning Practice<br/>3 ECTS<br/>classification_models_python<br/>scikit_learn_machine_learning_workflow<br/>model_cross_validation"]:::proposed
+  P262["Applied Data Science Data Access and Visualization<br/>3 ECTS<br/>scientific_data_catalogs_formats<br/>financial_data_programming<br/>seaborn_data_visualization"]:::proposed
+  P263["Fashion Data Science<br/>3 ECTS<br/>fashion_data_science_applications<br/>fashion_ecommerce_applications<br/>digital_media_economics_and_industry"]:::proposed
+  P264["Digital Culture and Rights<br/>3 ECTS<br/>digital_paradigm_and_societal_impacts<br/>social_implications_of_it<br/>digital_rights_and_intellectual_property"]:::proposed
+  P265["Digital Intelligence and Transformation<br/>3 ECTS<br/>digital_intelligence_data_and_memory<br/>digital_text_analysis<br/>digital_transformation"]:::proposed
+  P266["Decision Systems and AI Agents<br/>3 ECTS<br/>automatic_decision_systems_and_monitoring<br/>digital_decision_making_and_forecasting<br/>generative_ai_and_business_agents"]:::proposed
+  P267["Health Systems and Medical Informatics<br/>3 ECTS<br/>healthcare_delivery_and_payer_systems<br/>italian_health_system<br/>medical_informatics_software"]:::proposed
+  P268["Clinical Data Analysis and Presentations<br/>2 ECTS<br/>clinical_spreadsheet_data_analysis<br/>research_data_presentations"]:::proposed
+  P269["Clinical Workflows, Classification, and Digital Health Cases<br/>3 ECTS<br/>clinical_workflow_administration<br/>healthcare_classification_and_indicators<br/>digital_health_case_studies"]:::proposed
+  P270["Neurophysiology Information Processing<br/>3 ECTS<br/>neurophysiology_information_systems<br/>eeg_acquisition_visualization_storage<br/>eeg_digital_signal_processing"]:::proposed
+  P271["Geospatial Information Systems Foundations<br/>2 ECTS<br/>cartographic_and_gis_foundations<br/>cartographic_projections_and_georeferencing"]:::proposed
+  P272["Geospatial Data and Location Applications<br/>3 ECTS<br/>geospatial_data_management_and_analysis<br/>location_aware_applications<br/>spatial_data_privacy"]:::proposed
+  P273["Context-Aware Systems<br/>3 ECTS<br/>context_aware_systems_and_data<br/>context_aware_edge_workload_allocation<br/>supervised_activity_recognition"]:::proposed
+  P274["Context-Aware Activity Systems<br/>3 ECTS<br/>human_activity_recognition<br/>digital_twins_in_simulation<br/>smart_spaces_and_iot_identification"]:::proposed
+  P275["Open Science Foundations and Infrastructures<br/>2 ECTS<br/>open_science_and_open_access<br/>open_research_infrastructures"]:::proposed
+  P276["Open Research Workflows<br/>3 ECTS<br/>open_methods_and_reproducibility<br/>fair_open_data<br/>open_source_research_software"]:::proposed
+  P277["Open Scholarly Communication<br/>2 ECTS<br/>open_peer_review_and_metrics<br/>semantic_publishing"]:::proposed
+  P278["Cybersecurity Contexts and Wireless Security<br/>3 ECTS<br/>ai_enabled_cybersecurity<br/>societal_and_conflict_cybersecurity<br/>wireless_network_security"]:::proposed
+  P279["Anonymity and Cryptographic Security<br/>4 ECTS<br/>tor_and_dark_web_security<br/>formal_cryptographic_protocol_analysis<br/>post_quantum_cryptography<br/>blockchain_security_and_anonymity"]:::proposed
+  P280["Digital Forensics Foundations and Acquisition<br/>2 ECTS<br/>digital_forensics_foundations_and_evidence<br/>digital_forensics_acquisition_and_tools"]:::proposed
+  P281["Digital Forensics Analysis and Reporting<br/>3 ECTS<br/>digital_forensics_endpoint_and_file_analysis<br/>digital_forensics_network_cloud_and_communications<br/>digital_forensics_findings_and_testimony"]:::proposed
+  P282["Blockchain Foundations and Platforms<br/>2 ECTS<br/>blockchain_and_cryptocurrency_foundations<br/>blockchain_platforms"]:::proposed
+  P283["Blockchain Transactions, Contracts, and Production Modelling<br/>2 ECTS<br/>blockchain_transactions_and_contracts<br/>production_and_product_modelling"]:::proposed
+  P284["IoT Platform and Device Programming<br/>3 ECTS<br/>atlas_soda_iot_architectures<br/>soda_iot_application_design<br/>arduino_uno_programming"]:::proposed
+  P285["IoT Edge Intelligence and Data<br/>3 ECTS<br/>edge_and_fog_computing<br/>edge_ai_tinyml<br/>iot_time_series_data_pipeline"]:::proposed
+  P286["Agricultural Data and AI<br/>3 ECTS<br/>ai_ml_and_parallel_big_data_intro<br/>iot_ai_sensor_analytics<br/>smart_agriculture_iot"]:::proposed
+  P287["Industrial Transformation and IoT<br/>2 ECTS<br/>industrial_digital_transformation<br/>industrial_iot_systems_and_applications"]:::proposed
+  P288["Intelligent Industrial Maintenance<br/>2 ECTS<br/>industrial_predictive_diagnostics_and_maintenance<br/>intelligent_maintenance_methods"]:::proposed
+  P289["Making and Electronics Foundations<br/>3 ECTS<br/>making_and_digital_fabrication<br/>electronic_components_and_measurement<br/>digital_electronics"]:::proposed
+  P290["Embedded Electronics Applications<br/>3 ECTS<br/>motor_control_circuits<br/>voip_asterisk<br/>feedback_sensor_design"]:::proposed
+  P291["Sensor Measurement Foundations<br/>3 ECTS<br/>sensor_measurement_and_modeling<br/>sensor_acquisition_and_noise<br/>information_theory_fundamentals"]:::proposed
+  P292["Sensor Data Analysis and Applications<br/>3 ECTS<br/>principal_component_analysis<br/>multivariate_sensor_data_analysis<br/>sensor_predictive_and_spectral_applications"]:::proposed
+  P293["CAT Workflows and Translation Project Quality<br/>2 ECTS<br/>cat_workflow_tools_resources<br/>cat_project_quality_management"]:::proposed
+  P294["Machine Translation Foundations and Operations<br/>2 ECTS<br/>machine_translation_foundations<br/>machine_translation_operations"]:::proposed
+  P295["AI-Enhanced Translation Workflows and Evaluation<br/>2 ECTS<br/>ai_enhanced_translation_workflows<br/>translation_ethics_evaluation"]:::proposed
+  P296["Software Localization and Accessibility<br/>2 ECTS<br/>software_localization_practice<br/>technical_accessible_localization"]:::proposed
+  P297["Terminology Resources for Interpreting<br/>3 ECTS<br/>terminology_theory_and_extraction<br/>specialized_corpora_for_terminology<br/>interpreter_documentation_and_terminology_management"]:::proposed
+  P298["Speech Technologies and Live Subtitling<br/>2 ECTS<br/>live_subtitling_and_speech_recognition<br/>speech_signal_analysis"]:::proposed
+  P299["Linguistic Structure for Text Analysis<br/>3 ECTS<br/>computational_morphology<br/>natural_language_syntax_and_parsing<br/>logical_sentence_semantics"]:::proposed
+  P300["Corpora and Lexical Analysis<br/>3 ECTS<br/>corpus_construction_and_lexical_analysis<br/>lexical_semantics_and_word_senses<br/>linguistic_text_annotation"]:::proposed
+  P301["Latent and Convolutional Text Methods<br/>2 ECTS<br/>latent_semantic_analysis<br/>text_convolutional_networks"]:::proposed
+  P302["Text-Mining Applications and Deep Speech Recognition<br/>2 ECTS<br/>text_mining_applications<br/>deep_speech_recognition"]:::proposed
+  P303["Probabilistic AI Foundations and Bayesian Networks<br/>3 ECTS<br/>probabilistic_reasoning_foundations<br/>bayesian_networks_and_inference<br/>bayesian_network_classification"]:::proposed
+  P304["Probabilistic Logic, Learning, and Planning<br/>3 ECTS<br/>probabilistic_logic_programming<br/>symbolic_and_bayesian_learning<br/>ai_planning_methods"]:::proposed
+  P305["Foundations of Trustworthy Intelligent Systems<br/>2 ECTS<br/>explainable_ai<br/>cognitive_architectures"]:::proposed
+  P306["Advanced Knowledge-Grounded and Neuro-Symbolic AI<br/>2 ECTS<br/>knowledge_graph_embeddings_llm_grounding<br/>neurosymbolic_methods"]:::proposed
+  P307["Agent Interaction and Planning<br/>2 ECTS<br/>agent_planning_strips<br/>conversational_intelligent_systems"]:::proposed
+  P308["Reinforcement and Multi-Agent Learning<br/>3 ECTS<br/>reinforcement_learning_applications<br/>multi_agent_learning_and_games<br/>preference_based_ai_training"]:::proposed
+  P309["Adaptive and Generative Systems<br/>3 ECTS<br/>bio_inspired_adaptive_systems<br/>generative_learning_and_creativity<br/>self_organising_computational_models"]:::proposed
+  P310["Advanced Robotics: Control Foundations<br/>3 ECTS<br/>robot_behavior_control_architectures<br/>fuzzy_robot_control<br/>robot_control_evaluation_and_tuning"]:::proposed
+  P311["Advanced Robotics: Adaptive Design<br/>3 ECTS<br/>robot_adaptive_learning<br/>evolutionary_robotics<br/>automatic_robot_program_design"]:::proposed
+  P312["Advanced Robotics: Swarm Systems<br/>1 ECTS<br/>swarm_robotics"]:::proposed
+  P313["Simulation Study Foundations and Stochastic Models<br/>3 ECTS<br/>simulation_study_methodology<br/>discrete_event_queueing_simulation<br/>stochastic_state_and_decision_models"]:::proposed
+  P314["Complex Systems and Simulation Execution<br/>2 ECTS<br/>agent_based_complex_systems_simulation<br/>simulation_software_and_distributed_execution"]:::proposed
+  P315["Advanced Simulation Analysis<br/>2 ECTS<br/>simulation_and_machine_learning<br/>probabilistic_model_checking"]:::proposed
+  P316["System Modelling and Simulation<br/>3 ECTS<br/>nondeterministic_system_models<br/>distributed_cps_simulation<br/>model_driven_software_development"]:::proposed
+  P317["AI-Enabled Software Development<br/>2 ECTS<br/>ai_assisted_software_development<br/>ai_systems_engineering_and_quality"]:::proposed
+  P318["Software Development and Data Analytics Platforms<br/>2 ECTS<br/>cognitive_models_of_software_development<br/>data_analytics_platforms"]:::proposed
+  P319["Business Decision Systems<br/>2 ECTS<br/>business_decision_modeling<br/>business_decision_support_systems"]:::proposed
+  P320["Sustainable Business Analytics<br/>3 ECTS<br/>esg_data_platforms_and_monitoring<br/>sustainable_information_technologies<br/>machine_learning_decision_integration"]:::proposed
+  P321["Drawing and Landscape Documentation<br/>3 ECTS<br/>cad_technical_drawing<br/>autocad_2d_landscape_drawing<br/>landscape_survey_and_project_documentation"]:::proposed
+  P322["Interactive and Web Resources<br/>2 ECTS<br/>cultural_heritage_interaction_design<br/>web_resource_distribution_frameworks"]:::proposed
+  P323["Humanistic Digital Content Production and Management<br/>3 ECTS<br/>humanistic_digital_content_production<br/>digitized_collection_storage_and_metadata<br/>digital_document_management"]:::proposed
+  P324["Humanistic Digital Content Services and Regulation<br/>3 ECTS<br/>digital_text_analysis_2<br/>documentary_database_services<br/>digital_transformation_legislation"]:::proposed
+  P325["Paperless Administration<br/>2 ECTS<br/>digital_transformation_legislation<br/>electronic_documents_and_management"]:::proposed
+  P326["Digital Identity and Public Services<br/>2 ECTS<br/>electronic_identity_and_trust_services<br/>italian_digital_public_services"]:::proposed
+  P327["Project Governance<br/>2 ECTS<br/>project_stakeholder_and_communications_management<br/>project_procurement_management"]:::proposed
+  P328["Digital Innovation Projects<br/>3 ECTS<br/>digital_innovation_deployment_and_followup<br/>digital_innovation_collaboration<br/>service_design_and_evaluation"]:::proposed
+  P329["Informatics Foundations and Visual Programming<br/>2 ECTS<br/>informatics_foundations<br/>visual_block_programming"]:::proposed
+  P330["Generative AI Basics<br/>1 ECTS<br/>generative_ai_basics"]:::proposed
+  P331["Python Graphics and Scripting<br/>2 ECTS<br/>python_turtle_graphics_and_animation<br/>scripting_and_data_processing"]:::proposed
+  P332["MATLAB Programming<br/>3 ECTS<br/>matlab_programming_fundamentals<br/>matlab_vectors_matrices<br/>matlab_input_output_graphics"]:::proposed
+  P333["R Programming<br/>2 ECTS<br/>r_programming_fundamentals<br/>r_data_io_randomness_and_graphics"]:::proposed
+  P334["Numerical Computing Foundations<br/>2 ECTS<br/>numerical_computation_algorithms<br/>numerical_approximation_methods"]:::proposed
+  P335["Numerical Computing: Errors and Root Finding<br/>2 ECTS<br/>numerical_errors_and_finite_differences<br/>numerical_nonlinear_root_finding"]:::proposed
+  P336["Biomolecular Sequence Alignment<br/>3 ECTS<br/>biomolecular_sequence_alignment<br/>pairwise_sequence_alignment<br/>multiple_sequence_alignment"]:::proposed
+  P337["Biosequence Algorithms and String Methods<br/>2 ECTS<br/>specialized_biosequence_algorithms<br/>string_matching_and_suffix_indexing"]:::proposed
+  P338["Social Networks and Network Analysis Foundations<br/>3 ECTS<br/>web_social_networks<br/>network_analysis_foundations_and_methodology<br/>network_visualization"]:::proposed
+  P339["Network Metrics and Structure<br/>2 ECTS<br/>network_node_metrics<br/>network_structure_metrics"]:::proposed
+  P340["Information Retrieval Foundations<br/>1 ECTS<br/>information_retrieval"]:::proposed
+  P341["Web Information Retrieval and Recommender Systems<br/>2 ECTS<br/>web_information_retrieval<br/>recommender_systems"]:::proposed
+  P342["Network Analysis Methods<br/>2 ECTS<br/>network_hypothesis_testing<br/>large_network_analysis"]:::proposed
+  P343["Autonomous Vehicular Systems Foundations<br/>2 ECTS<br/>vehicular_system_scenarios_and_architecture<br/>autonomous_vehicle_sensing_and_perception"]:::proposed
+  P344["Autonomous Vehicular Systems Planning and Control<br/>2 ECTS<br/>autonomous_vehicle_planning_and_control"]:::proposed
+  P345["Connected Vehicular Systems<br/>2 ECTS<br/>connected_vehicular_networking<br/>connected_vehicular_distributed_systems"]:::proposed
+  P346["Vehicular Simulation and Digital Twins<br/>2 ECTS<br/>carla_vehicular_simulation<br/>digital_twins_in_simulation"]:::proposed
+  P347["Extended Reality Applications<br/>3 ECTS<br/>xr_applications_and_future_directions<br/>xr_hardware_and_tracking<br/>multiuser_xr_environments"]:::proposed
+  P348["Medical AI and Modelling<br/>2 ECTS<br/>ai_in_medicine<br/>medical_3d_modeling_and_printing"]:::proposed
+  P349["Computing History<br/>3 ECTS<br/>early_computing_and_mainframe_history<br/>later_computing_systems_history<br/>programming_language_evolution"]:::proposed
+  P350["Computer Architecture and Industry<br/>2 ECTS<br/>computer_architecture_approaches_and_trends<br/>computing_industry"]:::proposed
+  P351["Foundations of Computing Education<br/>2 ECTS<br/>cs_education_curricular_foundations<br/>cs_education_learning_and_teaching_methods"]:::proposed
+  P352["Programming Teaching and Assessment<br/>2 ECTS<br/>programming_education_methods<br/>cs_education_assessment"]:::proposed
+  P353["Quantum Computing Foundations and Programming<br/>3 ECTS<br/>quantum_computing_mathematical_foundations<br/>quantum_circuit_models_and_notation<br/>quantum_programming_and_introductory_algorithms"]:::proposed
+  P354["Advanced Quantum Algorithms and Security<br/>2 ECTS<br/>advanced_quantum_algorithms<br/>quantum_computation_security_and_reliability"]:::proposed
+  P355["C Language Data Structures<br/>2 ECTS<br/>c_tree_data_structures<br/>c_vector_data_structures"]:::proposed
+  P356[".NET Application Development<br/>2 ECTS<br/>dotnet_and_csharp<br/>javascript_web_solution_stacks"]:::proposed
+  P357["Academic Review Methods<br/>1 ECTS<br/>systematic_literature_review_methods"]:::proposed
+  P358["User-Level Operating Systems<br/>1 ECTS<br/>vuos_user_level_operating_systems"]:::proposed
+  P359["Database Access and Semi-Structured Queries<br/>2 ECTS<br/>access_database_management<br/>sql_xml_and_xquery"]:::proposed
+  P360["Data Compression Foundations<br/>1 ECTS<br/>data_compression"]:::proposed
+  P361["Web Data Retrieval and Text Processing<br/>2 ECTS<br/>web_data_retrieval<br/>python_text_processing"]:::proposed
+  P362["AI Planning and Rule Inference<br/>2 ECTS<br/>planning_representations_and_ordering<br/>rete_rule_inference"]:::proposed
+  P363["VxWorks Real-Time Programming<br/>1 ECTS<br/>vxworks_realtime_programming"]:::proposed
+  P364["Jolie Service Implementation<br/>1 ECTS<br/>jolie_service_implementation"]:::proposed
+  P365["Prolog and Java Integration<br/>1 ECTS<br/>prolog_java_integration"]:::proposed
+  P366["Neural Architectures and Machine-Learning Platforms<br/>3 ECTS<br/>neural_network_architecture_families<br/>cloud_ml_platforms<br/>python_ml_frameworks"]:::proposed
+  P367["Spreadsheet Data Preparation and Automation<br/>3 ECTS<br/>excel_data_preparation<br/>excel_vba_automation<br/>excel_statistical_data_processing"]:::proposed
+  P368["Introduction to GNU/Linux Operating Systems<br/>1 ECTS<br/>linux_operating_systems_intro"]:::proposed
+  P369["Human-Centered Data and Algorithmic Decisions<br/>2 ECTS<br/>human_data_quality_and_forecasting<br/>algorithmic_decisions_and_human_agency"]:::proposed
+  P370["Cognitive AI and Interaction<br/>3 ECTS<br/>ai_human_computer_interaction<br/>cognitive_science_ai<br/>cognitive_approaches_to_meaning"]:::proposed
+  P371["Advanced Semantics and Multimodality<br/>3 ECTS<br/>semiotic_foundations<br/>advanced_semantic_frameworks<br/>multimodal_semantic_interpretation"]:::proposed
+  P372["Programming Methods<br/>1 ECTS<br/>programming_methods"]:::proposed
+  legend["Topic colour: first scope, in this order, among the<br/>current courses teaching it (by teachers' and programmes' department)<br/>service: some DISI teacher, no DISI degree programme<br/>external: no DISI teacher, no DISI degree programme<br/>borrow: no DISI teacher, some DISI degree programme<br/>weak_internal: some (not all) DISI teachers and DISI degree programmes<br/>internal: only DISI teachers and DISI degree programmes"]:::source
+  P1 --> P2
+  P3 --> P4
+  P3 --> P7
+  P3 --> P10
+  P3 --> P16
+  P12 --> P13
+  P18 --> P19
+  P29 --> P32
+  P30 --> P32
+  P31 --> P32
+  P33 --> P36
+  P35 --> P36
+  P40 --> P43
+  P41 --> P43
+  P42 --> P43
+  P46 --> P47
+  P46 --> P49
+  P52 --> P53
+  P55 --> P57
+  P56 --> P57
+  P60 --> P61
+  P60 --> P64
+  P52 --> P65
+  P66 --> P69
+  P66 --> P72
+  P67 --> P69
+  P67 --> P72
+  P68 --> P69
+  P68 --> P72
+  P70 --> P73
+  P70 --> P74
+  P71 --> P73
+  P71 --> P74
+  P72 --> P73
+  P72 --> P74
+  P79 --> P80
+  P79 --> P84
+  P79 --> P88
+  P70 --> P91
+  P71 --> P91
+  P72 --> P91
+  P92 --> P95
+  P94 --> P95
+  P102 --> P103
+  P102 --> P105
+  P102 --> P106
+  P102 --> P109
+  P112 --> P113
+  P112 --> P116
+  P114 --> P117
+  P115 --> P117
+  P116 --> P117
+  P18 --> P121
+  P122 --> P125
+  P123 --> P125
+  P124 --> P125
+  P122 --> P130
+  P123 --> P130
+  P124 --> P130
+  P112 --> P134
+  P114 --> P138
+  P115 --> P138
+  P116 --> P138
+  P141 --> P142
+  P141 --> P145
+  P149 --> P150
+  P14 --> P154
+  P15 --> P154
+  P155 --> P158
+  P157 --> P158
+  P160 --> P162
+  P161 --> P162
+  P164 --> P166
+  P165 --> P166
+  P169 --> P170
+  P169 --> P172
+  P164 --> P173
+  P165 --> P173
+  P176 --> P177
+  P176 --> P181
+  P40 --> P182
+  P41 --> P182
+  P42 --> P182
+  P185 --> P187
+  P186 --> P187
+  P185 --> P191
+  P185 --> P193
+  P185 --> P195
+  P186 --> P191
+  P186 --> P193
+  P186 --> P195
+  P33 --> P196
+  P33 --> P198
+  P33 --> P199
+  P35 --> P196
+  P35 --> P198
+  P35 --> P199
+  P102 --> P200
+  P160 --> P204
+  P161 --> P204
+  P52 --> P208
+  P211 --> P212
+  P155 --> P216
+  P157 --> P216
+  P225 --> P220
+  P227 --> P220
+  P228 --> P220
+  P225 --> P222
+  P227 --> P222
+  P228 --> P222
+  P122 --> P229
+  P122 --> P231
+  P122 --> P232
+  P123 --> P229
+  P123 --> P231
+  P123 --> P232
+  P124 --> P229
+  P124 --> P231
+  P124 --> P232
+  P98 --> P238
+  P98 --> P240
+  P98 --> P241
+  P149 --> P242
+  P133 --> P245
+  P133 --> P246
+  P133 --> P247
+  P122 --> P248
+  P122 --> P250
+  P123 --> P248
+  P123 --> P250
+  P124 --> P248
+  P124 --> P250
+  P141 --> P251
+  P141 --> P255
+  P70 --> P256
+  P71 --> P256
+  P72 --> P256
+  P14 --> P259
+  P15 --> P259
+  P155 --> P263
+  P157 --> P263
+  P218 --> P267
+  P218 --> P268
+  P218 --> P269
+  P219 --> P267
+  P219 --> P268
+  P219 --> P269
+  P272 --> P274
+  P273 --> P274
+  P149 --> P278
+  P149 --> P279
+  P149 --> P280
+  P211 --> P284
+  P211 --> P285
+  P211 --> P286
+  P211 --> P287
+  P169 --> P299
+  P185 --> P303
+  P185 --> P304
+  P186 --> P303
+  P186 --> P304
+  P190 --> P305
+  P192 --> P307
+  P192 --> P308
+  P192 --> P309
+  P194 --> P307
+  P194 --> P308
+  P194 --> P309
+  P195 --> P307
+  P195 --> P308
+  P195 --> P309
+  P192 --> P310
+  P194 --> P310
+  P195 --> P310
+  P29 --> P336
+  P29 --> P337
+  P30 --> P336
+  P30 --> P337
+  P31 --> P336
+  P31 --> P337
+  P79 --> P338
+  P79 --> P340
+  P339 --> P342
+  P341 --> P342
+  P211 --> P343
+  P52 --> P353
+  P6 --> P355
+  P66 --> P358
+  P67 --> P358
+  P68 --> P358
+  P102 --> P359
+  P12 --> P361
+  P185 --> P362
+  P186 --> P362
+  P215 --> P363
+  P133 --> P364
+  P22 --> P365
+  P24 --> P365
+  P164 --> P366
+  P165 --> P366
+  P155 --> P367
+  P157 --> P367
+  P66 --> P368
+  P67 --> P368
+  P68 --> P368
+  P155 --> P369
+  P157 --> P369
+  P185 --> P370
+  P186 --> P370
+  P370 --> P371
+  P3 --> P372
+  P0 --> P1
+  P2 --> P3
+  P4 --> P5
+  P5 --> P6
+  P7 --> P8
+  P8 --> P9
+  P10 --> P11
+  P11 --> P12
+  P13 --> P14
+  P13 --> P15
+  P16 --> P17
+  P17 --> P18
+  P19 --> P20
+  P19 --> P21
+  P23 --> P24
+  P25 --> P26
+  P28 --> P29
+  P28 --> P30
+  P28 --> P31
+  P32 --> P33
+  P32 --> P34
+  P34 --> P35
+  P36 --> P37
+  P37 --> P38
+  P39 --> P41
+  P39 --> P42
+  P43 --> P44
+  P44 --> P45
+  P45 --> P46
+  P47 --> P48
+  P50 --> P51
+  P51 --> P52
+  P53 --> P54
+  P54 --> P55
+  P54 --> P56
+  P57 --> P58
+  P57 --> P59
+  P58 --> P60
+  P59 --> P60
+  P61 --> P62
+  P61 --> P63
+  P65 --> P66
+  P65 --> P67
+  P65 --> P68
+  P69 --> P70
+  P69 --> P71
+  P74 --> P75
+  P76 --> P77
+  P77 --> P78
+  P78 --> P79
+  P80 --> P81
+  P81 --> P82
+  P82 --> P83
+  P84 --> P85
+  P84 --> P86
+  P84 --> P87
+  P88 --> P89
+  P88 --> P90
+  P91 --> P92
+  P91 --> P93
+  P93 --> P94
+  P95 --> P96
+  P96 --> P97
+  P97 --> P98
+  P99 --> P100
+  P100 --> P101
+  P101 --> P102
+  P103 --> P104
+  P106 --> P107
+  P107 --> P108
+  P110 --> P111
+  P110 --> P112
+  P111 --> P112
+  P113 --> P114
+  P113 --> P115
+  P117 --> P118
+  P118 --> P119
+  P117 --> P120
+  P121 --> P122
+  P121 --> P123
+  P121 --> P124
+  P125 --> P126
+  P126 --> P127
+  P127 --> P128
+  P128 --> P129
+  P130 --> P131
+  P130 --> P132
+  P131 --> P133
+  P132 --> P133
+  P134 --> P135
+  P135 --> P136
+  P136 --> P137
+  P138 --> P139
+  P139 --> P140
+  P140 --> P141
+  P142 --> P143
+  P142 --> P144
+  P146 --> P147
+  P147 --> P148
+  P148 --> P149
+  P150 --> P151
+  P150 --> P152
+  P150 --> P153
+  P154 --> P155
+  P154 --> P156
+  P156 --> P157
+  P158 --> P159
+  P159 --> P160
+  P158 --> P161
+  P162 --> P163
+  P163 --> P164
+  P163 --> P165
+  P166 --> P167
+  P167 --> P168
+  P168 --> P169
+  P170 --> P171
+  P173 --> P174
+  P173 --> P175
+  P174 --> P175
+  P175 --> P176
+  P177 --> P178
+  P177 --> P179
+  P177 --> P180
+  P182 --> P183
+  P182 --> P184
+  P183 --> P185
+  P184 --> P185
+  P182 --> P186
+  P187 --> P188
+  P188 --> P189
+  P189 --> P190
+  P191 --> P192
+  P193 --> P194
+  P196 --> P197
+  P200 --> P201
+  P201 --> P202
+  P200 --> P203
+  P201 --> P203
+  P204 --> P205
+  P204 --> P206
+  P204 --> P207
+  P208 --> P209
+  P209 --> P210
+  P210 --> P211
+  P212 --> P213
+  P213 --> P214
+  P214 --> P215
+  P216 --> P217
+  P216 --> P219
+  P217 --> P218
+  P220 --> P221
+  P220 --> P223
+  P222 --> P223
+  P224 --> P225
+  P226 --> P227
+  P229 --> P230
+  P232 --> P233
+  P238 --> P239
+  P242 --> P243
+  P242 --> P244
+  P248 --> P249
+  P251 --> P252
+  P251 --> P253
+  P253 --> P254
+  P256 --> P257
+  P256 --> P258
+  P259 --> P260
+  P260 --> P261
+  P259 --> P262
+  P264 --> P265
+  P265 --> P266
+  P271 --> P272
+  P275 --> P276
+  P275 --> P277
+  P280 --> P281
+  P282 --> P283
+  P286 --> P288
+  P287 --> P288
+  P289 --> P290
+  P291 --> P292
+  P293 --> P295
+  P294 --> P295
+  P299 --> P300
+  P300 --> P301
+  P301 --> P302
+  P305 --> P306
+  P310 --> P311
+  P310 --> P312
+  P313 --> P314
+  P313 --> P315
+  P325 --> P326
+  P329 --> P331
+  P334 --> P335
+  P338 --> P339
+  P340 --> P341
+  P343 --> P344
+  P343 --> P345
+  P344 --> P346
+  P345 --> P346
+  P349 --> P350
+  P351 --> P352
+  P353 --> P354
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

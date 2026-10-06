@@ -1,0 +1,151 @@
+%% Restructuring proposal for all courses
+flowchart TB
+  P0["Computing and Information Foundations<br/>3 ECTS<br/>computer_and_information_systems_foundations<br/>information_representation<br/>computer_history"]:::proposed
+  P1["Binary and Numeric Representation<br/>3 ECTS<br/>digital_binary_encoding<br/>digital_binary_numbers_and_arithmetic<br/>numeric_representation"]:::proposed
+  P2["Computer Architecture and Execution<br/>4 ECTS<br/>computer_architecture_foundations<br/>machine_languages_and_execution<br/>computer_instruction_fetch_cycle<br/>computer_hardware_components_and_production"]:::proposed
+  P3["Boolean and Combinational Logic<br/>3 ECTS<br/>boolean_logic_foundations<br/>combinational_logic_design<br/>digital_combinational_logic"]:::proposed
+  P4["Synchronous Sequential Logic<br/>3 ECTS<br/>sequential_logic_and_state_machines<br/>synchronous_sequential_logic<br/>digital_sequential_logic"]:::proposed
+  P5["Asynchronous Logic and Implementation Technologies<br/>2 ECTS<br/>asynchronous_sequential_logic<br/>digital_logic_implementation_technologies"]:::proposed
+  P6["Digital System Components and Design Flow<br/>2 ECTS<br/>digital_system_components<br/>verilog_digital_design_flow"]:::proposed
+  P7["Processor Architecture Foundations<br/>3 ECTS<br/>instruction_set_architecture<br/>instruction_set_and_processor_datapath<br/>high_level_to_assembly_mapping"]:::proposed
+  P8["Processor System Interfacing<br/>3 ECTS<br/>memory_and_io_system_interfacing<br/>system_buses_and_dma_io<br/>interrupt_systems"]:::proposed
+  P9["Processor Pipelining and Performance Measurement<br/>3 ECTS<br/>cpu_pipelining_and_control_hazards<br/>pipelining_and_hazards<br/>computer_performance"]:::proposed
+  P10["Advanced Processor Architecture and Design<br/>3 ECTS<br/>advanced_instruction_parallelism<br/>architecture_performance<br/>processor_architecture_design"]:::proposed
+  P11["Memory Systems<br/>3 ECTS<br/>memory_hierarchy_and_cache_organization<br/>intel_ia32_caches<br/>virtual_memory_management"]:::proposed
+  P12["IA32 Protection and Virtualization<br/>2 ECTS<br/>intel_ia32_protection_and_addressing<br/>processor_multithreading_and_virtualization"]:::proposed
+  P13["Parallel Systems<br/>2 ECTS<br/>shared_memory_multiprocessors<br/>parallel_computer_architectures"]:::proposed
+  P14["Reconfigurable and Fixed-Point Computing<br/>1 ECTS<br/>reconfigurable_and_fixed_point_computing"]:::proposed
+  P15["Operating Systems Foundations<br/>3 ECTS<br/>operating_system_foundations<br/>operating_systems_and_software_overview<br/>operating_system_kernel_and_shell"]:::proposed
+  P16["Operating Systems Processes and Interfaces<br/>3 ECTS<br/>processes_threads_and_cpu_scheduling<br/>system_calls<br/>interprocess_communication"]:::proposed
+  P17["Operating Systems Resource Management<br/>3 ECTS<br/>operating_system_memory_management<br/>operating_system_io_management<br/>operating_system_files_and_storage"]:::proposed
+  P18["Operating Systems Security and Scripting<br/>2 ECTS<br/>operating_system_protection_security<br/>shell_scripting"]:::proposed
+  P19["Concurrency Foundations<br/>3 ECTS<br/>concurrent_programming<br/>message_passing_models<br/>shared_memory_synchronization_and_liveness"]:::proposed
+  P20["Concurrent Programming Models<br/>3 ECTS<br/>shared_memory_concurrent_programming<br/>channel_based_concurrency<br/>actor_based_concurrency"]:::proposed
+  P21["Asynchronous and Reactive Programming<br/>3 ECTS<br/>java_task_concurrency<br/>asynchronous_control_flows<br/>reactive_programming"]:::proposed
+  P22["Parallel Computation<br/>3 ECTS<br/>parallel_computation_foundations<br/>parallel_performance_and_scalability<br/>simd_vector_programming"]:::proposed
+  P23["Parallel HPC Programming and Workload Management<br/>2 ECTS<br/>distributed_and_hybrid_parallel_programming<br/>hpc_workload_management"]:::proposed
+  P24["GPU Programming<br/>2 ECTS<br/>gpu_programming_foundations<br/>cuda_gpu_programming"]:::proposed
+  P25["Machine-Learning Workloads and Acceleration<br/>3 ECTS<br/>ml_workload_computation_and_parallelization<br/>ml_processor_isa_acceleration<br/>reconfigurable_and_fixed_point_computing"]:::proposed
+  P26["Distributed Systems Foundations<br/>3 ECTS<br/>distributed_systems_fundamentals<br/>distributed_communication<br/>distributed_architectures"]:::proposed
+  P27["Distributed Systems Programming Models<br/>3 ECTS<br/>distributed_coordination_models<br/>distributed_data_serialization<br/>remote_procedure_call"]:::proposed
+  P28["Distributed Systems Coordination Algorithms<br/>3 ECTS<br/>distributed_algorithms<br/>distributed_ordering_and_consensus<br/>distributed_consistency_and_replication"]:::proposed
+  P29["Distributed Systems Services and Dependability<br/>3 ECTS<br/>distributed_dependability_and_qos<br/>distributed_file_systems<br/>distributed_systems_resources_and_naming"]:::proposed
+  P30["Virtual Systems Foundations<br/>3 ECTS<br/>virtuality_foundations<br/>virtual_system_components<br/>block_storage"]:::proposed
+  P31["Cloud Computing Foundations<br/>3 ECTS<br/>cloud_computing<br/>cloud_service_models<br/>cloud_infrastructure_architecture"]:::proposed
+  P32["Container Virtualization and Service Orchestration<br/>3 ECTS<br/>container_virtualization<br/>docker_api<br/>cloud_service_orchestration"]:::proposed
+  P33["Cloud Service Deployment and Configuration<br/>3 ECTS<br/>cloud_service_deployment_and_migration<br/>infrastructure_configuration_automation<br/>centralized_configuration_management"]:::proposed
+  P34["Embedded Systems Foundations and Firmware<br/>3 ECTS<br/>embedded_systems_foundations<br/>embedded_execution_models<br/>embedded_firmware_foundations"]:::proposed
+  P35["IoT Foundations, Devices, and Sensing<br/>3 ECTS<br/>iot_system_foundations<br/>iot_devices_and_platform_environments<br/>iot_sensing_and_smart_sensors"]:::proposed
+  P36["Embedded IoT Applications and Interfaces<br/>3 ECTS<br/>embedded_iot_application_development<br/>embedded_device_drivers<br/>embedded_sensor_connectivity"]:::proposed
+  P37["IoT Networks and the Web of Things<br/>3 ECTS<br/>embedded_system_networks<br/>iot_communication_protocols_and_routing<br/>web_of_things_foundations"]:::proposed
+  P38["Real-Time Scheduling Foundations<br/>3 ECTS<br/>realtime_systems_foundations<br/>realtime_task_models<br/>hard_realtime_scheduling"]:::proposed
+  P39["Advanced Real-Time Scheduling and RTOS Concepts<br/>3 ECTS<br/>aperiodic_realtime_scheduling<br/>realtime_resource_access_protocols<br/>rtos_architecture_and_scheduling"]:::proposed
+  P40["RTOS Platform Programming<br/>3 ECTS<br/>real_time_os_platforms<br/>rtos_memory_communication_and_timing<br/>esp32_freertos_programming"]:::proposed
+  P41["Cyber-Physical IoT and Security<br/>3 ECTS<br/>esp32_idf_iot_programming<br/>cps_firmware_security<br/>cps_middleware_and_communication"]:::proposed
+  P42["Reliable Service Design<br/>3 ECTS<br/>availability_and_scalability_foundations<br/>scalable_reliable_service_architecture<br/>service_outage_analysis"]:::proposed
+  P43["Service Monitoring and Performance<br/>2 ECTS<br/>operational_monitoring<br/>service_performance_evaluation"]:::proposed
+  P44["Linux Operations Administration<br/>2 ECTS<br/>linux_operations_automation<br/>unix_accounts_and_permissions"]:::proposed
+  P45["Service Operations Management<br/>3 ECTS<br/>service_maturity_assessment<br/>service_change_management<br/>service_organization_and_complexity"]:::proposed
+  P46["Concurrent System Verification Foundations<br/>3 ECTS<br/>concurrent_system_visual_models<br/>concurrent_system_models_and_temporal_logic<br/>ccs_and_structural_operational_semantics"]:::proposed
+  P47["Concurrency Theory<br/>3 ECTS<br/>process_algebraic_concurrency<br/>concurrency_behavioral_equivalences<br/>concurrency_modal_logics"]:::proposed
+  P48["Concurrent Properties and Distributed Computability<br/>2 ECTS<br/>temporal_properties_and_model_checking<br/>distributed_computability_and_impossibility"]:::proposed
+  P49["IoT Platform and Device Programming<br/>3 ECTS<br/>atlas_soda_iot_architectures<br/>soda_iot_application_design<br/>arduino_uno_programming"]:::proposed
+  P50["IoT Edge Intelligence and Data<br/>3 ECTS<br/>edge_and_fog_computing<br/>edge_ai_tinyml<br/>iot_time_series_data_pipeline"]:::proposed
+  P51["Agricultural Data and AI<br/>3 ECTS<br/>ai_ml_and_parallel_big_data_intro<br/>iot_ai_sensor_analytics<br/>smart_agriculture_iot"]:::proposed
+  P52["Industrial Transformation and IoT<br/>2 ECTS<br/>industrial_digital_transformation<br/>industrial_iot_systems_and_applications"]:::proposed
+  P53["Intelligent Industrial Maintenance<br/>2 ECTS<br/>industrial_predictive_diagnostics_and_maintenance<br/>intelligent_maintenance_methods"]:::proposed
+  P54["Autonomous Vehicular Systems Foundations<br/>2 ECTS<br/>vehicular_system_scenarios_and_architecture<br/>autonomous_vehicle_sensing_and_perception"]:::proposed
+  P55["Autonomous Vehicular Systems Planning and Control<br/>2 ECTS<br/>autonomous_vehicle_planning_and_control"]:::proposed
+  P56["Connected Vehicular Systems<br/>2 ECTS<br/>connected_vehicular_networking<br/>connected_vehicular_distributed_systems"]:::proposed
+  P57["Vehicular Simulation and Digital Twins<br/>2 ECTS<br/>carla_vehicular_simulation<br/>digital_twins_in_simulation"]:::proposed
+  P58["Quantum Computing Foundations and Programming<br/>3 ECTS<br/>quantum_computing_mathematical_foundations<br/>quantum_circuit_models_and_notation<br/>quantum_programming_and_introductory_algorithms"]:::proposed
+  P59["Advanced Quantum Algorithms and Security<br/>2 ECTS<br/>advanced_quantum_algorithms<br/>quantum_computation_security_and_reliability"]:::proposed
+  P60["User-Level Operating Systems<br/>1 ECTS<br/>vuos_user_level_operating_systems"]:::proposed
+  P61["VxWorks Real-Time Programming<br/>1 ECTS<br/>vxworks_realtime_programming"]:::proposed
+  P62["Introduction to GNU/Linux Operating Systems<br/>1 ECTS<br/>linux_operating_systems_intro"]:::proposed
+  legend["Topic colour: first scope, in this order, among the<br/>current courses teaching it (by teachers' and programmes' department)<br/>service: some DISI teacher, no DISI degree programme<br/>external: no DISI teacher, no DISI degree programme<br/>borrow: no DISI teacher, some DISI degree programme<br/>weak_internal: some (not all) DISI teachers and DISI degree programmes<br/>internal: only DISI teachers and DISI degree programmes"]:::source
+  P2 --> P3
+  P5 --> P7
+  P6 --> P7
+  P10 --> P11
+  P10 --> P14
+  P2 --> P15
+  P16 --> P19
+  P16 --> P22
+  P17 --> P19
+  P17 --> P22
+  P18 --> P19
+  P18 --> P22
+  P20 --> P23
+  P20 --> P24
+  P21 --> P23
+  P21 --> P24
+  P22 --> P23
+  P22 --> P24
+  P20 --> P26
+  P21 --> P26
+  P22 --> P26
+  P27 --> P30
+  P29 --> P30
+  P2 --> P34
+  P37 --> P38
+  P33 --> P42
+  P33 --> P44
+  P33 --> P45
+  P20 --> P46
+  P21 --> P46
+  P22 --> P46
+  P37 --> P49
+  P37 --> P50
+  P37 --> P51
+  P37 --> P52
+  P37 --> P54
+  P2 --> P58
+  P16 --> P60
+  P17 --> P60
+  P18 --> P60
+  P41 --> P61
+  P16 --> P62
+  P17 --> P62
+  P18 --> P62
+  P0 --> P1
+  P1 --> P2
+  P3 --> P4
+  P4 --> P5
+  P4 --> P6
+  P7 --> P8
+  P7 --> P9
+  P8 --> P10
+  P9 --> P10
+  P11 --> P12
+  P11 --> P13
+  P15 --> P16
+  P15 --> P17
+  P15 --> P18
+  P19 --> P20
+  P19 --> P21
+  P24 --> P25
+  P26 --> P27
+  P26 --> P28
+  P28 --> P29
+  P30 --> P31
+  P31 --> P32
+  P32 --> P33
+  P34 --> P35
+  P35 --> P36
+  P36 --> P37
+  P38 --> P39
+  P39 --> P40
+  P40 --> P41
+  P42 --> P43
+  P46 --> P47
+  P46 --> P48
+  P51 --> P53
+  P52 --> P53
+  P54 --> P55
+  P54 --> P56
+  P55 --> P57
+  P56 --> P57
+  P58 --> P59
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

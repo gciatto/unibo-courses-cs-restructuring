@@ -1,0 +1,11 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Numerical Computing Foundations<br/>2 ECTS"]:::proposed
+  P1["Numerical Computing: Errors and Root Finding<br/>2 ECTS"]:::proposed
+  S0["Foundations of Informatics and Laboratory (28623)<br/>ADVANCED PROGRAMMING (65094)<br/>Foundations of Computer Science T (93034-A)"]:::source
+  S0 -.-> P0
+  S1["Foundations of Informatics T (29227-A, 29227-B)"]:::source
+  S1 -.-> P1
+  S1 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

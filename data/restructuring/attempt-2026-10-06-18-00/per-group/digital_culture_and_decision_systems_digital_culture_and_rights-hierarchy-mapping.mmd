@@ -1,0 +1,15 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Digital Culture and Rights<br/>3 ECTS"]:::proposed
+  P1["Digital Intelligence and Transformation<br/>3 ECTS"]:::proposed
+  P2["Decision Systems and AI Agents<br/>3 ECTS"]:::proposed
+  S0["Informatic Tecnologies for Fashion (73273)<br/>Interaction Multimedia Services (81917)<br/>Interaction Media Design (B5059)"]:::source
+  S0 -.-> P0
+  S1["Digital Culture (93379)"]:::source
+  S1 -.-> P2
+  S1 -.-> P0
+  S1 -.-> P1
+  S2["Introduction to Data Science and Computational Thinking (B0064)"]:::source
+  S2 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

@@ -1,0 +1,37 @@
+%% Restructuring proposal for all courses
+flowchart TB
+  P0["Database Concepts and Conceptual Modelling<br/>3 ECTS<br/>database_concepts<br/>database_management_systems<br/>conceptual_information_system_modelling"]:::proposed
+  P1["Relational Modelling and Query Languages<br/>3 ECTS<br/>relational_model_and_schema_design<br/>relational_database_keys<br/>formal_relational_query_languages"]:::proposed
+  P2["Relational DBMS and SQL<br/>3 ECTS<br/>relational_dbms_architecture_and_functionality<br/>sql_data_definition_and_queries<br/>sql_access_control"]:::proposed
+  P3["Transactions, Storage and Query Performance<br/>3 ECTS<br/>database_transaction_management<br/>physical_database_storage_and_access_methods<br/>relational_query_processing_and_performance"]:::proposed
+  P4["NoSQL Data Models<br/>3 ECTS<br/>data_models_and_sql_limits<br/>nosql_data_models_and_architectures<br/>nosql_data_models"]:::proposed
+  P5["NoSQL Design and Querying<br/>3 ECTS<br/>nosql_data_design_and_architecture<br/>nosql_querying<br/>mongodb_laboratory"]:::proposed
+  P6["Relational Database Systems<br/>4 ECTS<br/>active_relational_databases<br/>relational_database_administration<br/>database_application_access_modalities<br/>database_data_exchange"]:::proposed
+  P7["Enterprise Data Management<br/>3 ECTS<br/>enterprise_systems_and_categories<br/>enterprise_data_integration_and_master_data<br/>enterprise_data_governance_and_strategy"]:::proposed
+  P8["Data Warehouse Design<br/>2 ECTS<br/>data_warehouse_and_olap<br/>data_warehouse_design_and_etl"]:::proposed
+  P9["Business Intelligence Reporting<br/>3 ECTS<br/>business_intelligence_foundations<br/>business_intelligence_report_development<br/>business_intelligence_tool_reporting"]:::proposed
+  P10["Advanced Query Processing<br/>2 ECTS<br/>ranked_and_skyline_query_processing<br/>spatial_data_indexing"]:::proposed
+  P11["Big Data Foundations and Data Platform Architectures<br/>3 ECTS<br/>big_data_foundations<br/>big_data_management<br/>big_data_data_platform_architectures"]:::proposed
+  P12["Hadoop and MapReduce Processing<br/>3 ECTS<br/>big_data_cluster_architectures<br/>hadoop_big_data_processing<br/>mapreduce_programming"]:::proposed
+  P13["Spark and Online Big Data Processing<br/>3 ECTS<br/>spark_big_data_processing<br/>spark_data_processing_machine_learning<br/>online_stream_processing"]:::proposed
+  P14["Big Data Storage, Cloud, and Mining Infrastructure<br/>3 ECTS<br/>big_data_storage_and_streaming_algorithms<br/>cloud_big_data_deployment<br/>data_mining_infrastructure"]:::proposed
+  P15["Database Access and Semi-Structured Queries<br/>2 ECTS<br/>access_database_management<br/>sql_xml_and_xquery"]:::proposed
+  legend["Topic colour: first scope, in this order, among the<br/>current courses teaching it (by teachers' and programmes' department)<br/>service: some DISI teacher, no DISI degree programme<br/>external: no DISI teacher, no DISI degree programme<br/>borrow: no DISI teacher, some DISI degree programme<br/>weak_internal: some (not all) DISI teachers and DISI degree programmes<br/>internal: only DISI teachers and DISI degree programmes"]:::source
+  P3 --> P4
+  P3 --> P6
+  P3 --> P7
+  P3 --> P10
+  P3 --> P11
+  P3 --> P15
+  P0 --> P1
+  P1 --> P2
+  P2 --> P3
+  P4 --> P5
+  P7 --> P8
+  P8 --> P9
+  P11 --> P12
+  P12 --> P13
+  P11 --> P14
+  P12 --> P14
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

@@ -1,0 +1,53 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 22
+  name: Computer Vision Image (22)
+course:
+  id: '69661'
+  name: Image Processing And Computer Vision M
+topics:
+  camera_calibration: Camera calibration using intrinsic and extrinsic parameters,
+    lens-distortion correction, planar targets, homography estimation, and Zhang's
+    algorithm.
+  cnn_architectures: Convolutional neural-network architectures for computer vision,
+    including ResNeXt and grouped convolutions, MobileNets, EfficientNet, RegNet,
+    AlexNet, VGG, Inception, and ResNet.
+  cnn_object_detection: Neural-network approaches to object detection, including two-stage,
+    one-stage, anchor-free, Feature Pyramid Network, focal-loss, and DETR-based detectors.
+  color_models: Color models used in basic image processing.
+  connected_components_blob_analysis: Connected-components labeling and blob analysis
+    of binary images.
+  edge_detection: Image-gradient and edge-detection methods, including smooth derivatives,
+    Sobel operators, and the Canny detector.
+  feature_matching: Efficient matching of local image features using descriptors and
+    kd-trees.
+  hough_transform: Hough and generalized Hough transforms for detecting analytic shapes
+    and objects through voting.
+  image_classification: Image classification using linear classifiers and fully connected
+    neural networks.
+  image_convolution: Convolution and correlation as basic image-processing operations.
+  image_filtering: Mean, Gaussian, median, bilateral, and non-local-means filtering
+    of digital images.
+  image_formation_acquisition: Image formation and acquisition concepts, including
+    image sensors and the use of lenses.
+  image_histogram_thresholding: Gray-level histograms and global, automatically estimated,
+    and spatially adaptive image thresholding.
+  image_sampling_quantization: Basic image sensing, sampling, and quantization.
+  image_segmentation: Image-segmentation methods for separating objects or regions,
+    including semantic segmentation architectures such as Fully Convolutional Networks,
+    U-Net, and DeepLab.
+  local_features_descriptors: Keypoint detectors and descriptors, including Harris
+    corners and scale-invariant SIFT features.
+  mathematical_morphology: Mathematical morphology techniques used in basic image
+    processing.
+  neural_networks_deep_learning: Introduction to neural networks and deep learning,
+    including their applications.
+  object_detection: Techniques for detecting objects in images and video.
+  perspective_projection: Pinhole-camera geometry, projective coordinates, perspective
+    projection matrices, field of view, and depth of field.
+  stereo_vision: Stereopsis, image rectification, and stereo calibration for vision
+    systems.
+  template_matching: Pattern and shape matching using SSD, SAD, NCC, ZNCC, and shape-based
+    methods.
+  transfer_learning: Transfer learning for computer-vision models.

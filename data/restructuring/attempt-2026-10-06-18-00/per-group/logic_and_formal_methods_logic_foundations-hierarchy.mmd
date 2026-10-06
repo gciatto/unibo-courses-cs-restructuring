@@ -1,0 +1,99 @@
+%% Restructuring proposal for all courses
+flowchart TB
+  P0["Logic Foundations<br/>3 ECTS"]:::proposed
+  P1["Formal Structures<br/>2 ECTS"]:::proposed
+  P2["Inference and Automated Reasoning<br/>3 ECTS"]:::proposed
+  P3["Modal and Action Logics<br/>2 ECTS"]:::proposed
+  P4["Formal Language Foundations<br/>3 ECTS"]:::proposed
+  P5["Programming Language Lexing and Parsing<br/>3 ECTS"]:::proposed
+  P6["Programming Language Semantics<br/>3 ECTS"]:::proposed
+  P7["Programming Language Runtime Implementation<br/>3 ECTS"]:::proposed
+  P8["Compiler Foundations<br/>3 ECTS"]:::proposed
+  P9["Language Tooling and Generation<br/>2 ECTS"]:::proposed
+  P10["Program Analysis and Virtual Machines<br/>2 ECTS"]:::proposed
+  P11["Artificial Intelligence Problem Solving Foundations<br/>3 ECTS"]:::proposed
+  P12["Artificial Intelligence Search and Constraints<br/>3 ECTS"]:::proposed
+  P13["Knowledge Representation for Artificial Intelligence<br/>2 ECTS"]:::proposed
+  P14["Intelligent Agents and Planning<br/>2 ECTS"]:::proposed
+  P15["Artificial Intelligence Ethics and Safety<br/>2 ECTS"]:::proposed
+  P16["Semantic Web and Knowledge Graph Foundations<br/>3 ECTS"]:::proposed
+  P17["Ontology Modeling and Description Logics<br/>3 ECTS"]:::proposed
+  P18["Knowledge Graph Querying, Inference, and Search<br/>3 ECTS"]:::proposed
+  P19["Knowledge Graph Development and Enrichment<br/>3 ECTS"]:::proposed
+  P20["Agent Systems<br/>3 ECTS"]:::proposed
+  P21["Agent Programming and Coordination<br/>2 ECTS"]:::proposed
+  P22["Reinforcement Learning Foundations<br/>2 ECTS"]:::proposed
+  P23["Advanced Reinforcement Learning<br/>2 ECTS"]:::proposed
+  P24["Autonomous Mobile Robotics<br/>3 ECTS"]:::proposed
+  P25["Probabilistic AI Foundations and Bayesian Networks<br/>3 ECTS"]:::proposed
+  P26["Probabilistic Logic, Learning, and Planning<br/>3 ECTS"]:::proposed
+  P27["Foundations of Trustworthy Intelligent Systems<br/>2 ECTS"]:::proposed
+  P28["Advanced Knowledge-Grounded and Neuro-Symbolic AI<br/>2 ECTS"]:::proposed
+  P29["Agent Interaction and Planning<br/>2 ECTS"]:::proposed
+  P30["Reinforcement and Multi-Agent Learning<br/>3 ECTS"]:::proposed
+  P31["Adaptive and Generative Systems<br/>3 ECTS"]:::proposed
+  P32["Advanced Robotics: Control Foundations<br/>3 ECTS"]:::proposed
+  P33["Advanced Robotics: Adaptive Design<br/>3 ECTS"]:::proposed
+  P34["Advanced Robotics: Swarm Systems<br/>1 ECTS"]:::proposed
+  P35["AI Planning and Rule Inference<br/>2 ECTS"]:::proposed
+  P36["Cognitive AI and Interaction<br/>3 ECTS"]:::proposed
+  P37["Advanced Semantics and Multimodality<br/>3 ECTS"]:::proposed
+  P1 --> P4
+  P2 --> P4
+  P3 --> P4
+  P7 --> P8
+  P7 --> P10
+  P1 --> P11
+  P2 --> P11
+  P3 --> P11
+  P14 --> P16
+  P15 --> P16
+  P14 --> P20
+  P14 --> P22
+  P14 --> P24
+  P15 --> P20
+  P15 --> P22
+  P15 --> P24
+  P14 --> P25
+  P14 --> P26
+  P15 --> P25
+  P15 --> P26
+  P19 --> P27
+  P21 --> P29
+  P21 --> P30
+  P21 --> P31
+  P23 --> P29
+  P23 --> P30
+  P23 --> P31
+  P24 --> P29
+  P24 --> P30
+  P24 --> P31
+  P21 --> P32
+  P23 --> P32
+  P24 --> P32
+  P14 --> P35
+  P15 --> P35
+  P14 --> P36
+  P15 --> P36
+  P36 --> P37
+  P0 --> P2
+  P0 --> P3
+  P4 --> P5
+  P5 --> P6
+  P6 --> P7
+  P8 --> P9
+  P11 --> P12
+  P11 --> P13
+  P12 --> P14
+  P13 --> P14
+  P11 --> P15
+  P16 --> P17
+  P17 --> P18
+  P18 --> P19
+  P20 --> P21
+  P22 --> P23
+  P27 --> P28
+  P32 --> P33
+  P32 --> P34
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

@@ -1,0 +1,25 @@
+%% Restructuring proposal for all courses
+flowchart TB
+  P0["Digital Humanities Data and Resource Design<br/>3 ECTS<br/>digital_humanities_data_projects<br/>humanities_data_lifecycle_and_databases<br/>digital_cultural_heritage_resource_design"]:::proposed
+  P1["Text and Document Digitization<br/>3 ECTS<br/>humanities_text_digitization<br/>digitization_guidelines_and_specifications<br/>document_image_acquisition_and_processing"]:::proposed
+  P2["Three-Dimensional Capture and Reconstruction<br/>3 ECTS<br/>archaeological_digital_surveying_and_capture<br/>point_cloud_to_3d_models<br/>virtual_archaeological_reconstruction_and_restoration"]:::proposed
+  P3["Digital Cultural-Heritage Communication<br/>3 ECTS<br/>digital_images_for_cultural_heritage<br/>cultural_heritage_digital_communication<br/>cultural_heritage_digital_media"]:::proposed
+  P4["Digital Graphics and Layout<br/>3 ECTS<br/>digital_graphics_and_image_formats<br/>raster_graphics<br/>vector_graphics_and_layout"]:::proposed
+  P5["Digital Photography and Image-Based Modeling<br/>2 ECTS<br/>digital_photography<br/>image_based_modeling"]:::proposed
+  P6["Multimedia Content Representation and Exploration<br/>2 ECTS<br/>multimedia_content_representation_and_management<br/>multimedia_exploration_and_visualization"]:::proposed
+  P7["Multimedia Retrieval and Semantic Annotation<br/>2 ECTS<br/>multimedia_retrieval<br/>multimedia_semantic_annotation"]:::proposed
+  P8["XR Foundations, Platforms and Content Design<br/>3 ECTS<br/>xr_foundations<br/>xr_graphics_and_runtime_platforms<br/>xr_interaction_and_content_design"]:::proposed
+  legend["Topic colour: first scope, in this order, among the<br/>current courses teaching it (by teachers' and programmes' department)<br/>service: some DISI teacher, no DISI degree programme<br/>external: no DISI teacher, no DISI degree programme<br/>borrow: no DISI teacher, some DISI degree programme<br/>weak_internal: some (not all) DISI teachers and DISI degree programmes<br/>internal: only DISI teachers and DISI degree programmes"]:::source
+  P5 --> P0
+  P7 --> P0
+  P8 --> P0
+  P5 --> P2
+  P7 --> P2
+  P8 --> P2
+  P0 --> P1
+  P0 --> P3
+  P2 --> P3
+  P4 --> P5
+  P6 --> P7
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

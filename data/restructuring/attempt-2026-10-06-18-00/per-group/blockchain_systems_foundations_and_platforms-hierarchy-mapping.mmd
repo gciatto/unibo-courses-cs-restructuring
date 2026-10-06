@@ -1,0 +1,11 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Blockchain Foundations and Platforms<br/>2 ECTS"]:::proposed
+  P1["Blockchain Transactions, Contracts, and Production Modelling<br/>2 ECTS"]:::proposed
+  S0["Information Security M (72942)<br/>Distributed Systems (87474)"]:::source
+  S0 -.-> P0
+  S1["Blockchain and Cryptocurrencies (90748)<br/>PIATTAFORME PER LA TRASFORMAZIONE DIGITALE (B0074)<br/>ARTIFICIAL INTELLIGENCE, BLOCKCHAIN E CRIPTOVALUTE NELLO SVILUPPO SOFTWARE (B1459)"]:::source
+  S1 -.-> P0
+  S1 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

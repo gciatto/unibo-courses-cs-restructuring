@@ -1,0 +1,65 @@
+%% Restructuring proposal for all courses
+flowchart TB
+  P0["Web Basics<br/>4 ECTS<br/>web_foundations_http_uris<br/>web_browser_server_foundations<br/>web_applications_basics<br/>web_evolution"]:::proposed
+  P1["Web Content and Standards<br/>3 ECTS<br/>web_markup_styling_and_content_types<br/>web_character_encodings<br/>web_standards_and_standardization"]:::proposed
+  P2["Web Data and Architectures<br/>3 ECTS<br/>json_data_representation<br/>xml_document_processing<br/>web_architectures_and_stacks"]:::proposed
+  P3["JavaScript Foundations for Web Programming<br/>3 ECTS<br/>javascript_programming<br/>javascript_prototype_object_models<br/>client_side_web_programming"]:::proposed
+  P4["Client-Side Web Frameworks<br/>3 ECTS<br/>client_side_web_frameworks<br/>single_page_react_apps<br/>web_development_tooling_and_language_extensions"]:::proposed
+  P5["Node.js and Full-Stack JavaScript<br/>3 ECTS<br/>nodejs_server_side_web_development<br/>nodejs_asynchronous_web_servers<br/>full_stack_javascript"]:::proposed
+  P6["Server-Side Web Development Languages<br/>3 ECTS<br/>php_web_application_development<br/>python_server_side_web_development<br/>java_server_side_web_programming"]:::proposed
+  P7["Web Application Architecture Foundations<br/>3 ECTS<br/>web_application_architecture_and_state<br/>web_application_architectural_patterns<br/>web_application_modeling"]:::proposed
+  P8["Web Service API Development<br/>3 ECTS<br/>rest_web_apis<br/>web_services_and_api_documentation<br/>asynchronous_web_workflows"]:::proposed
+  P9["Web Protocols and Platform Infrastructure<br/>2 ECTS<br/>modern_web_protocols<br/>ecommerce_platform_infrastructure"]:::proposed
+  P10["Spring Application Development<br/>2 ECTS<br/>spring_container_programming<br/>spring_boot_application_development"]:::proposed
+  P11["HCI Foundations and Interaction Concept Design<br/>3 ECTS<br/>human_centered_interaction_foundations<br/>interaction_models_and_mental_models<br/>interaction_concept_design"]:::proposed
+  P12["User Research and Usability Design<br/>3 ECTS<br/>user_research_and_design_context<br/>user_research_and_experience_mapping<br/>usability_design_and_evaluation"]:::proposed
+  P13["Interaction Paradigms, Prototyping, and Evaluation<br/>3 ECTS<br/>interaction_paradigms<br/>interactive_prototyping<br/>interaction_evaluation_methods"]:::proposed
+  P14["Web, Mobile, and Complex-System UX<br/>3 ECTS<br/>web_and_mobile_usability<br/>human_computer_interaction_for_web<br/>ux_for_complex_systems"]:::proposed
+  P15["Mobile Application Development: Foundations and Design<br/>3 ECTS<br/>mobile_technology_foundations<br/>mobile_operating_systems<br/>mobile_application_design"]:::proposed
+  P16["Mobile Application Development: Android Foundations<br/>3 ECTS<br/>android_development_setup<br/>android_application_foundations<br/>mobile_application_architecture_patterns"]:::proposed
+  P17["Mobile Application Development: Android User Interfaces<br/>3 ECTS<br/>android_classic_ui<br/>android_compose_ui<br/>android_screen_navigation"]:::proposed
+  P18["Mobile Application Development: Android Data and Execution<br/>3 ECTS<br/>android_data_management<br/>android_background_execution<br/>mobile_application_debugging"]:::proposed
+  P19["iOS Development Foundations<br/>2 ECTS<br/>ios_development_setup_and_swift<br/>ios_platform_architecture"]:::proposed
+  P20["iOS User Interface Development<br/>2 ECTS<br/>ios_uikit_interaction<br/>ios_swiftui"]:::proposed
+  P21["iOS Application Services<br/>3 ECTS<br/>ios_data_management<br/>ios_multitasking_and_application_development<br/>mobile_networking_services"]:::proposed
+  P22["Cross-Platform Mobile Development<br/>3 ECTS<br/>cross_platform_and_hybrid_mobile_development<br/>kotlin_programming<br/>kotlin_multiplatform_development"]:::proposed
+  P23["Mobile Systems Architecture<br/>2 ECTS<br/>mobile_middleware_architecture<br/>web_mobile_system_architectures"]:::proposed
+  P24["Mobile Communication and Data Services<br/>2 ECTS<br/>mobile_messaging<br/>mobile_data_synchronization"]:::proposed
+  P25["Mobile Application Development and Multimedia<br/>3 ECTS<br/>web_mobile_development_tools<br/>android_camera_integration<br/>mobile_multimedia_management"]:::proposed
+  P26["Mobile Embedded Systems and Robotics<br/>2 ECTS<br/>mobile_embedded_system_integration<br/>differential_drive_robot_applications"]:::proposed
+  P27["Open RAN Architectures<br/>1 ECTS<br/>open_ran_architectures"]:::proposed
+  legend["Topic colour: first scope, in this order, among the<br/>current courses teaching it (by teachers' and programmes' department)<br/>service: some DISI teacher, no DISI degree programme<br/>external: no DISI teacher, no DISI degree programme<br/>borrow: no DISI teacher, some DISI degree programme<br/>weak_internal: some (not all) DISI teachers and DISI degree programmes<br/>internal: only DISI teachers and DISI degree programmes"]:::source
+  P2 --> P3
+  P2 --> P6
+  P4 --> P7
+  P5 --> P7
+  P6 --> P7
+  P2 --> P11
+  P4 --> P15
+  P5 --> P15
+  P6 --> P15
+  P18 --> P19
+  P18 --> P22
+  P18 --> P23
+  P18 --> P27
+  P0 --> P1
+  P0 --> P2
+  P1 --> P2
+  P3 --> P4
+  P3 --> P5
+  P7 --> P8
+  P8 --> P9
+  P7 --> P10
+  P11 --> P12
+  P12 --> P13
+  P13 --> P14
+  P15 --> P16
+  P16 --> P17
+  P17 --> P18
+  P19 --> P20
+  P19 --> P21
+  P23 --> P24
+  P23 --> P25
+  P25 --> P26
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

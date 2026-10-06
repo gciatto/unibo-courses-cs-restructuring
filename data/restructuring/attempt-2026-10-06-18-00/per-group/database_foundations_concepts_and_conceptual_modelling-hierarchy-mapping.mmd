@@ -1,0 +1,150 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Database Concepts and Conceptual Modelling<br/>3 ECTS"]:::proposed
+  P1["Relational Modelling and Query Languages<br/>3 ECTS"]:::proposed
+  P2["Relational DBMS and SQL<br/>3 ECTS"]:::proposed
+  P3["Transactions, Storage and Query Performance<br/>3 ECTS"]:::proposed
+  P4["NoSQL Data Models<br/>3 ECTS"]:::proposed
+  P5["NoSQL Design and Querying<br/>3 ECTS"]:::proposed
+  P6["Relational Database Systems<br/>4 ECTS"]:::proposed
+  P7["Enterprise Data Management<br/>3 ECTS"]:::proposed
+  P8["Data Warehouse Design<br/>2 ECTS"]:::proposed
+  P9["Business Intelligence Reporting<br/>3 ECTS"]:::proposed
+  P10["Advanced Query Processing<br/>2 ECTS"]:::proposed
+  P11["Big Data Foundations and Data Platform Architectures<br/>3 ECTS"]:::proposed
+  P12["Hadoop and MapReduce Processing<br/>3 ECTS"]:::proposed
+  P13["Spark and Online Big Data Processing<br/>3 ECTS"]:::proposed
+  P14["Big Data Storage, Cloud, and Mining Infrastructure<br/>3 ECTS"]:::proposed
+  P15["Database Access and Semi-Structured Queries<br/>2 ECTS"]:::proposed
+  S0["Computer Science (07276-C)"]:::source
+  S0 -.-> P7
+  S0 -.-> P2
+  S1["Data Base Sistems (09679)<br/>Scalable and Reliable Services M (97431, B5796)"]:::source
+  S1 -.-> P7
+  S2["Databases (10906, 79194)<br/>Database Systems (95611)<br/>Computational Management of Data (B8105)"]:::source
+  S2 -.-> P0
+  S2 -.-> P2
+  S2 -.-> P1
+  S2 -.-> P4
+  S3["Databases (10906-A)"]:::source
+  S3 -.-> P0
+  S3 -.-> P2
+  S3 -.-> P1
+  S3 -.-> P3
+  S3 -.-> P4
+  S3 -.-> P6
+  S4["Computer Lab (15920)"]:::source
+  S4 -.-> P0
+  S5["Information Systems T (28027)<br/>BASI DI DATI (90107)"]:::source
+  S5 -.-> P0
+  S5 -.-> P2
+  S5 -.-> P1
+  S5 -.-> P3
+  S6["Computer Science for Environmental Sciences (28106)<br/>INFORMATICA (B8159)"]:::source
+  S6 -.-> P2
+  S6 -.-> P1
+  S7["IT Systems T-1 (28652)"]:::source
+  S7 -.-> P7
+  S7 -.-> P0
+  S7 -.-> P2
+  S7 -.-> P1
+  S7 -.-> P3
+  S8["Elements of Databases (28796)"]:::source
+  S8 -.-> P8
+  S8 -.-> P15
+  S8 -.-> P4
+  S9["Business Intelligence (30376)"]:::source
+  S9 -.-> P9
+  S9 -.-> P8
+  S9 -.-> P0
+  S9 -.-> P1
+  S10["Basic and Laboratory Informatics (39176)<br/>Informatic (82202-A)"]:::source
+  S10 -.-> P15
+  S10 -.-> P0
+  S10 -.-> P2
+  S10 -.-> P1
+  S11["Informatics (57828)"]:::source
+  S11 -.-> P0
+  S11 -.-> P1
+  S11 -.-> P6
+  S12["Data Bases (70155)"]:::source
+  S12 -.-> P11
+  S12 -.-> P0
+  S12 -.-> P2
+  S12 -.-> P1
+  S12 -.-> P3
+  S12 -.-> P4
+  S13["Distributed Systems M (73025)"]:::source
+  S13 -.-> P13
+  S14["Big Data (81932)<br/>Big Data and Cloud Platforms (95630)"]:::source
+  S14 -.-> P11
+  S14 -.-> P12
+  S14 -.-> P13
+  S14 -.-> P14
+  S14 -.-> P4
+  S15["Scalable and Cloud Programming (81942)"]:::source
+  S15 -.-> P12
+  S15 -.-> P13
+  S16["Informatic (82202)"]:::source
+  S16 -.-> P11
+  S16 -.-> P0
+  S16 -.-> P2
+  S16 -.-> P1
+  S17["Advanced Database Systems (84339)"]:::source
+  S17 -.-> P4
+  S17 -.-> P5
+  S17 -.-> P6
+  S18["Database and Big Data Technologies M (84530)"]:::source
+  S18 -.-> P11
+  S18 -.-> P12
+  S18 -.-> P10
+  S18 -.-> P2
+  S18 -.-> P3
+  S18 -.-> P4
+  S19["Infrastructures For Cloud Computing and Big Data M (84531)"]:::source
+  S19 -.-> P12
+  S19 -.-> P13
+  S19 -.-> P4
+  S20["Networks, Security And Data Bases (91161)"]:::source
+  S20 -.-> P0
+  S20 -.-> P2
+  S20 -.-> P1
+  S21["Iot And Big Data For Smart Agricultural Systems (93653)"]:::source
+  S21 -.-> P11
+  S22["Design of Web Applications T (94442)"]:::source
+  S22 -.-> P0
+  S22 -.-> P3
+  S23["Machine Learning and Data Mining (95631)<br/>Machine Learning and Data Mining M (B2125)"]:::source
+  S23 -.-> P14
+  S23 -.-> P8
+  S24["Business Intelligence and Big Data M (96142)"]:::source
+  S24 -.-> P11
+  S24 -.-> P12
+  S24 -.-> P13
+  S24 -.-> P14
+  S24 -.-> P9
+  S24 -.-> P8
+  S24 -.-> P7
+  S24 -.-> P0
+  S24 -.-> P1
+  S24 -.-> P4
+  S25["Information Systems and Database Management (96793)"]:::source
+  S25 -.-> P0
+  S25 -.-> P2
+  S25 -.-> P1
+  S25 -.-> P4
+  S25 -.-> P5
+  S26["Business Analytics (98671)"]:::source
+  S26 -.-> P9
+  S26 -.-> P8
+  S26 -.-> P0
+  S26 -.-> P2
+  S27["Python Coding and Data Science (98735)"]:::source
+  S27 -.-> P11
+  S27 -.-> P13
+  S28["Big Data Analytics and Text Mining (B2133)"]:::source
+  S28 -.-> P11
+  S28 -.-> P12
+  S28 -.-> P13
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

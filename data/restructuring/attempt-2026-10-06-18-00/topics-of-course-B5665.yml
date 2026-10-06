@@ -1,0 +1,45 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 25
+  name: Administration Systems System (25)
+course:
+  id: B5665
+  name: Real Time Systems and Programming for Automation M
+topics:
+  aperiodic_task_scheduling: Scheduling of aperiodic tasks in real-time systems.
+  concurrent_programming: The concurrent programming paradigm.
+  cpu_scheduling: Operating-system CPU scheduling concepts and algorithms.
+  deadlock_starvation_busy_waiting: Operating-system concurrency problems involving
+    deadlock, starvation, and busy waiting.
+  hard_soft_realtime: Distinction between hard and soft real-time tasks and their
+    differing timing requirements.
+  io_management: Operating-system management of input and output operations and devices.
+  object_oriented_programming: Introduction to the object-oriented programming paradigm
+    in practical lectures.
+  oo_classes_objects: Classes and objects in the object-oriented programming paradigm.
+  os_introduction_history: The role, structure, objectives, and resource-management
+    functions of operating systems as execution environments for programs.
+  os_memory_management: Memory-management concepts and techniques in operating systems.
+  priority_resource_access_protocols: Priority inheritance, priority-ceiling, immediate
+    priority-ceiling, and stack resource protocols for managing shared-resource access
+    in real-time systems.
+  processes_threads: Operating-system processes and threads, including their organization
+    and execution.
+  python_control_flow: Conditional statements and iteration constructs in Python.
+  python_data_types: Basic Python data types and their use in solving problems.
+  python_functions: Functions in the Python programming language.
+  python_programming_basics: Introduction to programming in Python.
+  real_time_scheduling_approaches: Clock-driven and priority-driven approaches to
+    scheduling tasks in real-time systems.
+  real_time_systems: Main design issues, implementation strategies, supporting environments,
+    performance evaluation, and application domains of real-time systems.
+  shared_memory_synchronization: Shared-memory interaction mechanisms for concurrent
+    programs, including semaphores and monitors.
+  shell_scripting: Shell use and shell scripting for interacting with and administering
+    operating systems.
+  system_calls: System calls as the interface between operating-system services and
+    application programs.
+  vxworks_realtime_programming: Real-time system programming using the VxWorks operating
+    system and Workbench development environment, including construction of a metascheduler
+    for hard real-time periodic tasks sharing resources.

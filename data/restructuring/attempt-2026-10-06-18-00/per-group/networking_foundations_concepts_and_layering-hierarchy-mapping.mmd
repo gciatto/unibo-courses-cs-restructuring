@@ -1,0 +1,167 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Networking Concepts and Layering<br/>3 ECTS"]:::proposed
+  P1["Network Access and Architecture<br/>3 ECTS"]:::proposed
+  P2["IP Networks and Addressing<br/>3 ECTS"]:::proposed
+  P3["Internetworking and Transport<br/>3 ECTS"]:::proposed
+  P4["Internet Application Foundations<br/>4 ECTS"]:::proposed
+  P5["Client-Server Programming<br/>3 ECTS"]:::proposed
+  P6["Network Service Architectures<br/>3 ECTS"]:::proposed
+  P7["Network Quality of Service<br/>3 ECTS"]:::proposed
+  P8["Wireless Networking Foundations and Radio Engineering<br/>2 ECTS"]:::proposed
+  P9["Wireless LAN, Bluetooth, and Access Technologies<br/>3 ECTS"]:::proposed
+  P10["Cellular Mobility and Mobile IP<br/>2 ECTS"]:::proposed
+  P11["Mobile Ad Hoc Networks and Mobile Execution<br/>3 ECTS"]:::proposed
+  P12["Network Operations Foundations<br/>4 ECTS"]:::proposed
+  P13["Virtualized Network Management<br/>3 ECTS"]:::proposed
+  P14["Programmable Networking<br/>3 ECTS"]:::proposed
+  P15["Social Networks and Network Analysis Foundations<br/>3 ECTS"]:::proposed
+  P16["Network Metrics and Structure<br/>2 ECTS"]:::proposed
+  P17["Information Retrieval Foundations<br/>1 ECTS"]:::proposed
+  P18["Web Information Retrieval and Recommender Systems<br/>2 ECTS"]:::proposed
+  P19["Network Analysis Methods<br/>2 ECTS"]:::proposed
+  S0["Computer Science (07276, 07276-C)<br/>Informatics (60348, 78510)<br/>Informatic (82202)"]:::source
+  S0 -.-> P4
+  S0 -.-> P0
+  S1["Information Processing Systems (20741)<br/>Foundations of Informatics and Laboratory (28623)<br/>Computer Programming (37262)<br/>Computer Science (69259)<br/>Basic IT Skills (B9254)"]:::source
+  S1 -.-> P0
+  S2["Computer Networks T (28024)"]:::source
+  S2 -.-> P5
+  S2 -.-> P4
+  S2 -.-> P0
+  S2 -.-> P1
+  S3["Computer Science for Environmental Sciences (28106)"]:::source
+  S3 -.-> P4
+  S3 -.-> P0
+  S3 -.-> P15
+  S4["Web Technologies T (28659)<br/>Information Modelling and Web Technologies (85445)<br/>Web Technology (88566)<br/>Computer Studies and Humanities (B5293)<br/>Computer Studies and Human Sciences (B8929)"]:::source
+  S4 -.-> P4
+  S5["Elements of Databases (28796)"]:::source
+  S5 -.-> P17
+  S5 -.-> P18
+  S6["Principles, Models and Applications for Distributed Systems M (37085)"]:::source
+  S6 -.-> P5
+  S6 -.-> P4
+  S6 -.-> P14
+  S6 -.-> P13
+  S7["Basic and Laboratory Informatics (39176)<br/>Informatic (82202-A)"]:::source
+  S7 -.-> P4
+  S7 -.-> P0
+  S7 -.-> P15
+  S7 -.-> P18
+  S8["Informatics (57828)"]:::source
+  S8 -.-> P5
+  S8 -.-> P4
+  S8 -.-> P0
+  S9["Lab-based Course on Operating Systems (58348)<br/>Distributed Systems (87474)<br/>Distributed Software Systems (93468)"]:::source
+  S9 -.-> P5
+  S10["Internet Architecture (58423)"]:::source
+  S10 -.-> P5
+  S10 -.-> P4
+  S10 -.-> P6
+  S10 -.-> P0
+  S10 -.-> P3
+  S10 -.-> P2
+  S10 -.-> P1
+  S10 -.-> P8
+  S11["Mobile Applications Laboratory (66860)<br/>Mobile Application Programming (72787)<br/>Context-Aware Systems (84401)"]:::source
+  S11 -.-> P11
+  S12["Network Programming (70226)"]:::source
+  S12 -.-> P5
+  S12 -.-> P4
+  S12 -.-> P6
+  S12 -.-> P12
+  S12 -.-> P0
+  S12 -.-> P3
+  S13["Software Systems Engineering M (72939)"]:::source
+  S13 -.-> P5
+  S13 -.-> P4
+  S13 -.-> P3
+  S14["Informatic Tecnologies for Fashion (73273)"]:::source
+  S14 -.-> P0
+  S14 -.-> P18
+  S15["Basic Informatics (75969)"]:::source
+  S15 -.-> P4
+  S15 -.-> P0
+  S15 -.-> P3
+  S15 -.-> P2
+  S16["Embedded Systems Programming and Internet of Things (77780)<br/>Embedded Sensors (B5722)"]:::source
+  S16 -.-> P8
+  S17["Multimedia Data Management M (77933, 78096)<br/>Multimedia Data Management (91269)"]:::source
+  S17 -.-> P15
+  S17 -.-> P18
+  S18["Mobile Systems M (78779)"]:::source
+  S18 -.-> P10
+  S18 -.-> P8
+  S18 -.-> P11
+  S18 -.-> P9
+  S19["Laboratory of Making (81678)"]:::source
+  S19 -.-> P1
+  S20["Internet of Things (81683)"]:::source
+  S20 -.-> P8
+  S20 -.-> P9
+  S21["Interaction Multimedia Services (81917)"]:::source
+  S21 -.-> P5
+  S21 -.-> P4
+  S22["Infrastructures For Cloud Computing and Big Data M (84531)"]:::source
+  S22 -.-> P5
+  S22 -.-> P6
+  S23["System Administration T (88324)<br/>Virtualization and System Integration (96642)"]:::source
+  S23 -.-> P12
+  S23 -.-> P2
+  S24["Social Network Analysis (90730)<br/>Network Analysis (95782)"]:::source
+  S24 -.-> P19
+  S24 -.-> P17
+  S24 -.-> P16
+  S24 -.-> P15
+  S25["Elements of Computer Technologies for Fashion E-Commerce (90864)"]:::source
+  S25 -.-> P4
+  S25 -.-> P15
+  S26["Networks, Security And Data Bases (91161)<br/>INFORMATICA (B8159)"]:::source
+  S26 -.-> P4
+  S26 -.-> P0
+  S26 -.-> P3
+  S27["Artificial Intelligence in Industry (91261)<br/>Artificial Intelligence and Machine Learning for Business (95965)"]:::source
+  S27 -.-> P18
+  S28["Computer Networks (93315)"]:::source
+  S28 -.-> P5
+  S28 -.-> P4
+  S28 -.-> P7
+  S28 -.-> P6
+  S28 -.-> P12
+  S28 -.-> P14
+  S28 -.-> P0
+  S28 -.-> P3
+  S28 -.-> P2
+  S28 -.-> P1
+  S28 -.-> P10
+  S28 -.-> P8
+  S28 -.-> P9
+  S29["Operating Systems and Networks (95604)"]:::source
+  S29 -.-> P7
+  S29 -.-> P0
+  S29 -.-> P3
+  S29 -.-> P2
+  S29 -.-> P1
+  S30["Computer Networks and Network Programming (95644)"]:::source
+  S30 -.-> P5
+  S30 -.-> P12
+  S30 -.-> P0
+  S30 -.-> P3
+  S30 -.-> P2
+  S31["Virtualized Systems (95646)"]:::source
+  S31 -.-> P2
+  S32["Programmable Networking (96995)"]:::source
+  S32 -.-> P14
+  S32 -.-> P13
+  S33["Administration of Systems T (B0832)"]:::source
+  S33 -.-> P4
+  S33 -.-> P12
+  S33 -.-> P2
+  S34["Informatics for the Humanities (B4826)"]:::source
+  S34 -.-> P4
+  S34 -.-> P0
+  S34 -.-> P3
+  S34 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

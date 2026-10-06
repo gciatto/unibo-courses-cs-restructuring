@@ -1,0 +1,197 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Web Basics<br/>4 ECTS"]:::proposed
+  P1["Web Content and Standards<br/>3 ECTS"]:::proposed
+  P2["Web Data and Architectures<br/>3 ECTS"]:::proposed
+  P3["JavaScript Foundations for Web Programming<br/>3 ECTS"]:::proposed
+  P4["Client-Side Web Frameworks<br/>3 ECTS"]:::proposed
+  P5["Node.js and Full-Stack JavaScript<br/>3 ECTS"]:::proposed
+  P6["Server-Side Web Development Languages<br/>3 ECTS"]:::proposed
+  P7["Web Application Architecture Foundations<br/>3 ECTS"]:::proposed
+  P8["Web Service API Development<br/>3 ECTS"]:::proposed
+  P9["Web Protocols and Platform Infrastructure<br/>2 ECTS"]:::proposed
+  P10["Spring Application Development<br/>2 ECTS"]:::proposed
+  P11["HCI Foundations and Interaction Concept Design<br/>3 ECTS"]:::proposed
+  P12["User Research and Usability Design<br/>3 ECTS"]:::proposed
+  P13["Interaction Paradigms, Prototyping, and Evaluation<br/>3 ECTS"]:::proposed
+  P14["Web, Mobile, and Complex-System UX<br/>3 ECTS"]:::proposed
+  P15["Mobile Application Development: Foundations and Design<br/>3 ECTS"]:::proposed
+  P16["Mobile Application Development: Android Foundations<br/>3 ECTS"]:::proposed
+  P17["Mobile Application Development: Android User Interfaces<br/>3 ECTS"]:::proposed
+  P18["Mobile Application Development: Android Data and Execution<br/>3 ECTS"]:::proposed
+  P19["iOS Development Foundations<br/>2 ECTS"]:::proposed
+  P20["iOS User Interface Development<br/>2 ECTS"]:::proposed
+  P21["iOS Application Services<br/>3 ECTS"]:::proposed
+  P22["Cross-Platform Mobile Development<br/>3 ECTS"]:::proposed
+  P23["Mobile Systems Architecture<br/>2 ECTS"]:::proposed
+  P24["Mobile Communication and Data Services<br/>2 ECTS"]:::proposed
+  P25["Mobile Application Development and Multimedia<br/>3 ECTS"]:::proposed
+  P26["Mobile Embedded Systems and Robotics<br/>2 ECTS"]:::proposed
+  P27["Open RAN Architectures<br/>1 ECTS"]:::proposed
+  S0["Software Engineering (09032)<br/>Multimedia Data Management M (77933, 78096)<br/>Multimedia Data Management (91269)"]:::source
+  S0 -.-> P11
+  S1["Humanistic IT (27311)"]:::source
+  S1 -.-> P11
+  S1 -.-> P1
+  S2["Computer Science for Environmental Sciences (28106)<br/>Basic Informatics (75969)"]:::source
+  S2 -.-> P1
+  S2 -.-> P0
+  S3["Web Technologies T (28659)"]:::source
+  S3 -.-> P1
+  S3 -.-> P0
+  S3 -.-> P4
+  S3 -.-> P3
+  S3 -.-> P5
+  S3 -.-> P6
+  S3 -.-> P7
+  S3 -.-> P9
+  S3 -.-> P10
+  S4["Principles, Models and Applications for Distributed Systems M (37085)"]:::source
+  S4 -.-> P27
+  S5["Basic and Laboratory Informatics (39176)<br/>Informatics (57828)<br/>Informatic (82202-A)<br/>Networks, Security And Data Bases (91161)"]:::source
+  S5 -.-> P0
+  S6["Web-related Technologies (41731)"]:::source
+  S6 -.-> P14
+  S6 -.-> P1
+  S6 -.-> P0
+  S6 -.-> P4
+  S6 -.-> P3
+  S6 -.-> P5
+  S6 -.-> P8
+  S7["Web-related Technologies (41731-A)"]:::source
+  S7 -.-> P14
+  S7 -.-> P1
+  S7 -.-> P2
+  S7 -.-> P0
+  S7 -.-> P3
+  S7 -.-> P6
+  S8["Web Systems Engineering (47240)"]:::source
+  S8 -.-> P22
+  S8 -.-> P4
+  S8 -.-> P6
+  S9["Mobile Applications Laboratory (66860)"]:::source
+  S9 -.-> P25
+  S9 -.-> P22
+  S9 -.-> P21
+  S9 -.-> P19
+  S9 -.-> P20
+  S9 -.-> P18
+  S9 -.-> P16
+  S9 -.-> P17
+  S10["Web Services and Applications (69867)"]:::source
+  S10 -.-> P2
+  S10 -.-> P0
+  S10 -.-> P4
+  S10 -.-> P5
+  S10 -.-> P8
+  S10 -.-> P7
+  S11["Data Bases (70155)"]:::source
+  S11 -.-> P0
+  S11 -.-> P6
+  S12["Mobile Application Programming (72787)"]:::source
+  S12 -.-> P25
+  S12 -.-> P22
+  S12 -.-> P21
+  S12 -.-> P19
+  S12 -.-> P20
+  S12 -.-> P18
+  S12 -.-> P16
+  S12 -.-> P17
+  S12 -.-> P15
+  S13["Software Systems Engineering M (72939)"]:::source
+  S13 -.-> P26
+  S13 -.-> P22
+  S13 -.-> P10
+  S14["Computational Models And Languages M (72940)"]:::source
+  S14 -.-> P22
+  S14 -.-> P3
+  S15["Distributed Systems M (73025)"]:::source
+  S15 -.-> P5
+  S15 -.-> P10
+  S16["Informatic Tecnologies for Fashion (73273)<br/>Computer Science (96346-B)<br/>Informatics for the Humanities (B4826)<br/>Computer Studies and Humanities (B5293)<br/>INFORMATICA (B8159)<br/>Computer Studies and Human Sciences (B8929)"]:::source
+  S16 -.-> P1
+  S17["Web Technologies (75835)"]:::source
+  S17 -.-> P1
+  S17 -.-> P0
+  S17 -.-> P4
+  S17 -.-> P3
+  S17 -.-> P5
+  S17 -.-> P8
+  S18["Embedded Systems Programming and Internet of Things (77780)<br/>Embedded Systems and Internet of Things (96859)"]:::source
+  S18 -.-> P26
+  S19["Mobile Systems M (78779)"]:::source
+  S19 -.-> P23
+  S19 -.-> P24
+  S19 -.-> P27
+  S19 -.-> P22
+  S19 -.-> P21
+  S19 -.-> P19
+  S19 -.-> P18
+  S19 -.-> P16
+  S19 -.-> P8
+  S20["Interaction Multimedia Services (81917)"]:::source
+  S20 -.-> P11
+  S20 -.-> P12
+  S20 -.-> P14
+  S20 -.-> P22
+  S20 -.-> P15
+  S20 -.-> P1
+  S20 -.-> P2
+  S20 -.-> P0
+  S20 -.-> P3
+  S21["HUMAN COMPUTER INTERACTION (81934)<br/>Interaction Media Design (B5059)"]:::source
+  S21 -.-> P11
+  S21 -.-> P13
+  S21 -.-> P12
+  S21 -.-> P14
+  S22["Information Modelling and Web Technologies (85445)"]:::source
+  S22 -.-> P1
+  S22 -.-> P2
+  S22 -.-> P0
+  S22 -.-> P4
+  S22 -.-> P3
+  S23["Usability and User Experience (85573)<br/>Usability &amp; User Experience Design (90720)<br/>User Experience Design (91264)"]:::source
+  S23 -.-> P11
+  S23 -.-> P12
+  S23 -.-> P14
+  S24["Distributed Systems (87474)<br/>Distributed Software Systems (93468)<br/>Software Engineering (95627)<br/>Software Architecture and Platforms (B0010)<br/>ARCHITETTURE SOFTWARE A MICROSERVIZI (B5474)"]:::source
+  S24 -.-> P8
+  S25["Web Technology (88566)"]:::source
+  S25 -.-> P14
+  S25 -.-> P1
+  S25 -.-> P2
+  S25 -.-> P0
+  S25 -.-> P4
+  S25 -.-> P3
+  S25 -.-> P5
+  S25 -.-> P6
+  S26["Elements of Computer Technologies for Fashion E-Commerce (90864)"]:::source
+  S26 -.-> P11
+  S26 -.-> P15
+  S26 -.-> P2
+  S26 -.-> P9
+  S27["Design of Web Applications T (94442)"]:::source
+  S27 -.-> P1
+  S27 -.-> P2
+  S27 -.-> P7
+  S28["Web and Mobile Systems (95605)"]:::source
+  S28 -.-> P25
+  S28 -.-> P23
+  S28 -.-> P11
+  S28 -.-> P14
+  S28 -.-> P15
+  S28 -.-> P1
+  S28 -.-> P0
+  S29["Foundations of Web Systems (95645)"]:::source
+  S29 -.-> P14
+  S29 -.-> P1
+  S29 -.-> P2
+  S29 -.-> P0
+  S29 -.-> P4
+  S29 -.-> P3
+  S30["Software Process Engineering (B0011)"]:::source
+  S30 -.-> P22
+  S31["Programming Laboratory (B0063)<br/>ELABORAZIONE DI TESTI E GESTIONE DOCUMENTALE (B0073)<br/>Introduction to Programming (B1703)"]:::source
+  S31 -.-> P2
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

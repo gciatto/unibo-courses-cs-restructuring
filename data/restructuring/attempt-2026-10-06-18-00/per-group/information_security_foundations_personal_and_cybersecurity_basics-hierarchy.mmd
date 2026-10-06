@@ -1,0 +1,33 @@
+%% Restructuring proposal for all courses
+flowchart TB
+  P0["Personal and Cybersecurity Basics<br/>3 ECTS"]:::proposed
+  P1["Cryptographic Principles<br/>3 ECTS"]:::proposed
+  P2["Symmetric Cryptographic Mechanisms<br/>3 ECTS"]:::proposed
+  P3["Public-Key Cryptography and Trust<br/>3 ECTS"]:::proposed
+  P4["Cybersecurity Operations: Security Controls<br/>3 ECTS"]:::proposed
+  P5["Cybersecurity Operations: Defensive Architecture<br/>3 ECTS"]:::proposed
+  P6["Cybersecurity Operations: Security Assessment<br/>3 ECTS"]:::proposed
+  P7["Cybersecurity Operations: Governance and Incident Response<br/>3 ECTS"]:::proposed
+  P8["Windows and Linux Systems Foundations<br/>3 ECTS"]:::proposed
+  P9["Identity Services and Single Sign-On<br/>3 ECTS"]:::proposed
+  P10["Secure Remote Connectivity<br/>2 ECTS"]:::proposed
+  P11["Cybersecurity Contexts and Wireless Security<br/>3 ECTS"]:::proposed
+  P12["Anonymity and Cryptographic Security<br/>4 ECTS"]:::proposed
+  P13["Digital Forensics Foundations and Acquisition<br/>2 ECTS"]:::proposed
+  P14["Digital Forensics Analysis and Reporting<br/>3 ECTS"]:::proposed
+  P3 --> P4
+  P3 --> P8
+  P3 --> P11
+  P3 --> P12
+  P3 --> P13
+  P0 --> P1
+  P1 --> P2
+  P2 --> P3
+  P4 --> P5
+  P4 --> P6
+  P4 --> P7
+  P8 --> P9
+  P8 --> P10
+  P13 --> P14
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

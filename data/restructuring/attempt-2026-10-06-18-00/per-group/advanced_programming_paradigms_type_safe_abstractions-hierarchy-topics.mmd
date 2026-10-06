@@ -1,0 +1,8 @@
+%% Restructuring proposal for all courses
+flowchart TB
+  P0["Type-Safe Programming Abstractions<br/>3 ECTS<br/>generic_type_safe_programming<br/>haskell_type_classes<br/>go_rust_traits"]:::proposed
+  P1["Certified and Compositional Programming<br/>3 ECTS<br/>advanced_monadic_composition<br/>dependent_types_and_certified_programming<br/>property_based_testing"]:::proposed
+  legend["Topic colour: first scope, in this order, among the<br/>current courses teaching it (by teachers' and programmes' department)<br/>service: some DISI teacher, no DISI degree programme<br/>external: no DISI teacher, no DISI degree programme<br/>borrow: no DISI teacher, some DISI degree programme<br/>weak_internal: some (not all) DISI teachers and DISI degree programmes<br/>internal: only DISI teachers and DISI degree programmes"]:::source
+  P0 --> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

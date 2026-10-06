@@ -1,0 +1,11 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Computing History<br/>3 ECTS"]:::proposed
+  P1["Computer Architecture and Industry<br/>2 ECTS"]:::proposed
+  S0["Programming Languages (04138)<br/>Foundations of Informatics T-1 (28004)<br/>Foundations of Informatics T (29227)<br/>History of Informatics and Computing Systems (91685)<br/>Introduction to Programming (B1703)<br/>Computational Management of Data (B8105)"]:::source
+  S0 -.-> P0
+  S1["Programming and Computer Architectures (95602)"]:::source
+  S1 -.-> P1
+  S1 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

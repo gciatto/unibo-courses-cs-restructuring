@@ -1,0 +1,100 @@
+%% Restructuring proposal for all courses
+flowchart TB
+  P0["Logic Foundations<br/>3 ECTS<br/>propositional_logic_and_paradoxes<br/>first_order_logic<br/>classical_formal_logic"]:::proposed
+  P1["Formal Structures<br/>2 ECTS<br/>set_theory<br/>structural_reasoning_and_definition"]:::proposed
+  P2["Inference and Automated Reasoning<br/>3 ECTS<br/>mathematical_logic_inference<br/>automated_reasoning_foundations<br/>deductive_reasoning"]:::proposed
+  P3["Modal and Action Logics<br/>2 ECTS<br/>modal_and_epistemic_logic<br/>action_and_event_logics"]:::proposed
+  P4["Formal Language Foundations<br/>3 ECTS<br/>formal_languages_and_automata<br/>regular_languages_and_classification<br/>context_free_grammars"]:::proposed
+  P5["Programming Language Lexing and Parsing<br/>3 ECTS<br/>programming_language_syntax<br/>programming_language_lexing_parsing<br/>deterministic_parsing"]:::proposed
+  P6["Programming Language Semantics<br/>3 ECTS<br/>programming_language_syntax_semantics<br/>programming_language_semantics<br/>programming_language_semantics_2"]:::proposed
+  P7["Programming Language Runtime Implementation<br/>3 ECTS<br/>programming_language_runtime_environments<br/>programming_language_runtime_and_scoping<br/>abstract_machine_models"]:::proposed
+  P8["Compiler Foundations<br/>3 ECTS<br/>language_implementation_mechanisms<br/>programming_language_implementation_tools<br/>compiler_code_generation"]:::proposed
+  P9["Language Tooling and Generation<br/>2 ECTS<br/>programming_language_tooling_implementation<br/>domain_specific_languages_and_code_generation"]:::proposed
+  P10["Program Analysis and Virtual Machines<br/>2 ECTS<br/>static_program_analysis<br/>virtual_machines"]:::proposed
+  P11["Artificial Intelligence Problem Solving Foundations<br/>3 ECTS<br/>ai_foundations<br/>ai_problem_formulation<br/>ai_problem_solving"]:::proposed
+  P12["Artificial Intelligence Search and Constraints<br/>3 ECTS<br/>ai_search_fundamentals<br/>adversarial_search<br/>constraint_satisfaction_methods"]:::proposed
+  P13["Knowledge Representation for Artificial Intelligence<br/>2 ECTS<br/>knowledge_representation_foundations<br/>ai_knowledge_representation"]:::proposed
+  P14["Intelligent Agents and Planning<br/>2 ECTS<br/>intelligent_systems_and_agents<br/>ai_planning_fundamentals"]:::proposed
+  P15["Artificial Intelligence Ethics and Safety<br/>2 ECTS<br/>ai_epistemology_and_ethics<br/>ai_safety_and_alignment"]:::proposed
+  P16["Semantic Web and Knowledge Graph Foundations<br/>3 ECTS<br/>semantic_web_and_web_of_data<br/>rdf_web_metadata<br/>knowledge_graph_foundations_and_linked_data"]:::proposed
+  P17["Ontology Modeling and Description Logics<br/>3 ECTS<br/>description_logics<br/>owl_ontology_modeling<br/>ontology_engineering_methods"]:::proposed
+  P18["Knowledge Graph Querying, Inference, and Search<br/>3 ECTS<br/>sparql_knowledge_graph_querying<br/>logical_inference_over_semantic_representations<br/>semantic_search"]:::proposed
+  P19["Knowledge Graph Development and Enrichment<br/>3 ECTS<br/>knowledge_extraction_methods<br/>knowledge_graph_development_and_analytics<br/>knowledge_graph_integration_and_completion"]:::proposed
+  P20["Agent Systems<br/>3 ECTS<br/>autonomous_agent_systems<br/>multi_agent_systems<br/>agent_frameworks"]:::proposed
+  P21["Agent Programming and Coordination<br/>2 ECTS<br/>intentional_agent_programming<br/>multi_agent_artifacts_and_coordination"]:::proposed
+  P22["Reinforcement Learning Foundations<br/>2 ECTS<br/>reinforcement_learning_foundations<br/>reinforcement_learning_methods"]:::proposed
+  P23["Advanced Reinforcement Learning<br/>2 ECTS<br/>advanced_reinforcement_learning_methods<br/>deep_reinforcement_learning"]:::proposed
+  P24["Autonomous Mobile Robotics<br/>3 ECTS<br/>robotics_ai_foundations<br/>robot_path_planning_and_navigation<br/>autonomous_mobile_robot_applications"]:::proposed
+  P25["Probabilistic AI Foundations and Bayesian Networks<br/>3 ECTS<br/>probabilistic_reasoning_foundations<br/>bayesian_networks_and_inference<br/>bayesian_network_classification"]:::proposed
+  P26["Probabilistic Logic, Learning, and Planning<br/>3 ECTS<br/>probabilistic_logic_programming<br/>symbolic_and_bayesian_learning<br/>ai_planning_methods"]:::proposed
+  P27["Foundations of Trustworthy Intelligent Systems<br/>2 ECTS<br/>explainable_ai<br/>cognitive_architectures"]:::proposed
+  P28["Advanced Knowledge-Grounded and Neuro-Symbolic AI<br/>2 ECTS<br/>knowledge_graph_embeddings_llm_grounding<br/>neurosymbolic_methods"]:::proposed
+  P29["Agent Interaction and Planning<br/>2 ECTS<br/>agent_planning_strips<br/>conversational_intelligent_systems"]:::proposed
+  P30["Reinforcement and Multi-Agent Learning<br/>3 ECTS<br/>reinforcement_learning_applications<br/>multi_agent_learning_and_games<br/>preference_based_ai_training"]:::proposed
+  P31["Adaptive and Generative Systems<br/>3 ECTS<br/>bio_inspired_adaptive_systems<br/>generative_learning_and_creativity<br/>self_organising_computational_models"]:::proposed
+  P32["Advanced Robotics: Control Foundations<br/>3 ECTS<br/>robot_behavior_control_architectures<br/>fuzzy_robot_control<br/>robot_control_evaluation_and_tuning"]:::proposed
+  P33["Advanced Robotics: Adaptive Design<br/>3 ECTS<br/>robot_adaptive_learning<br/>evolutionary_robotics<br/>automatic_robot_program_design"]:::proposed
+  P34["Advanced Robotics: Swarm Systems<br/>1 ECTS<br/>swarm_robotics"]:::proposed
+  P35["AI Planning and Rule Inference<br/>2 ECTS<br/>planning_representations_and_ordering<br/>rete_rule_inference"]:::proposed
+  P36["Cognitive AI and Interaction<br/>3 ECTS<br/>ai_human_computer_interaction<br/>cognitive_science_ai<br/>cognitive_approaches_to_meaning"]:::proposed
+  P37["Advanced Semantics and Multimodality<br/>3 ECTS<br/>semiotic_foundations<br/>advanced_semantic_frameworks<br/>multimodal_semantic_interpretation"]:::proposed
+  legend["Topic colour: first scope, in this order, among the<br/>current courses teaching it (by teachers' and programmes' department)<br/>service: some DISI teacher, no DISI degree programme<br/>external: no DISI teacher, no DISI degree programme<br/>borrow: no DISI teacher, some DISI degree programme<br/>weak_internal: some (not all) DISI teachers and DISI degree programmes<br/>internal: only DISI teachers and DISI degree programmes"]:::source
+  P1 --> P4
+  P2 --> P4
+  P3 --> P4
+  P7 --> P8
+  P7 --> P10
+  P1 --> P11
+  P2 --> P11
+  P3 --> P11
+  P14 --> P16
+  P15 --> P16
+  P14 --> P20
+  P14 --> P22
+  P14 --> P24
+  P15 --> P20
+  P15 --> P22
+  P15 --> P24
+  P14 --> P25
+  P14 --> P26
+  P15 --> P25
+  P15 --> P26
+  P19 --> P27
+  P21 --> P29
+  P21 --> P30
+  P21 --> P31
+  P23 --> P29
+  P23 --> P30
+  P23 --> P31
+  P24 --> P29
+  P24 --> P30
+  P24 --> P31
+  P21 --> P32
+  P23 --> P32
+  P24 --> P32
+  P14 --> P35
+  P15 --> P35
+  P14 --> P36
+  P15 --> P36
+  P36 --> P37
+  P0 --> P2
+  P0 --> P3
+  P4 --> P5
+  P5 --> P6
+  P6 --> P7
+  P8 --> P9
+  P11 --> P12
+  P11 --> P13
+  P12 --> P14
+  P13 --> P14
+  P11 --> P15
+  P16 --> P17
+  P17 --> P18
+  P18 --> P19
+  P20 --> P21
+  P22 --> P23
+  P27 --> P28
+  P32 --> P33
+  P32 --> P34
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

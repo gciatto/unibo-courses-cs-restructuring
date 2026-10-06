@@ -1,0 +1,45 @@
+%% Restructuring proposal for all courses
+flowchart TB
+  P0["Networking Concepts and Layering<br/>3 ECTS<br/>computer_network_fundamentals<br/>network_protocols_introduction<br/>network_layered_architecture"]:::proposed
+  P1["Network Access and Architecture<br/>3 ECTS<br/>network_layered_architecture_2<br/>physical_and_radio_transmission<br/>link_layer_networking"]:::proposed
+  P2["IP Networks and Addressing<br/>3 ECTS<br/>network_address_resolution<br/>internet_network_operations<br/>ip_addressing_and_network_design"]:::proposed
+  P3["Internetworking and Transport<br/>3 ECTS<br/>internetworking<br/>transport_layer_protocols<br/>reliable_network_communication"]:::proposed
+  P4["Internet Application Foundations<br/>4 ECTS<br/>internet_and_web_basics<br/>internet_applications<br/>internet_application_protocols<br/>domain_name_systems"]:::proposed
+  P5["Client-Server Programming<br/>3 ECTS<br/>client_server_tcp_ip_applications<br/>network_socket_programming"]:::proposed
+  P6["Network Service Architectures<br/>3 ECTS<br/>network_service_models_and_applications<br/>peer_to_peer_file_sharing<br/>group_communication"]:::proposed
+  P7["Network Quality of Service<br/>3 ECTS<br/>transport_and_network_qos"]:::proposed
+  P8["Wireless Networking Foundations and Radio Engineering<br/>2 ECTS<br/>wireless_networking_foundations<br/>wireless_radio_engineering"]:::proposed
+  P9["Wireless LAN, Bluetooth, and Access Technologies<br/>3 ECTS<br/>ieee_80211_wireless_networking<br/>bluetooth_networking<br/>wireless_access_and_zigbee"]:::proposed
+  P10["Cellular Mobility and Mobile IP<br/>2 ECTS<br/>cellular_mobility_management<br/>mobile_ip_networking"]:::proposed
+  P11["Mobile Ad Hoc Networks and Mobile Execution<br/>3 ECTS<br/>mobile_ad_hoc_network_routing<br/>mobile_positioning_and_pervasive_features<br/>wireless_mobile_execution"]:::proposed
+  P12["Network Operations Foundations<br/>4 ECTS<br/>network_switching_and_virtual_networks<br/>linux_network_administration<br/>network_monitoring_and_troubleshooting<br/>network_protocol_analysis"]:::proposed
+  P13["Virtualized Network Management<br/>3 ECTS<br/>netconf_network_management<br/>network_function_virtualization<br/>network_virtualization_linux"]:::proposed
+  P14["Programmable Networking<br/>3 ECTS<br/>software_defined_networking_concepts<br/>openflow_programmable_networking<br/>p4_data_plane_programming"]:::proposed
+  P15["Social Networks and Network Analysis Foundations<br/>3 ECTS<br/>web_social_networks<br/>network_analysis_foundations_and_methodology<br/>network_visualization"]:::proposed
+  P16["Network Metrics and Structure<br/>2 ECTS<br/>network_node_metrics<br/>network_structure_metrics"]:::proposed
+  P17["Information Retrieval Foundations<br/>1 ECTS<br/>information_retrieval"]:::proposed
+  P18["Web Information Retrieval and Recommender Systems<br/>2 ECTS<br/>web_information_retrieval<br/>recommender_systems"]:::proposed
+  P19["Network Analysis Methods<br/>2 ECTS<br/>network_hypothesis_testing<br/>large_network_analysis"]:::proposed
+  legend["Topic colour: first scope, in this order, among the<br/>current courses teaching it (by teachers' and programmes' department)<br/>service: some DISI teacher, no DISI degree programme<br/>external: no DISI teacher, no DISI degree programme<br/>borrow: no DISI teacher, some DISI degree programme<br/>weak_internal: some (not all) DISI teachers and DISI degree programmes<br/>internal: only DISI teachers and DISI degree programmes"]:::source
+  P3 --> P4
+  P3 --> P8
+  P3 --> P12
+  P3 --> P15
+  P3 --> P17
+  P16 --> P19
+  P18 --> P19
+  P0 --> P1
+  P1 --> P2
+  P2 --> P3
+  P4 --> P5
+  P5 --> P6
+  P6 --> P7
+  P8 --> P9
+  P8 --> P10
+  P8 --> P11
+  P12 --> P13
+  P12 --> P14
+  P15 --> P16
+  P17 --> P18
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

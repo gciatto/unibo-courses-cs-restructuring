@@ -1,0 +1,36 @@
+%% Restructuring proposal for all courses
+flowchart TB
+  P0["Database Concepts and Conceptual Modelling<br/>3 ECTS"]:::proposed
+  P1["Relational Modelling and Query Languages<br/>3 ECTS"]:::proposed
+  P2["Relational DBMS and SQL<br/>3 ECTS"]:::proposed
+  P3["Transactions, Storage and Query Performance<br/>3 ECTS"]:::proposed
+  P4["NoSQL Data Models<br/>3 ECTS"]:::proposed
+  P5["NoSQL Design and Querying<br/>3 ECTS"]:::proposed
+  P6["Relational Database Systems<br/>4 ECTS"]:::proposed
+  P7["Enterprise Data Management<br/>3 ECTS"]:::proposed
+  P8["Data Warehouse Design<br/>2 ECTS"]:::proposed
+  P9["Business Intelligence Reporting<br/>3 ECTS"]:::proposed
+  P10["Advanced Query Processing<br/>2 ECTS"]:::proposed
+  P11["Big Data Foundations and Data Platform Architectures<br/>3 ECTS"]:::proposed
+  P12["Hadoop and MapReduce Processing<br/>3 ECTS"]:::proposed
+  P13["Spark and Online Big Data Processing<br/>3 ECTS"]:::proposed
+  P14["Big Data Storage, Cloud, and Mining Infrastructure<br/>3 ECTS"]:::proposed
+  P15["Database Access and Semi-Structured Queries<br/>2 ECTS"]:::proposed
+  P3 --> P4
+  P3 --> P6
+  P3 --> P7
+  P3 --> P10
+  P3 --> P11
+  P3 --> P15
+  P0 --> P1
+  P1 --> P2
+  P2 --> P3
+  P4 --> P5
+  P7 --> P8
+  P8 --> P9
+  P11 --> P12
+  P12 --> P13
+  P11 --> P14
+  P12 --> P14
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

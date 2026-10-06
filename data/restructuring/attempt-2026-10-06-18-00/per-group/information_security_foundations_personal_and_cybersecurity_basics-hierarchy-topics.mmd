@@ -1,0 +1,34 @@
+%% Restructuring proposal for all courses
+flowchart TB
+  P0["Personal and Cybersecurity Basics<br/>3 ECTS<br/>basic_it_security_and_malware<br/>personal_and_internet_security<br/>cybersecurity_concepts_and_postures"]:::proposed
+  P1["Cryptographic Principles<br/>3 ECTS<br/>cryptographic_security_goals<br/>cryptography_theoretical_foundations<br/>modular_arithmetic_for_cryptography"]:::proposed
+  P2["Symmetric Cryptographic Mechanisms<br/>3 ECTS<br/>symmetric_cryptography<br/>cryptographic_hash_functions<br/>cryptographic_randomness"]:::proposed
+  P3["Public-Key Cryptography and Trust<br/>3 ECTS<br/>public_key_cryptography_and_signatures<br/>cryptographic_key_management_and_trust<br/>cryptographic_protocols_and_pgp"]:::proposed
+  P4["Cybersecurity Operations: Security Controls<br/>3 ECTS<br/>authentication_and_authorization<br/>network_security_mechanisms<br/>system_data_and_physical_protection"]:::proposed
+  P5["Cybersecurity Operations: Defensive Architecture<br/>3 ECTS<br/>application_security<br/>network_security_protection<br/>modern_cybersecurity_strategies"]:::proposed
+  P6["Cybersecurity Operations: Security Assessment<br/>3 ECTS<br/>attack_lifecycle_and_security_testing<br/>vulnerability_assessment_and_exploitation<br/>system_and_application_exploitation"]:::proposed
+  P7["Cybersecurity Operations: Governance and Incident Response<br/>3 ECTS<br/>cybersecurity_governance_risk_and_assurance<br/>threat_intelligence_and_incident_operations<br/>incident_and_crisis_management"]:::proposed
+  P8["Windows and Linux Systems Foundations<br/>3 ECTS<br/>linux_kernel_case_study<br/>windows_file_management<br/>windows_linux_integration"]:::proposed
+  P9["Identity Services and Single Sign-On<br/>3 ECTS<br/>identity_management_foundations<br/>directory_and_sso_authentication<br/>federated_authentication_and_single_sign_on"]:::proposed
+  P10["Secure Remote Connectivity<br/>2 ECTS<br/>network_traversal_and_proxying<br/>secure_network_and_remote_protocols"]:::proposed
+  P11["Cybersecurity Contexts and Wireless Security<br/>3 ECTS<br/>ai_enabled_cybersecurity<br/>societal_and_conflict_cybersecurity<br/>wireless_network_security"]:::proposed
+  P12["Anonymity and Cryptographic Security<br/>4 ECTS<br/>tor_and_dark_web_security<br/>formal_cryptographic_protocol_analysis<br/>post_quantum_cryptography<br/>blockchain_security_and_anonymity"]:::proposed
+  P13["Digital Forensics Foundations and Acquisition<br/>2 ECTS<br/>digital_forensics_foundations_and_evidence<br/>digital_forensics_acquisition_and_tools"]:::proposed
+  P14["Digital Forensics Analysis and Reporting<br/>3 ECTS<br/>digital_forensics_endpoint_and_file_analysis<br/>digital_forensics_network_cloud_and_communications<br/>digital_forensics_findings_and_testimony"]:::proposed
+  legend["Topic colour: first scope, in this order, among the<br/>current courses teaching it (by teachers' and programmes' department)<br/>service: some DISI teacher, no DISI degree programme<br/>external: no DISI teacher, no DISI degree programme<br/>borrow: no DISI teacher, some DISI degree programme<br/>weak_internal: some (not all) DISI teachers and DISI degree programmes<br/>internal: only DISI teachers and DISI degree programmes"]:::source
+  P3 --> P4
+  P3 --> P8
+  P3 --> P11
+  P3 --> P12
+  P3 --> P13
+  P0 --> P1
+  P1 --> P2
+  P2 --> P3
+  P4 --> P5
+  P4 --> P6
+  P4 --> P7
+  P8 --> P9
+  P8 --> P10
+  P13 --> P14
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

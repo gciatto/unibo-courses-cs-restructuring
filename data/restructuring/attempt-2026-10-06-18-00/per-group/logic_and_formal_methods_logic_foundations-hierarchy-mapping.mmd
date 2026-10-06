@@ -1,0 +1,261 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Logic Foundations<br/>3 ECTS"]:::proposed
+  P1["Formal Structures<br/>2 ECTS"]:::proposed
+  P2["Inference and Automated Reasoning<br/>3 ECTS"]:::proposed
+  P3["Modal and Action Logics<br/>2 ECTS"]:::proposed
+  P4["Formal Language Foundations<br/>3 ECTS"]:::proposed
+  P5["Programming Language Lexing and Parsing<br/>3 ECTS"]:::proposed
+  P6["Programming Language Semantics<br/>3 ECTS"]:::proposed
+  P7["Programming Language Runtime Implementation<br/>3 ECTS"]:::proposed
+  P8["Compiler Foundations<br/>3 ECTS"]:::proposed
+  P9["Language Tooling and Generation<br/>2 ECTS"]:::proposed
+  P10["Program Analysis and Virtual Machines<br/>2 ECTS"]:::proposed
+  P11["Artificial Intelligence Problem Solving Foundations<br/>3 ECTS"]:::proposed
+  P12["Artificial Intelligence Search and Constraints<br/>3 ECTS"]:::proposed
+  P13["Knowledge Representation for Artificial Intelligence<br/>2 ECTS"]:::proposed
+  P14["Intelligent Agents and Planning<br/>2 ECTS"]:::proposed
+  P15["Artificial Intelligence Ethics and Safety<br/>2 ECTS"]:::proposed
+  P16["Semantic Web and Knowledge Graph Foundations<br/>3 ECTS"]:::proposed
+  P17["Ontology Modeling and Description Logics<br/>3 ECTS"]:::proposed
+  P18["Knowledge Graph Querying, Inference, and Search<br/>3 ECTS"]:::proposed
+  P19["Knowledge Graph Development and Enrichment<br/>3 ECTS"]:::proposed
+  P20["Agent Systems<br/>3 ECTS"]:::proposed
+  P21["Agent Programming and Coordination<br/>2 ECTS"]:::proposed
+  P22["Reinforcement Learning Foundations<br/>2 ECTS"]:::proposed
+  P23["Advanced Reinforcement Learning<br/>2 ECTS"]:::proposed
+  P24["Autonomous Mobile Robotics<br/>3 ECTS"]:::proposed
+  P25["Probabilistic AI Foundations and Bayesian Networks<br/>3 ECTS"]:::proposed
+  P26["Probabilistic Logic, Learning, and Planning<br/>3 ECTS"]:::proposed
+  P27["Foundations of Trustworthy Intelligent Systems<br/>2 ECTS"]:::proposed
+  P28["Advanced Knowledge-Grounded and Neuro-Symbolic AI<br/>2 ECTS"]:::proposed
+  P29["Agent Interaction and Planning<br/>2 ECTS"]:::proposed
+  P30["Reinforcement and Multi-Agent Learning<br/>3 ECTS"]:::proposed
+  P31["Adaptive and Generative Systems<br/>3 ECTS"]:::proposed
+  P32["Advanced Robotics: Control Foundations<br/>3 ECTS"]:::proposed
+  P33["Advanced Robotics: Adaptive Design<br/>3 ECTS"]:::proposed
+  P34["Advanced Robotics: Swarm Systems<br/>1 ECTS"]:::proposed
+  P35["AI Planning and Rule Inference<br/>2 ECTS"]:::proposed
+  P36["Cognitive AI and Interaction<br/>3 ECTS"]:::proposed
+  P37["Advanced Semantics and Multimodality<br/>3 ECTS"]:::proposed
+  S0["Programming Languages (04138)<br/>Computational Models And Languages M (72940)"]:::source
+  S0 -.-> P4
+  S0 -.-> P5
+  S0 -.-> P7
+  S0 -.-> P6
+  S0 -.-> P8
+  S1["Computer Science (07276-A)<br/>Electronic Calculators T (28012)<br/>Information Technology (28040)<br/>Foundations of Informatics T (29227-B)<br/>Programming (85285)<br/>Computer Architectures (91602)<br/>INFORMATICA (96346)"]:::source
+  S1 -.-> P7
+  S2["Foundations of Informatics T-1 (28004)"]:::source
+  S2 -.-> P6
+  S2 -.-> P8
+  S3["Foundations of Informatics T (29227)<br/>Foundations of Computer Science T (93034)"]:::source
+  S3 -.-> P5
+  S3 -.-> P7
+  S4["Foundations of Informatics T (29227-A)<br/>Programming and Development paradigms (81612)<br/>Emerging Programming Paradigms (81672)<br/>Python Coding and Data Science (98735)<br/>Programming Laboratory (B0063)"]:::source
+  S4 -.-> P6
+  S5["Computer Programming (37262)<br/>Elements of Informatics (89988)"]:::source
+  S5 -.-> P8
+  S6["Virtual System Design (37925)<br/>Virtualization and System Integration (96642)<br/>SISTEMI CONCORRENTI E PARALLELI M (B8562)"]:::source
+  S6 -.-> P10
+  S7["Data Mining (40720)<br/>Machine Learning and Data Mining (95631-A)"]:::source
+  S7 -.-> P28
+  S7 -.-> P25
+  S8["Semantic Web (42500)"]:::source
+  S8 -.-> P19
+  S8 -.-> P17
+  S8 -.-> P18
+  S8 -.-> P16
+  S8 -.-> P28
+  S9["Computer Science for Cultural Heritage (48693)"]:::source
+  S9 -.-> P37
+  S10["Logic for Computer Science (66857)"]:::source
+  S10 -.-> P4
+  S10 -.-> P1
+  S10 -.-> P0
+  S11["Complements of Programming Languages (72671)"]:::source
+  S11 -.-> P5
+  S11 -.-> P6
+  S11 -.-> P8
+  S11 -.-> P9
+  S11 -.-> P10
+  S12["Foundations Of Artificial Intelligence T (72938)"]:::source
+  S12 -.-> P14
+  S12 -.-> P13
+  S12 -.-> P11
+  S12 -.-> P12
+  S12 -.-> P0
+  S13["Software Systems Engineering M (72939)"]:::source
+  S13 -.-> P24
+  S13 -.-> P9
+  S14["Logic for Informatics (73149)"]:::source
+  S14 -.-> P13
+  S14 -.-> P2
+  S14 -.-> P0
+  S14 -.-> P3
+  S15["Informatic Tecnologies for Fashion (73273)<br/>Language, Technology, Research I: Computational Thinking (B2696)<br/>Basic IT Skills (B9254)"]:::source
+  S15 -.-> P11
+  S16["Multimedia Data Management M (77933, 78096)<br/>Internet of Things (81683)<br/>Multimedia Data Management (91269)<br/>Digital Humanities and Data Management for Cultural Heritage (B5079)"]:::source
+  S16 -.-> P16
+  S17["Intelligent Systems M (78778)"]:::source
+  S17 -.-> P24
+  S17 -.-> P35
+  S17 -.-> P14
+  S17 -.-> P12
+  S17 -.-> P26
+  S18["Languages, Compilers and Computational Models (81609)"]:::source
+  S18 -.-> P4
+  S18 -.-> P5
+  S18 -.-> P8
+  S18 -.-> P10
+  S18 -.-> P0
+  S19["Machine Learning (81610, 88202)<br/>DEEP LEARNING (91250)<br/>Deep Learning (91250-A, 91250-B)<br/>INTRODUZIONE ALL&#x27;APPRENDIMENTO AUTOMATICO (93319)<br/>DIGITAL HEALTH M (B8018)"]:::source
+  S19 -.-> P22
+  S20["Artificial Intelligence (81940)"]:::source
+  S20 -.-> P14
+  S20 -.-> P11
+  S20 -.-> P12
+  S21["Knowledge Representation and Extraction (85446)"]:::source
+  S21 -.-> P13
+  S21 -.-> P19
+  S21 -.-> P17
+  S21 -.-> P16
+  S22["Distributed Systems (87474)<br/>Distributed Software Systems (93468)"]:::source
+  S22 -.-> P20
+  S23["Web Technology (88566)<br/>Knowledge Engeneering for the Humanities (B5292)"]:::source
+  S23 -.-> P17
+  S23 -.-> P18
+  S23 -.-> P16
+  S24["Smart Vehicular Systems (90074)"]:::source
+  S24 -.-> P24
+  S25["Artificial intelligence (90147)"]:::source
+  S25 -.-> P24
+  S25 -.-> P14
+  S25 -.-> P15
+  S25 -.-> P13
+  S25 -.-> P11
+  S25 -.-> P36
+  S26["Fundamentals of Artificial Intelligence and Knowledge Representation (91248)"]:::source
+  S26 -.-> P35
+  S26 -.-> P14
+  S26 -.-> P13
+  S26 -.-> P11
+  S26 -.-> P12
+  S26 -.-> P17
+  S26 -.-> P3
+  S26 -.-> P25
+  S26 -.-> P26
+  S27["Knowledge Engineering (91265)"]:::source
+  S27 -.-> P19
+  S27 -.-> P17
+  S27 -.-> P18
+  S27 -.-> P16
+  S27 -.-> P28
+  S27 -.-> P2
+  S28["Multi-Agent Systems (91267)"]:::source
+  S28 -.-> P21
+  S28 -.-> P20
+  S28 -.-> P31
+  S28 -.-> P14
+  S28 -.-> P2
+  S29["Intelligent Robotic Systems (91411)"]:::source
+  S29 -.-> P33
+  S29 -.-> P32
+  S29 -.-> P34
+  S29 -.-> P24
+  S29 -.-> P22
+  S29 -.-> P12
+  S30["Autonomous and Adaptive Systems M (92858)"]:::source
+  S30 -.-> P23
+  S30 -.-> P20
+  S30 -.-> P22
+  S30 -.-> P31
+  S30 -.-> P30
+  S30 -.-> P14
+  S30 -.-> P15
+  S31["Human Data Science (93469)"]:::source
+  S31 -.-> P2
+  S31 -.-> P25
+  S32["Intelligent Systems Engineering (93669)"]:::source
+  S32 -.-> P21
+  S32 -.-> P20
+  S32 -.-> P31
+  S32 -.-> P29
+  S32 -.-> P14
+  S32 -.-> P18
+  S32 -.-> P27
+  S32 -.-> P2
+  S33["Software Engineering (95627)"]:::source
+  S33 -.-> P20
+  S33 -.-> P14
+  S33 -.-> P8
+  S33 -.-> P10
+  S34["Fundamentals of Artificial Intelligence (98931)"]:::source
+  S34 -.-> P35
+  S34 -.-> P14
+  S34 -.-> P13
+  S34 -.-> P11
+  S34 -.-> P12
+  S34 -.-> P17
+  S34 -.-> P2
+  S34 -.-> P3
+  S34 -.-> P25
+  S34 -.-> P26
+  S35["Cyber-Physical Systems Programming M (99195)"]:::source
+  S35 -.-> P23
+  S35 -.-> P24
+  S35 -.-> P22
+  S35 -.-> P7
+  S35 -.-> P8
+  S36["Advanced Software Modelling and Design (B0009)"]:::source
+  S36 -.-> P23
+  S36 -.-> P22
+  S36 -.-> P31
+  S36 -.-> P30
+  S37["Software Architecture and Platforms (B0010)"]:::source
+  S37 -.-> P14
+  S37 -.-> P27
+  S38["Software Process Engineering (B0011)"]:::source
+  S38 -.-> P9
+  S39["Artificial Intelligence for Digital Innovation (B0069)"]:::source
+  S39 -.-> P22
+  S39 -.-> P14
+  S39 -.-> P15
+  S39 -.-> P13
+  S39 -.-> P11
+  S39 -.-> P12
+  S39 -.-> P2
+  S40["METODOLOGIE E TECNICHE DI SIMULAZIONE (B0070)"]:::source
+  S40 -.-> P13
+  S40 -.-> P11
+  S40 -.-> P17
+  S40 -.-> P18
+  S40 -.-> P16
+  S41["Introduction to Programming (B1703)<br/>Informatics for the Humanities (B4826)"]:::source
+  S41 -.-> P4
+  S42["Big Data Analytics and Text Mining (B2133)"]:::source
+  S42 -.-> P28
+  S43["Cognitive Sematics for Artificial Intelligence (B4948)"]:::source
+  S43 -.-> P37
+  S43 -.-> P13
+  S43 -.-> P36
+  S44["Computer Studies and Humanities (B5293)"]:::source
+  S44 -.-> P13
+  S44 -.-> P11
+  S44 -.-> P16
+  S45["Introduction to Languages for Artificial Intelligence (B5727)"]:::source
+  S45 -.-> P7
+  S45 -.-> P2
+  S46["Computational Management of Data (B8105)"]:::source
+  S46 -.-> P18
+  S46 -.-> P16
+  S47["Universal Semantics (B8836)"]:::source
+  S47 -.-> P37
+  S47 -.-> P36
+  S48["Computer Studies and Human Sciences (B8929)"]:::source
+  S48 -.-> P13
+  S48 -.-> P11
+  S48 -.-> P17
+  S48 -.-> P16
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

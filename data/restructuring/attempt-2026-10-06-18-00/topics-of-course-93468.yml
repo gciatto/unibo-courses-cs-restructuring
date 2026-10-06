@@ -1,0 +1,38 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 24
+  name: Systems Distributed Models (24)
+course:
+  id: '93468'
+  name: Distributed Software Systems
+topics:
+  cap_theorem: The CAP theorem in the context of non-relational and Big Data database
+    management systems.
+  code_mobility: Code mobility as a technology and design approach for distributed
+    systems.
+  data_serialization: Tools and technologies for presenting, serializing, and deserializing
+    data in distributed systems.
+  distributed_architectures: Software and system architectures used to model and design
+    distributed systems.
+  distributed_communication: Communication mechanisms and concepts for distributed
+    systems.
+  distributed_consensus: The problem of consensus in distributed systems.
+  distributed_consistency: Consistency degrees and their effects on service properties
+    in distributed systems, including BASE and CAP considerations.
+  distributed_dependability: Dependability concerns in distributed systems.
+  distributed_systems: Fundamental concepts of distributed systems.
+  jade_agents: Simple distributed agents implemented with the JADE agent framework.
+  linda_coordination: Coordination of distributed processes using the Linda coordination
+    model.
+  logical_clocks: Logical clocks for computing and ordering events in distributed
+    systems.
+  network_sockets: Sockets and related C/UNIX and Java APIs for implementing TCP/IP
+    client/server interactions.
+  process_algebra: Process-algebraic modelling of concurrent systems, including the
+    Lin, Fork, and Pet algebras and their algebraic properties.
+  replication_strategies: Replication models, strategies, and protocols for distributed
+    and cloud systems.
+  rest_web_apis: REST principles and design of APIs for Web applications.
+  rpc: Distributed programming using remote-procedure-call-like models, including
+    Java RMI.

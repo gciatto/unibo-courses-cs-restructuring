@@ -1,0 +1,53 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Digital Humanities Data and Resource Design<br/>3 ECTS"]:::proposed
+  P1["Text and Document Digitization<br/>3 ECTS"]:::proposed
+  P2["Three-Dimensional Capture and Reconstruction<br/>3 ECTS"]:::proposed
+  P3["Digital Cultural-Heritage Communication<br/>3 ECTS"]:::proposed
+  P4["Digital Graphics and Layout<br/>3 ECTS"]:::proposed
+  P5["Digital Photography and Image-Based Modeling<br/>2 ECTS"]:::proposed
+  P6["Multimedia Content Representation and Exploration<br/>2 ECTS"]:::proposed
+  P7["Multimedia Retrieval and Semantic Annotation<br/>2 ECTS"]:::proposed
+  P8["XR Foundations, Platforms and Content Design<br/>3 ECTS"]:::proposed
+  S0["Computer Science (07276-B, 69259, 96346-B)<br/>Lab-based Course on Computer Graphics (70210)<br/>Digital represention of the Landscape Project (97466)"]:::source
+  S0 -.-> P4
+  S1["Systems Simulation (37760)<br/>Embedded Systems Programming and Internet of Things (77780)<br/>Laboratory of Virtual Reality and Advanced Reality (91721)<br/>Embedded Systems and Internet of Things (96859)<br/>IMMERSIVE TECHNOLOGIES FOR FASHION (B4925)"]:::source
+  S1 -.-> P8
+  S2["Computer Science for Cultural Heritage (48693)"]:::source
+  S2 -.-> P2
+  S2 -.-> P3
+  S3["Computer Science for Cultural Heritage (48693-A)"]:::source
+  S3 -.-> P2
+  S3 -.-> P0
+  S3 -.-> P3
+  S3 -.-> P1
+  S4["Informatic Tecnologies for Fashion (73273)"]:::source
+  S4 -.-> P2
+  S4 -.-> P6
+  S4 -.-> P8
+  S5["Basic Informatics (75969)"]:::source
+  S5 -.-> P0
+  S5 -.-> P1
+  S6["Multimedia Technologies in Archaelogy (76011)"]:::source
+  S6 -.-> P2
+  S6 -.-> P3
+  S6 -.-> P4
+  S6 -.-> P6
+  S7["Multimedia Data Management M (77933, 78096)<br/>Multimedia Data Management (91269)"]:::source
+  S7 -.-> P6
+  S7 -.-> P7
+  S8["Machine Learning (81610, 88202)"]:::source
+  S8 -.-> P6
+  S9["&quot;Document Digitization Techniques &quot; (98618)"]:::source
+  S9 -.-> P3
+  S9 -.-> P1
+  S9 -.-> P4
+  S10["Interaction Media Design (B5059)"]:::source
+  S10 -.-> P2
+  S10 -.-> P3
+  S10 -.-> P4
+  S10 -.-> P5
+  S11["Digital Humanities and Data Management for Cultural Heritage (B5079)"]:::source
+  S11 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

@@ -1,0 +1,29 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 28
+  name: Systems Real-Time Real (28)
+course:
+  id: '72945'
+  name: Real-Time Systems M
+topics:
+  aperiodic_server_strategies: Polling, deferrable, priority exchange, sporadic, constant
+    utilization, and total bandwidth servers for improving the response time of soft
+    real-time aperiodic tasks.
+  hard_realtime_scheduling_algorithms: Rate Monotonic, Deadline Monotonic, Earliest
+    Deadline First, and Least Slack Time First algorithms for hard real-time periodic
+    and sporadic tasks.
+  hard_soft_realtime: Distinction between hard and soft real-time tasks and their
+    differing timing requirements.
+  priority_resource_access_protocols: Priority inheritance, priority-ceiling, immediate
+    priority-ceiling, and stack resource protocols for managing shared-resource access
+    in real-time systems.
+  real_time_scheduling_approaches: Clock-driven and priority-driven approaches to
+    scheduling tasks in real-time systems.
+  real_time_systems: Main design issues, implementation strategies, supporting environments,
+    performance evaluation, and application domains of real-time systems.
+  real_time_task_models: Temporal parameters and reference models for periodic, sporadic,
+    and aperiodic real-time tasks.
+  realtime_schedulability_analysis: Pre-run-time schedulability analysis using processor-utilization,
+    response-time, and processor-demand analyses for static- and dynamic-priority
+    systems.

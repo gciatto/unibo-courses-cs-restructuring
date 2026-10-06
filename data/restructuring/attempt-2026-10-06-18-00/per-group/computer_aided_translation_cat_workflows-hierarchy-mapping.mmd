@@ -1,0 +1,14 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["CAT Workflows and Translation Project Quality<br/>2 ECTS"]:::proposed
+  P1["Machine Translation Foundations and Operations<br/>2 ECTS"]:::proposed
+  P2["AI-Enhanced Translation Workflows and Evaluation<br/>2 ECTS"]:::proposed
+  S0["Computer-Aided Human Translation: CAT, MT and AI (B8536)"]:::source
+  S0 -.-> P2
+  S0 -.-> P0
+  S0 -.-> P1
+  S1["Machine Translation and Artificial Intelligence for Language Services (B8603)"]:::source
+  S1 -.-> P2
+  S1 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

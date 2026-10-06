@@ -1,0 +1,128 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Personal and Cybersecurity Basics<br/>3 ECTS"]:::proposed
+  P1["Cryptographic Principles<br/>3 ECTS"]:::proposed
+  P2["Symmetric Cryptographic Mechanisms<br/>3 ECTS"]:::proposed
+  P3["Public-Key Cryptography and Trust<br/>3 ECTS"]:::proposed
+  P4["Cybersecurity Operations: Security Controls<br/>3 ECTS"]:::proposed
+  P5["Cybersecurity Operations: Defensive Architecture<br/>3 ECTS"]:::proposed
+  P6["Cybersecurity Operations: Security Assessment<br/>3 ECTS"]:::proposed
+  P7["Cybersecurity Operations: Governance and Incident Response<br/>3 ECTS"]:::proposed
+  P8["Windows and Linux Systems Foundations<br/>3 ECTS"]:::proposed
+  P9["Identity Services and Single Sign-On<br/>3 ECTS"]:::proposed
+  P10["Secure Remote Connectivity<br/>2 ECTS"]:::proposed
+  P11["Cybersecurity Contexts and Wireless Security<br/>3 ECTS"]:::proposed
+  P12["Anonymity and Cryptographic Security<br/>4 ECTS"]:::proposed
+  P13["Digital Forensics Foundations and Acquisition<br/>2 ECTS"]:::proposed
+  P14["Digital Forensics Analysis and Reporting<br/>3 ECTS"]:::proposed
+  S0["Computer Science (07276)"]:::source
+  S0 -.-> P0
+  S0 -.-> P3
+  S1["Computer Science (07276-B, 96346-B)<br/>Basic and Laboratory Informatics (39176)<br/>Internet Architecture (58423)<br/>Informatics (60348)<br/>Informatic Tecnologies for Fashion (73273)<br/>Informatic (82202, 82202-A)<br/>Elements of Computer Technologies for Fashion E-Commerce (90864)<br/>Operating Systems and Networks (95604)<br/>Basic IT Skills (B9254)"]:::source
+  S1 -.-> P0
+  S2["Operating Systems (08574-A)"]:::source
+  S2 -.-> P8
+  S3["Cryptography (14015)"]:::source
+  S3 -.-> P12
+  S3 -.-> P4
+  S3 -.-> P1
+  S3 -.-> P3
+  S3 -.-> P2
+  S4["Informatics (57828)"]:::source
+  S4 -.-> P8
+  S4 -.-> P0
+  S5["Network Programming (70226)<br/>Computer Networks and Network Programming (95644)"]:::source
+  S5 -.-> P4
+  S5 -.-> P3
+  S6["Information Security M (72942)"]:::source
+  S6 -.-> P4
+  S6 -.-> P9
+  S6 -.-> P1
+  S6 -.-> P3
+  S6 -.-> P2
+  S7["Informatics (78510)"]:::source
+  S7 -.-> P1
+  S7 -.-> P0
+  S7 -.-> P3
+  S8["Digital Forensic (81676)"]:::source
+  S8 -.-> P14
+  S8 -.-> P13
+  S9["Interaction Multimedia Services (81917)"]:::source
+  S9 -.-> P5
+  S9 -.-> P0
+  S10["System Administration T (88324)<br/>Administration of Systems T (B0832)"]:::source
+  S10 -.-> P9
+  S11["Computer and Network Security Lab T (88325)<br/>Computer Security Laboratory T (B0833)"]:::source
+  S11 -.-> P5
+  S11 -.-> P7
+  S11 -.-> P6
+  S11 -.-> P4
+  S11 -.-> P1
+  S11 -.-> P0
+  S12["Blockchain and Cryptocurrencies (90748)"]:::source
+  S12 -.-> P12
+  S13["Networks, Security And Data Bases (91161)"]:::source
+  S13 -.-> P1
+  S13 -.-> P3
+  S14["Computer Networks (93315)"]:::source
+  S14 -.-> P5
+  S14 -.-> P7
+  S14 -.-> P4
+  S14 -.-> P1
+  S14 -.-> P3
+  S15["FONDAMENTI DI CYBERSECURITY (93466)"]:::source
+  S15 -.-> P12
+  S15 -.-> P11
+  S15 -.-> P6
+  S15 -.-> P4
+  S15 -.-> P1
+  S15 -.-> P3
+  S15 -.-> P2
+  S16["Cryptography (93467)"]:::source
+  S16 -.-> P12
+  S16 -.-> P1
+  S16 -.-> P3
+  S16 -.-> P2
+  S17["Cybersecurity (93470)"]:::source
+  S17 -.-> P13
+  S17 -.-> P5
+  S17 -.-> P7
+  S17 -.-> P6
+  S17 -.-> P4
+  S17 -.-> P1
+  S17 -.-> P0
+  S17 -.-> P3
+  S17 -.-> P2
+  S18["Cybersecurity (93470-A)"]:::source
+  S18 -.-> P11
+  S18 -.-> P5
+  S18 -.-> P7
+  S18 -.-> P0
+  S19["Virtualized Systems (95646)"]:::source
+  S19 -.-> P5
+  S19 -.-> P4
+  S19 -.-> P9
+  S19 -.-> P10
+  S20["Virtualization and System Integration (96642)"]:::source
+  S20 -.-> P5
+  S20 -.-> P4
+  S20 -.-> P9
+  S20 -.-> P10
+  S20 -.-> P8
+  S21["Scalable and Reliable Services M (97431, B5796)"]:::source
+  S21 -.-> P7
+  S22["Cyber-Physical Systems Programming M (99195)"]:::source
+  S22 -.-> P5
+  S22 -.-> P3
+  S23["Cybersecurity M (B5793)"]:::source
+  S23 -.-> P11
+  S23 -.-> P5
+  S23 -.-> P7
+  S23 -.-> P6
+  S23 -.-> P0
+  S24["Cybersecurity Governance (B5812)"]:::source
+  S24 -.-> P11
+  S24 -.-> P7
+  S24 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

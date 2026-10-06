@@ -1,0 +1,10 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Informatics Foundations and Visual Programming<br/>2 ECTS"]:::proposed
+  P1["Python Graphics and Scripting<br/>2 ECTS"]:::proposed
+  S0["Informatics (57828)<br/>Computer Studies and Human Sciences (B8929)"]:::source
+  S0 -.-> P0
+  S1["Elements of Informatics (89988)<br/>Language, Technology, Research I: Computational Thinking (B2696)<br/>Informatics for the Humanities (B4826)<br/>Foundations of Programming (B8905)"]:::source
+  S1 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

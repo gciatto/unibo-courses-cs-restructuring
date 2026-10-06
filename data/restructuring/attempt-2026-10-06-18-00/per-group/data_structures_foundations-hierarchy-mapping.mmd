@@ -1,0 +1,184 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Data Structures Foundations<br/>3 ECTS"]:::proposed
+  P1["Linear and Dictionary Data Structures<br/>2 ECTS"]:::proposed
+  P2["Tree and Heap Data Structures<br/>3 ECTS"]:::proposed
+  P3["Disjoint Sets and Graph Structures<br/>2 ECTS"]:::proposed
+  P4["Algorithm Design Foundations and Cost Analysis<br/>3 ECTS"]:::proposed
+  P5["Array, Searching, and Sorting Algorithms<br/>3 ECTS"]:::proposed
+  P6["Algorithm Design Techniques and Dynamic Programming<br/>2 ECTS"]:::proposed
+  P7["Graph Optimization and Combinatorial Methods<br/>2 ECTS"]:::proposed
+  P8["Computability Foundations<br/>3 ECTS"]:::proposed
+  P9["Complexity Foundations<br/>2 ECTS"]:::proposed
+  P10["Advanced Complexity<br/>2 ECTS"]:::proposed
+  P11["Constraint Programming Foundations<br/>3 ECTS"]:::proposed
+  P12["Constraint Programming Search and Scheduling<br/>2 ECTS"]:::proposed
+  P13["SAT and Satisfiability Modulo Theories<br/>3 ECTS"]:::proposed
+  P14["Optimization Modeling and Methods<br/>4 ECTS"]:::proposed
+  P15["Biomolecular Sequence Alignment<br/>3 ECTS"]:::proposed
+  P16["Biosequence Algorithms and String Methods<br/>2 ECTS"]:::proposed
+  S0["Programming (00819-A, 00819-B)<br/>Laboratory of Informatics (16692)"]:::source
+  S0 -.-> P4
+  S1["Computer Science (07276-A)"]:::source
+  S1 -.-> P4
+  S1 -.-> P5
+  S1 -.-> P9
+  S1 -.-> P8
+  S1 -.-> P0
+  S2["Principles of Informatics (09730)<br/>Foundations of Informatics A (15305)"]:::source
+  S2 -.-> P5
+  S2 -.-> P0
+  S3["Principles of Informatics (09730-A)<br/>Introduction to Data Science and Computational Thinking (B0064)<br/>Language, Technology, Research I: Computational Thinking (B2696)"]:::source
+  S3 -.-> P0
+  S4["Algorithms and Data Structures (11929, 11929-A)"]:::source
+  S4 -.-> P6
+  S4 -.-> P4
+  S4 -.-> P7
+  S4 -.-> P5
+  S4 -.-> P10
+  S4 -.-> P3
+  S4 -.-> P1
+  S4 -.-> P2
+  S5["Algorithm and Data Structures (11929-B)"]:::source
+  S5 -.-> P6
+  S5 -.-> P4
+  S5 -.-> P5
+  S5 -.-> P3
+  S5 -.-> P1
+  S5 -.-> P2
+  S6["Theoretical Computer Science (11933, 41169)<br/>Introduction to Computability and Complexity (B5026)"]:::source
+  S6 -.-> P10
+  S6 -.-> P9
+  S6 -.-> P8
+  S7["Programming Laboratory (16870)<br/>ADVANCED PROGRAMMING (65094)<br/>Systems and Algorithms for Data Science (85189)<br/>Machine Learning Systems For Data Science (90477)<br/>Programming and Computer Architectures (95602)"]:::source
+  S7 -.-> P1
+  S8["Information Technology (28040)"]:::source
+  S8 -.-> P5
+  S8 -.-> P9
+  S8 -.-> P8
+  S8 -.-> P0
+  S9["Foundations of Informatics and Laboratory (28623)"]:::source
+  S9 -.-> P4
+  S9 -.-> P5
+  S9 -.-> P9
+  S10["Foundations of Informatics T (29227)"]:::source
+  S10 -.-> P4
+  S10 -.-> P5
+  S10 -.-> P8
+  S10 -.-> P0
+  S10 -.-> P1
+  S11["Data Structure and Algorithms (37635)"]:::source
+  S11 -.-> P6
+  S11 -.-> P4
+  S11 -.-> P7
+  S11 -.-> P5
+  S11 -.-> P10
+  S11 -.-> P9
+  S11 -.-> P3
+  S11 -.-> P1
+  S11 -.-> P2
+  S12["Informatics (60348)"]:::source
+  S12 -.-> P9
+  S13["Computational Models And Languages M (72940)<br/>Logic for Informatics (73149)<br/>Languages, Compilers and Computational Models (81609)<br/>Programming and Development paradigms (81612)"]:::source
+  S13 -.-> P8
+  S14["Basic Informatics (75969)"]:::source
+  S14 -.-> P8
+  S14 -.-> P0
+  S15["Intelligent Systems M (78778)"]:::source
+  S15 -.-> P11
+  S15 -.-> P14
+  S16["Artificial Intelligence (81940)<br/>Methods and Models for Data Analytics M (96143)"]:::source
+  S16 -.-> P11
+  S17["Programming (85285)"]:::source
+  S17 -.-> P6
+  S17 -.-> P4
+  S17 -.-> P0
+  S18["Algorithms and Data Structures in Biology (85301)"]:::source
+  S18 -.-> P6
+  S18 -.-> P4
+  S18 -.-> P7
+  S18 -.-> P16
+  S18 -.-> P9
+  S18 -.-> P8
+  S19["Decision Making with Constraint Programming (87469)"]:::source
+  S19 -.-> P7
+  S19 -.-> P11
+  S19 -.-> P12
+  S20["Fundamentals of Computer Programming P1 (88145)"]:::source
+  S20 -.-> P5
+  S21["Fundamentals of Artificial Intelligence and Knowledge Representation (91248)<br/>Artificial Intelligence in Industry (91261)<br/>Operational Analytics (95638)<br/>Fundamentals of Artificial Intelligence (98931)"]:::source
+  S21 -.-> P14
+  S22["Combinatorial Decision Making and Optimization (91762)"]:::source
+  S22 -.-> P11
+  S22 -.-> P12
+  S22 -.-> P14
+  S22 -.-> P13
+  S23["Foundations of Computer Science T (93034)"]:::source
+  S23 -.-> P5
+  S23 -.-> P8
+  S23 -.-> P0
+  S23 -.-> P1
+  S24["Programming Lab (93333)"]:::source
+  S24 -.-> P5
+  S24 -.-> P1
+  S25["INFORMATICA (96346)"]:::source
+  S25 -.-> P5
+  S25 -.-> P9
+  S25 -.-> P8
+  S25 -.-> P0
+  S25 -.-> P1
+  S25 -.-> P2
+  S26["Introduction to Programming (B1703)"]:::source
+  S26 -.-> P6
+  S26 -.-> P4
+  S26 -.-> P3
+  S26 -.-> P0
+  S26 -.-> P1
+  S27["Informatics for the Humanities (B4826)"]:::source
+  S27 -.-> P3
+  S27 -.-> P0
+  S27 -.-> P1
+  S28["ALGORITMI E STRUTTURE DATI (B4913)"]:::source
+  S28 -.-> P6
+  S28 -.-> P4
+  S28 -.-> P7
+  S28 -.-> P5
+  S28 -.-> P10
+  S28 -.-> P3
+  S28 -.-> P0
+  S28 -.-> P1
+  S28 -.-> P2
+  S28 -.-> P14
+  S29["Introduction to Languages for Artificial Intelligence (B5727)"]:::source
+  S29 -.-> P1
+  S29 -.-> P11
+  S30["Computational Methods for Bioinformatics (B5780)"]:::source
+  S30 -.-> P6
+  S30 -.-> P15
+  S30 -.-> P1
+  S31["Algorithms and Data Structures for Computational Biology (B5782)"]:::source
+  S31 -.-> P6
+  S31 -.-> P4
+  S31 -.-> P7
+  S31 -.-> P5
+  S31 -.-> P15
+  S31 -.-> P16
+  S31 -.-> P9
+  S31 -.-> P3
+  S31 -.-> P1
+  S31 -.-> P2
+  S31 -.-> P14
+  S32["Computational Management of Data (B8105)"]:::source
+  S32 -.-> P6
+  S32 -.-> P4
+  S32 -.-> P5
+  S32 -.-> P9
+  S32 -.-> P8
+  S32 -.-> P3
+  S32 -.-> P0
+  S32 -.-> P1
+  S33["SISTEMI SOFTWARE A OGGETTI T (B8554)"]:::source
+  S33 -.-> P0
+  S33 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999
