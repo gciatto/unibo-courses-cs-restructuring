@@ -62,7 +62,13 @@ truth and the decks as domain/rationale documentation.
   with `!` and a `BREAKING CHANGE:` footer.
 - Node is used only to render Mermaid diagrams: after `npm install`,
   `npm run mmd -- path/to/a.mmd [...]` writes `a.svg` next to each input,
-  using `mermaid-config.json` (raised edge/text limits for global proposals).
+  using `mermaid-config.json` (raised edge/text limits for global proposals;
+  classic look and SVG text labels so Inkscape can convert the SVGs).
+- `.venv/bin/python -m restructuring.render ATTEMPT_DIR CLUSTER_COURSES_YML`
+  re-renders an attempt's diagrams without LLM calls: rewrites the `.mmd`
+  files from the proposal YAML, renders SVG, colours topic keys by source
+  course scope (service/external, from `clustering.export_cluster_courses`),
+  and exports PDFs with `inkscape`.
 - Tests use `unittest`, not pytest:
   `.venv/bin/python -m unittest discover -s tests -p 'test_*.py'`.
 - Treat course IDs, teaching IDs, and programme codes as opaque strings. Leading
@@ -171,8 +177,9 @@ Relevant tests are `tests/test_download_course_headers.py`,
 - `topics-of-cluster-*.yml` and `topics-of-course-*.yml` are written
   incrementally and remain definitive if proposal generation fails. Successful
   proposal generation writes a validated `restructure-proposal-*.yml` plus
-  two deterministic Mermaid views: `.mmd` (new courses with ECTS and
-  prerequisites only) and `-mapping.mmd` (current courses, grouped by identical
+  three deterministic Mermaid views: `.mmd` (new courses with ECTS and
+  prerequisites only), `-topics.mmd` (the same, listing topic keys plus a
+  colour legend) and `-mapping.mmd` (current courses, grouped by identical
   targets, pointing at new courses); proposal failures are logged and do not
   fail the overall run.
 - The model never lists source-course mappings. It must only ensure every

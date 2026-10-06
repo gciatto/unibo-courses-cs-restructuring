@@ -22,8 +22,10 @@ from restructuring.io import (
     load_global_corpus,
     load_clusters,
     select_clusters,
+    topic_origins,
     validate_restructuring_proposal,
 )
+from restructuring.render import fix_svg
 from restructuring.models import (
     ClusterInput,
     CourseAssembly,
@@ -394,6 +396,25 @@ class TestInputAndCache(unittest.TestCase):
         global_key, metadata = conversation_cache_key(load_global_corpus([item]), config)
         self.assertNotEqual(cluster_key, global_key)
         self.assertEqual(metadata["analysis"], {"mode": "all-courses"})
+
+
+class TestDiagramColours(unittest.TestCase):
+    def test_topic_origin_combines_service_and_external_source_courses(self):
+        proposal = valid_proposal()
+        memberships = {"S": ["alpha"], "E": ["beta"], "I": ["alpha", "beta"]}
+        scopes = {"S": "service", "E": "external", "I": "internal"}
+        self.assertEqual(topic_origins(proposal, memberships, scopes), {"foundations": "service+external"})
+        self.assertEqual(topic_origins(proposal, memberships, {**scopes, "E": "borrow"}), {"foundations": "service"})
+        self.assertEqual(topic_origins(proposal, {"I": ["alpha"]}, scopes), {})
+
+    def test_fix_svg_colours_matching_rows_and_strips_important(self):
+        row = '<tspan class="text-outer-tspan row" x="0"><tspan class="text-inner-tspan">{}</tspan></tspan>'
+        svg = '<svg id="x"><rect style="fill:#fff !important"/>' + row.format("alpha") + row.format("beta") + "</svg>"
+        fixed = fix_svg(svg, {"alpha": "#123456"})
+        self.assertIn('xml:space="preserve"', fixed)
+        self.assertNotIn("!important", fixed)
+        self.assertEqual(fixed.count('style="fill:#123456"'), 1)
+        self.assertIn('row" style="fill:#123456" x="0"><tspan class="text-inner-tspan">alpha', fixed)
 
 
 class TestTopicWeights(unittest.TestCase):

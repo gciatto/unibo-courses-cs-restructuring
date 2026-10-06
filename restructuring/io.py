@@ -717,6 +717,35 @@ def load_global_topic_artifacts(
     return dict(topics), memberships
 
 
+# Label colour of proposed topics taught by source courses of these scopes
+# (see clustering.export_cluster_courses.course_scope); others stay black.
+TOPIC_ORIGIN_COLOURS = {
+    "service": "#1f6fb2",
+    "external": "#c0561b",
+    "service+external": "#8e44ad",
+}
+
+
+def topic_origins(
+    proposal: RestructuringProposal,
+    source_memberships: dict[str, list[str]],
+    course_scopes: dict[str, str],
+) -> dict[str, str]:
+    """Proposed topic key -> TOPIC_ORIGIN_COLOURS key, for topics whose source
+    topics are taught by at least one service and/or external source course."""
+    scopes_by_topic: dict[str, set[str]] = {}
+    for course_id, keys in source_memberships.items():
+        for key in keys:
+            scopes_by_topic.setdefault(key, set()).add(course_scopes.get(course_id, ""))
+    origins = {}
+    for topic in proposal.proposed_topics:
+        scopes = set().union(*(scopes_by_topic.get(key, set()) for key in topic.source_topic_keys))
+        origin = "+".join(scope for scope in ("service", "external") if scope in scopes)
+        if origin:
+            origins[topic.key] = origin
+    return origins
+
+
 def _mermaid_label(value: str) -> str:
     return html.escape(value.strip(), quote=True).replace("\n", " ")
 
@@ -744,6 +773,9 @@ def render_mermaid(
         if show_topics:
             label += "<br/>" + "<br/>".join(_mermaid_label(key) for key in item.topic_keys)
         lines.append(f'  {course_aliases[item.key]}["{label}"]:::proposed')
+    if show_topics:
+        legend = "<br/>".join(["topic taught in", *TOPIC_ORIGIN_COLOURS])
+        lines.append(f'  legend["{legend}"]:::source')
     if mappings is None:
         for edge in proposal.prerequisites:
             lines.append(
@@ -765,8 +797,8 @@ def render_mermaid(
             lines.extend(f"  S{index} -.-> {course_aliases[key]}" for key in targets)
     lines.extend(
         [
-            "  classDef proposed fill:#e8f1fb,stroke:#24527a,color:#111",
-            "  classDef source fill:#f3f3f3,stroke:#999,color:#555",
+            "  classDef proposed fill:#e8f1fb,stroke:#24527a",
+            "  classDef source fill:#f3f3f3,stroke:#999",
         ]
     )
     return "\n".join(lines) + "\n"
@@ -818,16 +850,22 @@ def write_restructuring_proposal(
         yaml_path,
         yaml.safe_dump(payload, sort_keys=False, allow_unicode=True),
     )
-    _atomic_write_text(mermaid_path, render_mermaid(cluster, proposal))
-    _atomic_write_text(
-        output_dir / f"{stem}-topics.mmd",
-        render_mermaid(cluster, proposal, show_topics=True),
-    )
-    _atomic_write_text(
-        output_dir / f"{stem}-mapping.mmd",
-        render_mermaid(cluster, proposal, mappings),
-    )
+    write_proposal_mermaid(output_dir, stem, cluster, proposal, mappings)
     return yaml_path, mermaid_path
+
+
+def write_proposal_mermaid(
+    output_dir: pathlib.Path,
+    stem: str,
+    cluster: ClusterInput | GlobalInput,
+    proposal: RestructuringProposal,
+    mappings: list[SourceCourseMapping],
+) -> list[pathlib.Path]:
+    paths = [output_dir / f"{stem}{suffix}.mmd" for suffix in ("", "-topics", "-mapping")]
+    _atomic_write_text(paths[0], render_mermaid(cluster, proposal))
+    _atomic_write_text(paths[1], render_mermaid(cluster, proposal, show_topics=True))
+    _atomic_write_text(paths[2], render_mermaid(cluster, proposal, mappings))
+    return paths
 
 
 def write_global_modules(
