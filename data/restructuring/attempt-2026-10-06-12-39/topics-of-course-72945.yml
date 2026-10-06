@@ -1,0 +1,30 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 28
+  name: Systems Real-Time Real (28)
+course:
+  id: '72945'
+  name: Real-Time Systems M
+topics:
+  aperiodic_task_server_scheduling: Server-based scheduling strategies for improving
+    soft real-time aperiodic-task response times, including polling, deferrable, priority-exchange,
+    sporadic, constant-utilization, and total-bandwidth servers.
+  clock_driven_and_priority_driven_scheduling: Clock-driven and priority-driven approaches
+    to real-time task scheduling.
+  hard_real_time_scheduling_algorithms: 'Scheduling algorithms for hard real-time
+    periodic and sporadic tasks: rate monotonic (RM), deadline monotonic (DM), earliest
+    deadline first (EDF), and least slack time first (LSTF).'
+  industrial_automation_real_time_design_patterns: Real-time system design patterns
+    and methodological examples in the industrial-automation application domain.
+  real_time_schedulability_analysis: Pre-run-time schedulability analysis for static-
+    and dynamic-priority real-time systems using processor-utilization, response-time,
+    and processor-demand analysis.
+  real_time_shared_resource_access_protocols: Shared-resource access protocols for
+    real-time tasks, including priority inheritance, priority ceiling, immediate priority
+    ceiling, and the stack resource policy.
+  real_time_system_characteristics_and_task_types: Characteristics and application
+    domains of real-time systems, including the distinction between hard and soft
+    real-time tasks.
+  real_time_task_temporal_models: Temporal parameters and reference task models for
+    periodic, sporadic, and aperiodic real-time tasks.

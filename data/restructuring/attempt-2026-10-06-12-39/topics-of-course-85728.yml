@@ -1,0 +1,40 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 28
+  name: Systems Real-Time Real (28)
+course:
+  id: '85728'
+  name: Real Time OS M
+topics:
+  ansi_c_programming: Programming using the C language.
+  concurrency_and_interprocess_communication: Concurrency and communication between
+    executing entities in operating systems.
+  concurrent_programming_synchronization_and_liveness: Concurrent programming concerns
+    including deadlock, starvation, and busy waiting.
+  embedded_bare_metal_programming_and_bootstrapping: Bare-metal programming for embedded
+    devices and the bootstrapping process.
+  freertos_intertask_communication_and_synchronization: FreeRTOS inter-task communication
+    and synchronization through critical sections, mutexes, semaphores, ISR critical
+    sections, and treatment of starvation, deadlock, and priority inversion.
+  freertos_task_scheduling_and_memory_management: FreeRTOS task creation and management,
+    scheduling and priorities, interrupt-service routines, and heap-management strategies.
+  hard_real_time_periodic_task_scheduling: Scheduling hard real-time periodic tasks,
+    including tasks that share resources.
+  interrupt_handling: Interrupt handling in microprocessor-based systems.
+  io_management: Operating-system input/output management.
+  kernel_and_shell_operation: The operating-system kernel and shell as fundamental
+    components of a general-purpose operating system.
+  memory_management: Memory management in operating systems.
+  nuttx_and_zephyr_rtos: Overview of the NuttX and Zephyr real-time operating systems.
+  operating_system_structure_and_functions: The structure and main functions of an
+    operating system.
+  process_synchronization: Synchronization mechanisms and concerns among processes.
+  processes_and_threads: Operating-system processes and threads.
+  real_time_system_characteristics_and_task_types: Characteristics and application
+    domains of real-time systems, including the distinction between hard and soft
+    real-time tasks.
+  software_and_hardware_timers: Software timers and hardware timers in real-time embedded
+    systems.
+  symmetric_multiprocessing_overview: Overview of symmetric multiprocessing (SMP)
+    in real-time operating-system contexts.

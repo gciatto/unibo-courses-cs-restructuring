@@ -1,0 +1,40 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 27
+  name: Architectures Computer Architetture (27)
+course:
+  id: '69430'
+  name: COMPUTER ARCHITECTURES M
+topics:
+  architectural_impact_on_performance: How architectural choices affect computer performance.
+  bus_hierarchies_and_protocols: Bus hierarchies and bus protocols in computer-system
+    architectures.
+  computer_memory_and_system_buses: The roles of computer memory and system buses
+    in computer organization.
+  computer_performance_measurement: Measurement of computer performance.
+  dma_multimaster_io_systems: Multimaster systems using DMA-based I/O, including their
+    hardware/software power and performance implications.
+  instruction_level_parallelism_and_hazard_management: Instruction-level parallelism,
+    instruction dependencies and hazards, and techniques for hazard avoidance.
+  instruction_set_architecture: Instruction Set Architecture (ISA).
+  intel_architecture_and_memory_segmentation: Intel architecture execution environment
+    and instruction set, including logical versus physical addresses and segmentation.
+  interleaved_memory_access: Interleaved memory access in systems with multibyte data
+    buses.
+  memory_hierarchy_cache_mapping_and_policies: Memory-hierarchy goals and performance
+    parameters, including Intel IA32 segmentation, virtual memory, main memory and
+    caches, cache address mapping, write and replacement policies, and performance
+    analysis.
+  mesi_cache_coherence_protocol: The MESI cache-coherence protocol for shared-memory
+    multiprocessor systems.
+  multithreading_multicore_and_virtualization: Simultaneous multithreading, logical
+    processors, multicore architectures, and an introduction to virtualization.
+  protected_multitasking_architecture: Instruction-set architectural support for protected
+    multitasking systems, with reference to Intel IA-32.
+  superscalar_out_of_order_and_speculative_execution: Superscalar, superpipelined,
+    underpipelined, and non-blocking processor architectures, including Tomasulo-style
+    out-of-order and speculative execution.
+  uma_and_numa_memory_architectures: Uniform Memory Access (UMA) architectures and
+    an introduction to NUMA multicore architectures.
+  virtualization_fundamentals: Introductory concepts of virtuality and virtualization.

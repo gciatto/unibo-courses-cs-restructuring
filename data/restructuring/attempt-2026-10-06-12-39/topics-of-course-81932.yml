@@ -1,0 +1,31 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 2
+  name: Big Data Cloud (2)
+course:
+  id: '81932'
+  name: Big Data
+topics:
+  apache_spark_architecture_partitioning_and_optimization: Apache Spark architecture
+    and data structures, including data partitioning, shuffling, and computation optimization.
+  approximate_streaming_algorithms: Approximate algorithms for processing data streams.
+  big_data_analytics_platform_tools: 'Practical use of Big Data platform technologies
+    named in the syllabus: Hive, Tez, Dremel, Giraph, Storm, Mahout, and Open R.'
+  big_data_cloud_deployment: Handling Big Data in cloud environments, including on-premises
+    versus cloud clusters, cloud technology stacks, and deployment of a case study
+    to a cloud provider.
+  big_data_cluster_architectures: Hardware and software cluster architectures for
+    handling Big Data workloads.
+  big_data_management_technologies: Brief overview of technologies used for big-data
+    management as alternatives or complements to relational database approaches.
+  data_streaming_system_architectures: Architectural approaches for handling streaming
+    data.
+  hadoop_hdfs_and_yarn: The Apache Hadoop framework, focusing on its HDFS storage
+    system and YARN resource-management module.
+  introduction_to_nosql_systems: Brief introduction to NoSQL database systems.
+  mapreduce_programming_and_algorithm_design: MapReduce principles, limitations, and
+    the design of non-trivial algorithms under the MapReduce paradigm.
+  parquet_columnar_data_format: Apache Parquet as a Hadoop-oriented data structure
+    and columnar storage format.
+  spark_sql: Using Spark SQL to query and process Big Data.

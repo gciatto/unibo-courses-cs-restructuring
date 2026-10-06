@@ -1,0 +1,37 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 2
+  name: Big Data Cloud (2)
+course:
+  id: '84530'
+  name: Database and Big Data Technologies M
+topics:
+  cap_theorem: The CAP theorem and its availability, consistency, and failure-related
+    trade-offs in distributed systems.
+  database_recovery: Recovery of database information following failures or malfunctions.
+  database_storage_structures_and_indexing: Secondary-memory database storage organizations
+    and access algorithms, including sequential and direct access, primary and secondary
+    indexes, and B-tree, B*-tree, and B+tree structures.
+  database_transactions_and_concurrency_control: Database transactions, including
+    ACID properties, concurrency management, and concurrency-control protocols.
+  hadoop_and_mapreduce_fundamentals: Hadoop and the MapReduce programming model for
+    Big Data processing.
+  nosql_architectures_and_nonrelational_models: An introductory overview of NoSQL
+    systems, architectures, and non-relational data models.
+  physical_database_design_and_tuning: Physical database design based on query workloads,
+    including index selection and performance tuning of indexes, schemas, and queries.
+  query_optimization_and_join_methods: Database join methods and query optimization.
+  ranked_top_k_query_processing: Ranked and Top-k query processing, including SQL
+    ranking extensions, multidimensional and distance-based ranking, R-tree k-nearest-neighbor
+    browsing, Top-k joins, and the B0, FA, TA, CA, and NRA algorithms.
+  rdbms_component_architecture: 'The roles of RDBMS components: query optimizer, transaction
+    manager, scheduler, recovery manager, cache manager, storage manager, and access
+    methods.'
+  relational_query_execution_operators: Physical implementation of relational operators,
+    including external sorting, selection, projection, join, set, and aggregation
+    operators.
+  skyline_queries: Skyline queries, domination and scoring relationships, and index-based
+    and non-index skyline algorithms including BBS, NL, BNL, SFS, and SaLSa.
+  spatial_data_indexing_and_query_processing: Spatial data queries and multidimensional
+    indexing using k-D trees, k-D-B-trees, R-trees, and GiST.

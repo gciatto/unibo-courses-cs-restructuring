@@ -1,0 +1,33 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 24
+  name: Systems Distributed Models (24)
+course:
+  id: '66870'
+  name: Concurrent Models and Systems
+topics:
+  ccs_syntax_and_sos_semantics: Syntax and structured operational semantics of the
+    CCS process language.
+  ccs_turing_completeness_and_behavioral_equivalence_undecidability: Turing completeness
+    of finitary CCS and undecidability of its behavioral equivalences.
+  concurrent_program_modeling: Modeling concurrent programs and systems.
+  forking_nets_team_bisimulation: Forking nets and team bisimulation, including TML
+    modal logic and the Fork process algebra, representability, congruence properties,
+    and axiomatization.
+  last_man_standing_distributed_computability: Distributed computability through the
+    Last Man Standing problem.
+  linear_nets_behavioral_equivalences: Linear nets, including language, trace, and
+    isomorphism equivalence; bisimulation; BML modal logic; and the Lin process algebra,
+    its representability theorem, congruence properties, and axiomatization.
+  petri_net_place_and_structure_preserving_bisimulation: Place and structure-preserving
+    bisimulation for Petri nets, including MKL and LKL modal logics and the Pet process
+    algebra.
+  petri_net_sequential_concurrent_and_causal_equivalences: Sequential, concurrent,
+    and causal equivalences for Petri nets.
+  petri_nets_and_labeled_transition_systems: Modeling concurrent systems with Petri
+    nets and labeled transition systems.
+  reactive_system_correctness: Correctness concerns in the design of reactive concurrent
+    systems.
+  weak_and_branching_bisimulation: Weak and branching bisimulation for linear nets
+    with silent transitions.

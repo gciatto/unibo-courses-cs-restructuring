@@ -1,0 +1,43 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 11
+  name: Computer Computing High-Performance (11)
+course:
+  id: '28012'
+  name: Electronic Calculators T
+topics:
+  computer_hardware_organization: Hardware architecture and organization of a computer.
+  computer_memory_and_system_buses: The roles of computer memory and system buses
+    in computer organization.
+  computer_operation_principles: General principles of computer operation.
+  computer_performance_measurement: Measurement of computer performance.
+  cpu_internal_organization_and_dlx: Internal CPU structure and its sequential implementation
+    using the DLX organization.
+  cpu_pipelining_hazards_and_branch_prediction: Pipelined CPU datapaths, pipeline
+    performance, data and control hazards, stalls, forwarding, and branch prediction.
+  finite_state_machine_model: The finite-state-machine model.
+  history_of_computers: Historical development of computers.
+  instruction_set_architecture: Instruction Set Architecture (ISA).
+  intel_architecture_and_memory_segmentation: Intel architecture execution environment
+    and instruction set, including logical versus physical addresses and segmentation.
+  interrupt_classes_pic_and_vectored_handling: Hardware and software interrupts and
+    exceptions, including programmable interrupt controllers and vectored interrupt
+    handling.
+  io_interface_fundamentals: Basic elements of input/output interfaces in digital
+    systems.
+  io_port_interfacing_and_polling: I/O-port models and bus interfacing, access to
+    port registers, and polling-based I/O handling.
+  isa_procedure_calls_and_stack_implementation: Instruction-set support for procedure
+    calls and stack-based call handling.
+  memory_and_io_addressing: Addressing of memory and input/output devices.
+  memory_chip_interfacing_address_decoding_and_wait_states: Interfacing ROM and RAM
+    chips to a system bus, including address-space mapping, address decoding, bus-width
+    extension, access timing, wait states, and READY circuitry.
+  microprocessor_based_system_design: Design of simple microprocessor-based systems.
+  register_files_alu_and_bus_drivers: Datapath logic components including ALUs, register
+    files, latches and edge-triggered registers, three-state drivers, transceivers,
+    and distributed multiplexing.
+  risc_and_cisc_architectures: Comparison of register-register (RISC) and memory-register
+    (CISC) architectures.
+  von_neumann_architecture: The von Neumann computer architecture.

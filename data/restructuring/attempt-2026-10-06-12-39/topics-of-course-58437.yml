@@ -1,0 +1,25 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 11
+  name: Computer Computing High-Performance (11)
+course:
+  id: '58437'
+  name: Parallel Calculus
+topics:
+  gpgpu_programming: Programming general-purpose computations on graphics processing
+    units (GPGPU).
+  hpc_architectures_and_flynn_taxonomy: High-performance computing architectures,
+    including Flynn taxonomy and shared-memory, distributed-memory, and GPGPU architectures.
+  mpi_distributed_memory_programming: Programming distributed-memory parallel architectures
+    in C using MPI.
+  openmp_shared_memory_programming: Programming shared-memory parallel architectures
+    in C using OpenMP.
+  parallel_algorithms_and_computation_models: Design and analysis of parallel algorithms
+    for different models of parallel computation.
+  parallel_program_performance_evaluation: Performance evaluation of parallel programs
+    through measurement and interpretation of speedup and efficiency.
+  parallel_programming_patterns: Parallel programming patterns including embarrassingly
+    parallel computation, stencil, work farm, scan, and reduce.
+  simd_programming_and_autovectorization: SIMD programming using compiler intrinsics
+    and GCC compiler auto-vectorization.
