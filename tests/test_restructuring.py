@@ -25,7 +25,7 @@ from restructuring.io import (
     topic_origins,
     validate_restructuring_proposal,
 )
-from restructuring.render import fix_svg
+from restructuring.render import fix_svg, svg_to_drawio
 from restructuring.models import (
     ClusterInput,
     CourseAssembly,
@@ -416,6 +416,22 @@ class TestDiagramColours(unittest.TestCase):
         self.assertNotIn("!important", fixed)
         self.assertEqual(fixed.count('style="fill:#123456"'), 1)
         self.assertIn('row" style="fill:#123456" x="0"><tspan class="text-inner-tspan">alpha', fixed)
+
+    def test_svg_to_drawio_keeps_geometry_colours_and_edges(self):
+        row = '<tspan class="text-outer-tspan row"{} x="0"><tspan class="text-inner-tspan">{}</tspan></tspan>'
+        node = (
+            '<g class="node default proposed" id="my-svg-flowchart-{0}-{1}" transform="translate(100, 50)">'
+            '<rect class="basic label-container" style="fill:#e8f1fb;stroke:#24527a" x="-40" y="-20" width="80" height="40"/>'
+        )
+        svg = (
+            node.format("P0", 0) + row.format("", "A &amp; B") + row.format(' style="fill:#0072b2"', "alpha") + "</g>"
+            + node.format("P1", 1) + row.format("", "Next") + "</g>"
+            + '<path id="my-svg-L_P0_P1_0"/>'
+        )
+        drawio = svg_to_drawio(svg, "test")
+        self.assertIn('id="P0" value="A &amp;amp; B&lt;br&gt;&lt;font color=&quot;#0072b2&quot;&gt;alpha', drawio)
+        self.assertIn('<mxGeometry x="60.0" y="30.0" width="80.0" height="40.0"', drawio)
+        self.assertIn('source="P0" target="P1"', drawio)
 
 
 class TestTopicWeights(unittest.TestCase):

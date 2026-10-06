@@ -69,7 +69,8 @@ truth and the decks as domain/rationale documentation.
   files from the proposal YAML, renders SVG, colours topic keys by the first
   source-course scope in service > external > borrow > weak_internal >
   internal order (`course_scope` in `clustering.export_cluster_courses`),
-  and exports PDFs with `inkscape`.
+  and exports PDFs with `inkscape` plus editable `.drawio` files laid out
+  like the SVGs.
 - Tests use `unittest`, not pytest:
   `.venv/bin/python -m unittest discover -s tests -p 'test_*.py'`.
 - Treat course IDs, teaching IDs, and programme codes as opaque strings. Leading

@@ -5,7 +5,8 @@
 Rewrites every restructure-proposal-*.mmd from its validated proposal YAML,
 renders it to SVG with mermaid-cli (SVG text labels, so Inkscape can read
 them), colours topic keys by source-course scope, and exports a PDF with
-Inkscape. Needs `npm install` and `inkscape` on PATH.
+Inkscape plus an editable draw.io file laid out as the SVG. Needs
+`npm install` and `inkscape` on PATH.
 """
 from __future__ import annotations
 
@@ -29,6 +30,11 @@ from restructuring.models import RestructuringProposal, SourceCourseMapping
 
 REPOSITORY_ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUTER_ROW = re.compile(r'(<tspan class="text-outer-tspan row")([^>]*>)((?:<tspan[^>]*>[^<]*</tspan>)*)</tspan>')
+SVG_NODE = re.compile(
+    r'<g class="node [^"]*" id="my-svg-flowchart-(\w+)-\d+"[^>]*transform="translate\(([-\d.]+), ?([-\d.]+)\)">'
+    r'<rect[^>]*style="fill:([^;"]+);stroke:([^;"]+)"[^>]*width="([\d.]+)" height="([\d.]+)"'
+)
+SVG_EDGE = re.compile(r'id="my-svg-L_([A-Za-z0-9]+)_([A-Za-z0-9]+)_\d+"')
 
 
 def fix_svg(svg: str, colours: dict[str, str]) -> str:
@@ -45,6 +51,36 @@ def fix_svg(svg: str, colours: dict[str, str]) -> str:
         return f'{match.group(1)} style="fill:{colours[text]}"{match.group(2)}{match.group(3)}</tspan>'
 
     return OUTER_ROW.sub(colour, svg)
+
+
+def svg_to_drawio(svg: str, name: str) -> str:
+    """Editable draw.io diagram with the boxes, (coloured) label rows and
+    arrows of a fix_svg-processed mermaid-cli flowchart, at the same positions."""
+    cells = ['<mxCell id="0"/>', '<mxCell id="1" parent="0"/>']
+    nodes = list(SVG_NODE.finditer(svg))
+    for index, node in enumerate(nodes):
+        alias, x, y, fill, stroke, width, height = node.groups()
+        body = svg[node.end():nodes[index + 1].start() if index + 1 < len(nodes) else len(svg)]
+        rows = []
+        for row in OUTER_ROW.finditer(body):
+            text = html.escape(html.unescape(re.sub(r"<[^>]+>", "", row.group(3))).strip())
+            colour = re.search(r"fill:(#[0-9a-fA-F]+)", row.group(2))
+            rows.append(f'<font color="{colour.group(1)}">{text}</font>' if colour else text)
+        style = f"whiteSpace=wrap;html=1;fillColor={fill};strokeColor={stroke};fontSize=14;"
+        cells.append(
+            f'<mxCell id="{alias}" value="{html.escape("<br>".join(rows))}" style="{style}" vertex="1" parent="1">'
+            f'<mxGeometry x="{float(x) - float(width) / 2:.1f}" y="{float(y) - float(height) / 2:.1f}" '
+            f'width="{float(width):.1f}" height="{float(height):.1f}" as="geometry"/></mxCell>'
+        )
+    for index, (source, target) in enumerate(dict.fromkeys(SVG_EDGE.findall(svg))):
+        cells.append(
+            f'<mxCell id="e{index}" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" '
+            f'edge="1" parent="1" source="{source}" target="{target}"><mxGeometry relative="1" as="geometry"/></mxCell>'
+        )
+    return (
+        f'<mxfile><diagram name="{html.escape(name)}"><mxGraphModel><root>'
+        + "".join(cells) + "</root></mxGraphModel></diagram></mxfile>\n"
+    )
 
 
 def render_attempt(attempt_dir: pathlib.Path, cluster_manifest: pathlib.Path) -> list[pathlib.Path]:
@@ -74,12 +110,15 @@ def render_attempt(attempt_dir: pathlib.Path, cluster_manifest: pathlib.Path) ->
                  "-i", mmd, "-o", svg],
                 check=True,
             )
-            svg.write_text(fix_svg(svg.read_text(encoding="utf-8"), colours), encoding="utf-8")
+            fixed = fix_svg(svg.read_text(encoding="utf-8"), colours)
+            svg.write_text(fixed, encoding="utf-8")
+            drawio = mmd.with_suffix(".drawio")
+            drawio.write_text(svg_to_drawio(fixed, mmd.stem), encoding="utf-8")
             subprocess.run(
                 ["inkscape", svg, "--export-type=pdf", f"--export-filename={pdf}"],
                 check=True, capture_output=True,
             )
-            outputs += [svg, pdf]
+            outputs += [svg, pdf, drawio]
     return outputs
 
 
