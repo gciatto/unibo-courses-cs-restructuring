@@ -66,8 +66,9 @@ truth and the decks as domain/rationale documentation.
   classic look and SVG text labels so Inkscape can convert the SVGs).
 - `.venv/bin/python -m restructuring.render ATTEMPT_DIR CLUSTER_COURSES_YML`
   re-renders an attempt's diagrams without LLM calls: rewrites the `.mmd`
-  files from the proposal YAML, renders SVG, colours topic keys by source
-  course scope (service/external, from `clustering.export_cluster_courses`),
+  files from the proposal YAML, renders SVG, colours topic keys by the first
+  source-course scope in service > external > borrow > weak_internal >
+  internal order (`course_scope` in `clustering.export_cluster_courses`),
   and exports PDFs with `inkscape`.
 - Tests use `unittest`, not pytest:
   `.venv/bin/python -m unittest discover -s tests -p 'test_*.py'`.

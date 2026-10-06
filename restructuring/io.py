@@ -717,12 +717,22 @@ def load_global_topic_artifacts(
     return dict(topics), memberships
 
 
-# Label colour of proposed topics taught by source courses of these scopes
-# (see clustering.export_cluster_courses.course_scope); others stay black.
+# Label colour of proposed topics by source-course scope (see
+# clustering.export_cluster_courses.course_scope). Order is priority: a topic
+# takes the first scope among the source courses teaching its source topics.
 TOPIC_ORIGIN_COLOURS = {
-    "service": "#1f6fb2",
-    "external": "#c0561b",
-    "service+external": "#8e44ad",
+    "service": "#0072b2",
+    "external": "#d55e00",
+    "borrow": "#aa4499",
+    "weak_internal": "#009e73",
+    "internal": "#000000",
+}
+TOPIC_ORIGIN_LEGEND = {
+    "service": "service: some DISI teacher, no DISI degree programme",
+    "external": "external: no DISI teacher, no DISI degree programme",
+    "borrow": "borrow: no DISI teacher, some DISI degree programme",
+    "weak_internal": "weak_internal: some (not all) DISI teachers and DISI degree programmes",
+    "internal": "internal: only DISI teachers and DISI degree programmes",
 }
 
 
@@ -731,8 +741,8 @@ def topic_origins(
     source_memberships: dict[str, list[str]],
     course_scopes: dict[str, str],
 ) -> dict[str, str]:
-    """Proposed topic key -> TOPIC_ORIGIN_COLOURS key, for topics whose source
-    topics are taught by at least one service and/or external source course."""
+    """Proposed topic key -> highest-priority TOPIC_ORIGIN_COLOURS scope among
+    the source courses teaching any of its source topics."""
     scopes_by_topic: dict[str, set[str]] = {}
     for course_id, keys in source_memberships.items():
         for key in keys:
@@ -740,7 +750,7 @@ def topic_origins(
     origins = {}
     for topic in proposal.proposed_topics:
         scopes = set().union(*(scopes_by_topic.get(key, set()) for key in topic.source_topic_keys))
-        origin = "+".join(scope for scope in ("service", "external") if scope in scopes)
+        origin = next((scope for scope in TOPIC_ORIGIN_COLOURS if scope in scopes), None)
         if origin:
             origins[topic.key] = origin
     return origins
@@ -774,7 +784,11 @@ def render_mermaid(
             label += "<br/>" + "<br/>".join(_mermaid_label(key) for key in item.topic_keys)
         lines.append(f'  {course_aliases[item.key]}["{label}"]:::proposed')
     if show_topics:
-        legend = "<br/>".join(["topic taught in", *TOPIC_ORIGIN_COLOURS])
+        legend = "<br/>".join([
+            "Topic colour: first scope, in this order, among the",
+            "current courses teaching it (by teachers' and programmes' department)",
+            *TOPIC_ORIGIN_LEGEND.values(),
+        ])
         lines.append(f'  legend["{legend}"]:::source')
     if mappings is None:
         for edge in proposal.prerequisites:

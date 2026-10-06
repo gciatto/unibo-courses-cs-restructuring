@@ -399,13 +399,14 @@ class TestInputAndCache(unittest.TestCase):
 
 
 class TestDiagramColours(unittest.TestCase):
-    def test_topic_origin_combines_service_and_external_source_courses(self):
+    def test_topic_origin_is_highest_priority_source_course_scope(self):
         proposal = valid_proposal()
         memberships = {"S": ["alpha"], "E": ["beta"], "I": ["alpha", "beta"]}
         scopes = {"S": "service", "E": "external", "I": "internal"}
-        self.assertEqual(topic_origins(proposal, memberships, scopes), {"foundations": "service+external"})
-        self.assertEqual(topic_origins(proposal, memberships, {**scopes, "E": "borrow"}), {"foundations": "service"})
-        self.assertEqual(topic_origins(proposal, {"I": ["alpha"]}, scopes), {})
+        self.assertEqual(topic_origins(proposal, memberships, scopes), {"foundations": "service"})
+        self.assertEqual(topic_origins(proposal, memberships, {**scopes, "S": "borrow"}), {"foundations": "external"})
+        self.assertEqual(topic_origins(proposal, {"I": ["alpha"]}, scopes), {"foundations": "internal"})
+        self.assertEqual(topic_origins(proposal, {"X": ["alpha"]}, scopes), {})
 
     def test_fix_svg_colours_matching_rows_and_strips_important(self):
         row = '<tspan class="text-outer-tspan row" x="0"><tspan class="text-inner-tspan">{}</tspan></tspan>'

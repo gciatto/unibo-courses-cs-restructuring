@@ -18,6 +18,7 @@ import subprocess
 from clustering.export_cluster_courses import build_rows
 from restructuring.io import (
     TOPIC_ORIGIN_COLOURS,
+    TOPIC_ORIGIN_LEGEND,
     load_clusters,
     load_global_corpus,
     load_yaml_mapping,
@@ -65,7 +66,7 @@ def render_attempt(attempt_dir: pathlib.Path, cluster_manifest: pathlib.Path) ->
         )
         origins = topic_origins(proposal, payload["source_course_topic_assignments"], scopes)
         colours = {key: TOPIC_ORIGIN_COLOURS[origin] for key, origin in origins.items()}
-        colours.update(TOPIC_ORIGIN_COLOURS)  # legend rows
+        colours.update({row: TOPIC_ORIGIN_COLOURS[scope] for scope, row in TOPIC_ORIGIN_LEGEND.items()})
         for mmd in write_proposal_mermaid(attempt_dir, yaml_path.stem, cluster, proposal, mappings):
             svg, pdf = mmd.with_suffix(".svg"), mmd.with_suffix(".pdf")
             subprocess.run(
