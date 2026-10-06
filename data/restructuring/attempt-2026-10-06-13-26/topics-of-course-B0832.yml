@@ -1,0 +1,38 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 25
+  name: Administration Systems System (25)
+course:
+  id: B0832
+  name: Administration of Systems T
+topics:
+  centralized_configuration_management: Centralized configuration of distributed systems,
+    services, and applications, including dynamic configuration support.
+  centralized_monitoring: Centralized monitoring of distributed systems and services
+    using monitoring applications such as Nagios.
+  configuration_as_code: Automated creation and configuration of virtual systems using
+    configuration-as-code tools such as OpenTofu, Vagrant, and Ansible.
+  dns: DNS and advanced name systems used in distributed environments.
+  high_availability: Basic concepts of availability in distributed systems designed
+    for continued service operation.
+  ldap_authentication: Centralized authentication using the Lightweight Directory
+    Access Protocol (LDAP).
+  linux_network_configuration: Configuration of network interfaces and routing on
+    GNU/Linux systems.
+  linux_process_resource_monitoring: Command-line configuration of processes and monitoring
+    of resource usage on GNU/Linux systems.
+  network_autoconfiguration: Protocols for automatic network configuration, including
+    RARP, BOOTP, and DHCP.
+  network_connection_monitoring: Tools and techniques for monitoring network connections.
+  scheduled_task_automation: Scheduled execution mechanisms used to automate system-administration
+    tasks.
+  shell_scripting: Shell use and shell scripting for interacting with and administering
+    operating systems.
+  snmp_monitoring: The Simple Network Management Protocol and platforms for centralized
+    monitoring of large or heterogeneous installations.
+  system_logging: System logging mechanisms and standard daemons used to automate
+    administration tasks.
+  unix_filesystem_authorization: Authorization mechanisms and permissions for Unix
+    filesystem resources.
+  unix_user_accounts: User-account management on Unix and GNU/Linux systems.

@@ -1,0 +1,11 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Digital Health Applications and Interventions<br/>3 ECTS"]:::proposed
+  P1["Digital Health Evaluation and Governance<br/>3 ECTS"]:::proposed
+  S0["Computer Science (07276-C)"]:::source
+  S0 -.-> P1
+  S1["DIGITAL HEALTH M (B8018)"]:::source
+  S1 -.-> P0
+  S1 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

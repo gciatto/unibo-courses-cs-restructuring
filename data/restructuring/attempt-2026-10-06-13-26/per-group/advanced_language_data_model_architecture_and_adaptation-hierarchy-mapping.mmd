@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Language Model Architecture and Adaptation<br/>3 ECTS"]:::proposed
+  P1["Language Model Applications<br/>3 ECTS"]:::proposed
+  S0["Data Mining (40720)<br/>Machine Learning and Data Mining (95631-A)<br/>Big Data Analytics and Text Mining (B2133)"]:::source
+  S0 -.-> P1
+  S0 -.-> P0
+  S1["Architecture and Platforms for Artificial Intelligence (91259)"]:::source
+  S1 -.-> P0
+  S2["Autonomous and Adaptive Systems M (92858)<br/>ELABORAZIONE DI TESTI E GESTIONE DOCUMENTALE (B0073)<br/>Machine Learning for Humanities (B1873)"]:::source
+  S2 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

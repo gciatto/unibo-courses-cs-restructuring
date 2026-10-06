@@ -1,0 +1,11 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Foundations of Complex and Autonomous Systems<br/>3 ECTS"]:::proposed
+  P1["Probabilistic and Approximate Model Checking<br/>3 ECTS"]:::proposed
+  S0["Multi-Agent Systems (91267)<br/>Intelligent Systems Engineering (93669)<br/>Software Architecture and Platforms (B0010)"]:::source
+  S0 -.-> P0
+  S1["Advanced Software Modelling and Design (B0009)"]:::source
+  S1 -.-> P0
+  S1 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

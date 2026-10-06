@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Visual Understanding Fundamentals<br/>3 ECTS"]:::proposed
+  P1["Advanced Visual and Temporal Understanding<br/>3 ECTS"]:::proposed
+  S0["Computer Vision (17634)"]:::source
+  S0 -.-> P1
+  S0 -.-> P0
+  S1["Machine Learning for Computer Vision (91266)"]:::source
+  S1 -.-> P0
+  S2["COMPUTER VISION (93478)"]:::source
+  S2 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

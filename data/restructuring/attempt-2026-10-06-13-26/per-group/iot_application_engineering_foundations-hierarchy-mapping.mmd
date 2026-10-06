@@ -1,0 +1,11 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["IoT Application Engineering Foundations<br/>3 ECTS"]:::proposed
+  P1["Advanced IoT Application Integration<br/>3 ECTS"]:::proposed
+  S0["Embedded Systems Programming and Internet of Things (77780)<br/>Mobile Systems M (78779)<br/>Laboratory of Making (81678)<br/>Internet of Things (81683)<br/>Iot And Big Data For Smart Agricultural Systems (93653)<br/>Industry 4.0 (95639)<br/>Embedded Systems and Internet of Things (96859)<br/>Software Architecture and Platforms (B0010)"]:::source
+  S0 -.-> P1
+  S1["PROGRAMMING THE INTERNET OF THINGS M (B8019)"]:::source
+  S1 -.-> P1
+  S1 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

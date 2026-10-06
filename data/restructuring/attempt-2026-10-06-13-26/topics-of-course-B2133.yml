@@ -1,0 +1,58 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 2
+  name: Big Data Cloud (2)
+course:
+  id: B2133
+  name: Big Data Analytics and Text Mining
+topics:
+  big_data_management: Introductory approaches and technologies for managing big data
+    as alternatives or complements to relational databases.
+  corpus_analysis: Building and analyzing text corpora for developing and evaluating
+    natural-language prediction models.
+  data_mining_overview: General concepts, application scenarios, and supervised and
+    unsupervised techniques in data mining.
+  decoding_strategies: Decoding strategies for generating text from neural language
+    models and large language models.
+  efficient_attention: Efficient attention mechanisms for transformer-based models.
+  function_call_generation: Generation of function calls in language-model applications.
+  graph_injection_language_models: Injecting graph-structured knowledge or graph representations
+    into language models to improve semantic grounding and trustworthiness.
+  graph_machine_learning: Machine-learning methods for graph-structured data.
+  hadoop: The Apache Hadoop framework for Big Data processing, including HDFS and
+    YARN, with practical use of related Hadoop technologies.
+  kg_embeddings: Embedding knowledge graphs into vector representations.
+  language_models: Language models used in text-mining and language-processing workflows.
+  large_action_models: Large action models for generating or selecting actions.
+  large_language_models: Generative large language models.
+  llm_agent_design: Design of agents based on large language models or other foundation
+    models.
+  llm_pretraining_finetuning: Pre-training and full fine-tuning techniques for large
+    language models.
+  llm_scaling_laws: Scaling laws describing how large-language-model performance changes
+    with model size, data, and computational budget.
+  mapreduce: The MapReduce programming paradigm, including its principles, limitations,
+    algorithm design, and application to non-trivial problems.
+  mixture_of_experts: Mixture-of-Experts architectures for large language models.
+  model_compression_quantization: Model-compression techniques for neural networks,
+    including scalar, block, and vector quantization and sparsity.
+  model_evaluation: Evaluation methods for language and machine-learning models.
+  parameter_efficient_finetuning: Parameter-efficient fine-tuning methods including
+    QLoRA and prompt tuning.
+  preference_alignment: Preference-alignment methods for adapting large language models
+    to preferred or instructed behavior.
+  prompt_engineering: Prompt-engineering methods for generative language models.
+  pyspark_basics: Fundamental PySpark programming concepts for processing data with
+    Apache Spark.
+  retrieval_augmented_generation: Retrieval-augmented generation using vector databases.
+  spark: The Apache Spark system, including its architecture, data structures, data
+    partitioning, shuffling, and computation optimization.
+  spark_mllib: The Spark MLlib machine-learning library and its use for machine learning
+    in Big Data processing workflows.
+  text_summarization: Text summarization in practical text-mining case studies.
+  transformers: Transformer architectures and attention-based models, including applications
+    to visual and language-related machine-learning tasks.
+  vector_databases: Vector databases used to store and retrieve embedding-based representations
+    for knowledge-enhanced language-model applications.
+  vision_language_models: Models combining visual and language information.

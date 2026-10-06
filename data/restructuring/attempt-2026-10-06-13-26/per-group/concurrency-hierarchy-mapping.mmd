@@ -1,0 +1,23 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Concurrency and Synchronization<br/>3 ECTS"]:::proposed
+  P1["Concurrent Programming Fundamentals<br/>3 ECTS"]:::proposed
+  P2["Distributed and Verified Concurrent Programming<br/>3 ECTS"]:::proposed
+  S0["Programming Languages (04138)<br/>Operating Systems (08574, 08574-A, 08574-B)<br/>Computer Networks T (28024)<br/>Concurrent Models and Systems (66870)<br/>Real Time Systems for Automation M (78810)<br/>Real Time OS M (85728)<br/>Fundamentals of Computer Programming P1 (88145)<br/>Industrial Informatics P (88155)<br/>Computer Networks (93315)<br/>Software Design and Development (95648)<br/>Foundations of Computer Architecture and Operating Systems (96007)<br/>Real Time Systems and Programming for Automation M (B5665)<br/>SISTEMI DI ELABORAZIONE ACCELERATA M (B8563)"]:::source
+  S0 -.-> P0
+  S1["Concurrent and Distributed Programming (17628)"]:::source
+  S1 -.-> P0
+  S1 -.-> P2
+  S1 -.-> P1
+  S2["Operating Systems T (28020)<br/>Lab-based Course on Operating Systems (58348)"]:::source
+  S2 -.-> P0
+  S2 -.-> P1
+  S3["Object-Oriented Programming (70219)"]:::source
+  S3 -.-> P1
+  S4["Advanced Software Modelling and Design (B0009)"]:::source
+  S4 -.-> P2
+  S5["SISTEMI CONCORRENTI E PARALLELI M (B8562)"]:::source
+  S5 -.-> P0
+  S5 -.-> P2
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

@@ -1,0 +1,14 @@
+%% Restructuring proposal for all courses
+flowchart TB
+  P0["Cryptography<br/>3 ECTS<br/>cryptography_foundations<br/>symmetric_cryptography<br/>public_key_cryptography"]:::proposed
+  P1["Data Compression<br/>1 ECTS<br/>data_compression"]:::proposed
+  P2["Cryptographic Foundations<br/>2 ECTS<br/>cryptographic_randomness<br/>cryptographic_hashes"]:::proposed
+  P3["Cryptographic Protocols and Digital Signatures<br/>2 ECTS<br/>digital_signatures<br/>cryptographic_protocols"]:::proposed
+  P4["Cryptographic Protocol Analysis<br/>1 ECTS<br/>cryptographic_protocol_analysis"]:::proposed
+  legend["Topic colour: first scope, in this order, among the<br/>current courses teaching it (by teachers' and programmes' department)<br/>service: some DISI teacher, no DISI degree programme<br/>external: no DISI teacher, no DISI degree programme<br/>borrow: no DISI teacher, some DISI degree programme<br/>weak_internal: some (not all) DISI teachers and DISI degree programmes<br/>internal: only DISI teachers and DISI degree programmes"]:::source
+  P0 --> P1
+  P0 --> P2
+  P2 --> P3
+  P3 --> P4
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

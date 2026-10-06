@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Data Structures and Programming Fundamentals<br/>3 ECTS"]:::proposed
+  P1["Data Structures and Programming Algorithms<br/>3 ECTS"]:::proposed
+  S0["Programming (00819)<br/>Foundations of Informatics T (29227)"]:::source
+  S0 -.-> P0
+  S1["Computer Science (07276-A)<br/>Theoretical Computer Science (11933, 41169)<br/>Information Technology (28040)<br/>Data Structure and Algorithms (37635)<br/>Informatics (60348)<br/>Algorithms and Data Structures in Biology (85301)<br/>Computational Management of Data (B8105)"]:::source
+  S1 -.-> P1
+  S2["Foundations of Informatics and Laboratory (28623)<br/>INFORMATICA (96346)<br/>Algorithms and Data Structures for Computational Biology (B5782)"]:::source
+  S2 -.-> P1
+  S2 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

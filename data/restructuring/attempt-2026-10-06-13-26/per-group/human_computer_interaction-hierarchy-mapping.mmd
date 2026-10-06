@@ -1,0 +1,45 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Mobile Application Development<br/>3 ECTS"]:::proposed
+  P1["Human-Computer Interaction<br/>3 ECTS"]:::proposed
+  P2["Android Development Foundations<br/>3 ECTS"]:::proposed
+  P3["Android User Interfaces and Navigation<br/>3 ECTS"]:::proposed
+  P4["iOS Development Fundamentals<br/>3 ECTS"]:::proposed
+  P5["iOS Application Interfaces and Data<br/>3 ECTS"]:::proposed
+  P6["Interaction Media Design Foundations<br/>2 ECTS"]:::proposed
+  P7["Interaction Media Design Usability and Paradigms<br/>2 ECTS"]:::proposed
+  P8["Interaction Media Design for Cultural Heritage<br/>2 ECTS"]:::proposed
+  S0["Software Engineering (09032)<br/>Humanistic IT (27311)<br/>Multimedia Data Management M (77933, 78096)<br/>Multimedia Data Management (91269)"]:::source
+  S0 -.-> P1
+  S1["Web-related Technologies (41731, 41731-A)<br/>Web Technology (88566)<br/>Foundations of Web Systems (95645)"]:::source
+  S1 -.-> P7
+  S2["Web Systems Engineering (47240)"]:::source
+  S2 -.-> P0
+  S3["Computer Science for Cultural Heritage (48693)"]:::source
+  S3 -.-> P8
+  S4["Mobile Applications Laboratory (66860)<br/>Mobile Application Programming (72787)"]:::source
+  S4 -.-> P2
+  S4 -.-> P3
+  S4 -.-> P5
+  S4 -.-> P4
+  S4 -.-> P0
+  S5["Mobile Systems M (78779)"]:::source
+  S5 -.-> P2
+  S5 -.-> P4
+  S5 -.-> P0
+  S6["Interaction Multimedia Services (81917)<br/>Elements of Computer Technologies for Fashion E-Commerce (90864)<br/>Web and Mobile Systems (95605)"]:::source
+  S6 -.-> P1
+  S6 -.-> P0
+  S7["HUMAN COMPUTER INTERACTION (81934)"]:::source
+  S7 -.-> P1
+  S7 -.-> P6
+  S7 -.-> P7
+  S8["Usability and User Experience (85573)<br/>Usability &amp; User Experience Design (90720)<br/>User Experience Design (91264)"]:::source
+  S8 -.-> P1
+  S8 -.-> P7
+  S9["Interaction Media Design (B5059)"]:::source
+  S9 -.-> P1
+  S9 -.-> P8
+  S9 -.-> P6
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

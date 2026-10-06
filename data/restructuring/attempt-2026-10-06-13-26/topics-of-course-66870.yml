@@ -1,0 +1,29 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 24
+  name: Systems Distributed Models (24)
+course:
+  id: '66870'
+  name: Concurrent Models and Systems
+topics:
+  bisimulation: Bisimulation and related behavioral equivalences, including language,
+    trace, isomorphism, place, structure-preserving, and team bisimulation.
+  ccs: The Calculus of Communicating Systems, including its syntax and structural
+    operational semantics.
+  concurrency_modal_logics: Modal logics for reasoning about concurrency models, including
+    BML, TML, MKL, and LKL.
+  concurrent_programming: The concurrent programming paradigm.
+  distributed_computability: Distributed computability and impossibility reasoning
+    illustrated by the Last Man Standing problem.
+  labeled_transition_systems: Labeled transition systems for modelling the behavior
+    of concurrent and distributed systems.
+  petri_net_equivalences: Sequential, concurrent, and causal equivalences for Petri
+    nets.
+  petri_nets: Petri Nets as a visual formalism for modelling concurrent systems.
+  process_algebra: Process-algebraic modelling of concurrent systems, including the
+    Lin, Fork, and Pet algebras and their algebraic properties.
+  sos_semantics: Structural operational semantics for specifying the behavior of CCS
+    processes.
+  weak_branching_bisimulation: Weak and branching bisimulation for linear nets with
+    silent transitions.

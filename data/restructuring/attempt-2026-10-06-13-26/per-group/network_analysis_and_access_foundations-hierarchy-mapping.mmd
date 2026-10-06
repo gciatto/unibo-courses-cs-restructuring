@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Network Analysis and Access Foundations<br/>3 ECTS"]:::proposed
+  P1["Advanced Network Analysis and Access<br/>3 ECTS"]:::proposed
+  S0["Internet Architecture (58423)"]:::source
+  S0 -.-> P1
+  S0 -.-> P0
+  S1["Network Programming (70226)<br/>FONDAMENTI DI CYBERSECURITY (93466)<br/>Computer Networks and Network Programming (95644)"]:::source
+  S1 -.-> P1
+  S2["Computer Networks (93315)"]:::source
+  S2 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

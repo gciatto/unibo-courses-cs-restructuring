@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Algorithmic Foundations and Data Representation<br/>3 ECTS"]:::proposed
+  P1["Queues, Dictionaries, and Sets<br/>3 ECTS"]:::proposed
+  S0["Programming (00819)<br/>Foundations of Informatics T (29227)<br/>Foundations of Computer Science T (93034)<br/>Introduction to Programming (B1703)<br/>Computational Methods for Bioinformatics (B5780)<br/>Computational Management of Data (B8105)"]:::source
+  S0 -.-> P1
+  S0 -.-> P0
+  S1["Programming (00819-A, 00819-B)<br/>Programming Languages (04138)<br/>Principles of Informatics (09730, 09730-A)<br/>Foundations of Informatics A (15305)<br/>Foundations of Informatics T-1 (28004)<br/>Foundations of Informatics and Laboratory (28623)<br/>Computer Programming (37262)<br/>Computational Models And Languages M (72940)<br/>Fundamentals of Computer Programming P1 (88145)<br/>Elements of Informatics (89988)<br/>Foundations of Computer Architecture and Operating Systems (96007)<br/>Computer Science (96346-B)<br/>INFORMATICA (B8159)<br/>SISTEMI DI ELABORAZIONE ACCELERATA M (B8563)"]:::source
+  S1 -.-> P0
+  S2["Algorithms and Data Structures (11929, 11929-A)<br/>Algorithm and Data Structures (11929-B)<br/>Programming Laboratory (16870)<br/>Data Structure and Algorithms (37635)<br/>ADVANCED PROGRAMMING (65094)<br/>Systems and Algorithms for Data Science (85189)<br/>Machine Learning Systems For Data Science (90477)<br/>Programming Lab (93333)<br/>Programming and Computer Architectures (95602)<br/>INFORMATICA (96346)<br/>Informatics for the Humanities (B4826)<br/>ALGORITMI E STRUTTURE DATI (B4913)<br/>Introduction to Languages for Artificial Intelligence (B5727)<br/>Algorithms and Data Structures for Computational Biology (B5782)<br/>SISTEMI SOFTWARE A OGGETTI T (B8554)"]:::source
+  S2 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

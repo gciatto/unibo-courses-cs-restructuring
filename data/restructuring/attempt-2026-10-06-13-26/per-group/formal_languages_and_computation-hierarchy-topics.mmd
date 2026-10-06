@@ -1,0 +1,14 @@
+%% Restructuring proposal for all courses
+flowchart TB
+  P0["Formal Languages and Computation<br/>3 ECTS<br/>finite_automata_and_regular_expressions<br/>context_free_grammars_and_pushdown_automata<br/>turing_machine_models"]:::proposed
+  P1["Formal Logic Foundations<br/>2 ECTS<br/>propositional_logic<br/>first_order_logic"]:::proposed
+  P2["Concurrent Systems Verification<br/>2 ECTS<br/>concurrent_transition_models<br/>temporal_logic_verification"]:::proposed
+  P3["Computational and Oracle Complexity<br/>2 ECTS<br/>computational_complexity_classes<br/>oracle_complexity"]:::proposed
+  P4["Set Theory and Structural Reasoning<br/>3 ECTS<br/>axiomatic_set_theory_and_logical_paradoxes<br/>structural_reasoning_and_recursion<br/>formal_logic_foundations"]:::proposed
+  legend["Topic colour: first scope, in this order, among the<br/>current courses teaching it (by teachers' and programmes' department)<br/>service: some DISI teacher, no DISI degree programme<br/>external: no DISI teacher, no DISI degree programme<br/>borrow: no DISI teacher, some DISI degree programme<br/>weak_internal: some (not all) DISI teachers and DISI degree programmes<br/>internal: only DISI teachers and DISI degree programmes"]:::source
+  P0 --> P1
+  P0 --> P2
+  P0 --> P3
+  P0 --> P4
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

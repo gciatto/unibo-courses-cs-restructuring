@@ -1,0 +1,45 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 25
+  name: Administration Systems System (25)
+course:
+  id: '17628'
+  name: Concurrent and Distributed Programming
+topics:
+  actor_model: Actor-based concurrent and distributed programming, including Akka
+    programming in Java or Scala.
+  async_futures: Task-oriented asynchronous programming using future mechanisms.
+  channel_communication: Channel-based message passing, including communication implemented
+    in the Go language.
+  cloud_computing: Introduction to cloud computing in the context of distributed and
+    service-oriented programming.
+  concurrent_programming: The concurrent programming paradigm.
+  distributed_algorithms: Algorithms designed for distributed systems.
+  distributed_communication: Communication mechanisms and concepts for distributed
+    systems.
+  distributed_systems: Fundamental concepts of distributed systems.
+  event_loop_async: Event-based asynchronous programming using event-loop architectures,
+    continuation-passing style, promises, and async/await.
+  java_executors: Task-oriented concurrent programming in Java using the Executors
+    framework.
+  ltl_properties: Specification of liveness and safety properties of concurrent programs
+    using Linear Temporal Logic.
+  message_oriented_middleware: Distributed programming using message-oriented middleware,
+    including RabbitMQ.
+  message_passing: Concurrent message-passing models based on synchronous and asynchronous
+    communication.
+  model_checking: Pragmatic verification of concurrent-program properties using model
+    checking, including Java PathFinder in laboratory work.
+  multithreaded_java: Multi-threaded programming in Java, including basic mechanisms,
+    libraries, and implementation of monitors.
+  petri_nets: Petri Nets as a visual formalism for modelling concurrent systems.
+  reactive_programming: Reactive programming using reactive extensions, including
+    RxJava.
+  rpc: Distributed programming using remote-procedure-call-like models, including
+    Java RMI.
+  service_oriented_computing: Service-oriented computing as illustrated through Jolie.
+  shared_memory_synchronization: Shared-memory interaction mechanisms for concurrent
+    programs, including semaphores and monitors.
+  statecharts_activity_diagrams: Statecharts and activity diagrams as visual formalisms
+    for modelling concurrent systems.

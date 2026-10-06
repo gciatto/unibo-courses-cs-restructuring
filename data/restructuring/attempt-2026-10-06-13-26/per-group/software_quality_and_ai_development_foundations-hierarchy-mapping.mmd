@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Software Development and Quality Foundations<br/>3 ECTS"]:::proposed
+  P1["Software Engineering for Intelligent Systems<br/>3 ECTS"]:::proposed
+  S0["Software Systems Engineering M (72939)<br/>Advanced Software Modelling and Design (B0009)"]:::source
+  S0 -.-> P0
+  S1["Artificial Intelligence (81940)<br/>Multi-Agent Systems (91267)<br/>Autonomous and Adaptive Systems M (92858)<br/>Intelligent Systems Engineering (93669)<br/>Software Engineering (95627)<br/>Software Architecture and Platforms (B0010)<br/>Artificial Intelligence for Digital Innovation (B0069)"]:::source
+  S1 -.-> P1
+  S2["PIATTAFORME PER LA TRASFORMAZIONE DIGITALE (B0074)<br/>ARTIFICIAL INTELLIGENCE, BLOCKCHAIN E CRIPTOVALUTE NELLO SVILUPPO SOFTWARE (B1459)"]:::source
+  S2 -.-> P0
+  S2 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

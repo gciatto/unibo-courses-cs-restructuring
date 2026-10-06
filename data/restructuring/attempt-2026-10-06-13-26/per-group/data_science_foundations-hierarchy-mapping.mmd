@@ -1,0 +1,281 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Data Science Foundations<br/>3 ECTS"]:::proposed
+  P1["Statistics for Computing<br/>3 ECTS"]:::proposed
+  P2["Machine Learning<br/>3 ECTS"]:::proposed
+  P3["Deep Learning<br/>3 ECTS"]:::proposed
+  P4["Data Mining<br/>3 ECTS"]:::proposed
+  P5["Computer Vision<br/>3 ECTS"]:::proposed
+  P6["Advanced Computer Vision<br/>3 ECTS"]:::proposed
+  P7["Natural Language Processing<br/>3 ECTS"]:::proposed
+  P8["Large Language Models<br/>3 ECTS"]:::proposed
+  P9["Image Foundations and Features<br/>3 ECTS"]:::proposed
+  P10["Binary Image Analysis<br/>3 ECTS"]:::proposed
+  P11["Foundations of Neural Learning Models<br/>3 ECTS"]:::proposed
+  P12["Neural Architectures and Image Classification<br/>3 ECTS"]:::proposed
+  P13["Sequential and Attention Model Fundamentals<br/>3 ECTS"]:::proposed
+  P14["Vision Applications of Attention Models<br/>3 ECTS"]:::proposed
+  P15["Data Analysis Foundations<br/>3 ECTS"]:::proposed
+  P16["Advanced Data Analysis and Interpretation<br/>3 ECTS"]:::proposed
+  P17["Data-Mining Features and Tools<br/>3 ECTS"]:::proposed
+  P18["Data-Mining Methods<br/>3 ECTS"]:::proposed
+  P19["Image-Based Modeling<br/>3 ECTS"]:::proposed
+  P20["Industrial Monitoring and Maintenance Analytics<br/>3 ECTS"]:::proposed
+  P21["Integrated Optimization and Industrial Decision Applications<br/>3 ECTS"]:::proposed
+  P22["Neural Model Deployment<br/>3 ECTS"]:::proposed
+  P23["Descriptive Statistics and Study Design<br/>3 ECTS"]:::proposed
+  P24["Probability and Inferential Statistics<br/>3 ECTS"]:::proposed
+  P25["Multimedia Data Management Fundamentals<br/>3 ECTS"]:::proposed
+  P26["Multimedia Data Retrieval and Exploration<br/>3 ECTS"]:::proposed
+  P27["Multimedia Recommender Systems<br/>3 ECTS"]:::proposed
+  S0["Computer Science (07276-B, 96346-B)"]:::source
+  S0 -.-> P19
+  S1["Computer Science (07276-C)<br/>Computer Science for Environmental Sciences (28106)<br/>Basic and Laboratory Informatics (39176)<br/>Informatics (57828)<br/>Informatic (82202, 82202-A)<br/>Methods and Technologies for Interpreting (87898)<br/>Elements of Computer Technologies for Fashion E-Commerce (90864)"]:::source
+  S1 -.-> P27
+  S2["Computer Vision (17634)"]:::source
+  S2 -.-> P10
+  S2 -.-> P5
+  S3["Data Mining (40720)<br/>Machine Learning and Data Mining (95631-A)"]:::source
+  S3 -.-> P4
+  S3 -.-> P17
+  S3 -.-> P18
+  S3 -.-> P0
+  S3 -.-> P3
+  S3 -.-> P8
+  S3 -.-> P7
+  S4["INTRODUZIONE ALL&#x27;ANALISI DEI DATI (41588)"]:::source
+  S4 -.-> P16
+  S4 -.-> P15
+  S4 -.-> P0
+  S4 -.-> P24
+  S5["ADVANCED PROGRAMMING (65094)<br/>Business Intelligence and Big Data M (96142)<br/>Introduction to Programming (B1703)"]:::source
+  S5 -.-> P15
+  S6["Image Processing And Computer Vision M (69661)"]:::source
+  S6 -.-> P6
+  S6 -.-> P10
+  S6 -.-> P9
+  S6 -.-> P5
+  S6 -.-> P3
+  S6 -.-> P12
+  S6 -.-> P14
+  S7["Data Bases (70155)<br/>Information Systems and Database Management (96793)"]:::source
+  S7 -.-> P4
+  S8["Data Intensive Applications (72796)"]:::source
+  S8 -.-> P0
+  S8 -.-> P3
+  S8 -.-> P2
+  S9["Informatic Tecnologies for Fashion (73273)"]:::source
+  S9 -.-> P25
+  S9 -.-> P27
+  S10["Computer Vision And Image Processing M (73302)"]:::source
+  S10 -.-> P6
+  S10 -.-> P10
+  S10 -.-> P9
+  S10 -.-> P5
+  S10 -.-> P3
+  S10 -.-> P2
+  S10 -.-> P12
+  S10 -.-> P14
+  S11["Multimedia Technologies in Archaelogy (76011)"]:::source
+  S11 -.-> P25
+  S12["Multimedia Data Management M (77933, 78096)<br/>Multimedia Data Management (91269)"]:::source
+  S12 -.-> P25
+  S12 -.-> P26
+  S12 -.-> P27
+  S13["Intelligent Systems M (78778)<br/>Cyber-Physical Systems Programming M (99195)"]:::source
+  S13 -.-> P3
+  S14["Machine Learning (81610, 88202)"]:::source
+  S14 -.-> P6
+  S14 -.-> P3
+  S14 -.-> P8
+  S14 -.-> P2
+  S14 -.-> P26
+  S14 -.-> P13
+  S15["Interaction Multimedia Services (81917)"]:::source
+  S15 -.-> P4
+  S15 -.-> P2
+  S16["Artificial Intelligence (81940)"]:::source
+  S16 -.-> P3
+  S16 -.-> P8
+  S16 -.-> P2
+  S17["Systems and Algorithms for Data Science (85189)<br/>Machine Learning Systems For Data Science (90477)"]:::source
+  S17 -.-> P6
+  S17 -.-> P3
+  S17 -.-> P8
+  S17 -.-> P2
+  S17 -.-> P7
+  S17 -.-> P13
+  S18["Programming (85285)"]:::source
+  S18 -.-> P16
+  S18 -.-> P2
+  S18 -.-> P24
+  S19["Statistics (88016)"]:::source
+  S19 -.-> P23
+  S19 -.-> P24
+  S20["Elements of Informatics (89988)"]:::source
+  S20 -.-> P15
+  S20 -.-> P4
+  S20 -.-> P24
+  S21["Artificial intelligence (90147)<br/>Artificial Intelligence for Digital Innovation (B0069)"]:::source
+  S21 -.-> P3
+  S21 -.-> P2
+  S21 -.-> P7
+  S22["DEEP LEARNING (91250)<br/>Deep Learning (91250-A)"]:::source
+  S22 -.-> P6
+  S22 -.-> P3
+  S22 -.-> P2
+  S22 -.-> P12
+  S22 -.-> P13
+  S22 -.-> P14
+  S23["Deep Learning (91250-B)"]:::source
+  S23 -.-> P6
+  S23 -.-> P3
+  S23 -.-> P8
+  S23 -.-> P7
+  S23 -.-> P11
+  S23 -.-> P13
+  S24["Image Processing and Computer Vision (91254)"]:::source
+  S24 -.-> P6
+  S24 -.-> P9
+  S24 -.-> P5
+  S24 -.-> P11
+  S24 -.-> P12
+  S24 -.-> P13
+  S24 -.-> P14
+  S25["Natural Language Processing (91258)"]:::source
+  S25 -.-> P4
+  S25 -.-> P3
+  S25 -.-> P7
+  S25 -.-> P13
+  S26["Natural Language Processing (91258-A)"]:::source
+  S26 -.-> P3
+  S26 -.-> P8
+  S26 -.-> P7
+  S26 -.-> P13
+  S27["Natural Language Processing (91258-B)"]:::source
+  S27 -.-> P4
+  S27 -.-> P3
+  S27 -.-> P7
+  S28["Architecture and Platforms for Artificial Intelligence (91259)"]:::source
+  S28 -.-> P6
+  S28 -.-> P3
+  S28 -.-> P22
+  S28 -.-> P13
+  S29["Artificial Intelligence in Industry (91261)"]:::source
+  S29 -.-> P21
+  S29 -.-> P20
+  S29 -.-> P27
+  S30["Knowledge Engineering (91265)<br/>Autonomous and Adaptive Systems M (92858)<br/>Advanced Software Modelling and Design (B0009)<br/>METODOLOGIE E TECNICHE DI SIMULAZIONE (B0070)<br/>Knowledge Engeneering for the Humanities (B5292)<br/>Machine Translation and Artificial Intelligence for Language Services (B8603)"]:::source
+  S30 -.-> P8
+  S31["Machine Learning for Computer Vision (91266)"]:::source
+  S31 -.-> P6
+  S31 -.-> P8
+  S31 -.-> P12
+  S31 -.-> P13
+  S31 -.-> P14
+  S32["INTRODUZIONE ALL&#x27;APPRENDIMENTO AUTOMATICO (93319)"]:::source
+  S32 -.-> P3
+  S32 -.-> P2
+  S32 -.-> P11
+  S32 -.-> P12
+  S33["Digital Culture (93379)"]:::source
+  S33 -.-> P15
+  S33 -.-> P8
+  S33 -.-> P2
+  S34["Human Data Science (93469)"]:::source
+  S34 -.-> P0
+  S34 -.-> P3
+  S34 -.-> P2
+  S34 -.-> P23
+  S34 -.-> P24
+  S35["COMPUTER VISION (93478)"]:::source
+  S35 -.-> P6
+  S35 -.-> P9
+  S35 -.-> P5
+  S35 -.-> P8
+  S35 -.-> P12
+  S35 -.-> P13
+  S35 -.-> P14
+  S36["Iot And Big Data For Smart Agricultural Systems (93653)<br/>Business Analytics (98671)"]:::source
+  S36 -.-> P15
+  S36 -.-> P0
+  S37["Intelligent Systems Engineering (93669)"]:::source
+  S37 -.-> P8
+  S37 -.-> P7
+  S38["Machine Learning and Data Mining (95631)<br/>Machine Learning and Data Mining M (B2125)"]:::source
+  S38 -.-> P4
+  S38 -.-> P18
+  S38 -.-> P2
+  S39["Operational Analytics (95638)"]:::source
+  S39 -.-> P0
+  S39 -.-> P20
+  S39 -.-> P12
+  S39 -.-> P24
+  S40["Industry 4.0 (95639)"]:::source
+  S40 -.-> P6
+  S40 -.-> P5
+  S40 -.-> P3
+  S40 -.-> P2
+  S40 -.-> P12
+  S41["Artificial Intelligence and Machine Learning for Business (95965)"]:::source
+  S41 -.-> P4
+  S41 -.-> P2
+  S41 -.-> P27
+  S42["Methods and Models for Data Analytics M (96143)"]:::source
+  S42 -.-> P15
+  S42 -.-> P4
+  S42 -.-> P0
+  S42 -.-> P3
+  S43["&quot;Document Digitization Techniques &quot; (98618)"]:::source
+  S43 -.-> P9
+  S44["Python Coding and Data Science (98735)"]:::source
+  S44 -.-> P15
+  S44 -.-> P17
+  S44 -.-> P2
+  S45["Programming Laboratory (B0063)"]:::source
+  S45 -.-> P4
+  S45 -.-> P3
+  S45 -.-> P2
+  S46["ELABORAZIONE DI TESTI E GESTIONE DOCUMENTALE (B0073)"]:::source
+  S46 -.-> P7
+  S47["Natural Language Processing (B0385)"]:::source
+  S47 -.-> P4
+  S47 -.-> P3
+  S47 -.-> P2
+  S47 -.-> P7
+  S47 -.-> P13
+  S48["Machine Learning for Humanities (B1873)"]:::source
+  S48 -.-> P6
+  S48 -.-> P5
+  S48 -.-> P4
+  S48 -.-> P3
+  S48 -.-> P8
+  S48 -.-> P2
+  S48 -.-> P7
+  S49["Big Data Analytics and Text Mining (B2133)"]:::source
+  S49 -.-> P4
+  S49 -.-> P17
+  S49 -.-> P8
+  S49 -.-> P7
+  S50["Informatics for the Humanities (B4826)"]:::source
+  S50 -.-> P2
+  S50 -.-> P27
+  S51["DATA SCIENCE FOR FASHION SYSTEM (B4940)"]:::source
+  S51 -.-> P0
+  S52["Interaction Media Design (B5059)"]:::source
+  S52 -.-> P19
+  S52 -.-> P9
+  S52 -.-> P5
+  S53["DIGITAL HEALTH M (B8018)"]:::source
+  S53 -.-> P4
+  S53 -.-> P0
+  S53 -.-> P3
+  S53 -.-> P2
+  S54["Computational Management of Data (B8105)"]:::source
+  S54 -.-> P15
+  S54 -.-> P24
+  S55["Basic IT Skills (B8396)"]:::source
+  S55 -.-> P8
+  S55 -.-> P27
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

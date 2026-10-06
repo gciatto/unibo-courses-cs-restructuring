@@ -1,0 +1,50 @@
+%% Restructuring proposal for all courses
+flowchart TB
+  P0["Computer Networks<br/>3 ECTS<br/>computer_network_fundamentals<br/>networking_foundations<br/>network_fundamentals_and_architecture"]:::proposed
+  P1["Network Programming<br/>3 ECTS<br/>client_server_network_programming<br/>tcp_and_udp<br/>internet_application_protocols"]:::proposed
+  P2["Distributed Systems<br/>3 ECTS<br/>distributed_systems_foundations_and_architectures<br/>distributed_communication_and_remote_invocation<br/>distributed_interaction_models"]:::proposed
+  P3["Cloud and Virtualized Systems<br/>3 ECTS<br/>cloud_computing_foundations<br/>container_virtualization<br/>cloud_service_orchestration"]:::proposed
+  P4["Service Scalability and Performance<br/>3 ECTS<br/>scalable_reliable_service_architecture<br/>distributed_system_scalability<br/>service_performance_capacity_testing"]:::proposed
+  P5["Service Operations and Response<br/>3 ECTS<br/>service_observation_and_outage_analysis<br/>service_operational_response<br/>service_organization_and_complexity"]:::proposed
+  P6["Cloud Infrastructure and Distributed Storage<br/>3 ECTS<br/>cloud_infrastructure_and_service_models<br/>distributed_file_systems<br/>distributed_block_storage"]:::proposed
+  P7["Distributed System Properties and Data Services<br/>3 ECTS<br/>distributed_consistency_and_replication<br/>distributed_dependability_and_quality_of_service<br/>distributed_data_serialization"]:::proposed
+  P8["Secure Communication Mechanisms<br/>3 ECTS<br/>secure_remote_administration<br/>datagram_transport_security<br/>network_communication_security"]:::proposed
+  P9["Network Interoperability and Traversal<br/>3 ECTS<br/>windows_linux_integration<br/>nat_traversal<br/>proxy_protocols"]:::proposed
+  P10["Wireless Network Fundamentals<br/>3 ECTS<br/>wireless_radio_systems<br/>wireless_lan_networking<br/>zigbee_networks"]:::proposed
+  P11["Advanced Wireless and Mobile Networking<br/>3 ECTS<br/>wireless_access_standards<br/>mobile_ip_networking<br/>sip_ims"]:::proposed
+  P12["Distributed Coordination Technologies<br/>3 ECTS<br/>distributed_data_serialization<br/>code_mobility<br/>jade_distributed_agents"]:::proposed
+  P13["Distributed Coordination, Consistency, and Dependability<br/>3 ECTS<br/>distributed_coordination_and_consensus<br/>distributed_consistency_and_replication<br/>distributed_dependability_and_quality_of_service"]:::proposed
+  P14["Network Virtualization<br/>3 ECTS<br/>network_function_virtualization<br/>network_virtualization<br/>virtual_channels_and_networks"]:::proposed
+  P15["Network Programming<br/>3 ECTS<br/>network_configuration_management<br/>openflow_network_programming<br/>p4_data_plane_programming"]:::proposed
+  P16["Middleware and Industrial Communication<br/>3 ECTS<br/>message_oriented_middleware<br/>opc_industrial_communication<br/>cps_middleware_communication"]:::proposed
+  P17["Network Communication Fundamentals<br/>2 ECTS<br/>network_switching_fundamentals<br/>transport_flow_control"]:::proposed
+  P18["Network Communication Models<br/>2 ECTS<br/>bluetooth_networking<br/>group_communication"]:::proposed
+  P19["Network Services and Performance<br/>2 ECTS<br/>network_service_performance<br/>networked_application_services"]:::proposed
+  P20["Network Operations Fundamentals<br/>3 ECTS<br/>physical_layer_transmission<br/>session_and_presentation_layers<br/>network_service_architectures"]:::proposed
+  P21["Network Operations Monitoring and Services<br/>3 ECTS<br/>network_troubleshooting<br/>network_monitoring_with_snmp<br/>voip_with_asterisk"]:::proposed
+  P22["Large-Scale Network Analysis<br/>3 ECTS<br/>large_network_analysis<br/>network_foundations<br/>network_data_workflows"]:::proposed
+  legend["Topic colour: first scope, in this order, among the<br/>current courses teaching it (by teachers' and programmes' department)<br/>service: some DISI teacher, no DISI degree programme<br/>external: no DISI teacher, no DISI degree programme<br/>borrow: no DISI teacher, some DISI degree programme<br/>weak_internal: some (not all) DISI teachers and DISI degree programmes<br/>internal: only DISI teachers and DISI degree programmes"]:::source
+  P0 --> P1
+  P0 --> P2
+  P2 --> P3
+  P2 --> P6
+  P7 --> P4
+  P0 --> P8
+  P0 --> P9
+  P0 --> P10
+  P2 --> P12
+  P2 --> P13
+  P0 --> P14
+  P0 --> P15
+  P2 --> P16
+  P0 --> P17
+  P0 --> P20
+  P0 --> P22
+  P4 --> P5
+  P6 --> P7
+  P10 --> P11
+  P17 --> P18
+  P18 --> P19
+  P20 --> P21
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

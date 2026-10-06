@@ -1,0 +1,39 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Web Foundations<br/>3 ECTS"]:::proposed
+  P1["Web Application Development<br/>3 ECTS"]:::proposed
+  P2["Web Services<br/>3 ECTS"]:::proposed
+  P3["Web Data Acquisition<br/>3 ECTS"]:::proposed
+  P4["Web Standards and Build Tools<br/>3 ECTS"]:::proposed
+  S0["Computer Science (07276, 07276-C)<br/>Computer Science for Environmental Sciences (28106)<br/>Basic and Laboratory Informatics (39176)<br/>Informatics (57828, 60348, 78510)<br/>Internet Architecture (58423)<br/>Network Programming (70226)<br/>Basic Informatics (75969)<br/>Informatic (82202, 82202-A)<br/>Informatics for the Humanities (B4826)<br/>Computer Studies and Humanities (B5293)<br/>INFORMATICA (B8159)<br/>Computer Studies and Human Sciences (B8929)"]:::source
+  S0 -.-> P0
+  S1["Humanistic IT (27311)<br/>Web Systems Engineering (47240)<br/>Informatic Tecnologies for Fashion (73273)"]:::source
+  S1 -.-> P4
+  S2["Web Technologies T (28659)<br/>Web-related Technologies (41731-A)<br/>Information Modelling and Web Technologies (85445)<br/>Foundations of Web Systems (95645)"]:::source
+  S2 -.-> P1
+  S2 -.-> P0
+  S3["Computer Programming (37262)<br/>Knowledge Representation and Extraction (85446)"]:::source
+  S3 -.-> P3
+  S4["Web-related Technologies (41731)<br/>Web Technologies (75835)"]:::source
+  S4 -.-> P1
+  S4 -.-> P0
+  S4 -.-> P2
+  S4 -.-> P4
+  S5["Web Services and Applications (69867)<br/>Mobile Systems M (78779)<br/>Distributed Systems (87474)<br/>Distributed Software Systems (93468)<br/>Software Engineering (95627)<br/>Software Architecture and Platforms (B0010)<br/>ARCHITETTURE SOFTWARE A MICROSERVIZI (B5474)"]:::source
+  S5 -.-> P2
+  S6["Interaction Multimedia Services (81917)<br/>Elements of Computer Technologies for Fashion E-Commerce (90864)"]:::source
+  S6 -.-> P0
+  S6 -.-> P2
+  S7["Web Technology (88566)"]:::source
+  S7 -.-> P1
+  S7 -.-> P3
+  S7 -.-> P0
+  S7 -.-> P4
+  S8["Design of Web Applications T (94442)"]:::source
+  S8 -.-> P1
+  S8 -.-> P4
+  S9["Web and Mobile Systems (95605)"]:::source
+  S9 -.-> P0
+  S9 -.-> P4
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

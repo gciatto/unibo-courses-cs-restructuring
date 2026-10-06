@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Digital Document Imaging Foundations<br/>3 ECTS"]:::proposed
+  P1["Digital Document Imaging Analysis and Display<br/>3 ECTS"]:::proposed
+  S0["Computer Science for Cultural Heritage (48693)"]:::source
+  S0 -.-> P0
+  S1["Computer Science for Cultural Heritage (48693-A)<br/>&quot;Document Digitization Techniques &quot; (98618)"]:::source
+  S1 -.-> P1
+  S1 -.-> P0
+  S2["Basic Informatics (75969)"]:::source
+  S2 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

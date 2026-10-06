@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Software Architecture Lifecycle Fundamentals<br/>3 ECTS"]:::proposed
+  P1["Software Architecture Lifecycle Advanced Practices<br/>3 ECTS"]:::proposed
+  S0["Software Engineering (09032)<br/>Programming and Development paradigms (81612)<br/>Advanced Programming (93363)<br/>Design of Web Applications T (94442)<br/>Computer Methods for Digital Transformation (B0061)<br/>Introduction to Data Science and Computational Thinking (B0064)"]:::source
+  S0 -.-> P0
+  S1["Software Systems Engineering M (72939)<br/>Virtualized Systems (95646)<br/>Software Design and Development (95648)<br/>Virtualization and System Integration (96642)<br/>Scalable and Reliable Services M (97431, B5796)<br/>Software Process Engineering (B0011)"]:::source
+  S1 -.-> P1
+  S2["Software Engineering (95627)<br/>Software Architecture and Platforms (B0010)<br/>ARCHITETTURE SOFTWARE A MICROSERVIZI (B5474)"]:::source
+  S2 -.-> P1
+  S2 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

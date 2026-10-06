@@ -1,0 +1,16 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Virtual Systems Fundamentals<br/>2 ECTS"]:::proposed
+  P1["Virtual Systems Networking<br/>2 ECTS"]:::proposed
+  P2["Virtual System Components<br/>2 ECTS"]:::proposed
+  S0["Virtual System Design (37925)"]:::source
+  S0 -.-> P2
+  S0 -.-> P0
+  S0 -.-> P1
+  S1["Complements of Programming Languages (72671)<br/>SISTEMI CONCORRENTI E PARALLELI M (B8562)"]:::source
+  S1 -.-> P0
+  S2["Virtualization and System Integration (96642)"]:::source
+  S2 -.-> P0
+  S2 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

@@ -1,0 +1,156 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Computer Networks<br/>3 ECTS"]:::proposed
+  P1["Network Programming<br/>3 ECTS"]:::proposed
+  P2["Distributed Systems<br/>3 ECTS"]:::proposed
+  P3["Cloud and Virtualized Systems<br/>3 ECTS"]:::proposed
+  P4["Service Scalability and Performance<br/>3 ECTS"]:::proposed
+  P5["Service Operations and Response<br/>3 ECTS"]:::proposed
+  P6["Cloud Infrastructure and Distributed Storage<br/>3 ECTS"]:::proposed
+  P7["Distributed System Properties and Data Services<br/>3 ECTS"]:::proposed
+  P8["Secure Communication Mechanisms<br/>3 ECTS"]:::proposed
+  P9["Network Interoperability and Traversal<br/>3 ECTS"]:::proposed
+  P10["Wireless Network Fundamentals<br/>3 ECTS"]:::proposed
+  P11["Advanced Wireless and Mobile Networking<br/>3 ECTS"]:::proposed
+  P12["Distributed Coordination Technologies<br/>3 ECTS"]:::proposed
+  P13["Distributed Coordination, Consistency, and Dependability<br/>3 ECTS"]:::proposed
+  P14["Network Virtualization<br/>3 ECTS"]:::proposed
+  P15["Network Programming<br/>3 ECTS"]:::proposed
+  P16["Middleware and Industrial Communication<br/>3 ECTS"]:::proposed
+  P17["Network Communication Fundamentals<br/>2 ECTS"]:::proposed
+  P18["Network Communication Models<br/>2 ECTS"]:::proposed
+  P19["Network Services and Performance<br/>2 ECTS"]:::proposed
+  P20["Network Operations Fundamentals<br/>3 ECTS"]:::proposed
+  P21["Network Operations Monitoring and Services<br/>3 ECTS"]:::proposed
+  P22["Large-Scale Network Analysis<br/>3 ECTS"]:::proposed
+  S0["Computer Science (07276, 07276-C, 69259)<br/>Information Processing Systems (20741)<br/>Computer Science for Environmental Sciences (28106)<br/>Foundations of Informatics and Laboratory (28623)<br/>Computer Programming (37262)<br/>Basic and Laboratory Informatics (39176)<br/>Informatics (60348, 78510)<br/>Informatic Tecnologies for Fashion (73273)<br/>Informatic (82202, 82202-A)<br/>Networks, Security And Data Bases (91161)<br/>Informatics for the Humanities (B4826)<br/>INFORMATICA (B8159)<br/>Basic IT Skills (B9254)"]:::source
+  S0 -.-> P0
+  S1["Operating Systems (08574)<br/>Operating Systems T (28020)<br/>Embedded Systems Programming and Internet of Things (77780)<br/>Embedded Systems and Internet of Things (96859)<br/>SISTEMI CONCORRENTI E PARALLELI M (B8562)"]:::source
+  S1 -.-> P2
+  S2["Operating Systems (08574-A)<br/>Big Data and Cloud Platforms (95630)"]:::source
+  S2 -.-> P3
+  S2 -.-> P6
+  S3["Cryptography (14015)"]:::source
+  S3 -.-> P8
+  S4["Concurrent and Distributed Programming (17628)"]:::source
+  S4 -.-> P3
+  S4 -.-> P2
+  S4 -.-> P16
+  S5["Computer Networks T (28024)"]:::source
+  S5 -.-> P6
+  S5 -.-> P0
+  S5 -.-> P2
+  S5 -.-> P1
+  S6["Principles, Models and Applications for Distributed Systems M (37085)"]:::source
+  S6 -.-> P3
+  S6 -.-> P2
+  S6 -.-> P1
+  S6 -.-> P15
+  S6 -.-> P14
+  S6 -.-> P4
+  S7["Informatics (57828)<br/>Internet Architecture (58423)<br/>Network Programming (70226)<br/>Basic Informatics (75969)<br/>Computer Networks and Network Programming (95644)"]:::source
+  S7 -.-> P0
+  S7 -.-> P1
+  S8["Lab-based Course on Operating Systems (58348)<br/>Information Modelling and Web Technologies (85445)<br/>Web Technology (88566)"]:::source
+  S8 -.-> P1
+  S9["Software Systems Engineering M (72939)<br/>Interaction Multimedia Services (81917)"]:::source
+  S9 -.-> P3
+  S9 -.-> P2
+  S9 -.-> P1
+  S10["Distributed Systems M (73025)"]:::source
+  S10 -.-> P2
+  S10 -.-> P4
+  S11["Mobile Systems M (78779)"]:::source
+  S11 -.-> P18
+  S11 -.-> P11
+  S11 -.-> P10
+  S12["Laboratory of Making (81678)"]:::source
+  S12 -.-> P21
+  S12 -.-> P10
+  S13["Internet of Things (81683)"]:::source
+  S13 -.-> P18
+  S14["Big Data (81932)<br/>Context-Aware Systems (84401)<br/>Iot And Big Data For Smart Agricultural Systems (93653)<br/>Programming and Computer Architectures (95602)<br/>Industry 4.0 (95639)<br/>Software Process Engineering (B0011)"]:::source
+  S14 -.-> P3
+  S15["Scalable and Cloud Programming (81942)"]:::source
+  S15 -.-> P3
+  S15 -.-> P2
+  S15 -.-> P4
+  S16["Database and Big Data Technologies M (84530)"]:::source
+  S16 -.-> P7
+  S17["Infrastructures For Cloud Computing and Big Data M (84531)"]:::source
+  S17 -.-> P3
+  S17 -.-> P6
+  S17 -.-> P7
+  S17 -.-> P2
+  S17 -.-> P16
+  S17 -.-> P1
+  S17 -.-> P18
+  S17 -.-> P4
+  S18["Distributed Systems (87474)<br/>Distributed Software Systems (93468)"]:::source
+  S18 -.-> P13
+  S18 -.-> P12
+  S18 -.-> P2
+  S18 -.-> P1
+  S19["System Administration T (88324)<br/>Administration of Systems T (B0832)"]:::source
+  S19 -.-> P21
+  S19 -.-> P4
+  S20["Social Network Analysis (90730)<br/>Network Analysis (95782)"]:::source
+  S20 -.-> P22
+  S21["Multi-Agent Systems (91267)"]:::source
+  S21 -.-> P12
+  S21 -.-> P2
+  S22["Computer Networks (93315)"]:::source
+  S22 -.-> P0
+  S22 -.-> P20
+  S22 -.-> P21
+  S22 -.-> P1
+  S22 -.-> P18
+  S22 -.-> P17
+  S22 -.-> P19
+  S22 -.-> P14
+  S22 -.-> P8
+  S22 -.-> P11
+  S22 -.-> P10
+  S23["Operating Systems and Networks (95604)"]:::source
+  S23 -.-> P0
+  S23 -.-> P20
+  S23 -.-> P19
+  S24["Software Engineering (95627)"]:::source
+  S24 -.-> P3
+  S24 -.-> P2
+  S25["Virtualized Systems (95646)"]:::source
+  S25 -.-> P3
+  S25 -.-> P6
+  S25 -.-> P9
+  S25 -.-> P8
+  S26["Virtualization and System Integration (96642)"]:::source
+  S26 -.-> P3
+  S26 -.-> P6
+  S26 -.-> P2
+  S26 -.-> P16
+  S26 -.-> P21
+  S26 -.-> P9
+  S26 -.-> P8
+  S27["Programmable Networking (96995)"]:::source
+  S27 -.-> P3
+  S27 -.-> P15
+  S27 -.-> P14
+  S28["Scalable and Reliable Services M (97431, B5796)"]:::source
+  S28 -.-> P3
+  S28 -.-> P6
+  S28 -.-> P5
+  S28 -.-> P4
+  S29["Cyber-Physical Systems Programming M (99195)"]:::source
+  S29 -.-> P16
+  S30["Software Architecture and Platforms (B0010)"]:::source
+  S30 -.-> P3
+  S30 -.-> P6
+  S30 -.-> P2
+  S31["Project Management and Software Engineering for Cultural Heritage (B1874)"]:::source
+  S31 -.-> P5
+  S32["ARCHITETTURE SOFTWARE A MICROSERVIZI (B5474)"]:::source
+  S32 -.-> P3
+  S32 -.-> P12
+  S32 -.-> P4
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

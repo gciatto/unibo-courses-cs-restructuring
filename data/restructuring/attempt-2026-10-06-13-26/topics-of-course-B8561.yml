@@ -1,0 +1,48 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 27
+  name: Architectures Computer Architetture (27)
+course:
+  id: B8561
+  name: ARCHITETTURE DEI CALCOLATORI M
+topics:
+  address_segmentation: Segmentation of addresses into logical and physical addresses
+    in Intel architecture.
+  architecture_performance_impact: The impact of computer architecture on system performance.
+  bus_hierarchy_protocols: Bus hierarchies and bus protocols in computer system architectures.
+  cache_coherence: Memory coherence in shared-memory multiprocessor systems using
+    the MESI protocol.
+  cache_mapping_policies: Cache address mapping, write policies, replacement policies,
+    and related implementation techniques.
+  cpu_caches: Processor caches as components of the Intel IA32 memory hierarchy, including
+    implementation and performance considerations.
+  dma_io: Multimaster systems with Direct Memory Access-based input/output, including
+    hardware, software, power, and performance considerations.
+  hardware_virtualization: Virtualization mechanisms introduced in the context of
+    processor and multicore architectures.
+  instruction_level_parallelism: Instruction-level parallelism, including dependencies,
+    latency tolerance, and methods for exposing parallel execution in processors.
+  instruction_set_architecture: Instruction Set Architecture as the interface between
+    software and processor implementation.
+  interleaved_memory: Interleaved memory access in systems with multibyte data buses.
+  memory_hierarchy: Goals, reference models, performance parameters, and organization
+    of processor memory hierarchies.
+  multicore_architectures: Multicore processor architectures and their organization.
+  numa_architectures: Introduction to Non-Uniform Memory Access architectures in multicore
+    systems.
+  out_of_order_execution: Out-of-order instruction execution, including the Tomasulo
+    approach.
+  pipeline_hazards: Instruction dependencies and pipeline hazards, including stalls
+    and forwarding.
+  protected_multitasking: Instruction-set and processor mechanisms supporting protection
+    and multitasking in Intel IA32 systems.
+  simultaneous_multithreading: Simultaneous multithreading and the use of logical
+    processors.
+  speculative_execution: Speculative execution techniques in processor architectures.
+  superscalar_processors: Superscalar, superpipelined, underpipelined, and non-blocking
+    processor architectures.
+  uma_architectures: Uniform Memory Access architectures for shared-memory multiprocessor
+    systems.
+  virtual_memory: Virtual-memory organization and management, including paging, to
+    support efficient program execution.

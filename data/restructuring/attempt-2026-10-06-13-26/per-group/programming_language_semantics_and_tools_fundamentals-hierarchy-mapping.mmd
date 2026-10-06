@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Programming-Language Syntax and Semantics Fundamentals<br/>3 ECTS"]:::proposed
+  P1["Programming-Language Analysis and Compiler Tools<br/>3 ECTS"]:::proposed
+  S0["Programming Languages (04138)<br/>Programming and Development paradigms (81612)<br/>Emerging Programming Paradigms (81672)"]:::source
+  S0 -.-> P0
+  S1["Logic for Computer Science (66857)<br/>Languages, Compilers and Computational Models (81609)"]:::source
+  S1 -.-> P1
+  S2["Complements of Programming Languages (72671)"]:::source
+  S2 -.-> P0
+  S2 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

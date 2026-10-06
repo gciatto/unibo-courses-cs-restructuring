@@ -1,0 +1,18 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Machine-Learning Development Tools and Frameworks<br/>2 ECTS"]:::proposed
+  P1["Linear and Recurrent Machine-Learning Models<br/>2 ECTS"]:::proposed
+  P2["Topic Modeling and Algorithm Selection<br/>2 ECTS"]:::proposed
+  S0["Systems and Algorithms for Data Science (85189)<br/>Machine Learning Systems For Data Science (90477)"]:::source
+  S0 -.-> P2
+  S0 -.-> P0
+  S0 -.-> P1
+  S1["Operational Analytics (95638)"]:::source
+  S1 -.-> P1
+  S2["Methods and Models for Data Analytics M (96143)"]:::source
+  S2 -.-> P2
+  S3["Machine Learning for Humanities (B1873)"]:::source
+  S3 -.-> P0
+  S3 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

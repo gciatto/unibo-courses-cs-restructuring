@@ -1,0 +1,31 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Cryptography<br/>3 ECTS"]:::proposed
+  P1["Data Compression<br/>1 ECTS"]:::proposed
+  P2["Cryptographic Foundations<br/>2 ECTS"]:::proposed
+  P3["Cryptographic Protocols and Digital Signatures<br/>2 ECTS"]:::proposed
+  P4["Cryptographic Protocol Analysis<br/>1 ECTS"]:::proposed
+  S0["Computer Science (07276)<br/>Network Programming (70226)<br/>Informatics (78510)<br/>Computer Networks (93315)<br/>Computer Networks and Network Programming (95644)<br/>Cyber-Physical Systems Programming M (99195)"]:::source
+  S0 -.-> P3
+  S1["Cryptography (14015)"]:::source
+  S1 -.-> P1
+  S1 -.-> P3
+  S1 -.-> P0
+  S2["Lab-based Course on Computer Graphics (70210)"]:::source
+  S2 -.-> P1
+  S3["Information Security M (72942)"]:::source
+  S3 -.-> P2
+  S3 -.-> P3
+  S3 -.-> P0
+  S4["Networks, Security And Data Bases (91161)"]:::source
+  S4 -.-> P0
+  S5["FONDAMENTI DI CYBERSECURITY (93466)<br/>Cybersecurity (93470)"]:::source
+  S5 -.-> P3
+  S5 -.-> P0
+  S6["Cryptography (93467)"]:::source
+  S6 -.-> P2
+  S6 -.-> P4
+  S6 -.-> P3
+  S6 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

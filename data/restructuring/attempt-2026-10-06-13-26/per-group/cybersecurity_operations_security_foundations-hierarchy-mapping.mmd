@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Cybersecurity Operations Security Foundations<br/>3 ECTS"]:::proposed
+  P1["Cybersecurity Operations Security Assessment and Exploitation<br/>3 ECTS"]:::proposed
+  S0["Cryptography (14015, 93467)<br/>Network Programming (70226)<br/>Information Security M (72942)<br/>Informatics (78510)<br/>Networks, Security And Data Bases (91161)<br/>Computer Networks (93315)<br/>Computer Networks and Network Programming (95644)<br/>Virtualization and System Integration (96642)"]:::source
+  S0 -.-> P0
+  S1["Computer and Network Security Lab T (88325)<br/>Cybersecurity (93470)<br/>Computer Security Laboratory T (B0833)"]:::source
+  S1 -.-> P1
+  S1 -.-> P0
+  S2["FONDAMENTI DI CYBERSECURITY (93466)<br/>Cybersecurity (93470-A)<br/>Cybersecurity M (B5793)"]:::source
+  S2 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

@@ -1,0 +1,11 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Geospatial Information Systems Fundamentals<br/>3 ECTS"]:::proposed
+  P1["Geospatial Information Systems Analysis and Applications<br/>3 ECTS"]:::proposed
+  S0["Computer Science for Cultural Heritage (48693, 48693-A)<br/>Context-Aware Systems (84401)"]:::source
+  S0 -.-> P0
+  S1["Computer Science (69259)"]:::source
+  S1 -.-> P1
+  S1 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

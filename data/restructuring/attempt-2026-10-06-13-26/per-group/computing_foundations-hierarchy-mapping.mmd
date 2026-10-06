@@ -1,0 +1,559 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Computing Foundations<br/>3 ECTS"]:::proposed
+  P1["Programming Foundations<br/>3 ECTS"]:::proposed
+  P2["Data Structures and Algorithms<br/>3 ECTS"]:::proposed
+  P3["Advanced Algorithms<br/>3 ECTS"]:::proposed
+  P4["Programming Languages<br/>3 ECTS"]:::proposed
+  P5["Programming-Language Implementation<br/>3 ECTS"]:::proposed
+  P6["Computer Architecture<br/>3 ECTS"]:::proposed
+  P7["Operating Systems<br/>3 ECTS"]:::proposed
+  P8["Python Programming<br/>3 ECTS"]:::proposed
+  P9["Python Data Programming<br/>3 ECTS"]:::proposed
+  P10["C Programming<br/>3 ECTS"]:::proposed
+  P11["C++ Programming<br/>3 ECTS"]:::proposed
+  P12["Java Programming<br/>3 ECTS"]:::proposed
+  P13["Parallel and High-Performance Computing<br/>3 ECTS"]:::proposed
+  P14["Embedded and IoT Systems<br/>3 ECTS"]:::proposed
+  P15["Real-Time Systems<br/>3 ECTS"]:::proposed
+  P16["Digital Forensics<br/>3 ECTS"]:::proposed
+  P17["Quantum Computing<br/>3 ECTS"]:::proposed
+  P18["Unix System Administration<br/>3 ECTS"]:::proposed
+  P19["Infrastructure Configuration and Container Management<br/>3 ECTS"]:::proposed
+  P20["Python Programming Practice: Environment, Files, and Text<br/>3 ECTS"]:::proposed
+  P21["Python Programming Practice: Tabular Data, Scientific Computation, and Graphics<br/>3 ECTS"]:::proposed
+  P22["Processor Architecture Foundations<br/>3 ECTS"]:::proposed
+  P23["Memory and Parallel Processor Execution<br/>3 ECTS"]:::proposed
+  P24["Parallel Architectures and Programming<br/>3 ECTS"]:::proposed
+  P25["Advanced Parallel Programming<br/>3 ECTS"]:::proposed
+  P26["Programming-Language Syntax and Building<br/>3 ECTS"]:::proposed
+  P27["Development Tooling and Python Packaging<br/>3 ECTS"]:::proposed
+  P28["API Architecture and Software Governance<br/>3 ECTS"]:::proposed
+  P29["Operating-System Interfaces and Administration<br/>2 ECTS"]:::proposed
+  P30["Operating-System Resource Management<br/>3 ECTS"]:::proposed
+  P31["Operating-System Protection and Security<br/>1 ECTS"]:::proposed
+  P32["Linux Kernel and Execution<br/>3 ECTS"]:::proposed
+  P33["Processor Systems Foundations<br/>3 ECTS"]:::proposed
+  P34["Processor System Organization<br/>3 ECTS"]:::proposed
+  P35["Processor Interfaces and Drivers<br/>3 ECTS"]:::proposed
+  P36["History and Systems of Computing<br/>3 ECTS"]:::proposed
+  P37["Spreadsheet Automation<br/>3 ECTS"]:::proposed
+  P38["Embedded Systems Runtime Fundamentals<br/>2 ECTS"]:::proposed
+  P39["Embedded Real-Time Operating Systems<br/>2 ECTS"]:::proposed
+  P40["Embedded Drivers and Software Security<br/>2 ECTS"]:::proposed
+  P41["Operating-System Overview and Structure<br/>3 ECTS"]:::proposed
+  P42["Python Object Modeling<br/>3 ECTS"]:::proposed
+  P43["Real-Time Resource Management<br/>3 ECTS"]:::proposed
+  S0["Programming (00819)"]:::source
+  S0 -.-> P11
+  S1["Programming (00819-A, 00819-B)<br/>Laboratory of Informatics (16692)"]:::source
+  S1 -.-> P3
+  S1 -.-> P10
+  S1 -.-> P26
+  S1 -.-> P1
+  S2["Digital Design Principles and Computer Architecture (03716)"]:::source
+  S2 -.-> P22
+  S2 -.-> P34
+  S2 -.-> P6
+  S2 -.-> P0
+  S2 -.-> P35
+  S3["Programming Languages (04138)"]:::source
+  S3 -.-> P26
+  S3 -.-> P5
+  S3 -.-> P4
+  S4["Computer Science (07276)"]:::source
+  S4 -.-> P6
+  S4 -.-> P0
+  S4 -.-> P7
+  S5["Computer Science (07276-A)"]:::source
+  S5 -.-> P3
+  S5 -.-> P2
+  S5 -.-> P1
+  S5 -.-> P5
+  S5 -.-> P9
+  S5 -.-> P42
+  S5 -.-> P8
+  S6["Computer Science (07276-B)"]:::source
+  S6 -.-> P6
+  S6 -.-> P0
+  S6 -.-> P41
+  S6 -.-> P1
+  S7["Computer Science (07276-C)"]:::source
+  S7 -.-> P6
+  S7 -.-> P7
+  S8["Operating Systems (08574)"]:::source
+  S8 -.-> P6
+  S8 -.-> P31
+  S8 -.-> P30
+  S8 -.-> P7
+  S9["Operating Systems (08574-A)"]:::source
+  S9 -.-> P32
+  S9 -.-> P29
+  S9 -.-> P30
+  S9 -.-> P7
+  S10["Operating Systems (08574-B)"]:::source
+  S10 -.-> P29
+  S10 -.-> P31
+  S10 -.-> P30
+  S10 -.-> P7
+  S11["Principles of Informatics (09730)<br/>Foundations of Informatics A (15305)"]:::source
+  S11 -.-> P10
+  S11 -.-> P6
+  S11 -.-> P1
+  S12["Principles of Informatics (09730-A)"]:::source
+  S12 -.-> P6
+  S12 -.-> P1
+  S13["Computer Architecture (11925)<br/>Computer Science (69259)"]:::source
+  S13 -.-> P6
+  S14["Algorithms and Data Structures (11929, 11929-A)<br/>Data Structure and Algorithms (37635)<br/>ALGORITMI E STRUTTURE DATI (B4913)"]:::source
+  S14 -.-> P3
+  S14 -.-> P2
+  S15["Algorithm and Data Structures (11929-B)<br/>Algorithms and Data Structures for Computational Biology (B5782)"]:::source
+  S15 -.-> P3
+  S15 -.-> P2
+  S15 -.-> P1
+  S16["Programming Laboratory (16870)"]:::source
+  S16 -.-> P12
+  S16 -.-> P2
+  S16 -.-> P9
+  S16 -.-> P8
+  S17["Information Processing Systems (20741)"]:::source
+  S17 -.-> P41
+  S18["Humanistic IT (27311-A)"]:::source
+  S18 -.-> P9
+  S18 -.-> P8
+  S18 -.-> P20
+  S19["Foundations of Informatics T-1 (28004)"]:::source
+  S19 -.-> P34
+  S19 -.-> P6
+  S19 -.-> P12
+  S19 -.-> P41
+  S19 -.-> P1
+  S19 -.-> P5
+  S19 -.-> P4
+  S20["Logic Design T (28011)"]:::source
+  S20 -.-> P34
+  S21["Logic Design T (28011-A)<br/>Computer Studies and Humanities (B5293)"]:::source
+  S21 -.-> P33
+  S22["Electronic Calculators T (28012)"]:::source
+  S22 -.-> P23
+  S22 -.-> P33
+  S22 -.-> P34
+  S22 -.-> P6
+  S22 -.-> P0
+  S22 -.-> P35
+  S22 -.-> P5
+  S23["Electronic Calculators T (28012-A)"]:::source
+  S23 -.-> P33
+  S23 -.-> P34
+  S23 -.-> P6
+  S23 -.-> P35
+  S24["Operating Systems T (28020)"]:::source
+  S24 -.-> P29
+  S24 -.-> P30
+  S24 -.-> P7
+  S25["Software Engineering T (28021)"]:::source
+  S25 -.-> P27
+  S26["Information Technology (28040)"]:::source
+  S26 -.-> P2
+  S26 -.-> P1
+  S26 -.-> P5
+  S26 -.-> P9
+  S26 -.-> P42
+  S26 -.-> P8
+  S27["Computer Science for Environmental Sciences (28106)"]:::source
+  S27 -.-> P37
+  S28["Foundations of Informatics and Laboratory (28623)"]:::source
+  S28 -.-> P3
+  S28 -.-> P10
+  S28 -.-> P0
+  S28 -.-> P29
+  S28 -.-> P41
+  S28 -.-> P1
+  S29["Foundations of Informatics T (29227)"]:::source
+  S29 -.-> P3
+  S29 -.-> P33
+  S29 -.-> P10
+  S29 -.-> P6
+  S29 -.-> P0
+  S29 -.-> P26
+  S29 -.-> P41
+  S29 -.-> P2
+  S29 -.-> P1
+  S29 -.-> P5
+  S29 -.-> P4
+  S30["Foundations of Informatics T (29227-A)"]:::source
+  S30 -.-> P6
+  S30 -.-> P11
+  S31["Foundations of Informatics T (29227-B)"]:::source
+  S31 -.-> P11
+  S31 -.-> P29
+  S31 -.-> P7
+  S31 -.-> P4
+  S32["Principles, Models and Applications for Distributed Systems M (37085)"]:::source
+  S32 -.-> P7
+  S32 -.-> P8
+  S33["Computer Programming (37262)"]:::source
+  S33 -.-> P41
+  S33 -.-> P5
+  S33 -.-> P9
+  S33 -.-> P8
+  S33 -.-> P21
+  S34["INTRODUZIONE ALL&#x27;ANALISI DEI DATI (41588)"]:::source
+  S34 -.-> P1
+  S34 -.-> P9
+  S34 -.-> P8
+  S35["Informatics (57828)"]:::source
+  S35 -.-> P6
+  S35 -.-> P0
+  S35 -.-> P7
+  S35 -.-> P41
+  S35 -.-> P1
+  S36["Lab-based Course on Operating Systems (58348)"]:::source
+  S36 -.-> P29
+  S37["Parallel Calculus (58437)<br/>High-Performance Computing (72778)"]:::source
+  S37 -.-> P25
+  S37 -.-> P24
+  S37 -.-> P13
+  S38["Informatics (60348)"]:::source
+  S38 -.-> P34
+  S38 -.-> P6
+  S38 -.-> P0
+  S38 -.-> P41
+  S38 -.-> P1
+  S38 -.-> P4
+  S39["ADVANCED PROGRAMMING (65094)"]:::source
+  S39 -.-> P29
+  S39 -.-> P9
+  S39 -.-> P8
+  S39 -.-> P21
+  S39 -.-> P20
+  S40["COMPUTER ARCHITECTURES M (69430)"]:::source
+  S40 -.-> P22
+  S40 -.-> P23
+  S40 -.-> P34
+  S40 -.-> P6
+  S41["Computer Architecture (69731)"]:::source
+  S41 -.-> P33
+  S41 -.-> P6
+  S41 -.-> P13
+  S42["Lab-based Course on Computer Graphics (70210)"]:::source
+  S42 -.-> P6
+  S42 -.-> P41
+  S43["Object-Oriented Programming (70219)<br/>Software Design and Development (95648)"]:::source
+  S43 -.-> P27
+  S43 -.-> P12
+  S44["Complements of Programming Languages (72671)<br/>Computational Models And Languages M (72940)"]:::source
+  S44 -.-> P26
+  S44 -.-> P5
+  S45["Software Systems Engineering M (72939)<br/>Mobile Systems M (78779)<br/>Laboratory of Making (81678)<br/>Internet of Things (81683)<br/>Big Data and Cloud Platforms (95630)<br/>Industry 4.0 (95639)<br/>Software Architecture and Platforms (B0010)<br/>PROGRAMMING THE INTERNET OF THINGS M (B8019)"]:::source
+  S45 -.-> P14
+  S46["Real-Time Systems M (72945)"]:::source
+  S46 -.-> P43
+  S46 -.-> P15
+  S47["Informatic Tecnologies for Fashion (73273)<br/>Computing Education (90749)"]:::source
+  S47 -.-> P0
+  S48["Basic Informatics (75969)<br/>Language, Technology, Research I: Computational Thinking (B2696)"]:::source
+  S48 -.-> P0
+  S48 -.-> P1
+  S48 -.-> P4
+  S49["Embedded Systems Programming and Internet of Things (77780)"]:::source
+  S49 -.-> P14
+  S49 -.-> P15
+  S50["Informatics (78510)"]:::source
+  S50 -.-> P33
+  S50 -.-> P41
+  S50 -.-> P4
+  S51["Real Time Systems for Automation M (78810)"]:::source
+  S51 -.-> P29
+  S51 -.-> P30
+  S51 -.-> P7
+  S51 -.-> P41
+  S51 -.-> P8
+  S51 -.-> P43
+  S51 -.-> P15
+  S52["Languages, Compilers and Computational Models (81609)"]:::source
+  S52 -.-> P26
+  S53["Digital Forensic (81676)"]:::source
+  S53 -.-> P16
+  S54["Interaction Multimedia Services (81917)"]:::source
+  S54 -.-> P1
+  S54 -.-> P4
+  S55["Informatic (82202)"]:::source
+  S55 -.-> P6
+  S55 -.-> P0
+  S55 -.-> P1
+  S56["Informatic (82202-A)"]:::source
+  S56 -.-> P1
+  S57["Infrastructures For Cloud Computing and Big Data M (84531)"]:::source
+  S57 -.-> P13
+  S58["Systems and Algorithms for Data Science (85189)<br/>Machine Learning Systems For Data Science (90477)"]:::source
+  S58 -.-> P9
+  S58 -.-> P8
+  S59["Programming (85285)"]:::source
+  S59 -.-> P3
+  S59 -.-> P1
+  S59 -.-> P4
+  S59 -.-> P9
+  S59 -.-> P42
+  S59 -.-> P8
+  S59 -.-> P37
+  S60["Algorithms and Data Structures in Biology (85301)<br/>Decision Making with Constraint Programming (87469)"]:::source
+  S60 -.-> P3
+  S61["Real Time OS M (85728)"]:::source
+  S61 -.-> P23
+  S61 -.-> P14
+  S61 -.-> P39
+  S61 -.-> P32
+  S61 -.-> P30
+  S61 -.-> P7
+  S61 -.-> P35
+  S61 -.-> P15
+  S62["Fundamentals of Computer Programming P1 (88145)"]:::source
+  S62 -.-> P10
+  S62 -.-> P6
+  S62 -.-> P0
+  S62 -.-> P38
+  S62 -.-> P26
+  S62 -.-> P7
+  S62 -.-> P1
+  S63["Fundamentals of Computer Programming P2 (88146)"]:::source
+  S63 -.-> P34
+  S63 -.-> P6
+  S63 -.-> P0
+  S63 -.-> P35
+  S64["Industrial Informatics P (88155)"]:::source
+  S64 -.-> P30
+  S64 -.-> P7
+  S65["System Administration T (88324)<br/>Administration of Systems T (B0832)"]:::source
+  S65 -.-> P29
+  S65 -.-> P19
+  S65 -.-> P18
+  S66["Elements of Informatics (89988)"]:::source
+  S66 -.-> P0
+  S66 -.-> P5
+  S66 -.-> P4
+  S66 -.-> P9
+  S66 -.-> P8
+  S66 -.-> P21
+  S66 -.-> P20
+  S66 -.-> P37
+  S67["Architecture and Platforms for Artificial Intelligence (91259)"]:::source
+  S67 -.-> P25
+  S67 -.-> P24
+  S67 -.-> P6
+  S67 -.-> P13
+  S68["Computer Architectures (91602)"]:::source
+  S68 -.-> P23
+  S68 -.-> P33
+  S68 -.-> P34
+  S68 -.-> P6
+  S68 -.-> P35
+  S68 -.-> P5
+  S69["History of Informatics and Computing Systems (91685)"]:::source
+  S69 -.-> P33
+  S69 -.-> P36
+  S69 -.-> P4
+  S70["Foundations of Computer Science T (93034)"]:::source
+  S70 -.-> P33
+  S70 -.-> P10
+  S70 -.-> P6
+  S70 -.-> P26
+  S70 -.-> P41
+  S70 -.-> P2
+  S70 -.-> P1
+  S70 -.-> P5
+  S70 -.-> P4
+  S71["Foundations of Computer Science T (93034-A)"]:::source
+  S71 -.-> P27
+  S71 -.-> P6
+  S71 -.-> P41
+  S71 -.-> P1
+  S71 -.-> P9
+  S71 -.-> P8
+  S71 -.-> P20
+  S72["Programming Lab (93333)"]:::source
+  S72 -.-> P0
+  S72 -.-> P9
+  S72 -.-> P42
+  S72 -.-> P8
+  S73["Advanced Programming (93363)"]:::source
+  S73 -.-> P9
+  S73 -.-> P21
+  S74["Iot And Big Data For Smart Agricultural Systems (93653)"]:::source
+  S74 -.-> P6
+  S74 -.-> P14
+  S75["Programming and Computer Architectures (95602)"]:::source
+  S75 -.-> P22
+  S75 -.-> P34
+  S75 -.-> P27
+  S75 -.-> P6
+  S75 -.-> P36
+  S75 -.-> P13
+  S75 -.-> P1
+  S75 -.-> P9
+  S75 -.-> P42
+  S75 -.-> P8
+  S76["Operating Systems and Networks (95604)"]:::source
+  S76 -.-> P6
+  S76 -.-> P30
+  S76 -.-> P7
+  S77["Software Engineering (95627)"]:::source
+  S77 -.-> P28
+  S77 -.-> P27
+  S77 -.-> P11
+  S77 -.-> P5
+  S77 -.-> P42
+  S78["Virtualized Systems (95646)"]:::source
+  S78 -.-> P29
+  S78 -.-> P19
+  S79["Foundations of Computer Architecture and Operating Systems (96007)"]:::source
+  S79 -.-> P33
+  S79 -.-> P34
+  S79 -.-> P6
+  S79 -.-> P0
+  S79 -.-> P30
+  S79 -.-> P7
+  S80["INFORMATICA (96346)"]:::source
+  S80 -.-> P6
+  S80 -.-> P2
+  S80 -.-> P1
+  S80 -.-> P5
+  S80 -.-> P9
+  S80 -.-> P42
+  S80 -.-> P8
+  S81["Computer Science (96346-B)"]:::source
+  S81 -.-> P33
+  S81 -.-> P34
+  S81 -.-> P6
+  S81 -.-> P41
+  S81 -.-> P1
+  S82["Virtualization and System Integration (96642)"]:::source
+  S82 -.-> P19
+  S83["Information Systems and Database Management (96793)"]:::source
+  S83 -.-> P9
+  S84["Embedded Systems and Internet of Things (96859)"]:::source
+  S84 -.-> P14
+  S84 -.-> P39
+  S85["Python Coding and Data Science (98735)"]:::source
+  S85 -.-> P27
+  S85 -.-> P1
+  S85 -.-> P4
+  S85 -.-> P9
+  S85 -.-> P8
+  S85 -.-> P21
+  S85 -.-> P20
+  S86["Cyber-Physical Systems Programming M (99195)"]:::source
+  S86 -.-> P40
+  S86 -.-> P38
+  S86 -.-> P39
+  S86 -.-> P29
+  S86 -.-> P5
+  S86 -.-> P15
+  S86 -.-> P37
+  S87["Software Process Engineering (B0011)"]:::source
+  S87 -.-> P28
+  S87 -.-> P27
+  S87 -.-> P37
+  S88["Programming Laboratory (B0063)"]:::source
+  S88 -.-> P1
+  S88 -.-> P4
+  S88 -.-> P9
+  S88 -.-> P8
+  S88 -.-> P37
+  S89["Introduction to Data Science and Computational Thinking (B0064)"]:::source
+  S89 -.-> P0
+  S89 -.-> P1
+  S89 -.-> P4
+  S89 -.-> P9
+  S89 -.-> P8
+  S89 -.-> P20
+  S90["Introduction to Programming (B1703)"]:::source
+  S90 -.-> P3
+  S90 -.-> P0
+  S90 -.-> P2
+  S90 -.-> P1
+  S90 -.-> P4
+  S90 -.-> P9
+  S90 -.-> P8
+  S90 -.-> P21
+  S90 -.-> P20
+  S91["INTRODUCTION TO QUANTUM COMPUTING (B3567)"]:::source
+  S91 -.-> P17
+  S92["Informatics for the Humanities (B4826)"]:::source
+  S92 -.-> P6
+  S92 -.-> P0
+  S92 -.-> P2
+  S92 -.-> P1
+  S92 -.-> P4
+  S92 -.-> P8
+  S92 -.-> P20
+  S93["Real Time Systems and Programming for Automation M (B5665)"]:::source
+  S93 -.-> P29
+  S93 -.-> P30
+  S93 -.-> P7
+  S93 -.-> P9
+  S93 -.-> P8
+  S93 -.-> P43
+  S93 -.-> P15
+  S94["Introduction to Languages for Artificial Intelligence (B5727)"]:::source
+  S94 -.-> P2
+  S94 -.-> P5
+  S94 -.-> P9
+  S94 -.-> P42
+  S94 -.-> P8
+  S95["Computational Methods for Bioinformatics (B5780)"]:::source
+  S95 -.-> P3
+  S95 -.-> P9
+  S95 -.-> P8
+  S95 -.-> P20
+  S96["DIGITAL HEALTH M (B8018)"]:::source
+  S96 -.-> P14
+  S96 -.-> P9
+  S97["Computational Management of Data (B8105)"]:::source
+  S97 -.-> P3
+  S97 -.-> P0
+  S97 -.-> P2
+  S97 -.-> P1
+  S97 -.-> P4
+  S97 -.-> P9
+  S97 -.-> P8
+  S98["INFORMATICA (B8159)"]:::source
+  S98 -.-> P6
+  S98 -.-> P32
+  S98 -.-> P41
+  S99["SISTEMI SOFTWARE A OGGETTI T (B8554)"]:::source
+  S99 -.-> P12
+  S99 -.-> P2
+  S99 -.-> P4
+  S100["ARCHITETTURE DEI CALCOLATORI M (B8561)"]:::source
+  S100 -.-> P22
+  S100 -.-> P23
+  S100 -.-> P6
+  S101["SISTEMI CONCORRENTI E PARALLELI M (B8562)"]:::source
+  S101 -.-> P25
+  S101 -.-> P24
+  S101 -.-> P23
+  S101 -.-> P6
+  S101 -.-> P7
+  S101 -.-> P13
+  S102["SISTEMI DI ELABORAZIONE ACCELERATA M (B8563)"]:::source
+  S102 -.-> P25
+  S102 -.-> P24
+  S102 -.-> P23
+  S102 -.-> P13
+  S103["Foundations of Programming (B8905)"]:::source
+  S103 -.-> P27
+  S103 -.-> P9
+  S103 -.-> P8
+  S103 -.-> P21
+  S103 -.-> P20
+  S104["Computer Studies and Human Sciences (B8929)"]:::source
+  S104 -.-> P33
+  S104 -.-> P0
+  S105["Basic IT Skills (B9254)"]:::source
+  S105 -.-> P6
+  S105 -.-> P0
+  S105 -.-> P41
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

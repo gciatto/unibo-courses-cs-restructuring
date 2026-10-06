@@ -1,0 +1,11 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Concurrent Systems Models and Computability<br/>3 ECTS"]:::proposed
+  P1["Behavioral and Temporal Analysis of Concurrency<br/>3 ECTS"]:::proposed
+  S0["Concurrent and Distributed Programming (17628)<br/>Concurrent Models and Systems (66870)"]:::source
+  S0 -.-> P1
+  S0 -.-> P0
+  S1["Languages, Compilers and Computational Models (81609)<br/>Advanced Software Modelling and Design (B0009)"]:::source
+  S1 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

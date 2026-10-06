@@ -1,0 +1,77 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Artificial Intelligence<br/>3 ECTS"]:::proposed
+  P1["Knowledge Representation and Reasoning<br/>3 ECTS"]:::proposed
+  P2["Planning and Constraint Solving<br/>3 ECTS"]:::proposed
+  P3["Robotics and Intelligent Systems Foundations<br/>3 ECTS"]:::proposed
+  P4["Advanced Intelligent Systems<br/>3 ECTS"]:::proposed
+  P5["Formal and Probabilistic Reasoning<br/>3 ECTS"]:::proposed
+  P6["Search and Human-Centered Algorithmic Systems<br/>3 ECTS"]:::proposed
+  P7["Semantic Web and Social Data<br/>3 ECTS"]:::proposed
+  P8["AI Ethics and Human Factors<br/>3 ECTS"]:::proposed
+  P9["Multi-Agent System Engineering<br/>3 ECTS"]:::proposed
+  S0["Semantic Web (42500)<br/>Multimedia Data Management M (77933, 78096)<br/>Internet of Things (81683)<br/>Multimedia Data Management (91269)<br/>Digital Humanities and Data Management for Cultural Heritage (B5079)<br/>Knowledge Engeneering for the Humanities (B5292)"]:::source
+  S0 -.-> P7
+  S1["Foundations Of Artificial Intelligence T (72938)"]:::source
+  S1 -.-> P0
+  S1 -.-> P1
+  S1 -.-> P2
+  S2["Logic for Informatics (73149)<br/>Cognitive Sematics for Artificial Intelligence (B4948)"]:::source
+  S2 -.-> P1
+  S3["Informatic Tecnologies for Fashion (73273)<br/>Language, Technology, Research I: Computational Thinking (B2696)<br/>Basic IT Skills (B9254)"]:::source
+  S3 -.-> P0
+  S4["Intelligent Systems M (78778)"]:::source
+  S4 -.-> P0
+  S4 -.-> P2
+  S4 -.-> P4
+  S5["Artificial Intelligence (81940)"]:::source
+  S5 -.-> P6
+  S5 -.-> P0
+  S5 -.-> P2
+  S6["Knowledge Representation and Extraction (85446)<br/>Knowledge Engineering (91265)"]:::source
+  S6 -.-> P1
+  S6 -.-> P7
+  S7["Artificial intelligence (90147)"]:::source
+  S7 -.-> P8
+  S7 -.-> P0
+  S7 -.-> P2
+  S7 -.-> P3
+  S8["Fundamentals of Artificial Intelligence and Knowledge Representation (91248)<br/>Fundamentals of Artificial Intelligence (98931)"]:::source
+  S8 -.-> P5
+  S8 -.-> P6
+  S8 -.-> P0
+  S8 -.-> P1
+  S8 -.-> P2
+  S9["Multi-Agent Systems (91267)<br/>Intelligent Systems Engineering (93669)"]:::source
+  S9 -.-> P1
+  S9 -.-> P9
+  S10["Intelligent Robotic Systems (91411)"]:::source
+  S10 -.-> P0
+  S10 -.-> P3
+  S11["Autonomous and Adaptive Systems M (92858)"]:::source
+  S11 -.-> P8
+  S11 -.-> P9
+  S11 -.-> P4
+  S12["Human Data Science (93469)"]:::source
+  S12 -.-> P8
+  S12 -.-> P5
+  S13["Software Engineering (95627)"]:::source
+  S13 -.-> P9
+  S13 -.-> P3
+  S14["Operational Analytics (95638)<br/>ALGORITMI E STRUTTURE DATI (B4913)<br/>Algorithms and Data Structures for Computational Biology (B5782)"]:::source
+  S14 -.-> P6
+  S15["Artificial Intelligence for Digital Innovation (B0069)"]:::source
+  S15 -.-> P8
+  S15 -.-> P0
+  S15 -.-> P1
+  S15 -.-> P2
+  S15 -.-> P4
+  S16["METODOLOGIE E TECNICHE DI SIMULAZIONE (B0070)"]:::source
+  S16 -.-> P0
+  S16 -.-> P7
+  S17["Computer Studies and Humanities (B5293)<br/>Computer Studies and Human Sciences (B8929)"]:::source
+  S17 -.-> P0
+  S17 -.-> P1
+  S17 -.-> P7
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

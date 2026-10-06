@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Digital Logic and Programmable Devices<br/>3 ECTS"]:::proposed
+  P1["Computer Architecture and Storage<br/>3 ECTS"]:::proposed
+  S0["Digital Design Principles and Computer Architecture (03716)<br/>Computer Science (07276-B)<br/>Logic Design T (28011-A)"]:::source
+  S0 -.-> P0
+  S1["Computer Architecture (11925, 69731)<br/>Informatics (60348, 78510)<br/>Programming and Computer Architectures (95602)"]:::source
+  S1 -.-> P1
+  S2["Logic Design T (28011)<br/>Foundations of Computer Architecture and Operating Systems (96007)<br/>Computer Science (96346-B)"]:::source
+  S2 -.-> P1
+  S2 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

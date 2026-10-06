@@ -1,0 +1,28 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Formal Languages and Computation<br/>3 ECTS"]:::proposed
+  P1["Formal Logic Foundations<br/>2 ECTS"]:::proposed
+  P2["Concurrent Systems Verification<br/>2 ECTS"]:::proposed
+  P3["Computational and Oracle Complexity<br/>2 ECTS"]:::proposed
+  P4["Set Theory and Structural Reasoning<br/>3 ECTS"]:::proposed
+  S0["Programming Languages (04138)<br/>Foundations of Informatics T (29227)<br/>Computational Models And Languages M (72940)<br/>Foundations of Computer Science T (93034)<br/>Introduction to Programming (B1703)<br/>Informatics for the Humanities (B4826)<br/>Introduction to Computability and Complexity (B5026)"]:::source
+  S0 -.-> P0
+  S1["Theoretical Computer Science (11933, 41169)"]:::source
+  S1 -.-> P0
+  S1 -.-> P3
+  S2["Logic for Computer Science (66857)"]:::source
+  S2 -.-> P1
+  S2 -.-> P4
+  S3["Concurrent Models and Systems (66870)"]:::source
+  S3 -.-> P2
+  S4["Foundations Of Artificial Intelligence T (72938)"]:::source
+  S4 -.-> P1
+  S5["Logic for Informatics (73149)"]:::source
+  S5 -.-> P0
+  S5 -.-> P1
+  S6["Languages, Compilers and Computational Models (81609)"]:::source
+  S6 -.-> P0
+  S6 -.-> P2
+  S6 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

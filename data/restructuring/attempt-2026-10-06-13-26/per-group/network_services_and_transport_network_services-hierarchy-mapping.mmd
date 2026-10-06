@@ -1,0 +1,11 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Network Services and Control<br/>3 ECTS"]:::proposed
+  P1["Transport Services and Control<br/>3 ECTS"]:::proposed
+  S0["Computer Networks T (28024)<br/>Principles, Models and Applications for Distributed Systems M (37085)<br/>Internet Architecture (58423)<br/>Basic Informatics (75969)<br/>System Administration T (88324)<br/>Operating Systems and Networks (95604)<br/>Virtualized Systems (95646)<br/>Virtualization and System Integration (96642)<br/>Administration of Systems T (B0832)<br/>INFORMATICA (B8159)"]:::source
+  S0 -.-> P0
+  S1["Network Programming (70226)<br/>Computer Networks (93315)<br/>Computer Networks and Network Programming (95644)"]:::source
+  S1 -.-> P0
+  S1 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

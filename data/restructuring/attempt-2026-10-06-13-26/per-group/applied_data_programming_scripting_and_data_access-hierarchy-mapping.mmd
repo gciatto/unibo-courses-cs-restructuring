@@ -1,0 +1,10 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Scripting and Data Access<br/>3 ECTS"]:::proposed
+  P1["Database Systems and Data Pipelines<br/>3 ECTS"]:::proposed
+  S0["Computer Programming (37262)<br/>Web-related Technologies (41731-A)<br/>Information Modelling and Web Technologies (85445)<br/>Web Technology (88566)<br/>Foundations of Web Systems (95645)<br/>Programming Laboratory (B0063)<br/>Introduction to Programming (B1703)<br/>Language, Technology, Research I: Computational Thinking (B2696)"]:::source
+  S0 -.-> P0
+  S1["INTRODUZIONE ALL&#x27;ANALISI DEI DATI (41588)<br/>Advanced Database Systems (84339)<br/>Database and Big Data Technologies M (84530)<br/>Infrastructures For Cloud Computing and Big Data M (84531)<br/>Information Systems and Database Management (96793)<br/>Business Analytics (98671)<br/>Computational Management of Data (B8105)"]:::source
+  S1 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

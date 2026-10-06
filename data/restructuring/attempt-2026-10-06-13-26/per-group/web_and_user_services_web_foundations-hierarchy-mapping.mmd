@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Web Foundations and Interaction<br/>3 ECTS"]:::proposed
+  P1["Dynamic Web and E-commerce Systems<br/>2 ECTS"]:::proposed
+  S0["Web-related Technologies (41731-A)<br/>Informatics (57828)<br/>Data Bases (70155)<br/>HUMAN COMPUTER INTERACTION (81934)<br/>Networks, Security And Data Bases (91161)<br/>Web and Mobile Systems (95605)<br/>Interaction Media Design (B5059)"]:::source
+  S0 -.-> P0
+  S1["Computational Models And Languages M (72940)<br/>Information Modelling and Web Technologies (85445)"]:::source
+  S1 -.-> P1
+  S2["Interaction Multimedia Services (81917)<br/>Elements of Computer Technologies for Fashion E-Commerce (90864)<br/>Foundations of Web Systems (95645)"]:::source
+  S2 -.-> P1
+  S2 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

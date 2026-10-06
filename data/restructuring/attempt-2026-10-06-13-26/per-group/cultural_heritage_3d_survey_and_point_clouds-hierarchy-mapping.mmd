@@ -1,0 +1,15 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Cultural-Heritage 3D Survey and Point Clouds<br/>2 ECTS"]:::proposed
+  P1["Cultural-Heritage 3D Modeling and Printing<br/>2 ECTS"]:::proposed
+  P2["Cultural-Heritage 3D Communication and Graphics<br/>2 ECTS"]:::proposed
+  S0["Computer Science for Cultural Heritage (48693)<br/>Multimedia Technologies in Archaelogy (76011)"]:::source
+  S0 -.-> P2
+  S0 -.-> P1
+  S0 -.-> P0
+  S1["Computer Science for Cultural Heritage (48693-A)<br/>Informatic Tecnologies for Fashion (73273)<br/>Interaction Media Design (B5059)"]:::source
+  S1 -.-> P1
+  S2["Lab-based Course on Computer Graphics (70210)<br/>Digital represention of the Landscape Project (97466)"]:::source
+  S2 -.-> P2
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

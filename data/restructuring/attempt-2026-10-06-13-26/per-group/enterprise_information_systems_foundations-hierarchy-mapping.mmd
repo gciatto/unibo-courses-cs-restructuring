@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Enterprise Information Systems Foundations<br/>3 ECTS"]:::proposed
+  P1["Enterprise Information Systems Transformation and Risk<br/>3 ECTS"]:::proposed
+  S0["Computer Science (07276-C)<br/>Software Engineering T (28021)<br/>IT Systems T-1 (28652)"]:::source
+  S0 -.-> P0
+  S1["Data Base Sistems (09679)<br/>Laboratory on Digital Transformation Technologies (95632)"]:::source
+  S1 -.-> P0
+  S1 -.-> P1
+  S2["Cybersecurity (93470, 93470-A)<br/>ARCHITETTURE SOFTWARE A MICROSERVIZI (B5474)<br/>Cybersecurity M (B5793)"]:::source
+  S2 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

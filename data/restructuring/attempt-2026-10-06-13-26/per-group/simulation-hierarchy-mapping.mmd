@@ -1,0 +1,15 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Systems Simulation<br/>3 ECTS"]:::proposed
+  P1["Simulation Engineering Fundamentals<br/>3 ECTS"]:::proposed
+  P2["Advanced Simulation Engineering<br/>3 ECTS"]:::proposed
+  S0["Systems Simulation (37760)"]:::source
+  S0 -.-> P0
+  S0 -.-> P2
+  S0 -.-> P1
+  S1["Embedded Systems Programming and Internet of Things (77780)<br/>Industry 4.0 (95639)<br/>Embedded Systems and Internet of Things (96859)<br/>Software Architecture and Platforms (B0010)"]:::source
+  S1 -.-> P2
+  S2["Multi-Agent Systems (91267)<br/>Intelligent Systems Engineering (93669)"]:::source
+  S2 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

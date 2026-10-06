@@ -1,0 +1,11 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Text Similarity, Latent Structure and Retrieval<br/>3 ECTS"]:::proposed
+  P1["Text Classification, Convolutional Networks and Opinion Mining<br/>3 ECTS"]:::proposed
+  S0["Data Mining (40720)<br/>Natural Language Processing (91258, 91258-A, 91258-B, B0385)<br/>Machine Learning and Data Mining (95631-A)"]:::source
+  S0 -.-> P1
+  S0 -.-> P0
+  S1["Multimedia Data Management M (77933, 78096)<br/>Multimedia Data Management (91269)"]:::source
+  S1 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

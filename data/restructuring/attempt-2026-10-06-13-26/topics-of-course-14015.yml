@@ -1,0 +1,29 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 0
+  name: Security Information Cryptography (0)
+course:
+  id: '14015'
+  name: Cryptography
+topics:
+  authentication: Authentication as a security goal and cryptographic mechanism.
+  confidentiality: Confidentiality as a security goal addressed by cryptographic techniques.
+  cryptographic_protocols: Basic protocols that use cryptographic techniques.
+  cryptographic_security_foundations: Fundamental security issues arising in computer
+    systems as addressed through cryptography.
+  cryptography_history: Historical development and background of cryptography.
+  data_compression: Basic concepts and results in data compression.
+  digital_certificates: Digital certificates used in cryptographic trust and authentication.
+  digital_signatures: Digital signatures, including their use in email and certified
+    email.
+  distributed_trust: Distributed trust mechanisms in cryptographic systems.
+  information_theory_basics: Fundamental concepts of information and entropy.
+  information_theory_cryptography: Connections between information theory and cryptography.
+  integrity: Integrity as a security goal addressed by cryptographic techniques.
+  pgp: PGP for cryptographic protection and communication.
+  post_quantum_cryptography: Cryptographic techniques designed to address post-quantum
+    security concerns.
+  public_key_cryptography: Public-key cryptographic algorithms and their use.
+  secret_key_cryptography: Secret-key cryptographic algorithms and their use.
+  ssl: SSL for securing communications.

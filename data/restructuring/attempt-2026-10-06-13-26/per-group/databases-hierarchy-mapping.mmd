@@ -1,0 +1,58 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Database Systems<br/>3 ECTS"]:::proposed
+  P1["Advanced Database Systems<br/>3 ECTS"]:::proposed
+  P2["Database Foundations<br/>2 ECTS"]:::proposed
+  P3["Database Access and NoSQL<br/>2 ECTS"]:::proposed
+  P4["Classification Models<br/>1 ECTS"]:::proposed
+  P5["Modular Arithmetic for Cryptography<br/>1 ECTS"]:::proposed
+  P6["Database Administration<br/>3 ECTS"]:::proposed
+  P7["NoSQL Database Engineering<br/>3 ECTS"]:::proposed
+  P8["Healthcare Classification Systems<br/>3 ECTS"]:::proposed
+  S0["Computer Science (07276-C)<br/>Business Intelligence (30376)<br/>Computational Management of Data (B8105)"]:::source
+  S0 -.-> P0
+  S1["Databases (10906, 79194)<br/>Basic and Laboratory Informatics (39176)<br/>Informatic (82202, 82202-A)<br/>Design of Web Applications T (94442)<br/>Database Systems (95611)<br/>Business Intelligence and Big Data M (96142)"]:::source
+  S1 -.-> P1
+  S1 -.-> P0
+  S2["Databases (10906-A)"]:::source
+  S2 -.-> P1
+  S2 -.-> P3
+  S2 -.-> P2
+  S2 -.-> P0
+  S3["Information Systems T (28027)<br/>IT Systems T-1 (28652)<br/>BASI DI DATI (90107)"]:::source
+  S3 -.-> P1
+  S3 -.-> P2
+  S3 -.-> P0
+  S4["Computer Science for Environmental Sciences (28106)<br/>Informatics (57828)"]:::source
+  S4 -.-> P6
+  S4 -.-> P0
+  S5["INTRODUZIONE ALL&#x27;ANALISI DEI DATI (41588)"]:::source
+  S5 -.-> P4
+  S6["Data Bases (70155)"]:::source
+  S6 -.-> P1
+  S6 -.-> P6
+  S6 -.-> P4
+  S6 -.-> P0
+  S7["Health Information Processing Systems (75198)"]:::source
+  S7 -.-> P8
+  S8["Big Data (81932)<br/>Database and Big Data Technologies M (84530)<br/>Big Data and Cloud Platforms (95630)<br/>Business Analytics (98671)"]:::source
+  S8 -.-> P1
+  S9["Advanced Database Systems (84339)"]:::source
+  S9 -.-> P1
+  S9 -.-> P6
+  S9 -.-> P7
+  S10["Networks, Security And Data Bases (91161)"]:::source
+  S10 -.-> P1
+  S10 -.-> P2
+  S10 -.-> P5
+  S10 -.-> P0
+  S11["Information Systems and Database Management (96793)"]:::source
+  S11 -.-> P1
+  S11 -.-> P3
+  S11 -.-> P0
+  S12["INFORMATICA (B8159)"]:::source
+  S12 -.-> P6
+  S12 -.-> P2
+  S12 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

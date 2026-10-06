@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Open Science Foundations and FAIR Open Data<br/>2 ECTS"]:::proposed
+  P1["Open Research Practices and Communication<br/>3 ECTS"]:::proposed
+  S0["Open Science (90157)"]:::source
+  S0 -.-> P0
+  S0 -.-> P1
+  S1["Software Process Engineering (B0011)"]:::source
+  S1 -.-> P1
+  S2["Digital Humanities and Data Management for Cultural Heritage (B5079)"]:::source
+  S2 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

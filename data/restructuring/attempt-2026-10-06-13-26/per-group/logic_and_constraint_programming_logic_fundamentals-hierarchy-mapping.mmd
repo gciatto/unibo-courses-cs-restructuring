@@ -1,0 +1,18 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Logic and Logical Programming Fundamentals<br/>2 ECTS"]:::proposed
+  P1["Prolog Programming and Java Integration<br/>2 ECTS"]:::proposed
+  P2["Constraint Programming and MiniZinc Modeling<br/>2 ECTS"]:::proposed
+  S0["Programming Languages (04138)<br/>Artificial Intelligence (81940)<br/>SISTEMI SOFTWARE A OGGETTI T (B8554)"]:::source
+  S0 -.-> P0
+  S1["Foundations Of Artificial Intelligence T (72938)<br/>Programming and Development paradigms (81612)<br/>Fundamentals of Artificial Intelligence (98931)"]:::source
+  S1 -.-> P0
+  S1 -.-> P1
+  S2["Fundamentals of Artificial Intelligence and Knowledge Representation (91248)"]:::source
+  S2 -.-> P1
+  S3["Introduction to Languages for Artificial Intelligence (B5727)"]:::source
+  S3 -.-> P2
+  S3 -.-> P0
+  S3 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

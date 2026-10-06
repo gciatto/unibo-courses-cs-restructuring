@@ -1,0 +1,10 @@
+%% Restructuring proposal for all courses
+flowchart TB
+  P0["Annotation and N-gram Language Models<br/>2 ECTS<br/>linguistic_annotation_tasks<br/>ngram_language_models"]:::proposed
+  P1["Word and Contextual Embeddings<br/>2 ECTS<br/>word_embeddings<br/>contextual_embeddings"]:::proposed
+  P2["Speech Analysis and Recognition<br/>2 ECTS<br/>speech_analysis<br/>speech_recognition"]:::proposed
+  legend["Topic colour: first scope, in this order, among the<br/>current courses teaching it (by teachers' and programmes' department)<br/>service: some DISI teacher, no DISI degree programme<br/>external: no DISI teacher, no DISI degree programme<br/>borrow: no DISI teacher, some DISI degree programme<br/>weak_internal: some (not all) DISI teachers and DISI degree programmes<br/>internal: only DISI teachers and DISI degree programmes"]:::source
+  P0 --> P1
+  P2 --> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

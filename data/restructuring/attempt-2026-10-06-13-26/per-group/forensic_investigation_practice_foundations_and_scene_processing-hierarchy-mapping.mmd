@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Digital Forensics Foundations and Scene Processing<br/>2 ECTS"]:::proposed
+  P1["Computer, Device, and Graphics Forensics<br/>2 ECTS"]:::proposed
+  P2["Network Forensics, Reporting, and Testimony<br/>2 ECTS"]:::proposed
+  S0["Digital Forensic (81676)"]:::source
+  S0 -.-> P1
+  S0 -.-> P0
+  S0 -.-> P2
+  S1["Cybersecurity (93470)"]:::source
+  S1 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

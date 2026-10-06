@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Health Informatics Fundamentals and Applications<br/>3 ECTS"]:::proposed
+  P1["Clinical and Neurophysiology Information Systems<br/>3 ECTS"]:::proposed
+  S0["Information Processing Systems (20741)<br/>Basic and Laboratory Informatics (39176)"]:::source
+  S0 -.-> P1
+  S1["Informatics (57828)<br/>Basic IT Skills (B9254)"]:::source
+  S1 -.-> P0
+  S2["Informatic (82202, 82202-A)"]:::source
+  S2 -.-> P1
+  S2 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

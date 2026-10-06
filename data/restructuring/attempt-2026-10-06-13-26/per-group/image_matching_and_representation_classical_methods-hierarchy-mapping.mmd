@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Classical Image Matching and Representation<br/>3 ECTS"]:::proposed
+  P1["Learned Image Representation and Transformation<br/>3 ECTS"]:::proposed
+  S0["Image Processing And Computer Vision M (69661)<br/>Computer Vision And Image Processing M (73302)"]:::source
+  S0 -.-> P0
+  S1["Image Processing and Computer Vision (91254)"]:::source
+  S1 -.-> P0
+  S1 -.-> P1
+  S2["Machine Learning for Computer Vision (91266)<br/>INTRODUZIONE ALL&#x27;APPRENDIMENTO AUTOMATICO (93319)<br/>COMPUTER VISION (93478)"]:::source
+  S2 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

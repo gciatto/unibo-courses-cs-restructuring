@@ -1,0 +1,11 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Big Data Processing Foundations<br/>2 ECTS"]:::proposed
+  P1["Data Platforms and Cloud Big Data Solutions<br/>2 ECTS"]:::proposed
+  S0["Data Bases (70155)<br/>Scalable and Cloud Programming (81942)<br/>Informatic (82202)<br/>Database and Big Data Technologies M (84530)<br/>Infrastructures For Cloud Computing and Big Data M (84531)<br/>Iot And Big Data For Smart Agricultural Systems (93653)<br/>Python Coding and Data Science (98735)<br/>Big Data Analytics and Text Mining (B2133)"]:::source
+  S0 -.-> P0
+  S1["Big Data (81932)<br/>Big Data and Cloud Platforms (95630)<br/>Business Intelligence and Big Data M (96142)"]:::source
+  S1 -.-> P0
+  S1 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

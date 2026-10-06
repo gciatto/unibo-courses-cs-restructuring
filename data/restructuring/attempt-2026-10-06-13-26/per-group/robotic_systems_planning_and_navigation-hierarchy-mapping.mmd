@@ -1,0 +1,15 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Robotic Planning and Navigation<br/>2 ECTS"]:::proposed
+  P1["Robot Behavior and Control<br/>2 ECTS"]:::proposed
+  P2["Robot Learning and Autonomous Applications<br/>2 ECTS"]:::proposed
+  S0["Software Systems Engineering M (72939)<br/>Smart Vehicular Systems (90074)<br/>Cyber-Physical Systems Programming M (99195)"]:::source
+  S0 -.-> P2
+  S1["Intelligent Systems M (78778)"]:::source
+  S1 -.-> P0
+  S2["Intelligent Robotic Systems (91411)"]:::source
+  S2 -.-> P1
+  S2 -.-> P2
+  S2 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999
