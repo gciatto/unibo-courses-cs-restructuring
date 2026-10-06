@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
-from typing import Any, Literal
+from typing import Any
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
@@ -117,7 +117,7 @@ class ProposedCourse(BaseModel):
 
     key: str = Field(pattern=TOPIC_KEY_PATTERN)
     title: str = Field(min_length=1)
-    ects: Literal[3, 6, 9, 12]
+    ects: int = Field(gt=0)
     topic_keys: list[str] = Field(min_length=1)
 
     @model_validator(mode="after")
@@ -171,6 +171,23 @@ class CourseAssembly(BaseModel):
 
     proposed_courses: list[ProposedCourse] = Field(min_length=1)
     prerequisites: list[CoursePrerequisite]
+
+
+class CourseSplit(BaseModel):
+    """Decomposes one oversized proposed course; no parts keeps it whole."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    parts: list[ProposedCourse]
+    prerequisites: list[CoursePrerequisite]
+
+
+class GroupRoot(BaseModel):
+    """Picks the root course naming a prerequisite hierarchy with several roots."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    root_course_key: str = Field(pattern=TOPIC_KEY_PATTERN)
 
 
 class RestructuringProposal(BaseModel):

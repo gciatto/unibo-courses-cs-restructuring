@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import dataclasses
 import json
 import pathlib
 import re
@@ -21,6 +22,9 @@ from restructuring.io import (
     estimate_topic_weights,
     load_global_corpus,
     load_clusters,
+    default_course_groups,
+    render_sankey,
+    write_group_mermaid,
     select_clusters,
     topic_origins,
     validate_restructuring_proposal,
@@ -31,7 +35,9 @@ from restructuring.models import (
     CourseAssembly,
     CoursePrerequisite,
     CourseInput,
+    CourseSplit,
     CourseTopicMembership,
+    GroupRoot,
     CourseTopicsResponse,
     ModelConfig,
     ProposedCourse,
@@ -48,8 +54,10 @@ from restructuring.workflow import (
     ClusterTopicState,
     apply_topic_response,
     call_with_backoff,
+    decompose_courses,
     generate_cluster_proposal,
     generate_global_proposal,
+    name_course_groups,
     process_cluster_topics,
     run_restructuring,
     topic_batches,
@@ -109,7 +117,7 @@ def valid_proposal() -> RestructuringProposal:
             ProposedCourse(
                 key="foundations_course",
                 title="Foundations",
-                ects=6,
+                ects=3,
                 topic_keys=["foundations"],
             )
         ],
@@ -129,7 +137,7 @@ def module_partition(*groups: tuple[str, list[str]]) -> TopicPartition:
 def course_assembly(*courses: tuple[str, list[str]]) -> CourseAssembly:
     return CourseAssembly(
         proposed_courses=[
-            ProposedCourse(key=key, title=key.title(), ects=6, topic_keys=keys)
+            ProposedCourse(key=key, title=key.title(), ects=3, topic_keys=keys)
             for key, keys in courses
         ],
         prerequisites=[],
@@ -376,7 +384,7 @@ class TestInputAndCache(unittest.TestCase):
         )
         self.assertEqual(metadata["topic_conversation_mode"], "stateless")
         self.assertEqual(metadata["prompt_version"], PROMPT_VERSION)
-        self.assertEqual(PROMPT_VERSION, 6)
+        self.assertEqual(PROMPT_VERSION, 7)
 
     def test_global_corpus_deduplicates_and_rejects_conflicts(self):
         shared = course("A")
@@ -634,6 +642,8 @@ class TestWorkflow(unittest.TestCase):
                 "modules.txt",
                 "assembly.txt",
                 "assembly_repair.txt",
+                "decompose.txt",
+                "group_root.txt",
             },
         )
         self.assertNotIn("PlantUML", SYSTEM_PROMPT)
@@ -702,6 +712,11 @@ class TestWorkflow(unittest.TestCase):
                 ],
             )
             self.assertEqual(payload["proposed_course_reuse"], {"foundations_course": 2})
+            self.assertEqual(payload["proposed_course_groups"], {"foundations_course": ["foundations_course"]})
+            self.assertEqual(
+                sorted(path.name for path in (output / "per-group").iterdir()),
+                [f"foundations_course-{view}.mmd" for view in ("mapping", "sankey", "topics")],
+            )
             self.assertTrue((output / "topics-of-course-A.yml").exists())
             self.assertTrue((output / "restructure-proposal-global.yml").exists())
             self.assertEqual(yaml.safe_load((output / "topics-of-course-A.yml").read_text())["topics"], {"foundations": "Refined."})
@@ -710,6 +725,12 @@ class TestWorkflow(unittest.TestCase):
         args = build_parser().parse_args(["clusters.yml", "--all-courses", "--cluster-id", "1"])
         with self.assertRaisesRegex(ValueError, "cannot be combined"):
             _validate_args(args)
+        args = build_parser().parse_args(["clusters.yml", "--max-ects", "5", "--preferred-ects", "2"])
+        self.assertEqual((args.max_ects, args.preferred_ects), (5, 2))
+        with self.assertRaisesRegex(ValueError, "must not exceed"):
+            _validate_args(build_parser().parse_args(["clusters.yml", "--max-ects", "4", "--preferred-ects", "5"]))
+        with patch("sys.stderr"), self.assertRaises(SystemExit):
+            build_parser().parse_args(["clusters.yml", "--max-ects", "0"])
         with tempfile.TemporaryDirectory() as tmp_dir:
             root = pathlib.Path(tmp_dir)
             corpus = load_global_corpus([self.cluster])
@@ -950,10 +971,10 @@ class TestWorkflow(unittest.TestCase):
                 "beta": "Beta from evidence.",
             })
             mermaid = proposal_path.with_suffix(".mmd").read_text(encoding="utf-8")
-            self.assertIn("Foundations<br/>6 ECTS", mermaid)
+            self.assertIn("Foundations<br/>3 ECTS", mermaid)
             self.assertNotIn("-.->", mermaid)
             topics = (output_dir / "restructure-proposal-for-cluster-5-topics.mmd").read_text(encoding="utf-8")
-            self.assertIn("Foundations<br/>6 ECTS<br/>", topics)
+            self.assertIn("Foundations<br/>3 ECTS<br/>", topics)
             self.assertNotIn("-.->", topics)
             mapping = (output_dir / "restructure-proposal-for-cluster-5-mapping.mmd").read_text(encoding="utf-8")
             # Both source courses map to the same new course: one grouped node.
@@ -1109,6 +1130,158 @@ class TestWorkflow(unittest.TestCase):
                 fat,
             )
 
+        oversized = valid_proposal()
+        oversized.proposed_courses[0].ects = 9
+        with self.assertRaisesRegex(ValueError, "maximum of 6 ECTS.*foundations_course"):
+            validate_restructuring_proposal(
+                self.cluster,
+                {"alpha": "Alpha", "beta": "Beta"},
+                {"A": ["alpha"], "B": ["beta"]},
+                oversized,
+            )
+        validate_restructuring_proposal(
+            self.cluster,
+            {"alpha": "Alpha", "beta": "Beta"},
+            {"A": ["alpha"], "B": ["beta"]},
+            oversized,
+            max_ects=9,
+        )
+
+
+class TestDecomposition(unittest.TestCase):
+    def setUp(self):
+        self.cluster = cluster(5, "Example (5)", course("A"), course("B"))
+        self.topics = {"alpha": "Alpha.", "beta": "Beta.", "gamma": "Gamma."}
+        self.memberships = {"A": ["alpha", "beta"], "B": ["beta", "gamma"]}
+        self.proposal = RestructuringProposal(
+            proposed_topics=[
+                ProposedTopic(key=key, description=key.title(), source_topic_keys=[key])
+                for key in self.topics
+            ],
+            proposed_courses=[
+                ProposedCourse(key="intro", title="Intro", ects=3, topic_keys=["alpha"]),
+                ProposedCourse(key="big", title="Big", ects=6, topic_keys=["beta", "gamma"]),
+                ProposedCourse(key="capstone", title="Capstone", ects=3, topic_keys=["alpha"]),
+            ],
+            prerequisites=[
+                CoursePrerequisite(prerequisite_course_key="intro", dependent_course_key="big"),
+                CoursePrerequisite(prerequisite_course_key="big", dependent_course_key="capstone"),
+            ],
+        )
+        self.split = CourseSplit(
+            parts=[
+                ProposedCourse(key="big_1", title="Big 1", ects=3, topic_keys=["beta"]),
+                ProposedCourse(key="big_2", title="Big 2", ects=3, topic_keys=["gamma"]),
+            ],
+            prerequisites=[
+                CoursePrerequisite(prerequisite_course_key="big_1", dependent_course_key="big_2"),
+            ],
+        )
+        self.config = ModelConfig(endpoint="https://example.test/v1", model="test-model")
+
+    def decompose(self, client, root, **options):
+        return decompose_courses(
+            self.cluster, self.topics, self.memberships, self.proposal, client,
+            self.config, RetryConfig(max_retries=1, initial_backoff=0), root / "cache",
+            **options,
+        )
+
+    def test_splits_oversized_courses_and_rewires_prerequisites(self):
+        lost_topic = CourseSplit(parts=self.split.parts[:1] + [self.split.parts[0].model_copy(update={"key": "big_x"})], prerequisites=[])
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            client = FakeClient([lost_topic, self.split])
+            proposal, decomposed = self.decompose(client, pathlib.Path(tmp_dir))
+        self.assertIn("each course topic exactly once", client.completions.calls[-1]["messages"][-1]["content"])
+        self.assertIn('"big_"', client.completions.calls[0]["messages"][-1]["content"])
+        self.assertEqual(decomposed, {"big": ["big_1", "big_2"]})
+        self.assertEqual(
+            [course.key for course in proposal.proposed_courses],
+            ["intro", "big_1", "big_2", "capstone"],
+        )
+        self.assertEqual(
+            {(edge.prerequisite_course_key, edge.dependent_course_key) for edge in proposal.prerequisites},
+            {("intro", "big_1"), ("big_2", "capstone"), ("big_1", "big_2")},
+        )
+
+    def test_declined_or_failed_split_keeps_the_course(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = pathlib.Path(tmp_dir)
+            for reply in (CourseSplit(parts=[], prerequisites=[]), RuntimeError("unavailable")):
+                with self.subTest(reply=reply):
+                    proposal, decomposed = self.decompose(FakeClient([reply]), root, refresh_cache=True)
+                    self.assertEqual(proposal, self.proposal)
+                    self.assertEqual(decomposed, {})
+            no_calls = FakeClient([])
+            self.decompose(no_calls, root, preferred_ects=6)
+            self.assertEqual(no_calls.completions.calls, [])
+
+    def test_sankey_flows_conserve_source_credits(self):
+        weighted = cluster(
+            5, "Example (5)",
+            dataclasses.replace(course("A"), credits=9.0),
+            course("B"),
+        )
+        mappings = derive_source_course_mappings(weighted, self.memberships, self.proposal)
+        sankey = render_sankey(weighted, self.proposal, mappings, self.memberships)
+        rows = [line.rsplit(",", 1) for line in sankey.split("sankey-beta\n\n", 1)[1].splitlines()]
+        flows: dict[str, float] = {}
+        for source, value in rows:
+            name = source.split('",', 1)[0].strip('"')
+            flows[name] = flows.get(name, 0) + float(value)
+        self.assertEqual(flows, {
+            "Misleading title A (A)": 9.0,
+            "Misleading title B (B)": 2.0,
+        })
+        self.assertIn('"Big (6 ECTS)"', sankey)
+
+    def test_groups_are_prerequisite_components_named_after_roots(self):
+        lone = ProposedCourse(key="lone", title="Lone", ects=3, topic_keys=["gamma"])
+        proposal = self.proposal.model_copy(update={
+            "proposed_courses": self.proposal.proposed_courses + [lone],
+        })
+        self.assertEqual(default_course_groups(proposal), {
+            "intro-hierarchy": ["intro", "big", "capstone"],
+            "lone": ["lone"],
+        })
+        mappings = derive_source_course_mappings(self.cluster, self.memberships, proposal)
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = pathlib.Path(tmp_dir)
+            write_group_mermaid(root, self.cluster, proposal, mappings, self.memberships, default_course_groups(proposal))
+            self.assertEqual(
+                sorted(path.name for path in (root / "per-group").iterdir()),
+                # Nothing maps into "lone" (big covers gamma): no correspondence views.
+                ["intro-hierarchy-mapping.mmd", "intro-hierarchy-sankey.mmd", "intro-hierarchy-topics.mmd",
+                 "intro-hierarchy.mmd", "lone-topics.mmd"],
+            )
+            full = render_sankey(self.cluster, proposal, mappings, self.memberships)
+            group = (root / "per-group" / "intro-hierarchy-sankey.mmd").read_text()
+            # Same flows as the full diagram, restricted to the group.
+            self.assertEqual(group.split("sankey-beta", 1)[1], full.split("sankey-beta", 1)[1])
+
+    def test_multi_root_groups_are_named_by_the_model_with_fallback(self):
+        proposal = self.proposal.model_copy(update={
+            "proposed_courses": [
+                course.model_copy(update={"key": key})
+                for course, key in zip(self.proposal.proposed_courses, ("a_root", "b_root", "leaf"))
+            ],
+            "prerequisites": [
+                CoursePrerequisite(prerequisite_course_key="a_root", dependent_course_key="leaf"),
+                CoursePrerequisite(prerequisite_course_key="b_root", dependent_course_key="leaf"),
+            ],
+        })
+        retry = RetryConfig(max_retries=1, initial_backoff=0)
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = pathlib.Path(tmp_dir)
+            chosen = name_course_groups(
+                proposal, FakeClient([GroupRoot(root_course_key="b_root")]), self.config, retry, root / "cache",
+            )
+            self.assertEqual(chosen, {"b_root-hierarchy": ["a_root", "b_root", "leaf"]})
+            invalid = GroupRoot(root_course_key="leaf")
+            fallback = name_course_groups(
+                proposal, FakeClient([invalid, invalid]), self.config, retry, root / "cache", refresh_cache=True,
+            )
+            self.assertEqual(fallback, {"a_root-hierarchy": ["a_root", "b_root", "leaf"]})
+
     def test_generic_retry_skips_permanent_errors(self):
         class RateLimitError(Exception):
             pass
@@ -1238,7 +1411,7 @@ class TestRepositoryRestructuringInput(unittest.TestCase):
             )
             self.assertEqual(
                 len(list(output.glob("restructure-proposal-*.mmd"))),
-                90,
+                120,
             )
         self.assertEqual(completions.calls, 293 + 30)
 

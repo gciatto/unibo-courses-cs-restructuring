@@ -23,7 +23,9 @@ $syllabus_markdown
 
 By considering the current course's syllabus ONLY, infer which topics are actually
 covered by this course.
-You may decide the update the topic dictionary if needed.
+You may decide to update the topic dictionary if needed. Keep topics specific
+(a lecture to a few weeks of material, never a whole course or discipline); if
+an existing topic is that broad, split it into specific topics.
 You should return:
 1. covered_topic_keys: the complete assignment for this current course;
 2. topic_diffs: only the ordered changes needed for the current topic dictionary.

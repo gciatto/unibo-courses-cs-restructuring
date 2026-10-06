@@ -70,7 +70,7 @@ truth and the decks as domain/rationale documentation.
   source-course scope in service > external > borrow > weak_internal >
   internal order (`course_scope` in `clustering.export_cluster_courses`),
   and exports PDFs with `inkscape` plus editable `.drawio` files laid out
-  like the SVGs.
+  like the SVGs (not for the `-sankey` view, which is not a flowchart).
 - Tests use `unittest`, not pytest:
   `.venv/bin/python -m unittest discover -s tests -p 'test_*.py'`.
 - Treat course IDs, teaching IDs, and programme codes as opaque strings. Leading
@@ -151,7 +151,8 @@ Relevant tests are `tests/test_download_course_headers.py`,
   exponential backoff with jitter.
 - `prompts/*.txt`: system, per-course topic extraction, and restructuring
   proposal prompts, plus `design_system`, `modules`, and `assembly` prompts for
-  the all-courses proposal. Prompts are loaded at module import time.
+  the all-courses proposal, `decompose` for splitting oversized courses, and
+  `group_root` for naming multi-root course hierarchies. Prompts are loaded at module import time.
 
 ### Restructuring contracts
 
@@ -160,6 +161,8 @@ Relevant tests are `tests/test_download_course_headers.py`,
   cluster-manifest directory.
 - Default syllabus evidence is title + learning outcomes + course contents.
   Titles and IDs are metadata only; topic evidence must come from syllabus text.
+  Topics must be specific (a lecture to a few weeks of material); a whole
+  discipline or course-sized subject such as `machine_learning` is too broad.
 - Topic keys are lowercase snake case. Model replies are diffs against the
   current ontology; removals/renames must also replace affected earlier-course
   memberships. `apply_topic_response` is the authoritative invariant checker.
@@ -179,11 +182,22 @@ Relevant tests are `tests/test_download_course_headers.py`,
 - `topics-of-cluster-*.yml` and `topics-of-course-*.yml` are written
   incrementally and remain definitive if proposal generation fails. Successful
   proposal generation writes a validated `restructure-proposal-*.yml` plus
-  three deterministic Mermaid views: `.mmd` (new courses with ECTS and
+  four deterministic Mermaid views: `.mmd` (new courses with ECTS and
   prerequisites only), `-topics.mmd` (the same, listing topic keys plus a
-  colour legend) and `-mapping.mmd` (current courses, grouped by identical
-  targets, pointing at new courses); proposal failures are logged and do not
-  fail the overall run.
+  colour legend), `-mapping.mmd` (current courses, grouped by identical
+  targets, pointing at new courses) and `-sankey.mmd` (each current course's
+  credits, spread evenly over its topics, flowing to the mapped new course
+  first covering each topic); proposal failures are logged and do not fail
+  the overall run.
+- All-courses proposals also get group cuts in `per-group/`: a group is a
+  connected component of the prerequisite graph, named after its root course
+  (`<root>-hierarchy` unless a singleton; with several roots one `GroupRoot`
+  request picks it, falling back to the root with most descendants) and
+  recorded as `proposed_course_groups`. Each group gets `-topics`, `-mapping`
+  and `-sankey` views (the latter two only when some current course maps into
+  it; the Sankey keeps the global flows into the group) plus the plain view
+  for non-singletons. `restructuring.render` re-renders them too and logs
+  progress per diagram.
 - The model never lists source-course mappings. It must only ensure every
   assigned source topic appears in some proposed topic's provenance;
   `derive_source_course_mappings` then maps each source course by greedy set
@@ -197,10 +211,17 @@ Relevant tests are `tests/test_download_course_headers.py`,
   follow-up `assembly_repair` rounds ask only for courses using leftover
   modules (each round has its own retry budget; a round without progress
   fails). Each request is cached independently by its exact messages.
-- Proposed courses carry `ects` in {3, 6, 9, 12}; validation rejects a course
-  with more topics/modules than ECTS (each assumed >= 1 ECTS), and the prompts
-  ask for fundamentals/advanced, abstraction-level, and minimal-background
-  splits.
+- Proposed courses carry a positive integer `ects` (multiples of 3 are only a
+  convention); validation rejects a course
+  above `--max-ects` (hard limit, default 6) or with more topics/modules than
+  ECTS (each assumed >= 1 ECTS), and the prompts ask for fundamentals/advanced,
+  abstraction-level, and minimal-background splits.
+- `--preferred-ects` (soft, default 3) is stated in the prompts; after a
+  proposal validates, `decompose_courses` makes one cached `CourseSplit`
+  request per course above it (parts 1/2/3, fundamentals vs advanced, or
+  topic sub-groups). Parts must partition the course's topics; outside
+  prerequisites are rewired to the first/last parts. A declined or failed
+  split keeps the course, and the YAML records `decomposed_courses`.
 - Topic credit weights are local, not model output: each source course spreads
   its `credits` evenly over its topics, and a topic's `ects` is the median of
   those shares. `topics-of-cluster-*.yml` / `topics-global.yml` carry

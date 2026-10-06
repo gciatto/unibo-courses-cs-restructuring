@@ -24,7 +24,9 @@ from restructuring.models import (
 
 
 REPOSITORY_ROOT = pathlib.Path(__file__).resolve().parent.parent
-PROMPT_VERSION = 6
+PROMPT_VERSION = 7
+DEFAULT_MAX_ECTS = 6
+DEFAULT_PREFERRED_ECTS = 3
 DEFAULT_SYLLABUS_SECTION_KEYS = ("title", "outcomes", "contents")
 
 SYLLABUS_SECTION_ALIASES: dict[str, tuple[str, ...]] = {
@@ -418,6 +420,7 @@ def validate_restructuring_proposal(
     proposal: RestructuringProposal,
     *,
     require_all_topics_used: bool = True,
+    max_ects: int = DEFAULT_MAX_ECTS,
 ) -> None:
     proposed_topic_keys = {item.key for item in proposal.proposed_topics}
     proposed_course_keys = {item.key for item in proposal.proposed_courses}
@@ -462,6 +465,17 @@ def validate_restructuring_proposal(
         raise ValueError(
             "courses have more topics than ECTS; split them (e.g. fundamentals "
             f"vs advanced, or by abstraction level): {fat}"
+        )
+
+    oversized = sorted(
+        f"{course.key} ({course.ects} ECTS)"
+        for course in proposal.proposed_courses
+        if course.ects > max_ects
+    )
+    if oversized:
+        raise ValueError(
+            f"courses exceed the maximum of {max_ects} ECTS; split them (e.g. "
+            f"fundamentals vs advanced, or by abstraction level): {oversized}"
         )
 
     referenced_courses = {
@@ -818,12 +832,104 @@ def render_mermaid(
     return "\n".join(lines) + "\n"
 
 
+def course_group_roots(proposal: RestructuringProposal) -> list[tuple[list[str], list[str]]]:
+    """Connected components of the prerequisite graph as (roots, members):
+    roots ranked by descendants then key, members in proposal order."""
+    import networkx as nx
+
+    graph = nx.DiGraph()
+    graph.add_nodes_from(course.key for course in proposal.proposed_courses)
+    graph.add_edges_from(
+        (edge.prerequisite_course_key, edge.dependent_course_key) for edge in proposal.prerequisites
+    )
+    order = {course.key: index for index, course in enumerate(proposal.proposed_courses)}
+    groups = []
+    for component in nx.weakly_connected_components(graph):
+        roots = sorted(
+            (key for key in component if graph.in_degree(key) == 0),
+            key=lambda key: (-len(nx.descendants(graph, key)), key),
+        )
+        groups.append((roots, sorted(component, key=order.__getitem__)))
+    return sorted(groups, key=lambda group: order[group[1][0]])
+
+
+def course_group_name(root: str, members: list[str]) -> str:
+    return root if len(members) == 1 else f"{root}-hierarchy"
+
+
+def default_course_groups(proposal: RestructuringProposal) -> dict[str, list[str]]:
+    return {
+        course_group_name(roots[0], members): members
+        for roots, members in course_group_roots(proposal)
+    }
+
+
+def _csv_field(value: str) -> str:
+    return '"' + " ".join(value.split()).replace('"', '""') + '"'
+
+
+def render_sankey(
+    cluster: ClusterInput | GlobalInput,
+    proposal: RestructuringProposal,
+    mappings: Iterable[SourceCourseMapping],
+    source_memberships: dict[str, list[str]],
+    only_targets: set[str] | None = None,
+) -> str:
+    """Credits flowing from each current course into the new courses it maps
+    to: a course spreads its credits (1 per topic when unknown) evenly over
+    its topics, and each topic flows to the first mapped course covering it.
+    `only_targets` keeps the flows into those courses, computed as above."""
+    provenance = _proposed_course_provenance(proposal)
+    courses = {course.course_id: course for course in cluster.courses}
+    targets: dict[str, str] = {}
+    for item in proposal.proposed_courses:
+        name = f"{item.title} ({item.ects} ECTS)"
+        targets[item.key] = name if name not in targets.values() else f"{name} [{item.key}]"
+    rows = []
+    used: set[str] = set()
+    sources = set()
+    for mapping in mappings:
+        course = courses[mapping.course_id]
+        remaining = set(source_memberships[mapping.course_id])
+        share = (course.credits or len(remaining)) / len(remaining) if remaining else 0
+        for key in mapping.proposed_course_keys:
+            covered = provenance[key] & remaining
+            remaining -= covered
+            if only_targets is not None and key not in only_targets:
+                continue
+            sources.add(mapping.course_id)
+            used.add(key)
+            rows.append(
+                f"{_csv_field(f'{course.title} ({course.course_id})')},"
+                f"{_csv_field(targets[key])},{round(share * len(covered), 3)}"
+            )
+    # Heights grow with the busier side so labels do not overlap.
+    height = max(400, 24 * max(len(sources), len(used)))
+    return "\n".join([
+        "---",
+        "config:",
+        "  sankey:",
+        "    width: 1400",
+        f"    height: {height}",
+        "    linkColor: source",
+        "    showValues: true",
+        '    prefix: " · "',
+        '    suffix: " ECTS"',
+        "---",
+        "sankey-beta",
+        "",
+        *rows,
+    ]) + "\n"
+
+
 def write_restructuring_proposal(
     output_dir: pathlib.Path,
     cluster: ClusterInput | GlobalInput,
     source_topics: dict[str, str],
     source_memberships: dict[str, list[str]],
     proposal: RestructuringProposal,
+    decomposed_courses: dict[str, list[str]] | None = None,
+    course_groups: dict[str, list[str]] | None = None,
 ) -> tuple[pathlib.Path, pathlib.Path]:
     stem = f"restructure-proposal-for-cluster-{cluster.cluster_id}" if isinstance(cluster, ClusterInput) else "restructure-proposal-global"
     yaml_path = output_dir / f"{stem}.yml"
@@ -859,12 +965,20 @@ def write_restructuring_proposal(
             item.key: sum(item.key in mapping.proposed_course_keys for mapping in mappings)
             for item in proposal.proposed_courses
         },
+        # Oversized course key -> keys of the smaller courses replacing it.
+        "decomposed_courses": decomposed_courses or {},
     }
+    if isinstance(cluster, GlobalInput):
+        # Connected prerequisite components; per-group/ holds their diagrams.
+        course_groups = course_groups or default_course_groups(proposal)
+        payload["proposed_course_groups"] = course_groups
     _atomic_write_text(
         yaml_path,
         yaml.safe_dump(payload, sort_keys=False, allow_unicode=True),
     )
-    write_proposal_mermaid(output_dir, stem, cluster, proposal, mappings)
+    write_proposal_mermaid(output_dir, stem, cluster, proposal, mappings, source_memberships)
+    if course_groups:
+        write_group_mermaid(output_dir, cluster, proposal, mappings, source_memberships, course_groups)
     return yaml_path, mermaid_path
 
 
@@ -874,11 +988,59 @@ def write_proposal_mermaid(
     cluster: ClusterInput | GlobalInput,
     proposal: RestructuringProposal,
     mappings: list[SourceCourseMapping],
+    source_memberships: dict[str, list[str]],
 ) -> list[pathlib.Path]:
-    paths = [output_dir / f"{stem}{suffix}.mmd" for suffix in ("", "-topics", "-mapping")]
+    paths = [output_dir / f"{stem}{suffix}.mmd" for suffix in ("", "-topics", "-mapping", "-sankey")]
     _atomic_write_text(paths[0], render_mermaid(cluster, proposal))
     _atomic_write_text(paths[1], render_mermaid(cluster, proposal, show_topics=True))
     _atomic_write_text(paths[2], render_mermaid(cluster, proposal, mappings))
+    _atomic_write_text(paths[3], render_sankey(cluster, proposal, mappings, source_memberships))
+    return paths
+
+
+def write_group_mermaid(
+    output_dir: pathlib.Path,
+    cluster: ClusterInput | GlobalInput,
+    proposal: RestructuringProposal,
+    mappings: list[SourceCourseMapping],
+    source_memberships: dict[str, list[str]],
+    course_groups: dict[str, list[str]],
+) -> list[pathlib.Path]:
+    """Per-group cuts in output_dir/per-group: -topics, -mapping and -sankey
+    (the latter two only when some current course maps into the group), plus
+    the plain prerequisite view for groups of more than one course."""
+    group_dir = output_dir / "per-group"
+    group_dir.mkdir(exist_ok=True)
+    paths = []
+    for name, members in course_groups.items():
+        keep = set(members)
+        courses = [course for course in proposal.proposed_courses if course.key in keep]
+        topic_keys = {key for course in courses for key in course.topic_keys}
+        group = RestructuringProposal(
+            proposed_topics=[topic for topic in proposal.proposed_topics if topic.key in topic_keys],
+            proposed_courses=courses,
+            prerequisites=[edge for edge in proposal.prerequisites if edge.dependent_course_key in keep],
+        )
+        contributing = [mapping for mapping in mappings if keep & set(mapping.proposed_course_keys)]
+        views = {"-topics": render_mermaid(cluster, group, show_topics=True)}
+        # No current course maps here (greedy cover chose other courses): an
+        # empty sankey does not even parse, so skip both correspondence views.
+        if contributing:
+            views["-mapping"] = render_mermaid(cluster, group, [
+                SourceCourseMapping(
+                    course_id=mapping.course_id,
+                    proposed_course_keys=[key for key in mapping.proposed_course_keys if key in keep],
+                )
+                for mapping in contributing
+            ])
+            # Flows computed on the full mapping, then cut to this group.
+            views["-sankey"] = render_sankey(cluster, proposal, contributing, source_memberships, keep)
+        if len(members) > 1:
+            views[""] = render_mermaid(cluster, group)
+        for suffix, text in views.items():
+            path = group_dir / f"{name}{suffix}.mmd"
+            _atomic_write_text(path, text)
+            paths.append(path)
     return paths
 
 

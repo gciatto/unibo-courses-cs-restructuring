@@ -18,8 +18,12 @@ from typing import Any, Callable, TypeVar
 from pydantic import BaseModel, ValidationError
 
 from restructuring.io import (
+    DEFAULT_MAX_ECTS,
+    DEFAULT_PREFERRED_ECTS,
     DEFAULT_SYLLABUS_SECTION_KEYS,
     PROMPT_VERSION,
+    course_group_name,
+    course_group_roots,
     REPOSITORY_ROOT,
     conversation_cache_key,
     estimate_topic_weights,
@@ -42,7 +46,10 @@ from restructuring.models import (
     ClusterInput,
     CourseAssembly,
     CourseInput,
+    CoursePrerequisite,
+    CourseSplit,
     GlobalInput,
+    GroupRoot,
     CourseTopicsResponse,
     ModelConfig,
     ProposedTopic,
@@ -67,6 +74,8 @@ DESIGN_SYSTEM_PROMPT = _load_prompt("design_system.txt")
 MODULES_PROMPT = string.Template(_load_prompt("modules.txt"))
 ASSEMBLY_PROMPT = string.Template(_load_prompt("assembly.txt"))
 ASSEMBLY_REPAIR_PROMPT = string.Template(_load_prompt("assembly_repair.txt"))
+DECOMPOSE_PROMPT = string.Template(_load_prompt("decompose.txt"))
+GROUP_ROOT_PROMPT = string.Template(_load_prompt("group_root.txt"))
 MODULE_BATCH_SIZE = 60
 PROMPT_SYLLABUS_SECTION_KEYS = DEFAULT_SYLLABUS_SECTION_KEYS
 TOPIC_CONVERSATION_MODES = ("stateless", "full")
@@ -132,12 +141,17 @@ def proposal_prompt(
     cluster: ClusterInput | GlobalInput,
     topics: dict[str, str],
     memberships: dict[str, list[str]],
+    *,
+    max_ects: int = DEFAULT_MAX_ECTS,
+    preferred_ects: int = DEFAULT_PREFERRED_ECTS,
 ) -> str:
     old_courses = [
         {"id": course.course_id, "title": course.title}
         for course in cluster.courses
     ]
     return PROPOSAL_PROMPT.substitute(
+        max_ects=max_ects,
+        preferred_ects=preferred_ects,
         analysis_metadata=json.dumps(
             {"mode": "cluster", "cluster_id": cluster.cluster_id, "cluster_name": cluster.name}
             if isinstance(cluster, ClusterInput) else {"mode": "all-courses"},
@@ -713,6 +727,10 @@ def generate_cluster_proposal(
     output_dir: pathlib.Path,
     *,
     topic_conversation_mode: str,
+    cache_dir: pathlib.Path,
+    refresh_cache: bool = False,
+    max_ects: int = DEFAULT_MAX_ECTS,
+    preferred_ects: int = DEFAULT_PREFERRED_ECTS,
     sleep: Callable[[float], None] = time.sleep,
     random_uniform: Callable[[float, float], float] = random.uniform,
 ) -> bool:
@@ -722,6 +740,8 @@ def generate_cluster_proposal(
             cluster,
             conversation.state.topics,
             conversation.state.memberships,
+            max_ects=max_ects,
+            preferred_ects=preferred_ects,
         ),
     }
     request_messages = (
@@ -743,6 +763,7 @@ def generate_cluster_proposal(
                 conversation.state.topics,
                 conversation.state.memberships,
                 parsed,
+                max_ects=max_ects,
             )
         except ValueError as error:
             LOGGER.warning(
@@ -767,6 +788,7 @@ def generate_cluster_proposal(
                     conversation.state.topics,
                     conversation.state.memberships,
                     proposal,
+                    max_ects=max_ects,
                 ),
                 sleep=sleep,
                 random_uniform=random_uniform,
@@ -795,12 +817,28 @@ def generate_cluster_proposal(
             [user_message, conversation.cached_messages[cursor + 1]]
         )
 
+    parsed, decomposed = decompose_courses(
+        cluster,
+        conversation.state.topics,
+        conversation.state.memberships,
+        parsed,
+        client,
+        config,
+        retry,
+        cache_dir,
+        max_ects=max_ects,
+        preferred_ects=preferred_ects,
+        refresh_cache=refresh_cache,
+        sleep=sleep,
+        random_uniform=random_uniform,
+    )
     yaml_path, mermaid_path = write_restructuring_proposal(
         output_dir,
         cluster,
         conversation.state.topics,
         conversation.state.memberships,
         parsed,
+        decomposed,
     )
     LOGGER.info(
         "Cluster %s (%s): wrote validated restructuring proposal yaml=%s mermaid=%s",
@@ -931,10 +969,15 @@ def assembly_prompt(
     corpus: GlobalInput,
     memberships: dict[str, list[str]],
     modules: list[ProposedTopic],
+    *,
+    max_ects: int = DEFAULT_MAX_ECTS,
+    preferred_ects: int = DEFAULT_PREFERRED_ECTS,
 ) -> str:
     course_modules = _source_course_modules(corpus, memberships, modules)
     usage = Counter(key for keys in course_modules.values() for key in keys)
     return ASSEMBLY_PROMPT.substitute(
+        max_ects=max_ects,
+        preferred_ects=preferred_ects,
         modules=json.dumps(
             {
                 module.key: {
@@ -1044,6 +1087,8 @@ def generate_global_proposal(
     output_dir: pathlib.Path,
     *,
     refresh_cache: bool = False,
+    max_ects: int = DEFAULT_MAX_ECTS,
+    preferred_ects: int = DEFAULT_PREFERRED_ECTS,
     sleep: Callable[[float], None] = time.sleep,
     random_uniform: Callable[[float, float], float] = random.uniform,
 ) -> bool:
@@ -1104,12 +1149,14 @@ def generate_global_proposal(
         def partial(assembly: CourseAssembly) -> None:
             validate_restructuring_proposal(
                 corpus, topics, memberships, combine(assembly),
-                require_all_topics_used=False,
+                require_all_topics_used=False, max_ects=max_ects,
             )
 
         # Large corpora rarely fit one reply: keep accepted courses and ask
         # only for the leftover modules, each round with its own retry budget.
-        messages = [system_message, {"role": "user", "content": assembly_prompt(corpus, memberships, modules)}]
+        messages = [system_message, {"role": "user", "content": assembly_prompt(
+            corpus, memberships, modules, max_ects=max_ects, preferred_ects=preferred_ects,
+        )}]
         assembly = cached_structured_call(
             client, messages, CourseAssembly, config, retry, cache_dir,
             operation_name="corpus=global course-assembly",
@@ -1143,7 +1190,7 @@ def generate_global_proposal(
             if not {key for course in extra.proposed_courses for key in course.topic_keys} & set(unused):
                 raise ValueError(f"course assembly repair made no progress on modules: {unused}")
         proposal = combine(assembly)
-        validate_restructuring_proposal(corpus, topics, memberships, proposal)
+        validate_restructuring_proposal(corpus, topics, memberships, proposal, max_ects=max_ects)
     except Exception as error:
         LOGGER.error(
             "Global corpus: restructuring proposal generation failed; "
@@ -1152,8 +1199,17 @@ def generate_global_proposal(
             error,
         )
         return False
+    proposal, decomposed = decompose_courses(
+        corpus, topics, memberships, proposal, client, config, retry, cache_dir,
+        max_ects=max_ects, preferred_ects=preferred_ects, **call_options,
+    )
+    groups = name_course_groups(proposal, client, config, retry, cache_dir, **call_options)
     yaml_path, mermaid_path = write_restructuring_proposal(
-        output_dir, corpus, topics, memberships, proposal
+        output_dir, corpus, topics, memberships, proposal, decomposed, groups
+    )
+    LOGGER.info(
+        "Global corpus: wrote %d course group(s) to %s",
+        len(groups), output_dir / "per-group",
     )
     LOGGER.info(
         "Global corpus: wrote validated restructuring proposal yaml=%s mermaid=%s",
@@ -1161,6 +1217,211 @@ def generate_global_proposal(
         mermaid_path,
     )
     return True
+
+
+def split_course(
+    proposal: RestructuringProposal,
+    course_key: str,
+    split: CourseSplit,
+) -> RestructuringProposal:
+    """Replace one course by its parts: incoming prerequisites now lead to the
+    parts without internal prerequisites, outgoing ones leave from the parts
+    without internal dependents."""
+    parts = [part.key for part in split.parts]
+    roots = [key for key in parts if all(edge.dependent_course_key != key for edge in split.prerequisites)]
+    sinks = [key for key in parts if all(edge.prerequisite_course_key != key for edge in split.prerequisites)]
+    edges: list[CoursePrerequisite] = []
+    for edge in proposal.prerequisites:
+        if edge.dependent_course_key == course_key:
+            edges.extend(
+                CoursePrerequisite(prerequisite_course_key=edge.prerequisite_course_key, dependent_course_key=key)
+                for key in roots
+            )
+        elif edge.prerequisite_course_key == course_key:
+            edges.extend(
+                CoursePrerequisite(prerequisite_course_key=key, dependent_course_key=edge.dependent_course_key)
+                for key in sinks
+            )
+        else:
+            edges.append(edge)
+    return RestructuringProposal(
+        proposed_topics=proposal.proposed_topics,
+        proposed_courses=[
+            part
+            for course in proposal.proposed_courses
+            for part in (split.parts if course.key == course_key else [course])
+        ],
+        prerequisites=edges + split.prerequisites,
+    )
+
+
+def validate_course_split(
+    proposal: RestructuringProposal,
+    course_key: str,
+    split: CourseSplit,
+    check: Callable[[RestructuringProposal], None],
+) -> None:
+    if not split.parts:
+        if split.prerequisites:
+            raise ValueError("an empty parts array needs an empty prerequisites array")
+        return
+    if len(split.parts) < 2:
+        raise ValueError("return at least two parts, or none to keep the course whole")
+    original = next(course for course in proposal.proposed_courses if course.key == course_key)
+    grouped = sorted(key for part in split.parts for key in part.topic_keys)
+    if grouped != sorted(original.topic_keys):
+        raise ValueError(
+            "parts must contain each course topic exactly once: "
+            f"expected {sorted(original.topic_keys)}, got {grouped}"
+        )
+    parts = {part.key for part in split.parts}
+    taken = sorted(parts & ({course.key for course in proposal.proposed_courses} - {course_key}))
+    if taken:
+        raise ValueError(f"part keys already used by other courses: {taken}")
+    outside = sorted({
+        key
+        for edge in split.prerequisites
+        for key in (edge.prerequisite_course_key, edge.dependent_course_key)
+    } - parts)
+    if outside:
+        raise ValueError(f"prerequisites must connect parts only: {outside}")
+    check(split_course(proposal, course_key, split))
+
+
+def decompose_courses(
+    corpus: ClusterInput | GlobalInput,
+    topics: dict[str, str],
+    memberships: dict[str, list[str]],
+    proposal: RestructuringProposal,
+    client: Any,
+    config: ModelConfig,
+    retry: RetryConfig,
+    cache_dir: pathlib.Path,
+    *,
+    max_ects: int = DEFAULT_MAX_ECTS,
+    preferred_ects: int = DEFAULT_PREFERRED_ECTS,
+    refresh_cache: bool = False,
+    sleep: Callable[[float], None] = time.sleep,
+    random_uniform: Callable[[float, float], float] = random.uniform,
+) -> tuple[RestructuringProposal, dict[str, list[str]]]:
+    """Ask once per course above preferred_ects for a split into smaller
+    consequential courses; a failed or declined split keeps the course."""
+    descriptions = {topic.key: topic.description for topic in proposal.proposed_topics}
+    decomposed: dict[str, list[str]] = {}
+    for course in [item for item in proposal.proposed_courses if item.ects > preferred_ects]:
+        prompt = DECOMPOSE_PROMPT.substitute(
+            course=json.dumps(
+                {"key": course.key, "title": course.title, "ects": course.ects},
+                ensure_ascii=False,
+            ),
+            topics=json.dumps(
+                {key: descriptions[key] for key in course.topic_keys}, ensure_ascii=False
+            ),
+            course_key=course.key,
+            max_ects=max_ects,
+            preferred_ects=preferred_ects,
+        )
+        try:
+            split = cached_structured_call(
+                client,
+                [
+                    {"role": "system", "content": DESIGN_SYSTEM_PROMPT},
+                    {"role": "user", "content": prompt},
+                ],
+                CourseSplit,
+                config,
+                retry,
+                cache_dir,
+                operation_name=f"corpus={_corpus_label(corpus)[0]} decompose {course.key}",
+                validator=lambda response, current=proposal, key=course.key: validate_course_split(
+                    current, key, response,
+                    lambda candidate: validate_restructuring_proposal(
+                        corpus, topics, memberships, candidate, max_ects=max_ects,
+                    ),
+                ),
+                refresh_cache=refresh_cache,
+                sleep=sleep,
+                random_uniform=random_uniform,
+            )
+        except Exception as error:
+            LOGGER.warning(
+                "Corpus %s (%s): keeping course %s whole; decomposition failed: %s: %s",
+                *_corpus_label(corpus), course.key, error.__class__.__name__, error,
+            )
+            continue
+        if split.parts:
+            proposal = split_course(proposal, course.key, split)
+            decomposed[course.key] = [part.key for part in split.parts]
+            LOGGER.info(
+                "Corpus %s (%s): split course %s into %s",
+                *_corpus_label(corpus), course.key, decomposed[course.key],
+            )
+    return proposal, decomposed
+
+
+def name_course_groups(
+    proposal: RestructuringProposal,
+    client: Any,
+    config: ModelConfig,
+    retry: RetryConfig,
+    cache_dir: pathlib.Path,
+    *,
+    refresh_cache: bool = False,
+    sleep: Callable[[float], None] = time.sleep,
+    random_uniform: Callable[[float, float], float] = random.uniform,
+) -> dict[str, list[str]]:
+    """Name each prerequisite hierarchy after a root course; the model picks
+    among several roots, falling back to the root with most descendants."""
+    courses = {course.key: course for course in proposal.proposed_courses}
+    groups: dict[str, list[str]] = {}
+    for roots, members in course_group_roots(proposal):
+        root = roots[0]
+        if len(roots) > 1:
+            keep = set(members)
+            prompt = GROUP_ROOT_PROMPT.substitute(
+                courses=json.dumps(
+                    {key: {"title": courses[key].title, "ects": courses[key].ects} for key in members},
+                    ensure_ascii=False,
+                ),
+                prerequisites=json.dumps(
+                    [
+                        [edge.prerequisite_course_key, edge.dependent_course_key]
+                        for edge in proposal.prerequisites
+                        if edge.dependent_course_key in keep
+                    ],
+                    ensure_ascii=False,
+                ),
+                roots=json.dumps(roots, ensure_ascii=False),
+            )
+
+            def check(response: GroupRoot, candidates: list[str] = roots) -> None:
+                if response.root_course_key not in candidates:
+                    raise ValueError(f"root_course_key must be one of {candidates}")
+
+            try:
+                root = cached_structured_call(
+                    client,
+                    [
+                        {"role": "system", "content": DESIGN_SYSTEM_PROMPT},
+                        {"role": "user", "content": prompt},
+                    ],
+                    GroupRoot,
+                    config,
+                    retry,
+                    cache_dir,
+                    operation_name=f"corpus=global group-root {roots[0]}",
+                    validator=check,
+                    refresh_cache=refresh_cache,
+                    sleep=sleep,
+                    random_uniform=random_uniform,
+                ).root_course_key
+            except Exception as error:
+                LOGGER.warning(
+                    "Global corpus: naming group after %s; root choice failed: %s: %s",
+                    root, error.__class__.__name__, error,
+                )
+        groups[course_group_name(root, members)] = members
+    return groups
 
 
 def create_attempt_directory(
@@ -1190,6 +1451,8 @@ def run_restructuring(
     reuse_topic_dirs: tuple[pathlib.Path, ...] = (),
     all_courses: bool = False,
     skip_proposals: bool = False,
+    max_ects: int = DEFAULT_MAX_ECTS,
+    preferred_ects: int = DEFAULT_PREFERRED_ECTS,
     request_timeout: float = 120.0,
     cache_dir: pathlib.Path | None = None,
     output_root: pathlib.Path | None = None,
@@ -1289,6 +1552,8 @@ def run_restructuring(
                 resolved_cache_dir,
                 output_dir,
                 refresh_cache=refresh_cache,
+                max_ects=max_ects,
+                preferred_ects=preferred_ects,
                 sleep=sleep,
                 random_uniform=random_uniform,
             )
@@ -1301,6 +1566,10 @@ def run_restructuring(
                 retry,
                 output_dir,
                 topic_conversation_mode=topic_conversation_mode,
+                cache_dir=resolved_cache_dir,
+                refresh_cache=refresh_cache,
+                max_ects=max_ects,
+                preferred_ects=preferred_ects,
                 sleep=sleep,
                 random_uniform=random_uniform,
             )

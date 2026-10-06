@@ -1,0 +1,20 @@
+These new courses of a proposed restructuring form one hierarchy connected by
+prerequisites (prerequisite_course_key -> dependent_course_key).
+
+<courses>
+$courses
+</courses>
+
+<prerequisites>
+$prerequisites
+</prerequisites>
+
+The hierarchy has several root courses, without prerequisites:
+<roots>
+$roots
+</roots>
+
+The hierarchy will be named after one of its roots. Return as root_course_key
+the root that best represents the hierarchy as a whole: the main entry point
+that most of the other courses build on, rather than a narrow side
+prerequisite.

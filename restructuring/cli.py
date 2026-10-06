@@ -6,12 +6,19 @@ import os
 import pathlib
 
 from restructuring.models import ModelConfig, RetryConfig
-from restructuring.io import DEFAULT_SYLLABUS_SECTION_KEYS
+from restructuring.io import DEFAULT_MAX_ECTS, DEFAULT_PREFERRED_ECTS, DEFAULT_SYLLABUS_SECTION_KEYS
 from restructuring.workflow import TOPIC_CONVERSATION_MODES, run_restructuring
 
 
 DEFAULT_ENDPOINT = "https://api.openai.com/v1"
 DEFAULT_MODEL = "gpt-5.6-luna"
+
+
+def _positive_int(value: str) -> int:
+    number = int(value)
+    if number <= 0:
+        raise argparse.ArgumentTypeError(f"must be a positive integer: {value}")
+    return number
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -83,6 +90,21 @@ def build_parser() -> argparse.ArgumentParser:
         help="Write topic YAML (with credit weights) only; make no proposal requests",
     )
     parser.add_argument(
+        "--max-ects",
+        type=_positive_int,
+        default=DEFAULT_MAX_ECTS,
+        help="Hard limit on the ECTS of each proposed course (default: %(default)s)",
+    )
+    parser.add_argument(
+        "--preferred-ects",
+        type=_positive_int,
+        default=DEFAULT_PREFERRED_ECTS,
+        help=(
+            "Preferred ECTS of each proposed course; larger courses get one extra "
+            "request asking to split them (default: %(default)s)"
+        ),
+    )
+    parser.add_argument(
         "--reuse-topics-from",
         type=pathlib.Path,
         action="append",
@@ -111,6 +133,8 @@ def _validate_args(args: argparse.Namespace) -> None:
         raise ValueError("--initial-backoff must be >= 0")
     if args.max_backoff < 0:
         raise ValueError("--max-backoff must be >= 0")
+    if args.preferred_ects > args.max_ects:
+        raise ValueError("--preferred-ects must not exceed --max-ects")
     if args.all_courses and (args.cluster_id or args.cluster_name_regex):
         raise ValueError("--all-courses cannot be combined with cluster selectors")
 
@@ -146,6 +170,8 @@ def main() -> None:
             reuse_topic_dirs=tuple(args.reuse_topics_from),
             all_courses=args.all_courses,
             skip_proposals=args.skip_proposals,
+            max_ects=args.max_ects,
+            preferred_ects=args.preferred_ects,
             request_timeout=args.request_timeout,
         )
     except (RuntimeError, ValueError) as error:

@@ -8,6 +8,11 @@ Grounding rules:
   cluster title, common expectations, or outside knowledge.
 - A source topic may be created or assigned to a course only when it is supported by
   the provided syllabus material for that course.
+- Topics must be specific: one teachable unit, from a single lecture to a few
+  weeks of a course (e.g. linear_regression, cross_validation, sql_joins).
+  Never use a whole discipline or a subject large enough to be a course of its
+  own as a topic (e.g. machine_learning, databases, programming); split it into
+  the specific topics the syllabus actually lists.
 - Topic keys must be short, lowercase snake_case identifiers. Descriptions must state
   what the supplied syllabi actually cover.
 - As new evidence arrives, refine the ontology by returning only ordered diffs: remove

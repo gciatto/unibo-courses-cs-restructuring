@@ -1,0 +1,30 @@
+This new course from a proposed restructuring is larger than the preferred
+size of $preferred_ects ECTS.
+
+<course>
+$course
+</course>
+
+These are its topics.
+<topics>
+$topics
+</topics>
+
+Decompose it into smaller, consequential courses when this is sound, e.g.:
+- parts 1, 2, 3, ...: a sequence where each part builds on the previous one;
+- fundamentals vs advanced: an introductory course and a deeper one depending
+  on it;
+- sub-groups of closely related topics that can be taught separately.
+
+Requirements:
+- parts are the new courses; together their topic_keys contain each topic
+  above exactly once.
+- Each part has ects of at most $max_ects; prefer $preferred_ects ECTS, and keep
+  the parts' total close to the course's ECTS. A part may hold at most as many
+  topic_keys as its ECTS.
+- Part keys are new lowercase snake_case keys starting with "${course_key}_".
+- prerequisites connect parts only (prerequisite_course_key ->
+  dependent_course_key) and must be acyclic; prerequisites with other courses
+  are rewired automatically.
+- When the topics cannot be split soundly, return an empty parts array and an
+  empty prerequisites array to keep the course whole.

@@ -19,10 +19,10 @@ $source_courses
 </source_courses>
 
 Course design heuristics:
-- Size each new course at 3, 6, 9, or 12 ECTS (the ects field). Each module
-  is worth at least 1 ECTS, so a course may hold at most as
-  many topic_keys as its ECTS. Prefer 6 ECTS; use 12 only for genuinely broad
-  courses.
+- Size each new course in whole ECTS (the ects field), never above
+  $max_ects ECTS. Each module is worth at least 1 ECTS, so a course may hold
+  at most as many topic_keys as its ECTS. Prefer $preferred_ects ECTS: larger
+  courses are later considered for splitting into smaller ones.
 - Split fat courses, e.g. into a fundamentals course and an advanced course
   that depends on it.
 - Split by abstraction level: a generic foundations course (e.g. computation

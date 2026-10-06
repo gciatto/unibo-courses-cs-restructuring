@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import html
+import logging
 import pathlib
 import re
 import subprocess
@@ -22,12 +23,15 @@ from restructuring.io import (
     TOPIC_ORIGIN_LEGEND,
     load_clusters,
     load_global_corpus,
+    default_course_groups,
     load_yaml_mapping,
     topic_origins,
+    write_group_mermaid,
     write_proposal_mermaid,
 )
 from restructuring.models import RestructuringProposal, SourceCourseMapping
 
+LOGGER = logging.getLogger(__name__)
 REPOSITORY_ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUTER_ROW = re.compile(r'(<tspan class="text-outer-tspan row")([^>]*>)((?:<tspan[^>]*>[^<]*</tspan>)*)</tspan>')
 SVG_NODE = re.compile(
@@ -86,7 +90,7 @@ def svg_to_drawio(svg: str, name: str) -> str:
 def render_attempt(attempt_dir: pathlib.Path, cluster_manifest: pathlib.Path) -> list[pathlib.Path]:
     scopes = {row["course_id"]: row["course_scope"] for row in build_rows(cluster_manifest)}
     clusters = {cluster.cluster_id: cluster for cluster in load_clusters(cluster_manifest)}
-    outputs = []
+    jobs: list[tuple[pathlib.Path, dict[str, str]]] = []
     for yaml_path in sorted(attempt_dir.glob("restructure-proposal-*.yml")):
         payload = load_yaml_mapping(yaml_path, "Restructuring proposal")
         proposal = RestructuringProposal.model_validate(
@@ -103,22 +107,32 @@ def render_attempt(attempt_dir: pathlib.Path, cluster_manifest: pathlib.Path) ->
         origins = topic_origins(proposal, payload["source_course_topic_assignments"], scopes)
         colours = {key: TOPIC_ORIGIN_COLOURS[origin] for key, origin in origins.items()}
         colours.update({row: TOPIC_ORIGIN_COLOURS[scope] for scope, row in TOPIC_ORIGIN_LEGEND.items()})
-        for mmd in write_proposal_mermaid(attempt_dir, yaml_path.stem, cluster, proposal, mappings):
-            svg, pdf = mmd.with_suffix(".svg"), mmd.with_suffix(".pdf")
-            subprocess.run(
-                [REPOSITORY_ROOT / "node_modules/.bin/mmdc", "-q", "-c", REPOSITORY_ROOT / "mermaid-config.json",
-                 "-i", mmd, "-o", svg],
-                check=True,
-            )
-            fixed = fix_svg(svg.read_text(encoding="utf-8"), colours)
-            svg.write_text(fixed, encoding="utf-8")
+        memberships = payload["source_course_topic_assignments"]
+        mmds = write_proposal_mermaid(attempt_dir, yaml_path.stem, cluster, proposal, mappings, memberships)
+        if "cluster" not in payload:
+            groups = payload.get("proposed_course_groups") or default_course_groups(proposal)
+            mmds += write_group_mermaid(attempt_dir, cluster, proposal, mappings, memberships, groups)
+        jobs.extend((mmd, colours) for mmd in mmds)
+    outputs = []
+    for index, (mmd, colours) in enumerate(jobs, start=1):
+        LOGGER.info("Rendering %d/%d %s", index, len(jobs), mmd.relative_to(attempt_dir))
+        svg, pdf = mmd.with_suffix(".svg"), mmd.with_suffix(".pdf")
+        subprocess.run(
+            [REPOSITORY_ROOT / "node_modules/.bin/mmdc", "-q", "-c", REPOSITORY_ROOT / "mermaid-config.json",
+             "-i", mmd, "-o", svg],
+            check=True,
+        )
+        fixed = fix_svg(svg.read_text(encoding="utf-8"), colours)
+        svg.write_text(fixed, encoding="utf-8")
+        if not mmd.stem.endswith("-sankey"):  # svg_to_drawio reads flowchart boxes only
             drawio = mmd.with_suffix(".drawio")
             drawio.write_text(svg_to_drawio(fixed, mmd.stem), encoding="utf-8")
-            subprocess.run(
-                ["inkscape", svg, "--export-type=pdf", f"--export-filename={pdf}"],
-                check=True, capture_output=True,
-            )
-            outputs += [svg, pdf, drawio]
+            outputs.append(drawio)
+        subprocess.run(
+            ["inkscape", svg, "--export-type=pdf", f"--export-filename={pdf}"],
+            check=True, capture_output=True,
+        )
+        outputs += [svg, pdf]
     return outputs
 
 
@@ -127,6 +141,7 @@ def main() -> None:
     parser.add_argument("attempt_dir", type=pathlib.Path)
     parser.add_argument("cluster_manifest", type=pathlib.Path, help="cluster_courses.yml used by the attempt")
     args = parser.parse_args()
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s", datefmt="%H:%M:%S")
     for path in render_attempt(args.attempt_dir, args.cluster_manifest):
         print(path)
 
