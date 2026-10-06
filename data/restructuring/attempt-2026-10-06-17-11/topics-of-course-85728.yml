@@ -1,0 +1,43 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 28
+  name: Systems Real-Time Real (28)
+course:
+  id: '85728'
+  name: Real Time OS M
+topics:
+  deadlock_starvation_busy_waiting: Operating-system concurrency problems involving
+    deadlock, starvation, and busy waiting.
+  dynamic_memory_allocation: Static and dynamic memory allocation in embedded and
+    real-time operating-system programming.
+  embedded_systems_intro: Introduction to embedded systems, including microcontrollers,
+    systems-on-chip, sensors, actuators, and related electronics.
+  embedded_tasks: Tasks as units of execution in embedded-software programming models.
+  freertos: FreeRTOS programming, including tasks, scheduling, priorities, synchronization,
+    communication, timers, interrupts, and memory management.
+  inter_task_communication: Communication mechanisms for exchanging information among
+    tasks in a real-time operating system.
+  interrupt_systems: Hardware and software interrupts and exceptions, including interrupt
+    handling by a programmable interrupt controller and vectored interrupts.
+  io_management: Operating-system management of input and output operations and devices.
+  multicore_architectures: Multicore processor architectures and their organization.
+  nuttx: The NuttX real-time operating system.
+  os_kernel_shell: Kernel and shell fundamentals for programming and using general-purpose
+    operating systems.
+  priority_inversion: Priority inversion and unbounded priority inversion in real-time
+    operating systems.
+  processes_threads: Operating-system processes and threads, including their organization
+    and execution.
+  real_time_systems: Main design issues, implementation strategies, supporting environments,
+    performance evaluation, and application domains of real-time systems.
+  rtos_architectures: Embedded-system architectures based on real-time operating systems.
+  rtos_heap_management: Heap-management strategies used by real-time operating systems.
+  rtos_task_scheduling: Tasks, priorities, and scheduling in real-time operating systems,
+    including scheduling of hard real-time periodic processes.
+  rtos_timers: Software and hardware timers in real-time operating systems.
+  shared_memory_synchronization: Shared-memory interaction mechanisms for concurrent
+    programs, including semaphores and monitors.
+  virtual_memory: Virtual-memory organization and management, including paging, to
+    support efficient program execution.
+  zephyr: The Zephyr real-time operating system.

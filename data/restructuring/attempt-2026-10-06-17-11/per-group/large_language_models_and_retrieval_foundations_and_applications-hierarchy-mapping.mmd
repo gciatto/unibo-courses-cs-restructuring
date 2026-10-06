@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Large Language Model Foundations and Applications<br/>6 ECTS"]:::proposed
+  P1["Structured Knowledge for Language Models<br/>3 ECTS"]:::proposed
+  S0["Data Mining (40720)<br/>Machine Learning (81610, 88202)<br/>Artificial Intelligence (81940)<br/>Systems and Algorithms for Data Science (85189)<br/>Machine Learning Systems For Data Science (90477)<br/>Natural Language Processing (91258-A)<br/>Architecture and Platforms for Artificial Intelligence (91259)<br/>Autonomous and Adaptive Systems M (92858)<br/>Digital Culture (93379)<br/>Intelligent Systems Engineering (93669)<br/>Machine Learning and Data Mining (95631-A)<br/>Advanced Software Modelling and Design (B0009)<br/>METODOLOGIE E TECNICHE DI SIMULAZIONE (B0070)<br/>Machine Learning for Humanities (B1873)<br/>Big Data Analytics and Text Mining (B2133)<br/>Knowledge Engeneering for the Humanities (B5292)"]:::source
+  S0 -.-> P0
+  S1["Knowledge Representation and Extraction (85446)"]:::source
+  S1 -.-> P1
+  S2["Knowledge Engineering (91265)"]:::source
+  S2 -.-> P0
+  S2 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

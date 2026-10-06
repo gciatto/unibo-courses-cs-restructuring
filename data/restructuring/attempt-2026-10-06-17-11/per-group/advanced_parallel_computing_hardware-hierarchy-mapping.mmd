@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Parallel Computer Hardware and Architectures<br/>6 ECTS"]:::proposed
+  P1["Parallel Computation Foundations and Programming<br/>3 ECTS"]:::proposed
+  S0["Parallel Calculus (58437)<br/>High-Performance Computing (72778)<br/>Architecture and Platforms for Artificial Intelligence (91259)<br/>SISTEMI CONCORRENTI E PARALLELI M (B8562)<br/>SISTEMI DI ELABORAZIONE ACCELERATA M (B8563)"]:::source
+  S0 -.-> P1
+  S0 -.-> P0
+  S1["Computer Architecture (69731)<br/>Programming and Computer Architectures (95602)"]:::source
+  S1 -.-> P0
+  S2["Infrastructures For Cloud Computing and Big Data M (84531)"]:::source
+  S2 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

@@ -1,0 +1,11 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Concurrency Programming Fundamentals<br/>3 ECTS"]:::proposed
+  P1["Advanced Concurrent Programming<br/>2 ECTS"]:::proposed
+  S0["Concurrent and Distributed Programming (17628)"]:::source
+  S0 -.-> P1
+  S0 -.-> P0
+  S1["Operating Systems T (28020)<br/>Lab-based Course on Operating Systems (58348)<br/>Object-Oriented Programming (70219)<br/>SISTEMI CONCORRENTI E PARALLELI M (B8562)"]:::source
+  S1 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

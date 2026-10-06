@@ -1,0 +1,10 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Web Development Foundations<br/>4 ECTS"]:::proposed
+  P1["Server-Side Web Development<br/>4 ECTS"]:::proposed
+  S0["Web Services and Applications (69867)<br/>Web Technology (88566)"]:::source
+  S0 -.-> P1
+  S1["Computational Models And Languages M (72940)<br/>Interaction Multimedia Services (81917)<br/>Information Modelling and Web Technologies (85445)<br/>Foundations of Web Systems (95645)"]:::source
+  S1 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

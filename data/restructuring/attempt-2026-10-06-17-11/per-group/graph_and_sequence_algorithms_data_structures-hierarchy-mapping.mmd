@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["C Data Structures and Trees<br/>3 ECTS"]:::proposed
+  P1["Graph and Sequence Algorithms<br/>6 ECTS"]:::proposed
+  S0["Programming (00819, 00819-B)<br/>Laboratory of Informatics (16692)<br/>Algorithms and Data Structures for Computational Biology (B5782)<br/>Computational Management of Data (B8105)<br/>SISTEMI SOFTWARE A OGGETTI T (B8554)"]:::source
+  S0 -.-> P0
+  S1["Algorithms and Data Structures (11929, 11929-A)<br/>Data Structure and Algorithms (37635)"]:::source
+  S1 -.-> P1
+  S1 -.-> P0
+  S2["Algorithm and Data Structures (11929-B)<br/>Algorithms and Data Structures in Biology (85301)<br/>ALGORITMI E STRUTTURE DATI (B4913)"]:::source
+  S2 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

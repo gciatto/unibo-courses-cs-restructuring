@@ -1,0 +1,19 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["AI Foundations of Cognition and Representation<br/>3 ECTS"]:::proposed
+  P1["Meaning and Multimodal Interpretation in AI<br/>3 ECTS"]:::proposed
+  P2["Computational Methods and Explainability in AI<br/>3 ECTS"]:::proposed
+  S0["Computer Science for Cultural Heritage (48693)"]:::source
+  S0 -.-> P1
+  S1["Intelligent Systems M (78778)<br/>Deep Learning (91250-B)<br/>Natural Language Processing (91258, B0385)<br/>Intelligent Systems Engineering (93669)<br/>Methods and Models for Data Analytics M (96143)<br/>Programming Laboratory (B0063)"]:::source
+  S1 -.-> P2
+  S2["Artificial intelligence (90147)"]:::source
+  S2 -.-> P0
+  S2 -.-> P2
+  S3["METODOLOGIE E TECNICHE DI SIMULAZIONE (B0070)"]:::source
+  S3 -.-> P0
+  S4["Cognitive Sematics for Artificial Intelligence (B4948)<br/>Universal Semantics (B8836)"]:::source
+  S4 -.-> P0
+  S4 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

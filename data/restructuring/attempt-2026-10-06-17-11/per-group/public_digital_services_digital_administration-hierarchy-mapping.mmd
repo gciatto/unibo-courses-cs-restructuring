@@ -1,0 +1,10 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Digital Administration and Public Services<br/>5 ECTS"]:::proposed
+  P1["Healthcare Information Systems<br/>4 ECTS"]:::proposed
+  S0["Information Processing Systems (20741)<br/>Health Information Processing Systems (75198)<br/>Informatics (78510)"]:::source
+  S0 -.-> P1
+  S1["Computer Science for Environmental Sciences (28106)<br/>Basic and Laboratory Informatics (39176)<br/>Informatics (57828, 96346-A)<br/>Informatic (82202, 82202-A)<br/>Informatics for the Humanities (B4826)<br/>Basic IT Skills (B9254)"]:::source
+  S1 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

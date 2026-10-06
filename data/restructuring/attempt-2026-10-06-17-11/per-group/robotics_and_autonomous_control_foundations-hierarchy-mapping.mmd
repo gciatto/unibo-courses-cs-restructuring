@@ -1,0 +1,11 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Robotics Foundations and Autonomous Robot Behavior<br/>6 ECTS"]:::proposed
+  P1["Advanced Robot Design and Swarm Intelligence<br/>3 ECTS"]:::proposed
+  S0["Software Systems Engineering M (72939)<br/>Smart Vehicular Systems (90074)<br/>Artificial intelligence (90147)<br/>Cyber-Physical Systems Programming M (99195)"]:::source
+  S0 -.-> P0
+  S1["Intelligent Systems M (78778)<br/>Intelligent Robotic Systems (91411)"]:::source
+  S1 -.-> P1
+  S1 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

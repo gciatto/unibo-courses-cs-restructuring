@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Python Development and Data Communication<br/>3 ECTS"]:::proposed
+  P1["Machine Learning and Applied Analytics Workflows<br/>3 ECTS"]:::proposed
+  S0["Foundations of Computer Science T (93034-A)<br/>Programming Laboratory (B0063)<br/>Language, Technology, Research I: Computational Thinking (B2696)<br/>DIGITAL HEALTH M (B8018)"]:::source
+  S0 -.-> P0
+  S1["Digital Culture (93379)"]:::source
+  S1 -.-> P1
+  S1 -.-> P0
+  S2["Operational Analytics (95638)<br/>Methods and Models for Data Analytics M (96143)<br/>Python Coding and Data Science (98735)<br/>DATA SCIENCE FOR FASHION SYSTEM (B4940)"]:::source
+  S2 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

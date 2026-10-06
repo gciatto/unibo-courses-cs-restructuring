@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Scientific Programming and Data Representation<br/>6 ECTS"]:::proposed
+  P1["Numerical Computation Methods and Error Analysis<br/>3 ECTS"]:::proposed
+  S0["Principles of Informatics (09730-A)<br/>Elements of Informatics (89988)<br/>Informatics for the Humanities (B4826)"]:::source
+  S0 -.-> P0
+  S1["Foundations of Informatics and Laboratory (28623)<br/>Foundations of Informatics T (29227-A, 29227-B)<br/>ADVANCED PROGRAMMING (65094)"]:::source
+  S1 -.-> P1
+  S2["Foundations of Computer Science T (93034-A)"]:::source
+  S2 -.-> P1
+  S2 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

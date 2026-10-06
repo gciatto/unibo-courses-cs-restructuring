@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Web Application Architecture Fundamentals<br/>3 ECTS"]:::proposed
+  P1["Advanced Web Application Architecture<br/>6 ECTS"]:::proposed
+  S0["Web Technologies T (28659)"]:::source
+  S0 -.-> P1
+  S0 -.-> P0
+  S1["Informatics (57828)<br/>Web Services and Applications (69867)<br/>Data Bases (70155)<br/>Interaction Multimedia Services (81917)<br/>Elements of Computer Technologies for Fashion E-Commerce (90864)<br/>Networks, Security And Data Bases (91161)"]:::source
+  S1 -.-> P0
+  S2["Distributed Systems M (73025)<br/>Design of Web Applications T (94442)<br/>Virtualized Systems (95646)"]:::source
+  S2 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

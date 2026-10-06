@@ -1,0 +1,11 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Computer Science Education Foundations and Methods<br/>6 ECTS"]:::proposed
+  P1["Programming and Software in Computer Science Education<br/>3 ECTS"]:::proposed
+  S0["Laboratory of Making (81678)"]:::source
+  S0 -.-> P0
+  S1["Computing Education (90749)"]:::source
+  S1 -.-> P0
+  S1 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

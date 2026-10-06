@@ -1,0 +1,33 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 2
+  name: Big Data Cloud (2)
+course:
+  id: '81932'
+  name: Big Data
+topics:
+  big_data_management: Introductory approaches and technologies for managing big data
+    as alternatives or complements to relational databases.
+  cloud_big_data_deployment: Handling Big Data in the cloud, including comparison
+    of on-premises and cloud clusters, cloud technology stacks, and deployment of
+    a case study on a cloud provider.
+  cloud_computing: Introduction to cloud computing in the context of distributed and
+    service-oriented programming.
+  cluster_computing_big_data: Cluster-computing hardware and software architectures
+    for handling Big Data.
+  hadoop: The Apache Hadoop framework for Big Data processing, including HDFS and
+    YARN, with practical use of related Hadoop technologies.
+  mapreduce: The MapReduce programming paradigm, including its principles, limitations,
+    algorithm design, and application to non-trivial problems.
+  nosql_databases: Introductory architectures and non-relational data models of NoSQL
+    systems.
+  online_stream_processing: Introductory high-performance online stream processing
+    of big data over clustered distributed systems.
+  parquet_data_storage: Apache Parquet data structures and columnar storage for Big
+    Data systems.
+  spark: The Apache Spark system, including its architecture, data structures, data
+    partitioning, shuffling, and computation optimization.
+  spark_sql: SQL processing on Big Data using Spark SQL.
+  streaming_approximation_algorithms: Approximation algorithms for processing data
+    streams.

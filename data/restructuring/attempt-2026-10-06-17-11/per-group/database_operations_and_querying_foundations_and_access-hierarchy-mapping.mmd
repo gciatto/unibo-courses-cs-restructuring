@@ -1,0 +1,10 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Database Foundations and Application Access<br/>6 ECTS"]:::proposed
+  P1["Advanced Database Operations and Queries<br/>3 ECTS"]:::proposed
+  S0["Databases (10906-A)<br/>Computer Lab (15920)<br/>IT Systems T-1 (28652)<br/>Basic and Laboratory Informatics (39176)<br/>Informatics (57828)<br/>Informatic (82202-A)<br/>INFORMATICA (B8159)"]:::source
+  S0 -.-> P0
+  S1["Advanced Database Systems (84339)<br/>Database and Big Data Technologies M (84530)"]:::source
+  S1 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

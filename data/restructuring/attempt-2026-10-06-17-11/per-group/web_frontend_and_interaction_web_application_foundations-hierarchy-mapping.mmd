@@ -1,0 +1,10 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Web Application Foundations and Technology<br/>6 ECTS"]:::proposed
+  P1["Web Human-Computer Interaction and User Experience<br/>3 ECTS"]:::proposed
+  S0["Web-related Technologies (41731-A)<br/>Interaction Multimedia Services (81917)<br/>HUMAN COMPUTER INTERACTION (81934)<br/>Web and Mobile Systems (95605)<br/>Foundations of Web Systems (95645)<br/>Interaction Media Design (B5059)"]:::source
+  S0 -.-> P1
+  S1["Web Systems Engineering (47240)<br/>Web Services and Applications (69867)<br/>Basic Informatics (75969)"]:::source
+  S1 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

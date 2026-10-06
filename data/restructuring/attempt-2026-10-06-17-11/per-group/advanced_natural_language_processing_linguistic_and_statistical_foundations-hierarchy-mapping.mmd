@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Linguistic and Statistical Foundations of Natural Language Processing<br/>6 ECTS"]:::proposed
+  P1["Contextual and Neural Methods in Natural Language Processing<br/>3 ECTS"]:::proposed
+  S0["Data Mining (40720)<br/>Multimedia Data Management M (77933, 78096)<br/>Natural Language Processing (91258-B)<br/>Multimedia Data Management (91269)<br/>Machine Learning and Data Mining (95631-A)"]:::source
+  S0 -.-> P0
+  S1["Natural Language Processing (91258, 91258-A, B0385)"]:::source
+  S1 -.-> P1
+  S1 -.-> P0
+  S2["METODOLOGIE E TECNICHE DI SIMULAZIONE (B0070)<br/>Knowledge Engeneering for the Humanities (B5292)"]:::source
+  S2 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Data Mining Platforms<br/>3 ECTS"]:::proposed
+  P1["Data Mining Methods and Applications<br/>6 ECTS"]:::proposed
+  S0["Elements of Databases (28796)<br/>Business Intelligence (30376)<br/>Systems and Algorithms for Data Science (85189)<br/>Machine Learning Systems For Data Science (90477)<br/>Business Intelligence and Big Data M (96142)"]:::source
+  S0 -.-> P0
+  S1["Data Mining (40720)<br/>Machine Learning and Data Mining (95631-A)<br/>Methods and Models for Data Analytics M (96143)<br/>Python Coding and Data Science (98735)<br/>ELABORAZIONE DI TESTI E GESTIONE DOCUMENTALE (B0073)<br/>Big Data Analytics and Text Mining (B2133)"]:::source
+  S1 -.-> P1
+  S2["Machine Learning and Data Mining (95631)<br/>Machine Learning and Data Mining M (B2125)"]:::source
+  S2 -.-> P1
+  S2 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

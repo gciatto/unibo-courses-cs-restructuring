@@ -1,0 +1,52 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 27
+  name: Architectures Computer Architetture (27)
+course:
+  id: '91602'
+  name: Computer Architectures
+topics:
+  activation_records: Stacks of activation records used to implement procedure calls
+    and execution environments.
+  address_segmentation: Segmentation of addresses into logical and physical addresses
+    in Intel architecture.
+  arithmetic_logic_circuits: Binary arithmetic circuits including half adders, full
+    adders, n-bit adders, and arithmetic-logic units.
+  branch_prediction: Branch prediction for handling control hazards in pipelined CPUs.
+  bus_cycles: Processor PC and bus cycles and their role in computer operation.
+  combinational_standard_circuits: Design and use of standard combinational circuits
+    including decoders, encoders, multiplexers, ROMs, and three-state buffers.
+  computer_hardware_architecture: Fundamental organization of computer hardware systems.
+  computer_history: Historical development of computers as introduced alongside computer
+    architecture.
+  computer_performance: Measurement of computer performance.
+  cpu_pipelining: Pipelined CPU organization, including pipeline principles, datapaths,
+    and performance metrics.
+  dlx_cpu_organization: Internal CPU structure and implementation using the sequentially
+    organized DLX processor.
+  instruction_encoding: Encoding formats for machine instructions, including instruction
+    formats in DLX and other instruction-set architectures.
+  instruction_set_architecture: Instruction Set Architecture as the interface between
+    software and processor implementation.
+  interrupt_systems: Hardware and software interrupts and exceptions, including interrupt
+    handling by a programmable interrupt controller and vectored interrupts.
+  io_handling: Handling of input/output devices in microprocessor-based systems.
+  io_ports: Hardware I/O ports, including port registers, system-bus interfacing,
+    and polling-based I/O.
+  isa_addressing_modes: Addressing modes used by instruction-set architectures.
+  latches_flip_flops: Binary memory elements for asynchronous sequential circuits,
+    including SR latches, D latches, and D flip-flops.
+  memory_interfacing: Interfacing ROM and RAM with the system bus, including address
+    decoding, data-bus width, access time, wait states, and READY circuitry.
+  memory_io_addressing: Addressing of memory and input/output devices.
+  pipeline_hazards: Instruction dependencies and pipeline hazards, including stalls
+    and forwarding.
+  register_files: Register-file organization and its role in processor datapaths.
+  risc_cisc_architectures: RISC and CISC processor architecture approaches.
+  sequential_control_units: Sequential control units used in microprocessor organization
+    and control.
+  synchronous_standard_circuits: Synchronous sequential circuits including registers,
+    shift registers, synchronizers, and counters.
+  von_neumann_architecture: The organization and operating principles of the Von Neumann
+    computer architecture.

@@ -1,0 +1,8 @@
+%% Restructuring proposal for all courses
+flowchart TB
+  P0["Linguistic and Statistical Foundations of Natural Language Processing<br/>6 ECTS<br/>computational_morphology<br/>lexical_semantics_and_word_senses<br/>logical_sentence_semantics<br/>ngram_language_models<br/>named_entity_and_part_of_speech_annotation<br/>text_similarity_and_dissimilarity"]:::proposed
+  P1["Contextual and Neural Methods in Natural Language Processing<br/>3 ECTS<br/>contextual_word_embeddings<br/>text_convolutional_networks<br/>language_model_prompting"]:::proposed
+  legend["Topic colour: first scope, in this order, among the<br/>current courses teaching it (by teachers' and programmes' department)<br/>service: some DISI teacher, no DISI degree programme<br/>external: no DISI teacher, no DISI degree programme<br/>borrow: no DISI teacher, some DISI degree programme<br/>weak_internal: some (not all) DISI teachers and DISI degree programmes<br/>internal: only DISI teachers and DISI degree programmes"]:::source
+  P0 --> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

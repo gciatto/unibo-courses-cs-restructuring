@@ -1,0 +1,11 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Software Quality Foundations<br/>6 ECTS"]:::proposed
+  P1["Software Release Management<br/>3 ECTS"]:::proposed
+  S0["Programming and Development paradigms (81612)<br/>Software Engineering (90106)<br/>Foundations of Computer Science T (93034-A)<br/>Software Design and Development (95648)<br/>Advanced Software Modelling and Design (B0009)<br/>Computational Management of Data (B8105)"]:::source
+  S0 -.-> P0
+  S1["Software Engineering (95627)<br/>Software Process Engineering (B0011)"]:::source
+  S1 -.-> P0
+  S1 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

@@ -1,0 +1,11 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Agricultural IoT Foundations, Networks, and Platforms<br/>6 ECTS"]:::proposed
+  P1["Agricultural Embedded IoT Programming and Edge AI<br/>3 ECTS"]:::proposed
+  S0["Software Systems Engineering M (72939)<br/>Embedded Systems Programming and Internet of Things (77780)<br/>Mobile Systems M (78779)<br/>Laboratory of Making (81678)<br/>Big Data and Cloud Platforms (95630)<br/>Industry 4.0 (95639)<br/>Software Architecture and Platforms (B0010)<br/>DIGITAL HEALTH M (B8018)<br/>PROGRAMMING THE INTERNET OF THINGS M (B8019)"]:::source
+  S0 -.-> P0
+  S1["Internet of Things (81683)<br/>Iot And Big Data For Smart Agricultural Systems (93653)<br/>Embedded Systems and Internet of Things (96859)"]:::source
+  S1 -.-> P0
+  S1 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

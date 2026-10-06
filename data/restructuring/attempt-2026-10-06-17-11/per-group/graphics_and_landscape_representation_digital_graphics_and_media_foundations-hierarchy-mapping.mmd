@@ -1,0 +1,11 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Digital Graphics and Media Foundations<br/>6 ECTS"]:::proposed
+  P1["Computer-Aided Landscape Representation<br/>3 ECTS"]:::proposed
+  S0["Cryptography (14015)<br/>Humanistic IT (27311)<br/>Computer Science (69259)<br/>Multimedia Technologies in Archaelogy (76011)"]:::source
+  S0 -.-> P0
+  S1["Lab-based Course on Computer Graphics (70210)<br/>Digital represention of the Landscape Project (97466)"]:::source
+  S1 -.-> P1
+  S1 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

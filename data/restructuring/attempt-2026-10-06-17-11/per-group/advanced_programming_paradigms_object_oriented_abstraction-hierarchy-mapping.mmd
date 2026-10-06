@@ -1,0 +1,17 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Functional Programming Foundations and Scala<br/>2 ECTS"]:::proposed
+  P1["Object-Oriented Models, Relationships, and Reusable Behavior<br/>3 ECTS"]:::proposed
+  P2["Advanced Types, Effects, Certification, and Concurrency<br/>4 ECTS"]:::proposed
+  S0["Programming Languages (04138)"]:::source
+  S0 -.-> P0
+  S0 -.-> P1
+  S1["Programming Laboratory (16870)"]:::source
+  S1 -.-> P1
+  S2["Computational Models And Languages M (72940)<br/>Programming and Development paradigms (81612)<br/>Scalable and Cloud Programming (81942)<br/>Foundations of Computer Science T (93034-A)<br/>Software Design and Development (95648)<br/>Advanced Software Modelling and Design (B0009)<br/>SISTEMI SOFTWARE A OGGETTI T (B8554)"]:::source
+  S2 -.-> P0
+  S3["Emerging Programming Paradigms (81672)"]:::source
+  S3 -.-> P2
+  S3 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

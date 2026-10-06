@@ -1,0 +1,17 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Programming and Array Foundations<br/>2 ECTS"]:::proposed
+  P1["Logic and Rule Programming<br/>4 ECTS"]:::proposed
+  P2["Constraint Programming and Probabilistic Reasoning<br/>3 ECTS"]:::proposed
+  S0["Foundations Of Artificial Intelligence T (72938)<br/>Intelligent Systems M (78778)<br/>Programming and Development paradigms (81612)"]:::source
+  S0 -.-> P1
+  S1["Human Data Science (93469)"]:::source
+  S1 -.-> P2
+  S2["Language, Technology, Research I: Computational Thinking (B2696)"]:::source
+  S2 -.-> P0
+  S3["Introduction to Languages for Artificial Intelligence (B5727)"]:::source
+  S3 -.-> P2
+  S3 -.-> P0
+  S3 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

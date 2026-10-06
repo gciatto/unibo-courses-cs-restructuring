@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["User Experience Design Foundations<br/>4 ECTS"]:::proposed
+  P1["Advanced Interaction and Cultural Heritage Experiences<br/>5 ECTS"]:::proposed
+  S0["Web-related Technologies (41731)<br/>Interaction Multimedia Services (81917)<br/>Usability and User Experience (85573)<br/>Web Technology (88566)<br/>Usability &amp; User Experience Design (90720)"]:::source
+  S0 -.-> P0
+  S1["HUMAN COMPUTER INTERACTION (81934)"]:::source
+  S1 -.-> P1
+  S2["User Experience Design (91264)<br/>Interaction Media Design (B5059)"]:::source
+  S2 -.-> P1
+  S2 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

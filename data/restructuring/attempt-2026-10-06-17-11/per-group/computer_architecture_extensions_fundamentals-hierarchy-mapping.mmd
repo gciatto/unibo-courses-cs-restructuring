@@ -1,0 +1,10 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Computer Architecture Extensions Fundamentals<br/>4 ECTS"]:::proposed
+  P1["Advanced Computer Architecture Extensions<br/>5 ECTS"]:::proposed
+  S0["Digital Design Principles and Computer Architecture (03716)<br/>Principles of Informatics (09730)<br/>Computer Architecture (11925, 69731)<br/>Foundations of Informatics A (15305)<br/>Foundations of Informatics T (29227)<br/>Fundamentals of Computer Programming P1 (88145)<br/>Fundamentals of Computer Programming P2 (88146)<br/>Foundations of Computer Architecture and Operating Systems (96007)<br/>Computer Science (96346-B)<br/>INFORMATICA (B8159)<br/>SISTEMI DI ELABORAZIONE ACCELERATA M (B8563)"]:::source
+  S0 -.-> P0
+  S1["Electronic Calculators T (28012)<br/>COMPUTER ARCHITECTURES M (69430)<br/>Real Time OS M (85728)<br/>Industrial Informatics P (88155)<br/>Computer Architectures (91602)<br/>ARCHITETTURE DEI CALCOLATORI M (B8561)"]:::source
+  S1 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

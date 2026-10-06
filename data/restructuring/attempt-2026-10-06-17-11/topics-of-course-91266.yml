@@ -1,0 +1,46 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 17
+  name: Basic Skills Informatics (17)
+course:
+  id: '91266'
+  name: Machine Learning for Computer Vision
+topics:
+  attention_mechanisms: Attention mechanisms for visual and language representations,
+    including their use in vision Transformers and image-classification architectures.
+  boosting_ensemble_learning: Boosting as an ensemble-learning method, introduced
+    for object-detection applications.
+  cnn_architectures: Convolutional neural-network architectures for computer vision,
+    including ResNeXt and grouped convolutions, MobileNets, EfficientNet, RegNet,
+    AlexNet, VGG, Inception, and ResNet.
+  cnn_object_detection: Neural-network approaches to object detection, including two-stage,
+    one-stage, anchor-free, Feature Pyramid Network, focal-loss, and DETR-based detectors.
+  depth_estimation: Monocular depth estimation from images using photometric loss
+    and Monodepth.
+  diffusion_models: Modern generative diffusion models and their use in deep-learning
+    applications.
+  generative_model_evaluation: Metrics for evaluating image-generation and other generative-model
+    tasks.
+  generative_models: Generative machine-learning models, specifically Generative Adversarial
+    Networks (GANs) and autoencoders.
+  image_classification: Image classification using linear classifiers and fully connected
+    neural networks.
+  image_segmentation: Image-segmentation methods for separating objects or regions,
+    including semantic segmentation architectures such as Fully Convolutional Networks,
+    U-Net, and DeepLab.
+  metric_learning: Deep metric and representation learning for visual applications
+    such as face recognition and identification, including contrastive loss, triplet
+    loss, ArcFace, and NT-Xent loss.
+  object_detection: Techniques for detecting objects in images and video.
+  random_forest_classification: Random-forest ensemble methods for classification.
+  semantic_instance_panoptic_segmentation: Semantic, instance, and panoptic image
+    segmentation, including Mask R-CNN and MaskFormer, transposed and dilated convolutions,
+    and body-part segmentation.
+  textual_inversion: Textual inversion for adapting diffusion models to text-guided
+    image generation.
+  transformers: Transformer architectures and attention-based models, including applications
+    to visual and language-related machine-learning tasks.
+  vision_language_models: Models combining visual and language information.
+  vision_transformers: Vision Transformer architectures for image classification and
+    other computer-vision tasks.

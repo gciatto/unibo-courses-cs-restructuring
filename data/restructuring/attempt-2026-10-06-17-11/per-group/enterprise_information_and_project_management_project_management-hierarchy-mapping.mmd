@@ -1,0 +1,15 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Project Management<br/>6 ECTS"]:::proposed
+  P1["Digital Innovation<br/>3 ECTS"]:::proposed
+  P2["Project Risk Management<br/>1 ECTS"]:::proposed
+  S0["Data Base Sistems (09679)<br/>Humanistic IT (27311)<br/>Cybersecurity (93470, 93470-A)<br/>Cybersecurity M (B5793)"]:::source
+  S0 -.-> P0
+  S1["Project Management (73435)<br/>Project Management and Software Engineering for Cultural Heritage (B1874)"]:::source
+  S1 -.-> P0
+  S1 -.-> P2
+  S2["Laboratory on Digital Transformation Technologies (95632)"]:::source
+  S2 -.-> P1
+  S2 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

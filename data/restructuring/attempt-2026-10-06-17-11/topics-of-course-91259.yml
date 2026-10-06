@@ -1,0 +1,54 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 2
+  name: Big Data Cloud (2)
+course:
+  id: '91259'
+  name: Architecture and Platforms for Artificial Intelligence
+topics:
+  attention_mechanisms: Attention mechanisms for visual and language representations,
+    including their use in vision Transformers and image-classification architectures.
+  cloud_ml_platforms: Cloud-provider platforms specifically supporting machine-learning
+    and deep-learning applications.
+  cnn_architectures: Convolutional neural-network architectures for computer vision,
+    including ResNeXt and grouped convolutions, MobileNets, EfficientNet, RegNet,
+    AlexNet, VGG, Inception, and ResNet.
+  cuda_architecture_memory: CUDA processor architecture and memory hierarchy as used
+    for GPU programming.
+  cuda_programming: CUDA programming for machine-learning workloads, including threads,
+    thread groups, grids, synchronization primitives, and shared memory.
+  efficient_attention: Efficient attention mechanisms for transformer-based models.
+  efficient_nn_architectures: Efficient neural-network model structures, including
+    depthwise convolutions and inverse bottlenecks.
+  gpu_programming: Programming general-purpose graphics processing units (GPGPUs).
+  instruction_set_architecture: Instruction Set Architecture as the interface between
+    software and processor implementation.
+  knowledge_distillation: Model distillation techniques for producing efficient neural-network
+    models.
+  ml_algorithmic_optimization: Algorithmic optimization techniques for machine-learning
+    computations, including Strassen, Winograd, and FFT methods.
+  ml_computational_kernels: Computational kernels underlying machine-learning workloads,
+    including dot products and matrix multiplication.
+  ml_isa_acceleration: Improving processor instruction-set architectures for machine-learning
+    workloads, with RISC-V and ARM use cases.
+  ml_workload_analysis: Computational analysis and characterization of machine-learning
+    workloads, including the distinction between inference and training.
+  ml_workload_parallelization: Parallelization of machine-learning workloads on parallel
+    processor architectures.
+  model_compression_quantization: Model-compression techniques for neural networks,
+    including scalar, block, and vector quantization and sparsity.
+  neural_architecture_search: Neural Architectural Search methods for finding or designing
+    neural-network architectures.
+  neural_networks_deep_learning: Introduction to neural networks and deep learning,
+    including their applications.
+  openmp: Programming shared-memory architectures in C using OpenMP.
+  parallel_architectures: Parallel computer architectures as covered in the course's
+    overview of computer-architecture levels and examples.
+  parallel_computation_models: Models of parallel computation used to describe and
+    organize parallel algorithms.
+  parallel_programming_patterns: Parallel programming patterns including embarrassingly
+    parallel, stencil, work farm, scan, and reduce patterns.
+  recurrent_neural_networks: Recurrent neural networks.
+  state_based_neural_networks: State-based neural-network architectures considered
+    alongside DNNs, CNNs, RNNs, and attention-based networks.

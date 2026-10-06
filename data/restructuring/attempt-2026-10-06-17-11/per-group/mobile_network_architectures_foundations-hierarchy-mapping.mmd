@@ -1,0 +1,19 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Mobile and Wireless Network Foundations<br/>3 ECTS"]:::proposed
+  P1["Network Communication Services<br/>4 ECTS"]:::proposed
+  P2["Network Management and Troubleshooting<br/>2 ECTS"]:::proposed
+  S0["Mobile Systems M (78779)"]:::source
+  S0 -.-> P0
+  S0 -.-> P1
+  S1["Laboratory of Making (81678)<br/>Infrastructures For Cloud Computing and Big Data M (84531)"]:::source
+  S1 -.-> P1
+  S2["Internet of Things (81683)"]:::source
+  S2 -.-> P0
+  S3["System Administration T (88324)<br/>Virtualization and System Integration (96642)<br/>Administration of Systems T (B0832)"]:::source
+  S3 -.-> P2
+  S4["Computer Networks (93315)"]:::source
+  S4 -.-> P0
+  S4 -.-> P2
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

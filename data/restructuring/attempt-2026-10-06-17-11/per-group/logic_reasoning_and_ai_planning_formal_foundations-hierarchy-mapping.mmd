@@ -1,0 +1,10 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Formal Logic and Computational Foundations<br/>5 ECTS"]:::proposed
+  P1["AI Reasoning and Planning<br/>4 ECTS"]:::proposed
+  S0["Theoretical Computer Science (11933, 41169)<br/>Logic for Computer Science (66857)<br/>Logic for Informatics (73149)"]:::source
+  S0 -.-> P0
+  S1["Intelligent Systems M (78778)<br/>Fundamentals of Artificial Intelligence and Knowledge Representation (91248)<br/>Fundamentals of Artificial Intelligence (98931)"]:::source
+  S1 -.-> P1
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

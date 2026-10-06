@@ -1,0 +1,49 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 2
+  name: Big Data Cloud (2)
+course:
+  id: '84530'
+  name: Database and Big Data Technologies M
+topics:
+  big_data_management: Introductory approaches and technologies for managing big data
+    as alternatives or complements to relational databases.
+  cap_theorem: The CAP theorem in the context of non-relational and Big Data database
+    management systems.
+  database_architectures: Architectural organization of database systems, including
+    client-server relational systems and introductory distributed and cloud database
+    systems.
+  database_performance_analysis: Analysis of relational database designs and data
+    models for performance.
+  database_storage_structures: Secondary-memory data structures and management algorithms,
+    including sequential and direct access organizations, primary and secondary indexes,
+    and B-tree, B*-tree, and B+tree structures.
+  database_transactions: Database transactions, including ACID properties, concurrency
+    management, and transaction protocols.
+  hadoop: The Apache Hadoop framework for Big Data processing, including HDFS and
+    YARN, with practical use of related Hadoop technologies.
+  mapreduce: The MapReduce programming paradigm, including its principles, limitations,
+    algorithm design, and application to non-trivial problems.
+  nosql_data_models: Design and use of non-relational data models, including document-based,
+    graph-based, and column-oriented models.
+  physical_database_storage: Physical database storage concepts including storage
+    devices, pages, files, tuple and attribute representation, disk-page I/O, buffer
+    management, file organization, and cost evaluation of basic file operations.
+  query_optimization: Database query-processing and optimization techniques including
+    semantic checks, catalogs, SQL rewriting, statistics and histograms, cardinality
+    and cost estimation, materialization and pipelining, access-plan enumeration,
+    domination rules, and dynamic-programming optimization.
+  rdbms_components: Main relational database management system components, including
+    query optimization, transaction management, scheduling, recovery, caching, storage
+    management, and access methods.
+  relational_query_operators: Implementation of relational operations using physical
+    operators for sorting, selection, projection, joins, set operations, and aggregation.
+  skyline_queries: Skyline-query concepts and algorithms based on dominance, scoring
+    relationships, and indexed or non-indexed methods including BBS, NL, BNL, SFS,
+    and SaLSa.
+  spatial_indices: Multidimensional and spatial data indexing, including spatial queries,
+    k-D and k-D-B-trees, R-trees, and GiST indexes.
+  top_k_queries: Ranking and Top-k query processing, including scoring and distance
+    functions, mono- and multidimensional ranking, nearest-neighbor and distance browsing,
+    top-k joins, and the B0, FA, TA, CA, and NRA algorithms.

@@ -1,0 +1,13 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Systems and Network Services Foundations<br/>3 ECTS"]:::proposed
+  P1["Advanced Network Services and Communication<br/>6 ECTS"]:::proposed
+  S0["Operating Systems (08574-A)<br/>Operating Systems T (28020)<br/>Lab-based Course on Operating Systems (58348)<br/>Operating Systems and Networks (95604)<br/>SISTEMI CONCORRENTI E PARALLELI M (B8562)"]:::source
+  S0 -.-> P0
+  S1["Cryptography (14015)<br/>Virtualized Systems (95646)<br/>Virtualization and System Integration (96642)"]:::source
+  S1 -.-> P1
+  S2["Computer Networks (93315)"]:::source
+  S2 -.-> P1
+  S2 -.-> P0
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999

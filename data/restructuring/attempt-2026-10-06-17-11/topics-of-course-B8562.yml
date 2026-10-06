@@ -1,0 +1,54 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 27
+  name: Architectures Computer Architetture (27)
+course:
+  id: B8562
+  name: SISTEMI CONCORRENTI E PARALLELI M
+topics:
+  channel_communication: Channel-based message passing, including communication implemented
+    in the Go language.
+  concurrent_programming: The concurrent programming paradigm.
+  cpu_caches: Processor caches as components of the Intel IA32 memory hierarchy, including
+    implementation and performance considerations.
+  distributed_algorithms: Algorithms designed for distributed systems.
+  hardware_virtualization: Virtualization mechanisms introduced in the context of
+    processor and multicore architectures.
+  hpc_architectures: High-performance computing architectures, including Flynn taxonomy,
+    shared-memory and distributed-memory architectures, and GPGPU systems.
+  hpc_workload_management: Tools and operating-system support for managing workloads
+    on high-performance computing infrastructures.
+  hybrid_parallel_programming: Parallel application development combining message
+    passing and shared-memory programming models.
+  instruction_level_parallelism: Instruction-level parallelism, including dependencies,
+    latency tolerance, and methods for exposing parallel execution in processors.
+  inter_process_communication: Mechanisms for communication and coordination between
+    processes.
+  message_passing: Concurrent message-passing models based on synchronous and asynchronous
+    communication.
+  mpi: Programming distributed-memory architectures in C using the Message Passing
+    Interface (MPI).
+  openmp: Programming shared-memory architectures in C using OpenMP.
+  parallel_architectures: Parallel computer architectures as covered in the course's
+    overview of computer-architecture levels and examples.
+  parallel_computation_models: Models of parallel computation used to describe and
+    organize parallel algorithms.
+  parallel_performance: Performance evaluation of parallel programs, including measurement
+    and interpretation of speedup and efficiency.
+  parallel_scalability_laws: Performance evaluation of parallel applications using
+    speedup, efficiency, strong and weak scalability, and Amdahl's and Gustafson's
+    laws.
+  processes_threads: Operating-system processes and threads, including their organization
+    and execution.
+  pthread_concurrency: Concurrent programming in C using the POSIX threads (pthreads)
+    library in the shared-memory model.
+  rpc: Distributed programming using remote-procedure-call-like models, including
+    Java RMI.
+  shared_memory_synchronization: Shared-memory interaction mechanisms for concurrent
+    programs, including semaphores and monitors.
+  simultaneous_multithreading: Simultaneous multithreading and the use of logical
+    processors.
+  virtual_machines: Structure and implementation of virtual machines.
+  von_neumann_architecture: The organization and operating principles of the Von Neumann
+    computer architecture.

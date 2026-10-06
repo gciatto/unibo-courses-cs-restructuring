@@ -1,0 +1,45 @@
+analysis:
+  mode: all-courses
+source_clusters:
+- id: 21
+  name: Artificial Intelligence Fundamentals (21)
+course:
+  id: '91762'
+  name: Combinatorial Decision Making and Optimization
+topics:
+  boolean_satisfiability: The Boolean Satisfiability problem as a general-purpose
+    approach to combinatorial decision making and optimization.
+  combinatorial_optimization: Combinatorial optimization methods for industrial decision
+    problems.
+  conflict_driven_clause_learning: Conflict-driven clause-learning algorithms for
+    solving Boolean Satisfiability problems.
+  constraint_modeling: Modeling combinatorial decision problems using variables, domains,
+    and constraints in Constraint Programming.
+  constraint_programming: Constraint-programming methods, including global constraints,
+    search strategies, and applications.
+  constraint_propagation: Local consistency notions and constraint-propagation methods
+    for reducing domains during Constraint Programming.
+  constructive_tree_search: Constructive tree-search algorithms for Constraint Programming,
+    including branching heuristics, randomization, search propagation, and search
+    restarts.
+  dpll_t: The DPLL(T) algorithm for integrating Boolean search with theory reasoning
+    in Satisfiability Modulo Theories.
+  global_constraints: Global constraints used to express and efficiently solve structured
+    combinations of constraints.
+  integer_linear_programming: Integer Linear Programming for modeling and solving
+    combinatorial decision and optimization problems.
+  large_neighborhood_search: Large Neighbourhood Search as a search method for combinatorial
+    optimization and Constraint Programming.
+  linear_programming: Fundamental Linear Programming concepts and results used in
+    operations-research approaches to combinatorial optimization.
+  linear_programming_duality: Duality in Linear Programming.
+  sat_encodings: Encoding combinatorial decision and optimization problems as Boolean
+    Satisfiability instances.
+  sat_solving: Basic SAT-solving techniques, including resolution, unit propagation,
+    and the DPLL algorithm.
+  satisfiability_modulo_theories: Satisfiability Modulo Theories as a generalization
+    of Boolean Satisfiability.
+  simplex_algorithm: The Simplex algorithm for solving Linear Programming problems.
+  smt_encodings: Eager and lazy encoding approaches for Satisfiability Modulo Theories.
+  smt_theory_solvers: Theory solvers and combinations of theories used in Satisfiability
+    Modulo Theories.

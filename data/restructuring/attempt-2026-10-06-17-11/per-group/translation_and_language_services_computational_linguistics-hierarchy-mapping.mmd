@@ -1,0 +1,14 @@
+%% Restructuring proposal for all courses
+flowchart LR
+  P0["Computational Linguistics Foundations<br/>2 ECTS"]:::proposed
+  P1["Computer-Assisted Translation Foundations and Workflows<br/>2 ECTS"]:::proposed
+  P2["Machine Translation and Translation AI Services<br/>5 ECTS"]:::proposed
+  S0["Natural Language Processing (91258-A, 91258-B)"]:::source
+  S0 -.-> P0
+  S1["Computer-Aided Human Translation: CAT, MT and AI (B8536)"]:::source
+  S1 -.-> P1
+  S1 -.-> P2
+  S2["Machine Translation and Artificial Intelligence for Language Services (B8603)"]:::source
+  S2 -.-> P2
+  classDef proposed fill:#e8f1fb,stroke:#24527a
+  classDef source fill:#f3f3f3,stroke:#999
