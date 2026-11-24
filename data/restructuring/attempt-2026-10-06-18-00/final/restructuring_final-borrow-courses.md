@@ -1,0 +1,57 @@
+| New course | ECTS | Modules | Old courses (shared topics) |
+|---|---|---|---|
+| Processor Pipelining and Performance Measurement | 3 ECTS | cpu_pipelining_and_control_hazards, pipelining_and_hazards, computer_performance | 69430 COMPUTER ARCHITECTURES M (3); B8561 ARCHITETTURE DEI CALCOLATORI M (1) |
+| Processor Architecture Foundations | 3 ECTS | instruction_set_architecture, instruction_set_and_processor_datapath, high_level_to_assembly_mapping | B8561 ARCHITETTURE DEI CALCOLATORI M (1); 69430 COMPUTER ARCHITECTURES M (1) |
+| Processor System Interfacing | 3 ECTS | memory_and_io_system_interfacing, system_buses_and_dma_io, interrupt_systems | B8561 ARCHITETTURE DEI CALCOLATORI M (2); 69430 COMPUTER ARCHITECTURES M (2) |
+| Advanced Processor Architecture and Design | 3 ECTS | advanced_instruction_parallelism, architecture_performance, processor_architecture_design | B8561 ARCHITETTURE DEI CALCOLATORI M (5); 69430 COMPUTER ARCHITECTURES M (5) |
+| Memory Systems | 3 ECTS | memory_hierarchy_and_cache_organization, intel_ia32_caches, virtual_memory_management | B8561 ARCHITETTURE DEI CALCOLATORI M (5); 69430 COMPUTER ARCHITECTURES M (5) |
+| IA32 Protection and Virtualization | 2 ECTS | intel_ia32_protection_and_addressing, processor_multithreading_and_virtualization | B8561 ARCHITETTURE DEI CALCOLATORI M (4); 69430 COMPUTER ARCHITECTURES M (4) |
+| Parallel Systems | 2 ECTS | shared_memory_multiprocessors, parallel_computer_architectures | B8561 ARCHITETTURE DEI CALCOLATORI M (4); 69430 COMPUTER ARCHITECTURES M (4) |
+| XR Foundations, Platforms and Content Design | 3 ECTS | xr_foundations, xr_graphics_and_runtime_platforms, xr_interaction_and_content_design | 91721 Laboratory of Virtual Reality and Advanced Reality (11) |
+| Extended Reality Applications | 3 ECTS | xr_applications_and_future_directions, xr_hardware_and_tracking, multiuser_xr_environments | 91721 Laboratory of Virtual Reality and Advanced Reality (7) |
+| Statistical Foundations | 3 ECTS | descriptive_statistics, descriptive_statistics_2, similarity_and_dissimilarity, inferential_statistics_and_probability, probability_and_stochastic_simulation | 91258-B Natural Language Processing (1) |
+| Machine Learning Foundations | 6 ECTS | machine_learning_foundations, machine_learning_modeling_foundations, computational_learning_theory, model_evaluation_and_selection, classification_foundations, regression_models, probabilistic_and_linear_classification, distance_and_margin_classification, learning_theory, tree_based_classification, ensemble_learning_methods, core_clustering_methods, advanced_clustering_methods | 91258-B Natural Language Processing (1) |
+| NLP1 – Natural Language Processing Foundations and Representations | 3 ECTS | nlp_fundamentals, computational_linguistics_foundations, text_tokenization, text_representation_language_models, word_embeddings, contextual_word_embeddings | 91258-B Natural Language Processing (4) |
+| NLP2 – Natural Language Processing Text Models and Mining | 3 ECTS | statistical_language_models, text_classification, text_retrieval, opinion_mining, topic_modeling, nlp_implementation_tools, text_mining_applications | 91258-B Natural Language Processing (4) |
+| Speech Technologies and Live Subtitling | 2 ECTS | live_subtitling_and_speech_recognition, speech_signal_analysis | 91258-B Natural Language Processing (3) |
+| Introduction to Deep Learning & Deep Learning Training (Theory-driven) | 3/4 ECTS | deep_learning_mathematical_foundations, deep_learning_differentiation_and_optimization, deep_learning_regularization_and_augmentation, neural_networks, neural_network_basics, neural_networks_and_deep_learning | 91258-B Natural Language Processing (1) |
+| Generative AI Usage | 3 ECTS | prompting_language_models, llm_generation_prompting | 91258-B Natural Language Processing (1) |
+| Computational Linguistics, Corpora and Lexical Analysis | 3 ECTS | computational_morphology, natural_language_syntax_and_parsing, logical_sentence_semantics, corpus_construction_and_lexical_analysis, lexical_semantics_and_word_senses, linguistic_text_annotation | 91258-B Natural Language Processing (15) |
+| Domain-Specific Languages and Model-Driven Development [M] | 2 ECTS | model_driven_software_development, domain_specific_languages_and_code_generation | 72939 Software Systems Engineering M (3) |
+| Concurrency Foundations | 3 ECTS | concurrent_programming, message_passing_models, shared_memory_synchronization_and_liveness | 72939 Software Systems Engineering M (1) |
+| Internetworking and Transport | 3 ECTS | internetworking, transport_layer_protocols, reliable_network_communication | 72939 Software Systems Engineering M (2) |
+| Internet Application Foundations | 4 ECTS | internet_and_web_basics, internet_applications, internet_application_protocols, domain_name_systems | 72939 Software Systems Engineering M (1) |
+| Client-Server Programming | 3 ECTS | client_server_tcp_ip_applications, network_socket_programming | 72939 Software Systems Engineering M (1) |
+| Distributed Systems Foundations | 3 ECTS | distributed_systems_fundamentals, distributed_communication, distributed_architectures | 72939 Software Systems Engineering M (1) |
+| Container Virtualization and Service Orchestration | 3 ECTS | container_virtualization, docker_api, cloud_service_orchestration | 72939 Software Systems Engineering M (1) |
+| Spring Application Development | 2 ECTS | spring_container_programming, spring_boot_application_development | 72939 Software Systems Engineering M (1) |
+| Software Architecture and Frameworks | 3 ECTS | software_architecture_foundations, software_architecture_styles, software_frameworks | 72939 Software Systems Engineering M (2) |
+| Software Quality, Testing, and Version Control | 3 ECTS | software_quality_assurance, software_testing_fundamentals, version_control_fundamentals | 72939 Software Systems Engineering M (1) |
+| Build and Continuous Integration | 2 ECTS | build_continuous_integration_and_devops, software_quality_and_release_automation | 72939 Software Systems Engineering M (2) |
+| Event and Messaging Architectures | 3 ECTS | event_driven_architectures, event_publish_subscribe_systems, message_oriented_middleware | 72939 Software Systems Engineering M (1) |
+| Cross-Platform Mobile Development | 3 ECTS | cross_platform_and_hybrid_mobile_development, kotlin_programming, kotlin_multiplatform_development | 72939 Software Systems Engineering M (1) |
+| Autonomous Mobile Robotics | 3 ECTS | robotics_ai_foundations, robot_path_planning_and_navigation, autonomous_mobile_robot_applications | 72939 Software Systems Engineering M (1) |
+| Mobile Embedded Systems and Robotics | 2 ECTS | mobile_embedded_system_integration, differential_drive_robot_applications | 72939 Software Systems Engineering M (1) |
+| AI-Enabled Software Development | 2 ECTS | ai_assisted_software_development, ai_systems_engineering_and_quality | 72939 Software Systems Engineering M (1) |
+| Requirements, Domain Modeling, and Software Lifecycle | 3 ECTS | requirements_analysis, domain_modeling, software_lifecycle_activities | 73435 Project Management (2); 72939 Software Systems Engineering M (2) |
+| Software Development Methodologies and Agile Practice | 3 ECTS | software_development_methodologies, agile_software_development, agile_scrum | 73435 Project Management (1); 72939 Software Systems Engineering M (1) |
+| Project Governance | 2 ECTS | project_stakeholder_and_communications_management, project_procurement_management | 73435 Project Management (3) |
+| Project Planning Foundations | 2 ECTS | project_management_foundations, project_scope_and_quality_management | 73435 Project Management (7) |
+| Project Risk and Control | 2 ECTS | project_risk_management, project_schedule_cost_and_resource_management | 73435 Project Management (4) |
+| IoT Foundations, Devices, and Sensing | 3 ECTS | iot_system_foundations, iot_devices_and_platform_environments, iot_sensing_and_smart_sensors | 72939 Software Systems Engineering M (2); B5722 Embedded Sensors (1) |
+| NLP3 – Large Language Models Development and Agents | 6 ECTS | large_language_models, llm_training_adaptation, llm_scaling_moe_architectures, llm_actions_agents, retrieval_augmented_generation, latent_semantic_analysis, deep_speech_recognition | 91265 Knowledge Engineering (1); 91258-B Natural Language Processing (1) |
+| Real-Time Scheduling Foundations | 3 ECTS | realtime_systems_foundations, realtime_task_models, hard_realtime_scheduling | 72945 Real-Time Systems M (6) |
+| Advanced Real-Time Scheduling and RTOS Concepts | 3 ECTS | aperiodic_realtime_scheduling, realtime_resource_access_protocols, rtos_architecture_and_scheduling | 72945 Real-Time Systems M (2) |
+| IoT Networks and the Web of Things | 3 ECTS | embedded_system_networks, iot_communication_protocols_and_routing, web_of_things_foundations | B5722 Embedded Sensors (1); 72939 Software Systems Engineering M (1) |
+| Resolution and Logic Programming [M] | 4 ECTS | mathematical_logic_inference, automated_reasoning_foundations, logical_programming_foundations, prolog_programming_and_metaprogramming, prolog_grammars, prolog_java_integration, constraint_logic_programming | 91265 Knowledge Engineering (1) |
+| Semantic Web and Knowledge Graph Foundations | 3 ECTS | semantic_web_and_web_of_data, rdf_web_metadata, knowledge_graph_foundations_and_linked_data | 91265 Knowledge Engineering (3) |
+| Ontology Modeling and Description Logics | 3 ECTS | description_logics, owl_ontology_modeling, ontology_engineering_methods | 91265 Knowledge Engineering (3) |
+| Knowledge Graph Querying, Inference, and Search | 3 ECTS | sparql_knowledge_graph_querying, logical_inference_over_semantic_representations, semantic_search | 91265 Knowledge Engineering (1) |
+| Knowledge Graph Development and Enrichment | 3 ECTS | knowledge_extraction_methods, knowledge_graph_development_and_analytics, knowledge_graph_integration_and_completion | 91265 Knowledge Engineering (1) |
+| Advanced Knowledge-Grounded and Neuro-Symbolic AI | 2 ECTS | knowledge_graph_embeddings_llm_grounding, neurosymbolic_methods | 91265 Knowledge Engineering (1) |
+| Wireless Networking Foundations and Radio Engineering | 2 ECTS | wireless_networking_foundations, wireless_radio_engineering | B5722 Embedded Sensors (1) |
+| Data Preparation, Pipelines, Analysis | 3 ECTS | data_analysis_pipeline_and_models, data_visualization, data_quality_preprocessing_outliers, data_analytics_methods_and_types, principal_component_analysis, data_science_concepts_and_data_types, data_science_workflow, data_science_development_tools, statistical_sampling_and_data_interpretation, study_design_and_measurement_quality, data_storytelling | B5722 Embedded Sensors (1) |
+| Embedded IoT Applications and Interfaces | 3 ECTS | embedded_iot_application_development, embedded_device_drivers, embedded_sensor_connectivity | B5722 Embedded Sensors (2) |
+| Embedded Electronics Applications | 3 ECTS | motor_control_circuits, voip_asterisk, feedback_sensor_design | B5722 Embedded Sensors (1) |
+| Sensor Measurement Foundations | 3 ECTS | sensor_measurement_and_modeling, sensor_acquisition_and_noise, information_theory_fundamentals | B5722 Embedded Sensors (8) |
+| Sensor Data Analysis and Applications | 3 ECTS | multivariate_sensor_data_analysis, sensor_predictive_and_spectral_applications | B5722 Embedded Sensors (4) |

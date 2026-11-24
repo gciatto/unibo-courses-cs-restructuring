@@ -7,7 +7,10 @@ delivery mode, notes) are ignored. Modules expand to their source topics, and
 the per-course credit shares in topics-global.yml link those topics to the old
 courses, whose names come from topics-of-course-<id>.yml. A flow is the
 credits an old course spends on the topics of a new course; a module placed
-in several boxes counts fully in each.
+in several boxes counts fully in each. One Sankey (with its table) is drawn
+for all old courses and one for each course_scope of the clustering
+classification (internal, weak_internal, external, service, borrow); a scope's
+Sankey shows only the boxes its old courses flow into.
 
     .venv/bin/python -m final_sankey.build_sankey \
         data/restructuring/attempt-.../final/restructuring_final.drawio
@@ -39,6 +42,9 @@ ECTS_LINE = re.compile(r"\bECTS\b", re.IGNORECASE)
 NUMBER = re.compile(r"\d+(?:[.,]\d+)?")
 # Boxes with this title (ignoring case and brackets) are blank templates, not courses.
 TEMPLATE_TITLE = "template"
+# course_scope values of clustering.export_cluster_courses.course_scope; one Sankey each.
+SCOPES = ("internal", "weak_internal", "external", "service", "borrow")
+DEFAULT_CLASSIFICATION = pathlib.Path("data/clusters/runs/2025-20260715-120359-spectral/cluster_courses.csv")
 
 
 @dataclass
@@ -138,20 +144,13 @@ def ects_totals(
     )
 
 
-def load_course_ids(path: pathlib.Path) -> set[str]:
-    """Course IDs listed in a selection file such as queries/disi_service_courses.yaml.
+def load_course_scopes(path: pathlib.Path) -> dict[str, str]:
+    """Course ID -> ``course_scope`` from a clustering cluster_courses.csv (";"-separated).
 
-    Accepts a list of teachers each with a ``courses`` list of ``id`` entries (as
-    in that file), a mapping with a top-level ``courses`` list, or a plain list
-    of IDs or ``id`` entries. IDs are matched exactly: "07276" does not select "07276-A".
+    IDs are matched exactly: "07276" does not match "07276-A".
     """
-    data = yaml.safe_load(path.read_text(encoding="utf-8")) or []
-    ids = set()
-    for entry in data if isinstance(data, list) else [data]:
-        items = (entry.get("courses") or []) if isinstance(entry, dict) and "courses" in entry else [entry]
-        for item in items:
-            ids.add(str(item["id"] if isinstance(item, dict) else item))
-    return ids
+    with path.open(encoding="utf-8-sig", newline="") as handle:
+        return {row["course_id"].strip(): row["course_scope"].strip() for row in csv.DictReader(handle, delimiter=";")}
 
 
 def course_flows(
@@ -340,14 +339,17 @@ def main() -> None:
         help="Where to write the Sankey PDF and the table (default: the diagram's folder)",
     )
     parser.add_argument(
-        "--courses",
+        "--classification",
         type=pathlib.Path,
-        help="Only draw these old courses, and the new courses they connect to, from a selection file "
-        "such as queries/disi_service_courses.yaml (default: all old courses)",
+        default=DEFAULT_CLASSIFICATION,
+        help="Clustering cluster_courses.csv whose course_scope column splits the old courses; one "
+        f"Sankey is drawn for all courses and one per scope (default: {DEFAULT_CLASSIFICATION})",
     )
     args = parser.parse_args()
     if not args.drawio.is_file():
         parser.error(f"Diagram not found: {args.drawio}")
+    if not args.classification.is_file():
+        parser.error(f"Classification not found: {args.classification}")
     attempt = args.attempt_dir or args.drawio.parent.parent
     output_dir = args.output_dir or args.drawio.parent
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -359,36 +361,45 @@ def main() -> None:
 
     courses, warnings = read_new_courses(args.drawio, set(module_topics))
     warnings += module_warnings(courses, module_topics)
-    stem = args.drawio.stem
-    if args.courses:
-        selected = load_course_ids(args.courses)
-        unknown = sorted(selected - set(course_topics))
-        if unknown:
-            warnings.append(f"selected courses not in the attempt: {', '.join(unknown)}")
-        course_topics = {old: shares for old, shares in course_topics.items() if old in selected}
-        stem = f"{stem}-{args.courses.stem}"
-    flows = course_flows(courses, module_topics, course_topics)
-    left = order_old_courses(sorted({old for old, _ in flows}), course_topics, module_topics)
-    unreached = sorted(set(course_topics) - set(left))
-    if unreached:
-        warnings.append(f"old courses with no topic in any box: {', '.join(unreached)}")
-    # Only boxes some drawn old course flows into are drawn and totalled.
-    connected = sorted({index for _, index in flows})
-    totals = ects_totals([courses[index] for index in connected], left, course_topics)
+    scopes = load_course_scopes(args.classification)
+    unclassified = sorted(set(course_topics) - set(scopes))
+    if unclassified:
+        warnings.append(f"old courses without a course_scope (only in the 'all' Sankey): {', '.join(unclassified)}")
+    unknown = sorted(set(scopes) - set(course_topics))
+    if unknown:
+        warnings.append(f"classified courses not in the attempt: {', '.join(unknown)}")
+    unexpected = sorted(set(scopes.values()) - set(SCOPES))
+    if unexpected:
+        warnings.append(f"unknown course_scope values ignored: {', '.join(unexpected)}")
 
-    sankey_pdf = output_dir / f"{stem}-sankey.pdf"
-    table_csv = output_dir / f"{stem}-courses.csv"
-    table_md = output_dir / f"{stem}-courses.md"
-    order = plot_sankey(courses, flows, left, names, course_topics, totals, stem, sankey_pdf)
-    write_table(courses, flows, order, names, table_csv, table_md)
+    for scope in ("all", *SCOPES):
+        selected = {
+            old: shares for old, shares in course_topics.items() if scope == "all" or scopes.get(old) == scope
+        }
+        stem = f"{args.drawio.stem}-{scope}"
+        flows = course_flows(courses, module_topics, selected)
+        left = order_old_courses(sorted({old for old, _ in flows}), selected, module_topics)
+        unreached = sorted(set(selected) - set(left))
+        if unreached and scope == "all":
+            warnings.append(f"old courses with no topic in any box: {', '.join(unreached)}")
+        # Only boxes some drawn old course flows into are drawn and totalled.
+        connected = sorted({index for _, index in flows})
+        totals = ects_totals([courses[index] for index in connected], left, selected)
 
-    print(f"New courses (boxes): {len(connected)} of {len(courses)}; old courses: {len(left)}; flows: {len(flows)}")
-    print(f"Old courses: {totals[0]}\nNew courses: {totals[1]}")
+        sankey_pdf = output_dir / f"{stem}-sankey.pdf"
+        table_csv = output_dir / f"{stem}-courses.csv"
+        table_md = output_dir / f"{stem}-courses.md"
+        order = plot_sankey(courses, flows, left, names, selected, totals, stem, sankey_pdf)
+        write_table(courses, flows, order, names, table_csv, table_md)
+
+        print(f"[{scope}] new courses (boxes): {len(connected)} of {len(courses)}; "
+              f"old courses: {len(left)}; flows: {len(flows)}")
+        print(f"  Old courses: {totals[0]}\n  New courses: {totals[1]}")
+        print(f"  Wrote {sankey_pdf.name}, {table_csv.name}, {table_md.name}")
     if warnings:
         print(f"\nWarnings ({len(warnings)}):")
         for warning in warnings:
             print(f"  - {warning}")
-    print(f"\nWrote {sankey_pdf}\nWrote {table_csv}\nWrote {table_md}")
 
 
 if __name__ == "__main__":
